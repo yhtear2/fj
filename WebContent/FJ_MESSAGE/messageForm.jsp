@@ -8,7 +8,7 @@
 <h2>쪽지 보내기</h2>
 
 <form>
-	<table>
+	<table border="1">
 		<tr>
 			<th>받는이</th>
 			<th>supar@fjkd.com</th>
@@ -25,10 +25,10 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<input type="button" value="전송">
+			<th colspan="2">
+				<input type="button" value="전송" onclick="messagePro.do">
 				<input type="button" value="취소">
-			</td>
+			</th>
 		</tr>
 	</table>
 </form>
