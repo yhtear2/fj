@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+.introduce{
+	width: 700;
+	height: 100%;
+}
+.standard{
+	background: #f2f7ff;
+}
+.intoroduce_title_line{
+	height:1px; 
+	background:#787878 ; 
+	margin-top:40px;	
+}
+.subject{
+	background-color: #f2f7ff;
+	border: 0px;
+	font-size: 0.9em;
+	font: bolder;
+	float: left;
+	position: relative;
+	left: 8mm;
+}
+
+
+<!-- -->
+
+.tooltip {
+	background-color: #000;
+	border: 1px solid #fff;
+	padding: 10px 15px;
+	width: 200px;
+	display: none;
+	color: #fff;
+	text-align: left;
+	font-size: 12px;
+	
+	 /* outline radius for mozilla/firefox only */
+    -moz-box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 0 10px #000;
+}
