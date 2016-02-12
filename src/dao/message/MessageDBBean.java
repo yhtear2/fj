@@ -14,6 +14,7 @@ public class MessageDBBean implements MessageDao {
 	
 	@Override
 	public int sendMessage(MessageDataBean dto) {
+		
 		return sqlSession.update("Message.sendMessage", dto);
 		
 	}
