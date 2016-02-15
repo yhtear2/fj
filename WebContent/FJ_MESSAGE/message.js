@@ -9,17 +9,11 @@ function sendMassge(){
 	if( title == null || title == ""){
 		alert("제목을 입력해 주세요");
 		//subject.focus();
-		return;
+		return false;
 	} else if( content == null || content == "" ){
 		alert("내용을 입력해 주세요");
 		//content.focus();
-		return;
+		return false;
 	}
-
-	var url = "messagePro.do?recipient="+ $('p').text();
-	open( url, "confrimWindow", 
-		"menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=300, height=200");
-
-	
-	
+	$('input[name=recipient]').val( $('p').text() );
 }

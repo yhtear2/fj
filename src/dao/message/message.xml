@@ -10,6 +10,9 @@
 		 #{content, jdbcType=VARCHAR}, #{tag, jdbcType=VARCHAR}, 
 		 #{read_yn}, #{reg_date})
 	</insert>
+	<select id="getCount" resultType="Integer">
+		select count(*) from FJ_MESSAGE
+	</select>
 </mapper>	
 
 
