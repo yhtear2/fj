@@ -14,7 +14,6 @@ public class MessageDBBean implements MessageDao {
 	
 	@Override
 	public int sendMessage(MessageDataBean dto) {
-		System.out.println("dao까지는 넘어오는거지???");
 		return sqlSession.update("Message.sendMessage", dto);
 		
 	}

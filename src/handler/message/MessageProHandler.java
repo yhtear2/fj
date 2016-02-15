@@ -35,23 +35,17 @@ public class MessageProHandler implements Commandhandler {
 		MessageDataBean dto = new MessageDataBean();
 		
 		// 바구니에 자료 담기
-		//dto.setEmail( request.getParameter("recipient") );
-		//dto.setTITLE( request.getParameter("title") );
-		//dto.setCONTENT( request.getParameter("content") );
-		//dto.setTAG( (String)request.getSession().getAttribute("memId") );
-		
-		dto.setEmail( "recipient@dsajfkl.com" );
-		dto.setTitle( "1111" );
-		dto.setContent( "2222" );
+		dto.setEmail( request.getParameter("recipient") );
+		dto.setTitle( request.getParameter("title") );
+		dto.setContent( request.getParameter("content") );
+		//dto.setTag( (String)request.getSession().getAttribute("memId") );
+
 		dto.setTag( "memId" );
 		
 		dto.setRead_yn(0);
 		dto.setReg_date(new Timestamp( System.currentTimeMillis()));
-		
-		//System.out.println("recipient : " + request.getParameter("recipient"));
-		//System.out.println("title : " + request.getParameter("title"));
-		//System.out.println("content : " + request.getParameter("content"));
-		//System.out.println("memId : " + (String)request.getSession().getAttribute("memId"));
+
+		System.out.println("memId : " + (String)request.getSession().getAttribute("memId"));
 		
 		// 디비 처리하러 고고고~!
 		int result = dao.sendMessage(dto);
