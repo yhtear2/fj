@@ -78,6 +78,7 @@ function del_introduce(count){
 		if (confirm("삭제하시겠습니까?")) {
 			$(delDiv).remove();
 			cnt--;
+			alert(cnt+"");
 		}
 	} else {
 		alert('한 개 이상의 자소서가 필요합니다.');
