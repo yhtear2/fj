@@ -31,7 +31,7 @@ public class MessageListHandler implements Commandhandler {
 		count = dao.getCount();
 		
 		if( count != 0 ){
-			ArrayList<MessageDataBean> list = dao.getList
+			
 		}
 		map.put("page", "/FJ_MESSAGE/messageList");
 		return new ModelAndView("/FJ_MAIN/main", map);
