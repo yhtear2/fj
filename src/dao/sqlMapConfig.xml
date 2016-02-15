@@ -25,7 +25,8 @@
 	
 	<!-- DB 처리 -->
 	<mappers>
-		
+		<mapper resource="dao/comp/comp.xml"/>
+		<mapper resource="dao/recruit/recruit.xml"/>
 	</mappers>
 		
 </configuration>

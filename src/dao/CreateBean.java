@@ -7,6 +7,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import dao.comp.CompDBBean;
 import dao.comp.CompDao;
+import dao.recruit.RecruitDBBean;
+import dao.recruit.RecruitDao;
 
 @Configuration
 public class CreateBean {
@@ -14,6 +16,11 @@ public class CreateBean {
 	@Bean
 	public CompDao compDao() {
 		return new CompDBBean();
+	}
+	
+	@Bean
+	public RecruitDao recruitDao() {
+		return new RecruitDBBean();
 	}
 	
 	@Bean
