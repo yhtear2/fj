@@ -4,4 +4,5 @@ import dto.message.MessageDataBean;
 
 public interface MessageDao {
 	public int sendMessage(MessageDataBean dto);
+	public int getCount();
 }

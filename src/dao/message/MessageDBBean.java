@@ -18,4 +18,9 @@ public class MessageDBBean implements MessageDao {
 		
 	}
 
+	@Override
+	public int getCount() {
+		return sqlSession.selectOne("Message.getCount");
+	}
+
 }
