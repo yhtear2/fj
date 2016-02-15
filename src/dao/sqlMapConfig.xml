@@ -25,7 +25,13 @@
 	
 	<!-- DB 처리 -->
 	<mappers>
-		
+		<mapper resource="dao/admin/admin.xml"/>
+		<mapper resource="dao/board/board.xml"/>
+		<mapper resource="dao/comp/comp.xml"/>
+		<mapper resource="dao/join/join.xml"/>
+		<mapper resource="dao/message/message.xml"/>
+		<mapper resource="dao/recruit/recruit.xml"/>
+		<mapper resource="dao/user/user.xml"/>
 	</mappers>
 		
 </configuration>
