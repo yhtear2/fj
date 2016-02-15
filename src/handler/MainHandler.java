@@ -18,6 +18,7 @@ public class MainHandler implements Commandhandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		map.put("menu", "main");
 		map.put("page", "/FJ_MAIN/main_page");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
