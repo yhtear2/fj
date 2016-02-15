@@ -1,5 +1,7 @@
 package dao.message;
 
-public interface MessageDao {
+import dto.message.MessageDataBean;
 
+public interface MessageDao {
+	public int sendMessage(MessageDataBean dto);
 }

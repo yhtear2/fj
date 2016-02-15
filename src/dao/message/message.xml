@@ -4,6 +4,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="Message">
+	<insert id="sendMessage"  parameterType="dto.message.MessageDataBean">
+		insert into FJ_MESSAGE values( 
+		FJ_MESSAGE_seq.NEXTVAL, #{email}, #{title, jdbcType=VARCHAR},
+		 #{content, jdbcType=VARCHAR}, #{tag, jdbcType=VARCHAR}, 
+		 #{read_yn}, #{reg_date})
+	</insert>
 </mapper>	
 
 
