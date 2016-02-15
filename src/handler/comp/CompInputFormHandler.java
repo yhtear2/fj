@@ -29,7 +29,7 @@ public class CompInputFormHandler implements Commandhandler {
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("id", id);
 		param.put("passwd", passwd);
-//		int result = dao.checkComp(param);
+		
 		int result = 1;
 		
 		Map<String, Object> map = new HashMap<String, Object>();
