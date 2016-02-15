@@ -22,12 +22,14 @@
 								$('.main_logo').stop().animate({'background-size':'50px'});
 								$('.main_menu').stop().animate({'width':'50px'});
 								$(".main_menu2").css({"z-index":"0"});
+								$('.main_submanu').css({"text-align":"left"});
 								$(".main_menu2").eq(idx).css({"z-index":"2"});
 								$('.menu_status').val(1);
 							});
 						} else { 
 							$('.main_menu').stop().animate({'width':'200px'}, function() {
 								$(".main_menu2").css({"z-index":"0"});
+								$('.main_submanu').animate({"text-align":"center"});
 								$(".main_menu2").eq(idx).css({"z-index":"2"});
 							}).animate({'width':'50px'});
 						}
@@ -71,17 +73,24 @@
 				<div class="main_submanu"><i class="fa fa-github"></i>Git</div>
 			</div>
 		</div>
+		
+		<!-- main_menu2는 사이드바의 상세메뉴 - 평소에는 z-index:0으로 숨겨져있다 -->
 		<div class="main_menu2">
 		<a href="#" onclick="window.location='main.do'">마이페이지</a>	
 		</div>
 		<div class="main_menu2">
-			<a href="#" onclick="window.location='list.do'">게시판1</a><br>
-			<a href="#" onclick="window.location='board2.do'">게시판2</a><br>
-			<a href="#" onclick="window.location='board3.do'">게시판3</a><br>
+			<a href="#" onclick="window.location='list.do'">게시판</a><br>
 		</div>
-		<div class="main_menu2"><a href="#" onclick="window.location='recruitList.do'">채용공고</a></div>
-		<div class="main_menu2"><a href="#">Q&A</a></div>
-		<div class="main_menu2"><a href="#" onclick="window.location='compInputCheck.do'">기업정보입력</a></div>
+		<div class="main_menu2">
+			<a href="#" onclick="window.location='recruitList.do'">채용공고</a>
+		</div>
+		<div class="main_menu2">
+			<a href="#">Q&A</a>
+		</div>
+		<div class="main_menu2">
+			<a href="#" onclick="window.location='compInputCheck.do'">기업정보입력</a>
+		</div>
+		
 		<div class="main_page">
 			<div>
 				<jsp:include page='${page}.jsp'/>
