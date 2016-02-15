@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:set var="result" value="1"/>
+
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		alert("비번 확인");
@@ -8,49 +10,64 @@
 	</script>
 </c:if>
 <c:if test="${result == 1}">
-	<form method="post" name="form" action="compInputPro.do">
-		<table border="1">
-			<tr>
-				<th> 회사 대표 </th>
-				<td> <input type="text" name="ceo"> </td>
-				<th> 설립일 </th>
-				<td> <input type="text" name="comp_reg_date"> </td>
-				<th> 기업 형태 </th>
-				<td> <input type="text" name="comp_type"> </td>
-				
-			</tr>
-			<tr>
-				<th> 전화 번호</th>
-				<td colspan="5">
-					<input type="text" name="tel1">
-					- <input type="text" name="tel2">
-					- <input type="text" name="tel3">
-				</td>
-			</tr>
-			<tr>
-				<th rowspan="2"> 주소 </th>
-				<td colspan="5"> <input type="text" name="zipcode1"> - <input type="text" name="zipcode2"> </td>
-			</tr>
-			<tr>
-				<td colspan="5"> <input type="text" name="address1"> - <input type="text" name="address2"> </td>
-			</tr>
+	<div style="background-color: #ffffff; width: 550px;">
+		<form method="post" name="form" action="compInputPro.do">
+			<div class="comp">
+				<ul>
+					<li>
+						<input type="text" name="ceo" placeholder="대표자명">
+					</li>
+					<li>
+						<input type="text" name="comp_reg_date" placeholder="설립일">
+					</li>
+					<li>
+						<input type="text" name="comp_reg_date" placeholder="기업구분">
+					</li>
+					<li>
+						<div>
+							<select name="tel1">
+								<option> 010 </option>
+								<option> 011 </option>
+								<option> 016 </option>
+								<option> 017 </option>
+								<option> 018 </option>
+								<option> 019 </option>
+							</select>
+						
+							<input type="text" name="tel2" placeholder="휴대폰 번호 '-' 없이 입력">
+						</div>
+					</li>
+					
+					<li>
+						<input type="text" name="address" placeholder="우편번호 / 회사주소">
+						<span style="display:inline-block; font-weight:bold; border:1px solid #dcdcdc;"> 우편번호 </span>
+					</li>
+					<li>
+						<input type="text" name="address_detail" placeholder="상세주소">
+					</li>
+				</ul>
+			</div>
 			
-			<tr>
-				<th> 자본금 </th>
-				<td> <input type="text" name="capital"> </td>
-				<th> 연매출 </th>
-				<td> <input type="text" name="year_sale"> </td>
-				<th> 사원수 </th>
-				<td> <input type="text" name="emp_count"> </td>
-			</tr>
-			<tr>
-				<th colspan="6">
-					<input type="submit" value="submit">
-					<input type="reset" value="reset">
-				</th>
-			</tr>
-		</table>
-	</form>
+			<div>
+				<ul>
+					<li>
+						<input type="text" name="capital" placeholder="자본금">
+					</li>
+					<li>
+						<input type="text" name="year_sale" placeholder="연매출">
+					</li>
+					<li>
+						<input type="text" name="emp_count" placeholder="사원수">
+					</li>
+				</ul>
+			</div>
+			
+			<p>
+				<input type="submit" value="submit">
+			</p>
+			
+		</form>
+	</div>
 </c:if>
 
 

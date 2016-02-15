@@ -27,31 +27,35 @@ public class CompInputProHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		CompDataBean dto = new CompDataBean();
-		dto.setEmail(request.getSession().getAttribute("email").toString());
-		dto.setCeo(request.getParameter("ceo"));
-		dto.setComp_type(request.getParameter("comp_type"));
-		dto.setTel(request.getParameter("tel1")
-			+ "-" + request.getParameter("tel2")
-			+ "-" + request.getParameter("tel3")
-		);
-		dto.setZipcode(request.getParameter("zipcode1")
-			+ "-" + request.getParameter("zipcode2")
-		);
-		dto.setAddress(request.getParameter("address1")
-			+ "-" + request.getParameter("address2")
-		);
-		dto.setInfo(request.getParameter("info"));
-		dto.setCapital(request.getParameter("capital"));
-		if(!CustomUtil.isNull(request.getParameter("year_sale"))){
+		dto.setEmail(request.getSession().getAttribute("email").toString());								// 이메일
+		dto.setCeo(request.getParameter("ceo"));															// 대표자명
+		dto.setComp_type(request.getParameter("comp_type"));												// 기업구분
+		dto.setTel(request.getParameter("tel1") + "-" + request.getParameter("tel2"));						// 전화번호
+		
+		// 임시처리
+		String address = request.getParameter("address");
+		String zipcode = null;
+		
+		if(!CustomUtil.isNull(address)){
+			zipcode = address.split("/")[0];
+			dto.setZipcode(zipcode);																		// 우편번호
+			
+			
+			address = address.split("/")[1] + request.getParameter("address_detail");
+			dto.setAddress(address);																		// 주소
+		}
+		dto.setInfo(request.getParameter("info"));															// 소개
+		dto.setCapital(request.getParameter("capital"));													// 자본금
+		if(!CustomUtil.isNull(request.getParameter("year_sale"))){											// 연매출
 			dto.setYear_sale(Integer.parseInt(request.getParameter("year_sale")));
 		}
-		if(!CustomUtil.isNull(request.getParameter("emp_count"))){
+		if(!CustomUtil.isNull(request.getParameter("emp_count"))){											// 사원수
 			dto.setEmp_count(Integer.parseInt(request.getParameter("emp_count")));
 		}
-		if(!CustomUtil.isNull(request.getParameter("like_count"))){
+		if(!CustomUtil.isNull(request.getParameter("like_count"))){											// 좋아요수
 			dto.setLike_count(Integer.parseInt(request.getParameter("like_count")));
 		}
-		if(!CustomUtil.isNull(request.getParameter("comp_reg_date"))){
+		if(!CustomUtil.isNull(request.getParameter("comp_reg_date"))){										// 회사 설립일
 			dto.setComp_reg_date(Timestamp.valueOf(request.getParameter("comp_reg_date").toString()));
 		}
 		
