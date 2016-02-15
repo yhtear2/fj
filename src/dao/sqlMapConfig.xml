@@ -25,7 +25,7 @@
 	
 	<!-- DB 처리 -->
 	<mappers>
-		
+		<mapper resource="dao/message/message.xml"/>
 	</mappers>
 		
 </configuration>
