@@ -15,26 +15,16 @@ import dao.comp.CompDao;
 import handler.Commandhandler;
 
 @Controller
-public class Comp_InputFormHandler implements Commandhandler {
+public class CompInputCheck implements Commandhandler {
 
 	@Resource(name="compDao")
 	private CompDao compDao;
 
-	@RequestMapping("/compInputForm")
+	@RequestMapping("/compInputCheck")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		String id 		= request.getSession().getAttribute("email").toString();
-		String passwd 	= request.getParameter("passwd");
-		
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("id", id);
-		param.put("passwd", passwd);
-//		int result = dao.checkComp(param);
-		int result = 1;
-		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", "/FJ_COMP/compInputForm");
-		map.put("result", result);
+		map.put("page", "/FJ_COMP/compInputCheck");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}

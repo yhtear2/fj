@@ -4,6 +4,16 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="Recruit">
+	<select id="getRecruitCount" resultType="java.lang.Integer">
+		SELECT 	COUNT(*)
+		FROM 	FJ_RECRUIT
+	</select>
+
+	<select id="getRecruitList" resultType="dto.recruit.RecruitDataBean">
+		SELECT 	*
+		FROM 	FJ_RECRUIT
+	</select>
+
 </mapper>	
 
 

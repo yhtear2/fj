@@ -18,7 +18,7 @@ import dto.comp.CompDataBean;
 import handler.Commandhandler;
 
 @Controller
-public class Comp_InputProHandler implements Commandhandler {
+public class CompInputProHandler implements Commandhandler {
 
 	@Resource(name="compDao")
 	private CompDao compDao;

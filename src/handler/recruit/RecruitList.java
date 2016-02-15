@@ -1,6 +1,7 @@
-package handler.comp;
+package handler.recruit;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,21 +12,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dao.comp.CompDao;
+import dao.recruit.RecruitDao;
+import dto.recruit.RecruitDataBean;
 import handler.Commandhandler;
 
 @Controller
-public class Comp_InputCheck implements Commandhandler {
+public class RecruitList implements Commandhandler {
 
-	@Resource(name="compDao")
-	private CompDao compDao;
+	@Resource(name="recruitDao")
+	private RecruitDao recruitDao;
 
-	@RequestMapping("/compInputCheck")
+	@RequestMapping("/recruitList")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", "/FJ_COMP/compInputCheck");
 		
+		int recruitCount = recruitDao.getRecruitCount();
+		map.put("recruitCount", recruitCount);
+		
+		if(recruitCount != 0){
+			List<RecruitDataBean> recruitList = recruitDao.getRecruitList();
+			map.put("recruitList", recruitList);
+		}
+		
+		map.put("page", "/FJ_RECRUIT/recruitList");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
