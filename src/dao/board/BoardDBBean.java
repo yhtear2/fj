@@ -2,8 +2,9 @@ package dao.board;
 
 import org.apache.ibatis.session.SqlSession;
 
+import dao.SqlMapClient;
 import dto.board.BoardDataBean; 
-import dao.board.SqlMapClient;
+
 
 public class BoardDBBean implements BoardDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();

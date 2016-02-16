@@ -13,6 +13,9 @@
 	<select id="getCount" resultType="Integer">
 		select count(*) from FJ_MESSAGE
 	</select>
+	<select id="getList" parameterType="String" resultType="dto.message.MessageDataBean">
+		select * from FJ_MESSAGE where email=#{email}
+	</select>
 </mapper>	
 
 

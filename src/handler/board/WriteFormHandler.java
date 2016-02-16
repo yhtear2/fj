@@ -1,5 +1,8 @@
 package handler.board;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,9 +16,6 @@ import handler.Commandhandler;
 
 @Controller
 public class WriteFormHandler implements Commandhandler{
-
-	
-
 	
 
 	@RequestMapping("/writeForm")
@@ -43,8 +43,13 @@ public class WriteFormHandler implements Commandhandler{
 		request.setAttribute( "re_level", re_level );
 		*/
 		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		return new ModelAndView("writeForm"); 
+		
+		
+		map.put("page", "/FJ_BOARD/writeForm");
+		return new ModelAndView("/FJ_MAIN/main", map);
+		
 	}
 }
 
