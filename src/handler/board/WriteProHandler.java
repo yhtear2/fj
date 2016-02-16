@@ -12,11 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.board.BoardDBBean;
 import dto.board.BoardDataBean;
+import handler.Commandhandler;
 import dao.board.BoardDao;  
-import handler.CommandHandler;
+
 
 @Controller
-public class WriteProHandler implements CommandHandler {
+public class WriteProHandler implements Commandhandler {
 
 	//* CreateBean의 dao 를 불러오기 위한 Resource 작업  (AutoWired 로 사용해도 된다)  *//
 	@Resource(name="dao")  // logon 패키지의  CreateBean 자바파일에 있는 객체 dao  

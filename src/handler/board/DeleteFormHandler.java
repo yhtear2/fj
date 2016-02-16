@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import handler.CommandHandler; 
+import handler.Commandhandler;
+
+
 
 @Controller
-public class DeleteFormHandler implements CommandHandler {
+public class DeleteFormHandler implements Commandhandler {
 
 	@RequestMapping("/deleteForm") 
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
