@@ -22,7 +22,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		// set 으로 우선 호출한다 
 		dto.setSubject(subject); 
 	//	dto.setNum(num);
-		return sqlSession.insert("Board.insertArticle", dto);
+		return 0;
 			
 	}
 	

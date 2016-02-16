@@ -1,5 +1,8 @@
 package handler.board;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,38 +20,23 @@ import handler.Commandhandler;
 @Controller
 public class WriteProHandler implements Commandhandler {
 
-	//* CreateBean의 dao 를 불러오기 위한 Resource 작업  (AutoWired 로 사용해도 된다)  *//
-	@Resource(name="boardDao")  // logon 패키지의  CreateBean 자바파일에 있는 객체 dao  
+	@Resource(name="boardDao")
 	private BoardDao dao;   
 	
 	@RequestMapping("/writePro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+		Map<String, Object> map = new HashMap<String, Object>();
 		request.setCharacterEncoding( "utf-8" );
-	
-		BoardDataBean dto = new BoardDataBean();
 		
-		//dto.setNum( Integer.parseInt( request.getParameter( "num" ) ) );
-		//dto.setEmail( request.getParameter( "email" ) );
-		
-		dto.setSubject( request.getParameter( "subject" ) );
-		//dto.setContent( request.getParameter( "content" ) );
-		
-		/*
-		dto.setRef( Integer.parseInt( request.getParameter( "ref" ) ) );
-		dto.setRe_step( Integer.parseInt( request.getParameter( "re_step" ) ) );
-		dto.setRe_level( Integer.parseInt( request.getParameter( "re_level" ) ) );
-		
-		dto.setReg_date( new Timestamp( System.currentTimeMillis() ) );	
-		*/
-	
-		int result = dao.insertArticle( dto ); 
-		
-		request.setAttribute( "result", result );
+		System.out.println( (String)request.getParameter( "subject" ) );
+		//BoardDataBean dto = new BoardDataBean();
+		//dto.setSubject( (String) request.getParameter( "subject" ) );
+		//int result = dao.insertArticle( dto ); 
 		
 		
-		return new ModelAndView("writePro"); 
+		map.put("page", "/FJ_BOARD/writePro");
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
 
