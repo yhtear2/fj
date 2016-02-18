@@ -6,7 +6,7 @@
 <script src="${project}message.js"></script>
 
 <div style="text-align: center; width: 410px;">
-<h2>쪽지 보내기djsfklajsdaklfjsdlk</h2>
+<h2>쪽지 보내기</h2>
 </div>
 
 <form method="post" action="messagePro.do" onsubmit="return sendMassge()">
