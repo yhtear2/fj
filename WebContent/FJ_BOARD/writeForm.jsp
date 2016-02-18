@@ -5,30 +5,23 @@
 
 <!-- 태그 에디터 불러오기 -->    
 <!-- INSTRUCTIONS -->
-<link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
-<link href="css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-
+<link href="css/jquery.tagit.css" rel="stylesheet">
+<link href="css/tagit.ui-zendesk.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+   
 <!-- The real deal -->
 <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
-          
-            
-       
-
-
+  
+    
 <!-- 글쓰기 에디터 불러오기 -->
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-
-<!-- include summernote-ko-KR -->
-<script src="lang/summernote-ko-KR.js"></script>	
 
 
 
@@ -37,7 +30,6 @@
 	$(document).ready(function() {
 		$('#summernote').summernote({
 			height : 400,
-			lang: 'ko-KR' // default: 'en-US'
 		});
 	});
 	
@@ -133,14 +125,14 @@
 				<div class="form-group  has-feedback">
 						<select id="category" name="categoryCode" class="form-control">
 							<option value="">게시판을 선택해 주세요.</option>
-							<option value="notice">소스 공유</option>
-							<option value="life">사람냄새</option>
-							<option value="forum">포럼</option>
-							<option value="gathering">구직모임</option>
+							<option value="notice">테스트1</option>
+							<option value="life">테스트2</option>
+							<option value="forum">테스트3</option> 
+							<option value="gathering">테스트4</option>
 							<option value="promote">구직활동/기업홍보</option>
 						</select>
 				</div>
-			</fieldset>
+			</fieldset>  
 			<!-- 제목을 입력하는 부분 -->
 			<div class="form-group has-feedback">
 				<input type="text" name="subject" placeholder="제목을 입력해 주세요." class="form-control" id="title">
@@ -151,7 +143,6 @@
 			<div id="wrapper">
 				<div id="content">
 					<ul id="myTags"></ul>
-					<input type="text" name="tag" placeholder="태그을 입력해 주세요." class="form-control" id="myTags">
 				</div>
 			</div>
 
