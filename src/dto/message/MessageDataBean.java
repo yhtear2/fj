@@ -4,11 +4,12 @@ import java.sql.Timestamp;
 
 public class MessageDataBean {
 	private int message_num;		// 메시지 글 번호
-	private String email;			// 받는사람 메일
+	private String email;			// 받는사람 이메일
+	private String sender;			// 보낸사람 이메일
 	private String title;			// 제목
 	private String content;			// 내용
-	private String tag;				// 보낸사람 정보
-	private int read_yn;			// 읽은 유,무 확인용
+	private int tag;				// 메시지 분류 (1:채용공고  // 2:공지사항 // 3:일반쪽지)
+	private int read_yn;			// 읽은 유,무 확인용 (0:읽지 않음 // 1:읽음)
 	private Timestamp reg_date;		// 보낸날자
 	
 	public int getMessage_num() {
@@ -23,6 +24,12 @@ public class MessageDataBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getSender() {
+		return sender;
+	}
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -35,10 +42,10 @@ public class MessageDataBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getTag() {
+	public int getTag() {
 		return tag;
 	}
-	public void setTag(String tag) {
+	public void setTag(int tag) {
 		this.tag = tag;
 	}
 	public int getRead_yn() {
@@ -53,6 +60,7 @@ public class MessageDataBean {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
+	
 	
 	
 }

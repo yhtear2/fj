@@ -17,20 +17,20 @@ import dto.message.MessageDataBean;
 import handler.Commandhandler;
 
 @Controller
-public class MessageListHandler implements Commandhandler {
+public class messageListSendHandler implements Commandhandler {
 	
 	@Resource(name="messageDao")
 	private MessageDao dao;
 
-	@RequestMapping("/messageList")
+	@RequestMapping("/messageListSend")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 변수 선언
 		int count = 0;
-		//String email = (String)request.getSession().getAttribute("memId");
-		String email = "email@example.com";
+		//String sender = (String)request.getSession().getAttribute("memId");
+		String sender = "sendermail@main.com";
 		
 		int pageSize=10;
 		int pageBlock = 3;
@@ -49,7 +49,7 @@ public class MessageListHandler implements Commandhandler {
 			
 		
 		// DB접속해서 카운터 받아오기
-		count = dao.getCount(email);
+		count = dao.getSendCount(sender);
 		
 		// 연산
 		pageNum = request.getParameter("pageNum");
@@ -84,7 +84,7 @@ public class MessageListHandler implements Commandhandler {
 		
 		// 정렬된 리스트 받아오기
 		if( count != 0 ){
-			ArrayList<MessageDataBean> list = dao.getList(start, end, email);
+			ArrayList<MessageDataBean> list = dao.getSendList(start, end, sender);
 			map.put("list", list);
 		}
 		
@@ -96,8 +96,7 @@ public class MessageListHandler implements Commandhandler {
 		map.put("pageNum", pageNum);
 		
 		
-		map.put("page", "/FJ_MESSAGE/messageList");
+		map.put("page", "/FJ_MESSAGE/messageListSend");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
-
 }

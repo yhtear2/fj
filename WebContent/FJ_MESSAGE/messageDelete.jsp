@@ -7,16 +7,16 @@
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
-		alert("쪽지 전송에 실패했습니다. 잠시 후 다시 시도해 주세요");
+		alert("쪽지 삭제에 실패했습니다. 잠시 후 다시 시도해 주세요");
 		//-->
 	</script>
 </c:if>
 
 <c:if test="${result != 0}">
 	<script type="text/javascript">
-	<!--
-	alert("쪽지 전송에 성공 했습니다.");
+<!--
+	alert("쪽지 삭제에 성공 했습니다.");
 	window.location.href='messageList.do';
-	//-->
+//-->
 </script>
 </c:if>
