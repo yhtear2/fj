@@ -10,8 +10,12 @@
 	</select>
 
 	<select id="getRecruitList" resultType="dto.recruit.RecruitDataBean">
+		<![CDATA[
 		SELECT 	*
 		FROM 	FJ_RECRUIT
+		WHERE	ROWNUM >= #{start}
+		AND 	ROWNUM <= #{end}
+		]]> 
 	</select>
 
 </mapper>	
