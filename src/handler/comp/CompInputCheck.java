@@ -24,6 +24,7 @@ public class CompInputCheck implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compInputCheck");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);
