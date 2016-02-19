@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:set var="project" value="/BoardEx/board/"/>
+<c:set var="fj_project" value="/fj/FJ_BOARD"/>
 
 <c:set var="page_list" value="글 목 록"/>
 <c:set var="page_write" value="글 작 성"/>

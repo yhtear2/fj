@@ -19,6 +19,7 @@ function erroralert( msg ) {
 }
 
 
+
 // 글수정
 function modifyfocus() {
 	modifyform.subject.focus();	
@@ -72,6 +73,97 @@ function writecheck() {
 		writeform.passwd.focus();
 		return false;
 	}
+}
+
+///////////////////////****************************////////////////////////////
+
+//-- 글쓰기 에디터 자바스크립트 부분 -- //
+$(document).ready(function() {
+	$('#summernote').summernote({
+		height : 400,
+	});
+});
+ 
+// -- 태그 관련 자바 스크립트 -- //
+ $(function(){
+    var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+
+    //-------------------------------
+    // Minimal
+    //-------------------------------
+    $('#myTags').tagit();
+
+    //-------------------------------
+    // Tag events
+    //-------------------------------
+    var eventTags = $('#eventTags');
+
+    var addEvent = function(text) {
+        $('#events_container').append(text + '<br>');
+    };
+
+    eventTags.tagit({
+        availableTags: sampleTags,
+        beforeTagAdded: function(evt, ui) {
+            if (!ui.duringInitialization) {
+                addEvent('beforeTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+            }
+        },
+        afterTagAdded: function(evt, ui) {
+            if (!ui.duringInitialization) {
+                addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+            }
+        },
+        beforeTagRemoved: function(evt, ui) {
+            addEvent('beforeTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+        },
+        afterTagRemoved: function(evt, ui) {
+            addEvent('afterTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+        },
+        onTagClicked: function(evt, ui) {
+            addEvent('onTagClicked: ' + eventTags.tagit('tagLabel', ui.tag));
+        },
+        onTagExists: function(evt, ui) {
+            addEvent('onTagExists: ' + eventTags.tagit('tagLabel', ui.existingTag));
+        }
+    });
+
+    //-------------------------------
+    // Read-only
+    //-------------------------------
+    $('#readOnlyTags').tagit({
+        readOnly: true
+    });
+
+    //-------------------------------
+    // Tag-it methods
+    //-------------------------------
+    $('#methodTags').tagit({
+        availableTags: sampleTags
+    });
+
+    //-------------------------------
+    // Allow spaces without quotes.
+    //-------------------------------
+    $('#allowSpacesTags').tagit({
+        availableTags: sampleTags,
+        allowSpaces: true
+    });
+
+    //-------------------------------
+    // Remove confirmation
+    //-------------------------------
+    $('#removeConfirmationTags').tagit({
+        availableTags: sampleTags,
+        removeConfirmation: true
+    });
+    
+});
+
+// 글내용 적기위한 onsubmit 처리 
+function postForm()
+{
+	$('input[name=content]').val( $('#summernote').summernote('code') );
 }
 
 

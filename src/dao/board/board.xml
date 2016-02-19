@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper 
-	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"  
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="Board">
-
+<mapper namespace="FJ_BOARD"> 
+	<insert id="insertArticle">
+		insert into fj_board_free( board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count,
+			re_step, category, reg_date) values(fj_board_free_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, #{subject}, #{content}, #{hstag, jdbcType=VARCHAR}, #{re_count}, 
+			#{scrap_count}, #{recom_count}, #{bad_count}, #{read_count}, #{re_step}, #{category}, #{reg_date})  
+	</insert>
+	  
+	
+	<update id="updateArticle" parameterType="dto.board.BoardDataBean">
+		update FJ_BOARD_FREE set category=#{category}, subject=#{subject}, hstag=#{hstag}, content=#{content} where board_num=#{board_num} 
+	</update>
+	
+	<select id="getMaxNum" resultType="Integer">
+		select max(board_num) from fj_board_free 
+	</select>
 </mapper>	
 
 
