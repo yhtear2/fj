@@ -20,8 +20,11 @@ public class MessageFormHandler implements Commandhandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		String pageNum = request.getParameter("pageNum");
+		String sender = request.getParameter("sender");
 		
-		
+		map.put("sender", sender);
+		map.put("pageNum", pageNum);
 		map.put("page", "/FJ_MESSAGE/messageForm");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}

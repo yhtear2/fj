@@ -6,21 +6,48 @@
 <mapper namespace="Message">
 	<insert id="sendMessage"  parameterType="dto.message.MessageDataBean">
 		insert into FJ_MESSAGE values( 
-		FJ_MESSAGE_seq.NEXTVAL, #{email}, #{title, jdbcType=VARCHAR},
-		 #{content, jdbcType=VARCHAR}, #{tag, jdbcType=VARCHAR}, 
-		 #{read_yn}, #{reg_date})
+		FJ_MESSAGE_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, #{sender, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR},
+		#{content, jdbcType=VARCHAR}, #{tag}, #{read_yn}, #{reg_date})
 	</insert>
-	<select id="getCount" resultType="Integer">
-		select count(*) from FJ_MESSAGE
+	
+	<select id="getCount" parameterType="String" resultType="Integer">
+		select count(*) from FJ_MESSAGE where email = #{email}
 	</select>
-	<select id="getList" parameterType="String" resultType="dto.message.MessageDataBean">
-		select * from FJ_MESSAGE where email=#{email}
+	
+	<select id="getSendCount" parameterType="String" resultType="Integer">
+		select count(*) from FJ_MESSAGE where sender = #{sender}
 	</select>
+	
+	<select id="getList" parameterType="Map" resultType="dto.message.MessageDataBean">
+		select message_num,email,sender,title,content,tag,read_yn,reg_date,r 
+		from ( select message_num,email,sender,title,content,tag,read_yn,reg_date,rownum r  
+		from FJ_MESSAGE where email = #{email, jdbcType=VARCHAR} order by message_num desc) 
+		where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<select id="getSendList" parameterType="Map" resultType="dto.message.MessageDataBean">
+		select message_num,email,sender,title,content,tag,read_yn,reg_date,r 
+		from ( select message_num,email,sender,title,content,tag,read_yn,reg_date,rownum r  
+		from FJ_MESSAGE where sender = #{sender, jdbcType=VARCHAR} order by message_num desc) 
+		where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	
+	<select id="getContent" parameterType="Integer" resultType="dto.message.MessageDataBean">
+		select * from FJ_MESSAGE where message_num = #{message_num}
+	</select>
+	
+	<update id="addReadContent" parameterType="Integer">
+		update FJ_MESSAGE set read_yn = 1 where message_num = #{message_num}
+	</update>
+	
+	<delete id="deleteMessage" parameterType="Integer">
+		delete from FJ_MESSAGE where message_num = #{message_num}
+	</delete>
+	
+	
 </mapper>	
 
-
-
-
+		
 
 
 

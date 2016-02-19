@@ -5,17 +5,24 @@
 <link href="${project}message.css" rel="stylesheet" type="text/css">
 <script src="${project}message.js"></script>
 
+<!-- 제목 스타일 div -->
 <div style="text-align: center; width: 410px;">
 <h2>쪽지 보내기</h2>
 </div>
 
+<!-- 보내기 폼 시작 -->
 <form method="post" action="messagePro.do" onsubmit="return sendMassge()">
-	<input type="hidden" name="recipient" value="">
-	<div style="height:700px; width: 600px; margin: 10px; padding: 10px;"> 
+	<!-- 받을사람 이메일을 넘기는 히든 -->
+	<input type="hidden" name="email" value="">
+	<input type="hidden" name="pageNum" value="${pageNum}">
+	
+	<!-- 폼의 크기 및 위치 지정 -->
+	<div style="height:700px; width: 600px; margin: 10px; padding: 10px;">
+		<!-- 클래스 먹이기 --> 
 		<div class="form-group">
 		    <label class="col-sm-2 control-label">받는사람</label>
 		    <div class="col-sm-10">
-		      <p class="form-control-static">email@example.com</p>
+		      <p class="form-control-static">${sender}</p>
 		    </div>
 		</div>
 		<div class="form-group">

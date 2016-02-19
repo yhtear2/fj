@@ -4,6 +4,31 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="Join">
+	<select id="checkEmail" parameterType="String" resultType="Integer">
+		select count(*) from FJ_JOIN where email=#{email}
+	</select>
+
+	<select id="getMember" parameterType="String" resultType="dto.join.JoinDataBean">
+		select * from FJ_JOIN where email=#{email}
+	</select>
+	
+	<insert id="insertMember" parameterType="dto.join.JoinDataBean">
+		insert into FJ_JOIN values(
+			#{email},
+			#{passwd},
+			#{name},			
+			#{member_flag},
+			#{reg_date}
+		)
+	</insert>
+	
+	<update id="updateMember" parameterType="dto.join.JoinDataBean">
+		update FJ_JOIN set passwd=#{passwd} where email=#{email} 
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from FJ_JOIN where email=#{email}
+	</delete>
 </mapper>	
 
 

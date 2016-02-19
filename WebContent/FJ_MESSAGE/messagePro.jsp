@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<h2> 쪽지 보낸거 확인하는 페이지</h2>
+<%@ include file="setting.jsp"%>
+<script src="${project}script.js"></script>
 
-<br><br>
-<h4> 넘어온 값 = ${result} </h4>
+<c:if test="${result == 0}">
+	<script type="text/javascript">
+		<!--
+		alert("쪽지 전송에 실패했습니다. 잠시 후 다시 시도해 주세요");
+		//-->
+	</script>
+</c:if>
+
+<c:if test="${result != 0}">
+	<script type="text/javascript">
+	<!--
+	alert("쪽지 전송에 성공 했습니다.");
+	window.location.href='messageList.do';
+	//-->
+</script>
+</c:if>
