@@ -101,7 +101,8 @@ function setid( id ) {
 	window.close();
 	opener.document.inputform.passwd.focus();
 }
-
+function inputfocus() {
+}
 
 // 회원가입 페이지
 /*

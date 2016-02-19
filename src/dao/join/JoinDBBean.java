@@ -8,7 +8,6 @@ import dto.join.JoinDataBean;
 public class JoinDBBean implements JoinDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	
-	
 	public int insertMember( JoinDataBean dto ) {			
 		return sqlSession.insert( "Join.insertMember", dto ); 	
 	}

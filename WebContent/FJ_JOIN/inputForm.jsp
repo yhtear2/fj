@@ -15,11 +15,23 @@
 	}
 	function confirmresult() {
 		var result = document.getElementById( "confirmresult" );
-		var check = document.getElementById( "check" ).value;
+		/*	
+		console.log('${check}');
+		
 		if( '${check}' == 0 ) {
 			result.innerHTML = "중복 노노";
 		} else {
 			result.innerHTML = "중복 이응이응";
+		}*/
+		if( request.httpRequest.readyState == 4 ) {
+			if( request.httpRequest.status == 200 ) {
+				result.innerHTML = httpRequest.responseText;
+				console.log("check : ${sessionScope.check}")
+			} else {
+				result.innerHTML = request.httpRequest.status + ": 에러";	
+			}
+		} else {
+			result.innerHTML = request.httpRequest.readyState + ": 통신 중"; 
 		}
 	}	
 </script>
@@ -29,7 +41,6 @@
 	<form name="inputform" method="post" action="joinInputPro.do"
 		onsubmit="return inputcheck()">
 		<input type="hidden" name="confirm" value="0">
-		<input type="hidden" id="check" vaule="<%request.getAttribute("check");%>">
 		<table>			
 			<tr>
 				<th colspan="2"> ${msg_input} </th>
