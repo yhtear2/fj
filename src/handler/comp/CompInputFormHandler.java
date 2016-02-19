@@ -33,6 +33,7 @@ public class CompInputFormHandler implements Commandhandler {
 		int result = 1;
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compInputForm");
 		map.put("result", result);
 		

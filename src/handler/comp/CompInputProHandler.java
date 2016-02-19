@@ -62,8 +62,13 @@ public class CompInputProHandler implements Commandhandler {
 		int result = compDao.updateComp(dto);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compInputPro");
 		map.put("result", result);
+		
+		
+		
+		
 		
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}

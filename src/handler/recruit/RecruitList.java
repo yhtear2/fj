@@ -85,6 +85,7 @@ public class RecruitList implements Commandhandler {
 			map.put("list", list);
 		}
 		
+		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitList");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
