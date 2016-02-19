@@ -29,5 +29,8 @@ function messageSendDelete(read_yn, message_num){
 			window.location.href="messageDelete.do?message_num=" + message_num;
 		}
 	}
-	
 }
+
+/**********************
+ *  웹 소켓 메세지 송 수신  *
+ **********************/
