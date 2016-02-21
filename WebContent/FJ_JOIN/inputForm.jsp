@@ -3,44 +3,32 @@
 
 <%@ include file="setting.jsp" %>
 <link href="${project}style.css" rel="stylesheet" type="text/css">
-<script src="/FJ_JOIN/jquery-1.12.0.js"></script>
-<script src="${project}script.js"></script>
 <script src="${project}request.js"></script>
 <script type="text/javascript">
 	function confirmmail( emailvalue ) {
 		var params = "email=" + emailvalue;
-		//alert(params);
 		request = new Request( confirmresult, "joinConfirmId.do", "GET", params );
 		request.sendRequest();
 	}
 	function confirmresult() {
 		var result = document.getElementById( "confirmresult" );
-		/*	
-		console.log('${check}');
 		
-		if( '${check}' == 0 ) {
-			result.innerHTML = "중복 노노";
+		var xmldoc = request.httpRequest.responseXML;
+		var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
+				
+		if(code == 0) {
+			result.innerHTML = "사용가능한 아이디입니다.";
 		} else {
-			result.innerHTML = "중복 이응이응";
-		}*/
-		if( request.httpRequest.readyState == 4 ) {
-			if( request.httpRequest.status == 200 ) {
-				result.innerHTML = httpRequest.responseText;
-				console.log("check : ${sessionScope.check}")
-			} else {
-				result.innerHTML = request.httpRequest.status + ": 에러";	
-			}
-		} else {
-			result.innerHTML = request.httpRequest.readyState + ": 통신 중"; 
-		}
+			result.innerHTML = "이미 사용중인 아이디입니다.";
+		}		
 	}	
 </script>
 
 <h2> ${page_input} </h2>
-<body onload="inputfocus()">
+<body>
 	<form name="inputform" method="post" action="joinInputPro.do"
 		onsubmit="return inputcheck()">
-		<input type="hidden" name="confirm" value="0">
+		<input type="hidden" name="confirm" value="${check}">
 		<table>			
 			<tr>
 				<th colspan="2"> ${msg_input} </th>

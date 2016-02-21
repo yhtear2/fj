@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import handler.Commandhandler;
 import dao.join.JoinDao;
+import handler.Commandhandler;
 
 @Controller
 public class JoinConfirmIdHandler implements Commandhandler {
@@ -30,20 +30,19 @@ public class JoinConfirmIdHandler implements Commandhandler {
 	 	int result = dao.checkMember( email );
 	 	System.out.println(result);
 	 	
-	 	request.setAttribute("check", result);
-	 	request.getSession().setAttribute("check", result);
 	 	// 출력
-	 	//
 	 	Map<String, Object> map = new HashMap<String, Object>();
-	 	//map.put("check", result);
-	 	//map.put("email", email);
+	 	map.put("check", result);
+	 	map.put("test", "테스트중이다");
 	 	
-	 	System.out.println( request.getAttribute("check") );
-	 	map.put("test", "test11111");
+	 	//ModelAndView view = new ModelAndView();
+	 	//view.setViewName("/FJ_JOIN/inputForm");
+	 	//view.addObject(map);
+			
 //	 	map.put("menu", "member");
 //	 	map.put("page", "/FJ_JOIN/confirmId");
-		return new ModelAndView("/FJ_JOIN/confirmId", map);
-//	 	return new ModelAndView("/FJ_JOIN/inputForm", map);joinConfirmId
+	 	
+	 	return new ModelAndView("/FJ_JOIN/confirmId", map);
 	 	
 	}
 
