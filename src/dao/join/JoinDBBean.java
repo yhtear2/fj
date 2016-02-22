@@ -12,6 +12,18 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		return sqlSession.insert( "Join.insertMember", dto ); 	
 	}
 	
+	public int checkName( String name ) {
+		int result = 0;
+		int count = sqlSession.selectOne( "Join.checkName", name );
+		if( count == 0 ) {
+			// 닉네임이 있다
+			result = 0;
+		} else {
+			// 닉네임이 없다
+			result = 1;
+		}	
+		return result;
+	}
 		
 	public int checkMember( String email ) {
 		int result = 0;

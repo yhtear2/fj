@@ -1,5 +1,8 @@
 package handler.join;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,8 +19,14 @@ public class JoinInputFormHandler implements Commandhandler{
 	@RequestMapping( "/joinInputForm" )
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-
-		return new ModelAndView( "/FJ_JOIN/inputForm" );
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+	 	
+	 	map.put("menu", "member");
+	 	map.put("page", "/FJ_JOIN/inputForm");
+		
+		
+		return new ModelAndView( "/FJ_MAIN/main", map );
 	}
 }
 

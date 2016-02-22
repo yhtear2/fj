@@ -15,19 +15,19 @@ import dao.join.JoinDao;
 import handler.Commandhandler;
 
 @Controller
-public class JoinConfirmIdHandler implements Commandhandler {
+public class JoinConfirmNameHandler implements Commandhandler {
 	@Resource( name="joinDao" )
 	private JoinDao dao;
 	
-	@RequestMapping("/joinConfirmId")
+	@RequestMapping("/joinConfirmName")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 변수 선언
-	 	String email = request.getParameter("email");
-	 	System.out.println(email);
+	 	String name = request.getParameter("name");
+	 	System.out.println(name);
 	 	
 	 	// 데이터 처리
-	 	int result = dao.checkMember( email );
+	 	int result = dao.checkName( name );
 	 	System.out.println(result);
 	 	
 	 	// 출력
@@ -35,9 +35,9 @@ public class JoinConfirmIdHandler implements Commandhandler {
 	 	map.put("check", result);
 	 	
 	 	map.put("menu", "member");
-	 	map.put("page", "/FJ_JOIN/confirmId");
+	 	map.put("page", "/FJ_JOIN/confirmName");
 	 	
-	 	return new ModelAndView("/FJ_JOIN/confirmId", map);
+	 	return new ModelAndView("/FJ_JOIN/confirmName", map);
 	 	
 	}
 

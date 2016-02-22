@@ -7,6 +7,10 @@
 	<select id="checkEmail" parameterType="String" resultType="Integer">
 		select count(*) from FJ_JOIN where email=#{email}
 	</select>
+	
+	<select id="checkName" parameterType="String" resultType="Integer">
+		select count(*) from FJ_JOIN where name=#{name}
+	</select>
 
 	<select id="getMember" parameterType="String" resultType="dto.join.JoinDataBean">
 		select * from FJ_JOIN where email=#{email}

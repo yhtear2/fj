@@ -60,7 +60,7 @@
 		<div class="main_menu">
 			<div class="main_logo"></div>
 			<div class="main_sign">
-				<div class="main_login" onclick="window.location='main.do'">Login</div>
+				<div class="main_login" onclick="window.location='joinMain.do'">Login</div>
 				<div class="main_singup">SingUp</div>
 			</div>
 			<div class="main_sub">
