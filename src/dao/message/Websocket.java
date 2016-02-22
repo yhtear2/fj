@@ -19,30 +19,28 @@ public class Websocket {
 	// Map<유저memId, 세션> 저장할 공간 마련
     private static final Map<String,Session> sessionMap = new HashMap<String,Session>();
     // 유저memId가 저장될 공간
-    private String memId;
+    private Map<Integer, String> memId = new HashMap<Integer,String>();
     // 클라이언트가 새로 접속할 때마다 한개의 Session 객체가 생성된다.
     // Session 객체를 컬렉션에 보관하여 두고 해당 클라이언트에게 데이터를 전송할 때마다 사용한다
     private Session session;
-
+    
+    // 클라이언트가 처음 접속하면 연결(세션 생성)
     @OnOpen
     public void start(Session session) {
     	System.out.println("클라이언트 접속됨 : "+session);
     	// 접속자마다 한개의 세션이 생성되어 데이터 통신수단으로 사용됨
         this.session = session;
-        //nickname = session.getRequestParameterMap().get("id").get(0);
-        memId = session.getRequestURI().toString().substring(25); 
-        System.out.println("User MemId : " + memId );
+        // 세션에서 memId 분리
+        String user_memId = session.getRequestURI().toString().substring(25); 
+        memId.put(1, user_memId);
+        System.out.println("접속유저 MemId : " + user_memId );
         
-        sessionMap.put(memId, session);
-        String message = String.format("* %s %s", memId, "has joined.");
-        broadcast(message);
+        sessionMap.put(user_memId, session);
     }
 
     @OnClose
     public void end() {
         sessionMap.remove(this.session);
-        String message = String.format("* %s %s", memId, "has disconnected.");
-        broadcast(message);
     }
 
     // 현재 세션과 연결된 클라이언트로부터 메시지가 도착할 때마다 새로운 쓰레드가 실행되어 incoming()을 호출함
@@ -51,10 +49,24 @@ public class Websocket {
     	
     	String threadName = "Thread-Name:"+Thread.currentThread().getName();
     	System.out.println("메시지 도착:"+threadName+", "+memId);
+    	
         if(message==null || message.trim().equals("")) return;
-        String filteredMessage = String.format("%s: %s", memId, message);
+        
+        String totalmessage[] = message.split("#");
+        String email = totalmessage[0];
+        System.out.println("받는사람(email) : " + email);
+        
+        System.out.println("내 세션에 저장된 아이디(memId) : " + memId);
+        
+        
+        if(memId.equals(email)){
+        	System.out.println("여기 들어왔다!!!");
+        	sendToOne(message, sessionMap.get(memId));
+        	
+        }else System.out.println("앗!! 아니다!! ㅠㅠ");
         
         //Guest0의 메시지는 특정 클라이언트(Guest2)에게만 전달하는 경우
+        /*
         if(this.memId.equals("Guest0")) {
         	sendToOne(filteredMessage, sessionMap.get("Guest2"));
         }
@@ -62,6 +74,7 @@ public class Websocket {
         {
         	broadcast(filteredMessage);
         }
+        */
     }
 
     @OnError
@@ -73,33 +86,9 @@ public class Websocket {
     // 클라이언트로부터 도착한 메시지를 특정 수신자(Session)에게만 전달한다
     private void sendToOne(String msg, Session ses) {
     	try {
-		ses.getBasicRemote().sendText(msg);
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-    }
-    
-    // 클라이언트로부터 도착한 메시지를 모든 접속자에게 전송한다
-    private void broadcast(String msg) {
-    	
-    	Set<String> keys = sessionMap.keySet();
-    	Iterator<String> it = keys.iterator();
-    	while(it.hasNext()){
-    		String key = it.next();
-    		Session s = sessionMap.get(key);
-    		try{
-    			s.getBasicRemote().sendText(msg);
-    		}catch(IOException e) {
-    			sessionMap.remove(key);
-    			try {
-					s.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-    			String message = String.format("* %s %s",
-                        key, "has been disconnected.");
-                broadcast(message);
-    		}
+    		ses.getBasicRemote().sendText(msg);
+    	} catch (IOException e) {
+    		e.printStackTrace();
     	}
     }
 }
