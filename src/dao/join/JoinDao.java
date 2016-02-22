@@ -9,5 +9,6 @@ public interface JoinDao {
 	public int insertMember( JoinDataBean dto );
 	public int deleteMember( String email );
 	public JoinDataBean getMember( String email );
-	public int updateMember( JoinDataBean dto );	
+	public int updateMember( JoinDataBean dto );
+	public String emailconfirm( String email );
 }
