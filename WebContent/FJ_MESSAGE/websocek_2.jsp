@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	    pageEncoding="UTF-8"%>
-	
+<% session.setAttribute("memId", "master@djkf.com"); %>
 <script type="application/javascript">
  
 function websoket(){
@@ -13,7 +13,7 @@ function websoket(){
 		return;
 	} else{
 		// 연결한 웹소켓의 주소 및 아이디
-		ws = new WebSocket('ws://192.168.30.125:8080/fj/websocket/chat?memId=${sessionScope.memId}');
+		ws = new WebSocket('ws://192.168.219.153:8080/fj/websocket/chat?memId=${sessionScope.memId}');
 		// 서버에 연결하는 메소드
 		ws.onopen = function(){
 			stat.innerHTML = "서버 접속 성공";
