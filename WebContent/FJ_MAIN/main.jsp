@@ -4,6 +4,10 @@
 	session.setAttribute("email", "고병완");
 	session.setAttribute("passwd", "123");
 %>
+
+<!-- 메인 css 및 자바스크립트 삽입 -->
+		<link href="${main}/main.css" rel="stylesheet" type="text/css">
+		<script src="${main}/main.js"></script>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,6 +61,7 @@
 	<body id="main">
 		<input type="hidden" class="menu_status" value="0">
 		<input type="hidden" class="m" value="${menu}">
+		<!-- 메인 메뉴 -->
 		<div class="main_menu">
 			<div class="main_logo"></div>
 			<div class="main_sign">
