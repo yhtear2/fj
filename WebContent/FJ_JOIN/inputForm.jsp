@@ -89,6 +89,8 @@
 		} else if( emailcode == "" ) {
 			alert("인증번호를 입력해주세요");
 			return false;
+		} else {
+			return;
 		}
 	}
 	
