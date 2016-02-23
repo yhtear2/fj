@@ -1,7 +1,7 @@
-/*
+
 package handler.board;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,20 +14,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import board.BoardDBBean;
-import board.BoardDataBean;
-import board.Dao;
-import handler.CommandHandler;
+import dao.board.BoardDao;
+import dto.board.BoardDataBean;
+import handler.Commandhandler;
+
 
 @Controller
-public class ListHandler implements CommandHandler {
-	*/
-	//* CreateBean의 dao 를 불러오기 위한 Resource 작업  (AutoWired 로 사용해도 된다)  *//
-/*
-	@Resource(name="dao")  // logon 패키지의  CreateBean 자바파일에 있는 객체 dao 
-	private Dao dao; 
+public class ListHandler implements Commandhandler {
 	
-	@RequestMapping("/list")
+   
+	//* CreateBean의 BoardDao 를 불러오기 위한 Resource 작업   *//
+
+
+	@Resource(name="boardDao")  // dao. 패키지의  CreateBean 자바파일에 있는 객체 dao 
+	private BoardDao boardDao; 
+	
+	@RequestMapping("/boardlist") 
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
@@ -45,7 +47,7 @@ public class ListHandler implements CommandHandler {
 		int startPage = 0;
 		int endPage = 0;
 	 
-		count = dao.getCount(); 
+		count = boardDao.getCount(); 
 		
 		pageNum = request.getParameter( "pageNum" );
 		if( pageNum == null ) {
@@ -89,16 +91,20 @@ public class ListHandler implements CommandHandler {
 			// BoardDBBean 의 getArticles 부분에서 int 값이 두개이상이므로 매핑을 걸어주자. 
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put( "start", start );  
-			map.put( "end", end );  
-			List<BoardDataBean> list =  dao.getArticles(map );
+			map.put( "end", end );   
+			List<BoardDataBean> list =  boardDao.getArticles(map );
 			request.setAttribute( "list", list );	   		
 		}		
 		
-		return new ModelAndView("list"); 
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+		
+		map.put("page", "/FJ_BOARD/boardlist");  
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}	
 }
-*/ 
-
+ 
 
 
 
