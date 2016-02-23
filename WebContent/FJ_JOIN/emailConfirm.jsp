@@ -3,5 +3,5 @@
     pageEncoding="UTF-8"%>
 
 <root>
-	<result>${check}</result>
+	<result>${code}</result>
 </root>

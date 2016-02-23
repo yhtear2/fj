@@ -1,5 +1,8 @@
 package handler.join;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,8 +19,13 @@ public class JoinMainHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) 
 		throws Throwable {
-				
-		return new ModelAndView( "/FJ_JOIN/main" );		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("menu", "member");
+	 	map.put("page", "/FJ_JOIN/main");
+		
+		return new ModelAndView( "/FJ_MAIN/main", map );		
 	}
 }
 
