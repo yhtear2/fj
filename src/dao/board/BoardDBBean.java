@@ -1,76 +1,89 @@
 package dao.board;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapClient;
-import dto.board.BoardDataBean; 
+import dto.board.BoardDataBean;
+
 
 
 public class BoardDBBean implements BoardDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	
-	
 
-	
+	public int getCount()
+	{
+		return sqlSession.selectOne("FJ_BOARD.getCount"); 
+	} 
+	 
+	 
 	public int insertArticle( BoardDataBean dto ) {
-	//	int num = dto.getNum(); 
-		String subject = dto.getSubject(); 
+		
+		int board_num = dto.getBoard_num();
+		int category = dto.getCategory();
+		String hstag = dto.getHstag(); 
+		String subject = dto.getSubject();
+		String content = dto.getContent();
+	
+		
+		/*
+		if(board_num == 0)
+		{
+			int count = getCount();
+			if(count > 0)
+			{  
+				int maxNum = sqlSession.selectOne("FJ_BOARD.getMaxNum");
+				
+			}
+			else
+			{
+				sqlSession.update("FJ_BOARD.updateRe_com", dto);
+			}
+		}
+		*/
+		
 		String sql = null;
 		
-			
+		 
 		
-		// set 으로 우선 호출한다 
-		dto.setSubject(subject); 
-	//	dto.setNum(num);
-		return 0;
+		// set 으로 우선 호출한다   
+		dto.setCategory(category);
+		dto.setSubject(subject);
+		dto.setContent(content);
+		dto.setHstag(hstag);
+		
+		return sqlSession.insert("FJ_BOARD.insertArticle", dto);  
 			
 	}
 	
-	/*   필요 없다 
-	RowMapper <BoardDataBean> mapper = new RowMapper<BoardDataBean>() {
-		@Override
-		public BoardDataBean mapRow(ResultSet rs, int rows ) throws SQLException {
-			BoardDataBean dto = new BoardDataBean();
-			dto.setNum( rs.getInt( "num" ) );
-			dto.setWriter( rs.getString( "writer" ) );
-			dto.setEmail( rs.getString( "email" ) );
-			dto.setSubject( rs.getString( "subject" ) );
-			dto.setPasswd( rs.getString( "passwd" ) );
-			dto.setReg_date( rs.getTimestamp( "reg_date" ) );
-			dto.setReadcount( rs.getInt( "readcount" ) );
-			dto.setRef( rs.getInt( "ref" ) );
-			dto.setRe_step( rs.getInt( "re_step" ) );
-			dto.setRe_level( rs.getInt( "re_level" ) );
-			dto.setContent( rs.getString( "content" ) );
-			dto.setIp( rs.getString( "ip" ) );			
-			return dto;
-		}
-	};	
-	*/
-	
-	
-	//  기존 start 하고 end가 int 값이므로, map으로 String 값을 받기 위해 ListHandler 와 DAO로 가서 수정할 것 
-	/*
-	public List<BoardDataBean> getArticles( int start, int end ) {
-		List <BoardDataBean> list = getJdbcTemplate().query(
-			sql,
-			new Object[] {start, end},
-			mapper
-		); 	
-		return list;
+	public int updateArticle( BoardDataBean dto)
+	{
+		return sqlSession.update("FJ_BOARD.updateArticle", dto); 
 	}
-	*/ 
-	/*
+
+	
+	@Override 
+	
 	public List<BoardDataBean> getArticles( Map<String, Integer> map ) {
-		return sqlSession.selectList( "Board.getArticles", map ); 
+		return sqlSession.selectList( "FJ_BOARD.getArticles", map ); 
 	} 
 	
-	
-	
-	public BoardDataBean getArticle( int num ) {
-		return sqlSession.selectOne("Board.getArticle", num);
+	public BoardDataBean getArticle(int board_num) 
+	{ 
+		return sqlSession.selectOne("FJ_BOARD.getArticle", board_num);
 	}
-*/
+
+	
+	public void addCount(int board_num)
+	{
+		sqlSession.update("FJ_BOARD.addCount", board_num);
+	}
+
+
+	
 	
 } // class
 

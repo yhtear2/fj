@@ -26,7 +26,7 @@ Request.prototype = {
 			}else{
 				// IE가 아닌 경우
 				try{
-				return new XMLHttpRequest();
+					return new XMLHttpRequest();
 				}catch( e ){
 					return null;
 				}

@@ -23,13 +23,13 @@ public class CompInputFormHandler implements Commandhandler {
 	@RequestMapping("/compInputForm")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		// 아이디와 비밀번호 확인
 		String id 		= request.getSession().getAttribute("email").toString();
 		String passwd 	= request.getParameter("passwd");
 		
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("id", id);
-		param.put("passwd", passwd);
-		
+		/**
+		 *  DB연결해서 사용자 확인해야함
+		 */
 		int result = 1;
 		
 		Map<String, Object> map = new HashMap<String, Object>();

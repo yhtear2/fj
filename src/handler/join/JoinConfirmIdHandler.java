@@ -39,6 +39,7 @@ public class JoinConfirmIdHandler implements Commandhandler {
 	 	
 	 	return new ModelAndView("/FJ_JOIN/confirmId", map);
 	 	
+	 	
 	}
 
 }

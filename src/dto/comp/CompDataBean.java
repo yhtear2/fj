@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public class CompDataBean {
 	private String email;				// 이메일
-	private String ceo;					// 사장
-	private String comp_type;			// 기업 형태
+	private String ceo;					// 대표자명
+	private String comp_type;			// 기업구분
 	private String tel;					// 전화번호
 	private String zipcode;				// 우편번호
 	private String address;				// 주소

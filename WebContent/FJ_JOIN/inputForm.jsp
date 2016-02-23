@@ -89,6 +89,8 @@
 		} else if( emailcode == "" ) {
 			alert("인증번호를 입력해주세요");
 			return false;
+		} else {
+			return;
 		}
 	}
 	
@@ -129,7 +131,7 @@
 			<tr>
 				<th> * ${str_name} </th>
 				<td>
-					<input class="input" type="text" name="name" maxlength="50" 
+					<input class="input" type="text" name="name" maxlength="100" 
 						onkeyup="confirmname( inputform.name.value )">
 					<label id="nameresult">닉네임을 입력해주세요</label>
 				</td>
