@@ -18,7 +18,7 @@ import handler.Commandhandler;
 public class WriteFormHandler implements Commandhandler{
 	
 
-	@RequestMapping("/writeForm")
+	@RequestMapping("/boardwriteForm") 
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
@@ -77,7 +77,7 @@ public class WriteFormHandler implements Commandhandler{
 		
 		
 		
-		map.put("page", "/FJ_BOARD/writeForm");
+		map.put("page", "/FJ_BOARD/boardwriteForm"); 
 		return new ModelAndView("/FJ_MAIN/main", map);
 		
 	}

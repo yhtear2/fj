@@ -23,8 +23,8 @@ public class WriteProHandler implements Commandhandler {
 
 	@Resource(name="boardDao")
 	private BoardDao dao;   
-	
-	@RequestMapping("/writePro")
+	    
+	@RequestMapping("/boardwritePro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -55,7 +55,7 @@ public class WriteProHandler implements Commandhandler {
 		int result = dao.insertArticle(dto); 
 		request.setAttribute("result", result);
 		
-		map.put("page", "/FJ_BOARD/writePro");
+		map.put("page", "/FJ_BOARD/boardwritePro");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }

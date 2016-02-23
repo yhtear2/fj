@@ -18,7 +18,7 @@
 <c:if test="${result != 0}">	
 	<c:redirect url="list.do"/>  
 </c:if>
-
+   
 
 
 

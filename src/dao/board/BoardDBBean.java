@@ -1,9 +1,13 @@
 package dao.board;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapClient;
-import dto.board.BoardDataBean; 
+import dto.board.BoardDataBean;
+
 
 
 public class BoardDBBean implements BoardDao {
@@ -17,6 +21,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	public int insertArticle( BoardDataBean dto ) {
 		
 		int category = dto.getCategory();
+		String hstag = dto.getHstag(); 
 		String subject = dto.getSubject();
 		String content = dto.getContent();
 	
@@ -44,7 +49,8 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		dto.setCategory(category);
 		dto.setSubject(subject);
 		dto.setContent(content);
-	 
+		dto.setHstag(hstag);
+		
 		return sqlSession.insert("FJ_BOARD.insertArticle", dto);  
 			
 	}
@@ -53,7 +59,18 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	{
 		return sqlSession.update("FJ_BOARD.updateArticle", dto); 
 	}
+
 	
+	@Override 
+	
+	public List<BoardDataBean> getArticles( Map<String, Integer> map ) {
+		return sqlSession.selectList( "FJ_BOARD.getArticles", map ); 
+	} 
+	
+	public BoardDataBean getArticle(int board_num) 
+	{ 
+		return sqlSession.selectOne("FJ_BOARD.getArticle", board_num);
+	} 
 	
 } // class
 
