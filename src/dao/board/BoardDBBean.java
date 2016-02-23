@@ -13,13 +13,16 @@ import dto.board.BoardDataBean;
 public class BoardDBBean implements BoardDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	
+
 	public int getCount()
 	{
 		return sqlSession.selectOne("FJ_BOARD.getCount"); 
-	}   
+	} 
+	 
 	 
 	public int insertArticle( BoardDataBean dto ) {
 		
+		int board_num = dto.getBoard_num();
 		int category = dto.getCategory();
 		String hstag = dto.getHstag(); 
 		String subject = dto.getSubject();
@@ -31,16 +34,17 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		{
 			int count = getCount();
 			if(count > 0)
-			{
+			{  
 				int maxNum = sqlSession.selectOne("FJ_BOARD.getMaxNum");
 				
 			}
 			else
 			{
-				
+				sqlSession.update("FJ_BOARD.updateRe_com", dto);
 			}
 		}
-		*/ 
+		*/
+		
 		String sql = null;
 		
 		 
@@ -70,7 +74,16 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	public BoardDataBean getArticle(int board_num) 
 	{ 
 		return sqlSession.selectOne("FJ_BOARD.getArticle", board_num);
-	} 
+	}
+
+	
+	public void addCount(int board_num)
+	{
+		sqlSession.update("FJ_BOARD.addCount", board_num);
+	}
+
+
+	
 	
 } // class
 

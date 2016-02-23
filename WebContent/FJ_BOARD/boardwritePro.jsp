@@ -15,8 +15,8 @@
 		//--> 
 	</script>
 </c:if>
-<c:if test="${result != 0}">	
-	<c:redirect url="list.do"/>  
+<c:if test="${result != 0}"> 	
+	<c:redirect url="boardlist.do"/>  
 </c:if>
    
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="setting.jsp"%>  
-
+  
 <head>
         <meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -65,29 +65,49 @@
             <div class="panel panel-default">
 
                 <!-- Table -->
-
+                
+				
                 <ul class="list-group">
-
+                <!-- 글이 존재할 때  -->
+				<c:if test="${count != 0 }">
+				<!-- 변수명은 dto로 정하고 list 라는 저장할 집합체를 구성한다. -->
+                <c:forEach var="dto" items="${list}">
                         <li class="list-group-item  list-group-has-note clearfix">
-
+							
                             <div class="list-title-wrapper clearfix">
                                 <div class="list-tag clearfix">
-                                    <span class="list-group-item-text article-id" ></span>
-                                    <!-- 카테고리 id 
-                                    <a href="/articles/life" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 사는얘기</a>
-                                    -->
+                                
+                                <!-- 글번호 부분 (boardlist.do 출력창에서 위에서부터 최신순으로 보여야함  -->
+                                <!-- 손봐야함 -->
+                                    <span class="list-group-item-text article-id">		
+                    					${number}
+                    					<c:set var="number" value="${number-1}"/>
+                    				 </span>
+                                    
+                               <!-- 카테고리 영역 -->
+                                   	<a href="카테고리 클릭시 해당 카테고리 페이지로 이동하는 경로" class="list-group-item-text item-tag label label-info">
+                                    <i class="fa fa-comments"></i> 
+                                   	${dto.category}
+                                    </a>
+                                   	
+                               <!-- 해시태그 영역 -->
+                                   	<a href="해시태그 클릭시 해당 관련된 태그들이 있는 페이지로 이동하는 경로" class="list-group-item-text item-tag label label-gray">
+                                    ${dto.hstag}
+                                   	</a>
                                 </div>
-									
+									<br>
+								<!-- 제목 부분 (hidden 생략) -->
                                 <h5 class="list-group-item-heading ">
-                                    <a href="" hidden=""></a>
+                                    <a href="boardcontent.do?num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}">
+                                    	${dto.subject}
+                                    </a>
                                 </h5>
                             </div>
                             
                             <div class="list-summary-wrapper clearfix">
                                 
                                     <div class="list-group-item-summary clearfix">
-                                    	<c:if test="${count != 0 }">
-                                    	<c:forEach var="dto" items="${list}">
+                                    	
                                         <ul>
                                         	<!-- li 순서 :  추천 -  조회수 -  댓글 수   -->  
                                         	
@@ -122,64 +142,104 @@
                                             </li>
                                             
                                         </ul>
-                                        </c:forEach>
-                                        </c:if>
+                                        
                                     </div>
                                 
                             </div>
-
+ 
                             <div class="list-group-item-author clearfix">
-
-					<div class="avatar avatar-list clearfix ">
+					 
+					<!-- 작성자 구간 (우선보류) -->
+					<div class="avatar avatar-list clearfix ">  
 						<a href="/user/info/31140" class="avatar-photo"><img
 							src="//www.gravatar.com/avatar/14986ac9dab7a96bf26835c86f5b2665?d=identicon&amp;s=30"></a>
 						<div class="avatar-info">
-							<a class="nickname" href="/user/info/31140">닉네임</a>
+							<a class="nickname" href="유저정보창 경로주기">
+							
+							</a>
+							<!-- 활동량 (구현x) 
 							<div class="activity">
 								<span class="fa fa-flash"></span> 32 
 							</div>
+							-->
+							
+							<!-- 작성날짜 참고부분 (OKKY) 
 							<div class="date-created timeago" title="2016-02-20 19:09:44.0">7시간
 								전</div>
+							-->
+							
+							<!-- 작성날짜 부분 -->
+							<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/>
 						</div>
 					</div>
 
 				</div>
-                        </li> 
-                    
+                   </li> 
+                     </c:forEach>
+                </c:if> 
                 </ul>
-                
+               
             </div>
             
             <div class="text-center">
 
 		<ul class="pagination pagination-sm">
-			
+			<!-- 원래 이렇게 해야되는데 li 태그땜에 이동특문 사라짐, 손봐야할듯 -->
+			<!--  
 			<li>
 				<c:if test="${count > 0}">
+				
 				<c:if test="${startPage > pageBlock}">
-				</c:if>
-				</c:if>
-			<a
+				<a
 				href="boardlist.do"
 				class="prev disabled">◀◀</a>
 				<a 
 				href="boardlist.do?pageNum=${startPage-pageBloack}"
 				class="prev disabled">◀</a>
-				</li>
-			<li><c:forEach var="i" begin="${startPage}" end="${endPage}">
+				</c:if>
+			
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 				<c:if test="${i == currentPage}">
-				<b>[${i}}]</b>
+				<b>${i}</b>
 				</c:if>
 				<c:if test="${i != currentPage}">
-				<a href="boardlist.do?pageNum=${i}">[${i}]</a>
-				</c:if>  
-			</c:forEach>
+				<a href="boardlist.do?pageNum=${i}">${i}</a>
+				</c:if>   
+				</c:forEach>
 			<c:if test="${endPage < pageCount}">
-				<a href="boardlist.do?pageNum=${startPage + pageBlock}">▶</a>
-				<a href="boardlist.do?pageNum=${pageCount}">▶▶</a>
+				<a href="boardlist.do?pageNum=${startPage + pageBlock}" class="prev disabled">▶</a>
+				<a href="boardlist.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
+			</c:if>
 			</c:if>
 			</li>
+			-->
+			<li>
+				<c:if test="${count > 0}">
+				<c:if test="${startPage > pageBlock}">
+				</c:if>
+				</c:if>
+				<a
+				href="boardlist.do" 
+				class="prev disabled">◀◀</a>
+				<a 
+				href="boardlist.do?pageNum=${startPage-pageBloack}"
+				class="prev disabled">◀</a>
+			</li>	
+			<li>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:if test="${i == currentPage}">
+				<b>${i}</b>
+				</c:if>
+				<c:if test="${i != currentPage}">
+				<a href="boardlist.do?pageNum=${i}">${i}</a>
+				</c:if>   
+				</c:forEach>
+			<c:if test="${endPage < pageCount}">
+				<a href="boardlist.do?pageNum=${startPage + pageBlock}" class="prev disabled">▶</a>
+				<a href="boardlist.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
+			</c:if>
 			
+			</li>
 		</ul>
 	</div>
 		</div>
