@@ -24,8 +24,7 @@ public class JoinInputFormHandler implements Commandhandler{
 	 	
 	 	map.put("menu", "member");
 	 	map.put("page", "/FJ_JOIN/inputForm");
-		
-		
+	 	
 		return new ModelAndView( "/FJ_MAIN/main", map );
 	}
 }

@@ -22,8 +22,11 @@ public class JoinModifyProHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
+		request.setCharacterEncoding( "utf-8" );
+		
 		JoinDataBean dto = new JoinDataBean();
 		dto.setPasswd( request.getParameter( "passwd" ) );
+		dto.setName( request.getParameter( "name" ) );
 		dto.setEmail( (String) request.getSession().getAttribute( "memId" ) );
 			
 		int result = dao.updateMember( dto );	

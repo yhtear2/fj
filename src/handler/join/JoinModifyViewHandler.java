@@ -1,5 +1,8 @@
 package handler.join;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +37,12 @@ public class JoinModifyViewHandler implements Commandhandler {
 			request.setAttribute( "dto", dto );			
 		}	
 		
-		return new ModelAndView( "/FJ_JOIN/modifyView" );
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("menu", "member");
+	 	map.put("page", "/FJ_JOIN/modifyView");
+		
+		return new ModelAndView( "/FJ_MAIN/main", map);
 	}
 }
 

@@ -27,7 +27,7 @@
 	</insert>
 	
 	<update id="updateMember" parameterType="dto.join.JoinDataBean">
-		update FJ_JOIN set passwd=#{passwd} where email=#{email} 
+		update FJ_JOIN set passwd=#{passwd}, name=#{name} where email=#{email} 
 	</update>
 	
 	<delete id="deleteMember" parameterType="String">

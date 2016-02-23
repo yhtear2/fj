@@ -24,8 +24,10 @@ public class JoinSendEmailHandler implements Commandhandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 	 	String email = request.getParameter("email");
+	 	System.out.println("이메일 값 받았고");
 	 	String code = dao.emailconfirm( email );
-	 	
+	 	System.out.println("code를 가져왔고");
+	 	System.out.println("code는" + code );
 	 	// 출력
 	 	Map<String, Object> map = new HashMap<String, Object>();
 	 	

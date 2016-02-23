@@ -34,9 +34,6 @@ public class JoinConfirmNameHandler implements Commandhandler {
 	 	Map<String, Object> map = new HashMap<String, Object>();
 	 	map.put("check", result);
 	 	
-	 	map.put("menu", "member");
-	 	map.put("page", "/FJ_JOIN/confirmName");
-	 	
 	 	return new ModelAndView("/FJ_JOIN/confirmName", map);
 	 	
 	}

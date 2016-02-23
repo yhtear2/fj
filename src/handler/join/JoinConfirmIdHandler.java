@@ -37,7 +37,6 @@ public class JoinConfirmIdHandler implements Commandhandler {
 	 	map.put("menu", "member");
 	 	map.put("page", "/FJ_JOIN/confirmId");
 	 	
-	 	
 	 	return new ModelAndView("/FJ_JOIN/confirmId", map);
 	 	
 	 	

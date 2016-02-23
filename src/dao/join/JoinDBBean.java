@@ -92,12 +92,15 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
         String from = "credsuk@gmail.com"; //보내는 메일
         String fromName = "관리자";
         String to = email;
-        int content =  ((int) (Math.random()*999999)+1);  // 여기에다 랜덤 함수 적자
+        int content =  ((int) (Math.random()*9999)+1000);  // 여기에다 랜덤 함수 적자
         String scontent = String.valueOf(content);
+        
+        Session mailSession = null;
+        Properties props = null;
         
         try{
         	// 프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
-			Properties props = new Properties();
+        	props = new Properties();
 			
 			// G-Mail SMTP 사용시
 			props.put("mail.smtp.starttls.enable","true");
@@ -108,20 +111,21 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	        // props.put("mail.smtp.user", from);
 	        props.put("mail.smtp.auth", "true");
 	        
-	        String body = "안녕하세요 관리자 입니다"+"<br>";
-			body += "저희 사이트에 가입해 주셔서 감사합니다"+"<br>";
-			body += "인증 창에 아래의 번호를 입력해주세요 "+"<br>";
+	        String body = "관리자다"+"<br>";
+			body += "고맙다"+"<br>";
+			body += "아래 인증번호 입력해라"+"<br>";
 			body += "인증번호  : <h2>"+content+"</h2><br>";
-			
+				
 		
 
-			Session mailSession = Session.getInstance(props,
+			mailSession = Session.getInstance(props,
 	        	new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication("credsuk@gmail.com", "tkznfk11");
 															// 메일게정			비밀번호
 				}
 			});
+			System.out.println("메일계정 가져왔다");
 	          
 			Message msg = new MimeMessage(mailSession);
 			msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName,"UTF-8","B")));//보내는 사람 설정
@@ -134,12 +138,18 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			msg.setContent(body,"text/html;charset=euc-kr"); // 내용 설정 (HTML 형식)
 			
 			Transport.send(msg); // 메일 보내기
-        
+			System.out.println("보내는구나");
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		} catch ( Exception e){
 			e.printStackTrace();
+		} finally {
+			if( mailSession != null ) {
+				mailSession = null;
+				System.out.println("끝이구나");
+			}
 		}
+        
 		return scontent;
 	}
 
