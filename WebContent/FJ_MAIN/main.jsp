@@ -57,6 +57,7 @@
 	<body id="main">
 		<input type="hidden" class="menu_status" value="0">
 		<input type="hidden" class="m" value="${menu}">
+		<!-- 메인 메뉴 -->
 		<div class="main_menu">
 			<div class="main_logo"></div>
 			<div class="main_sign">

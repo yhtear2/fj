@@ -1,14 +1,34 @@
 @CHARSET "UTF-8";
 
 .container{
-	background-color: #ffffff;
-	width: 350px;
+	width: 700px;
+	margin: 20px 0px 0px 20px;
+}
+.form-group-hs{
+	background-color: white;
+	padding: 15px 15px 15px 15px;
+	border: solid 1px #d0d0d0;
+}
+.must item{
+	background-color: white;
+	padding: 2px 0px 0px 2px;
+	border: solid 1px #d0d0d0;
 }
 
 
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
 
-
-
-
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
 
 
