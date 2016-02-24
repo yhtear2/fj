@@ -1,4 +1,21 @@
-/* Designed by 권재희*/
+.wrapper {
+  .make-row();
+}
+.content-main {
+  .make-lg-column(8);
+}
+.content-secondary {
+  .make-lg-column(3);
+  .make-lg-column-offset(1);
+}
+
+
+.input {
+	width: 250px;
+	height: 25px;
+}
+
+/*
 
 h1,h2,h3,h4,h5,h6 {
 	margin: 20px;
@@ -106,4 +123,4 @@ center {
 .button:active {
 	background-color: rgb(33,33,33);
 	color: rgb(255,0,255);
-}
+} */
