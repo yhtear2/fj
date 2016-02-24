@@ -4,12 +4,33 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="User">
+
+	<insert id="insertArticle" parameterType="dto.user.UserDataBean">
+		insert into FJ_User ( user_history_id,email,eng_name, kor_name, tel,birth, address, army,   
+		 want_salary, license, skill, photo, reg_date, last_date,project,resome_title)
+		values( FJ_User_seq.NEXTVAL,#{email, jdbcType=VARCHAR},#{eng_name, jdbcType=VARCHAR}, #{kor_name, jdbcType=VARCHAR},
+		#{tel, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{address, jdbcType=VARCHAR}, #{army, jdbcType=VARCHAR}, #{want_salary ,jdbcType=INTEGER},
+		#{license, jdbcType=VARCHAR}, #{skill, jdbcType=VARCHAR},#{photo, jdbcType=VARCHAR}, #{reg_date}, #{last_date}, #{project, jdbcType=VARCHAR},
+		#{resome_title, jdbcType=VARCHAR})
+		
+	</insert>
+
+	<insert id="insertArticle_sc" parameterType="dto.user.SchoolDataBean">
+		insert into FJ_School ( school_id, user_history_id,school_kind,school_start_date,school_last_date,school_college1,
+		school_college2,school_name,school_name_kind,school_major,school_rank,reg_date,last_date)
+		values (FJ_School_seq.NEXTVAL,#{user_history_id},#{school_kind,jdbcType=VARCHAR},
+		#{school_start_date,jdbcType=VARCHAR},#{school_last_date,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
+		#{school_college2,jdbcType=VARCHAR},#{school_name,jdbcType=VARCHAR},#{school_name_kind,jdbcType=VARCHAR},
+		#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date})
+		
+	</insert>
+
+
+
 </mapper>	
 
+<!-- 
+ )
 
 
-
-
-
-
-
+ -->
