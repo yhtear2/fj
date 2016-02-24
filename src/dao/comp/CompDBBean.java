@@ -9,8 +9,8 @@ public class CompDBBean implements CompDao{
 	private SqlSession sqlSession = SqlMapClient.getSqlSession();
 
 	@Override
-	public CompDataBean getComp(String id) {
-		return null;
+	public CompDataBean getComp(String email) {
+		return sqlSession.selectOne("Comp.selectComp", email);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class CompDBBean implements CompDao{
 	}
 
 	@Override
-	public int deleteCdomp(String id) {
-		return sqlSession.delete("Comp.deleteComp", id);
+	public int deleteCdomp(String email) {
+		return sqlSession.delete("Comp.deleteComp", email);
 	}
 }

@@ -12,10 +12,11 @@ public class CompDataBean {
 	private String info;				// 회사 소개
 	private String capital;				// 자본금
 	private String comp_type;			// 기업 업종
-	private int year_sale;				// 연 매출
+	private String incharge;			// 담당자(이름)
+	private String comp_reg_date;		// 회사 설립일
+	private String year_sale;			// 연 매출
 	private int emp_count;				// 사원 수
 	private int like_count;				// 좋아요 수
-	private Timestamp comp_reg_date;	// 회사 설립일
 	private Timestamp reg_date;			// 등록일
 	private Timestamp last_date;		// 수정일
 	
@@ -73,10 +74,22 @@ public class CompDataBean {
 	public void setComp_type(String comp_type) {
 		this.comp_type = comp_type;
 	}
-	public int getYear_sale() {
+	public String getIncharge() {
+		return incharge;
+	}
+	public void setIncharge(String incharge) {
+		this.incharge = incharge;
+	}
+	public String getComp_reg_date() {
+		return comp_reg_date;
+	}
+	public void setComp_reg_date(String comp_reg_date) {
+		this.comp_reg_date = comp_reg_date;
+	}
+	public String getYear_sale() {
 		return year_sale;
 	}
-	public void setYear_sale(int year_sale) {
+	public void setYear_sale(String year_sale) {
 		this.year_sale = year_sale;
 	}
 	public int getEmp_count() {
@@ -91,12 +104,6 @@ public class CompDataBean {
 	public void setLike_count(int like_count) {
 		this.like_count = like_count;
 	}
-	public Timestamp getComp_reg_date() {
-		return comp_reg_date;
-	}
-	public void setComp_reg_date(Timestamp comp_reg_date) {
-		this.comp_reg_date = comp_reg_date;
-	}
 	public Timestamp getReg_date() {
 		return reg_date;
 	}
@@ -109,5 +116,6 @@ public class CompDataBean {
 	public void setLast_date(Timestamp last_date) {
 		this.last_date = last_date;
 	}
+	
 	
 }

@@ -3,32 +3,32 @@ package dto.recruit;
 import java.sql.Timestamp;
 
 public class RecruitDataBean {
-	public String recruit_id;
-	public String email;
-	public String title;
-	public String content;
-	public String skill;
-	public String gender;
-	public String edu;
-	public String work_type;
-	public String work_day;
-	public int min_career;
-	public int max_career;
-	public int min_salary;
-	public int max_salary;
-	public int min_age;
-	public int max_age;
-	public int people_count;
-	public int read_count;
-	public Timestamp start_date;
-	public Timestamp end_date;
-	public Timestamp reg_date;
-	public Timestamp last_date;
+	public int recruit_id;			// 채용게시판 ID
+	public String email;			// 이메일
+	public String title;			// 제목
+	public String content;			// 내용
+	public String skill;			// 원하는 기술
+	public String gender;			// 성별
+	public String edu;				// 학력
+	public String work_type;		// 고용형태
+	public String work_day;			// 근무요일 (주5일) 등등
+	public String start_date;		// 채용 시작일
+	public String end_date;			// 채용 종료일
+	public int min_career;			// 최소 경력
+	public int max_career;			// 최대 경력
+	public int min_salary;			// 최소 연봉
+	public int max_salary;			// 최대 연봉
+	public int min_age;				// 최소 나이
+	public int max_age;				// 최대 나이
+	public int people_count;		// 지원자 수
+	public int read_count;			// 조회수
+	public Timestamp reg_date;		// 작성일
+	public Timestamp last_date;		// 수정일
 	
-	public String getRecruit_id() {
+	public int getRecruit_id() {
 		return recruit_id;
 	}
-	public void setRecruit_id(String recruit_id) {
+	public void setRecruit_id(int recruit_id) {
 		this.recruit_id = recruit_id;
 	}
 	public String getEmail() {
@@ -127,16 +127,16 @@ public class RecruitDataBean {
 	public void setRead_count(int read_count) {
 		this.read_count = read_count;
 	}
-	public Timestamp getStart_date() {
+	public String getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Timestamp start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
-	public Timestamp getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Timestamp end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 	public Timestamp getReg_date() {
