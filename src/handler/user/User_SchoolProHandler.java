@@ -28,8 +28,13 @@ public class User_SchoolProHandler implements Commandhandler {
 		
 		SchoolDataBean dto = new SchoolDataBean();
 		
-	//	String school_name[] = request.getParameterValues("school_name");
-		
+	  String school_name[] = request.getParameterValues("school_name");
+	  
+	  for(int i=0; i<school_name.length; i++) {
+	  
+	  System.out.println(school_name[i]);
+	  
+	  }
 		
 		dto.setSchool_name_kind(request.getParameter("school_name_kind"));
 		dto.setSchool_name(request.getParameter("school_name"));

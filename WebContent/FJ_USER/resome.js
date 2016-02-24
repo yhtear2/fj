@@ -11,6 +11,7 @@ function skill_result() {
 	
 }
 
+
 function sub_name_modify(count){	
 	// id가 sub_name 이라는 div 사라지게함
 	var sub_name = 'div[id=sub_name'+ count +']';

@@ -1,37 +1,84 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<link href="/ResomeEx/resome/style.css" rel="stylesheet" type="text/css">
-
-<table border="1">
-<tr>
-<td rowspan="7">
-<img src="" width="200">
-</td>
-<td rowspan="7" > <h3> 인적사항 </h3> </td>
-<th>  성명 </th>
-<td>asfdasf </td>
-<th> 성별</th>
-<td> 남자 </td>
-</tr>
-
-<tr>
-<th> 성별</th>
-<td colspan="5"> 서울특별시 </td>
-</tr>
-
-<tr> 
-<th width="120"> 성별</th>
-<td colspan="2"> 010-2323-2323 </td>
-<th> 성별</th>
-<td colspan="2"> ㄱ나나나ㅏ@ㅁㅁㄴㄴ</td>
-</tr>
-
-<tr>
-<th> 성별</th>
-<td> 4 </td>
-<th> 성별</th>
-<td> 6 </td>
-<th> 성별</th>
-<td> ㅁㄴㅇㄹ </td>
-</tr>
-</table>
+<!doctype html>
+ 
+ 
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+<script>
+$.fn.setPreview = function(opt){
+    "use strict"
+    var defaultOpt = {
+        inputFile: $(this),
+        img: null,
+        w: 200,
+        h: 200
+    };
+    $.extend(defaultOpt, opt);
+ 
+    var previewImage = function(){
+        if (!defaultOpt.inputFile || !defaultOpt.img) return;
+ 
+        var inputFile = defaultOpt.inputFile.get(0);
+        var img       = defaultOpt.img.get(0);
+ 
+        // FileReader
+        if (window.FileReader) {
+            // image 파일만
+            if (!inputFile.files[0].type.match(/image\//)) return;
+ 
+            // preview
+            try {
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    img.src = e.target.result;
+                    img.style.width  = defaultOpt.w+'px';
+                    img.style.height = defaultOpt.h+'px';
+                    img.style.display = '';
+                }
+                reader.readAsDataURL(inputFile.files[0]);
+            } catch (e) {
+                // exception...
+            }
+        // img.filters (MSIE)
+        } else if (img.filters) {
+            inputFile.select();
+            inputFile.blur();
+            var imgSrc = document.selection.createRange().text;
+ 
+            img.style.width  = defaultOpt.w+'px';
+            img.style.height = defaultOpt.h+'px';
+            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";            
+            img.style.display = '';
+        // no support
+        } else {
+            // Safari5, ...
+        }
+    };
+ 
+    // onchange
+    $(this).change(function(){
+        previewImage();
+    });
+};
+ 
+ 
+$(document).ready(function(){
+    var opt = {
+        img: $('#img_preview'),
+        w: 200,
+        h: 200
+    };
+ 
+    $('#input_file').setPreview(opt);
+});
+</script>
+</head>
+ 
+ 
+<body>
+<input type="file" id="input_file" />
+<br />
+<img id="img_preview" style="display:none;"/>
+ 
+</body>
+</html>

@@ -9,7 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dto.user.UserDataBean;
 import handler.Commandhandler;
@@ -24,7 +25,7 @@ public class User_ProHandler implements Commandhandler {
 	@RequestMapping( "/resome_Pro" )	
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-/*		
+
 		request.setCharacterEncoding( "utf-8" );
 		
 		String saveDir = request.getServletContext().getRealPath("/") + "images";
@@ -95,7 +96,7 @@ public class User_ProHandler implements Commandhandler {
 		int result = dao.insertArticle( dto );	
 		
 		request.setAttribute( "result", result );
-*/
+
 		return new ModelAndView( "/FJ_USER/resome_Pro" );
 
 	}
