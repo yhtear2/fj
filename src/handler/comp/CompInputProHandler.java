@@ -59,6 +59,25 @@ public class CompInputProHandler implements Commandhandler {
 			dto.setComp_reg_date(Timestamp.valueOf(request.getParameter("comp_reg_date").toString()));
 		}
 		
+		/*
+		private String email;				// 이메일
+		private String ceo;					// 대표자명
+		private String comp_part;			// 기업구분
+		private String tel;					// 전화번호
+		private String zipcode;				// 우편번호
+		private String address;				// 주소
+		private String info;				// 회사 소개
+		private String capital;				// 자본금
+		private String comp_type;			// 기업 업종
+		private int year_sale;				// 연 매출
+		private int emp_count;				// 사원 수
+		private int like_count;				// 좋아요 수
+		private Timestamp comp_reg_date;	// 회사 설립일
+		private Timestamp reg_date;			// 등록일
+		private Timestamp last_date;		// 수정일
+		*/
+		
+		
 		int result = compDao.updateComp(dto);
 		
 		Map<String, Object> map = new HashMap<String, Object>();

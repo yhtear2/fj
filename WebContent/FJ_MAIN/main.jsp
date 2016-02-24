@@ -45,6 +45,7 @@
 			<a href="#" onclick="window.location='main.do'">이력서 관리</a>
 			<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
 			<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
 		</div>
 		<div class="main_menu2">
 			<a href="#" onclick="window.location='list.do'">공지사항</a><br>

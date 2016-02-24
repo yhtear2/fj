@@ -5,12 +5,13 @@ import java.sql.Timestamp;
 public class CompDataBean {
 	private String email;				// 이메일
 	private String ceo;					// 대표자명
-	private String comp_type;			// 기업구분
+	private String comp_part;			// 기업구분
 	private String tel;					// 전화번호
 	private String zipcode;				// 우편번호
 	private String address;				// 주소
 	private String info;				// 회사 소개
 	private String capital;				// 자본금
+	private String comp_type;			// 기업 업종
 	private int year_sale;				// 연 매출
 	private int emp_count;				// 사원 수
 	private int like_count;				// 좋아요 수
@@ -30,11 +31,11 @@ public class CompDataBean {
 	public void setCeo(String ceo) {
 		this.ceo = ceo;
 	}
-	public String getComp_type() {
-		return comp_type;
+	public String getComp_part() {
+		return comp_part;
 	}
-	public void setComp_type(String comp_type) {
-		this.comp_type = comp_type;
+	public void setComp_part(String comp_part) {
+		this.comp_part = comp_part;
 	}
 	public String getTel() {
 		return tel;
@@ -45,8 +46,8 @@ public class CompDataBean {
 	public String getZipcode() {
 		return zipcode;
 	}
-	public void setZipcode(String zipCode) {
-		this.zipcode = zipCode;
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 	public String getAddress() {
 		return address;
@@ -65,6 +66,12 @@ public class CompDataBean {
 	}
 	public void setCapital(String capital) {
 		this.capital = capital;
+	}
+	public String getComp_type() {
+		return comp_type;
+	}
+	public void setComp_type(String comp_type) {
+		this.comp_type = comp_type;
 	}
 	public int getYear_sale() {
 		return year_sale;
@@ -102,4 +109,5 @@ public class CompDataBean {
 	public void setLast_date(Timestamp last_date) {
 		this.last_date = last_date;
 	}
+	
 }

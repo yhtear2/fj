@@ -24,8 +24,8 @@ public class CompInputFormHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 아이디와 비밀번호 확인
-		String id 		= request.getSession().getAttribute("email").toString();
-		String passwd 	= request.getParameter("passwd");
+		//String id 		= request.getSession().getAttribute("email").toString();
+		//String passwd 	= request.getParameter("passwd");
 		
 		/**
 		 *  DB연결해서 사용자 확인해야함
