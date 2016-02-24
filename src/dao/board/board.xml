@@ -35,10 +35,17 @@
 	<!-- rownum rn 은 정렬상태의 DB검색 결과중, 일정부분을 가져오게 한다.  --> 
 	<!-- order by 컬럼명 asc | desc -->  <!-- asc : 오름차순 / desc : 내림차순 -->
 	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map"> 	 
+	 	<!--  
 		select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
 			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
-			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by re_step asc)
+			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by re_step desc)
 			order by re_step asc) where rn &gt; = #{start} and rn &lt; = #{end} 
+		-->
+		select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
+			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
+			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
+			order by board_num desc, re_step asc) where rn &gt; = #{start} and rn &lt; = #{end} 
+		
 	</select>
 </mapper>	
 

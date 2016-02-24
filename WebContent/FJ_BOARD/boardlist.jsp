@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="setting.jsp"%>  
-  
+
 <head>
         <meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>人 Coding - 커뮤니티 </title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  <!-- 익스플로러,크롬,엣지 전부호환 가능 -->
+		<title>人 코딩 - 자유게시판 </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="http://okky.kr/assets/favicon-4ddd8035b72404da5a8c298cbaacad86.ico" type="image/x-icon">
 		<link rel="apple-touch-icon" href="http://okky.kr/assets/icon_57x57-5611bd33d9f2b2d84c22219e248455b6.png">
@@ -66,7 +66,7 @@
 
                 <!-- Table -->
                 
-				
+				  
                 <ul class="list-group">
                 <!-- 글이 존재할 때  -->
 				<c:if test="${count != 0 }">
@@ -77,8 +77,8 @@
                             <div class="list-title-wrapper clearfix">
                                 <div class="list-tag clearfix">
                                 
-                                <!-- 글번호 부분 (boardlist.do 출력창에서 위에서부터 최신순으로 보여야함  -->
-                                <!-- 손봐야함 -->
+                                <!-- 글번호 부분 (boardlist.do 출력창에서 위에서부터 최신순으로 보임  -->
+                                
                                     <span class="list-group-item-text article-id">		
                     					${number}
                     					<c:set var="number" value="${number-1}"/>
@@ -109,14 +109,14 @@
                                     <div class="list-group-item-summary clearfix">
                                     	
                                         <ul>
-                                        	<!-- li 순서 :  추천 -  조회수 -  댓글 수   -->  
+                                        	<!-- li 순서 : 댓글 - 추천 - 조회  -->  
                                         	
                                             <li class="" >
                                             <i class="item-icon fa fa-comment"></i>
                                       		<table>
                                       			<tr> 
                                       				<td>
-                                      					${dto.re_count}
+                                      					${dto.re_count} 
                                       				</td>
                                       			</tr>
                                       		
@@ -184,8 +184,7 @@
             <div class="text-center">
 
 		<ul class="pagination pagination-sm">
-			<!-- 원래 이렇게 해야되는데 li 태그땜에 이동특문 사라짐, 손봐야할듯 -->
-			<!--  
+			<!-- 임시용 보류 
 			<li>
 				<c:if test="${count > 0}">
 				
@@ -194,13 +193,13 @@
 				href="boardlist.do"
 				class="prev disabled">◀◀</a>
 				<a 
-				href="boardlist.do?pageNum=${startPage-pageBloack}"
+				href="boardlist.do?pageNum=${startPage-pageBlock}"
 				class="prev disabled">◀</a>
 				</c:if>
 			
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 				<c:if test="${i == currentPage}">
-				<b>${i}</b>
+				<a>${i}</a>
 				</c:if>
 				<c:if test="${i != currentPage}">
 				<a href="boardlist.do?pageNum=${i}">${i}</a>
@@ -213,33 +212,36 @@
 			</c:if>
 			</li>
 			-->
+			<!-- pageBlock 손봐야함  -->
 			<li>
 				<c:if test="${count > 0}">
 				<c:if test="${startPage > pageBlock}">
 				</c:if>
-				</c:if>
+				</c:if> 
 				<a
 				href="boardlist.do" 
 				class="prev disabled">◀◀</a>
 				<a 
-				href="boardlist.do?pageNum=${startPage-pageBloack}"
+				href="boardlist.do?pageNum=${startPage-pageBlock}"
 				class="prev disabled">◀</a>
-			</li>	
+			</li>	 
 			<li>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<c:if test="${i == currentPage}">
-				<b>${i}</b>
+				<c:if test="${i == currentPage}"> 
+				<a>${i}</a>
 				</c:if>
 				<c:if test="${i != currentPage}">
 				<a href="boardlist.do?pageNum=${i}">${i}</a>
 				</c:if>   
-				</c:forEach>
+				</c:forEach> 
 			<c:if test="${endPage < pageCount}">
-				<a href="boardlist.do?pageNum=${startPage + pageBlock}" class="prev disabled">▶</a>
+				<a href="boardlist.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
 				<a href="boardlist.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
 			</c:if>
-			
+			  
 			</li>
+		 
+		
 		</ul>
 	</div>
 		</div>

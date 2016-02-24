@@ -33,8 +33,8 @@ public class ListHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
-		int pageSize = 5;
-		int pageBlock = 3;
+		int pageSize = 10;     // 페이지 레코드 수 
+		int pageBlock = 3;     // 페이지 번호 수 
 	
 		int count = 0;
 		String pageNum = null;
@@ -50,13 +50,15 @@ public class ListHandler implements Commandhandler {
 		count = boardDao.getCount(); 
 		
 		pageNum = request.getParameter( "pageNum" );
-		if( pageNum == null ) {
+		if( pageNum == null ) 
+		{
 			pageNum = "1";
 		}
 		
 		currentPage = Integer.parseInt( pageNum );
 		pageCount = count / pageSize + ( count%pageSize > 0 ? 1 : 0 );
-		if( currentPage > pageCount ) {
+		if( currentPage > pageCount ) 
+		{
 			currentPage = pageCount;
 			pageNum = String.valueOf( pageCount );
 		}
@@ -72,23 +74,22 @@ public class ListHandler implements Commandhandler {
 		if( currentPage % pageBlock == 0 ) startPage -= pageBlock;				
 		endPage = startPage + pageBlock - 1;
 					// 	11 + 10 - 1					20
-					
+					      
 		if( endPage > pageCount ) endPage = pageCount;			
 	
 		request.setAttribute( "pageBlock", pageBlock );
-		
 		request.setAttribute( "count", count );
 		request.setAttribute( "number", number );
-		
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "currentPage", currentPage );
-		
 		request.setAttribute( "startPage", startPage );
 		request.setAttribute( "endPage", endPage );
 		request.setAttribute( "pageCount", pageCount );
 		
+		
+		
 		if( count != 0 ) {  
-			// BoardDBBean 의 getArticles 부분에서 int 값이 두개이상이므로 매핑을 걸어주자. 
+			// BoardDBBean 의 getArticles 부분에서 int 값이 두개이상이므로 매핑을 건다 
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put( "start", start );  
 			map.put( "end", end );   

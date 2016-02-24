@@ -21,7 +21,7 @@ public class WriteFormHandler implements Commandhandler{
 	@RequestMapping("/boardwriteForm") 
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+		   
 		/*
 		// 제목글인 경우	<- list.jsp
 		int num = 0;		// 제목글 / 답변글

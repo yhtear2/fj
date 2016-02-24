@@ -70,7 +70,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	public List<BoardDataBean> getArticles( Map<String, Integer> map ) {
 		return sqlSession.selectList( "FJ_BOARD.getArticles", map ); 
 	} 
-	
+	  
 	public BoardDataBean getArticle(int board_num) 
 	{ 
 		return sqlSession.selectOne("FJ_BOARD.getArticle", board_num);
@@ -82,6 +82,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		sqlSession.update("FJ_BOARD.addCount", board_num);
 	}
 
+	
 
 	
 	
