@@ -2,99 +2,106 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="setting.jsp" %>
-<link href="${project}style.css" rel="stylesheet" type="text/css">
-<script src="${project}request.js"></script>
-<script type="text/javascript">
-	var checkcode = "";
-
-	function confirmmail( emailvalue ) {
-		var params = "email=" + emailvalue;
-		request = new Request( emailresult, "joinConfirmId.do", "GET", params );
-		request.sendRequest();
-	}
-	function emailresult() {
-		var result = document.getElementById( "emailresult" );
-		var email = document.inputform.email.value;
-		var xmldoc = request.httpRequest.responseXML;
-		var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
-		
-		if( email == "" ) {
-			result.innerHTML = "이메일을 입력해주세요.";
-		} else if( email.indexOf("@") == -1 ) {
-			result.innerHTML = "올바르지 않은 형식입니다.";
-		} else if(code == 0) {
-			result.innerHTML = "사용가능한 이메일입니다.";
-		} else {
-			result.innerHTML = "이미 사용중인 이메일입니다.";
-		}		
-	}
-	function confirmname( namevalue ) {
-		var params = "name=" + namevalue;
-		request = new Request( nameresult, "joinConfirmName.do", "GET", params );
-		request.sendRequest();
-	}
-	function nameresult() {
-		var result = document.getElementById( "nameresult" );
-		var name = document.inputform.name.value;		
-		var xmldoc = request.httpRequest.responseXML;
-		var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
-		
-		if( name == "" ) {
-			result.innerHTML = "닉네임을 입력해주세요";
-		} else if(code == 0) {
-			result.innerHTML = "사용가능한 닉네임입니다.";
-		} else {
-			result.innerHTML = "이미 사용중인 닉네임입니다.";
-		}		
-	}
-	function checkpasswd( passwd ) {
-		var result = document.getElementById( "passwdresult" );
-		
-		if( passwd == "" ) {
-			result.innerHTML = "비밀번호를 입력해주세요.";
-		} else if( passwd.length < 8 ) {
-			result.innerHTML = "비밀번호는 8자 이상입니다.";
-		} else {
-			result.innerHTML = "사용 가능합니다.";
-		}
-	}
-	function recheckpasswd( passwd, repasswd ) {
-		var result = document.getElementById( "repasswdresult" );
-		
-		if( repasswd == "" ) {
-			result.innerHTML = "비밀번호를 한번 더 입력해주세요.";
-		} else if( passwd != repasswd ) {
-			result.innerHTML = "위의 비밀번호와 틀립니다.";
-		} else {
-			result.innerHTML = "비밀번호 체크 완료";
-		}
-	}
-	function emailsend( emailvalue ) {
-		alert("이메일로 전송된 코드를 입력해주세요.");
-		var params = "email=" + emailvalue;
-		request = new Request( checkmail, "joinEmailConfirm.do", "GET", params );
-		request.sendRequest();
-	}
-	function checkmail() {
-		var xmldoc = request.httpRequest.responseXML;
-		var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
-		
-		checkcode = code;
-	}
-	function inputcheck() {
-		var emailcode = inputform.emailcode.value;
-		if( checkcode != emailcode ) {
-			alert("인증번호가 틀렸습니다");
-			return false;
-		} else if( emailcode == "" ) {
-			alert("인증번호를 입력해주세요");
-			return false;
-		} else {
-			return;
-		}
-	}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<link href="${project}style.css" rel="stylesheet" type="text/css">
+	<script src="${project}request.js"></script>
+	<script type="text/javascript">
+		var checkcode = "";
 	
-</script>
+		function confirmmail( emailvalue ) {
+			var params = "email=" + emailvalue;
+			request = new Request( emailresult, "joinConfirmId.do", "GET", params );
+			request.sendRequest();
+		}
+		function emailresult() {
+			var result = document.getElementById( "emailresult" );
+			var email = document.inputform.email.value;
+			var xmldoc = request.httpRequest.responseXML;
+			var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
+			
+			if( email == "" ) {
+				result.innerHTML = "이메일을 입력해주세요.";
+			} else if( email.indexOf("@") == -1 ) {
+				result.innerHTML = "올바르지 않은 형식입니다.";
+			} else if(code == 0) {
+				result.innerHTML = "사용가능한 이메일입니다.";
+			} else {
+				result.innerHTML = "이미 사용중인 이메일입니다.";
+			}		
+		}
+		function confirmname( namevalue ) {
+			var params = "name=" + namevalue;
+			request = new Request( nameresult, "joinConfirmName.do", "GET", params );
+			request.sendRequest();
+		}
+		function nameresult() {
+			var result = document.getElementById( "nameresult" );
+			var name = document.inputform.name.value;		
+			var xmldoc = request.httpRequest.responseXML;
+			var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
+			
+			if( name == "" ) {
+				result.innerHTML = "닉네임을 입력해주세요";
+			} else if(code == 0) {
+				result.innerHTML = "사용가능한 닉네임입니다.";
+			} else {
+				result.innerHTML = "이미 사용중인 닉네임입니다.";
+			}		
+		}
+		function checkpasswd( passwd ) {
+			var result = document.getElementById( "passwdresult" );
+			
+			if( passwd == "" ) {
+				result.innerHTML = "비밀번호를 입력해주세요.";
+			} else if( passwd.length < 8 ) {
+				result.innerHTML = "비밀번호는 8자 이상입니다.";
+			} else {
+				result.innerHTML = "사용 가능합니다.";
+			}
+		}
+		function recheckpasswd( passwd, repasswd ) {
+			var result = document.getElementById( "repasswdresult" );
+			
+			if( repasswd == "" ) {
+				result.innerHTML = "비밀번호를 한번 더 입력해주세요.";
+			} else if( passwd != repasswd ) {
+				result.innerHTML = "위의 비밀번호와 틀립니다.";
+			} else {
+				result.innerHTML = "비밀번호 체크 완료";
+			}
+		}
+		function emailsend( emailvalue ) {
+			alert("이메일로 전송된 코드를 입력해주세요.");
+			var date = new Date().getTime();
+			alert(date);
+			var params = "email=" + emailvalue + "&" + date;
+			request = new Request( checkmail, "joinEmailConfirm.do", "GET", params );
+			request.sendRequest();
+		}
+		function checkmail() {
+			var xmldoc = request.httpRequest.responseXML;
+			var code = xmldoc.getElementsByTagName( "result" ).item(0).firstChild.nodeValue;
+			
+			checkcode = code;
+		}
+		function inputcheck() {
+			var emailcode = inputform.emailcode.value;
+			if( checkcode != emailcode ) {
+				alert("인증번호가 틀렸습니다");
+				return false;
+			} else if( emailcode == "" ) {
+				alert("인증번호를 입력해주세요");
+				return false;
+			} else {
+				return;
+			}
+		}
+	</script>
+</head>
+
 
 <h2> ${page_input} </h2>
 <body>
@@ -162,7 +169,7 @@
 		</table>
 	</form>
 </body>
-
+</html>
 
 
 

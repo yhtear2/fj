@@ -20,27 +20,23 @@
 		<div class="main_logo"> <img id="logo" src="${images}/main_logo.png"> </div>
 		<div class="main_sign">
 			<div class="main_login" onclick="window.location='joinMain.do'">
-				<img src="${images}/main_logou_up.png" class="images_main"> Login</div>
-			<div style="float: left;"><img src="${images}/main_line_01.png" ></div>
+				<img src="${images}/main_logou_up.png" class="images_main"> Login
+			</div>
 			<div class="main_singup">
-				<img src="${images}/main_sign_up.png" class="images_main"> SingUp</div>
-			<div> <img src="${images}/main_line_02.png"> </div>
+				<img src="${images}/main_sign_up.png" class="images_main"> SingUp
+			</div>
 		</div>
 		
 		<!-- 선택 메뉴 -->
 		<div class="main_sub">
 			<div class="main_submanu">
 				<img src="${images}/main_up_01.png"> MyPage</div>
-			<div>  </div>
 			<div class="main_submanu">
 				<img src="${images}/main_up_02.png"> 게시판</div>
-			<div> <img src="${images}/main_line_02.png"> </div>
 			<div class="main_submanu">
 				<img src="${images}/main_up_03.png"> 채용공고</div>
-			<div> <img src="${images}/main_line_02.png"> </div>
 			<div class="main_submanu">
 				<img src="${images}/main_up_04.png"> QA</div>
-			<div> <img src="${images}/main_line_02.png"> </div>
 			<div class="main_submanu"><i class="fa fa-github"></i>Git</div>
 		</div>
 	</div>
