@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="setting.jsp" %>  
+ 
 <!DOCTYPE html>
 <title>자유게시판 - 글쓰기 페이지</title>
 
-
+ 
 <!-- 태그 에디터 불러오기 -->    
 <!-- INSTRUCTIONS -->
 <link href="css/jquery.tagit.css" rel="stylesheet">
@@ -22,8 +23,9 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+<!-- include summernote css/js-->   
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet"> 
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 
  
@@ -70,7 +72,7 @@
 			  
 			<!-- 태그를 입력하는 부분 -->
       
-			<div id="wrapper">  
+			<div id="wrapper">   
 				<div id="content"> 
 					<ul id="myTags">
 					</ul>    

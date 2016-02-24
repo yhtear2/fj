@@ -45,8 +45,24 @@
 			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
 			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
 			order by board_num desc, re_step asc) where rn &gt; = #{start} and rn &lt; = #{end} 
-		
 	</select>
+	
+	<update id="updateReply" parameterType="dto.board.BoardDataBean">
+	 	update fj_board_free set re_step=re_step+1 where board_num= #{board_num} and re_step &gt; #{re_step}
+	 </update>
+	 
+	 <update id="deleteReply" parameterType="dto.board.BoardDataBean">
+	 	update fj_board_free set re_step=re_step-1 where board_num=#{board_num} and re_step &gt; #{re_step}
+	 </update>
+	
+	<select id="reply" resultType="Integer" parameterType="dto.board.BoardDataBean">
+	 	select count(*) from fj_board_free where board_num= #{board_num} and re_step= #{re_step}+1 and re_count &gt; #{re_count}
+	 </select> 
+	 
+	 <delete id="deleteArticle" parameterType="Integer">
+	 	delete from fj_board_free where board_num=#{board_num}   
+	 </delete>
+	
 </mapper>	
 
 

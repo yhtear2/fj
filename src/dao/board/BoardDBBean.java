@@ -23,40 +23,49 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	public int insertArticle( BoardDataBean dto ) {
 		
 		int board_num = dto.getBoard_num();
+		int re_step = dto.getRe_step();
+		int re_count = dto.getRe_count();
 		int category = dto.getCategory();
 		String hstag = dto.getHstag(); 
 		String subject = dto.getSubject();
 		String content = dto.getContent();
+		
 	
 		
-		/*
+		
 		if(board_num == 0)
 		{
 			int count = getCount();
 			if(count > 0)
 			{  
 				int maxNum = sqlSession.selectOne("FJ_BOARD.getMaxNum");
+				board_num = maxNum + 1;
 				
 			}
 			else
 			{
-				sqlSession.update("FJ_BOARD.updateRe_com", dto);
+				sqlSession.update("FJ_BOARD.updateReply", dto);
+				re_step ++;
+				re_count ++;
 			}
 		}
-		*/
+	
 		
 		String sql = null;
 		
 		 
 		
 		// set 으로 우선 호출한다   
+		dto.setBoard_num(board_num);
+		dto.setRe_step(re_step);
+		dto.setRe_count(re_count); 
 		dto.setCategory(category);
 		dto.setSubject(subject);
 		dto.setContent(content);
 		dto.setHstag(hstag);
 		
 		return sqlSession.insert("FJ_BOARD.insertArticle", dto);  
-			
+		 	
 	}
 	
 	public int updateArticle( BoardDataBean dto)
@@ -81,6 +90,24 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	{
 		sqlSession.update("FJ_BOARD.addCount", board_num);
 	}
+
+	public int deleteArticle( int num ) {		
+		BoardDataBean dto = getArticle( num );
+								
+		int count = sqlSession.selectOne("FJ_Board.reply", dto);
+		
+		int result = 0;					
+		if( count != 0 ) {
+			// 답글이 있는 경우
+			result = -1;
+		} else {
+			// 답글이 없는 경우
+			sqlSession.update("FJ_Board.deleteReply", dto);
+			result = sqlSession.delete("FJ_Board.deleteArticle", num); 	 
+		}						
+		return result;
+	}
+	
 
 	
 
