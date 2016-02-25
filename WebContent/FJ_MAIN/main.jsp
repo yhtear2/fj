@@ -17,12 +17,22 @@
 				<img id="logo" src="${images}/main_logo.png"> 
 			</div>
 			<div class="main_sign">
+				<!-- 로그인 X일 때 -->
+				<c:if test="${sessionScope.memId == null}">
 				<div class="main_login" onclick="window.location='joinMain.do'">
 					<img src="${images}/main_logou_up.png" class="images_main"> Login
 				</div>
 				<div class="main_singup">
 					<img src="${images}/main_sign_up.png" class="images_main"> SingUp
 				</div>
+				</c:if>
+				<!-- 로그인 O일 때 -->
+				<c:if test="${sessionScope.memId != null}">
+				<div class="main_logon">
+					<span>${name}</span>
+					<input type="button" value="로그아웃" onclick="window.location='joinLogout.do'">
+				</div>
+				</c:if>
 			</div>
 			<!-- 선택 메뉴 -->
 			<div class="main_sub">
@@ -40,13 +50,21 @@
 		<!-- main_menu2는 사이드바의 상세메뉴 - 평소에는 z-index:0으로 숨겨져있다 -->
 		<div class="main_menu2">
 			<!-- 개인회원, 기업회원, 관리자가 서로 다른 메뉴가 나오게 변경 -->
-			<c:if test=""></c:if>
-			<a href="#" onclick="window.location='main.do'">회원정보 수정</a>
-			<a href="#" onclick="window.location='main.do'">이력서 관리</a>
-			<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
-			<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
-			<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
-			<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
+			<c:if test="${sessionScope.memId == null}">
+				<a href="#" onclick="window.location='joinMain.do'">로그인 해주세요</a>
+			</c:if>
+			<c:if test="${sessionScope.member_flag == 1}">
+				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
+				<a href="#" onclick="window.location='main.do'">이력서 관리</a>
+				<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
+				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			</c:if>
+			<c:if test="${sessionScope.member_flag == 2}">
+				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
+				<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
+				<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
+				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			</c:if>
 		</div>
 		<div class="main_menu2">
 			<a href="#" onclick="window.location='list.do'">공지사항</a><br>

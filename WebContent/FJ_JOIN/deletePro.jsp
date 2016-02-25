@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ include file="/defaultSetting.jsp" %>
 <%@ include file="setting.jsp" %>
-<script src="${project}script.js"></script>
+<link href="${join}join.css" rel="stylesheet" type="text/css">
+<script src="${join}script.js"></script>
 
 <h2> 회원 탈퇴 </h2>
 

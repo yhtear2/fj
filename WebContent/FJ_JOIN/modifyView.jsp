@@ -1,11 +1,13 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="/defaultSetting.jsp" %>
 <%@ include file="setting.jsp" %>
-<link href="${project}style.css" rel="stylesheet" type="text/css">
+
+<link href="${join}join.css" rel="stylesheet" type="text/css">
+<script src="${join}script.js"></script>
 <script src="${project}request.js"></script>
-<script src="${project}script.js"></script>
+
 <script type="text/javascript">
 	function checkpasswd( passwd ) {
 		var result = document.getElementById( "passwdresult" );

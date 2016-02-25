@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ include file="/defaultSetting.jsp" %>
 <%@ include file="setting.jsp" %>
+<link href="${join}join.css" rel="stylesheet" type="text/css">
+<script src="${join}script.js"></script>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Cache-Control" content="no-cache">
-	<link href="${project}style.css" rel="stylesheet" type="text/css">
-	<script src="${project}request.js"></script>
+	<link href="${join}join.css" rel="stylesheet" type="text/css">
+	<script src="${join}request.js"></script>
 	<script type="text/javascript">
 		var checkcode = "";
 	

@@ -33,7 +33,7 @@ public class ContentHandler implements Commandhandler {
 		String pageNum = request.getParameter( "pageNum" );
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 		int number = Integer.parseInt( request.getParameter( "number" ) );
-
+		 
 		BoardDataBean dto = dao.getArticle( board_num ); 
 		
 		/*
@@ -42,12 +42,12 @@ public class ContentHandler implements Commandhandler {
 		} */
 	
 
-		request.setAttribute( "number", number );
-		request.setAttribute( "pageNum", pageNum );
-		request.setAttribute( "dto", dto );
-			
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		map.put("number", number);
+		map.put("pageNum", pageNum);
+		map.put("board_num", board_num);
+		map.put( "dto", dto );
 		
 		
 		map.put("page", "/FJ_BOARD/boardcontent");  
