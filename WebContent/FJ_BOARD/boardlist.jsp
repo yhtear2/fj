@@ -98,7 +98,7 @@
 									<br>
 								<!-- 제목 부분 (hidden 생략) -->
                                 <h5 class="list-group-item-heading ">
-                                    <a href="boardcontent.do?num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}">
+                                    <a href="boardcontent.do?board_num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}">
                                     	${dto.subject}
                                     </a>
                                 </h5>

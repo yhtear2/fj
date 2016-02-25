@@ -16,7 +16,7 @@
        
 <!-- The real deal -->
 <script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
-  
+      
     
 <!-- 글쓰기 에디터 불러오기 -->
 <!-- include libraries(jQuery, bootstrap) -->
@@ -36,7 +36,7 @@
 	<div id="article-create" class="contents" role="main">
  
 		<div class="content-header">
-			<h3>글쓰기</h3>
+			<h3>글쓰기</h3>  
 		</div>
 	</div> 
 	<div class="panel-body">
@@ -48,9 +48,9 @@
 		<input type="hidden" name="bad_count" value="${bad_count}">
 		<input type="hidden" name="read_count" value="${read_count}">
 		<input type="hidden" name="scrap_count" value="${scrap_count}">
-		<input type="hidden" name="content" value="">
-		<input type="hidden" name="hstag" value=""> 
-		
+		<input type="hidden" name="content" value="${content}">
+		<input type="hidden" name="hstag" value="">   
+		 
 			 <!--  <input type="hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
 			<fieldset class="form">

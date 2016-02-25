@@ -297,7 +297,7 @@
                         
                         	 
                             <form action="/fj/boardwritePro.do" method="post" class="note-create-form">
-                                
+                                	<input type="hidden" name="board_num" value="${board_num}">  
                                     <input type="hidden" name="lastNoteId" value="1034849 " id="lastNoteId">
                                 
                                 
@@ -343,6 +343,7 @@
                                 <div class="content-function-cog note-submit-buttons clearfix">
                                     <p><a href="javascript://" id="note-create-cancel-btn" class="btn btn-default btn-wide" style="">${btn_cancel}</a></p>
                                     <input type="submit" name="create" class="create btn btn-success btn-wide wide" value="${btn_reply}"> 
+                     
                                 </div>
                             </form>
                         </li>

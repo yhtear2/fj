@@ -30,9 +30,10 @@ public class WriteProHandler implements Commandhandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		request.setCharacterEncoding( "utf-8" );
 		
-		System.out.println( request.getParameter("category"));  
-		System.out.println( (String)request.getParameter( "subject" ) );
-		System.out.println( (String)request.getParameter("content"));
+		System.out.println( request.getParameter("board_num"));  
+	//	System.out.println( request.getParameter("category"));  
+	//	System.out.println( (String)request.getParameter( "subject" ) );
+	//	System.out.println( (String)request.getParameter("content"));
 		//BoardDataBean dto = new BoardDataBean();
 		//dto.setSubject( (String) request.getParameter( "subject" ) );
 		//int result = dao.insertArticle( dto ); 
