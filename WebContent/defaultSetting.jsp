@@ -10,6 +10,7 @@
 <c:set var="js" value="${project}/js"/>
 <c:set var="images" value="${project}/images"/>
 <c:set var="main" value="${project}/FJ_MAIN"/>
+<c:set var="join" value="${project}/FJ_JOIN/"/>
 
 <!-- common java script -->
 <script src="${project}/jquery-1.12.0.js"></script>

@@ -5,8 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fnc" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="project" value="/fj/FJ_JOIN/"/>
-
 <c:set var="page_main" value="메인 페이지"/>
 <c:set var="page_input" value="회원가입"/>
 <c:set var="page_confirm" value="아이디 중복 확인"/>

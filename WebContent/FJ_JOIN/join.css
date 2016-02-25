@@ -1,5 +1,15 @@
-/* Design by Shin Sang-hoon */
+/* 부트스트랩 사용 CSS*/
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); 
 
+
+
+#join {
+	font-family: 'Nanum Gothic',monospace;
+	background: #f8f8f8;
+}
+
+/*
 h1,h2,h3,h4,h5,h6
 {
 	color: #4C4C4C;	
@@ -80,7 +90,7 @@ span {
 	color : red;
 	font-size : 1.5em;	
 }
-
+*/
 
 
 
