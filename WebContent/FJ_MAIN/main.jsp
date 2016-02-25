@@ -17,12 +17,22 @@
 				<img id="logo" src="${images}/main_logo.png"> 
 			</div>
 			<div class="main_sign">
+				<!-- 로그인 X일 때 -->
+				<c:if test="${sessionScope.memId == null}">
 				<div class="main_login" onclick="window.location='joinMain.do'">
 					<img src="${images}/main_logou_up.png" class="images_main"> Login
 				</div>
 				<div class="main_singup">
 					<img src="${images}/main_sign_up.png" class="images_main"> SingUp
 				</div>
+				</c:if>
+				<!-- 로그인 O일 때 -->
+				<c:if test="${sessionScope.memId != null}">
+				<div class="main_logon">
+					<span>${name}</span>
+					<input type="button" value="로그아웃" onclick="window.location='joinLogout.do'">
+				</div>
+				</c:if>
 			</div>
 			<!-- 선택 메뉴 -->
 			<div class="main_sub">

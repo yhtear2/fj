@@ -9,14 +9,8 @@ html{
 
 body {
 	font-family: 'Nanum Gothic',monospace;
-	background: #e8e8e8;
-	height:100%;
-}
-
-.main_page{
-	position:absolute;
-	left:200px;
-	height:100%;
+	background: #f8f8f8;
+	
 }
 
 .images_main{
@@ -35,6 +29,7 @@ body {
 	background-color:#3399ff;
 	width:200px;
 	height:100%;
+	min-height:800px;
 	left:0;
 	top:0;
 	overflow:hidden;

@@ -41,7 +41,7 @@
   	<table>
       <tr>
          <td align="center">
-            <span>${sessionScope.memId}</span>${msg_login}
+            <span>${sessionScope.memId}</span>${msg_login} ${sessionScope.member_flag}
          </td>
       </tr>
       <tr>

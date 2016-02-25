@@ -22,7 +22,7 @@
 </c:if>
 <c:if test="${result == 1}">
 	${sessionScope.memId = email}
-	<c:redirect url="joinMain.do"/>
+	<c:redirect url="main.do"/>
 </c:if>
 
 
