@@ -26,23 +26,9 @@ public class compViewHandler implements Commandhandler{
 		// 맵으로 넘기기 위해서 객체 생성
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		// 데이터 가져올 페이지 만들기
-		//String email = (request.getSession().getAttribute("email").toString());				// 이메일
-		String email = "test@master";
 		
-		// 리턴받을 바구니 생성
-		CompDataBean dto = new CompDataBean();
 		
-		// DB처리
-		dto = compDao.getComp(email);
-		
-		// 넘어온 tel 분리
-		String tels[] = dto.getTel().split("-");
-		
-		// MAP에 넣어서 페이지로 전송~
-		map.put("tel_1", tels[0]);
-		map.put("tel_2", tels[1]);
-		map.put("dto", dto);
+		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compView");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}

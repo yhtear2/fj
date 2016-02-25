@@ -12,22 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import custom.CustomUtil;
 import dao.comp.CompDao;
-import dao.join.JoinDao;
 import dto.comp.CompDataBean;
 import handler.Commandhandler;
 
 @Controller
-public class CompInputProHandler implements Commandhandler {
-
+public class CompModifyProHandler implements Commandhandler {
+	
 	@Resource(name="compDao")
 	private CompDao compDao;
-	
-	@Resource(name="joinDao")
-	private JoinDao joinDao;
 
-	@RequestMapping("/compInputPro")
+	@RequestMapping("/compModifyPro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 맵으로 넘기기 위해서 객체 생성
@@ -35,10 +30,12 @@ public class CompInputProHandler implements Commandhandler {
 		
 		// 바구니를 만들어 넘기기 위해 바구니 받아오기
 		CompDataBean dto = new CompDataBean();
+		
 		request.setCharacterEncoding("UTF-8");
 		// 바구니 셋터에 입력 시작!!
-		dto.setEmail(request.getSession().getAttribute("memId").toString());				// 이메일
-		dto.setCeo(request.getSession().getAttribute("name").toString());					// 대표자명
+		dto.setEmail(request.getSession().getAttribute("email").toString());				// 이메일
+		System.out.println("세션의 이메일 : " + request.getSession().getAttribute("memId").toString());
+		dto.setCeo(request.getParameter("ceo"));											// 대표자명
 		dto.setComp_part(request.getParameter("comp_part"));								// 기업구분
 		dto.setTel(request.getParameter("tel_1") + "-" + request.getParameter("tel_2"));	// 전화번호
 		dto.setZipcode(request.getParameter("zipcode"));									// 우편번호
@@ -54,14 +51,15 @@ public class CompInputProHandler implements Commandhandler {
 		dto.setReg_date(new Timestamp( System.currentTimeMillis()));						// 입력 날짜
 		dto.setLast_date(new Timestamp( System.currentTimeMillis()));						// 수정 날짜
 		
-		// DB에 입력
-		int result = compDao.insertComp(dto);
+		//DB 처리
+		int result = compDao.updateComp(dto);
 		
-		// 결과 맵으로 넣어서 페이지로 리턴하기
+		// 페이지로 데이터 넘기기
 		map.put("result", result);
 		
 		map.put("menu", "comp");
-		map.put("page", "/FJ_COMP/compInputPro");
+		map.put("page", "/FJ_COMP/compModifyPro");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
+
 }
