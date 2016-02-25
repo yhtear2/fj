@@ -33,8 +33,7 @@ public class CompModifyProHandler implements Commandhandler {
 		
 		request.setCharacterEncoding("UTF-8");
 		// 바구니 셋터에 입력 시작!!
-		dto.setEmail(request.getSession().getAttribute("email").toString());				// 이메일
-		System.out.println("세션의 이메일 : " + request.getSession().getAttribute("memId").toString());
+		dto.setEmail(request.getSession().getAttribute("memId").toString());				// 이메일
 		dto.setCeo(request.getParameter("ceo"));											// 대표자명
 		dto.setComp_part(request.getParameter("comp_part"));								// 기업구분
 		dto.setTel(request.getParameter("tel_1") + "-" + request.getParameter("tel_2"));	// 전화번호
@@ -47,8 +46,6 @@ public class CompModifyProHandler implements Commandhandler {
 		dto.setComp_reg_date(request.getParameter("comp_reg_date"));						// 회사 창립일
 		dto.setYear_sale(request.getParameter("year_sale"));								// 연매출
 		dto.setEmp_count(Integer.parseInt(request.getParameter("emp_count")));				// 사원수
-		dto.setLike_count(0);																// 좋아요 카운트
-		dto.setReg_date(new Timestamp( System.currentTimeMillis()));						// 입력 날짜
 		dto.setLast_date(new Timestamp( System.currentTimeMillis()));						// 수정 날짜
 		
 		//DB 처리
