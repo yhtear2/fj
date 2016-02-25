@@ -17,10 +17,10 @@
 
 	<insert id="insertArticle_sc" parameterType="dto.user.SchoolDataBean">
 		insert into FJ_School ( school_id, user_history_id,school_kind,school_start_date,school_last_date,school_college1,
-		school_college2,school_name,school_name_kind,school_major,school_rank,reg_date,last_date)
+		school_college2,school_college_high,school_name,school_name_kind,school_major,school_rank,reg_date,last_date)
 		values (FJ_School_seq.NEXTVAL,#{user_history_id},#{school_kind,jdbcType=VARCHAR},
 		#{school_start_date,jdbcType=VARCHAR},#{school_last_date,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
-		#{school_college2,jdbcType=VARCHAR},#{school_name,jdbcType=VARCHAR},#{school_name_kind,jdbcType=VARCHAR},
+		#{school_college2,jdbcType=VARCHAR},#{school_college_high,jdbcType=VARCHAR},#{school_name,jdbcType=VARCHAR},#{school_name_kind,jdbcType=VARCHAR},
 		#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date})
 		
 	</insert>

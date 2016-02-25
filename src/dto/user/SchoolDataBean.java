@@ -11,6 +11,7 @@ public class SchoolDataBean {
 	private String school_last_date;
 	private String school_college1;
 	private String school_college2;
+	private String school_college_high;
 	private String school_name;
 	private String school_name_kind;
 	private String school_major;
@@ -18,7 +19,13 @@ public class SchoolDataBean {
 	private Timestamp reg_date;
 	private Timestamp last_date;
 	
-	
+		
+	public String getSchool_college_high() {
+		return school_college_high;
+	}
+	public void setSchool_college_high(String school_college_high) {
+		this.school_college_high = school_college_high;
+	}
 	public int getSchool_id() {
 		return school_id;
 	}

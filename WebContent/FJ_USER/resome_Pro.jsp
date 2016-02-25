@@ -13,5 +13,12 @@
 </c:if>
 
 <c:if test="${result == 1}">
-	<c:redirect url="introduceForm.do"/>
-</c:if>
+	<script type="text/javascript">
+		<!--
+			alert( "가입에 성공하였습니다." );
+		//-->
+		
+	</script>
+	${sessionScope.userhistoryid = user_history_id}
+		<c:redirect url="career.do"/>
+	</c:if>

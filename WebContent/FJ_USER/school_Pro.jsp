@@ -18,4 +18,6 @@
 			alert( "가입에 성공하였습니다." );
 		//-->
 	</script>	
+	<c:redirect url="career.do"/>
+	
 </c:if>

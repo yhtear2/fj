@@ -83,10 +83,8 @@
 
 				img.style.width = defaultOpt.w + 'px';
 				img.style.height = defaultOpt.h + 'px';
-				img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""
-						+ imgSrc + "\")";
+				img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
 				img.style.display = '';
-				// no support
 			} else {
 				// Safari5, ...
 			}
@@ -112,30 +110,82 @@
 	function submitcheck() {
 		var name = [];
 		var names = $('input[name=school_name]');
-		alert(names.length + "");
 		for (var i = 0; i < names.length; i++) {
 			name[i] = names.eq(i).val();
 		}
 		$('input[name=school_name_send]').val(name);
-		alert($('input[name=school_name_send]').val());
-	}
+		
+ 		var start = [];
+		var starts = $('input[name=school_start_date]');
+		for (var i = 0; i < starts.length; i++) {
+			start[i] = starts.eq(i).val();
+		}
+		$('input[name=school_start_send]').val(start);
+		
+ 		var last = [];
+		var lasts = $('input[name=school_last_date]');
+		for (var i = 0; i < lasts.length; i++) {
+			last[i] = lasts.eq(i).val();
+		}
+		$('input[name=school_last_send]').val(last);
+		
+ 		var college1 = [];
+		var college1s = $('input[name=school_college1]');
+		for (var i = 0; i < college1s.length; i++) {
+			college1[i] = college1s.eq(i).val();
+		}
+		$('input[name=school_college1_send]').val(college1);
+		
+ 		var college2 = [];
+		var college2s = $('input[name=school_college2]');
+		for (var i = 0; i < college2s.length; i++) {
+			college2[i] = college2s.eq(i).val();
+		}
+		$('input[name=school_college2_send]').val(college2);
+		
+ 		var major = [];
+		var majors = $('input[name=school_major]');
+		for (var i = 0; i < majors.length; i++) {
+			major[i] = majors.eq(i).val();
+		}
+		$('input[name=school_major_send]').val(major);
+		
+		
+ 		var rank1 = [];
+		var rank1s = $('input[name=school_rank1]');
+		for (var i = 0; i < rank1s.length; i++) {
+			rank1[i] = rank1s.eq(i).val();
+		}
+		$('input[name=school_rank1_send]').val(rank1);
+		
+ 		var rank2 = [];
+		var rank2s = $('input[name=school_rank2]');
+		for (var i = 0; i < rank2s.length; i++) {
+			rank2[i] = rank2s.eq(i).val();
+		}
+		$('input[name=school_rank2_send]').val(rank2);		
+		
+		$('input[name=count]').val(count);
+
+    }
+	
 
 	function addForm() {
 
 		var addedFormDiv = document.getElementById("addedFormDiv");
-
 		var str = "";
 		str += count;
 		str += "<h5> 대학교 / 대학원 </h5>";
+
 		str += "<table class='table table-hover'  id='mytable' style='width:800px'>";
 		str += "<tr>";
 		str += "<th style='width:100px'>분류</th>";
 		str += "<td style='width: 520px'>";
-		str += "<input type='radio' name='school_kind' value='대학교'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
-		str += "<input type='radio' name='school_kind' value='대학원'/>&nbsp; 대학원";
+		str += "<input type='radio' id='school_kind_id' name='school_kind"+count+"'value='대학교'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
+		str += "<input type='radio' id='school_kind_id' name='school_kind"+count+"'value='대학원'/>&nbsp; 대학원";
 
 		str += "</td>";
-
+		str += "</tr>";
 		str += "<tr>";
 		str += "<th style='width:100px'>재학기간</th>";
 		str += "<td style='width: 520px'>";
@@ -146,7 +196,6 @@
 		str += "<option value='편입'>편입</option>";
 		str += "</select>&nbsp;&nbsp;";
 		str += "<select class='input' style='width: 120px' name='school_college2'>";
-
 		str += "<option value='졸업예정'>졸업예정</option>";
 		str += "<option value='졸업'>졸업</option>";
 		str += "<option value='재학중'>재학중</option>";
@@ -282,7 +331,7 @@
 	}
 
 	function conf_skill() {
-		var url = "confirm_skill.jsp";
+		var url = "confirm_skill.do";
 		open(url, "confrimWindow",
 				"menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
 	}
@@ -291,7 +340,7 @@
 
 <h2>이력서</h2>
 
-<input type="hidden" name="user_history_id" value="">
+<input type="hidden" name="user_history_id">
 
 <form name="resome" method="post" enctype="multipart/form-data" action="resome_Pro.do" >
 
@@ -416,7 +465,7 @@
 
 	<tr>
 		<th style="width:89px">보유기술</th>
-			<td colspan="2"> <input class="" name="skill" id="skill" type="text" style="width:460px" name="year2">
+			<td colspan="2"> <input class="" name="skill" id="skill" type="text" style="width:460px">
 				<input class="btn btn-default" type="button" value="검색" onclick="conf_skill()">
 			</td>
 	</tr>		
@@ -485,26 +534,26 @@
 
 <h5>고등학교</h5>
 <form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()">
-<input type="hidden" name="count" value="0">
-
-<input type="hidden" name="school_name_send">
-
-<!-- <input type="hidden" name="school_name">
-<input type="hidden" name="school_college1">
-<input type="hidden" name="school_college2">
-<input type="hidden" name="school_name">
-<input type="hidden" name="school_major">
-<input type="hidden" name="school_rank1">
-<input type="hidden" name="school_rank2"> -->
-
+	<input type="hidden" name="count" value="0">
+ 	<input type="hidden" name="school_name_send">
+	<input type="hidden" name="school_start_send">
+	<input type="hidden" name="school_last_send">
+	<input type="hidden" name="school_college1_send">
+	<input type="hidden" name="school_college2_send">
+	<input type="hidden" name="school_major_send">
+	<input type="hidden" name="school_rank1_send">
+	<input type="hidden" name="school_rank2_send">
+	<input type="hidden" name="school_kind_send">
+	
+	
 <table class="table table-hover" style="width:800px">
 	<tr>
 		<th style="width:100px">재학기간</th>
 			<td style="width: 520px">
-				<input class="" type="text" style="width:210px" name="school_start_date"> ~
-				<input class="" type="text" style="width:210px" name="school_last_date">
+				<input class="" type="text" style="width:210px" name="highschool_start_date"> ~
+				<input class="" type="text" style="width:210px" name="highschool_last_date">
 				
-				<select class="" style="width: 80px" name="school_college_high">
+				<select class="" style="width: 80px" name="highschool_college">
 					<option value="졸업">졸업</option>
 					<option value="졸업예정">졸업예정</option>		
 				</select>			
@@ -513,8 +562,8 @@
 	
 	<tr>		
 		<th>학교명</th>
-		<td> <input class="" type="text" style="width:200px" name="school_name" maxlength="3">
-			<select class="" style="width: 150px" name="school_name_kind">
+		<td> <input class="" type="text" style="width:200px" name="highschool_name">
+			<select class="" style="width: 150px" name="highschool_name_kind">
 				<option value="문과계열">문과계열</option>
 				<option value="이과계열">이과계열</option>		
 				<option value="전문(실업)계열">전문(실업)계열</option>
@@ -539,6 +588,7 @@
 	           </tr>
 	
 		</table> 
+		
 		 <div id="addedFormDiv"></div> <br>
 		
 <br>

@@ -28,37 +28,59 @@ public class User_SchoolProHandler implements Commandhandler {
 		
 		SchoolDataBean dto = new SchoolDataBean();
 		
-	  String school_name[] = request.getParameterValues("school_name");
-	  
-	  for(int i=0; i<school_name.length; i++) {
-	  
-	  System.out.println(school_name[i]);
-	  
-	  }
+		String school_name[] = request.getParameterValues("school_name");
+		String school_start_date[] = request.getParameterValues("school_start_date");
+		String school_last_date[] = request.getParameterValues("school_last_date");
+		String school_college1[] = request.getParameterValues("school_college1");
+		String school_college2[] = request.getParameterValues("school_college2");
+		String school_major[] = request.getParameterValues("school_major");
+		String school_rank1[] = request.getParameterValues("school_rank1");
+		String school_rank2[] = request.getParameterValues("school_rank2");
 		
-		dto.setSchool_name_kind(request.getParameter("school_name_kind"));
-		dto.setSchool_name(request.getParameter("school_name"));
-		dto.setSchool_kind(request.getParameter("school_kind"));
-		dto.setSchool_major(request.getParameter("school_major"));
-		dto.setSchool_college1(request.getParameter("school_college1"));
-		dto.setSchool_college2(request.getParameter("school_college2"));
-		dto.setSchool_start_date(request.getParameter("school_start_date"));
-		dto.setSchool_last_date(request.getParameter("school_last_date"));
+		dto.setSchool_name(request.getParameter("highschool_name"));
+		dto.setSchool_start_date(request.getParameter("highschool_start_date"));
+		dto.setSchool_last_date(request.getParameter("highschool_last_date"));
+		dto.setSchool_college_high(request.getParameter("highschool_college"));
+		dto.setSchool_name_kind(request.getParameter("highschool_name_kind"));
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
-		dto.setLast_date(new Timestamp(System.currentTimeMillis()));			
-		
-		String school_rank = null;
-		String school_rank1 = request.getParameter("school_rank1");
-		System.out.println(request.getParameter("school_rank1"));
-		String school_rank2 = request.getParameter("school_rank2");
-		school_rank = school_rank1 + "/" + school_rank2;
-		
-		dto.setSchool_rank(request.getParameter("school_rank"));
+		dto.setLast_date(new Timestamp(System.currentTimeMillis()));	
 		
 		int result = dao.insertArticle_sc( dto );	
-		
+
 		request.setAttribute( "result", result );
-		
+	
+		for(int i=0; i<school_name.length; i++) {
+		  
+			dto.setSchool_name(school_name[i]);
+			dto.setSchool_kind(request.getParameter("school_kind"+(i+1)));
+
+			dto.setSchool_major(school_major[i]);
+			dto.setSchool_college1(school_college1[i]);
+			dto.setSchool_college2(school_college2[i]);
+			dto.setSchool_start_date(school_start_date[i]);
+			dto.setSchool_last_date(school_last_date[i]);
+			dto.setSchool_name_kind(null);
+			dto.setSchool_college_high(null);
+
+			dto.setReg_date(new Timestamp(System.currentTimeMillis()));
+			dto.setLast_date(new Timestamp(System.currentTimeMillis()));
+			
+			
+			for (int j=0; j<school_rank1.length; j++) {
+			
+				String school_rank = null;
+						
+				school_rank = school_rank1[j] + "/" + school_rank2[j];
+			
+				dto.setSchool_rank(school_rank);
+			
+			}
+			
+			result = dao.insertArticle_sc( dto );	
+			
+			request.setAttribute( "result", result );
+			
+		}
 		return new ModelAndView( "/FJ_USER/school_Pro" );
 	}
 }

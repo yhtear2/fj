@@ -54,6 +54,8 @@
 
         var addedFormDiv = document.getElementById("addedFormDiv");
         
+        
+        
         var str = "";
 		str +=count;      
         str +="<table>";
@@ -67,8 +69,8 @@
         str +="    				<input class='input' type='date' style='width:165px' name='year1' maxlength='3'> ~";
         str +="    				<input class='input' type='date' style='width:165px' name='year2' maxlength='3'>";
         str +="    				<select class='input' style='width: 80px' name='shcool'>			";	
-        str +="    					<option value='naver.com'>퇴사</option>";
-        str +="    					<option value='daum.net'>재직중</option>		";
+        str +="    					<option value='퇴사'>퇴사</option>";
+        str +="    					<option value='재직중'>재직중</option>		";
         str +="    				</select>";		
         str +="    			</td>";
         str +="    	</tr>";
@@ -76,30 +78,30 @@
         str +="    		<th>부서명 : </th>";
         str +="	<td style='width: 520px'><input class='input' type='text' style='width: 250px' name='tel1' maxlength='3'>";
         str +="    			<select class='input' style='width: 80px' name='shcool'>";				
-        str +="    				<option value='naver.com'>직급선택</option>";
-        str +="    				<option value='daum.net'>사원(연구원)</option>";
-        str +="    				<option value='daum.net'>주임/계장(연구원)</option>";		
-        str +="    				<option value='daum.net'>대리(주임연구원)</option>";
-        str +="   				<option value='daum.net'>과장(선임연구원)</option>";
-        str +="   				<option value='daum.net'>차장(수석연구원)</option>";
-        str +="   				<option value='daum.net'>부장(연구소장)</option>";
-        str +="   				<option value='daum.net'>임원</option>";
+        str +="    				<option value='직급선택'>직급선택</option>";
+        str +="    				<option value='사원'>사원(연구원)</option>";
+        str +="    				<option value='주임/계장(연구원)'>주임/계장(연구원)</option>";		
+        str +="    				<option value='대리(주임연구원)'>대리(주임연구원)</option>";
+        str +="   				<option value='과장(선임연구원)'>과장(선임연구원)</option>";
+        str +="   				<option value='차장(수석연구원)'>차장(수석연구원)</option>";
+        str +="   				<option value='부장(연구소장)'>부장(연구소장)</option>";
+        str +="   				<option value='임원'>임원</option>";
         str +="    			</select>";
         str +="    			<select class='input' style='width: 80px' name='shcool'>";				
-        str +="    				<option value='naver.com'>직책선택</option>";
-        str +="<option value='daum.net'>팀원</option>";
-        str +="<option value='daum.net'>팀장</option>";		
-        str +="<option value='daum.net'>매니저</option>";
-        str +="<option value='daum.net'>파트장</option>";
-        str +="<option value='daum.net'>실장</option>";
-        str +="<option value='daum.net'>지점장</option>";
-        str +="<option value='daum.net'>지사장</option>";
-        str +="<option value='daum.net'>원장</option>";
-        str +="<option value='daum.net'>국장</option>";
-        str +="<option value='daum.net'>본부장</option>";
-        str +="<option value='daum.net'>센터장</option>";
-        str +="<option value='daum.net'>공장장</option>";
-        str +="<option value='daum.net'>그룹장</option>";
+        str +="    				<option value='직책선택'>직책선택</option>";
+        str +="<option value='팀원'>팀원</option>";
+        str +="<option value='팀장'>팀장</option>";		
+        str +="<option value='매니저'>매니저</option>";
+        str +="<option value='파트장'>파트장</option>";
+        str +="<option value='실장'>실장</option>";
+        str +="<option value='지점장'>지점장</option>";
+        str +="<option value='지사장'>지사장</option>";
+        str +="<option value='원장'>원장</option>";
+        str +="<option value='국장'>국장</option>";
+        str +="<option value='본부장'>본부장</option>";
+        str +="<option value='센터장'>센터장</option>";
+        str +="<option value='공장장'>공장장</option>";
+        str +="<option value='그룹장'>그룹장</option>";
         str +="</select>			";
         str +="	</td>";
         str +="</tr>";	
@@ -192,6 +194,7 @@
 </script>
 
 <h2> 경력사항 </h2>
+${sessionScope.userhistoryid};
 <table>
 	<tr>
 		<th> 신입 / 경력 </th>
@@ -223,30 +226,30 @@
 		<th>부서명 : </th>
 		<td style="width: 520px"><input class="input" type="text" style="width: 250px" name="tel1" maxlength="3">
 			<select class="input" style="width: 80px" name="shcool">				
-				<option value="naver.com">직급선택</option>
-				<option value="daum.net">사원(연구원)</option>
-				<option value="daum.net">주임/계장(연구원)</option>		
-				<option value="daum.net">대리(주임연구원)</option>
-				<option value="daum.net">과장(선임연구원)</option>
-				<option value="daum.net">차장(수석연구원)</option>
-				<option value="daum.net">부장(연구소장)</option>
-				<option value="daum.net">임원</option>
+				<option value="직급선택">직급선택</option>
+				<option value="사원(연구원)">사원(연구원)</option>
+				<option value="주임/계장(연구원)">주임/계장(연구원)</option>		
+				<option value="대리(주임연구원)">대리(주임연구원)</option>
+				<option value="과장(선임연구원)">과장(선임연구원)</option>
+				<option value="차장(수석연구원)">차장(수석연구원)</option>
+				<option value="부장(연구소장)">부장(연구소장)</option>
+				<option value="임원">임원</option>
 			</select>
 			<select class="input" style="width: 80px" name="shcool">				
-				<option value="naver.com">직책선택</option>
-				<option value="daum.net">팀원</option>
-				<option value="daum.net">팀장</option>		
-				<option value="daum.net">매니저</option>
-				<option value="daum.net">파트장</option>
-				<option value="daum.net">실장</option>
-				<option value="daum.net">지점장</option>
-				<option value="daum.net">지사장</option>
-				<option value="daum.net">원장</option>
-				<option value="daum.net">국장</option>
-				<option value="daum.net">본부장</option>
-				<option value="daum.net">센터장</option>
-				<option value="daum.net">공장장</option>
-				<option value="daum.net">그룹장</option>
+				<option value="직책선택">직책선택</option>
+				<option value="팀원">팀원</option>
+				<option value="팀장">팀장</option>		
+				<option value="매니저">매니저</option>
+				<option value="파트장">파트장</option>
+				<option value="실장">실장</option>
+				<option value="지점장">지점장</option>
+				<option value="지사장">지사장</option>
+				<option value="원장">원장</option>
+				<option value="국장">국장</option>
+				<option value="본부장">본부장</option>
+				<option value="센터장">센터장</option>
+				<option value="공장장">공장장</option>
+				<option value="그룹장">그룹장</option>
 			</select>			
 		</td>
 	</tr>	
@@ -307,6 +310,6 @@
 <div>
 	<tr>
 		<th colspan="2"> </th>
-		<td> <input  class="inputbutton"  type="button" value="이력서 수정" onclick="window.location='resume.jsp'"></td>
+		<td> <input  class="inputbutton"  type="button" value="이력서 수정" onclick="window.location='resome.do'"></td>
 	</tr>
 </div>
