@@ -20,5 +20,9 @@ public class UserDBBean implements UserDao {
 		
 		return sqlSession.insert( "User.insertArticle_sc", dto );
 		
-	}		
+	}	
+	
+	public UserDataBean getUser_history_id(int user_history_id) {
+		return sqlSession.selectOne("User.getUser_history_id", user_history_id);
+	}
 }

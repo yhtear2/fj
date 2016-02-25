@@ -174,6 +174,7 @@
 
 		var addedFormDiv = document.getElementById("addedFormDiv");
 		var str = "";
+
 		str += count;
 		str += "<h5> 대학교 / 대학원 </h5>";
 
@@ -334,18 +335,17 @@
 		var url = "confirm_skill.do";
 		open(url, "confrimWindow",
 				"menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
+
 	}
 //-->
 </script>
 
 <h2>이력서</h2>
 
-<input type="hidden" name="user_history_id">
 
 <form name="resome" method="post" enctype="multipart/form-data" action="resome_Pro.do" >
-
+<%-- //<input type="hidden" name="user_history_id" value="${user_history_id}"> --%>
 <h3>이력서제목</h3>
-
 <table class="table table-hover">
 	<tr>
 		<td style="width:100px"><input class="form-control" type="text" name="resome_title" style="width: 650px" maxlength="40"></td>			
