@@ -14,7 +14,7 @@ public interface BoardDao {
 		
 		public void addCount(int board_num);
 		public int updateArticle(BoardDataBean dto);   
-	//	public int checkArticle(int num, String passwd);
+//		public int checkArticle(int board_num);
 		public int deleteArticle(int num);     
 		
 		 

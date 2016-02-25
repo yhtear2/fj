@@ -9,7 +9,7 @@ import dao.SqlMapClient;
 import dto.board.BoardDataBean;
 
 
-
+ 
 public class BoardDBBean implements BoardDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	
@@ -103,11 +103,26 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		}						
 		return result;
 	}
+}
+	/*
+	public int checkArticle(int board_num)
+	{
 	
+		BoardDataBean dto = getArticle(board_num);
+		int result = 0;  
+		if(  
+		{
+			result = 1;
+		}else
+		{
+			result = 0;
+		}
+		return result;
+	}
 
 	
 
 	
 	
-} // class
+} // class  */
 

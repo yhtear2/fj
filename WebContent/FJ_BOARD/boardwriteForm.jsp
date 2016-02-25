@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- include setting.jsp -->
-<%@ include file="/defaultSetting.jsp"%>
+
 <%@ include file="setting.jsp"%>
   
  
@@ -44,14 +44,14 @@
 			</fieldset>  
 			<!-- 제목을 입력하는 부분 -->
 			<div class="form-group has-feedback">
-				<input type="text" name="subject" placeholder="제목을 입력해 주세요." class="form-control" id="subject" maxlength="100" value="${subject}" >
+				<input type="text" name="subject" placeholder="제목을 입력해 주세요." class="form-control" id="subject" maxlength="100">
 			</div>
 			  
 			<!-- 태그를 입력하는 부분 -->
       
 			<div id="wrapper">   
 				<div id="content"> 
-					<ul id="myTags">
+					<ul id="myTags">   
 					</ul>    
 				</div>
 			</div>   
@@ -63,11 +63,11 @@
 			</div>           
 			 
 			
-		  
+		   
 			<!-- 글쓰기 등록 및 취소부분 --> 
 			<div class="nav" role="navigation">
 				<fieldset class="buttons">
-				<a href="list.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 
+				<a href="boardlist.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 
 				  
 					<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" value="${btn_write}" > 
 					

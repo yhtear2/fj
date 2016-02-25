@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ include file = "/defaultSetting.jsp" %>   
 <%-- 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -39,7 +40,7 @@
 <c:set var="page_list" value="글 목 록"/>
 <c:set var="page_write" value="글 작 성"/>
 <c:set var="page_content" value="글 보 기"/>
-<c:set var="page_modify" value="글 수 정"/>
+<c:set var="page_modify" value="글 수 정"/>  
 <c:set var="page_delete" value="글 삭 제"/>	
 <c:set var="page_default" value="기본 페이지"/>
 
@@ -67,11 +68,10 @@
 <c:set var="btn_reply" value="등록 "/> 
 <c:set var="btn_cancel" value="취소"/>  
 <c:set var="btn_list" value="목록보기"/>
-<c:set var="btn_modify" value="글수정"/>
+<c:set var="btn_modify" value="수정"/>
 <c:set var="btn_delete" value="글삭제"/>
 <c:set var="btn_re_count" value="댓글쓰기"/>
-<c:set var="btn_modify_cancel" value="수정취소"/>
-<c:set var="btn_delete_cancel" value="삭제취소"/>
+
 
 
 

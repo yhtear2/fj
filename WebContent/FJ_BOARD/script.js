@@ -20,26 +20,37 @@ function erroralert( msg ) {
 
 
 // 글수정
-/*
 function modifyfocus() {
 	modifyform.subject.focus();	
 }
-function modifycheck() {
-	if( ! modifyform.subject.value ) {
+function modifycheck_check() {
+	if( ! modifyform.category.value ) {
+		alert( msg_category ); 
+		modifyform.category.focus();
+		return false; 
+	} if( ! modifyform.subject.value ) {
 		alert( msg_subject );
 		modifyform.subject.focus();
-		return false;
-	} else if( ! modifyform.content.value ) {
-		alert( msg_content );
+		return false;   
+		
+	} 
+	/*
+	if( ! modifyform.content.value ) {
+		alert( msg_content );   
 		modifyform.content.focus();
 		return false;
-	} else if( ! modifyform.passwd.value ) {
+	} 
+	*/ 
+	
+	/*
+	else if( ! modifyform.passwd.value ) {
 		alert( msg_passwd );
 		modifyform.passwd.focus();
 		return false;
-	}	
+	}	 
+	*/ 
 }
-*/
+
 /*
 function passwdfocus() {
 	passwdform.passwd.focus();
@@ -71,7 +82,7 @@ function writecheck_check() {
 	}
 	// 글 에디터가 넘기는 거야
 	$('input[name=content]').val( $('#summernote').summernote('code') );
-	
+	 
 	/*
 	if( ! $('#summernote').value)
 		{

@@ -10,7 +10,7 @@
 
 		<div id="article" class="content" role="main"> 
             <div class="nav" role="navigation"> 
-                <a href="/fj/boardwriteForm.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 글쓰기 </a>
+                <a href="boardwriteForm.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 글쓰기 </a>
 
                 <h4> 자유게시판 </h4>
             </div>
@@ -150,17 +150,19 @@
 						class="btn-facebook-share"><i
 						class="fa fa-facebook-square fa-fw" data-toggle="tooltip"
 						data-placement="left" title="" data-original-title="페이스북 공유"></i></a>
-					  </div>
-
+					  </div>  
+   
                         <!-- 게시물 수정 및 삭제버튼기능 -->
                         <div class="dropdown">
                             <form action="/fj/boarddeletePro.do" method="post" name="article-delete-form" id="article-delete-form"><input type="hidden" name="_method" value="DELETE" id="_method">
                                 <div class="dropdown"> 
                                     <a href="javascript://" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
-                                    <ul class="dropdown-menu" role="menu"> 
-                                        <li><a href="/fj/boardmodifyForm.do" class="edit"><i class="fa fa-edit fa-fw"></i> 수정 </a></li>
-                                        
-                                            <li><a href="javascript://" onclick="alert('댓글이 있는 글은 삭제하실 수 없습니다.');"><i class="fa fa-trash-o fa-fw"></i> 삭제 </a></li> 
+                                    <ul class="dropdown-menu" role="menu">  
+                                        <li><a href="boardmodifyView.do?board_num=${dto.board_num}&pageNum=${pageNum}" class="edit"><i class="fa fa-edit fa-fw"></i>${btn_modify}</a></li> 
+                                        	<!--  
+                                            <li><a href="javascript://" onclick="alert('댓글이 있는 글은 삭제하실 수 없습니다.');"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li> 
+                                            --> 
+                                            <li><a href="boarddeleteForm.do?board_num=${dto.board_num}&pageNum=${pageNum}"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li>  
                                         
                                     </ul>
                                 </div>
@@ -293,7 +295,7 @@
                                         
                             <!-- 작성자 이미지  -->
 							<div class="avatar avatar-medium clearfix ">
-								<a href="/user/info/40879" class="avatar-photo"><img
+								<a href="유저정보 경로주기" class="avatar-photo"><img
 									src="//www.gravatar.com/avatar/ea033f92e21318820a45c9bb5ca83403?d=identicon&amp;s=40"></a>
 									
 								<!-- 작성자 표시구간 (board_num 은 임시차원 생성)-->

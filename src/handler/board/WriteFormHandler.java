@@ -42,7 +42,7 @@ public class WriteFormHandler implements Commandhandler{
 		request.setAttribute( "re_step", re_step );
 		request.setAttribute( "re_level", re_level );
 		*/
-		
+		   
 		
 		int board_num = 0;
 		int re_step = 0;
