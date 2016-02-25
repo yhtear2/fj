@@ -25,10 +25,10 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		int board_num = dto.getBoard_num();
 		int re_step = dto.getRe_step();
 		int re_count = dto.getRe_count();
-		int category = dto.getCategory();
-		String hstag = dto.getHstag(); 
-		String subject = dto.getSubject();
-		String content = dto.getContent();
+		//int category = dto.getCategory();
+		//String hstag = dto.getHstag(); 
+		//String subject = dto.getSubject();
+		//String content = dto.getContent();
 		
 	
 		
@@ -38,6 +38,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			int count = getCount();
 			if(count > 0)
 			{  
+				System.out.println(1); 
 				int maxNum = sqlSession.selectOne("FJ_BOARD.getMaxNum");
 				board_num = maxNum + 1;
 				
@@ -50,20 +51,15 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			}
 		}
 	
-		
-		String sql = null;
-		
-		 
-		
 		// set 으로 우선 호출한다   
 		dto.setBoard_num(board_num);
 		dto.setRe_step(re_step);
 		dto.setRe_count(re_count); 
-		dto.setCategory(category);
-		dto.setSubject(subject);
-		dto.setContent(content);
-		dto.setHstag(hstag);
-		
+		//dto.setCategory(category);
+		//dto.setSubject(subject);
+		//dto.setContent(content);
+		//dto.setHstag(hstag);   
+		System.out.println("content : " + dto.getContent());
 		return sqlSession.insert("FJ_BOARD.insertArticle", dto);  
 		 	
 	}

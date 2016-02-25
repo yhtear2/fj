@@ -10,9 +10,11 @@
 	</select>  
 
 	<insert id="insertArticle">
-		insert into fj_board_free( board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count,
-			re_step, category, reg_date) values(fj_board_free_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, #{subject}, #{content}, #{hstag, jdbcType=VARCHAR}, #{re_count}, 
-			#{scrap_count}, #{recom_count}, #{bad_count}, #{read_count}, #{re_step}, #{category}, #{reg_date})  
+		insert into fj_board_free( 
+			board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date) 
+			values(
+			fj_board_free_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, #{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR},
+			#{hstag, jdbcType=VARCHAR}, #{re_count}, #{scrap_count}, #{recom_count}, #{bad_count}, #{read_count}, #{re_step}, #{category}, #{reg_date})  
 	</insert>
 	  
 	<update id="updateArticle" parameterType="dto.board.BoardDataBean">
@@ -46,7 +48,7 @@
 			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
 			order by board_num desc, re_step asc) where rn &gt; = #{start} and rn &lt; = #{end} 
 	</select>
-	
+	  
 	<update id="updateReply" parameterType="dto.board.BoardDataBean">
 	 	update fj_board_free set re_step=re_step+1 where board_num= #{board_num} and re_step &gt; #{re_step}
 	 </update>

@@ -59,7 +59,7 @@ function passwdcheck() {
 function subjectfocus() {
 	writeform.subject.focus();
 }
-function writecheck() {
+function writecheck_check() {
 	if( ! writeform.category.value ) {
 		alert( msg_category );
 		writeform.category.focus();
@@ -68,7 +68,10 @@ function writecheck() {
 		alert( msg_subject );
 		writeform.subject.focus();
 		return false;
-	}       
+	}
+	// 글 에디터가 넘기는 거야
+	$('input[name=content]').val( $('#summernote').summernote('code') );
+	
 	/*
 	if( ! $('#summernote').value)
 		{

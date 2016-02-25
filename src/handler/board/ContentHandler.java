@@ -33,7 +33,7 @@ public class ContentHandler implements Commandhandler {
 		String pageNum = request.getParameter( "pageNum" );
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 		int number = Integer.parseInt( request.getParameter( "number" ) );
-
+		 
 		BoardDataBean dto = dao.getArticle( board_num ); 
 		
 		/*
