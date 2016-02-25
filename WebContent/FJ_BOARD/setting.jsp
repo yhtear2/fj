@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%-- 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+    --%>
+       
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon"
 	href="http://okky.kr/assets/favicon-4ddd8035b72404da5a8c298cbaacad86.ico"
@@ -20,11 +22,12 @@
 
 <link rel="stylesheet"
 	href="http://okky.kr/assets/application-178a471b205e52821f985abddea1ac34.css">
+ 
 
 <!--[if lt IE 9]>
             <script src="http://okky.kr/assets/libs/html5-ca664f64318d191265abf57fdf467aec.js" type="text/javascript" ></script>
         <![endif]-->
-        
+
 <meta name="layout" content="main">
 
 <style type="text/css"></style>   

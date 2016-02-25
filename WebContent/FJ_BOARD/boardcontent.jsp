@@ -1,25 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 
-<%@ include file="setting.jsp" %>
+<%@ include file="/defaultSetting.jsp" %>
+<%@ include file="setting.jsp" %>   
+
 <!DOCTYPE html>
-<!-- 글쓰기 에디터 불러오기 -->
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-
-
-<script src="script.js"></script> 
 
 <title>人 코딩 - 자유게시판</title> 
-
-
-
- 
 
 		<div id="article" class="content" role="main"> 
             <div class="nav" role="navigation"> 
@@ -329,8 +316,9 @@
 									 
 									
                                     <fieldset class="form">
-                                    <textarea name="note.text" id="note-create" placeholder="댓글 쓰기" class="form-control" rows="15">
-                                    ${dto.content}  
+                                    <textarea name="content" id="note-create" placeholder="댓글 쓰기" class="form-control" rows="15">
+                                    
+									${dto.content}	                                       
                                     </textarea>
                                     
 								   </fieldset>   
@@ -339,7 +327,7 @@
                        		</div> 
                        			
                        			
-                       			<!-- 댓글 등록 및 취소구간 --> 
+                       			<!-- 댓글 등록 및 취소구간 -->  
                                 <div class="content-function-cog note-submit-buttons clearfix">
                                     <p><a href="javascript://" id="note-create-cancel-btn" class="btn btn-default btn-wide" style="">${btn_cancel}</a></p>
                                     <input type="submit" name="create" class="create btn btn-success btn-wide wide" value="${btn_reply}"> 

@@ -30,13 +30,11 @@ public class WriteProHandler implements Commandhandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		request.setCharacterEncoding( "utf-8" );
 		
-		System.out.println( request.getParameter("board_num"));  
-	//	System.out.println( request.getParameter("category"));  
-	//	System.out.println( (String)request.getParameter( "subject" ) );
-	//	System.out.println( (String)request.getParameter("content"));
+		
+		
 		//BoardDataBean dto = new BoardDataBean();
 		//dto.setSubject( (String) request.getParameter( "subject" ) );
-		//int result = dao.insertArticle( dto ); 
+		//int result = dao.insertArticle( dto );    
 		
 		BoardDataBean dto = new BoardDataBean();
 		dto.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
@@ -48,11 +46,12 @@ public class WriteProHandler implements Commandhandler {
 		dto.setBad_count(Integer.parseInt(request.getParameter("bad_count")));
 		dto.setCategory(Integer.parseInt(request.getParameter("category")));
 		dto.setSubject((String)request.getParameter("subject"));
-		dto.setContent((String)request.getParameter("content"));  
+		dto.setContent(request.getParameter("content"));      
 		dto.setHstag((String)request.getParameter("hstag"));
 		dto.setEmail((String)request.getParameter("email"));
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
+		System.out.println("여기는? : " + dto.getContent());
 		int result = dao.insertArticle(dto); 
 		request.setAttribute("result", result);
 		
