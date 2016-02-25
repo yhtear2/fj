@@ -50,13 +50,18 @@
 		<!-- main_menu2는 사이드바의 상세메뉴 - 평소에는 z-index:0으로 숨겨져있다 -->
 		<div class="main_menu2">
 			<!-- 개인회원, 기업회원, 관리자가 서로 다른 메뉴가 나오게 변경 -->
-			<c:if test=""></c:if>
-			<a href="#" onclick="window.location='main.do'">회원정보 수정</a>
+			<c:if test="${sessionScope.member_flag == 1}">
+			<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
 			<a href="#" onclick="window.location='main.do'">이력서 관리</a>
 			<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
 			<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			</c:if>
+			<c:if test="${sessionScope.member_flag == 2}">
+			<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
 			<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
 			<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
+			<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			</c:if>
 		</div>
 		<div class="main_menu2">
 			<a href="#" onclick="window.location='list.do'">공지사항</a><br>
