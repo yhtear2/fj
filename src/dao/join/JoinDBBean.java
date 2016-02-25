@@ -68,19 +68,14 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		}			
 		return result;
 	}
-	
-	
-	
+
 	public int deleteMember( String email ) {
 		return sqlSession.delete( "Join.deleteMember", email );
 	}
-	
 
 	public JoinDataBean getMember( String email ) {
 		return sqlSession.selectOne( "Join.getMember", email );
 	}
-
-	
 	
 	public int updateMember( JoinDataBean dto ) {
 		return sqlSession.update( "Join.updateMember", dto);
