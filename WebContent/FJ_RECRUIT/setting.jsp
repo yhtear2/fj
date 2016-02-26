@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="/defaultSetting.jsp"%>
+<link href="/fj/FJ_RECRUIT/recruit.css" rel="stylesheet" type="text/css">
+<script src="/fj/FJ_RECRUIT/recruit.js"></script>
        
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon"
