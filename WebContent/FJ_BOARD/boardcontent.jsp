@@ -81,7 +81,11 @@
                             <i class="fa fa-comments"></i>
                             ${dto.category}
                             </a>
-                        </div>
+                             <a href="해쉬태그 경로"
+							class="list-group-item-text item-tag label label-gray">${dto.hstag}</a>
+   
+						</div>
+						
                         <!-- 해당 글제목 보여지는 부분 (h2 태그였는데 우선 보류) -->
                         <a class="panel-title">
                         ${dto.subject}
@@ -154,7 +158,7 @@
    
                         <!-- 게시물 수정 및 삭제버튼기능 -->
                         <div class="dropdown">
-                            <form action="/fj/boarddeletePro.do" method="post" name="article-delete-form" id="article-delete-form"><input type="hidden" name="_method" value="DELETE" id="_method">
+                            <form action="boarddeletePro.do" method="post" name="article-delete-form" id="article-delete-form"><input type="hidden" name="_method" value="DELETE" id="_method">
                                 <div class="dropdown"> 
                                     <a href="javascript://" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
                                     <ul class="dropdown-menu" role="menu">  
@@ -162,7 +166,9 @@
                                         	<!--  
                                             <li><a href="javascript://" onclick="alert('댓글이 있는 글은 삭제하실 수 없습니다.');"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li> 
                                             --> 
-                                            <li><a href="boarddeleteForm.do?board_num=${dto.board_num}&pageNum=${pageNum}"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li>  
+                                            <li>
+                                            <a href="javascript://" onclick="deletewrite();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            </li>  
                                         
                                     </ul>
                                 </div>

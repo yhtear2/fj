@@ -46,7 +46,7 @@ public class ContentHandler implements Commandhandler {
 		
 		map.put("number", number);
 		map.put("pageNum", pageNum);
-		map.put("board_num", board_num);
+		map.put("board_num", board_num); 
 		map.put( "dto", dto );
 		
 		

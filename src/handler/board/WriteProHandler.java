@@ -27,11 +27,17 @@ public class WriteProHandler implements Commandhandler {
 	@RequestMapping("/boardwritePro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		Map<String, Object> map = new HashMap<String, Object>();
+		
 		request.setCharacterEncoding( "utf-8" );
 		
 		
-		
+		String tags[] = request.getParameterValues("tags");   
+		String hstag =null;
+		//  마지막에 , 으로 되는거 split 으로 자르던가 아니면 막게 해주자 (추후 구현 할 것)
+		for (int i=0; i<tags.length; i++){
+			hstag += tags[i] + ",";
+		}
+		System.out.println(hstag);
 		//BoardDataBean dto = new BoardDataBean();
 		//dto.setSubject( (String) request.getParameter( "subject" ) );
 		//int result = dao.insertArticle( dto );    
@@ -44,16 +50,24 @@ public class WriteProHandler implements Commandhandler {
 		dto.setRead_count(Integer.parseInt(request.getParameter("read_count"))); 
 		dto.setRecom_count(Integer.parseInt(request.getParameter("recom_count")));
 		dto.setBad_count(Integer.parseInt(request.getParameter("bad_count")));
-		dto.setCategory(Integer.parseInt(request.getParameter("category")));
+		dto.setCategory((String)request.getParameter("category"));     
 		dto.setSubject((String)request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));      
-		dto.setHstag((String)request.getParameter("hstag"));
+		dto.setHstag((String)request.getParameter("hstag"));   
 		dto.setEmail((String)request.getParameter("email"));
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		
-		System.out.println("여기는? : " + dto.getContent());
-		int result = dao.insertArticle(dto); 
-		request.setAttribute("result", result);
+		System.out.println();
+		
+		
+		
+	//	request.setAttribute("result", result);
+		
+		 
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int result = dao.insertArticle(dto);  
+		map.put("result", result); 
 		
 		map.put("page", "/FJ_BOARD/boardwritePro");
 		return new ModelAndView("/FJ_MAIN/main", map);

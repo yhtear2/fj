@@ -6,17 +6,17 @@
 <%@ include file="setting.jsp"%>
 <script src="script.js"></script>
 
-<h2> ${page_write} </h2>
+<h2> 테스트페이지 </h2>
 
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
 		erroralert( writeerror );
-		//--> 
+		//-->      
 	</script>
-</c:if>
+</c:if> 
 <c:if test="${result != 0}"> 	
-	<c:redirect url="boardlist.do"/>  
+	<c:redirect url="boardlist.do"/>   
 </c:if>
    
 

@@ -25,8 +25,8 @@
 		<input type="hidden" name="bad_count" value="${bad_count}">
 		<input type="hidden" name="read_count" value="${read_count}">
 		<input type="hidden" name="scrap_count" value="${scrap_count}">
-		<input type="hidden" name="content" value="">   
-		<input type="hidden" name="hstag" value="">   
+		<input type="hidden" name="content" value="${content}">   
+		<input type="hidden" name="hstag" value="${hstag}">    
 		 
 			 <!--  <input type="hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
@@ -34,11 +34,11 @@
 				<div class="form-group  has-feedback">
 						<select id="category" name="category" class="form-control" > 
 							<option value="${category}" >게시판을 선택해 주세요.</option> 
-							<option value="1">카테고리 테스트1</option> 
-							<option value="2">카테고리 테스트2</option>
-							<option value="3">카테고리 테스트3</option> 
-							<option value="4">카테고리 테스트4</option>
-							<option value="5">카테고리 테스트5</option>
+							<option value="채용게시판">채용게시판</option> 
+							<option value="건의사항">건의사항</option>
+							<option value="정보나눔">정보나눔</option> 
+							<option value="스터디모집">스터디모집</option>
+							<option value="나만의 홍보">나만의 홍보</option>
 						</select>
 				</div> 
 			</fieldset>  
@@ -48,10 +48,13 @@
 			</div>
 			  
 			<!-- 태그를 입력하는 부분 -->
-      
+       
 			<div id="wrapper">   
 				<div id="content"> 
 					<ul id="myTags">   
+						<li>
+						${dto.hstag}
+						</li>
 					</ul>    
 				</div>
 			</div>   

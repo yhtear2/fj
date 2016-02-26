@@ -15,8 +15,15 @@ public class BoardDataBean {
 	private int bad_count;   // 싫어요 수 
 	private int read_count;  // 읽은 수 
 	private int re_step;    // 게시글의 구분
-	private int category;   // 카테고리
+	private String category;   // 카테고리
 	private Timestamp reg_date; // 작성날짜 
+	
+	public String getCategory() {
+		return category;
+	} 
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -36,11 +43,11 @@ public class BoardDataBean {
 		this.content = content;
 	}
 	public String getHstag() {
-		return hstag;
+		return hstag; 
 	}
 	public void setHstag(String hstag) {
 		this.hstag = hstag;
-	}
+	} 
 	public int getBoard_num() {
 		return board_num;
 	}
@@ -83,18 +90,14 @@ public class BoardDataBean {
 	public void setRe_step(int re_step) {
 		this.re_step = re_step;
 	}
-	public int getCategory() {
-		return category;
-	}
-	public void setCategory(int category) {
-		this.category = category;
-	}
+	
 	public Timestamp getReg_date() {
 		return reg_date;
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
+	
 	
 }
 	

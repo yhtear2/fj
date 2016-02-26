@@ -11,7 +11,7 @@
 	alert(updateerror);
 	//-->
 	</script>
-	<meta http-equiv="refresh" content="0; url=boardlist.do?pageNum=${pageNum}">
+	<meta http-equiv="refresh" content="0; url=boardlist.jsp?pageNum=${pageNum}">
 </c:if>
 
 <c:if test="${result != 0}">

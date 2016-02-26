@@ -38,7 +38,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			int count = getCount();
 			if(count > 0)
 			{  
-				System.out.println(1); 
+				System.out.println("board_num :" + dto.getBoard_num()); 
 				int maxNum = sqlSession.selectOne("FJ_BOARD.getMaxNum");
 				board_num = maxNum + 1;
 				
@@ -59,6 +59,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		//dto.setSubject(subject);
 		//dto.setContent(content);
 		//dto.setHstag(hstag);   
+		System.out.println("hstag : " + dto.getHstag());
 		System.out.println("content : " + dto.getContent());
 		return sqlSession.insert("FJ_BOARD.insertArticle", dto);  
 		 	
@@ -103,14 +104,15 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		}						
 		return result;
 	}
-}
+
+	
 	/*
 	public int checkArticle(int board_num)
 	{
 	
 		BoardDataBean dto = getArticle(board_num);
 		int result = 0;  
-		if(  
+		if(
 		{
 			result = 1;
 		}else
@@ -120,7 +122,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		return result;
 	}
 
-	
+	*/
 
 	
 	

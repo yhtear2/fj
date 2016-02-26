@@ -19,37 +19,7 @@ function erroralert( msg ) {
   
 
 
-// 글수정
-function modifyfocus() {
-	modifyform.subject.focus();	
-}
-function modifycheck_check() {
-	if( ! modifyform.category.value ) {
-		alert( msg_category ); 
-		modifyform.category.focus();
-		return false; 
-	} if( ! modifyform.subject.value ) {
-		alert( msg_subject );
-		modifyform.subject.focus();
-		return false;   
-		
-	} 
-	/*
-	if( ! modifyform.content.value ) {
-		alert( msg_content );   
-		modifyform.content.focus();
-		return false;
-	} 
-	*/ 
-	
-	/*
-	else if( ! modifyform.passwd.value ) {
-		alert( msg_passwd );
-		modifyform.passwd.focus();
-		return false;
-	}	 
-	*/ 
-}
+
 
 /*
 function passwdfocus() {
@@ -81,6 +51,7 @@ function writecheck_check() {
 		return false;
 	}
 	// 글 에디터가 넘기는 거야
+	$('input[name=hstag]').val($("#myTags").data("ui-tagit").tagInput.addClass("fancy"));
 	$('input[name=content]').val( $('#summernote').summernote('code') );
 	 
 	/*
@@ -107,6 +78,65 @@ function writecheck_check() {
 			
 }         
 
+//글수정
+function subjectfocus() { 
+	modifyview.subject.focus();	
+} 
+
+
+function modifycheck() {
+	alert("섬잇누르면 넘오오는곳");
+	if( ! modifyview.category.value ) {
+		alert( msg_category ); 
+		modifyview.category.focus();
+		return false; 
+	} if( ! modifyview.subject.value ) {
+		alert( msg_subject );
+		modifyview.subject.focus();
+		return false;   
+		
+	} 
+	
+	return false;   
+	$("#myTags").data("ui-tagit").tagInput.addClass("fancy");
+	$('input[name=content]').val( $('#summernote').summernote('code') );
+	/*
+	if( ! modifyform.content.value ) {
+		alert( msg_content );   
+		modifyform.content.focus();
+		return false;
+	} 
+	*/ 
+	
+	/*
+	else if( ! modifyform.passwd.value ) {
+		alert( msg_passwd );
+		modifyform.passwd.focus();
+		return false;
+	}	 
+	*/ 
+}
+
+
+// 글삭제 부분 
+function deletecontent()
+{
+	if (confirm("정말 삭제하시겠습니까??") == true)
+	{    //확인
+	    document.form.submit();
+	}else
+	{   //취소
+	    return;
+	}
+}
+
+
+
+
+
+
+
+
 
 ///////////////////////****************************////////////////////////////
 
@@ -121,6 +151,9 @@ $(document).ready(function() {
 		focus: true  // 포커스 有 
 		
 	});
+
+	var content = $('input[name=content').val();
+	$('#summernote').summernote('code', content);
 	
 	
 	/*
@@ -132,8 +165,6 @@ $(document).ready(function() {
 });
 
 
-
-	
 // -- 태그 관련 자바 스크립트 -- //
  $(function(){
     var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
@@ -209,6 +240,15 @@ $(document).ready(function() {
     });
     
 });
+ 
+	$(document).ready(function() {
+	    $("#myTags").tagit(); 
+	 
+	
+	 var hstag = $('input[name=hstag]').val();
+	 $('#myTags').data("ui-tagit").tagInput.addClass("fancy", hstag);
+	});  
+ 
  
 // 글내용 적기위한 onsubmit 처리 
  

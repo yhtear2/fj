@@ -23,7 +23,7 @@
 		<div class="content-header">  
 			<h3> 글수정 </h3>  
 		</div>
-	</div> 
+	</div>  
 	
 	<div class="panel-heading clearfix">
 		<div class="avatar avatar-medium clearfix pull-left">
@@ -69,7 +69,7 @@
                 </div> 
 	
 	<div class="panel-body"> 
-		<form action="boardmodifyPro.do" method="post" name="modifyform" onsubmit="return modifycheck_check()"> 
+		<form action="boardmodifyPro.do" method="post" name="modifyview" onsubmit="return modifycheck()"> 
 		<input type="hidden" name="board_num" value="${board_num}">
 		<input type="hidden" name="pageNum" value="${pageNum}">
 		<input type="hidden" name="re_step" value="${re_step}">
@@ -78,22 +78,27 @@
 		<input type="hidden" name="bad_count" value="${bad_count}">
 		<input type="hidden" name="read_count" value="${read_count}">
 		<input type="hidden" name="scrap_count" value="${scrap_count}">
-		<input type="hidden" name="content" value="">   
-		<input type="hidden" name="hstag" value="">   
+		<input type="hidden" name="content" value="${dto.content}">   
+		<input type="hidden" name="hstag" value="${dto.hstag}">   
 		 
 			 <!--  <input type="hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
 			<fieldset class="form">
 				<div class="form-group  has-feedback">
-						<select id="category" name="category" class="form-control" > 
-							<option value="${dto.category}" >게시판을 선택해 주세요.</option>  
-							<option value="1">카테고리 테스트1</option> 
-							<option value="2">카테고리 테스트2</option>
-							<option value="3">카테고리 테스트3</option> 
-							<option value="4">카테고리 테스트4</option>
-							<option value="5">카테고리 테스트5</option>
-						</select>
-				</div> 
+						<select id="category" name="category" class="form-control"> 
+							<option id="categoryselect" value="${dto.category}" >${dto.category}</option> 
+							<c:if test="${dto.category == '1'}"> <option value="1" selected="selected">채용게시판</option> </c:if>  
+							<c:if test="${dto.category != '1'}"> <option value="1">채용게시판</option> </c:if>
+							<c:if test="${dto.category == '1'}"> <option value="2" selected="selected">건의사항</option></c:if>
+							<c:if test="${dto.category != '1'}"> <option value="2">건의사항</option> </c:if>
+							<c:if test="${dto.category == '1'}"> <option value="3" selected="selected">정보나눔</option> </c:if>
+							<c:if test="${dto.category != '1'}"> <option value="3">정보나눔</option> </c:if>
+							<c:if test="${dto.category == '1'}"> <option value="2" selected="selected">스터디모집</option></c:if>
+							<c:if test="${dto.category != '1'}"> <option value="2">스터디모집</option> </c:if>
+							<c:if test="${dto.category == '1'}"> <option value="3" selected="selected">나만의 홍보</option> </c:if>
+							<c:if test="${dto.category != '1'}"> <option value="3">나만의 홍보</option> </c:if> 
+						</select> 
+				</div>   
 			</fieldset>  
 			<!-- 제목을 입력하는 부분 -->
 			<div class="form-group has-feedback">
@@ -105,8 +110,11 @@
 			<div id="wrapper">   
 				<div id="content"> 
 					<ul id="myTags">
+						<li> 
+						${dto.hstag} 
+						</li>
 					</ul>    
-				</div>
+				</div> 
 			</div>   
     
 
