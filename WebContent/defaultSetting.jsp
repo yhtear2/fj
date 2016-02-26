@@ -14,6 +14,8 @@
 
 <!-- common java script -->
 <script src="${project}/jquery-1.12.0.js"></script>
+<script src="${project}/jquery.cookie.js"></script>
+
 <script src="${js}/common.js"></script>
 <script src="/fj/FJ_BOARD/script.js"></script>   
 

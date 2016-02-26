@@ -3,9 +3,10 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@ include file="setting.jsp"%>
 <script src="/fj/FJ_USER/resome.js"></script>
-<script src="/fj/jquery-1.12.0.js"></script>
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/request.js"></script>
+<script src="/fj/jquery-1.12.0.js"></script>
+<script src="/fj/jquery.cookie.js"></script>
 
 
 <script type="text/javascript">
@@ -168,6 +169,30 @@
 		$('input[name=count]').val(count);
 
     }
+	
+	
+	$(function(){
+	    //최초 쿠키에 login_id라는 쿠키값이 존재하면
+	    var resome_title = $.cookie('resome_title');
+	    if(resome_title != undefined) {
+	        //아이디에 쿠키값을 담는다
+	        $("#resome_title").val(resome_title);
+
+	           
+	    }
+	    //로그인 버튼 클릭시
+	    $("#gaein_but").click(function(){
+	        //아이디 미입력시
+	        if($.trim($("#resome_title").val()) == "") {
+	            alert("아이디를 입력하세요");
+	            return;
+	        //아이디 입력시
+	        } else {
+	            //아이디저장 체크되어있으면 쿠키저장
+	                $.cookie('resome_title', $("#resome_title").val());
+	        }
+	    })
+	})
 	
 
 	function addForm() {
@@ -343,8 +368,8 @@
 <h2>이력서</h2>
 
 
-<form name="resome" method="post" enctype="multipart/form-data" action="resome_Pro.do" >
-<%-- //<input type="hidden" name="user_history_id" value="${user_history_id}"> --%>
+<form name="resome" method="post" enctype="multipart/form-data" action="career.do">
+
 <h3>이력서제목</h3>
 <table class="table table-hover">
 	<tr>
@@ -522,7 +547,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;	
-		<input  class="btn btn-default"  type="submit" value="개인정보 저장하기" style="width:200px"></td>
+		<input  class="btn btn-default"  type="submit" value="개인정보 저장하기" style="width:200px" id="gaein_but"></td>
 		
 	</table>	
 		
