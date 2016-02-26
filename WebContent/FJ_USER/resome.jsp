@@ -2,10 +2,11 @@
 	pageEncoding="UTF-8"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@ include file="setting.jsp"%>
-<script src="/fj/FJ_USER/resome.js"></script>
 <script src="/fj/jquery-1.12.0.js"></script>
+<script src="/fj/FJ_USER/resome.js"></script>
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/request.js"></script>
+<script src="/fj/jquery.cookie.js"></script>
 
 
 <script type="text/javascript">
@@ -39,72 +40,6 @@
 		
 
 
-	$.fn.setPreview = function(opt) {
-		"use strict"
-		var defaultOpt = {
-			inputFile : $(this),
-			img : null,
-			w : 200,
-			h : 200
-		};
-		$.extend(defaultOpt, opt);
-
-		var previewImage = function() {
-			if (!defaultOpt.inputFile || !defaultOpt.img)
-				return;
-
-			var inputFile = defaultOpt.inputFile.get(0);
-			var img = defaultOpt.img.get(0);
-
-			// FileReader
-			if (window.FileReader) {
-				// image 파일만
-				if (!inputFile.files[0].type.match(/image\//))
-					return;
-
-				// preview
-				try {
-					var reader = new FileReader();
-					reader.onload = function(e) {
-						img.src = e.target.result;
-						img.style.width = defaultOpt.w + 'px';
-						img.style.height = defaultOpt.h + 'px';
-						img.style.display = '';
-					}
-					reader.readAsDataURL(inputFile.files[0]);
-				} catch (e) {
-					// exception...
-				}
-				// img.filters (MSIE)
-			} else if (img.filters) {
-				inputFile.select();
-				inputFile.blur();
-				var imgSrc = document.selection.createRange().text;
-
-				img.style.width = defaultOpt.w + 'px';
-				img.style.height = defaultOpt.h + 'px';
-				img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
-				img.style.display = '';
-			} else {
-				// Safari5, ...
-			}
-		};
-
-		// onchange
-		$(this).change(function() {
-			previewImage();
-		});
-	};
-
-	$(document).ready(function() {
-		var opt = {
-			img : $('#img_preview'),
-			w : 200,
-			h : 200
-		};
-
-		$('#input_file').setPreview(opt);
-	});
 
 	
 	function submitcheck() {
@@ -169,11 +104,14 @@
 
     }
 	
+	
+
 
 	function addForm() {
 
 		var addedFormDiv = document.getElementById("addedFormDiv");
 		var str = "";
+
 		str += count;
 		str += "<h5> 대학교 / 대학원 </h5>";
 
@@ -334,21 +272,22 @@
 		var url = "confirm_skill.do";
 		open(url, "confrimWindow",
 				"menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
+
 	}
 //-->
 </script>
 
 <h2>이력서</h2>
 
-<input type="hidden" name="user_history_id">
 
-<form name="resome" method="post" enctype="multipart/form-data" action="resome_Pro.do" >
+<form name="resome" method="post" enctype="multipart/form-data" action="career.do">
 
 <h3>이력서제목</h3>
-
 <table class="table table-hover">
 	<tr>
-		<td style="width:100px"><input class="form-control" type="text" name="resome_title" style="width: 650px" maxlength="40"></td>			
+		<td style="width:100px">
+			<input class="form-control" type="text" id="resome_title" name="resome_title" style="width: 650px" maxlength="40">
+		</td>
 	</tr>
 </table>
 
@@ -357,14 +296,14 @@
 
 	<tr>
 		<th style="width:200px">이름(한글)</th>
-		<td><input class="" type="text" style="width: 250px" name="kor_name"></td>	
+		<td><input class="" type="text" style="width: 250px" name="kor_name" id="kor_name"></td>	
 		<td rowspan="5"><img  class="img-rounded"  id="img_preview" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
 		</td>	
 	</tr>
 	<tr>
 
 		<th>이름(영문)</th>
-		<td><input class="" type="text" style="width: 250px" name="eng_name"></td>
+		<td><input class="" type="text" style="width: 250px" name="eng_name" id="eng_name"></td>
 	</tr>
 	<tr>
 		<th>주소</th>
@@ -376,29 +315,29 @@
 	</tr>
 	<tr>
 		<th>전화번호</th>
-			<td><input class="" type="text" style="width: 60px" name="tel1" maxlength="3"> - 
-			    <input class="" type="text" style="width: 65px" name="tel2" maxlength="4"> -
-				<input class="" type="text" style="width: 70px" name="tel3" maxlength="4"></td>
+			<td><input class="" type="text" style="width: 60px" name="tel1" id="tel1" maxlength="3"> - 
+			    <input class="" type="text" style="width: 65px" name="tel2" id="tel2" maxlength="4"> -
+				<input class="" type="text" style="width: 70px" name="tel3" id="tel3" maxlength="4"></td>
 	</tr>
 
 	<tr>
 		<th>생년월일</th>
-			<td><input class="" type="text" name="birth" maxlength="12" style="width:200px"></td>
+			<td><input class="" type="text" name="birth" id="birth" maxlength="12" style="width:200px"></td>
 	</tr>
 	
 	<tr>
 		<th> 병역사항 </th>
 			<td>
-				<select class="" style="width: 120px" name="army1">
+				<select class="" style="width: 120px" name="army1" id="army1">
 					<option value="해당없음">해당없음</option>
 					<option value="군필">군필</option>		
 					<option value="미필">미필</option>
 					<option value="면제">면제</option>
 				</select>
-				<input class="" type="text" style="width:135px" name="army2"> ~
-				<input class="" type="text" style="width:135px" name="army3">
+				<input class="" type="text" style="width:135px" name="army2" id="army2"> ~
+				<input class="" type="text" style="width:135px" name="army3" id="army3">
 				
-				<select class="" style="width: 120px" name="army4">
+				<select class="" style="width: 120px" name="army4" id="army4">
 					<option value="군별선택">군별선택</option>
 					<option value="육군">육군</option>		
 					<option value="해군">해군</option>
@@ -409,7 +348,7 @@
 					<option value="공익">공익</option>
 				</select>	
 							
-				<select class="" style="width: 120px" name="army5">
+				<select class="" style="width: 120px" name="army5" id="army5">
 					<option value="계급선택">계급선택</option>
 					<option value="이병">이병</option>		
 					<option value="일병">일병</option>
@@ -431,7 +370,7 @@
 					<option value="중장">중장</option>		
 					<option value="대장">대장</option>					
 				</select>						
-				<select class="" style="width: 130px" name="army6">
+				<select class="" style="width: 130px" name="army6" id="army6">
 					<option value="전역사유">전역사유</option>
 					<option value="만기제대">만기제대</option>		
 					<option value="의가사제대">의가사제대</option>
@@ -445,19 +384,13 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				 미필,면제,기타사유 : 	<input class="" type="text" style="width:260px" name="army7" maxlength="3">
+				 미필,면제,기타사유 : 	<input class="" type="text" style="width:260px" name="army7" id="army7" maxlength="3">
 			</td>
 			<td>	
 				&nbsp;&nbsp;&nbsp;
 
 				<input class="btn btn-default" type="file" id="input_file" value="사진선택" /></td>
 	</tr>
-	
-	<tr>
-		<th></th>
-
-
-		</tr>
 
 </table>
 
@@ -471,7 +404,7 @@
 	</tr>		
 	<tr>
 		<th>희망연봉</th>
-			<td><input class="" type="text" name="want_salary" style="width:160px">만원단위로 숫자만 입력하세요. &nbsp; (ex:2500)
+			<td><input class="" type="text" name="want_salary" id="want_salary" style="width:160px">만원단위로 숫자만 입력하세요. &nbsp; (ex:2500)
 			</td>
 	</tr>
 </table>
@@ -485,10 +418,10 @@
 			<th>발행일처</th>
 		</tr>
 		<tr>
-			<td style="width:160px"> <input type="text" name="license1" style="width:220px"> </td>
-			<td style="width:80px"> <input type="text" name="license2" style="width:180px"> </td>
+			<td style="width:160px"> <input type="text" name="license1" id="license1" style="width:220px"> </td>
+			<td style="width:80px"> <input type="text" name="license2" id="license2" style="width:180px"> </td>
 		
-			<td colspan="2" style="width:200px"> <input class="" type="text" style="width:260px" name="license3"></td>
+			<td colspan="2" style="width:200px"> <input class="" type="text" style="width:260px" name="license3" id="license3"></td>
 		</tr>
 		
 		<tr>
@@ -510,7 +443,7 @@
 		<table class="table table-hover" style="width:800px">
 		<tr>
 			<th style="width:89px">포트폴리오</th>
-				<td><input class="btn btn-default" type="file" name="project"></td>
+				<td><input class="btn btn-default" type="file" name="project" id="project"></td>
 		
 		</tr>
 		<tr>
@@ -522,7 +455,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;	
-		<input  class="btn btn-default"  type="submit" value="개인정보 저장하기" style="width:200px"></td>
+		<input  class="btn btn-default"  type="button" value="개인정보 저장하기" style="width:200px" id="user_button"></td>
 		
 	</table>	
 		
@@ -533,7 +466,7 @@
 <h3>학력사항</h3>
 
 <h5>고등학교</h5>
-<form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()">
+<form name="school_Form"  method="post" onload="addForm();" action="career.do" onsubmit="submitcheck()">
 	<input type="hidden" name="count" value="0">
  	<input type="hidden" name="school_name_send">
 	<input type="hidden" name="school_start_send">
@@ -550,10 +483,10 @@
 	<tr>
 		<th style="width:100px">재학기간</th>
 			<td style="width: 520px">
-				<input class="" type="text" style="width:210px" name="highschool_start_date"> ~
-				<input class="" type="text" style="width:210px" name="highschool_last_date">
+				<input class="" type="text" style="width:210px" name="highschool_start_date" id="highschool_start_date"> ~
+				<input class="" type="text" style="width:210px" name="highschool_last_date" id="highschool_last_date">
 				
-				<select class="" style="width: 80px" name="highschool_college">
+				<select class="" style="width: 80px" name="highschool_college" id="highschool_college">
 					<option value="졸업">졸업</option>
 					<option value="졸업예정">졸업예정</option>		
 				</select>			
@@ -562,8 +495,8 @@
 	
 	<tr>		
 		<th>학교명</th>
-		<td> <input class="" type="text" style="width:200px" name="highschool_name">
-			<select class="" style="width: 150px" name="highschool_name_kind">
+		<td> <input class="" type="text" style="width:200px" name="highschool_name" id="highschool_name">
+			<select class="" style="width: 150px" name="highschool_name_kind" id="highschool_name_kind">
 				<option value="문과계열">문과계열</option>
 				<option value="이과계열">이과계열</option>		
 				<option value="전문(실업)계열">전문(실업)계열</option>
@@ -606,7 +539,7 @@
 				          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-		 <input  class="btn btn-default"  type="submit" value="학력사항 저장" style="width:200px"></td>
+		 <input  class="btn btn-default"  type="button" value="학력사항 저장" style="width:200px" id="school_save"></td>
 	</tr>
 </table>
 

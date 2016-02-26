@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class RecruitDataBean {
 	public int recruit_id;			// 채용게시판 ID
 	public String email;			// 이메일
+	// 근무지역
 	public String title;			// 제목
 	public String content;			// 내용
 	public String skill;			// 원하는 기술

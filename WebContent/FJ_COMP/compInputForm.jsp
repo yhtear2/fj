@@ -25,7 +25,7 @@
 			<label><h2>기업정보 입력(필수)</h2></label><br>
 			<!-- 각 칸마다 크기 -->			
 			<div class="form-group-hs">
-				여기에 회사명(이름) 이 나오게...
+				${name}
 			</div>
 			<div class="form-group-hs">
 				<input type="text" name="ceo" class="form-control" placeholder="대표자명">

@@ -29,17 +29,16 @@ public class CompInputFormHandler implements Commandhandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		// 아이디와 비밀번호 확인
-		String memId	= request.getSession().getAttribute("memId").toString();
-		System.out.println(memId);
-		String passwd 	= request.getParameter("passwd");
-		System.out.println(passwd);
-		System.out.println("닉네임 : " + request.getSession().getAttribute("name").toString());
-		
+		String memId	= request.getSession().getAttribute("memId").toString();	// 아이디 받기
+		String passwd 	= request.getParameter("passwd");							// 입력받은 페스워드
+		String name = request.getSession().getAttribute("name").toString();			// 회사이름 받기
+
 		// db에 연결해서 id 비밀번호 확인
 		int result = joinDao.checkMember(memId, passwd);
 		
 		// 맵으로 보내자~~
 		map.put("result", result);
+		map.put("name", name);
 		
 		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compInputForm");

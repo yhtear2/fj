@@ -20,6 +20,8 @@
 		//-->
 		
 	</script>
-	${sessionScope.userhistoryid = user_history_id}
-		<c:redirect url="career.do"/>
+	${user_history_id}
+	
+	${sessionScope.user_history_id = user_history_id}
+		<%-- <c:redirect url="career.do"/> --%>
 	</c:if>

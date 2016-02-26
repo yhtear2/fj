@@ -52,6 +52,9 @@ public class User_ProHandler implements Commandhandler {
 		String army6 = multi.getParameter("army6");
 		String army7 = multi.getParameter("army7");
 		
+
+		
+		
 		army = army1 + "/" + army2 + "/" + army3 + "/" + army4 + "/" + army5 + "/" + army6 + "/" + army7;
 		
 		String address = null;
@@ -61,11 +64,20 @@ public class User_ProHandler implements Commandhandler {
 		address = address1 + " " + address2;
 		
 		UserDataBean dto = new UserDataBean();
+		
+	//	int user_history_id = 0;
+	
+/*		if( multi.getParameter( "user_history_id" ) != null ) {
+
+		user_history_id =dto.getUser_history_id(); 	
+				//Integer.parseInt(multi.getParameter("user_history_id"));
+		}
+		System.out.println(user_history_id);*/
+
 		dto.setResome_title(resome_title);
 		dto.setEmail(email);
 		dto.setEng_name(eng_name);
 		dto.setKor_name(kor_name);
-		
 		dto.setBirth(birth);
 		dto.setAddress(address);
 		dto.setLicense(license);

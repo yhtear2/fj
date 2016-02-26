@@ -27,13 +27,13 @@ public class CompModifyViewHandler implements Commandhandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 데이터 가져올 페이지 만들기
-		String email = (request.getSession().getAttribute("email").toString());				// 이메일
+		String memId = (request.getSession().getAttribute("memId").toString());	// 저장된 멤버아이디 가져오기
 	
 		// 리턴받을 바구니 생성
 		CompDataBean dto = new CompDataBean();
 		
 		// DB처리
-		dto = compDao.getComp(email);
+		dto = compDao.getComp(memId);
 		
 		// 넘어온 tel 분리
 		String tels[] = dto.getTel().split("-");
