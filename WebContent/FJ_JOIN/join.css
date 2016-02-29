@@ -9,6 +9,38 @@
 	background: #f8f8f8;
 }
 
+#join form {
+	margin-left: 100px;
+	margin-top: 100px;
+	width: 600px;
+	height: 600px;
+}
+
+.table-bordered {
+	border-radius : 5px 5px 5px 5px;
+}
+.table {
+	border-radius : 5px 5px 5px 5px;
+	background : white;
+	width:400px;
+	
+}
+.table th {
+	text-align: right;
+}
+.table-button {
+	text-align : center;
+}
+.view-th {
+	width:100px;
+}
+.emailcode {
+	width: 30%;
+	margin-right:5px;
+	float: left;
+}
+
+
 /*
 h1,h2,h3,h4,h5,h6
 {

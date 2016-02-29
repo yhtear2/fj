@@ -6,7 +6,7 @@
 
 <link href="${join}join.css" rel="stylesheet" type="text/css">
 <script src="${join}script.js"></script>
-<script src="${project}request.js"></script>
+<script src="${join}request.js"></script>
 
 <script type="text/javascript">
 	function checkpasswd( passwd ) {
@@ -55,31 +55,30 @@
 	}
 </script>
 
-<h2> ${page_modify} </h2>
-
 <c:if test="${resultCheck == 1}">
-	<body onload="modifyfocus()">
+	<body id="join" onload="modifyfocus()">
 		<form method="post" action="joinModifyPro.do"
-			name="modifyform" onsubmit="return modifycheck()">				
-			<table>
+			name="modifyform" onsubmit="return modifycheck()">
+			<h2> ${page_modify} </h2>				
+			<table class="table table-bordered">
 				<tr>
 					<th colspan="2"> ${msg_modify} </th>						
 				</tr>
 				<tr>
-					<th> ${str_email} </th>
+					<th class="view-th"> ${str_email} </th>
 					<td> ${dto.email} </td>
 				</tr>
 				<tr>
 					<th rowspan="2"> ${str_passwd} </th>
 					<td>
-						<input class="input" type="password" name="passwd" maxlength="20" 
+						<input class="form-control" type="password" name="passwd" maxlength="20" 
 							onkeyup="checkpasswd( modifyform.passwd.value )">
 						<label id="passwdresult">비밀번호를 입력해주세요.</label>
 					</td>						
 				</tr>
 				<tr>
 					<td>
-						<input class="input" type="password" name="repasswd" maxlength="20" 
+						<input class="form-control" type="password" name="repasswd" maxlength="20" 
 							onkeyup="recheckpasswd( modifyform.passwd.value, modifyform.repasswd.value )">
 						<label id="repasswdresult">비밀번호를 한번 더 입력해주세요.</label>
 					</td>
@@ -87,7 +86,7 @@
 				<tr>
 					<th> ${str_name} </th>
 					<td>
-						<input class="input" type="text" name="name" maxlength="100" 
+						<input class="form-control" type="text" name="name" maxlength="100" 
 							value="${dto.name}" onkeyup="confirmname( modifyform.name.value )">
 						<label id="nameresult"></label>
 					</td>
@@ -101,9 +100,9 @@
 				</tr>
 				<tr>
 					<th colspan="2">
-						<input class="inputbutton" type="submit" value="${btn_modify}">
-						<input class="inputbutton" type="reset" value="${btn_cancel}">
-						<input class="inputbutton" type="button" value="${btn_modify_cancel}"
+						<input class="btn btn-default" type="submit" value="${btn_modify}">
+						<input class="btn btn-default" type="reset" value="${btn_cancel}">
+						<input class="btn btn-default" type="button" value="${btn_modify_cancel}"
 							onclick="window.location='joinMain.do'">
 					</th>
 				</tr>

@@ -6,26 +6,25 @@
 <link href="${join}join.css" rel="stylesheet" type="text/css">
 <script src="${join}script.js"></script>
 
-<h2> ${page_modify} </h2>
-
-<body onload="passwdfocus()">
+<body id="join" onload="passwdfocus()">
 	<form method="post" action="joinModifyView.do"
 		name="passwdform" onsubmit="return passwdcheck()">
-		<table>
+		<h2> ${page_modify} </h2>
+		<table class="table table-bordered">
 			<tr>
 				<th colspan="2"> ${msg_passwd} </th>
 			</tr>
 			<tr>
 				<th> ${str_passwd} </th>
 				<td>
-					<input class="input" type="password" name="passwd"
+					<input class="form-control" type="password" name="passwd"
 						maxlength="20">
 				</td>
 			</tr>
 			<tr>
 				<th colspan="2">
-					<input class="inputbutton" type="submit" value="${btn_modify}">
-					<input class="inputbutton" type="button" value="${btn_modify_cancel}"
+					<input class="btn btn-default" type="submit" value="${btn_modify}">
+					<input class="btn btn-default" type="button" value="${btn_modify_cancel}"
 						onclick="window.location='joinMain.do'">
 				</th>
 			</tr>
