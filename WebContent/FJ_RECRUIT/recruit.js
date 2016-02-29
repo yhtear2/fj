@@ -6,6 +6,13 @@ $(document).ready(function() {
 	});
 });
 
+function conf_skill() {
+    var url = "confirm_skill.do";
+    open(url, "confrimWindow",
+          "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
+
+ }
+
 //글내용 적기위한 onsubmit 처리 
 
 /*

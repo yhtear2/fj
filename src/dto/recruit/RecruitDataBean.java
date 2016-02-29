@@ -5,8 +5,7 @@ import java.sql.Timestamp;
 public class RecruitDataBean {
 	public int recruit_id;			// 채용게시판 ID
 	public String email;			// 이메일
-	// 근무지역
-	// 담당업무
+	
 	public String title;			// 제목
 	public String content;			// 내용
 	public String skill;			// 원하는 기술
@@ -14,16 +13,23 @@ public class RecruitDataBean {
 	public String edu;				// 학력
 	public String work_type;		// 고용형태
 	public String work_day;			// 근무요일 (주5일) 등등
+	public String work_area;  		// 근무지역 
+	public String business_part;	// 담당업무 
+	public String incharge;			// 담당자 
+	public String tel;				// 연락처 
+
+	public String min_salary;		// 최소 연봉
+	public String max_salary;		// 최대 연봉
 	public String start_date;		// 채용 시작일
 	public String end_date;			// 채용 종료일
-	public int min_career;			// 최소 경력
-	public int max_career;			// 최대 경력
-	public int min_salary;			// 최소 연봉
-	public int max_salary;			// 최대 연봉
-	public int min_age;				// 최소 나이
-	public int max_age;				// 최대 나이
-	public int people_count;		// 지원자 수
-	public int read_count;			// 조회수
+	public String min_career;		// 최소 경력
+	public String max_career;		// 최대 경력
+	public String min_age;			// 최소 나이
+	public String max_age;			// 최대 나이
+
+	public int people_count;		// 채용인원
+	public int readcount;			// 조회수
+	
 	public Timestamp reg_date;		// 작성일
 	public Timestamp last_date;		// 수정일
 	
@@ -81,53 +87,41 @@ public class RecruitDataBean {
 	public void setWork_day(String work_day) {
 		this.work_day = work_day;
 	}
-	public int getMin_career() {
-		return min_career;
+	public String getWork_area() {
+		return work_area;
 	}
-	public void setMin_career(int min_career) {
-		this.min_career = min_career;
+	public void setWork_area(String work_area) {
+		this.work_area = work_area;
 	}
-	public int getMax_career() {
-		return max_career;
+	public String getBusiness_part() {
+		return business_part;
 	}
-	public void setMax_career(int max_career) {
-		this.max_career = max_career;
+	public void setBusiness_part(String business_part) {
+		this.business_part = business_part;
 	}
-	public int getMin_salary() {
+	public String getIncharge() {
+		return incharge;
+	}
+	public void setIncharge(String incharge) {
+		this.incharge = incharge;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getMin_salary() {
 		return min_salary;
 	}
-	public void setMin_salary(int min_salary) {
+	public void setMin_salary(String min_salary) {
 		this.min_salary = min_salary;
 	}
-	public int getMax_salary() {
+	public String getMax_salary() {
 		return max_salary;
 	}
-	public void setMax_salary(int max_salary) {
+	public void setMax_salary(String max_salary) {
 		this.max_salary = max_salary;
-	}
-	public int getMin_age() {
-		return min_age;
-	}
-	public void setMin_age(int min_age) {
-		this.min_age = min_age;
-	}
-	public int getMax_age() {
-		return max_age;
-	}
-	public void setMax_age(int max_age) {
-		this.max_age = max_age;
-	}
-	public int getPeople_count() {
-		return people_count;
-	}
-	public void setPeople_count(int people_count) {
-		this.people_count = people_count;
-	}
-	public int getRead_count() {
-		return read_count;
-	}
-	public void setRead_count(int read_count) {
-		this.read_count = read_count;
 	}
 	public String getStart_date() {
 		return start_date;
@@ -141,6 +135,42 @@ public class RecruitDataBean {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
+	public String getMin_career() {
+		return min_career;
+	}
+	public void setMin_career(String min_career) {
+		this.min_career = min_career;
+	}
+	public String getMax_career() {
+		return max_career;
+	}
+	public void setMax_career(String max_career) {
+		this.max_career = max_career;
+	}
+	public String getMin_age() {
+		return min_age;
+	}
+	public void setMin_age(String min_age) {
+		this.min_age = min_age;
+	}
+	public String getMax_age() {
+		return max_age;
+	}
+	public void setMax_age(String max_age) {
+		this.max_age = max_age;
+	}
+	public int getPeople_count() {
+		return people_count;
+	}
+	public void setPeople_count(int people_count) {
+		this.people_count = people_count;
+	}
+	public int getReadcount() {
+		return readcount;
+	}
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
 	public Timestamp getReg_date() {
 		return reg_date;
 	}
@@ -153,6 +183,8 @@ public class RecruitDataBean {
 	public void setLast_date(Timestamp last_date) {
 		this.last_date = last_date;
 	}
+	
+	
 	
 	
 }
