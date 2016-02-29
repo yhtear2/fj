@@ -8,7 +8,8 @@ html{
 }
 
 body {
-	font-family: 'Nanum Gothic',monospace;
+	font-family : 'Nanum Gothic',monospace;
+	font-style : light; 
 	background: #f8f8f8;
 	
 }
@@ -26,7 +27,8 @@ body {
 .main_menu{
 	z-index:3;
 	position:absolute;
-	background-color:#3399ff;
+	background-color:#0059B3;
+	/*background-color:#3399ff;*/
 	width:200px;
 	height:100%;
 	min-height:800px;
@@ -36,28 +38,34 @@ body {
 }
 /*로그인,가입*/
 .main_sign{
-	width: 150px;
+	width: 200px;
 	height: 50px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	border-top : solid 1px #004D99;
+	border-bottom : solid 1px #004D99;
+	overflow:hidden;
 }
 .main_login{
 	float: left;
-	width: 75px;
+	width: 100px;
 	height: 50px;
 	margin-top: 2px;
 	color: white;
 	text-align: center;
 	font-weight: 500;
+	padding-top: 12px;
+	border-right : solid 1px #004D99;
 }
 .main_singup{
 	float: left;
-	width: 75px;
+	width: 100px;
 	height: 50px;
 	margin-top: 2px;
 	color: white;
 	text-align: center;
 	font-weight: 500;
+	padding-top: 12px;
 }
 /*메인페이지*/
 .main_page{
@@ -67,16 +75,21 @@ body {
 }
 /*선택메뉴*/
 .main_sub{
+	padding-top : 50px;
 	height:100%;
 }
 .main_submanu{
-	width: 150px;
+	width: 200px;
 	height: 30px;
-	margin-top: 2px;
-	margin-bottom: 2px;
+	padding-left:50px;
+	padding-top: 2px;
+	margin-bottom: 30px;
 	color: white;
-	text-align: center;
-	font-weight: bold;
+	text-align: left;
+	font-weight: 500;
+}
+.main_submanu>img {
+	margin-right : 10px;
 }
 /* 선택메뉴-Git */
 .main_submanu:last-child{
@@ -91,9 +104,10 @@ body {
 	z-index:0;
 	top:0;
 	left:50px;
-	width:150px;
+	width:149px;
 	height:100%;
 	min-height:800px;
+	border-right : solid 1px #CCCCCC;
 	overflow:hidden;
 }
 .main_menu2 a{

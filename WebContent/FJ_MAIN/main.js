@@ -16,6 +16,7 @@ $(function(){
 					$('.main_menu2').eq(idx).css({'z-index':'2'});
 					$('.menu_status').val(1);
 				});
+				$('.main_submanu').stop().animate({'padding-left':'15px'});
 			} else { 
 				$('.main_menu').stop().animate({'width':'200px'}, function() {
 					$('.main_menu2').css({'z-index':'0'});
@@ -30,6 +31,7 @@ $(function(){
 		if($('.m').val() == 'member') this_page = 0;
 		if($('.m').val() == 'board') this_page = 1;
 		$('.main_menu').css({'width':'50px'});
+		$('.main_submanu').css({'padding-left':'15px'});
 		$(".main_menu2").css({'z-index':'0'});
 		$(".main_menu2").eq(this_page).css({'z-index':'2'});
 		$('.main_submanu').on('click',function() {
