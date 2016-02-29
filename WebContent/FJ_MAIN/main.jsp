@@ -30,7 +30,7 @@
 				<c:if test="${sessionScope.memId != null}">
 				<div class="main_logon">
 					<span>${name}</span>
-					<input type="button" value="로그아웃" onclick="window.location='joinLogout.do'">
+					<span class="glyphicon glyphicon-log-out" onclick="window.location='joinLogout.do'"/>
 				</div>
 				</c:if>
 			</div>
@@ -51,15 +51,18 @@
 		<div class="main_menu2">
 			<!-- 개인회원, 기업회원, 관리자가 서로 다른 메뉴가 나오게 변경 -->
 			<c:if test="${sessionScope.memId == null}">
+				<h3>로그인</h3>
 				<a href="#" onclick="window.location='joinMain.do'">로그인 해주세요</a>
 			</c:if>
 			<c:if test="${sessionScope.member_flag == 1}">
+				<h3>MyPage</h3>
 				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
 				<a href="#" onclick="window.location='main.do'">이력서 관리</a>
 				<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
 				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
 			</c:if>
 			<c:if test="${sessionScope.member_flag == 2}">
+				<h3>MyPage</h3>
 				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
 				<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
 				<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
@@ -67,13 +70,16 @@
 			</c:if>
 		</div>
 		<div class="main_menu2">
-			<a href="#" onclick="window.location='list.do'">공지사항</a><br>
+			<h3>게시판</h3>
+			<a href="#" onclick="window.location='list.do'">공지사항</a>
 			<a href="#" onclick="window.location='list.do'">자유게시판</a>
 		</div>
 		<div class="main_menu2">
+			<h3>채용공고</h3>
 			<a href="#" onclick="window.location='recruitList.do'">채용공고</a>
 		</div>
 		<div class="main_menu2">
+			<h3>Q&A</h3>
 			<a href="#">Q&A</a>
 		</div>
 		<div class="main_menu2">

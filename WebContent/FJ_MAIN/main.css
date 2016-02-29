@@ -67,6 +67,18 @@ body {
 	font-weight: 500;
 	padding-top: 12px;
 }
+/*로그온 상태*/
+.main_logon>span {
+	color:white;
+	margin-top:10px;
+	padding-left:10px;
+	display:block;
+	float:left;
+}
+.main_logon>span:FIRST-CHILD{
+	margin-top:10px;
+	padding-left:50px;
+}
 /*메인페이지*/
 .main_page{
 	position:absolute;
@@ -100,7 +112,6 @@ body {
 .main_menu2{
 	background:#ffffff;
 	position:absolute;
-	padding-top:200px;
 	z-index:0;
 	top:0;
 	left:50px;
@@ -110,7 +121,11 @@ body {
 	border-right : solid 1px #CCCCCC;
 	overflow:hidden;
 }
-.main_menu2 a{
+.main_menu2>h3 {
+	margin : 40px 20px;
+}
+.main_menu2>a{
+	line-height:0.8em;
 	color:black;
 	display:block;
 	margin:20px 20px 20px 20px;
