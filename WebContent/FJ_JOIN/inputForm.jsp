@@ -79,7 +79,6 @@
 		function emailsend( emailvalue ) {
 			alert("이메일로 전송된 코드를 입력해주세요.");
 			var date = new Date().getTime();
-			alert(date);
 			var params = "email=" + emailvalue + "&" + date;
 			request = new Request( checkmail, "joinEmailConfirm.do", "GET", params );
 			request.sendRequest();
@@ -105,20 +104,19 @@
 	</script>
 </head>
 
-
-<h2> ${page_input} </h2>
-<body>
+<body id="join">
 	<form name="inputform" method="post" action="joinInputPro.do"
 		onsubmit="return inputcheck()">
 		<input type="hidden" name="confirm" value="${check}">
-		<table>			
+		<h2> ${page_input} </h2>
+		<table class="table">			
 			<tr>
 				<th colspan="2"> ${msg_input} </th>
 			</tr>
 			<tr>
 				<th> * ${str_email} </th>
 				<td>
-					<input class="input" type="text" id="email" name="email" maxlength="30" 
+					<input class="form-control" type="text" id="email" name="email" maxlength="30" 
 						onkeyup="confirmmail( inputform.email.value )">
 					<label id="emailresult">이메일을 입력해주세요.</label>
 				</td>				
@@ -126,14 +124,14 @@
 			<tr>
 				<th rowspan="2"> * ${str_passwd} </th>
 				<td>
-					<input class="input" type="password" name="passwd" maxlength="20" 
+					<input class="form-control" type="password" name="passwd" maxlength="20" 
 						onkeyup="checkpasswd( inputform.passwd.value )">
 					<label id="passwdresult">비밀번호를 입력해주세요.</label>
 				</td>	
 			</tr>
 			<tr>				
 				<td>
-					<input class="input" type="password" name="repasswd" maxlength="20" 
+					<input class="form-control" type="password" name="repasswd" maxlength="20" 
 						onkeyup="recheckpasswd( inputform.passwd.value, inputform.repasswd.value )">					
 					<label id="repasswdresult">비밀번호를 한번 더 입력해주세요.</label>
 				</td>	
@@ -141,7 +139,7 @@
 			<tr>
 				<th> * ${str_name} </th>
 				<td>
-					<input class="input" type="text" name="name" maxlength="100" 
+					<input class="form-control" type="text" name="name" maxlength="100" 
 						onkeyup="confirmname( inputform.name.value )">
 					<label id="nameresult">닉네임을 입력해주세요</label>
 				</td>
@@ -156,15 +154,15 @@
 			<tr>
 				<th> * 이메일 인증 </th>
 				<td> 
-					<input class="input" type="text" name="emailcode">
-					<input class="inputbutton" type="button" value="이메일 인증" onclick="emailsend( inputform.email.value )">
+					<input class="form-control emailcode" type="text" name="emailcode">
+					<input class="btn btn-default" type="button" value="이메일 인증" onclick="emailsend( inputform.email.value )">
 				</td>
 			</tr>
 			<tr>
 				<th colspan="2">
-					<input class="inputbutton" type="submit" value="${btn_input}">
-					<input class="inputbutton" type="reset" value="${btn_cancel}">
-					<input class="inputbutton" type="button" value="${btn_input_cancel}"
+					<input class="btn btn-default" type="submit" value="${btn_input}">
+					<input class="btn btn-default" type="reset" value="${btn_cancel}">
+					<input class="btn btn-default" type="button" value="${btn_input_cancel}"
 						onclick="window.location='joinMain.do'">
 				</th>
 			</tr>

@@ -6,13 +6,12 @@
 <link href="${join}join.css" rel="stylesheet" type="text/css">
 <script src="${join}script.js"></script>
 
-<h2> ${page_login} </h2>
-
 <body id="join" onload="mainfocus()">
 	<c:if test="${sessionScope.memId == null}">
       <form name="mainform" method="post" action="joinLoginPro.do" 
          onsubmit="return maincheck()">
-         <table>
+         <h2> ${page_login} </h2>
+         <table class="table table-bordered"">
             <tr>
                <th> ${str_email} </th>
                <td>
@@ -26,31 +25,33 @@
                </td>
             </tr>
             <tr>
-               <th colspan="2">
+               <td class="table-button" colspan="2">
                   <input class="btn btn-default" type="submit" value="${btn_login}">
                   <input class="btn btn-default" type="reset" value="${btn_cancel}">
                   <input class="btn btn-default" type="button" value="${btn_input_member}"
                      onclick="window.location='joinInputForm.do'">
-               </th>
+               </td>
             </tr>
          </table>
     	</form>
    	</c:if>  
 	<c:if test="${sessionScope.memId != null}">
-	  	<table>
-	      <tr>
-	         <td align="center">
-	            <span>${sessionScope.memId}</span>${msg_login} ${sessionScope.member_flag}
-	         </td>
-	      </tr>
-	      <tr>
-	         <th>
-	            <input class="btn btn-default" type="button" value="${btn_logout}" onclick="window.location='joinLogout.do'">
-	            <input class="btn btn-default" type="button" value="${btn_modify_member}" onclick="window.location='joinModifyForm.do'">
-	            <input class="btn btn-default" type="button" value="${btn_delete_member}" onclick="window.location='joinDeleteForm.do'">
-	         </th>
-	      </tr>    
-	   </table>      
+		<form>
+			<h2> 회원정보 수정 </h2>
+		  	<table class="table table-bordered">
+		      <tr>
+		         <td align="center">
+		            <span>${sessionScope.name}</span>${msg_login}
+		         </td>
+		      </tr>
+		      <tr>
+		         <th>
+		            <input class="btn btn-default" type="button" value="${btn_modify_member}" onclick="window.location='joinModifyForm.do'">
+		            <input class="btn btn-default" type="button" value="${btn_delete_member}" onclick="window.location='joinDeleteForm.do'">
+		         </th>
+		      </tr>    
+		   </table>
+		</form>      
 	</c:if>
 </body>
   

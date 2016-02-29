@@ -19,31 +19,34 @@
 		<!-- 근무조건 : 지역 / 급여 / 근무형태 / 근무요일 -->
 		<div>
 			<label><h3>근무조건</h3></label>
-			<div>
-				<label>근무지역</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="서울">서울</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="부산">부산</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="인천">인천</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="대구">대구</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="대전">대전</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="광주">광주</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="울산">울산</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="제주">제주</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="세종">세종</label>
-				<br>
-				<lable></lable>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="경기">경기</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="경북">경북</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="경남">경남</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="전북">전북</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="전남">전남</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="충북">충북</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="충남">충남</label>
-				<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="강원">강원</label>
+			<div style="float : none">
+				<div style="position : relative; float : left">
+					<label>근무지역</label>
+				</div>
+				<div style="position : relative; float : left">
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="서울">서울</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="부산">부산</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="인천">인천</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="대구">대구</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="대전">대전</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="광주">광주</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="울산">울산</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="제주">제주</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="세종">세종</label>
+					<br>
+					<span></span>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="경기">경기</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="경북">경북</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="경남">경남</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="전북">전북</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="전남">전남</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="충북">충북</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="충남">충남</label>
+					<label class="checkbox-inline"> <input type="checkbox" name="work_area" value="강원">강원</label>
+				</div>
 			</div>
-			<div> 
-				<span style="width: 100px">연봉(만원)</span>
-				
+			<div>
+					<label style="width: 100px">연봉(만원)</label>
 					<select class="form-control11" name="min_salary" style="width: 200px" >
 					 	<option>1,400만원 이상</option>
 					 	<option>1,800만원 이상</option>
@@ -61,15 +64,14 @@
 					  	<option>9,000만원 이상</option>
 					  	<option>1억원 이상</option>
 					</select>
-					<span style="width: 50px"> ~ </span>
-				
+					<label style="width: 50px"> ~ </label>
 					<select class="form-control11" name="max_salary" style="width: 200px" >
 					 	<option>1,400만원 이하</option>
 					 	<option>1,800만원 이하</option>
 					  	<option>2,000만원 이하</option>
 					  	<option>2,400만원 이하</option>
 					  	<option>2,800만원 이하</option>
-					  	<option>3,200만원 이하</op	tion>
+					  	<option>3,200만원 이하</option>
 					  	<option>3,600만원 이하</option>
 					  	<option>4,000만원 이하</option>
 					  	<option>4,000만원 이하</option>
@@ -84,7 +86,7 @@
 				
 			</div>
 			<div></div>
-			<div style="position: relative;">
+			<div>
 				<label>근무형태</label>
 				<label class="checkbox-inline"> <input type="checkbox" name="work_type" value="정규직">정규직</label>
 				<label class="checkbox-inline"> <input type="checkbox" name="work_type" value="계약직">계약직</label>
