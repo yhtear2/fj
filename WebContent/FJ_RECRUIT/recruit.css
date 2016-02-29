@@ -11,3 +11,26 @@
     background-image: none;
     border: 1px solid #ccc;
 }
+/* 페이지 전체 크기  */
+.recruit_mainsize{
+	width : 750px;
+	height : 100%;
+	margin : 30px;
+	background-color: white;
+}
+/* 큰 단위의 크기 (근무조건, 지원자격, 담당자, 입력폼) */
+.recruit_size{
+	margin : 10px;
+}
+/* 작은 사이즈의 크기 (각 큰단위 아래 작은 크기 */
+.recruit_minisize{
+	padding-bottom: 5px;
+}
+
+
+
+
+
+
+
+
