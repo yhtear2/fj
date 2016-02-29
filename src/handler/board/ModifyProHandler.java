@@ -29,7 +29,8 @@ public class ModifyProHandler implements Commandhandler {
 	@RequestMapping("/boardmodifyPro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-	Map<String, Object> map = new HashMap<String, Object>();
+	
+		
 		request.setCharacterEncoding( "utf-8" );	
 	
 		BoardDataBean dto = new BoardDataBean();
@@ -46,6 +47,8 @@ public class ModifyProHandler implements Commandhandler {
 		/* 
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "result", result );	*/
+		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("pageNum", pageNum);
 		map.put("result", result); 

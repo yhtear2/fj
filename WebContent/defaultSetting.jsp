@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fnc" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+  
 <!-- variable -->
 <c:set var="project" value="/fj"/>
 <c:set var="js" value="${project}/js"/>

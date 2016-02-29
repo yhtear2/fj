@@ -33,16 +33,16 @@ public class DeleteProHandler implements Commandhandler {
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 	//	String passwd = request.getParameter( "passwd" ); 
 	
-	//	int resultCheck = dao.checkArticle( num, passwd );	
+		int resultCheck = dao.deleteArticle( board_num);	
 
-	//	request.setAttribute( "resultCheck", resultCheck );
-	//	request.setAttribute( "pageNum", pageNum ); 
-		
-		/*
+		request.setAttribute( "resultCheck", resultCheck );
+		request.setAttribute( "pageNum", pageNum ); 
+		    
+	
 		if( resultCheck != 0 ) {
-			int result = dao.deleteArticle( num ); 
+			int result = dao.deleteArticle( board_num ); 
 			request.setAttribute( "result", result );
-		}	*/	
+		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		

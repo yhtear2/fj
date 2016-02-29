@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- include setting.jsp -->
-
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="setting.jsp"%>
-  
+<script src="script.js"></script>  
  
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <title>자유게시판 - 글쓰기 페이지</title>
     
 <c:if test ="${result == 0 }">
@@ -62,14 +62,14 @@
                          <td>
                            ${dto.read_count}  
                          </td>
-                       </tr>
+                       </tr>   
                     </table> 
                          </div>
                     </div>
                 </div> 
 	
 	<div class="panel-body"> 
-		<form action="boardmodifyPro.do" method="post" name="modifyview" onsubmit="return modifycheck()"> 
+		<form action="/fj/boardmodifyPro.do" method="post" name="modifyview" onsubmit="return modifycheck()"> 
 		<input type="hidden" name="board_num" value="${board_num}">
 		<input type="hidden" name="pageNum" value="${pageNum}">
 		<input type="hidden" name="re_step" value="${re_step}">
@@ -79,7 +79,7 @@
 		<input type="hidden" name="read_count" value="${read_count}">
 		<input type="hidden" name="scrap_count" value="${scrap_count}">
 		<input type="hidden" name="content" value="${dto.content}">   
-		<input type="hidden" name="hstag" value="${dto.hstag}">   
+		   
 		 
 			 <!--  <input type="hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
@@ -110,9 +110,11 @@
 			<div id="wrapper">   
 				<div id="content"> 
 					<ul id="myTags">
+					<c:forEach var="tag" items="${fn:split(dto.hstag,',')}">
 						<li> 
-						${dto.hstag} 
+						${tag} 
 						</li>
+					</c:forEach>
 					</ul>    
 				</div> 
 			</div>   
@@ -123,12 +125,12 @@
 			<div id="summernote" >
 			</div>           
 			 
-			  
+			   
 		  
 			<!-- 글쓰기 등록 및 취소부분 --> 
 			<div class="nav" role="navigation">
 				<fieldset class="buttons">
-				<a href="boardcontent.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">${btn_cancel}</a> 
+				<a href="boardlist.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">${btn_cancel}</a> 
 				  
 					<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" value="${btn_write}"> 
 					

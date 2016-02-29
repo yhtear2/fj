@@ -7,7 +7,7 @@ public class BoardDataBean {
 	private String email;   // 이메일 
 	private String subject; // 글제목 
 	private String content; // 글내용
-	private String hstag;   // 해쉬태그 
+	private String hstag;   // 해쉬태그      
 	private int board_num;  // 게시판 id (글번호)
 	private int re_count;   // 리플의 수   
 	private int scrap_count; // 스크랩 수

@@ -32,12 +32,15 @@ public class WriteProHandler implements Commandhandler {
 		
 		
 		String tags[] = request.getParameterValues("tags");   
-		String hstag =null;
+		String hstag = "";
 		//  마지막에 , 으로 되는거 split 으로 자르던가 아니면 막게 해주자 (추후 구현 할 것)
 		for (int i=0; i<tags.length; i++){
-			hstag += tags[i] + ",";
+			hstag += tags[i];
+			if(i < tags.length -1){
+				hstag += ",";
+			}
 		}
-		System.out.println(hstag);
+		
 		//BoardDataBean dto = new BoardDataBean();
 		//dto.setSubject( (String) request.getParameter( "subject" ) );
 		//int result = dao.insertArticle( dto );    
@@ -53,11 +56,10 @@ public class WriteProHandler implements Commandhandler {
 		dto.setCategory((String)request.getParameter("category"));     
 		dto.setSubject((String)request.getParameter("subject"));
 		dto.setContent(request.getParameter("content"));      
-		dto.setHstag((String)request.getParameter("hstag"));   
+		dto.setHstag(hstag);   
 		dto.setEmail((String)request.getParameter("email"));
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
-		
-		System.out.println();
+
 		
 		
 		

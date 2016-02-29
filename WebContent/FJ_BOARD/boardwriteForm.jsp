@@ -3,9 +3,8 @@
 <!-- include setting.jsp -->
 
 <%@ include file="setting.jsp"%>
-  
  
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <title>자유게시판 - 글쓰기 페이지</title>
  
  
@@ -17,7 +16,7 @@
 		</div>
 	</div> 
 	<div class="panel-body">
-		<form action="boardwritePro.do" method="post" name="writeform" onsubmit="return writecheck_check()"> 
+		<form action="/fj/boardwritePro.do" method="post" name="writeform" onsubmit="return writecheck_check()"> 
 		<input type="hidden" name="board_num" value="${board_num}">
 		<input type="hidden" name="re_step" value="${re_step}">
 		<input type="hidden" name="re_count" value="${re_count}"> 
@@ -25,8 +24,7 @@
 		<input type="hidden" name="bad_count" value="${bad_count}">
 		<input type="hidden" name="read_count" value="${read_count}">
 		<input type="hidden" name="scrap_count" value="${scrap_count}">
-		<input type="hidden" name="content" value="${content}">   
-		<input type="hidden" name="hstag" value="${hstag}">    
+		<input type="hidden" name="content" value="${content}">    
 		 
 			 <!--  <input type="hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
@@ -40,7 +38,7 @@
 							<option value="스터디모집">스터디모집</option>
 							<option value="나만의 홍보">나만의 홍보</option>
 						</select>
-				</div> 
+				</div>  
 			</fieldset>  
 			<!-- 제목을 입력하는 부분 -->
 			<div class="form-group has-feedback">
@@ -52,13 +50,10 @@
 			<div id="wrapper">   
 				<div id="content"> 
 					<ul id="myTags">   
-						<li>
-						${dto.hstag}
-						</li>
 					</ul>    
 				</div>
 			</div>   
-    
+     
 
 			<!-- 내용을 입력하는 부분 --> 
 			  

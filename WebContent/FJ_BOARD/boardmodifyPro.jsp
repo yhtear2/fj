@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file = "setting.jsp" %>
+<%@ include file="setting.jsp"%>
+<script src="script.js"></script>
 
 <h2> 수정페이지 </h2>
 
@@ -11,7 +12,7 @@
 	alert(updateerror);
 	//-->
 	</script>
-	<meta http-equiv="refresh" content="0; url=boardlist.jsp?pageNum=${pageNum}">
+	<meta http-equiv="refresh" content="0; url=boardlist.do?pageNum=${pageNum}">
 </c:if>
 
 <c:if test="${result != 0}">

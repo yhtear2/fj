@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-
-<%@ include file="/defaultSetting.jsp" %>
-<%@ include file="setting.jsp" %>   
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ include file="setting.jsp" %>  
+<%@ include file = "/defaultSetting.jsp" %>  
+<script src="script.js"></script> 
 
 <!DOCTYPE html>
 
@@ -11,7 +12,7 @@
 		<div id="article" class="content" role="main"> 
             <div class="nav" role="navigation"> 
                 <a href="boardwriteForm.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 글쓰기 </a>
-
+ 
                 <h4> 자유게시판 </h4>
             </div>
  
@@ -81,9 +82,15 @@
                             <i class="fa fa-comments"></i>
                             ${dto.category}
                             </a>
-                             <a href="해쉬태그 경로"
-							class="list-group-item-text item-tag label label-gray">${dto.hstag}</a>
-   
+                             &nbsp; 
+                            <c:forEach var="tag" items="${tags}">
+                            
+	                             <a href="해쉬태그 경로"  
+								class="list-group-item-text item-tag label label-gray">
+								 ${tag}
+	                             </a>
+	                             
+   							</c:forEach> 
 						</div>
 						
                         <!-- 해당 글제목 보여지는 부분 (h2 태그였는데 우선 보류) -->
@@ -166,9 +173,19 @@
                                         	<!--  
                                             <li><a href="javascript://" onclick="alert('댓글이 있는 글은 삭제하실 수 없습니다.');"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li> 
                                             --> 
+                                              
                                             <li>
-                                            <a href="javascript://" onclick="deletewrite();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            <a href="javascript://" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            </li> 
+                                            
+                                              
+                                            
+                                            
+                                            <!--  
+                                            <li>
+                                            <a href="boarddeletePro.do?board_num=${dto.board_num}&pageNum=${pageNum}"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
                                             </li>  
+                                            -->
                                         
                                     </ul>
                                 </div>
@@ -190,7 +207,7 @@
 			
             <div class="panel panel-default clearfix">
                 <!-- List group -->
-                <ul class="list-group">
+                <ul class="list-group"> 
                 
                 	<!-- 댓글 수  -->
                     <li id="note-title" class="list-group-item note-title">
@@ -330,7 +347,7 @@
                                     </textarea>
                                     
 								   </fieldset>   
-                                    
+                                       
                                       
                        		</div> 
                        			

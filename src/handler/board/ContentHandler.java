@@ -41,14 +41,25 @@ public class ContentHandler implements Commandhandler {
 			dao.addCount( board_num );		
 		} */
 	
-
+		
+		
+		
+		String tags[] = dto.getHstag().split(",");
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("number", number);
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num); 
 		map.put( "dto", dto );
+		map.put("tags", tags);
 		
+		/*for( int i=0; i<tags.length; i++){
+			map.put("tag"+i, tags[i]);
+		}*/
+		
+		 
+		   
 		
 		map.put("page", "/FJ_BOARD/boardcontent");  
 		return new ModelAndView("/FJ_MAIN/main", map);

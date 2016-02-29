@@ -106,7 +106,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	}
 
 	
-	/*
+/*
 	public int checkArticle(int board_num)
 	{
 	
@@ -121,8 +121,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		}
 		return result;
 	}
-
-	*/
+*/
 
 	
 	

@@ -10,6 +10,7 @@ var msg_category = "카테고리를 선택하세요";
 var writerror = "글쓰기에 실패했습니다\n잠시 후 다시 시도하세요";
 
 var updateerror = "글수정에 실패했습니다\n잠시 후 다시 시도하세요";
+var replyerror = "댓글이 있는경우는 삭제가 불가능합니다."; 
 var deleteerror = "글삭제에 실패했습니다\n잠시 후 다시 시도하세요";
 
 function erroralert( msg ) {
@@ -85,7 +86,6 @@ function subjectfocus() {
 
 
 function modifycheck() {
-	alert("섬잇누르면 넘오오는곳");
 	if( ! modifyview.category.value ) {
 		alert( msg_category ); 
 		modifyview.category.focus();
@@ -94,7 +94,6 @@ function modifycheck() {
 		alert( msg_subject );
 		modifyview.subject.focus();
 		return false;   
-		
 	} 
 	
 	return false;   
@@ -108,7 +107,7 @@ function modifycheck() {
 	} 
 	*/ 
 	
-	/*
+	/* 
 	else if( ! modifyform.passwd.value ) {
 		alert( msg_passwd );
 		modifyform.passwd.focus();
@@ -122,11 +121,12 @@ function modifycheck() {
 function deletecontent()
 {
 	if (confirm("정말 삭제하시겠습니까??") == true)
-	{    //확인
-	    document.form.submit();
+	{    //확인 
+	  location.boarddeletePro; 
+	  return false;
 	}else
 	{   //취소
-	    return;
+	  return false;
 	}
 }
 
@@ -261,7 +261,7 @@ function postForm()
 
 
 
-
+    
 
 
 

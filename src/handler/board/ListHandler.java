@@ -98,11 +98,9 @@ public class ListHandler implements Commandhandler {
 		}		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		
-		
 		map.put("page", "/FJ_BOARD/boardlist");  
-		return new ModelAndView("/FJ_MAIN/main", map);
+		
+		return new ModelAndView("/FJ_MAIN/main", map); 
 	}	
 }
  

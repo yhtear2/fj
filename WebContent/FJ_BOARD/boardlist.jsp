@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="setting.jsp"%>  
-
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <head>
         <meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -89,11 +89,13 @@
                                     <i class="fa fa-comments"></i> 
                                    	${dto.category}
                                     </a>
-                                   	
-                               <!-- 해시태그 영역 -->
+                                   	&nbsp; 
+                               <!-- 해시태그 영역 --> 
+                               		<c:forEach var="tag" items="${fn:split(dto.hstag,',')}">
                                    	<a href="해시태그 클릭시 해당 관련된 태그들이 있는 페이지로 이동하는 경로" class="list-group-item-text item-tag label label-gray">
-                                    ${dto.hstag}
+                                    ${tag}  
                                    	</a>
+                                   	</c:forEach>
                                 </div>
 									<br>
 								<!-- 제목 부분 (hidden 생략) -->

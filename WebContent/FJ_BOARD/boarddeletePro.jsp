@@ -1,12 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title> ÀÛ ¾÷ Áß ^^ </title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-</body>
-</html>
+<%@ include file="setting.jsp"%> 
+<script src="script.js"></script>
+
+<h2> ì‚­ì œ </h2>
+<c:if test="${resultCheck == 0}">
+	<script type="text/javascript">
+	<!--
+	alert("í…ŒìŠ¤íŠ¸ìž…ë‹ˆë‹¤"); 
+	
+	//-->
+	</script>
+ 
+   
+</c:if>    
+     
+<c:if test="${resultCheck != 0}">
+	<c:if test="${result == 0}">	
+		<script type="text/javascript">
+			<!--  
+			alert( deleteerror );
+			//-->
+		</script>	
+		<meta http-equiv="refresh" content="0; url=boardlist.do?pageNum=${pageNum}">
+	</c:if>	
+	<c:if test="${result == -1}">
+		<script type="text/javascript">
+			<!--
+			alert( replyerror );	
+			//-->			
+		</script>	
+		<meta http-equiv="refresh" content="0; url=boardlist.do?pageNum=${pageNum}">		
+	</c:if>
+	<c:if test="${result == 1}">
+		<c:redirect url="boardlist.do">
+			<c:param name="pageNum" value="${pageNum}"/>
+		</c:redirect>				
+	</c:if>
+</c:if>
