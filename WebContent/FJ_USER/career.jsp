@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<script src="/ResomeEx/jquery-1.12.0.js"></script> 
-<link href="/ResomeEx/style.css" rel="stylesheet" type="text/css">
-<script src="/ResomeEx/request.js"></script>   
+   pageEncoding="UTF-8"%>
+<%@ include file="setting.jsp"%>
+<script src="/fj/jquery-1.12.0.js"></script>
+<script src="/fj/FJ_USER/resome.js"></script>
+<link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
+<script src="/fj/FJ_USER/request.js"></script>
+<script src="/fj/jquery.cookie.js"></script>
 
 <script type="text/javascript">
-	<!--	
 	var request = null;
-	var count = 0;
+	var count = 1;
 
 	
 	window.onload = function() {
@@ -33,42 +35,40 @@
 
 	function chk() {
 		var obj = window.event.srcElement;
-		var addedFor = document.getElementById("addedFormDiv");
+		var addedFor = document.getElementById("career_addFormdiv");
 		
-		if (obj.type == "radio" && obj.name == "rad" && obj.value=="2") {
+		if (obj.type == "radio" && obj.name == "career_solt" && obj.value=="2") {
 			
-			  table1.style.display = 'block';
-			  table2.style.display = 'block';
+			career_table.style.display = 'block';
+			 // table2.style.display = 'block';
 			  addedFor.style.display = 'block';
 			  
 		 }
-		if (obj.type == "radio" && obj.name == "rad" && obj.value=="1") {
+		if (obj.type == "radio" && obj.name == "career_solt" && obj.value=="1") {
 
-			  table1.style.display = 'none';
-			  table2.style.display = 'none';
+			career_table.style.display = 'none';
+			 // table2.style.display = 'none';
 			  addedFor.style.display = 'none';
 		 }
 	}
 	
-	function addForm() {
+	function career_addForm() {
 
-        var addedFormDiv = document.getElementById("addedFormDiv");
-        
-        
-        
+        var career_addFormdiv = document.getElementById("career_addFormdiv");
+
         var str = "";
 		str +=count;      
-        str +="<table>";
+        str +="<table id='career_table1' class='table table-hover'>";
         str +="<tr>";
-        str +="	<th>회사명 : </th>";
-        str +="	<td style='width: 520px'><input class='input' type='text' style='width: 250px' name='tel1' maxlength='3'></td>";
+        str +="	<th style='width:150px'>회사명 : </th>";
+        str +="	<td style='width: 250px'><input class='form-control' type='text' style='width: 250px' name='career_comp_name'></td>";
         str +="</tr>";
         str +="<tr>";
-        str +="	<th>근무기간</th>";
-        str +="	<td style='width: 520px'>";
-        str +="    				<input class='input' type='date' style='width:165px' name='year1' maxlength='3'> ~";
-        str +="    				<input class='input' type='date' style='width:165px' name='year2' maxlength='3'>";
-        str +="    				<select class='input' style='width: 80px' name='shcool'>			";	
+        str +="	<th style='width:150px'>근무기간</th>";
+        str +="	<td style='width: 250px'>";
+        str +="    				<input class='form-control' type='text' style='width:165px' name='career_start_date'> ~";
+        str +="    				<input class='form-control' type='date' style='width:165px' name='career_last_date'>";
+        str +="    				<select class='' style='width: 80px' name='career_kind'>			";	
         str +="    					<option value='퇴사'>퇴사</option>";
         str +="    					<option value='재직중'>재직중</option>		";
         str +="    				</select>";		
@@ -76,8 +76,8 @@
         str +="    	</tr>";
         str +="    	<tr>";
         str +="    		<th>부서명 : </th>";
-        str +="	<td style='width: 520px'><input class='input' type='text' style='width: 250px' name='tel1' maxlength='3'>";
-        str +="    			<select class='input' style='width: 80px' name='shcool'>";				
+        str +="	<td style='width: 250px'><input class='form-control' style='width:165px' type='text' name='career_department'>";
+        str +="    			<select class='' style='width: 80px' name='career_position1'>";				
         str +="    				<option value='직급선택'>직급선택</option>";
         str +="    				<option value='사원'>사원(연구원)</option>";
         str +="    				<option value='주임/계장(연구원)'>주임/계장(연구원)</option>";		
@@ -87,7 +87,7 @@
         str +="   				<option value='부장(연구소장)'>부장(연구소장)</option>";
         str +="   				<option value='임원'>임원</option>";
         str +="    			</select>";
-        str +="    			<select class='input' style='width: 80px' name='shcool'>";				
+        str +="    			<select class='' style='width: 80px' name='career_position2'>";				
         str +="    				<option value='직책선택'>직책선택</option>";
         str +="<option value='팀원'>팀원</option>";
         str +="<option value='팀장'>팀장</option>";		
@@ -107,34 +107,54 @@
         str +="</tr>";	
         str +="    	<tr>";
         str +="    		<th>급여/연봉 : </th>";
-        str +="<td style='width: 520px'><input class='input' type='text' style='width: 250px' name='tel1' maxlength='3'>";
+        str +="<td style='width: 260px'><input class='form-control' type='text' style='width: 250px' name='career_salary'>";
         str +="&nbsp;&nbsp; 만원단위로 입력하세요. &nbsp; (ex:2500만원)";
         str +="</td>";
         str +="    	</tr>";		
 
         str +="<tr>";
         str +="    		<th>퇴사사유 </th>";
-        str +="<td style='width: 520px'><input class='input' type='text' style='width: 250px' name='tel1' maxlength='3'>";
+        str +="<td style='width:250px'><input class='form-control' type='text' style='width: 250px' name='career_resign'>";
 
         str +="	</td>";
         str +="</tr>	";	
     		
         str +="<tr>";
         str +="	<th>담당업무(언어) : </th>";
-        str +="	<td style='width: 520px'><input class='input' type='text' style='width: 250px' name='tel1' maxlength='3'>";
+        str +="	<td style='width:250px'><input class='form-control' type='text' style='width: 250px' name='career_work'>";
 
         str +="	</td>";
         str +="   	</tr>";				
         str +="   	<tr>";
         str +="   		<th> 수행내용 : </th>";
     	str +="   		<td>";
-    	str +="    		<textarea name='intro' rows='9' cols='55'></textarea>";
+    	str +="    		<textarea name='career_content' rows='9' cols='55'></textarea>";
     	str +="   		</td>";
     	str +="    	</tr>		";
+    	str +="<tr>";
+    	str +="<th style='width:150px'>경력추가 </th>";
+    	str +="<td>";
+    	str +="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ";
+    	str +="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ";
+    	str +="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    	str +="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    	str +="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+      
+    	str +="<input  class='btn btn-default'  type='button' value='추가' onclick='career_addForm()'>";
+    	str +="<input  class='btn btn-default'  type='button' value='삭제' onclick='career_deleForm()'>";
+    	str +="</td>";
     	str +="   </table>";
 
 
 	var addedDiv = document.createElement("div");
+		addedDiv.id = "added_" + count;
+		addedDiv.innerHTML = str;
+		career_addFormdiv.appendChild(addedDiv);
+
+		count++;
+		document.career_Form.count.value = count;
+		
+		var addedDiv = document.createElement("div");
 		addedDiv.id = "added_" + count;
 		addedDiv.innerHTML = str;
 		addedFormDiv.appendChild(addedDiv);
@@ -144,23 +164,23 @@
 
 	}
 
-	function delForm() {
-		var addedFormDiv = document.getElementById("addedFormDiv");
+	function career_deleForm() {
+		var career_addFormdiv = document.getElementById("career_addFormdiv");
 
-		if (count > 0) {
+		if (count > 1) {
 			var addedDiv = document.getElementById("added_" + (--count));
 			if (confirm("삭제하시겠습니까?")) {
-				addedFormDiv.removeChild(addedDiv);
+				career_addFormdiv.removeChild(addedDiv);
 			}
 		} else {
-			document.baseForm.reset();
+			document.career_Form.reset();
 		}
 	}
 	
 	function change(sel) {
 		
 		var IdNum = sel.options[sel.selectedIndex].value;
-		var geunmu = document.getElementById("geunmu");
+		var career_last_date = document.getElementById("career_last_date");
 	    var d = new Date();
 		 
 	    var s =
@@ -170,11 +190,11 @@
 
 		
 		if (IdNum == "2") {
-			geunmu.value = s;
+			career_last_date.value = s;
 		}
 		
 		else if (IdNum == "1") {
-				geunmu.value = "";
+			career_last_date.value = "";
 			}
 	}
 	
@@ -190,42 +210,44 @@
 	}
 
 
-	//-->
 </script>
 
 <h2> 경력사항 </h2>
-${sessionScope.userhistoryid};
+<form name="career_Form"  method="post" onload="career_addForm();">
+<input type="hidden" name="count" value="0">
+
+
 <table>
 	<tr>
 		<th> 신입 / 경력 </th>
-			<td style="width: 520px"> &nbsp;&nbsp;&nbsp;&nbsp;신입 : <input type="radio" name="rad" value="1" onclick="chk()"> &nbsp;&nbsp;&nbsp;
-			경력 : <input type="radio" name="rad" value="2" onclick="chk()"></td>		
+			<td> &nbsp;&nbsp;&nbsp;&nbsp;신입 : <input type="radio" name="career_solt" id="career_solt" value="1" onclick="chk()"> &nbsp;&nbsp;&nbsp;
+			경력 : <input type="radio" name="career_solt" id="career_solt" value="2" onclick="chk()"></td>		
 					
 	</tr>
 
 </table>
 
-<table id="table1" style="display:none;">
+<table class="table table-hover" id="career_table" style="display:none;">
 
 	<tr>
-		<th>회사명 : </th>
-		<td style="width: 520px"><input class="input" type="text" style="width: 250px" name="tel1" maxlength="3"></td>
+		<th style="width:150px">회사명 : </th>
+		<td style="width: 250px"><input class="form-control" type="text" style="width: 250px" name="career_comp_name"></td>
 	</tr>
 	<tr>
-		<th>근무기간</th>
-			<td style="width: 520px">
-				<input class="input" type="date" style="width:165px" name="year1" maxlength="3"> ~
-				<input class="input" type="date" style="width:165px" name="year2" maxlength="3" value="" id="geunmu">
-				<select class="input" style="width: 80px" name="shcool11" onChange="change(this)">				
+		<th style="width:150px">근무기간</th>
+			<td style="width: 250px">
+				<input class="form-control" type="text" style="width:150px" name="career_start_date" > ~
+				<input class="form-control" type="text" style="width:150px" name="career_last_date"  value="" id="career_last_date">
+				<select class="input" style="width: 80px" name="career_kind" onChange="change(this)">				
 					<option value="1">퇴사</option>
 					<option value="2">재직중</option>		
 				</select>		
 			</td>
 	</tr>
 	<tr>
-		<th>부서명 : </th>
-		<td style="width: 520px"><input class="input" type="text" style="width: 250px" name="tel1" maxlength="3">
-			<select class="input" style="width: 80px" name="shcool">				
+		<th style="width:150px">부서명 : </th>
+		<td style="width: 250px"><input class="form-control" type="text" style="width: 250px" name="career_department">
+			<select class="" style="width: 80px" name="career_position1">				
 				<option value="직급선택">직급선택</option>
 				<option value="사원(연구원)">사원(연구원)</option>
 				<option value="주임/계장(연구원)">주임/계장(연구원)</option>		
@@ -235,7 +257,7 @@ ${sessionScope.userhistoryid};
 				<option value="부장(연구소장)">부장(연구소장)</option>
 				<option value="임원">임원</option>
 			</select>
-			<select class="input" style="width: 80px" name="shcool">				
+			<select class="" style="width: 80px" name="career_position2">				
 				<option value="직책선택">직책선택</option>
 				<option value="팀원">팀원</option>
 				<option value="팀장">팀장</option>		
@@ -254,41 +276,35 @@ ${sessionScope.userhistoryid};
 		</td>
 	</tr>	
 	<tr>
-		<th>급여/연봉 : </th>
-		<td style="width: 520px"><input class="input" type="number" style="width: 250px" name="tel1" maxlength="3">
+		<th style="width:150px">급여/연봉 : </th>
+		<td style="width: 250px"><input class="form-control" type="number" style="width: 250px" name="career_salary">
 		&nbsp;&nbsp; 만원단위로 숫자만 입력하세요. &nbsp; (ex:2500)
 		</td>
 	</tr>		
 
 	<tr>
-		<th>퇴사사유 </th>
-		<td style="width: 520px"><input class="input" type="text" style="width: 250px" name="tel1" maxlength="3">
+		<th style="width:150px">퇴사사유 </th>
+		<td style="width: 250px"><input class="form-control" type="text" style="width: 250px" name="career_resign">
 
 		</td>
 	</tr>		
 		
 	<tr>
-		<th>담당업무(언어) : </th>
-		<td style="width: 520px"><input class="input" type="text" style="width: 250px" name="tel1" maxlength="3">
+		<th style="width:150px">담당업무(언어) : </th>
+		<td style="width: 250px"><input class="form-control" type="text" style="width: 250px" name="career_work">
 
 		</td>
 	</tr>				
 
 	<tr>
-		<th> 수행내용 : </th>
+		<th style="width:150px"> 수행내용 : </th>
 		<td>
-		<textarea name="intro" rows="9" cols="55"></textarea>
+		<textarea name="career_content" rows="9" cols="55"></textarea>
 		</td>
 	</tr>		
-</table>
 
-<body>
-<form name="baseForm"  method="post" onload="addForm();">
-<input type="hidden" name="count" value="0">
-           <div id="addedFormDiv"></div> <br>
-         	<table id="table2" style="display:none;">
          	<tr>
-         	<th width="110px">경력추가 </th>
+         	<th style="width:150px">경력추가 </th>
          	<td>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -296,20 +312,20 @@ ${sessionScope.userhistoryid};
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           
-           <input  class="inputbutton"  type="button" value="추가" onclick="addForm()">
-           <input  class="inputbutton"  type="button" value="삭제" onclick="delForm()">
+           <input  class="btn btn-default"  type="button" value="추가" onclick="career_addForm()">
+           <input  class="btn btn-default"  type="button" value="삭제" onclick="career_deleForm()">
            </td>
 		</table>
-         
+		  
+
+	<div id="career_addFormdiv"></div> <br>
+
 </form>
-</body>
 
-<br>
-
-
-<div>
+<table>
 	<tr>
 		<th colspan="2"> </th>
-		<td> <input  class="inputbutton"  type="button" value="이력서 수정" onclick="window.location='resome.do'"></td>
+		<td> <input  class="btn btn-default" type="button" value="이력서 수정" onclick="window.location='resome.do'">
+		&nbsp;&nbsp; <input  class="btn btn-default" type="button" value="경력사항 저장"></td>
 	</tr>
-</div>
+</table>

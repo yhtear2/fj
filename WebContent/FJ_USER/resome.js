@@ -8,8 +8,8 @@ var cnt = 0;
 var school_name = "";
 var school_name1 = "";
 
-var school_kind_ida = "";
-var school_kind_idb = "";
+var school_kind_ida = null;
+var school_kind_idb = null;
 
 var school_start_date = "";
 var school_last_date = "";
@@ -28,46 +28,31 @@ function skill_result() {
 }
 
 
+
+$(function(){
+	
+	
+    var count = $.cookie('count');
+
+	var addedFor = document.getElementById("career_addFormdiv");
+
+	for(var j=1; j<=count; j++) {
+		career_addForm();
+	}
+
+})
+
+
 function addReturn(){
    
-   if(school_name1 != undefined) {
-        $("#school_name1").val(school_name1);
-    }       
     if(school_kind1 != undefined) {
         $("#school_kind1").val(school_kind1);
         $("#school_kind1").attr("checked", 'checked');
 
     }
-    if(school_start_date1 != undefined) {
-        $("#school_start_date1").val(school_start_date1);
-    }     
-    if(school_last_date1 != undefined) {
-        $("#school_last_date1").val(school_last_date1);
-    }
-    if(school_college11 != undefined) {
-        $("#school_college11").val(school_college11);
-    }
-    if(school_college21 != undefined) {
-        $("#school_college21").val(school_college21);
-    }       
-    if(school_college_high1 != undefined) {
-        $("#school_college_high1").val(school_college_high1);
-    }
-    if(school_name_kind1 != undefined)
-    {
-        $("#school_name_kind1").val(school_name_kind1);
-    }            
-    if(school_major1 != undefined) {
-        $("#school_major1").val(school_major1);
-    }
-    if(school_rank11 != undefined) {
-        $("#school_rank11").val(school_rank11);
-    }      
-    if(school_rank21 != undefined) {
-        $("#school_rank21").val(school_rank21);
-    }
-}
+    
 
+}
 
 $(function(){
     //최초 쿠키에 login_id라는 쿠키값이 존재하면
@@ -98,10 +83,12 @@ $(function(){
     
     var formCnt = $.cookie('formCnt');
     var addedForm = document.getElementById("addedFormDiv");
-
-
     
-	
+
+
+
+
+
     var highschool_start_date = $.cookie('highschool_start_date');
     var highschool_last_date = $.cookie('highschool_last_date');
     var highschool_college = $.cookie('highschool_college');
@@ -111,59 +98,8 @@ $(function(){
     //alert("here : " +$.cookie('school_kind1'));
    
 
-    school_name1 = $.cookie('school_name1');
-  	
-	  $("#school_name1").val(school_name1); 
 
 
-   for(var i=1; i<=addedForm.childNodes.length; i++) {
-
-	    school_kind_ida[i] = $.cookie('school_kind_ida'+i);
-	   	school_kind_idb[i] = $.cookie('school_kind_idb'+i);
-	    school_start_date[i] = $.cookie('school_start_date'+i);
-	    school_last_date[i] = $.cookie('school_start_date'+i);
-	    school_college1[i] = $.cookie('school_college1'+i);
-	    school_college2[i] = $.cookie('school_college2'+i);
-	    school_major[i] = $.cookie('school_major'+i);
-	    school_rank1[i] = $.cookie('school_rank1'+i);
-	    school_rank2[i] = $.cookie('school_rank2'+i);
-		    
-
-
-	  //  $("#school_name"+i).val(school_name+i); 
-	          
-	    if(school_kind_ida[i] != undefined) {
-	        
-	       $("#school_kind_ida"+i).attr("checked", 'checked');
-	    }
-	    if(school_kind_idb[i] != undefined) {
-	        
-		       $("#school_kind_idb"+i).attr("checked", 'checked');
-		    }	    
-	    if(school_start_date[i] != undefined) {
-	        $("#school_start_date"+i).val(school_start_date+i);
-	    }     
-	    if(school_last_date[i] != undefined) {
-	        $("#school_last_date"+i).val(school_last_date+i);
-	    }
-	    if(school_college1[i] != undefined) {
-	        $("#school_college1"+i).val(school_college1+i);
-	    }
-	    if(school_college2[i] != undefined) {
-	        $("#school_college2"+i).val(school_college2+i);
-	    }       
-    
-	    if(school_major[i] != undefined) {
-	        $("#school_major"+i).val(school_major+i);
-	    }
-	    if(school_rank1[i] != undefined) {
-	        $("#school_rank1"+i).val(school_rank1+i);
-	    }      
-	    if(school_rank2[i] != undefined) {
-	        $("#school_rank2"+i).val(school_rank2+i);
-	    }       
-	    
-   }
 	   
 	    if(highschool_start_date != undefined) {
 	        $("#highschool_start_date").val(highschool_start_date);
@@ -180,9 +116,7 @@ $(function(){
 	    if(highschool_name_kind != undefined) {
 	        $("#highschool_name_kind").val(highschool_name_kind);
 	    }
-	    
 
-	    
 	    
 	    if(resome_title != undefined) {
 	        $("#resome_title").val(resome_title);   //아이디에 쿠키값을 담는다.
@@ -320,12 +254,26 @@ $(function(){
     $("#school_save").click(function(){
 
        $.cookie('formCnt', addedForm.childNodes.length);
-			$.cookie('school_name1', $("#school_name1").val());                   
-
+       		
+       
+	        $.cookie('school_kind1', $("#school_kind_ida1").val());
+   	        $.cookie('school_kind1', $("#school_kind_ida2").val());
+   	        
+   	        
        		for(var j=1; j<=addedForm.childNodes.length; j++) {
        			
-		        $.cookie('school_kind_ida'+j, $("#school_kind_ida"+j).val());
-		        $.cookie('school_kind_idb'+j, $("#school_kind_idb"+j).val());
+
+
+       			$.cookie('school_name'+j, $("#school_name"+j).val());                   
+
+//		        $.cookie('school_kind'+j, $("input[name=school_kind"+j+"]").val());
+       	        $.cookie('school_kind1', $("#school_kind_ida1").val());
+       	        $.cookie('school_kind1', $("#school_kind_ida2").val());
+
+		       // alert( $("input[name=school_kind"+j+"]").val());
+		   
+		        
+		        //$.cookie('school_kind'+j, $("#school_kind_idb"+j).val());
 
 		        $.cookie('school_start_date'+j, $("#school_start_date"+j).val());                
 		        $.cookie('school_last_date'+j, $("#school_last_date"+j).val());
