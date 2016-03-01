@@ -1,3 +1,5 @@
+<%@page import="dao.board.BoardDBBean"%>
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -17,6 +19,6 @@
 
 <c:if test="${result != 0}">
 	<c:redirect url="boardlist.do">
-		<c:param name="pageNum" value="${pageNum}"/>
+		<c:param name="pageNum" value="${pageNum}"/> 
 	</c:redirect>
 </c:if>    

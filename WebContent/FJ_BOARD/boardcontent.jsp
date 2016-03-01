@@ -175,7 +175,10 @@
                                             --> 
                                               
                                             <li>
+                                            <!--  
                                             <a href="javascript://" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            -->
+                                            <a href="boarddeletePro.do" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
                                             </li> 
                                             
                                               

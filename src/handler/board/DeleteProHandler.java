@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.board.BoardDao;
+import dto.board.BoardDataBean;
 import handler.Commandhandler;
 
 
@@ -29,14 +30,16 @@ public class DeleteProHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 	
+		
+		        
 		String pageNum = request.getParameter( "pageNum" );
-		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
-	//	String passwd = request.getParameter( "passwd" ); 
-	
+		System.out.println(1);
+		int board_num = Integer.parseInt(request.getParameter("board_num"));
+		System.out.println(2);
 		int resultCheck = dao.deleteArticle( board_num);	
 
-		request.setAttribute( "resultCheck", resultCheck );
-		request.setAttribute( "pageNum", pageNum ); 
+	//	request.setAttribute( "resultCheck", resultCheck );
+	//	request.setAttribute( "pageNum", pageNum ); 
 		    
 	
 		if( resultCheck != 0 ) {
@@ -44,12 +47,16 @@ public class DeleteProHandler implements Commandhandler {
 			request.setAttribute( "result", result );
 		}
 		
+		 
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		map.put("resultCheck", resultCheck);
 		map.put("pageNum", pageNum);
-		map.put("board_num", board_num); 
+	 	map.put("board_num", board_num); 
+		 
 		
-		map.put("page", "/FJ_BOARD/boarddelete");   
+		map.put("page", "/FJ_BOARD/boarddeletePro");   
 		return new ModelAndView("/FJ_MAIN/main", map); 
 	}
 }

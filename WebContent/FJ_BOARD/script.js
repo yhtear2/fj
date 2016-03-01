@@ -51,6 +51,7 @@ function writecheck_check() {
 		writeform.subject.focus();
 		return false;
 	}
+	
 	// 글 에디터가 넘기는 거야
 	$('input[name=hstag]').val($("#myTags").data("ui-tagit").tagInput.addClass("fancy"));
 	$('input[name=content]').val( $('#summernote').summernote('code') );
@@ -96,7 +97,7 @@ function modifycheck() {
 		return false;   
 	} 
 	
-	return false;   
+	  
 	$("#myTags").data("ui-tagit").tagInput.addClass("fancy");
 	$('input[name=content]').val( $('#summernote').summernote('code') );
 	/*

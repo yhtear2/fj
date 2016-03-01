@@ -69,6 +69,7 @@
 <c:set var="btn_cancel" value="취소"/>  
 <c:set var="btn_list" value="목록보기"/>
 <c:set var="btn_modify" value="수정"/>
+<c:set var="btn_modifies" value="재등록"/>
 <c:set var="btn_delete" value="글삭제"/>
 <c:set var="btn_re_count" value="댓글쓰기"/>
 

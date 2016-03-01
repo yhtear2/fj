@@ -23,7 +23,7 @@ public class ModifyProHandler implements Commandhandler {
 
 	//* CreateBean의 dao 를 불러오기 위한 Resource 작업  (AutoWired 로 사용해도 된다)  *//
 
-	@Resource(name="boardDao")  // logon 패키지의  CreateBean 자바파일에 있는 객체 dao 
+	@Resource(name="boardDao")   
 	private BoardDao dao;   
 	
 	@RequestMapping("/boardmodifyPro")
@@ -33,11 +33,21 @@ public class ModifyProHandler implements Commandhandler {
 		
 		request.setCharacterEncoding( "utf-8" );	
 	
+		String tags[] = request.getParameterValues("tags");   
+		String hstag = "";
+		//  마지막에 , 으로 되는거 split 으로 자르던가 아니면 막게 해주자 (추후 구현 할 것)
+		for (int i=0; i<tags.length; i++){
+			hstag += tags[i];
+			if(i < tags.length -1){
+				hstag += ",";
+			}
+		}
+		
 		BoardDataBean dto = new BoardDataBean();
 		dto.setBoard_num( Integer.parseInt( request.getParameter( "board_num" ) ) );
 		dto.setCategory(request.getParameter("category"));   
 		dto.setSubject( request.getParameter( "subject" ) );
-		dto.setHstag(request.getParameter("hstag"));
+		dto.setHstag(hstag); 
 		dto.setContent( request.getParameter( "content" ) );
 	
 		String pageNum = request.getParameter( "pageNum" );
