@@ -107,8 +107,28 @@ body {
 	text-align: left;
 	font-weight: 500;
 }
-.main_submanu>img {
+.main_submanu:hover{
+	background-color: #fff;
+	color : #0059B3;
+}
+.main_submanu>div{
+	float:left;
+	width: 26px;
+	height:26px;
+	border : solid 1px #fff;
+	border-radius : 13px 13px 13px 13px;
+	overflow:hidden;
 	margin-right : 10px;
+	text-align:center;
+	background-color:#0059B3;
+}
+.main_submanu>div>img {
+	margin-left : -3px;
+	margin-top : 4px;
+}
+.main_submanu>span {
+	display:block;
+	margin-top : 3px;
 }
 /* 선택메뉴-Git */
 .main_submanu:last-child{

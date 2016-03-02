@@ -37,13 +37,13 @@
 			<!-- 선택 메뉴 -->
 			<div class="main_sub">
 				<div class="main_submanu">
-					<img src="${images}/main_up_01.png"> MyPage</div>
+					<div><img src="${images}/main_up_01.png"></div> <span>MyPage</span></div>
 				<div class="main_submanu">
-					<img src="${images}/main_up_02.png"> 게시판</div>
-				<div class="main_submanu">
-					<img src="${images}/main_up_03.png"> 채용공고</div>
-				<div class="main_submanu">
-					<img src="${images}/main_up_04.png"> QA</div>
+					<div><img src="${images}/main_up_02.png"></div> <span>게시판</span></div>
+				<div class="main_submanu">                          
+					<div><img src="${images}/main_up_03.png"></div> <span>채용공고</span></div>
+				<div class="main_submanu">                          
+					<div><img src="${images}/main_up_04.png"></div> <span>QA</span></div>
 				<div class="main_submanu"><i class="fa fa-github"></i>Git</div>
 			</div>
 		</div>
