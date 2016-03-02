@@ -5,7 +5,7 @@
 
 <!-- 전체 크기 잡기 -->
 <div class="recruit_mainsize">
-	
+<form method="post" action="recruitWritePro.do" onsubmit="return recruitwritecheck()">
 	<label><h2>채용공고</h2></label>
 	<!-- 제목 -->
 	<div class="recruit_size">
@@ -58,7 +58,6 @@
 				  	<option>7,000만원 이상</option>
 				  	<option>8,000만원 이상</option>
 				  	<option>9,000만원 이상</option>
-				  	<option>1억원 이상</option>
 				</select>
 				<label style="width: 50px; text-align: center;"> ~ </label>
 				<select class="form-control11" name="max_salary" style="width: 150px; text-align: center;" >
@@ -76,7 +75,6 @@
 				  	<option>7,000만원 이하</option>
 				  	<option>8,000만원 이하</option>
 				  	<option>9,000만원 이하</option>
-				  	<option>1억원 이하</option>
 				 </select>
 			 
 			
@@ -113,15 +111,15 @@
 				<option>학력무관</option>
 				<option>고등학교 졸업</option>
 				<option>대학 졸업(2,3년)</option>
-				<option>대학교 졸업(4년)</option>
+				<option>대학교 졸업(4년)</option>	
 				<option>석사졸업</option>
 				<option>박사졸업</option>
 			</select>
 			
 			<label style="margin : 0px 30px 0px 100px;">성   별</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="남자">남자</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="여자">여자</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="무관">무관</label>
+			<label class="checkbox-inline"> <input type="checkbox" id="gender" name="gender" value="남자" onclick="genderCheck('남자')">남자</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="여자" onclick="genderCheck()">여자</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="무관" onclick="genderCheck()">무관</label>
 		</div>
 		<div class="recruit_minisize">
 			<label style="margin-right: 20px;">연   령</label>
@@ -231,6 +229,15 @@
 		<div id="summernote" ></div>
 	</div>
 	<input type="hidden" name="content" value="">
+	
+	<!-- 버튼 구현부 -->
+	<div class="nav" role="navigation">
+		<fieldset class="buttons">
+		<a href="recruitList.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 	  
+			<input type="submit" class="create btn btn-success btn-wide pull-right" value="전송" > 
+		</fieldset>
+	</div>
+</form>
 </div>
 
 

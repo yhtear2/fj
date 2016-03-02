@@ -18,8 +18,7 @@ public class RecruitDataBean {
 	public String incharge;			// 담당자 
 	public String tel;				// 연락처 
 
-	public String min_salary;		// 최소 연봉
-	public String max_salary;		// 최대 연봉
+
 	public String start_date;		// 채용 시작일
 	public String end_date;			// 채용 종료일
 	public String min_career;		// 최소 경력
@@ -27,6 +26,8 @@ public class RecruitDataBean {
 	public String min_age;			// 최소 나이
 	public String max_age;			// 최대 나이
 
+	public int min_salary;			// 최소 연봉
+	public int max_salary;			// 최대 연봉
 	public int people_count;		// 채용인원
 	public int readcount;			// 조회수
 	
@@ -111,16 +112,16 @@ public class RecruitDataBean {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getMin_salary() {
+	public int getMin_salary() {
 		return min_salary;
 	}
-	public void setMin_salary(String min_salary) {
+	public void setMin_salary(int min_salary) {
 		this.min_salary = min_salary;
 	}
-	public String getMax_salary() {
+	public int getMax_salary() {
 		return max_salary;
 	}
-	public void setMax_salary(String max_salary) {
+	public void setMax_salary(int max_salary) {
 		this.max_salary = max_salary;
 	}
 	public String getStart_date() {

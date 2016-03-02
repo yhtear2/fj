@@ -20,6 +20,8 @@ public class RecruitWriteFormHandler implements Commandhandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		// 여기 회원정보에서 디비정보 가져와서 넘겨줘야해요!!
+		
 		/*String pageNum = request.getParameter("pageNum");
 		map.put("pageNum", pageNum);*/
 		
