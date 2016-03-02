@@ -2,7 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ include file="setting.jsp"%>
 <script src="/fj/jquery-1.12.0.js"></script>
-<script src="/fj/FJ_USER/resome.js"></script>
+<!-- <script src="/fj/FJ_USER/resome.js"></script>-->
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/request.js"></script>
 <script src="/fj/jquery.cookie.js"></script>
@@ -37,14 +37,14 @@
 		var obj = window.event.srcElement;
 		var addedFor = document.getElementById("career_addFormdiv");
 		
-		if (obj.type == "radio" && obj.name == "career_solt" && obj.value=="2") {
+		if (obj.type == "radio" && obj.name == "career_sort" && obj.value=="경력") {
 			
 			career_table.style.display = 'block';
 			 // table2.style.display = 'block';
 			  addedFor.style.display = 'block';
 			  
 		 }
-		if (obj.type == "radio" && obj.name == "career_solt" && obj.value=="1") {
+		if (obj.type == "radio" && obj.name == "career_sort" && obj.value=="신입") {
 
 			career_table.style.display = 'none';
 			 // table2.style.display = 'none';
@@ -67,7 +67,7 @@
         str +="	<th style='width:150px'>근무기간</th>";
         str +="	<td style='width: 250px'>";
         str +="    				<input class='form-control' type='text' style='width:165px' name='career_start_date'> ~";
-        str +="    				<input class='form-control' type='date' style='width:165px' name='career_last_date'>";
+        str +="    				<input class='form-control' type='text' style='width:165px' name='career_last_date'>";
         str +="    				<select class='' style='width: 80px' name='career_kind'>			";	
         str +="    					<option value='퇴사'>퇴사</option>";
         str +="    					<option value='재직중'>재직중</option>		";
@@ -187,7 +187,6 @@
 	        leadingZeros(d.getFullYear(), 4) + '-' +
 	        leadingZeros(d.getMonth() + 1, 2) + '-' +
 	        leadingZeros(d.getDate(), 2);
-
 		
 		if (IdNum == "2") {
 			career_last_date.value = s;
@@ -213,15 +212,15 @@
 </script>
 
 <h2> 경력사항 </h2>
-<form name="career_Form"  method="post" onload="career_addForm();">
+<form name="career_Form"  method="post" onload="career_addForm();" action="career_Pro.do">
 <input type="hidden" name="count" value="0">
 
 
 <table>
 	<tr>
 		<th> 신입 / 경력 </th>
-			<td> &nbsp;&nbsp;&nbsp;&nbsp;신입 : <input type="radio" name="career_solt" id="career_solt" value="1" onclick="chk()"> &nbsp;&nbsp;&nbsp;
-			경력 : <input type="radio" name="career_solt" id="career_solt" value="2" onclick="chk()"></td>		
+			<td> &nbsp;&nbsp;&nbsp;&nbsp;신입 : <input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()"> &nbsp;&nbsp;&nbsp;
+			경력 : <input type="radio" name="career_sort" id="career_sort" value="경력" onclick="chk()"></td>		
 					
 	</tr>
 
@@ -237,10 +236,10 @@
 		<th style="width:150px">근무기간</th>
 			<td style="width: 250px">
 				<input class="form-control" type="text" style="width:150px" name="career_start_date" > ~
-				<input class="form-control" type="text" style="width:150px" name="career_last_date"  value="" id="career_last_date">
+				<input class="form-control" type="text" style="width:150px" name="career_last_date" id="career_last_date" value="">
 				<select class="input" style="width: 80px" name="career_kind" onChange="change(this)">				
-					<option value="1">퇴사</option>
-					<option value="2">재직중</option>		
+					<option value="퇴사">퇴사</option>
+					<option value="재직중">재직중</option>		
 				</select>		
 			</td>
 	</tr>
@@ -320,12 +319,13 @@
 
 	<div id="career_addFormdiv"></div> <br>
 
-</form>
+
 
 <table>
 	<tr>
 		<th colspan="2"> </th>
 		<td> <input  class="btn btn-default" type="button" value="이력서 수정" onclick="window.location='resome.do'">
-		&nbsp;&nbsp; <input  class="btn btn-default" type="button" value="경력사항 저장"></td>
+		&nbsp;&nbsp; <input  class="btn btn-default" type="submit" value="경력사항 저장"></td>
 	</tr>
 </table>
+</form>
