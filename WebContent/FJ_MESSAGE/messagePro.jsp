@@ -17,7 +17,8 @@
 	<script type="text/javascript">
 	<!--
 	alert("쪽지 전송에 성공 했습니다.");
-	sendmsg();
+	wsSendMassge( $('input[id=msg]').val() );
+	//$.cookie('msg', $('input[id=msg]').val() );
 	window.location.href='messageList.do';
 	//-->
 </script>

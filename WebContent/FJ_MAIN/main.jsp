@@ -9,7 +9,7 @@
 		<link href="${main}/main.css" rel="stylesheet" type="text/css">
 		<script src="${main}/main.js"></script>
 	</head>
-	<body onload="websoket()">
+	<body>
 		<div class="main_menu">
 			<input type="hidden" class="menu_status" value="0">
 			<input type="hidden" class="m" value="${menu}">

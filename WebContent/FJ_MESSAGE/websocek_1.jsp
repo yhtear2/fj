@@ -13,7 +13,7 @@ function websoket(){
 		return;
 	} else{
 		// 연결한 웹소켓의 주소 및 아이디
-		ws = new WebSocket('ws://192.168.219.153:8080/fj/websocket/chat?memId=${sessionScope.memId}');
+		ws = new WebSocket('ws://localhost:8080/fj/websocket/chat?memId=${sessionScope.memId}');
 		// 서버에 연결하는 메소드
 		ws.onopen = function(){
 			stat.innerHTML = "서버 접속 성공";

@@ -38,11 +38,24 @@ public class Websocket {
         // 혹시몰라서 빈공간 제거
         String user_memId = user.trim();
         // memId에 순서대로 넣기
-        memId.put( connectionIds.getAndIncrement(), user_memId);
-        System.out.println("접속유저 MemId : " + user_memId );
-        // 세션에 맵에다 넣기
-        sessionMap.put(user_memId, session);
+        // 중복아이디가 들어오면 방지하기 위해서 돌려줌
+        Boolean ckeck = true;
+        for(int i=0; i<connectionIds.get(); i++){
+        	if( user_memId.equals(memId.get(i)) ){
+        		ckeck = false;
+        	}
+        }
+
+        // 같은 아이디가 없으면 맵에다가 저장
+        if( ckeck ) {
+        	// memId를 맵에다 저장
+        	memId.put( connectionIds.getAndIncrement(), user_memId);
+        	System.out.println("접속유저 MemId : " + user_memId );
+        	// 세션에 맵에다 넣기
+            sessionMap.put(user_memId, session);
+        }  
     }
+    
     // 세션이 종료될때 접속하는 메소드
     @OnClose
     public void end() {
