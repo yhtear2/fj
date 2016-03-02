@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%@ include file="/defaultSetting.jsp" %>
@@ -15,6 +15,7 @@
 		//-->
 	</script>		
 </c:if>
+
 <c:if test="${result == 0}">	
 	<script type="text/javascript">
 		<!--
@@ -22,8 +23,18 @@
 		//-->
 	</script>
 </c:if>
+
 <c:if test="${result == 1}">
-	<c:redirect url="main.do"/>
+	<input type="hidden" id="memId" value="${email}">
+	<script type="text/javascript">
+	<!--
+		var memId = $('input[id=memId]').val();
+		if( memId != null && memId != ""){
+			websoket( memId );
+			window.location.href = "main.do"
+		}
+	//-->
+	</script>
 </c:if>
 
 

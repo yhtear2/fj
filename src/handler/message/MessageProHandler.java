@@ -35,22 +35,26 @@ public class MessageProHandler implements Commandhandler {
 		MessageDataBean dto = new MessageDataBean();
 		
 		// 바구니에 자료 담기
-		//dto.setEmail( request.getParameter("email") );
-		//dto.sender( (String)request.getSession().getAttribute("memId") );
-		System.out.println("memId : " + (String)request.getSession().getAttribute("memId"));
-		dto.setEmail("email@example.com");
-		dto.setSender("sendermail@main.com");
-		dto.setTitle( request.getParameter("title") );
-		dto.setContent( request.getParameter("content") );
-		
-
-		dto.setTag(3);
-		dto.setRead_yn(0);
-		dto.setReg_date(new Timestamp( System.currentTimeMillis()));
+		dto.setSender( (String)request.getSession().getAttribute("memId") );	// 보내는사람
+		dto.setEmail( request.getParameter("email") );							// 받는사람
+		dto.setTitle( request.getParameter("title") );							// 제목
+		dto.setContent( request.getParameter("content") );						// 내용
+		dto.setTag(3);															// 메시지 분류 (1:채용공고  // 2:공지사항 // 3:일반쪽지)
+		dto.setRead_yn(0);														// 읽음 유무
+		dto.setReg_date(new Timestamp( System.currentTimeMillis()));			// 보낸날자
 
 		// 디비 처리하러 고고고~!
 		int result = dao.sendMessage(dto);
 		
+		// 실시간 쪽지를 위한 데이터 한번에 묶기
+		// 받는사람#보내는사람#제목#내용
+		String msg 	= dto.getEmail() + "#"
+					+ dto.getSender() + "#"
+					+ dto.getTitle() + "#"
+					+ dto.getContent() + "#";
+		// 실시간 쪽지 데이터 넘기기
+		map.put("msg", msg);
+				
 		// 넘어온 데이터 페이지로 넘기자
 		map.put("result", result);
 		

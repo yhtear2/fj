@@ -13,9 +13,11 @@
 </c:if>
 
 <c:if test="${result != 0}">
+	<input type="hidden" id="msg" value="${msg}">
 	<script type="text/javascript">
 	<!--
 	alert("쪽지 전송에 성공 했습니다.");
+	sendmsg();
 	window.location.href='messageList.do';
 	//-->
 </script>

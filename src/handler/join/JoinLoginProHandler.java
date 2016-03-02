@@ -42,11 +42,9 @@ public class JoinLoginProHandler implements Commandhandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("email", email);
 		map.put("result", result);
-		
-		//request.setAttribute( "email", email );
-		//request.setAttribute( "result", result );
 
-		return new ModelAndView( "/FJ_JOIN/loginPro", map );
+		map.put("page", "/FJ_JOIN/loginPro");
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
 

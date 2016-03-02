@@ -26,11 +26,10 @@ public class MessageListHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+		/**	받은 편지함	**/
 		// 변수 선언
 		int count = 0;
-		//String email = (String)request.getSession().getAttribute("memId");
-		String email = "email@example.com";
+		String email = (String)request.getSession().getAttribute("memId");
 		
 		int pageSize=10;
 		int pageBlock = 3;
@@ -87,10 +86,6 @@ public class MessageListHandler implements Commandhandler {
 			ArrayList<MessageDataBean> list = dao.getList(start, end, email);
 			map.put("list", list);
 		}
-		
-		/****************************************
-		닉네임 받아오기 셀렉트 날려서 받아오게 해야해요~~~!!!
-		***************************************/
 		
 		map.put("count", count);
 		map.put("pageNum", pageNum);
