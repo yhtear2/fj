@@ -45,6 +45,7 @@ $(function(){
 			).animate({'width':'50px'});
 			});
 		}
+
 	});
 
 

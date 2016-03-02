@@ -2,11 +2,21 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file = "/defaultSetting.jsp" %>   
-<%-- 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-    --%>
-       
+    
+    
+ <!-- 홍석 : 디폴트세팅에 있는거 여기다 다시 넣음 (다른곳에서 오류나고 필요 없음) -->
+<link href="/fj/FJ_BOARD/jquery.tagit.css" rel="stylesheet">    
+<link href="/fj/FJ_BOARD/tagit.ui-zendesk.css" rel="stylesheet">         
+<script src="/fj/FJ_BOARD/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet"> 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+ 
+<script src="/fj/FJ_BOARD/script.js"></script>              
+<!-- 여기까지 새로 넣었음 -->
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon"
 	href="http://okky.kr/assets/favicon-4ddd8035b72404da5a8c298cbaacad86.ico"

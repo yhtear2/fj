@@ -9,10 +9,11 @@
 		<link href="${main}/main.css" rel="stylesheet" type="text/css">
 		<script src="${main}/main.js"></script>
 	</head>
-	<body>
+	<body onload="websoket()">
 		<div class="main_menu">
 			<input type="hidden" class="menu_status" value="0">
 			<input type="hidden" class="m" value="${menu}">
+			<input type="hidden" id="memId" value="${sessionScope.memId}">
 			<div class="main_logo" onclick="window.location='main.do'">
 				<img id="logo" src="${images}/main_logo.png"> 
 			</div>
