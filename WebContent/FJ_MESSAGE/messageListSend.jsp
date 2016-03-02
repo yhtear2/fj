@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="setting.jsp"%>
-<link href="${project}message.css" rel="stylesheet" type="text/css">
-<script src="${project}message.js"></script>
 
 <!-- 전체 크기 및 백그라운드 색갈 주기 -->
 <div style="width: 800px; background-color: white; margin: 20px;"

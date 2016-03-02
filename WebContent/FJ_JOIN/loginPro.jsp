@@ -30,7 +30,7 @@
 	<!--
 		var memId = $('input[id=memId]').val();
 		if( memId != null && memId != ""){
-			websoket( memId );
+			wsConnect( memId );
 			window.location.href = "main.do"
 		}
 	//-->
