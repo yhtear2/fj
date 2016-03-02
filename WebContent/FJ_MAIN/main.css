@@ -68,16 +68,23 @@ body {
 	padding-top: 12px;
 }
 /*로그온 상태*/
+.main_logon {
+	position: relative;
+}
 .main_logon>span {
 	color:white;
-	margin-top:10px;
-	padding-left:10px;
 	display:block;
-	float:left;
 }
 .main_logon>span:FIRST-CHILD{
-	margin-top:10px;
+	margin-top:12px;
 	padding-left:50px;
+	position:absolute;
+}
+.main_logon>span:nth-child(2){
+	font-size: 1.5em;
+	position:absolute;
+	top:13px;
+	left:137px;
 }
 /*메인페이지*/
 .main_page{
@@ -129,6 +136,10 @@ body {
 	color:black;
 	display:block;
 	margin:20px 20px 20px 20px;
+}
+
+@media screen and (max-width:768px) {
+
 }
 
 

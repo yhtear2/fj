@@ -26,8 +26,8 @@ public class JoinLogoutHandler implements Commandhandler {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("menu", "member");
-	 	map.put("page", "/FJ_JOIN/main");
+		map.put("menu", "main");
+	 	map.put("page", "/FJ_MAIN/main_page");
 		
 		return new ModelAndView( "/FJ_MAIN/main", map );
 	}

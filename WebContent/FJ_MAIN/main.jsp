@@ -22,7 +22,7 @@
 				<div class="main_login" onclick="window.location='joinMain.do'">
 					<img src="${images}/main_logou_up.png" class="images_main"> Login
 				</div>
-				<div class="main_singup">
+				<div class="main_singup" onclick="window.location='joinInputForm.do'">
 					<img src="${images}/main_sign_up.png" class="images_main"> SingUp
 				</div>
 				</c:if>
@@ -30,7 +30,7 @@
 				<c:if test="${sessionScope.memId != null}">
 				<div class="main_logon">
 					<span>${name}</span>
-					<span class="glyphicon glyphicon-log-out" onclick="window.location='joinLogout.do'"/>
+					<span class="glyphicon glyphicon-log-out logout" onclick="window.location='joinLogout.do'"/>
 				</div>
 				</c:if>
 			</div>

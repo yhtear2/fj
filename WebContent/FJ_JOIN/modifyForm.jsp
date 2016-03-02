@@ -11,7 +11,7 @@
 		name="passwdform" onsubmit="return passwdcheck()">
 		<h2> ${page_modify} </h2>
 		<table class="table table-bordered">
-			<tr>
+			<tr class="active">
 				<th colspan="2"> ${msg_passwd} </th>
 			</tr>
 			<tr>
@@ -21,7 +21,7 @@
 						maxlength="20">
 				</td>
 			</tr>
-			<tr>
+			<tr class="active">
 				<th colspan="2">
 					<input class="btn btn-default" type="submit" value="${btn_modify}">
 					<input class="btn btn-default" type="button" value="${btn_modify_cancel}"

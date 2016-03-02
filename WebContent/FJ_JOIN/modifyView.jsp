@@ -61,7 +61,7 @@
 			name="modifyform" onsubmit="return modifycheck()">
 			<h2> ${page_modify} </h2>				
 			<table class="table table-bordered">
-				<tr>
+				<tr class="active">
 					<th colspan="2"> ${msg_modify} </th>						
 				</tr>
 				<tr>
@@ -98,7 +98,7 @@
 							pattern="yyyy_MM-dd HH:mm"/>						
 					</td>
 				</tr>
-				<tr>
+				<tr class="active">
 					<th colspan="2">
 						<input class="btn btn-default" type="submit" value="${btn_modify}">
 						<input class="btn btn-default" type="reset" value="${btn_cancel}">

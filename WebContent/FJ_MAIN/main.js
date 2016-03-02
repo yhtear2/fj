@@ -17,6 +17,7 @@ $(function(){
 					$('.menu_status').val(1);
 				});
 				$('.main_submanu').stop().animate({'padding-left':'15px'});
+				$('.logout').stop().animate({'left':'22px'});
 			} else { 
 				$('.main_menu').stop().animate({'width':'200px'}, function() {
 					$('.main_menu2').css({'z-index':'0'});

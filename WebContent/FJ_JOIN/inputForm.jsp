@@ -109,8 +109,8 @@
 		onsubmit="return inputcheck()">
 		<input type="hidden" name="confirm" value="${check}">
 		<h2> ${page_input} </h2>
-		<table class="table">			
-			<tr>
+		<table class="table table-bordered">			
+			<tr class="active">
 				<th colspan="2"> ${msg_input} </th>
 			</tr>
 			<tr>
@@ -158,7 +158,7 @@
 					<input class="btn btn-default" type="button" value="이메일 인증" onclick="emailsend( inputform.email.value )">
 				</td>
 			</tr>
-			<tr>
+			<tr class="active">
 				<th colspan="2">
 					<input class="btn btn-default" type="submit" value="${btn_input}">
 					<input class="btn btn-default" type="reset" value="${btn_cancel}">

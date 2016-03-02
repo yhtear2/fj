@@ -10,8 +10,9 @@
 	<c:if test="${sessionScope.memId == null}">
       <form name="mainform" method="post" action="joinLoginPro.do" 
          onsubmit="return maincheck()">
-         <h2> ${page_login} </h2>
-         <table class="table table-bordered"">
+         
+         <h2> ${page_login}</h2>
+         <table class="table table-bordered">
             <tr>
                <th> ${str_email} </th>
                <td>
@@ -25,7 +26,7 @@
                </td>
             </tr>
             <tr>
-               <td class="table-button" colspan="2">
+               <td class="table-button active" colspan="2">
                   <input class="btn btn-default" type="submit" value="${btn_login}">
                   <input class="btn btn-default" type="reset" value="${btn_cancel}">
                   <input class="btn btn-default" type="button" value="${btn_input_member}"
@@ -44,7 +45,7 @@
 		            <span>${sessionScope.name}</span>${msg_login}
 		         </td>
 		      </tr>
-		      <tr>
+		      <tr class="active">
 		         <th>
 		            <input class="btn btn-default" type="button" value="${btn_modify_member}" onclick="window.location='joinModifyForm.do'">
 		            <input class="btn btn-default" type="button" value="${btn_delete_member}" onclick="window.location='joinDeleteForm.do'">
