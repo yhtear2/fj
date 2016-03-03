@@ -83,30 +83,17 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	}
 
 	
-	public void addCount(int board_num)
+	public int addCount(int board_num)
 	{
-		sqlSession.update("FJ_BOARD.addCount", board_num);
+		return sqlSession.update("FJ_BOARD.addCount", board_num);
 	}
 
 	 
 	public int deleteArticle( int board_num ) {		
-		BoardDataBean dto = getArticle( board_num );
-								
-		int count = sqlSession.selectOne("FJ_Board.reply", dto);
-		
-		int result = 0;					
-		if( count != 0 ) {
-			// 답글이 있는 경우
-			result = -1;
-		} else { 
-			// 답글이 없는 경우
-			sqlSession.update("FJ_Board.deleteReply", dto);
-			result = sqlSession.delete("FJ_Board.deleteArticle", board_num); 	 
-		}						
-		return result;
+		return  sqlSession.delete("FJ_BOARD.deleteArticle", board_num);
 	}
 
-	
+	 
 /*
 	public int checkArticle(int board_num)
 	{
@@ -128,3 +115,4 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	
 } // class  */
 
+ 

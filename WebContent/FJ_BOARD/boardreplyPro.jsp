@@ -2,23 +2,21 @@
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+ 
 <%@ include file="setting.jsp"%>
 <script src="script.js"></script>
 
-<h2> 수정페이지 </h2>
+<h2> 댓글페이지 </h2>
 
 <c:if test="${result == 0}">
 	<script type="text/javascript">
-	<!--  
-	alert(updateerror);
-	//-->
+		<!--
+		erroralert( replyupdate );
+		//-->      
 	</script>
-	<meta http-equiv="refresh" content="0; url=boardlist.do?pageNum=${pageNum}">
-</c:if>
-
-<c:if test="${result != 0}">
-	<c:redirect url="boardlist.do">
+</c:if> 
+<c:if test="${result != 0}"> 	
+	<c:redirect url="/fj/boardcontent.do"> 
 		<c:param name="pageNum" value="${pageNum}"/> 
-	</c:redirect>
-</c:if>    
+	</c:redirect>   
+</c:if> 

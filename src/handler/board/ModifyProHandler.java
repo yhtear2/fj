@@ -1,4 +1,4 @@
-
+ 
 package handler.board;
 
 import java.util.HashMap;
@@ -35,13 +35,15 @@ public class ModifyProHandler implements Commandhandler {
 	
 		String tags[] = request.getParameterValues("tags");   
 		String hstag = "";
-		//  마지막에 , 으로 되는거 split 으로 자르던가 아니면 막게 해주자 (추후 구현 할 것)
-		for (int i=0; i<tags.length; i++){
-			hstag += tags[i];
-			if(i < tags.length -1){
-				hstag += ",";
+		
+		if( tags != null ) {
+			for (int i=0; i<tags.length; i++){
+				hstag += tags[i];
+				if(i < tags.length -1){
+					hstag += ",";
+				}
 			}
-		}
+		} 
 		
 		BoardDataBean dto = new BoardDataBean();
 		dto.setBoard_num( Integer.parseInt( request.getParameter( "board_num" ) ) );
@@ -76,3 +78,4 @@ public class ModifyProHandler implements Commandhandler {
 
 
 
+ 

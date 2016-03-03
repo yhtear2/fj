@@ -23,35 +23,26 @@ public class DeleteProHandler implements Commandhandler {
 
 	//* CreateBean의 dao 를 불러오기 위한 Resource 작업  (AutoWired 로 사용해도 된다)  *//
 
-	@Resource(name="boardDao")  // logon 패키지의  CreateBean 자바파일에 있는 객체 dao 
-	private BoardDao dao;  
-	
+	@Resource(name="boardDao")  
+	private BoardDao dao;
+	 
 	@RequestMapping("/boarddeletePro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 	
-		
+		Map<String, Object> map = new HashMap<String, Object>();
 		        
 		String pageNum = request.getParameter( "pageNum" );
-		System.out.println(1);
-		int board_num = Integer.parseInt(request.getParameter("board_num"));
-		System.out.println(2);
-		int resultCheck = dao.deleteArticle( board_num);	
-
-	//	request.setAttribute( "resultCheck", resultCheck );
-	//	request.setAttribute( "pageNum", pageNum ); 
-		    
+		int board_num = Integer.parseInt(request.getParameter("board_num").trim());
+		
+		BoardDataBean dto = dao.getArticle(board_num);	
+       
 	
-		if( resultCheck != 0 ) {
+		if( dto.getRe_step() != 3 ) {    //  re_step 3 을 댓글로 지정하였고, 댓글이 없을 경우를 if 문으로 돌려서 체크 
 			int result = dao.deleteArticle( board_num ); 
-			request.setAttribute( "result", result );
+			map.put( "result", result );
 		}
 		
-		 
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("resultCheck", resultCheck);
 		map.put("pageNum", pageNum);
 	 	map.put("board_num", board_num); 
 		 
@@ -60,7 +51,7 @@ public class DeleteProHandler implements Commandhandler {
 		return new ModelAndView("/FJ_MAIN/main", map); 
 	}
 }
-
+  
 
 
 

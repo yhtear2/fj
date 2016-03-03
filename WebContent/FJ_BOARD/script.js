@@ -7,7 +7,8 @@ var msg_subject = "제목을 입력하세요";
 var msg_content = "내용을 입력하세요";
 var msg_category = "카테고리를 선택하세요";
 
-var writerror = "글쓰기에 실패했습니다\n잠시 후 다시 시도하세요";
+var writerror = "글쓰기에 실패하였습니다\n잠시 후 다시 시도하세요";
+var replyupdate = "댓글쓰기에 실패하였습니다\n잠시 후 다시 시도하세요";
 
 var updateerror = "글수정에 실패했습니다\n잠시 후 다시 시도하세요";
 var replyerror = "댓글이 있는경우는 삭제가 불가능합니다."; 
@@ -260,7 +261,7 @@ function postForm()
 }
 */
 
-
+  
 
     
 

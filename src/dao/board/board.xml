@@ -22,7 +22,7 @@
 	</update>  
 	
 	<update id="addCount" parameterType="Integer">
-		update fj_board_free set read_count=read_count+1 where board_num=${board_num} 
+		update fj_board_free set read_count=read_count+1 where board_num=#{board_num} 
 	</update>
 	
 	<select id="getMaxNum" resultType="Integer">
@@ -37,12 +37,6 @@
 	<!-- rownum rn 은 정렬상태의 DB검색 결과중, 일정부분을 가져오게 한다.  --> 
 	<!-- order by 컬럼명 asc | desc -->  <!-- asc : 오름차순 / desc : 내림차순 -->
 	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map"> 	 
-	 	<!--  
-		select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
-			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
-			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by re_step desc)
-			order by re_step asc) where rn &gt; = #{start} and rn &lt; = #{end} 
-		-->
 		select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
 			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
 			rn from (select board_num, email, subject, content, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
@@ -52,22 +46,18 @@
 	<update id="updateReply" parameterType="dto.board.BoardDataBean">
 	 	update fj_board_free set re_step=re_step+1 where board_num= #{board_num} and re_step &gt; #{re_step}
 	 </update>
-	 
-	 <update id="deleteReply" parameterType="dto.board.BoardDataBean">
-	 	update fj_board_free set re_step=re_step-1 where board_num=#{board_num} and re_step &gt; #{re_step}
-	 </update>
-	
-	<select id="reply" resultType="Integer" parameterType="dto.board.BoardDataBean">
-	 	select count(*) from fj_board_free where board_num= #{board_num} and re_step= #{re_step}+1 and re_count &gt; #{re_count}
-	 </select> 
-	 
+
 	 <delete id="deleteArticle" parameterType="Integer">
 	 	delete from fj_board_free where board_num=#{board_num}   
 	 </delete>
 	
+	<select id="getRecount" parameterType="Integer" resultType="Integer">
+		select re_count from Fj_board_free where board_num = #{board_num}
+	</select>
+	
 </mapper>	
 
-
+   
 
 
 
