@@ -26,5 +26,10 @@ public class RecruitDBBean implements RecruitDao {
 		return sqlSession.selectList("Recruit.getRecruitList", map);
 	}
 
+	@Override
+	public int insertRecruit(RecruitDataBean dto) {
+		return sqlSession.insert("Recruit.insertRecruit", dto);
+	}
+
 
 }

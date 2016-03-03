@@ -3,6 +3,15 @@
 $(document).ready(function() {
 	$('#summernote').summernote({
 		height : 400,  // 에디터 글쓰기 높이 
+		toolbar: [
+		          ['style', ['bold', 'italic', 'underline', 'clear']],
+		          ['font', ['strikethrough', 'superscript', 'subscript']],
+		          ['fontsize', ['fontsize']],
+		          ['color', ['color']],
+		          ['para', ['ul', 'ol', 'paragraph']],
+		          ['height', ['height']],
+		          ['Insert', ['table', 'hr', 'picture', 'link', 'video']]
+		        ]
 	});
 });
 
@@ -14,6 +23,29 @@ function conf_skill() {
           "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
 
  }
+
+
+// 체크박스 선택 제안하는 메소드
+/*
+ * 인터넷에서 퍼옴 참고해서 사용!
+ * http://kin.naver.com/qna/detail.nhn?d1id=1&dirId=1040202&docId=68536412
+ */
+function checkCheckbox1(frm,obj,num) {
+	var str = obj.name;
+	var len = frm.length;
+	var chk = 0;
+	for(i=0; i<len; i++) {
+		if (frm[i].name == str && frm[i].checked == true) {
+			chk++;
+		}
+		if (chk > num) {
+			alert("한 개만 선택 하실 수 있습니다");
+			obj.checked = false;
+			break;
+		}
+	}
+}
+
 
 
 // recruitWriteForm에서 섬잇을 누르면 실행되는 메소드

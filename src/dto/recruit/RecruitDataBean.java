@@ -21,11 +21,11 @@ public class RecruitDataBean {
 
 	public String start_date;		// 채용 시작일
 	public String end_date;			// 채용 종료일
-	public String min_career;		// 최소 경력
-	public String max_career;		// 최대 경력
-	public String min_age;			// 최소 나이
-	public String max_age;			// 최대 나이
-
+	
+	public int min_career;			// 최소 경력	// 수정함
+	public int max_career;			// 최대 경력	// 수정함
+	public int min_age;				// 최소 나이	// 수정함
+	public int max_age;				// 최대 나이	// 수정함
 	public int min_salary;			// 최소 연봉
 	public int max_salary;			// 최대 연봉
 	public int people_count;		// 채용인원
@@ -136,28 +136,28 @@ public class RecruitDataBean {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	public String getMin_career() {
+	public int getMin_career() {
 		return min_career;
 	}
-	public void setMin_career(String min_career) {
+	public void setMin_career(int min_career) {
 		this.min_career = min_career;
 	}
-	public String getMax_career() {
+	public int getMax_career() {
 		return max_career;
 	}
-	public void setMax_career(String max_career) {
+	public void setMax_career(int max_career) {
 		this.max_career = max_career;
 	}
-	public String getMin_age() {
+	public int getMin_age() {
 		return min_age;
 	}
-	public void setMin_age(String min_age) {
+	public void setMin_age(int min_age) {
 		this.min_age = min_age;
 	}
-	public String getMax_age() {
+	public int getMax_age() {
 		return max_age;
 	}
-	public void setMax_age(String max_age) {
+	public void setMax_age(int max_age) {
 		this.max_age = max_age;
 	}
 	public int getPeople_count() {

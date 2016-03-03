@@ -11,7 +11,7 @@
 	<div class="recruit_size">
 		<div>
 			<label><h4>제목</h4></label>
-			<input type="text" class="form-control1" placeholder="제목을 입력하세요">
+			<input type="text" name="title" class="form-control1" placeholder="제목을 입력하세요">
 		</div>
 	</div>
 	<br>
@@ -44,37 +44,37 @@
 		<div class="recruit_minisize">
 				<label style="margin-right : 20px;">연봉(만원)</label>
 				<select class="form-control11" name="min_salary" style="width: 150px;" >
-				 	<option>1,400만원 이상</option>
-				 	<option>1,800만원 이상</option>
-				  	<option>2,000만원 이상</option>
-				  	<option>2,400만원 이상</option>
-				  	<option>2,800만원 이상</option>
-				  	<option>3,200만원 이상</option>
-				  	<option>3,600만원 이상</option>
-				  	<option>4,000만원 이상</option>
-				  	<option>4,000만원 이상</option>
-				  	<option>5,000만원 이상</option>
-				  	<option>6,000만원 이상</option>
-				  	<option>7,000만원 이상</option>
-				  	<option>8,000만원 이상</option>
-				  	<option>9,000만원 이상</option>
+				 	<option>1400만원 이상</option>
+				 	<option>1800만원 이상</option>
+				  	<option>2000만원 이상</option>
+				  	<option>2400만원 이상</option>
+				  	<option>2800만원 이상</option>
+				  	<option>3200만원 이상</option>
+				  	<option>3600만원 이상</option>
+				  	<option>4000만원 이상</option>
+				  	<option>4000만원 이상</option>
+				  	<option>5000만원 이상</option>
+				  	<option>6000만원 이상</option>
+				  	<option>7000만원 이상</option>
+				  	<option>8000만원 이상</option>
+				  	<option>9000만원 이상</option>
 				</select>
 				<label style="width: 50px; text-align: center;"> ~ </label>
 				<select class="form-control11" name="max_salary" style="width: 150px; text-align: center;" >
-				 	<option>1,400만원 이하</option>
-				 	<option>1,800만원 이하</option>
-				  	<option>2,000만원 이하</option>
-				  	<option>2,400만원 이하</option>
-				  	<option>2,800만원 이하</option>
-				  	<option>3,200만원 이하</option>
-				  	<option>3,600만원 이하</option>
-				  	<option>4,000만원 이하</option>
-				  	<option>4,000만원 이하</option>
-				  	<option>5,000만원 이하</option>
-				  	<option>6,000만원 이하</option>
-				  	<option>7,000만원 이하</option>
-				  	<option>8,000만원 이하</option>
-				  	<option>9,000만원 이하</option>
+				 	<option>1400만원 이하</option>
+				 	<option>1800만원 이하</option>
+				  	<option>2000만원 이하</option>
+				  	<option>2400만원 이하</option>
+				  	<option>2800만원 이하</option>
+				  	<option>3200만원 이하</option>
+				  	<option>3600만원 이하</option>
+				  	<option>4000만원 이하</option>
+				  	<option>4000만원 이하</option>
+				  	<option>5000만원 이하</option>
+				  	<option>6000만원 이하</option>
+				  	<option>7000만원 이하</option>
+				  	<option>8000만원 이하</option>
+				  	<option>9000만원 이하</option>
 				 </select>
 			 
 			
@@ -91,14 +91,14 @@
 		
 		<div class="recruit_minisize">  
 			<label style="margin-right : 30px;">근무요일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~일">월~일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~토">월~토</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~금">월~금</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="토,일">토,일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주6일">주6일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주5일">주5일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주4일">주4일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주3일">주3일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~일" onClick="checkCheckbox1(this.form,this,1)">월~일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~토" onClick="checkCheckbox1(this.form,this,1)">월~토</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~금" onClick="checkCheckbox1(this.form,this,1)">월~금</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="토,일" onClick="checkCheckbox1(this.form,this,1)">토,일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주6일" onClick="checkCheckbox1(this.form,this,1)">주6일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주5일" onClick="checkCheckbox1(this.form,this,1)">주5일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주4일" onClick="checkCheckbox1(this.form,this,1)">주4일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주3일" onClick="checkCheckbox1(this.form,this,1)">주3일</label>
 		</div>
 	</div>
 	
@@ -117,9 +117,9 @@
 			</select>
 			
 			<label style="margin : 0px 30px 0px 100px;">성   별</label>
-			<label class="checkbox-inline"> <input type="checkbox" id="gender" name="gender" value="남자" onclick="genderCheck('남자')">남자</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="여자" onclick="genderCheck()">여자</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="무관" onclick="genderCheck()">무관</label>
+			<label class="checkbox-inline"> <input type="checkbox" id="gender" name="gender" value="남자" onClick="checkCheckbox1(this.form,this,1)">남자</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="여자" onClick="checkCheckbox1(this.form,this,1)">여자</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="무관" onClick="checkCheckbox1(this.form,this,1)">무관</label>
 		</div>
 		<div class="recruit_minisize">
 			<label style="margin-right: 20px;">연   령</label>
@@ -143,8 +143,8 @@
 		
 		<div class="recruit_minisize">
 			<label style="margin-right: 20px;">경     력</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="career" value="신입">신입</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="career" value="경력">경력</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="career" value="신입" onClick="checkCheckbox1(this.form,this,1)">신입</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="career" value="경력" onClick="checkCheckbox1(this.form,this,1)">경력</label>
 			<select class="form-control1" name="min_career" style="width: 150px; margin-left:10px;">
 				<option>1년이상</option>
 				<option>2년이상</option>
@@ -168,7 +168,7 @@
 				<option>15년이하</option>
 				<option>20년이하</option>
 			</select>
-			<label class="checkbox-inline" style="margin-left:33px;"> <input type="checkbox" name="career" value="경력무관">경력무관</label>
+			<label class="checkbox-inline" style="margin-left:33px;"> <input type="checkbox" name="career" value="경력무관" onClick="checkCheckbox1(this.form,this,1)">경력무관</label>
 		</div>
 		<!-- 담당자  / 채용시작일 / 채용종료일 -->
 		<div class="recruit_minisize">
@@ -183,7 +183,7 @@
 		<div class="recruit_minisize">
 			<!-- 채용인원(people_count) -->
 			<label style="margin-right: 10px;">채용인원</label>
-			<input type="text" name="business_part" class="form-control1" style="width:60px;">
+			<input type="text" name="people_count" class="form-control1" style="width:60px;">
 			<label>명</label>
 			<label style="margin : 0px 3px 0px 15px;">채용일정</label>
 			<input type="date" name="start_date" class="form-control1" style="width:200px;">
