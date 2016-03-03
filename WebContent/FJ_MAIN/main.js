@@ -32,6 +32,7 @@ $(function(){
 		if($('.m').val() == 'member') this_page = 0;
 		if($('.m').val() == 'board') this_page = 1;
 		$('.main_menu').css({'width':'50px'});
+		$('.logout').css({'left':'22px'});
 		$('.main_submanu').css({'padding-left':'15px'});
 		$(".main_menu2").css({'z-index':'0'});
 		$(".main_menu2").eq(this_page).css({'z-index':'2'});
