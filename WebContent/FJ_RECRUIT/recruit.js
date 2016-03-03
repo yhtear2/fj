@@ -3,15 +3,10 @@
 $(document).ready(function() {
 	$('#summernote').summernote({
 		height : 400,  // 에디터 글쓰기 높이 
-		toolbar: [
-		          ['style', ['bold', 'italic', 'underline', 'clear']],
-		          ['font', ['strikethrough', 'superscript', 'subscript']],
-		          ['fontsize', ['fontsize']],
-		          ['color', ['color']],
-		          ['para', ['ul', 'ol', 'paragraph']],
-		          ['height', ['height']],
-		          ['Insert', ['table', 'hr', 'picture', 'link', 'video']]
-		        ]
+		dialogsInBody: false,
+		dialogsFade: false,  // Add fade effect on dialogs
+		disableDragAndDrop: false,
+		shortcuts: false
 	});
 });
 

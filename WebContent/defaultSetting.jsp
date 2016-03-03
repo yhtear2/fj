@@ -21,15 +21,30 @@
 <c:set var="main" value="${project}/FJ_MAIN"/>
 <c:set var="join" value="${project}/FJ_JOIN/"/>
 
-<!-- common java script -->
-<!-- Jquery 2.x 버젼 IE 8버전 이하는 지원안함 -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<!-- Jquery ui를 사용하려면 필요한 자바스크립트 --> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<!-- Jquery를 이용한 Cookie를 사용하기위해 필요한 자바스크립트 -->
-<script src="${project}/jquery.cookie.js"></script>
 
 <!-- common style sheet -->
 <!-- 셈플 확인 : http://getbootstrap.com/css/ -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>   
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet"> 
+
+
+<!-- common java script -->
+
+<!-- bootstrap 자바스크립트 사용 (섬머노트에 쓰임 ) -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<!-- Jquery 2.x 버젼 IE 8버전 이하는 지원안함 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+<!-- Jquery ui를 사용하려면 필요한 자바스크립트 --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+ 
+
+
+
+<!-- 섬머노트 이용하기 위한 자바스크립트 -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<!-- Jquery를 이용한 Cookie를 사용하기위해 필요한 자바스크립트 -->
+<script src="${project}/jquery.cookie.js"></script>
+
+
