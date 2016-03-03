@@ -254,22 +254,22 @@
                   
                     	
                     	<!-- 댓글 달았을 때 보이는 곳 (잠정보류) -->
-                    	<!--  
+                    	 
                         <li class="list-group-item note-item clearfix" id="note-1034847">
                             <form action="/content/update/1034847" method="post" data-id="1034847" class="note-update-form"><input type="hidden" name="_method" value="PUT" id="_method">
                   			<div class="content-body panel-body pull-left">
-							-->
+							
 						<!-- 작성자 이미지 -->
-						<!--  
+						
 						<div class="avatar avatar-medium clearfix ">
 							<a href="유저정보창 경로주기" class="avatar-photo"><img
 								src="//www.gravatar.com/avatar/ea033f92e21318820a45c9bb5ca83403?d=identicon&amp;s=40"></a>
 							<div class="avatar-info">
-							-->
+						
 								<!-- 작성자 표시구간 -->
-								<!--  
+							
 								<a class="nickname" href="유저정보창 경로주기">작성자</a>
-								-->
+							
 								<!-- 작성자 활동량(구현x) -->
 								<!--  
 								<div class="activity">
@@ -278,15 +278,15 @@
 								-->
 								
 								<!-- 댓글 남긴날짜 -->
-								<!--  
+								  
 								<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/> 
 								
 							</div>
 						</div>
-						-->
+					   
 						
 						<!-- 댓글남겨지는 부분 (우선 content 로 해놈..) --> 
-						<!--  
+						
 						<fieldset class="form">
                                         <article id="note-text-1034847" class="list-group-item-text note-text">
                                             
@@ -294,19 +294,19 @@
                                         </article>
                                     </fieldset>
                                 </div>
-								-->
+							       
 								<!-- 좋아요 버튼부분 -->
-								<!--  
+								
                                 <div class="content-function pull-right text-center">
                                     <div class="content-function-group">
 							<a href="javascript://" class="note-vote-btn" role="button"
 								data-type="vote" data-eval="false" data-id="1034847"><i
 								id="note-vote-1034847" class="fa fa-thumbs-up note-vote"
 								data-toggle="tooltip" data-placement="left" title=""
-								data-original-title="좋아요"></i></a>  -->
+								data-original-title="좋아요"></i></a>  
 							
 							<!-- 추천수 표시 -->	
-							<!--  
+							 
 							<div id="content-vote-count-1034847" class="content-count">
 								<table>
 			                       <tr>
@@ -318,9 +318,9 @@
 						    </div>
 						   </div>
                           </div>
-							-->
+						
                                 <!-- 댓글 수정 및 삭제부분 -->
-                                 <!--  
+                                 
                                 <div id="content-function-cog-1034847" class="content-function-cog">
                                     <div class="dropdown">
                                         <a href="javascript://" data-toggle="dropdown"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
@@ -328,27 +328,29 @@
                                             <li><a href="javascript://" class="note-edit-btn" data-id="1034847"><i class="fa fa-edit fa-fw"></i>수정</a></li>
                                             <li><a href="javascript://" class="note-delete-btn" data-id="1034847"><i class="fa fa-trash-o fa-fw"></i> 삭제</a></li>
                                         </ul>
-                                    </div>  -->
+                                    </div> 
                                     
                                     <!-- 수정하고 나서의 저장/취소 -->
-                                      <!--  
+                                       
                                     <div class="buttons" style="display: none;">
                                         <p><a href="javascript://" class="btn btn-default btn-wide note-edit-cancel-btn">취소</a></p>
                                         <p><input type="submit" name="create" class="btn btn-success btn-wide" value="저장" id="create"></p>
                                     </div>
                                 </div> 
-                              	</form>  -->
+                              	</form> 
                               
                     <!-- 댓글 작성하는 부분  (경로부분 보류) -->
                     <li class="list-group-item note-form clearfix">
                         
                         	 
                             <form action="/fj/boardreplyPro.do" method="post" class="note-create-form"> 
-                                	<input type="hidden" name="board_num" value="${dto.board_num}">  
+                            		 
+                                	<input type="hidden" name="board_num" value="${dto.board_num}">
                               <!--  <input type="hidden" name="lastNoteId" value="1034849 " id="lastNoteId">  -->
+                              		<!--     
                                 	<input type="hidden" name="re_count" value="${dto.re_count}">
                                 	<input type="hidden" name="scrap_count" value="${dto.scrap_count}">       
-                                	
+                                	<input type="hidden" name="re_step" value="${dto.re_step}">   -->
                                 
                                 <div class="content-body panel-body pull-left">
                                     <div style="margin-left: 5px;">
