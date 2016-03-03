@@ -2,22 +2,17 @@
 /** 글쓰기 에디터 자바스크립트 부분  **/
 $(document).ready(function() {
 	$('#summernote').summernote({
-		height : 400,  // 에디터 글쓰기 높이 
-		dialogsInBody: false,
-		dialogsFade: false,  // Add fade effect on dialogs
-		disableDragAndDrop: false,
-		shortcuts: false
+		height : 400  // 에디터 글쓰기 높이 
 	});
+
 });
 
-// 스킬선택 창으로 넘어가는건데.. 아직 100%아님
-// 자식창에서 부모창으로 데이터가 안넘어옴
+// 스킬선택 창으로 넘어가는거
 function conf_skill() {
-    var url = "confirm_skill.do";
+    var url = "recruitskill.do";
     open(url, "confrimWindow",
           "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
-
- }
+}
 
 
 // 체크박스 선택 제안하는 메소드
@@ -42,7 +37,6 @@ function checkCheckbox1(frm,obj,num) {
 }
 
 
-
 // recruitWriteForm에서 섬잇을 누르면 실행되는 메소드
 function recruitwritecheck(){
 	// 일단 예외처리는 안할래....귀.찮....;;
@@ -51,5 +45,13 @@ function recruitwritecheck(){
 	$('input[name=content]').val( $('#summernote').summernote('code') );
 }
 
+
+// 스킬을 선택하면 부모창으로 넣어주는 메소드
+function skill_result() {
+	var skills = document.getElementById('skill').value;
+	opener.document.recruitWriteForm.skill.value = skills;
+	window.close();
+	   
+}
 
 

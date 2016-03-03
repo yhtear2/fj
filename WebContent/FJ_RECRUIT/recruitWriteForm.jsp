@@ -5,7 +5,7 @@
 
 <!-- 전체 크기 잡기 -->
 <div class="recruit_mainsize">
-<form method="post" action="recruitWritePro.do" onsubmit="return recruitwritecheck()">
+<form name="recruitWriteForm" method="post" action="recruitWritePro.do" onsubmit="return recruitwritecheck()">
 	<label><h2>채용공고</h2></label>
 	<!-- 제목 -->
 	<div class="recruit_size">
