@@ -15,7 +15,7 @@
 		<div class="content-header">  
 			<h3> 글수정 </h3>  
 		</div>
-	</div>  
+	</div>      
 	
 	<div class="panel-heading clearfix">
 		<div class="avatar avatar-medium clearfix pull-left">
@@ -111,7 +111,7 @@
 				</div> 
 			</div>   
     
-
+  
 			<!-- 내용을 입력하는 부분 --> 
 			  
 			<div id="summernote" >

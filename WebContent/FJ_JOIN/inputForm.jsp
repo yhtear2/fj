@@ -96,7 +96,8 @@
 				return false;
 			} else if( emailcode == "" ) {
 				alert("인증번호를 입력해주세요");
-				return false;
+				//임시로 이메일인증을 하지 않아도 가입가능(추 후에 return false로 수정)
+				return;
 			} else {
 				return;
 			}

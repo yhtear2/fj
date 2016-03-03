@@ -12,7 +12,7 @@ public interface BoardDao {
 		public int insertArticle( BoardDataBean dto );
 		public BoardDataBean getArticle( int board_num );
 		
-		public void addCount(int board_num);
+		public int addCount(int board_num);
 		public int updateArticle(BoardDataBean dto);   
 //		public int checkArticle(int board_num);
 		public int deleteArticle(int board_num);     
@@ -20,4 +20,4 @@ public interface BoardDao {
 		 
 	
 }
- 
+  

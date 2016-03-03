@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@ include file="setting.jsp" %>  
 <%@ include file = "/defaultSetting.jsp" %>  
 <script src="script.js"></script> 
@@ -56,16 +56,18 @@
                    </table>
                   </div>
            			 <!-- 조회수 확인부분 -->
+           			<c:if test="${addresult == 1}"> 
                     <div class="content-identity-count">
                     <i class="fa fa-eye"></i>
                     <table>
-                       <tr>
+                       <tr>   
                          <td>
                            ${dto.read_count}  
                          </td>
                        </tr>
                     </table>  
                    </div>
+                   </c:if>
                  </div>
                 </div> 
                 <div class="content-container clearfix">
@@ -80,7 +82,7 @@
                             <!-- 카테고리 영역 -->
                             <a href="카테고리 클릭시 해당 카테고리 페이지로 이동하는 경로" class="list-group-item-text item-tag label label-info">
                             <i class="fa fa-comments"></i>
-                            ${dto.category}
+                            ${dto.category} 
                             </a>
                              &nbsp; 
                             <c:forEach var="tag" items="${tags}">
@@ -165,7 +167,9 @@
    
                         <!-- 게시물 수정 및 삭제버튼기능 -->
                         <div class="dropdown">
-                            <form action="boarddeletePro.do" method="post" name="article-delete-form" id="article-delete-form"><input type="hidden" name="_method" value="DELETE" id="_method">
+                            <form action="boarddeletePro.do" method="post" name="article-delete-form" id="article-delete-form">
+                            <input type="hidden" name="board_num" value="${board_num}" id="board_num">
+                            <input type="hidden" name="pageNum" value="${pageNum}" id="pageNum">  
                                 <div class="dropdown"> 
                                     <a href="javascript://" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
                                     <ul class="dropdown-menu" role="menu">  
@@ -178,7 +182,7 @@
                                             <!--  
                                             <a href="javascript://" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
                                             -->
-                                            <a href="boarddeletePro.do" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            <a href="boarddeletePro.do?board_num=${dto.board_num}&pageNum=${pageNum}" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
                                             </li> 
                                             
                                               
@@ -220,6 +224,34 @@
                         </h3>
                     </li>
                     
+                    
+                    <!-- 댓글 보이는 곳  -->
+                    <!--  
+                    <div class="content-body panel-body pull-left">
+
+
+				<div class="avatar avatar-medium clearfix ">
+					<a href="/user/info/40879" class="avatar-photo"><img
+						src="//www.gravatar.com/avatar/ea033f92e21318820a45c9bb5ca83403?d=identicon&amp;s=40"></a>
+					<div class="avatar-info">
+						<a class="nickname" href="/user/info/40879">JQuery</a>
+						<div class="activity">
+							<span class="fa fa-flash"></span> 20
+						</div>
+						<div class="date-created timeago" title="2016-03-03 12:24:21.0">1시간
+							전</div>
+					</div>
+				</div>
+				<fieldset class="form">
+                                        <article id="note-text-1037286" class="list-group-item-text note-text">
+                                            
+                                                <p>${dto.content}</p>
+                                            
+                                        </article>
+                                    </fieldset>
+                                </div>  -->
+                                
+                  
                     	
                     	<!-- 댓글 달았을 때 보이는 곳 (잠정보류) -->
                     	<!--  
@@ -311,10 +343,12 @@
                     <li class="list-group-item note-form clearfix">
                         
                         	 
-                            <form action="/fj/boardwritePro.do" method="post" class="note-create-form">
-                                	<input type="hidden" name="board_num" value="${board_num}">  
-                                    <input type="hidden" name="lastNoteId" value="1034849 " id="lastNoteId">
-                                
+                            <form action="/fj/boardreplyPro.do" method="post" class="note-create-form"> 
+                                	<input type="hidden" name="board_num" value="${dto.board_num}">  
+                              <!--  <input type="hidden" name="lastNoteId" value="1034849 " id="lastNoteId">  -->
+                                	<input type="hidden" name="re_count" value="${dto.re_count}">
+                                	<input type="hidden" name="scrap_count" value="${dto.scrap_count}">       
+                                	
                                 
                                 <div class="content-body panel-body pull-left">
                                     <div style="margin-left: 5px;">
@@ -340,24 +374,21 @@
 							</div>
 						</div>
 							
-								<!-- 댓글 적는 곳 (에디터 적용할 부분) --> 
-									 
-									
+								<!-- 댓글 적는 곳 (에디터 적용은 아직 미구현) -->
                                     <fieldset class="form">
-                                    <textarea name="content" id="note-create" placeholder="댓글 쓰기" class="form-control" rows="15">
-                                    
-									${dto.content}	                                       
+                                    <textarea name="content" id="content" placeholder="댓글 쓰기" class="form-control" rows="15" >
+									                               
                                     </textarea>
-                                    
+                                     
 								   </fieldset>   
-                                       
+                                        
                                       
                        		</div> 
                        			
                        			
                        			<!-- 댓글 등록 및 취소구간 -->  
                                 <div class="content-function-cog note-submit-buttons clearfix">
-                                    <p><a href="javascript://" id="note-create-cancel-btn" class="btn btn-default btn-wide" style="">${btn_cancel}</a></p>
+                                    <p><a href="boardlist.do" id="note-create-cancel-btn" onclick="return confirm('정말로 취소하시겠습니까?')" class="btn btn-default btn-wide" style="">${btn_cancel}</a></p>
                                     <input type="submit" name="create" class="create btn btn-success btn-wide wide" value="${btn_reply}"> 
                      
                                 </div>

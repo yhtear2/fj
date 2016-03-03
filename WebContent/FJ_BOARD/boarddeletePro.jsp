@@ -7,7 +7,6 @@
 <h2> 삭제 </h2>
   
 <c:if test=" parameter != null and parameter != '' ">     
-<c:if test="${resultCheck != 0}">
 	<c:if test="${result == 0}">	
 		<script type="text/javascript">
 			<!--  
@@ -29,5 +28,4 @@
 			<c:param name="pageNum" value="${pageNum}"/>
 		</c:redirect>				
 	</c:if>
-</c:if>
 </c:if>

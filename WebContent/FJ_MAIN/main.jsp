@@ -9,7 +9,7 @@
 		<link href="${main}/main.css" rel="stylesheet" type="text/css">
 		<script src="${main}/main.js"></script>
 	</head>
-	<body>
+	<body onload="wsSendMassge()">
 		<div class="main_menu">
 			<input type="hidden" class="menu_status" value="0">
 			<input type="hidden" class="m" value="${menu}">
@@ -72,8 +72,8 @@
 		</div>
 		<div class="main_menu2">
 			<h3>게시판</h3>
-			<a href="#" onclick="window.location='list.do'">공지사항</a>
-			<a href="#" onclick="window.location='list.do'">자유게시판</a>
+			<a href="#" onclick="window.location='boardlist.do'">공지사항</a>
+			<a href="#" onclick="window.location='boardlist.do'">자유게시판</a>
 		</div>
 		<div class="main_menu2">
 			<h3>채용공고</h3>

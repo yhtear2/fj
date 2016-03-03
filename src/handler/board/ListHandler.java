@@ -42,6 +42,7 @@ public class ListHandler implements Commandhandler {
 		int start = 0;
 		int end = 0;
 		int number = 0;
+		int tag = 0; 
 		
 		int pageCount = 0;
 		int startPage = 0;
@@ -85,14 +86,17 @@ public class ListHandler implements Commandhandler {
 		request.setAttribute( "startPage", startPage );
 		request.setAttribute( "endPage", endPage );
 		request.setAttribute( "pageCount", pageCount );
-		
-		
+		request.setAttribute("tag", tag);
+		 
 		
 		if( count != 0 ) {  
 			// BoardDBBean 의 getArticles 부분에서 int 값이 두개이상이므로 매핑을 건다 
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put( "start", start );  
 			map.put( "end", end );   
+			map.put("count", count);
+			map.put("tag", tag); 
+			
 			List<BoardDataBean> list =  boardDao.getArticles(map );
 			request.setAttribute( "list", list );	   		
 		}		
@@ -105,7 +109,7 @@ public class ListHandler implements Commandhandler {
 }
  
 
-
+ 
 
 
 

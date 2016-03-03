@@ -35,24 +35,32 @@ public class ContentHandler implements Commandhandler {
 		int number = Integer.parseInt( request.getParameter( "number" ) );
 		 
 		BoardDataBean dto = dao.getArticle( board_num ); 
-		
+		int addresult = dao.addCount(board_num);
 		/*
 		if( ! request.getRemoteAddr().equals( dto.getIp() ) )	 {
 			dao.addCount( board_num );		
 		} */
 	
+	//	System.out.println(dto.getHstag());
 		
 		
-		
-		String tags[] = dto.getHstag().split(",");
-		
+				
+				
 		Map<String, Object> map = new HashMap<String, Object>();
+		
+		String[] tags = null;
+		
+		if( dto.getHstag() != null ){
+			tags = dto.getHstag().split(",");
+			map.put("tags", tags);
+		} 
 		
 		map.put("number", number);
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num); 
 		map.put( "dto", dto );
-		map.put("tags", tags);
+		
+	//	System.out.println(map.get("tags"));
 		
 		/*for( int i=0; i<tags.length; i++){
 			map.put("tag"+i, tags[i]);
@@ -62,12 +70,13 @@ public class ContentHandler implements Commandhandler {
 		   
 		
 		map.put("page", "/FJ_BOARD/boardcontent");  
+		map.put("addresult", addresult);
 		return new ModelAndView("/FJ_MAIN/main", map);
 		 
 	}
 	
 }
-
+   
 
 
 

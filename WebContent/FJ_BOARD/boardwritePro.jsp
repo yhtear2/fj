@@ -6,7 +6,7 @@
 <%@ include file="setting.jsp"%>
 <script src="script.js"></script>
 
-<h2> 테스트페이지 </h2>
+<h2> 테스트페이지 </h2>   
 
 <c:if test="${result == 0}">
 	<script type="text/javascript">
@@ -16,7 +16,9 @@
 	</script>
 </c:if> 
 <c:if test="${result != 0}"> 	
-	<c:redirect url="boardlist.do"/>   
+	<c:redirect url="/fj/boardlist.do">
+		<c:param name="pageNum" value="${pageNum}"/> 
+	</c:redirect>   
 </c:if>
    
 
