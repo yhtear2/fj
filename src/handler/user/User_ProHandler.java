@@ -1,5 +1,7 @@
 package handler.user;
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +28,13 @@ public class User_ProHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 		request.setCharacterEncoding( "utf-8" );
 		
 		String saveDir = request.getServletContext().getRealPath("/") + "images";
 		MultipartRequest multi = new MultipartRequest(request,saveDir,1024*1024*15,"UTF-8",new DefaultFileRenamePolicy());
-		String imageFileName = multi.getFilesystemName("imagefile");
+		String imageFileName = multi.getFilesystemName("input_file");
 		String projectFile = multi.getFilesystemName("project");
 		
 		String resome_title = multi.getParameter("resome_title");
@@ -38,11 +42,11 @@ public class User_ProHandler implements Commandhandler {
 		String eng_name = multi.getParameter("eng_name");
 		String kor_name = multi.getParameter("kor_name");
 		String birth = multi.getParameter("birth");
-		String license = multi.getParameter("license");
+
+
 		String skill = multi.getParameter("skill");
 		int want_salary = Integer.parseInt(multi.getParameter("want_salary"));
 		String project = multi.getParameter("project");
-		
 		String army = null;
 		String army1 =  multi.getParameter("army1");
 		String army2 = (String) multi.getParameter("army2");
@@ -51,9 +55,7 @@ public class User_ProHandler implements Commandhandler {
 		String army5 = multi.getParameter("army5");
 		String army6 = multi.getParameter("army6");
 		String army7 = multi.getParameter("army7");
-		
 
-		
 		
 		army = army1 + "/" + army2 + "/" + army3 + "/" + army4 + "/" + army5 + "/" + army6 + "/" + army7;
 		
@@ -64,15 +66,6 @@ public class User_ProHandler implements Commandhandler {
 		address = address1 + " " + address2;
 		
 		UserDataBean dto = new UserDataBean();
-		
-	//	int user_history_id = 0;
-	
-/*		if( multi.getParameter( "user_history_id" ) != null ) {
-
-		user_history_id =dto.getUser_history_id(); 	
-				//Integer.parseInt(multi.getParameter("user_history_id"));
-		}
-		System.out.println(user_history_id);*/
 
 		dto.setResome_title(resome_title);
 		dto.setEmail(email);
@@ -80,12 +73,47 @@ public class User_ProHandler implements Commandhandler {
 		dto.setKor_name(kor_name);
 		dto.setBirth(birth);
 		dto.setAddress(address);
-		dto.setLicense(license);
 		dto.setSkill(skill);
 		dto.setWant_salary(want_salary);
 		dto.setProject(project);
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
-		dto.setLast_date(new Timestamp(System.currentTimeMillis()));
+		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
+		
+		String license = "";
+		/*
+		String license1[] = multi.getParameterValues("license1");
+		String license2[] = multi.getParameterValues("license2");
+		String license3[] = multi.getParameterValues("license3");
+		*/
+		String license1[];
+		String license2[];
+		String license3[];
+
+		int p = Integer.parseInt( multi.getParameter( "cnt" ) +1);
+
+		System.out.println(p);
+
+		
+		license1 = new String[p];
+		license2 = new String[p];
+		license3 = new String[p];
+		for( int i = 1 ; i <= p ; i++ ){
+			if( i == 0) {
+				license1[i] = multi.getParameterValues( "license1").toString();
+				license2[i] = multi.getParameterValues( "license2").toString();
+				license3[i] = multi.getParameterValues( "license3").toString();
+			}else{
+				license1[i] = multi.getParameterValues( "license1" + i ).toString();
+				license2[i] = multi.getParameterValues( "license2" + i ).toString();
+				license3[i] = multi.getParameterValues( "license3" + i ).toString();
+			}
+		}
+
+		for(int i=1; i<=p; i++) {
+			license += license1[i] + "-" +license2[i] + "-" + license3[i] + "/";
+		}
+		dto.setLicense(license);
+		
 		// tel
 		String tel = null;
 		String tel1 = multi.getParameter( "tel1" );
@@ -107,10 +135,14 @@ public class User_ProHandler implements Commandhandler {
 
 		int result = dao.insertArticle( dto );	
 		
-		request.setAttribute( "result", result );
+		//request.setAttribute( "result", result );
+		map.put("result", result);
+		map.put("page", "/FJ_USER/resome_Pro");
 
-		return new ModelAndView( "/FJ_USER/resome_Pro" );
+		return new ModelAndView("/FJ_MAIN/main", map);
 
+		//return new ModelAndView( "/FJ_USER/resome_Pro" );
+		
 	}
 }
 

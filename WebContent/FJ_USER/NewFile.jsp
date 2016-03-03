@@ -1,84 +1,31 @@
-<!doctype html>
- 
- 
-<head>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
- 
-<script>
-$.fn.setPreview = function(opt){
-    "use strict"
-    var defaultOpt = {
-        inputFile: $(this),
-        img: null,
-        w: 200,
-        h: 200
-    };
-    $.extend(defaultOpt, opt);
- 
-    var previewImage = function(){
-        if (!defaultOpt.inputFile || !defaultOpt.img) return;
- 
-        var inputFile = defaultOpt.inputFile.get(0);
-        var img       = defaultOpt.img.get(0);
- 
-        // FileReader
-        if (window.FileReader) {
-            // image 파일만
-            if (!inputFile.files[0].type.match(/image\//)) return;
- 
-            // preview
-            try {
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    img.src = e.target.result;
-                    img.style.width  = defaultOpt.w+'px';
-                    img.style.height = defaultOpt.h+'px';
-                    img.style.display = '';
-                }
-                reader.readAsDataURL(inputFile.files[0]);
-            } catch (e) {
-                // exception...
-            }
-        // img.filters (MSIE)
-        } else if (img.filters) {
-            inputFile.select();
-            inputFile.blur();
-            var imgSrc = document.selection.createRange().text;
- 
-            img.style.width  = defaultOpt.w+'px';
-            img.style.height = defaultOpt.h+'px';
-            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";            
-            img.style.display = '';
-        // no support
-        } else {
-            // Safari5, ...
-        }
-    };
- 
-    // onchange
-    $(this).change(function(){
-        previewImage();
-    });
-};
- 
- 
-$(document).ready(function(){
-    var opt = {
-        img: $('#img_preview'),
-        w: 200,
-        h: 200
-    };
- 
-    $('#input_file').setPreview(opt);
-});
+<input type='radio' name='xx_test1' id='radio_aaa'  onclick="radio_change('aaa',1)" checked> simple
+<input type='radio' name='xx_test1' id='radio_bbb' onclick="radio_change('bbb',1)"> category
+
+
+<div id='list_aaa' style="border:1px solid red; display:block;">
+  .....<br>
+  simple MENU<br>
+  ......<br>
+</div>
+
+<div id='list_bbb' style="border:1px solid blue; display:none;">
+  .....<br>
+  category MENU<br>
+  ......<br>
+</div>
+
+
+<script type="text/javascript">
+  function radio_change(str,save){
+     document.getElementById('list_aaa').style.display='none';
+     document.getElementById('list_bbb').style.display='none';
+     document.getElementById('list_'+str).style.display='block';
+     if(save==1)TnT_setcookie('TnT_menu_radio',str,5); // 쿠키저장 5시간
+  }
+  setTimeout(function(){
+     if(TnT_getcookie('TnT_menu_radio')=='bbb'){
+        radio_change('bbb');
+        document.getElementById('radio_bbb').checked=true;
+     }
+  },50);
 </script>
-</head>
- 
- 
-<body>
-<input type="file" id="input_file" />
-<br />
-<img id="img_preview" style="display:none;"/>
- 
-</body>
-</html>

@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 
 
-<%@ include file="setting.jsp"%>
+<%@ include file="/defaultSetting.jsp"%>
 
 <c:if test="${result == 0}">
 	<script type="text/javascript">

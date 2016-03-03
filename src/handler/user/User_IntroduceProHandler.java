@@ -28,10 +28,10 @@ public class User_IntroduceProHandler implements Commandhandler {
 		
 		IntroduceDataBean dto = new IntroduceDataBean();
 		
-		String intro_title = request.getParameter("sub_name_0");
+		String intro_title = request.getParameter("sub_name_");
 		String intro_contents = request.getParameter("contents0");
 				
-		
+		System.out.println(intro_contents);
 		//for(int i=0; i<=intro_title.length; i++) {
 						
 			dto.setIntro_title(intro_title);

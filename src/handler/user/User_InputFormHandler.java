@@ -1,5 +1,8 @@
 package handler.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,19 +23,12 @@ public class User_InputFormHandler implements Commandhandler{
 	@RequestMapping( "/resome" )
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-/*		Map<String, Object> map = new HashMap<String, Object>();
-
-		int user_history_id = Integer.parseInt(request.getParameter("user_history_id"));
+	
+		Map<String, Object> map = new HashMap<String, Object>();
+	
+		map.put("page", "/FJ_USER/resome");
 		
-
-		UserDataBean dto = dao.getUser_history_id(user_history_id);
-		
-		
-		request.setAttribute("user_history_id", user_history_id);
-
-		System.out.println(user_history_id);
-		map.put("dto", dto);*/
-
-		return new ModelAndView( "/FJ_USER/resome" );
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
+

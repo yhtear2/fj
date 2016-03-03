@@ -24,7 +24,7 @@
 	</insert>
 
 
-	<insert id="insertArticle_introduce" parameterType="dto.user.UserDataBean" >
+	<insert id="insertArticle_introduce" parameterType="dto.user.IntroduceDataBean" >
 
 		insert into FJ_Introduce values( FJ_Introduce_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{intro_title, jdbcType=VARCHAR}, #{intro_contents, jdbcType=VARCHAR},
 		#{intro_reg_date}, #{intro_last_date})

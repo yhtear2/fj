@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<%@ include file="setting.jsp"%>
-<script src="/fj/jquery-1.12.0.js"></script>
+<%@ include file="/defaultSetting.jsp"%>
 <script src="/fj/FJ_USER/resome.js"></script>
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/request.js"></script>
-<script src="/fj/jquery.cookie.js"></script>
 
 
 <script type="text/javascript">
@@ -101,6 +99,37 @@
       $('input[name=count]').val(count);
 
     }
+   
+   
+   function lic_submitcheck() {
+	   
+       var license1 = [];
+       var license1s = $('input[name=license1]');
+       for (var i = 0; i < license1s.length; i++) {
+    	   license1[i] = license1s.eq(i).val();
+       }
+       $('input[name=license1_send]').val(license1);      
+ 
+       var license2 = [];
+       var license2s = $('input[name=license2]');
+       for (var i = 0; i < license2s.length; i++) {
+    	   license2[i] = license2s.eq(i).val();
+       }
+       $('input[name=license2_send]').val(license2);      
+       
+       var license3 = [];
+       var license3s = $('input[name=license3]');
+       for (var i = 0; i < license3s.length; i++) {
+    	   license3[i] = license3s.eq(i).val();
+       }
+       $('input[name=license3_send]').val(license3);      
+     
+	   
+   }
+   
+   
+   
+   
 
    //학력추가
    function addForm(flag) {
@@ -257,18 +286,21 @@
 
       var lo_table = document.getElementById("license_table");
       var row_index = lo_table.rows.length;
+      var license_cnt = lo_table.rows.length-2;
       newTr = lo_table.insertRow(row_index - 1);
       newTr.idName = "newTr" + row_index;
-
+		
+      
       newTd = newTr.insertCell(0);
-      newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1' style='width:220px'> </td>";
+      newTd.innerHTML = "<input type='hidden' name='license_cnt' value='license_cnt'>";
+      newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px'> </td>";
 
       newTd = newTr.insertCell(1);
       newTd.align = "center";
-      newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2' style='width:180px'> </td>";
+      newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2"+license_cnt+"' id='license2"+license_cnt+"' style='width:180px'> </td>";
 
       newTd = newTr.insertCell(2);
-      newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3' style='width:260px'></td>";
+      newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px'></td>";
 
    }
 
@@ -330,7 +362,7 @@
 <h2>이력서</h2>
 
 
-<form name="resome" method="post" enctype="multipart/form-data" action="career.do">
+<form name="resome" method="post" enctype="multipart/form-data" action="resome_Pro.do">
 
 <h3>이력서제목</h3>
 <table class="table table-hover">
@@ -347,7 +379,7 @@
    <tr>
       <th style="width:200px">이름(한글)</th>
       <td><input class="" type="text" style="width: 250px" name="kor_name" id="kor_name"></td>   
-      <td rowspan="5"><img  class="img-rounded"  id="img_preview" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
+      <td rowspan="5"><img  class="img-rounded"  id="img_preview" name="img_preview" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
       </td>   
    </tr>
    <tr>
@@ -439,7 +471,7 @@
          <td>   
             &nbsp;&nbsp;&nbsp;
 
-            <input class="btn btn-default" type="file" id="input_file" value="사진선택" /></td>
+            <input class="btn btn-default" type="file" id="input_file" name="input_file" value="사진선택" /></td>
    </tr>
 
 </table>
@@ -461,6 +493,9 @@
 
 
    <input type="hidden" name="cnt" value="0">
+   <input type="hidden" name="license1_send">
+   <input type="hidden" name="license2_send">
+   <input type="hidden" name="license3_send">
    <table id="license_table" class="table table-hover" style="width:800px">
       <tr>
          <th>자격증 이름</th>
@@ -505,7 +540,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;   
-      <input  class="btn btn-default"  type="button" value="개인정보 저장하기" style="width:200px" id="user_button"></td>
+      <input  class="btn btn-default"  type="submit" value="개인정보 저장하기" style="width:200px" id="user_button"></td>
       
    </table>   
       
@@ -516,17 +551,10 @@
 <h3>학력사항</h3>
 
 <h5>고등학교</h5>
-<form name="school_Form"  method="post" onload="addForm();" action="career.do" onsubmit="submitcheck()">
+<form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()">
    <input type="hidden" name="count" value="0">
-    <input type="hidden" name="school_name_send">
-   <input type="hidden" name="school_start_send">
-   <input type="hidden" name="school_last_send">
-   <input type="hidden" name="school_college1_send">
-   <input type="hidden" name="school_college2_send">
-   <input type="hidden" name="school_major_send">
-   <input type="hidden" name="school_rank1_send">
-   <input type="hidden" name="school_rank2_send">
-   <input type="hidden" name="school_kind_send">
+
+
    
    
 <table class="table table-hover" style="width:800px">
@@ -589,7 +617,7 @@
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-       <input  class="btn btn-default"  type="button" value="학력사항 저장" style="width:200px" id="school_save"></td>
+       <input  class="btn btn-default"  type="submit" value="학력사항 저장" style="width:200px" id="school_save"></td>
    </tr>
 </table>
 
