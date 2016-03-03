@@ -50,13 +50,7 @@ $(function(){
 
 
 function addReturn(){
-   
-    if(school_kind1 != undefined) {
-        $("#school_kind1").val(school_kind1);
-        $("#school_kind1").attr("checked", 'checked');
 
-    }
-    
 
 }
 
@@ -262,8 +256,8 @@ $(function(){
        $.cookie('formCnt', addedForm.childNodes.length);
        		
        
-	        $.cookie('school_kind1', $("#school_kind_ida1").val());
-   	        $.cookie('school_kind1', $("#school_kind_ida2").val());
+	 //       $.cookie('school_kind1', $("#school_kind_ida1").val());
+   	  //      $.cookie('school_kind1', $("#school_kind_ida2").val());
    	        
    	        
        		for(var j=1; j<=addedForm.childNodes.length; j++) {
@@ -273,8 +267,8 @@ $(function(){
        			$.cookie('school_name'+j, $("#school_name"+j).val());                   
 
 //		        $.cookie('school_kind'+j, $("input[name=school_kind"+j+"]").val());
-       	        $.cookie('school_kind1', $("#school_kind_ida1").val());
-       	        $.cookie('school_kind1', $("#school_kind_ida2").val());
+       	  //      $.cookie('school_kind1', $("#school_kind_ida1").val());
+       	  //      $.cookie('school_kind1', $("#school_kind_ida2").val());
 
 		       // alert( $("input[name=school_kind"+j+"]").val());
 		   
@@ -338,9 +332,7 @@ $(function(){
                }
                reader.readAsDataURL(inputFile.files[0]);
             } catch (e) {
-               // exception...
             }
-            // img.filters (MSIE)
          } else if (img.filters) {
             inputFile.select();
             inputFile.blur();
@@ -351,7 +343,6 @@ $(function(){
             img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
             img.style.display = '';
          } else {
-            // Safari5, ...
          }
       };
 
@@ -419,20 +410,20 @@ function add_introduce(){
     var standardID = 'div[id=standardID'+ cnt +']'
     if( cnt < 10 ){
        cnt++;
-       var html =   '<div class="standard" id="standardID'+ cnt +'">'
-             +   '<div id="sub_name'+ cnt +'"  class="subject" style="display:;">'
-             +   '<div id="sub_name_'+ cnt +'" class="subject" >'+ subject[cnt]+'</div>'
-             +   '<div class="subject"><input type="button" value="변경" name="modify" onclick="sub_name_modify('+cnt+')"></div>'
+       var html =   '<div class="form-control" id="standardID'+ cnt +'">'
+             +   '<div id="sub_name'+ cnt +'"  class="form-control" style="display:;">'
+             +   '<div id="sub_name_'+ cnt +'" class="form-control" >'+ subject[cnt]+'</div>'
+             +   '<div class="subject"><input class="btn btn-default" type="button" value="변경" name="modify" onclick="sub_name_modify('+cnt+')"></div>'
              +   '</div>'
-             +   '<div id="sub_change'+ cnt +'" class="subject" style="display:none;">'
-             +   '<input type="text" name="sub_change_name'+ cnt +'" style="background: #f2f7ff; border: 2px;" autofocus="autofocus" > '
-             +   '<input type="button" value="확인" onclick="sub_name_ok('+cnt+')">'
-             +   '<input type="button" value="취소" onclick="sub_name_cancel('+cnt+')">'
+             +   '<div id="sub_change'+ cnt +'" class="form-control" style="display:none;">'
+             +   '<input class="form-control" type="text" name="sub_change_name'+ cnt +'" style="background: #f2f7ff; border: 2px;" autofocus="autofocus" > '
+             +   '<input class="btn btn-default" type="button" value="확인" onclick="sub_name_ok('+cnt+')">'
+             +   '<input class="btn btn-default" type="button" value="취소" onclick="sub_name_cancel('+cnt+')">'
              +   '</div>'
-             +   '<div> <textarea name="contents'+cnt+'" rows="17" cols="100%"></textarea> </div>'
+             +   '<div> <textarea class="form-control" name="contents'+cnt+'" rows="17" cols="100%"></textarea> </div>'
              +   '<div>' 
-             +   '<input type="button" value="추가" onclick="add_introduce()">'
-             +   '<input type="button" value="삭제" onclick="del_introduce('+cnt+')">'
+             +   '<input class="btn btn-default" type="button" value="추가" onclick="add_introduce()">'
+             +   '<input class="btn btn-default" type="button" value="삭제" onclick="del_introduce('+cnt+')">'
              +   '</div>'
              +   '</div>';
        $(standardID).after(html);

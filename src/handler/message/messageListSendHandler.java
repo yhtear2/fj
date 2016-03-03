@@ -26,11 +26,11 @@ public class messageListSendHandler implements Commandhandler {
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+		/**	보낸 편지함	**/
 		// 변수 선언
 		int count = 0;
 		//String sender = (String)request.getSession().getAttribute("memId");
-		String sender = "sendermail@main.com";
+		String sender = "admin@admin";
 		
 		int pageSize=10;
 		int pageBlock = 3;

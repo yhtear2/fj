@@ -12,8 +12,24 @@
 		#{tel, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{address, jdbcType=VARCHAR}, #{army, jdbcType=VARCHAR}, #{want_salary ,jdbcType=INTEGER},
 		#{license, jdbcType=VARCHAR}, #{skill, jdbcType=VARCHAR},#{photo, jdbcType=VARCHAR}, #{reg_date}, #{last_date}, #{project, jdbcType=VARCHAR},
 		#{resome_title, jdbcType=VARCHAR})
-		
 	</insert>
+	
+
+	<insert id="insertArticle_career" parameterType="dto.user.UserDataBean" >
+
+		insert into FJ_Career values( FJ_Career_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{career_sort, jdbcType=VARCHAR}, #{career_comp_name, jdbcType=VARCHAR},
+		#{career_start_date, jdbcType=VARCHAR}, #{career_last_date, jdbcType=VARCHAR}, #{career_kind, jdbcType=VARCHAR}, #{career_department, jdbcType=VARCHAR}, #{career_position1,jdbcType=VARCHAR},
+		#{career_position2, jdbcType=VARCHAR}, #{career_salary, jdbcType=INTEGER},#{career_resign, jdbcType=VARCHAR},#{career_work, jdbcType=VARCHAR},
+		#{career_content, jdbcType=VARCHAR})
+	</insert>
+
+
+	<insert id="insertArticle_introduce" parameterType="dto.user.UserDataBean" >
+
+		insert into FJ_Introduce values( FJ_Introduce_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{intro_title, jdbcType=VARCHAR}, #{intro_contents, jdbcType=VARCHAR},
+		#{intro_reg_date}, #{intro_last_date})
+	</insert>	
+	
 
 	<insert id="insertArticle_sc" parameterType="dto.user.SchoolDataBean">
 		insert into FJ_School ( school_id, user_history_id,school_kind,school_start_date,school_last_date,school_college1,
@@ -22,12 +38,10 @@
 		#{school_start_date,jdbcType=VARCHAR},#{school_last_date,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
 		#{school_college2,jdbcType=VARCHAR},#{school_college_high,jdbcType=VARCHAR},#{school_name,jdbcType=VARCHAR},#{school_name_kind,jdbcType=VARCHAR},
 		#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date})
-		
 	</insert>
 
 	<select id="getUser_history_id" parameterType="Integer" resultType="dto.user.UserDataBean">
 		select * from FJ_User where user_history_id = #{user_history_id}
 	</select>
-
 </mapper>	
 

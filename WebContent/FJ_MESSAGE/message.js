@@ -15,7 +15,6 @@ function sendMassge(){
 		content.focus();
 		return false;
 	}
-	$('input[name=email]').val( $('p').text() );
 }
 
 // 보낸 메시지 삭제할때 유효성검사(상대방이 읽었나 안읽었나)
@@ -30,7 +29,3 @@ function messageSendDelete(read_yn, message_num){
 		}
 	}
 }
-
-/**********************
- *  웹 소켓 메세지 송 수신  *
- **********************/

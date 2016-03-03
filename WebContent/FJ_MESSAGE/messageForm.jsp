@@ -12,25 +12,22 @@
 
 <!-- 보내기 폼 시작 -->
 <form method="post" action="messagePro.do" onsubmit="return sendMassge()">
-	<!-- 받을사람 이메일을 넘기는 히든 -->
-	<input type="hidden" name="email" value="">
+	<!-- 페이지 넘 넘기기 -->
 	<input type="hidden" name="pageNum" value="${pageNum}">
 	
 	<!-- 폼의 크기 및 위치 지정 -->
 	<div style="height:700px; width: 600px; margin: 10px; padding: 10px;">
 		<!-- 클래스 먹이기 --> 
-		<div class="form-group">
-		    <label class="col-sm-2 control-label">받는사람</label>
-		    <div class="col-sm-10">
-		      <p class="form-control-static">${sender}</p>
-		    </div>
+		<div class="form-group" style="width: 300px;">
+		    <label style="margin-right:5px;">받는사람</label>
+		      <input type="text" class="form-control-message" name="email" placeholder="받는사람을 적어주세요" value="${email}">
 		</div>
-		<div class="form-group">
-		    <label for="inputPassword" class="col-sm-2 control-label">제목</label>
-		    <div class="col-sm-10" style="width: 300px; margin: 5px 0px 5px 0px;">
-		      <input type="text" class="form-control" name="title" placeholder="제목을 입력해 주세요" autofocus>
-		    </div>
-		    <textarea name="content" class="form-control" rows="10" placeholder="내용을 입력해 주세요" style="width: 390px;"></textarea>
+		<div class="form-group" style="width: 300px;">
+		    <label style="margin-right:18px;">제&nbsp;&nbsp;&nbsp;&nbsp;목</label>
+		    <input type="text" class="form-control-message" name="title" placeholder="제목을 입력해 주세요" autofocus>
+		</div>
+		<div class="form-group" style="width: 300px;">
+		    <textarea name="content" rows="10" cols="100%" placeholder="내용을 입력해 주세요" style="width: 300px;"></textarea>
 		</div>
 		<div class="form-group">
 	    	<div class="col-sm-offset-2 col-sm-10">

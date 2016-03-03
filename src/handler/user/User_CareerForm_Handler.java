@@ -33,10 +33,6 @@
 
 */
 
-
-
-
-
 package handler.user;
 
 import javax.servlet.http.HttpServletRequest;

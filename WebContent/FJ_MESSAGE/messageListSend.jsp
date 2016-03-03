@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="setting.jsp"%>
-<link href="${project}message.css" rel="stylesheet" type="text/css">
-<script src="${project}message.js"></script>
 
 <!-- 전체 크기 및 백그라운드 색갈 주기 -->
 <div style="width: 800px; background-color: white; margin: 20px;"
 	class="table-responsive">
+	<button class="btn btn-default" onclick="window.location='messageForm.do'">새쪽지</button>
 	<button class="btn btn-default" onclick="window.location='messageList.do'">받은쪽지함</button>
 	<button class="btn btn-default" onclick="window.location='messageListSend.do'">보낸쪽지함</button>
 	<!-- 큰 제목 -->

@@ -126,7 +126,7 @@
       str += "<tr>";
       str += "<th style='width:100px'>분류</th>";
       str += "<td style='width: 520px'>";
-      str += "<input type='radio' id='school_kind_ida"+count+"' name='school_kind"+count+"'value='대학교' onclick='script:alert(1);'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
+      str += "<input type='radio' id='school_kind_ida"+count+"' name='school_kind"+count+"'value='대학교'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
       str += "<input type='radio' id='school_kind_idb"+count+"' name='school_kind"+count+"'value='대학원'/>&nbsp; 대학원";
 
       str += "</td>";
@@ -201,6 +201,12 @@
       document.school_Form.count.value = count;
       if(flag == "highAdd") addReturn();
 
+      $("input[name=school_kind1]:checked").val();
+      if($("#school_kind_ida1").attr("checked")=="checked")
+    	  radio_checked=$("#school_kind_ida1").val();
+    	  
+      
+      
       
       if( $.cookie('school_name') != "" ) {
     	  for(var i=1; i<=count; i++) {
@@ -211,8 +217,8 @@
     	//	$("#school_kind_idb"+i).attr("checked", 'checked');
 
     
-			$("#school_kind_ida1").attr("checked", 'checked');
-			$("#school_kind_ida2").attr("checked", 'checked');
+		//	$("#school_kind_ida1").attr("checked", 'checked');
+		//	$("#school_kind_ida2").attr("checked", 'checked');
 		
 			$("#school_kind_idb1").attr("checked", 'checked');
 			$("#school_kind_idb2").attr("checked", 'checked');
