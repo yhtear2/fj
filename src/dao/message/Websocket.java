@@ -51,15 +51,16 @@ public class Websocket {
         	// memId를 맵에다 저장
         	memId.put( connectionIds.getAndIncrement(), user_memId);
         	System.out.println("접속유저 MemId : " + user_memId );
-        	// 세션에 맵에다 넣기
-            sessionMap.put(user_memId, session);
         }  
+     // 세션에 맵에다 넣기
+        sessionMap.put(user_memId, session);
     }
     
     // 세션이 종료될때 접속하는 메소드
     @OnClose
     public void end() {
         sessionMap.remove(this.session);
+        System.out.println("웹소켓 접속 종료됨");
     }
 
     // 현재 세션과 연결된 클라이언트로부터 메시지가 도착할 때마다 새로운 쓰레드가 실행되어 incoming()을 호출함

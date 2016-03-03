@@ -28,11 +28,8 @@
 	<input type="hidden" id="memId" value="${email}">
 	<script type="text/javascript">
 	<!--
-		var memId = $('input[id=memId]').val();
-		if( memId != null && memId != ""){
-			wsConnect( memId );
 			window.location.href = "main.do"
-		}
+		
 	//-->
 	</script>
 </c:if>

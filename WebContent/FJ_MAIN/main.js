@@ -47,6 +47,36 @@ $(function(){
 			});
 		}
 	
+	
+	// 웹소켓 구현부
+	var memId = $('input[id=memId]').val();
+	if( memId != null && memId != ""){
+		if(! window.WebSocket ){
+			alert("이 브라우저는 실시간 쪽지를 지원하지 않습니다.");
+			return;
+		} else{
+			// 연결한 웹소켓의 주소 및 아이디
+			ws = new WebSocket('ws://localhost:8080/fj/websocket/chat?memId='+memId);
+			// 서버에 연결하는 메소드
+			ws.onopen = function(){
+			}
+			// 메세지를 수신하면 연결되는 메소드
+			ws.onmessage = function( evt ){
+				alert( evt.data );
+			}
+			// 서버가 종료될때 연결되는 메소드
+			ws.onclose = function(){
+				alert("서버 접속 종료");	
+			}
+		}
+	}
 });
 
-
+// 메세지를 보내는 메소드
+function wsSendMassge(){
+	var msg =  $.cookie('msg');
+	if ( msg != null && msg != ""){
+		ws.send( msg );
+		$.cookie('msg', '');
+	}
+}
