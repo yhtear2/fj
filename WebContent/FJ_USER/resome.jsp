@@ -290,26 +290,39 @@
       newTr = lo_table.insertRow(row_index - 1);
       newTr.idName = "newTr" + row_index;
 		
+      alert(license_cnt);
       
       newTd = newTr.insertCell(0);
-      newTd.innerHTML = "<input type='hidden' name='license_cnt' value='license_cnt'>";
-      newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px'> </td>";
+      newTd.innerHTML = license_cnt;
+      newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1' id='license1"+license_cnt+"' style='width:220px'> </td>";
 
       newTd = newTr.insertCell(1);
       newTd.align = "center";
-      newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2"+license_cnt+"' id='license2"+license_cnt+"' style='width:180px'> </td>";
+      newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2' id='license2"+license_cnt+"' style='width:180px'> </td>";
 
       newTd = newTr.insertCell(2);
-      newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px'></td>";
+      newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3' id='license3"+license_cnt+"' style='width:260px'></td>";
 
+      
+      if( $.cookie('license1') != "" ) {
+    	  for(var i=1; i<=license_cnt; i++) {
+    		//  $.cookie('license1'+i, $('input[id=license1'+i+']').val());
+      		$("#license1"+i).val( $.cookie('license1'+i) );
+    		$("#license2"+i).val( $.cookie('license2'+i) );
+    		$("#license3"+i).val($.cookie('license3'+i));
+    
+    	  }
+      }
+    		
    }
 
    function license_delForm() {
-      var lo_table = document.getElementById("license_table");
+
+       var lo_table = document.getElementById("license_table");
       var row_index = lo_table.rows.length - 2; // 테이블(TR) row 개수
 
       if (row_index > 1)
-         lo_table.deleteRow(row_index);
+         lo_table.deleteRow(row_index); 
    }
 
    function execDaumPostcode() {
@@ -361,8 +374,7 @@
 
 <h2>이력서</h2>
 
-
-<form name="resome" method="post" enctype="multipart/form-data" action="resome_Pro.do">
+<form name="resome" method="post" enctype="multipart/form-data"  onload="license_addform();" action="resome_Pro.do" onsubmit="lic_submitcheck()"> 
 
 <h3>이력서제목</h3>
 <table class="table table-hover">
@@ -492,10 +504,11 @@
 </table>
 
 
-   <input type="hidden" name="cnt" value="0">
    <input type="hidden" name="license1_send">
    <input type="hidden" name="license2_send">
    <input type="hidden" name="license3_send">
+   <input type="hidden" name="license_cnt" value="0">
+   
    <table id="license_table" class="table table-hover" style="width:800px">
       <tr>
          <th>자격증 이름</th>
@@ -503,10 +516,10 @@
          <th>발행일처</th>
       </tr>
       <tr>
-         <td style="width:160px"> <input type="text" name="license1" id="license1" style="width:220px"> </td>
-         <td style="width:80px"> <input type="text" name="license2" id="license2" style="width:180px"> </td>
+         <td style="width:160px"> <input type="text" name="license1" id="license10" style="width:220px"> </td>
+         <td style="width:80px"> <input type="text" name="license2" id="license20" style="width:180px"> </td>
       
-         <td colspan="2" style="width:200px"> <input class="" type="text" style="width:260px" name="license3" id="license3"></td>
+         <td colspan="2" style="width:200px"> <input class="" type="text" style="width:260px" name="license3" id="license30"></td>
       </tr>
       
       <tr>
@@ -520,10 +533,12 @@
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                
          <input  class="btn btn-default"  type="button" value="추가" style="width:60px" onclick="license_addform()">
-         <input class="btn btn-default" type="reset" value="삭제" style="width:60px" onclick=" license_delForm()">   </td>         
+         <input class="btn btn-default" type="button" value="삭제" style="width:60px" onclick="license_delForm()">   </td>       
+
       </table>
 
-             <div id="addlicense"></div> <br>
+             <div id="addlicense">
+             </div> <br>
        
       <table class="table table-hover" style="width:800px">
       <tr>

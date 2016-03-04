@@ -19,6 +19,9 @@ var school_major = "";
 var school_rank1 = "";
 var school_rank2 = "";
 
+var license1 = "";
+var license2 = "";
+var license3 = "";
 
 function skill_result() {
    var skills = document.getElementById('skill').value;
@@ -35,7 +38,7 @@ function skill_result() {
 
 
 
-$(function(){
+/*$(function(){
 	
 	
     var count = $.cookie('count');
@@ -53,6 +56,7 @@ function addReturn(){
 
 
 }
+*/
 
 $(function(){
     //최초 쿠키에 login_id라는 쿠키값이 존재하면
@@ -75,15 +79,15 @@ $(function(){
     var army7 = $.cookie('army7');       
     var skill = $.cookie('skill');
     var want_salary = $.cookie('want_salary');
-    var license1 = $.cookie('license1');
-    var license2 = $.cookie('license2');
-    var license3 = $.cookie('license3');
+
     var project = $.cookie('project');
     var input_file = $.cookie('input_file');
     
     var formCnt = $.cookie('formCnt');
-    var addedForm = document.getElementById("addedFormDiv");
+    var license_cnt = $.cookie('license_cnt');
     
+    var addedForm = document.getElementById("addedFormDiv");
+    var license_addform = document.getElementById("license_addform");
 
 
 
@@ -174,16 +178,7 @@ $(function(){
 	    }
 	    if(want_salary != undefined) {
 	        $("#want_salary").val(want_salary);
-	    }
-	    if(license1 != undefined) {
-	        $("#license1").val(license1);
-	    }       
-	    if(license2 != undefined) {
-	        $("#license2").val(license2);
-	    }
-	    if(license3 != undefined) {
-	        $("#license3").val(license3);
-	    }            
+	    }          
 	    if(project != undefined) {
 	        $("#project").val(project);
 	    }
@@ -191,16 +186,23 @@ $(function(){
 	        $("#input_file").val(input_file);
 	    }            
     
-	    
+
     for(var i = 1; i <= formCnt; i++) {
         addForm();
      }
     
+    for(var i = 1; i<=license_cnt; i++) {
+    	license_addform();
+    }
+    
     
     //로그인 버튼 클릭시
     $("#user_button").click(function(){
+    	
+	   //    $.cookie('license_cnt', license_addform.childNodes.length);
+
         //아이디 미입력시
-        if( $("#resome_title").val() == null && $("#resome_title").val() == "" ) {
+/*        if( $("#resome_title").val() == null && $("#resome_title").val() == "" ) {
             alert("이력서 제목을 입력하세요.");
             return;
         }  if( $("#kor_name").val() == null && $("#kor_name").val() == "" ) {
@@ -219,7 +221,7 @@ $(function(){
             alert("주소가 입력되지 않았습니다. 다시확인해주세요");
             return;
         } else {
-        	
+        	*/
             $.cookie('resome_title', $("#resome_title").val()); 
             $.cookie('kor_name', $("#kor_name").val()); 
             $.cookie('eng_name', $("#eng_name").val());
@@ -239,16 +241,21 @@ $(function(){
             $.cookie('army7', $("#army7").val());                   
             $.cookie('skill', $("#skill").val());                   
             $.cookie('want_salary', $("#want_salary").val());
-            $.cookie('license1', $("#license1").val());                
-            $.cookie('license2', $("#license2").val());
-            $.cookie('license3', $("#license3").val());
+
             $.cookie('input_file',$("#input_file").val());
             $.cookie('project', $("#project").val());
             
             
+       		for(var j=1; j<=license_cnt; j++) {
+       			
+       			$.cookie('license1'+j, $("#license1"+j).val());                   
+       			$.cookie('license2'+j, $("#license2"+j).val());                   
+       			$.cookie('license3'+j, $("#license3"+j).val());                   
+
+       		}
 
             alert("개인정보가 저장되었습니다.!!");
-        }
+        
     })
     
     $("#school_save").click(function(){
@@ -262,19 +269,7 @@ $(function(){
    	        
        		for(var j=1; j<=addedForm.childNodes.length; j++) {
        			
-
-
        			$.cookie('school_name'+j, $("#school_name"+j).val());                   
-
-//		        $.cookie('school_kind'+j, $("input[name=school_kind"+j+"]").val());
-       	  //      $.cookie('school_kind1', $("#school_kind_ida1").val());
-       	  //      $.cookie('school_kind1', $("#school_kind_ida2").val());
-
-		       // alert( $("input[name=school_kind"+j+"]").val());
-		   
-		        
-		        //$.cookie('school_kind'+j, $("#school_kind_idb"+j).val());
-
 		        $.cookie('school_start_date'+j, $("#school_start_date"+j).val());                
 		        $.cookie('school_last_date'+j, $("#school_last_date"+j).val());
 		        $.cookie('school_college1'+j, $("#school_college1"+j).val());                   
