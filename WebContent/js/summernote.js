@@ -1834,13 +1834,13 @@
   var buttonGroup = renderer.create('<div class="note-btn-group btn-group">');
   var button = renderer.create('<button type="button" class="note-btn btn btn-default btn-sm">', function ($node, options) {
     if (options && options.tooltip) {
-/*      $node.attr({
+      $node.attr({
         title: options.tooltip
       }).tooltip({
         container: 'body',
         trigger: 'hover',
         placement: 'bottom'
-      });*/
+      });
     }
   });
 

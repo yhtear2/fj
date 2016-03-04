@@ -2,9 +2,10 @@
 /** 글쓰기 에디터 자바스크립트 부분  **/
 $(document).ready(function() {
 	$('#summernote').summernote({
-		height : 400  // 에디터 글쓰기 높이 
+		height : 400,  // 에디터 글쓰기 높이 
+		lang: 'ko-KR' // default: 'en-US'
 	});
-
+	$('.dropdown-toggle').dropdown();
 });
 
 // 스킬선택 창으로 넘어가는거

@@ -30,8 +30,7 @@
 
 
 <!-- common java script -->
-<!-- bootstrap 자바스크립트 사용 (섬머노트에 쓰임 ) -->
-<script src="${js}/bootstrap.js"></script> 
+
 
 <!-- Jquery 2.x 버젼 IE 8버전 이하는 지원안함 -->
 <script src="${js}/jquery-2.2.1.min.js"></script>
@@ -39,10 +38,25 @@
 <!-- Jquery ui를 사용하려면 필요한 자바스크립트  	--> 
 <script src="${js}/jquery-ui.min.js"></script>
 
+<!-- bootstrap 자바스크립트 사용 (섬머노트에 쓰임 ) -->
+<script src="${js}/bootstrap.js"></script> 
+
 <!-- 섬머노트 이용하기 위한 자바스크립트 -->
 <script src="${js}/summernote.js"></script>
+
+<!-- 섬머노트에 한글로 툴팁 쓰기 -->
+<script src="${js}/summernote-ko-KR.js"></script>
 
 <!-- Jquery를 이용한 Cookie를 사용하기위해 필요한 자바스크립트 -->
 <script src="${js}/jquery.cookie.js"></script>
 
+<!-- 
+섬머노트 실행하기 위한 코드
+	$('#summernote').summernote({
+		height : 400,  // 에디터 글쓰기 높이 
+		lang: 'ko-KR' // default: 'en-US'
+	});
+	$('.dropdown-toggle').dropdown();
+
+ -->
 
