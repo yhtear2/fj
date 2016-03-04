@@ -8,12 +8,20 @@
 		<!-- 메인 css 및 자바스크립트 삽입 -->
 		<link href="${main}/main.css" rel="stylesheet" type="text/css">
 		<script src="${main}/main.js"></script>
+		<script type="text/javascript">
+			/*	
+			$(function(){
+				$("#cookieId").val($.cookie("memId"));
+			});
+			*/
+		</script>
 	</head>
 	<body onload="wsSendMassge()">
 		<div class="main_menu">
 			<input type="hidden" class="menu_status" value="0">
 			<input type="hidden" class="m" value="${menu}">
 			<input type="hidden" id="memId" value="${sessionScope.memId}">
+			<input type="hidden" id="cookieId" value="">
 			<div class="main_logo" onclick="window.location='main.do'">
 				<img id="logo" src="${images}/main_logo.png"> 
 			</div>

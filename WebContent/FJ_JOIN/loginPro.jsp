@@ -27,10 +27,14 @@
 <c:if test="${result == 1}">
 	<input type="hidden" id="memId" value="${email}">
 	<script type="text/javascript">
-	<!--
-			window.location.href = "main.do"
-		
-	//-->
+		/*
+		if( '${autologin}' == "1" ) {
+			$.cookie('memId', '${sessionScope.memId}');
+			$.cookie('name', '${sessionScope.name}');
+			$.cookie('member_flag', '${sessionScope.member_flag}');
+		}
+		*/
+		window.location.href = "main.do";
 	</script>
 </c:if>
 

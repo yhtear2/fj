@@ -41,6 +41,7 @@
 <c:set var="btn_delete_member" value="회원탈퇴"/>
 <c:set var="btn_delete" value="탈퇴"/>
 <c:set var="btn_delete_cancel" value="탈퇴취소"/>
+<c:set var="btn_auto" value="자동로그인"/>
 	
 <c:set var="btn_ok" value="확인"/>
 <c:set var="btn_ok_cancel" value="확인취소"/>

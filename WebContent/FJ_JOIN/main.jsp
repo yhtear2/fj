@@ -5,6 +5,16 @@
 <%@ include file="setting.jsp" %>
 <link href="${join}join.css" rel="stylesheet" type="text/css">
 <script src="${join}script.js"></script>
+<script type="text/javascript">
+	/*
+	function auto() {
+		if( mainform.autologin.value == 0) {
+			mainform.autologin.value = 1;
+		} else {
+			mainform.autologin.value = 0;
+		}
+	}*/
+</script>
 
 <body id="join" onload="mainfocus()">
 	<c:if test="${sessionScope.memId == null}">
@@ -27,6 +37,7 @@
             </tr>
             <tr>
                <td class="table-button active" colspan="2">
+               	  <input class="autologin" type="checkbox" name="autologin" value="0">자동로그인&nbsp;&nbsp;
                   <input class="btn btn-default" type="submit" value="${btn_login}">
                   <input class="btn btn-default" type="reset" value="${btn_cancel}">
                   <input class="btn btn-default" type="button" value="${btn_input_member}"
