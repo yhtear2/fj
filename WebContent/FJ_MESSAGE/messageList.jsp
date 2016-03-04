@@ -63,28 +63,31 @@
 	</table>
 
 	<!-- 한 페이지 10개의 쪽지만 보여지도록 함 -->
-	<br>
-	<div style="text-align: center;">
-		<c:if test="${count > 0}">
-			<c:if test="${startPage > pageBlock}">
-				<a href="messageList.do?pageNum=1">[◀◀]</a>
-				<a href="messageList.do?pageNum=${startPage-pageBlock}">[◀]</a>
-			</c:if>
-
-			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<c:if test="${ i == currentPage }">
-					<b>[${i}]</b>
+<br>
+    <div class="text-center">
+		<ul class="pagination pagination-sm">
+			<li>
+				<c:if test="${count > 0}">
+				<c:if test="${startPage > pageBlock}">
 				</c:if>
-				<c:if test="${ i != currentPage }">
-					<a href="messageList.do?pageNum=${i}">[${i}]</a>
+				</c:if> 
+				<a href="messageList.do" class="prev disabled">◀◀</a>
+				<a href="messageList.do?pageNum=${startPage-pageBlock}" class="prev disabled">◀</a>
+			</li>	 
+			<li>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:if test="${i == currentPage}"> 
+				<a>${i}</a>
 				</c:if>
-			</c:forEach>
-
-			<c:if test="${ endPage < pageCount }">
-				<a href="messageList.do?pageNum=${startPage+pageBlock}">[▶]</a>
-				<a href="messageList.do?pageNum=${pageCount}">[▶▶]</a>
-			</c:if>
-
-		</c:if>
-	</div>
+				<c:if test="${i != currentPage}">
+				<a href="messageList.do?pageNum=${i}">${i}</a>
+				</c:if>   
+				</c:forEach> 
+				<c:if test="${endPage < pageCount}">
+					<a href="messageList.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
+					<a href="messageList.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
+				</c:if>
+			</li>   
+		</ul>  
+	</div>  
 </div>

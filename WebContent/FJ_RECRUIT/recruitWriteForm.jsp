@@ -11,7 +11,7 @@
 	<div class="recruit_size">
 		<div>
 			<label><h4>제목</h4></label>
-			<input type="text" name="title" class="form-control1" placeholder="제목을 입력하세요">
+			<input type="text" name="title" class="form-control_hs" placeholder="제목을 입력하세요">
 		</div>
 	</div>
 	<br>
@@ -43,7 +43,7 @@
 		</div>
 		<div class="recruit_minisize">
 				<label style="margin-right : 20px;">연봉(만원)</label>
-				<select class="form-control11" name="min_salary" style="width: 150px;" >
+				<select class="form-control_hs1" name="min_salary" style="width: 150px;" >
 				 	<option>1400만원 이상</option>
 				 	<option>1800만원 이상</option>
 				  	<option>2000만원 이상</option>
@@ -60,7 +60,7 @@
 				  	<option>9000만원 이상</option>
 				</select>
 				<label style="width: 50px; text-align: center;"> ~ </label>
-				<select class="form-control11" name="max_salary" style="width: 150px; text-align: center;" >
+				<select class="form-control_hs1" name="max_salary" style="width: 150px; text-align: center;" >
 				 	<option>1400만원 이하</option>
 				 	<option>1800만원 이하</option>
 				  	<option>2000만원 이하</option>
@@ -107,7 +107,7 @@
 		<label><h4>지원자격</h4></label>
 		<div class="recruit_minisize">
 			<label style="margin-right: 20px;">학   력</label>
-			<select class="form-control1" name="edu" style="width : 200px;">
+			<select class="form-control_hs" name="edu" style="width : 200px;">
 				<option>학력무관</option>
 				<option>고등학교 졸업</option>
 				<option>대학 졸업(2,3년)</option>
@@ -123,7 +123,7 @@
 		</div>
 		<div class="recruit_minisize">
 			<label style="margin-right: 20px;">연   령</label>
-			<select class="form-control1" name="min_age" style="width : 200px;">
+			<select class="form-control_hs" name="min_age" style="width : 200px;">
 				<c:set var="a" value="${2015}"/>
 				<c:forEach  begin="0" end="50" step="1"> 
 					<option>${a}년 이상</option>
@@ -131,7 +131,7 @@
 				</c:forEach>
 			</select>
 			<label style="width: 50; text-align: center;"> ~ </label>
-			<select class="form-control1" name="max_age" style="width : 200px;">
+			<select class="form-control_hs" name="max_age" style="width : 200px;">
 				<c:set var="b" value="${2016}"/>
 				<c:forEach  begin="0" end="50" step="1"> 
 					<option>${b}년 이하</option>
@@ -145,7 +145,7 @@
 			<label style="margin-right: 20px;">경     력</label>
 			<label class="checkbox-inline"> <input type="checkbox" name="career" value="신입" onClick="checkCheckbox1(this.form,this,1)">신입</label>
 			<label class="checkbox-inline"> <input type="checkbox" name="career" value="경력" onClick="checkCheckbox1(this.form,this,1)">경력</label>
-			<select class="form-control1" name="min_career" style="width: 150px; margin-left:10px;">
+			<select class="form-control_hs" name="min_career" style="width: 150px; margin-left:10px;">
 				<option>1년이상</option>
 				<option>2년이상</option>
 				<option>3년이상</option>
@@ -157,7 +157,7 @@
 				<option>20년이상</option>
 			</select>
 			<label style="width: 26px; text-align: center;"> ~ </label>
-			<select class="form-control1" name="max_career" style="width:150px;">
+			<select class="form-control_hs" name="max_career" style="width:150px;">
 				<option>1년이하</option>
 				<option>2년이하</option>
 				<option>3년이하</option>
@@ -173,22 +173,22 @@
 		<!-- 담당자  / 채용시작일 / 채용종료일 -->
 		<div class="recruit_minisize">
 			<label style="margin-right: 10px;">담당업무</label>
-			<input type="text" name="business_part" class="form-control1" style="width:200px;" placeholder="담당업무를 입력하세요">
+			<input type="text" name="business_part" class="form-control_hs" style="width:200px;" placeholder="담당업무를 입력하세요">
 				
 			<!-- 기술(skill) -->
 			<label style="margin : 0px 3px 0px 15px;">필요기술</label>
-			<input type="text" name="skill" id="skill" class="form-control1" 
+			<input type="text" name="skill" id="skill" class="form-control_hs" 
 				style="width:300px;" placeholder="클릭해주세요"  onclick="conf_skill()">
 		</div>
 		<div class="recruit_minisize">
 			<!-- 채용인원(people_count) -->
 			<label style="margin-right: 10px;">채용인원</label>
-			<input type="text" name="people_count" class="form-control1" style="width:60px;">
+			<input type="text" name="people_count" class="form-control_hs" style="width:60px;">
 			<label>명</label>
 			<label style="margin : 0px 3px 0px 15px;">채용일정</label>
-			<input type="date" name="start_date" class="form-control1" style="width:200px;">
+			<input type="date" name="start_date" class="form-control_hs" style="width:200px;">
 			<label style="width:20px; text-align: center;"> ~ </label>
-			<input type="date" name="end_date" class="form-control1" style="width:200px;">
+			<input type="date" name="end_date" class="form-control_hs" style="width:200px;">
 		</div>
 		
 	</div>
@@ -199,10 +199,10 @@
 		<!-- 담당자 / 전화번호 -->
 		<div class="recruit_minisize">
 			<label style="margin-right : 15px;"> 담당자 </label>
-			<input type="text" name="incharge" value="${incharge}" class="form-control1" style="width:120px;">
+			<input type="text" name="incharge" value="${incharge}" class="form-control_hs" style="width:120px;">
 
 			<label style="margin : 0px 10px 0px 15px;"> 전화번호 </label>
-			<select class="form-control1" name="tel_1" style="width: 130px;">
+			<select class="form-control_hs" name="tel_1" style="width: 130px;">
 	    		<c:if test="${tel_1 == '직접입력'}"> <option selected="selected">직접입력</option> </c:if>
 	    		<c:if test="${tel_1 != '직접입력'}"> <option>직접입력</option> </c:if>
 				<c:if test="${tel_1 == 010}"> <option selected="selected">010</option> </c:if>
@@ -219,7 +219,7 @@
 				<c:if test="${tel_1 != 019}"> <option>019</option> </c:if>
 		        </select>
 		    <label style="width: 30px; text-align: center;"> ㅡ </label>
-			<input type="text" name="tel_2" value="${tel_2}" class="form-control1" style="width:220px;">
+			<input type="text" name="tel_2" value="${tel_2}" class="form-control_hs" style="width:220px;">
 		</div>
 	</div>
 

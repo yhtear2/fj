@@ -28,25 +28,24 @@ public class MessageListHandler implements Commandhandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		/**	받은 편지함	**/
 		// 변수 선언
-		int count = 0;
-		String email = (String)request.getSession().getAttribute("memId");
+		int count = 0;			// 글 개수
+		String email = (String)request.getSession().getAttribute("memId");	// 이메일
 		
-		int pageSize=10;
-		int pageBlock = 3;
+		int pageSize=10;		// 페이지 사이즈
+		int pageBlock = 3;		// 페이지 블락
 	
 		// 변수 선언
-		String pageNum = null;	// 페이지 번호
-		int currentPage = 0;	
-		int start = 0;
-		int end = 0;
-		int number = 0;
+		String pageNum = null;	// 현재 페이지
+		int currentPage = 0;	// 페이지 개수
+		int start = 0;			// 시작 페이지
+		int end = 0;			// 끝 페이지
+		int number = 0;			// 글넘버
 		
 		//-- 페이지 만들 편수 선언
-		int pageCount = 0;
-		int startPage = 0;
-		int endPage = 0;
-			
-		
+		int pageCount = 0;		// 페이지 개수
+		int startPage = 0;		// 시작 페이지
+		int endPage = 0;		// 끝 페이지
+	
 		// DB접속해서 카운터 받아오기
 		count = dao.getCount(email);
 		
@@ -87,6 +86,14 @@ public class MessageListHandler implements Commandhandler {
 			map.put("list", list);
 		}
 		
+		map.put( "pageBlock", pageBlock );
+		map.put( "count", count );
+		map.put( "number", number );
+		map.put( "pageNum", pageNum );
+		map.put( "currentPage", currentPage );
+		map.put( "startPage", startPage );
+		map.put( "endPage", endPage );
+		map.put( "pageCount", pageCount );
 		map.put("count", count);
 		map.put("pageNum", pageNum);
 		

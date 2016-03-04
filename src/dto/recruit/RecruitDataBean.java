@@ -8,6 +8,7 @@ public class RecruitDataBean {
 	
 	public String title;			// 제목
 	public String content;			// 내용
+	//public String name;				// 회사이름			// 추가!!
 	public String skill;			// 원하는 기술
 	public String gender;			// 성별
 	public String edu;				// 학력
@@ -18,14 +19,13 @@ public class RecruitDataBean {
 	public String incharge;			// 담당자 
 	public String tel;				// 연락처 
 
-
 	public String start_date;		// 채용 시작일
 	public String end_date;			// 채용 종료일
 	
-	public int min_career;			// 최소 경력	// 수정함
-	public int max_career;			// 최대 경력	// 수정함
-	public int min_age;				// 최소 나이	// 수정함
-	public int max_age;				// 최대 나이	// 수정함
+	public int min_career;			// 최소 경력
+	public int max_career;			// 최대 경력
+	public int min_age;				// 최소 나이
+	public int max_age;				// 최대 나이
 	public int min_salary;			// 최소 연봉
 	public int max_salary;			// 최대 연봉
 	public int people_count;		// 채용인원

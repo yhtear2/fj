@@ -26,55 +26,65 @@ public class RecruitList implements Commandhandler {
 	@RequestMapping("/recruitList")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		int pageSize = 5;			// 페이지 사이즈
-		int pageBlock = 3;			// 페이지 블락
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		int count = 0;				// 글 개수
-		int pageNum = 0;			// 현재 페이지
-		int start = 0;				// 글 시작 넘버
-		int end = 0;				// 글 끝 넘버
-		int number = 0;				// 글 넘버
+		// 세션에서 데이터 받아오기
+		String email = (String)request.getSession().getAttribute("memId");				// 이메일
+		String name = (String)request.getSession().getAttribute("name");				// 닉네임
+		String member_flag = (String)request.getSession().getAttribute("member_flag");	// 사용자 구분
 		
-		int pageCount = 0;			// 페이지 개수
-		int startPage = 0;			// 시작 페이지
-		int endPage = 0;			// 끝 페이지
-
-		// 글 전체 개수 구하기
+		// 변수 선언
+		int count = 0;			// 글 개수
+		int pageSize=10;		// 페이지 사이즈
+		int pageBlock = 3;		// 페이지 블락
+	
+		// 변수 선언
+		String pageNum = null;	// 현재 페이지
+		int currentPage = 0;	// 페이지 개수
+		int start = 0;			// 시작 페이지
+		int end = 0;			// 끝 페이지
+		int number = 0;			// 글넘버
+		
+		//-- 페이지 만들 편수 선언
+		int pageCount = 0;		// 페이지 개수
+		int startPage = 0;		// 시작 페이지
+		int endPage = 0;		// 끝 페이지
+	
+		// DB접속해서 카운터 받아오기
 		count = recruitDao.getRecruitCount();
 		
-		// 현재 페이지 넘버 구하기
-		if(CustomUtil.isNull(request.getParameter("pageNum"))){
-			pageNum = 1;
-		}else{
-			pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		// 연산
+		pageNum = request.getParameter("pageNum");
+		if( pageNum == null){
+			pageNum = "1";
+		} 
+		
+		
+
+		// 페이지 번호 계산
+		//-- 짜투리가 생기면 페이지 하나 더 만들고 없으면 만들지 말아라
+		pageCount = count / pageSize + ( count%pageSize >0 ? 1 : 0 );
+		currentPage = Integer.parseInt(pageNum);
+		// 마지막 페이지 지웠을때 생기는 문제 예외처리
+		if( pageCount < currentPage){
+			currentPage = pageCount;
+			pageNum = String.valueOf( pageCount );
 		}
 		
-		// 현재 페이지가 마지막 페이지보다 클 때 현재 페이지를 마지막 페이지로
-		pageCount = count / pageSize + (count%pageSize > 0 ? 1: 0);
-		if(pageNum > pageCount) pageNum = pageCount;
+		start = ( currentPage - 1) * pageSize + 1;
+		end = start + pageSize -1;
 		
-		// 글 넘버 범위
-		start = (pageNum - 1) * pageSize + 1;
-		end = start + pageSize - 1;
-		
-		// 글 넘버링
-		number = count - (pageNum - 1) * pageSize;
-		
-		// 시작, 끝 페이지
-		startPage = (pageNum / pageBlock) * pageBlock + 1;
-		if(pageNum % pageBlock == 0) startPage -= pageBlock;
-		endPage = startPage + pageBlock - 1;
-		if(endPage > pageCount) endPage = pageCount;		
-		
-		request.setAttribute("pageBlock", pageBlock);
-		request.setAttribute("count", count);
-		request.setAttribute("number", number);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
-		request.setAttribute("pageCount", pageCount);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
+		// 번호 계산
+		number = count-( currentPage -1 ) * pageSize ;
+		startPage = (currentPage / pageBlock) * pageBlock +1;
+					// (  11		/ 10 ) * 10+1 	11	
+		if( currentPage % pageBlock == 0) startPage -= pageBlock;
+		endPage = startPage + pageBlock -1;
+					// 11+ 10 - 1					20
+		if( endPage > pageCount ) endPage = pageCount;
+				
+			
+		// DB 데이터 가져오기
 		if(count != 0){
 			Map<String, Integer> tempMap = new HashMap<String, Integer>();
 			tempMap.put("start", start);
@@ -84,6 +94,20 @@ public class RecruitList implements Commandhandler {
 			map.put("list", list);
 		}
 		
+		map.put( "pageBlock", pageBlock );
+		map.put( "count", count );
+		map.put( "number", number );
+		map.put( "pageNum", pageNum );
+		map.put( "currentPage", currentPage );
+		map.put( "startPage", startPage );
+		map.put( "endPage", endPage );
+		map.put( "pageCount", pageCount );
+		map.put("count", count);
+		map.put("pageNum", pageNum);
+		
+		map.put("email", email);
+		map.put("name", name);
+		map.put("member_flag", member_flag);
 		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitList");
 		return new ModelAndView("/FJ_MAIN/main", map);
