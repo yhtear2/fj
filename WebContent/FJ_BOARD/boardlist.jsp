@@ -105,7 +105,7 @@
 	                          			</c:forEach> 
                           			</c:if>        
                                 </div>
-									<br>
+									<br>     
 								<!-- 제목 부분 (hidden 생략) -->
                                 <h5 class="list-group-item-heading ">
                                     <a href="boardcontent.do?board_num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}">
@@ -121,6 +121,7 @@
                                         <ul>
                                         	<!-- li 순서 : 댓글 - 추천 - 조회  -->  
                                         	
+                                        	
                                             <li class="" >
                                             <i class="item-icon fa fa-comment"></i>
                                       		<table>
@@ -132,6 +133,8 @@
                                       		
                                       		</table>
                       		              	</li>
+                      		              	
+                      		              	
                                             <li class="item-icon-disabled"><i class="item-icon fa fa-thumbs-up"></i>
                                             <table>
                                             	<tr>

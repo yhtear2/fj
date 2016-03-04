@@ -45,6 +45,7 @@
 			</div>
 			<div class="content-identity pull-right">
 					<!-- 댓글수 확인부분 -->
+					<c:if test="${reresult == 1}"> 
                     <div class="content-identity-count">
                     <i class="fa fa-comment"></i> 
                     <table>
@@ -55,6 +56,7 @@
                        </tr>
                    </table>
                   </div>
+                  </c:if> 
            			 <!-- 조회수 확인부분 -->
            			<c:if test="${addresult == 1}"> 
                     <div class="content-identity-count">
@@ -275,11 +277,11 @@
 								<div class="activity">
 									<span class="fa fa-flash"></span> 10
 								</div>
-								-->
+								-->  
 								
 								<!-- 댓글 남긴날짜 -->
 								  
-								<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/> 
+								<fmt:formatDate value="${reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/> 
 								
 							</div>
 						</div>
@@ -289,8 +291,9 @@
 						
 						<fieldset class="form">
                                         <article id="note-text-1034847" class="list-group-item-text note-text">
-                                            
-                                           <p>${dto.content}</p> 
+                                           <c:if test="${dto.recontent != null}"> 
+                                           <p>${dto.recontent}</p> 
+                                           </c:if>
                                         </article>
                                     </fieldset>
                                 </div>
@@ -311,7 +314,7 @@
 								<table>
 			                       <tr>
 			                         <td>
-			                           ${dto.recom_count}  
+			                           ${recom_count}  
 			                         </td>
 			                       </tr>
                    			    </table> 
@@ -325,8 +328,17 @@
                                     <div class="dropdown">
                                         <a href="javascript://" data-toggle="dropdown"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="javascript://" class="note-edit-btn" data-id="1034847"><i class="fa fa-edit fa-fw"></i>수정</a></li>
-                                            <li><a href="javascript://" class="note-delete-btn" data-id="1034847"><i class="fa fa-trash-o fa-fw"></i> 삭제</a></li>
+                                            <li><a href="boardreplyView.do?board_num=${dto.board_num}&pageNum=${pageNum}" class="edit"><i class="fa fa-edit fa-fw"></i>${btn_modify}</a></li> 
+                                        	<!--   
+                                            <li><a href="javascript://" onclick="alert('댓글이 있는 글은 삭제하실 수 없습니다.');"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li> 
+                                            --> 
+                                              
+                                            <li>
+                                            <!--  
+                                            <a href="javascript://" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            -->
+                                            <a href="boarddeletePro.do?board_num=${dto.board_num}&pageNum=${pageNum}" onclick="deletecontent();" type="button"><i class="fa fa-trash-o fa-fw"></i>${btn_delete}</a>
+                                            </li>  
                                         </ul>
                                     </div> 
                                     
@@ -343,14 +355,18 @@
                     <li class="list-group-item note-form clearfix">
                         
                         	 
-                            <form action="/fj/boardreplyPro.do" method="post" class="note-create-form"> 
+                            <form action="/fj/boardreplyPro.do" method="post" class="note-create-form" onsubmit="boardreplyFormCkeck()"> 
                             		 
                                 	<input type="hidden" name="board_num" value="${dto.board_num}">
+                                	<!--  
+                                	<input type="hidden" name="re_step" value="${dto.re_step}">
+									<input type="hidden" name="re_count" value="${dto.re_count}"> 
+									<input type="hidden" name="recom_count" value="${recom_count}"> 
+									<input type="hidden" name="bad_count" value="${bad_count}">
+									<input type="hidden" name="read_count" value="${read_count}">
+									<input type="hidden" name="scrap_count" value="${scrap_count}">   -->               
                               <!--  <input type="hidden" name="lastNoteId" value="1034849 " id="lastNoteId">  -->
-                              		<!--     
-                                	<input type="hidden" name="re_count" value="${dto.re_count}">
-                                	<input type="hidden" name="scrap_count" value="${dto.scrap_count}">       
-                                	<input type="hidden" name="re_step" value="${dto.re_step}">   -->
+                              		
                                 
                                 <div class="content-body panel-body pull-left">
                                     <div style="margin-left: 5px;">
@@ -363,7 +379,7 @@
 								<!-- 작성자 표시구간 (board_num 은 임시차원 생성)-->
 								<div class="avatar-info">
 									<a class="nickname" href="유저정보 경로주기">
-									${board_num}
+									${board_num}  
 									</a>
 									
 									<!-- 활동량 구간(구현x) -->
@@ -377,16 +393,17 @@
 						</div>
 							
 								<!-- 댓글 적는 곳 (에디터 적용은 아직 미구현) -->
+									
                                     <fieldset class="form">
-                                    <textarea name="content" id="content" placeholder="댓글 쓰기" class="form-control" rows="15" >
-									                               
+                                    <textarea name="recontent" id="recontent" placeholder="댓글 쓰기" class="form-control" rows="15" > 
+									   ${recontent}                              
                                     </textarea>
-                                     
+                                    
 								   </fieldset>   
-                                        
+                                       
                                       
                        		</div> 
-                       			
+                       			   
                        			
                        			<!-- 댓글 등록 및 취소구간 -->  
                                 <div class="content-function-cog note-submit-buttons clearfix">

@@ -11,7 +11,7 @@
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
-		erroralert( replyupdate );
+		erroralert( replyupdate ); 
 		//-->      
 	</script>
 </c:if> 

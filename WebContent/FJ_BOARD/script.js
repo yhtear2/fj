@@ -132,6 +132,11 @@ function deletecontent()
 	}
 }
 
+// 댓글 작성시 유효성 검사 하는곳!
+function boardreplyFormCkeck(){
+	alert("알터확인");
+	alert($('textarea[name=recontent]').val());
+}
 
 
 
@@ -150,9 +155,11 @@ $(document).ready(function() {
 		width : 800,
 		minHeight: null, // 에디터 글쓰기 최소높이 제한 (마우스 클릭 후 이동시 제한알아낼 수 있음)
 		maxHeight: null, // 에디터 글쓰기 최대높이 제한 (마우스 클릭 후 이동시 제한알아낼 수 있음)
-		focus: true  // 포커스 有 
-		
+		focus: true,  // 포커스 有 
+		lang: 'ko-KR' // default: 'en-US'
 	});
+	$('.dropdown-toggle').dropdown();
+	
 
 	var content = $('input[name=content').val();
 	$('#summernote').summernote('code', content);

@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import dao.SqlMapClient;
 import dto.board.BoardDataBean;
 
-
+   
  
 public class BoardDBBean implements BoardDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();
@@ -25,10 +25,10 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		int board_num = dto.getBoard_num();
 		int re_step = dto.getRe_step();
 		int re_count = dto.getRe_count();
-		//int category = dto.getCategory();
-		//String hstag = dto.getHstag(); 
-		//String subject = dto.getSubject();
-		//String content = dto.getContent();
+	//	String category = dto.getCategory();
+	//	String hstag = dto.getHstag(); 
+	//	String subject = dto.getSubject();
+	//	String content = dto.getContent();
 		
 	
 		
@@ -43,7 +43,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 				board_num = maxNum + 1;
 				
 			}
-			else
+			else 
 			{
 				sqlSession.update("FJ_BOARD.updateReply", dto);
 				re_step ++;
@@ -55,10 +55,10 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		dto.setBoard_num(board_num);
 		dto.setRe_step(re_step);
 		dto.setRe_count(re_count); 
-		//dto.setCategory(category);
-		//dto.setSubject(subject);
-		//dto.setContent(content);
-		//dto.setHstag(hstag);   
+	//	dto.setCategory(category);
+	//	dto.setSubject(subject);
+	//	dto.setContent(content);
+	//	dto.setHstag(hstag);   
 		System.out.println("hstag : " + dto.getHstag());
 		System.out.println("content : " + dto.getContent());
 		return sqlSession.insert("FJ_BOARD.insertArticle", dto);  
@@ -87,7 +87,11 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	{
 		return sqlSession.update("FJ_BOARD.addCount", board_num);
 	}
-
+	
+	public int reCount(int board_num)
+	{
+		return sqlSession.update("FJ_BOARD.reCount", board_num); 
+	}
 	 
 	public int deleteArticle( int board_num ) {		
 		return  sqlSession.delete("FJ_BOARD.deleteArticle", board_num);

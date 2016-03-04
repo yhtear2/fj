@@ -19,6 +19,7 @@
 		<form action="/fj/boardwritePro.do" method="post" name="writeform" onsubmit="return writecheck_check()"> 
 		
 		<input type="hidden" name="re_step" value="2">
+		<input type="hidden" name="ref" value="1"> 
 		<input type="hidden" name="re_count" value="0"> 
 		<input type="hidden" name="recom_count" value="0">
 		<input type="hidden" name="bad_count" value="0">

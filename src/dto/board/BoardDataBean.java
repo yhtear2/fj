@@ -8,7 +8,9 @@ public class BoardDataBean {
 	private String subject; // 글제목 
 	private String content; // 글내용
 	private String hstag;   // 해쉬태그      
+	private String recontent; // 댓글내용 
 	private int board_num;  // 게시판 id (글번호)
+	private int ref;        // 그룹화 id 
 	private int re_count;   // 리플의 수   
 	private int scrap_count; // 스크랩 수
 	private int recom_count;    // 좋아요 수 
@@ -17,7 +19,20 @@ public class BoardDataBean {
 	private int re_step;    // 게시글의 구분
 	private String category;   // 카테고리
 	private Timestamp reg_date; // 작성날짜 
-	
+	 
+	 
+	public int getRef() {
+		return ref;
+	}
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+	public String getRecontent() { 
+		return recontent;
+	}
+	public void setRecontent(String recontent) {
+		this.recontent = recontent;
+	}
 	public String getCategory() {
 		return category;
 	} 
