@@ -80,36 +80,34 @@ public class User_ProHandler implements Commandhandler {
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
 		
 		String license = "";
-		/*
-		String license1[] = multi.getParameterValues("license1");
-		String license2[] = multi.getParameterValues("license2");
-		String license3[] = multi.getParameterValues("license3");
-		*/
-		String license1[];
-		String license2[];
-		String license3[];
 
-		int p = Integer.parseInt( multi.getParameter( "cnt" ) +1);
+		String license1[] = null;
+		String license2[] = null;
+		String license3[] = null;
+
+		String lic1[] = multi.getParameterValues("license1");
+		String lic2[] = multi.getParameterValues("license2");
+		String lic3[] = multi.getParameterValues("license3");
+
+/*		int p = Integer.parseInt( multi.getParameter( "license_cnt" ));
 
 		System.out.println(p);
-
+		
 		
 		license1 = new String[p];
 		license2 = new String[p];
-		license3 = new String[p];
-		for( int i = 1 ; i <= p ; i++ ){
-			if( i == 0) {
-				license1[i] = multi.getParameterValues( "license1").toString();
-				license2[i] = multi.getParameterValues( "license2").toString();
-				license3[i] = multi.getParameterValues( "license3").toString();
-			}else{
-				license1[i] = multi.getParameterValues( "license1" + i ).toString();
-				license2[i] = multi.getParameterValues( "license2" + i ).toString();
-				license3[i] = multi.getParameterValues( "license3" + i ).toString();
-			}
+		license3 = new String[p];*/
+		
+		
+		for( int i = 0 ; i <= lic1.length; i++ ){
+
+				license1[i] = (lic1[i]);
+				license2[i] = (lic2[i]);
+				license3[i] = (lic3[i]);
+
 		}
 
-		for(int i=1; i<=p; i++) {
+		for(int i=1; i<=lic1.length; i++) {
 			license += license1[i] + "-" +license2[i] + "-" + license3[i] + "/";
 		}
 		dto.setLicense(license);
@@ -135,13 +133,10 @@ public class User_ProHandler implements Commandhandler {
 
 		int result = dao.insertArticle( dto );	
 		
-		//request.setAttribute( "result", result );
 		map.put("result", result);
 		map.put("page", "/FJ_USER/resome_Pro");
 
 		return new ModelAndView("/FJ_MAIN/main", map);
-
-		//return new ModelAndView( "/FJ_USER/resome_Pro" );
 		
 	}
 }
