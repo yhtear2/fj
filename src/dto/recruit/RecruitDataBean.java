@@ -8,7 +8,7 @@ public class RecruitDataBean {
 	
 	public String title;			// 제목
 	public String content;			// 내용
-	//public String name;				// 회사이름			// 추가!!
+	public String name;				// 회사이름			// 추가!!
 	public String skill;			// 원하는 기술
 	public String gender;			// 성별
 	public String edu;				// 학력
@@ -34,6 +34,13 @@ public class RecruitDataBean {
 	public Timestamp reg_date;		// 작성일
 	public Timestamp last_date;		// 수정일
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getRecruit_id() {
 		return recruit_id;
 	}
