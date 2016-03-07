@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ include file="setting.jsp"%>
-<script src="/fj/jquery-1.12.0.js"></script>
+<%@ include file="/defaultSetting.jsp"%>
 <!-- <script src="/fj/FJ_USER/resome.js"></script>-->
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/request.js"></script>
-<script src="/fj/jquery.cookie.js"></script>
+
 
 <script type="text/javascript">
 	var request = null;
@@ -66,8 +65,10 @@
         str +="<tr>";
         str +="	<th style='width:150px'>근무기간</th>";
         str +="	<td style='width: 250px'>";
-        str +="    				<input class='form-control' type='text' style='width:165px' name='career_start_date'> ~";
-        str +="    				<input class='form-control' type='text' style='width:165px' name='career_last_date'>";
+        str +=" <input class='form-control' type='date' style='width:150px' name='career_start_date' id='career_start_date'> ~";
+        str +=" <input class='form-control' type='date' style='width:150px' name='career_start_date' id='career_last_date' >";
+        str +=" <input class='btn btn-default' type='button' onclick='sort()' value='근무개월 계산'/>";
+        str +=" <input class='form-control' type='text' style='width:150px' name='career_sort_date' id='career_sort_date'>";
         str +="    				<select class='' style='width: 80px' name='career_kind'>			";	
         str +="    					<option value='퇴사'>퇴사</option>";
         str +="    					<option value='재직중'>재직중</option>		";
@@ -207,13 +208,34 @@
 	    }
 	    return zero + n;
 	}
+	
+
+	        function sort() {
+
+	            var career_start_date = $("#career_start_date").val().split("-");
+	            var career_last_date = $("#career_last_date").val().split("-");
+				var c = null;
+	            var a1=new Date(career_start_date[0],career_start_date[1],career_start_date[2]).getTime();
+	            var a2=new Date(career_last_date[0],career_last_date[1],career_last_date[2]).getTime();
+	            var b=(a2-a1)/(1000*60*60*24);
+	            if (b>31) {
+	            c =  Math.ceil((b)/30) + "개월";
+	            
+	            } else {
+	            	c = "0개월 "+ b + "일";
+	            }
+	            
+	            $('#career_sort_date').val(c);
+	            
+	            
+	        }
 
 
 </script>
 
 <h2> 경력사항 </h2>
-<form name="career_Form"  method="post" onload="career_addForm();" action="career_Pro.do">
-<input type="hidden" name="count" value="0">
+<form name="career_Form"  method="post"  onload="career_addForm();" action="career_Pro.do">
+<input type="hidden" name="count">
 
 
 <table>
@@ -226,22 +248,27 @@
 
 </table>
 
-<table class="table table-hover" id="career_table" style="display:none;">
+<table class="table table-hover" id="career_table" >
 
 	<tr>
-		<th style="width:150px">회사명 : </th>
-		<td style="width: 250px"><input class="form-control" type="text" style="width: 250px" name="career_comp_name"></td>
+		<th>회사명 : </th>
+		<td><input class="form-control" type="text" style="width: 250px" name="career_comp_name"></td>
 	</tr>
 	<tr>
-		<th style="width:150px">근무기간</th>
-			<td style="width: 250px">
-				<input class="form-control" type="text" style="width:150px" name="career_start_date" > ~
-				<input class="form-control" type="text" style="width:150px" name="career_last_date" id="career_last_date" value="">
+		<th>근무기간</th>
+			<td>
+				<input class="form-control" type="date" style="width:150px" name="career_start_date" id="career_start_date"> ~
+				<input class="form-control" type="date" style="width:150px" name="career_start_date" id="career_last_date" >
+				<input class="btn btn-default" type="button" onclick="sort()" value="근무개월 계산"/>
+				<input class="form-control" type="text" style="width:150px" name="career_sort_date" id="career_sort_date">
+
+				
 				<select class="input" style="width: 80px" name="career_kind" onChange="change(this)">				
 					<option value="퇴사">퇴사</option>
 					<option value="재직중">재직중</option>		
 				</select>		
 			</td>
+
 	</tr>
 	<tr>
 		<th style="width:150px">부서명 : </th>

@@ -102,29 +102,47 @@
    
    
    function lic_submitcheck() {
-	   
-       var license1 = [];
-       var license1s = $('input[name=license1]');
-       for (var i = 0; i < license1s.length; i++) {
-    	   license1[i] = license1s.eq(i).val();
-       }
-       $('input[name=license1_send]').val(license1);      
- 
-       var license2 = [];
-       var license2s = $('input[name=license2]');
-       for (var i = 0; i < license2s.length; i++) {
-    	   license2[i] = license2s.eq(i).val();
-       }
-       $('input[name=license2_send]').val(license2);      
-       
-       var license3 = [];
-       var license3s = $('input[name=license3]');
-       for (var i = 0; i < license3s.length; i++) {
-    	   license3[i] = license3s.eq(i).val();
-       }
-       $('input[name=license3_send]').val(license3);      
-     
-	   
+	 	  var lo_table = document.getElementById("license_table");
+	   var license_cnt = lo_table.rows.length-2;
+	   	   
+	   for(var j=0; j<=license_cnt; j++) {
+		   
+		   /*  var license1 = [];
+	       var license1s = $('input[name=license1]');
+	       var license2s = $('input[name=license2]');
+	       var license3s = $('input[name=license3]');
+
+	       
+	       for (var i = 0; i < license1s.length; i++) {
+	    	   license1[i] = license1s.eq(i).val() +"/"+ license2s.eq(i).val() +"/"+ license3s.eq(i).val();
+ 	    	   license2[i] = license2s.eq(i).val();
+	    	   license3[i] = license3s.eq(i).val();
+		      	alert( $('input[name=license1_send]'+i).val(license1[i]));     
+
+	       }
+	       //$('input[name=license1_send]').val(license1);      
+	        */
+
+	 
+/* 	       
+ 	       var license2 = [];
+	       var license2s = $('input[name=license2]'+j);
+	       for (var i = 0; i < license2s.length; i++) {
+	    	   license2[i] = license2s.eq(i).val();
+	       }
+	       $('input[name=license2_send]').val(license2);      
+	       
+	       
+	       var license3 = [];
+	       var license3s = $('input[name=license3]');
+	       for (var i = 0; i < license3s.length; i++) {
+	    	   license3[i] = license3s.eq(i).val();
+	       }
+	       $('input[name=license3_send]').val(license3);   */     
+	     
+	       
+	       
+	   }
    }
    
    
@@ -294,16 +312,18 @@
       
       newTd = newTr.insertCell(0);
       newTd.innerHTML = license_cnt;
-      newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1' id='license1"+license_cnt+"' style='width:220px'> </td>";
+      newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px'> </td>";
 
       newTd = newTr.insertCell(1);
+      newTd.innerHTML = license_cnt;
       newTd.align = "center";
-      newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2' id='license2"+license_cnt+"' style='width:180px'> </td>";
+      newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2"+license_cnt+"' id='license2"+license_cnt+"' style='width:180px'> </td>";
 
       newTd = newTr.insertCell(2);
-      newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3' id='license3"+license_cnt+"' style='width:260px'></td>";
-
-      
+      newTd.innerHTML = license_cnt;
+      newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px'></td>";
+	
+      $('input[name=license_cnt]').val(license_cnt);
       if( $.cookie('license1') != "" ) {
     	  for(var i=1; i<=license_cnt; i++) {
     		//  $.cookie('license1'+i, $('input[id=license1'+i+']').val());
@@ -318,13 +338,14 @@
 
    function license_delForm() {
 
-       var lo_table = document.getElementById("license_table");
+        var lo_table = document.getElementById("license_table");
       var row_index = lo_table.rows.length - 2; // 테이블(TR) row 개수
 
       if (row_index > 1)
          lo_table.deleteRow(row_index); 
-   }
+  } 
 
+  
    function execDaumPostcode() {
       new daum.Postcode(
             {
@@ -507,7 +528,7 @@
    <input type="hidden" name="license1_send">
    <input type="hidden" name="license2_send">
    <input type="hidden" name="license3_send">
-   <input type="hidden" name="license_cnt" value="0">
+	<input type="hidden" name="license_cnt">
    
    <table id="license_table" class="table table-hover" style="width:800px">
       <tr>
@@ -519,7 +540,7 @@
          <td style="width:160px"> <input type="text" name="license1" id="license10" style="width:220px"> </td>
          <td style="width:80px"> <input type="text" name="license2" id="license20" style="width:180px"> </td>
       
-         <td colspan="2" style="width:200px"> <input class="" type="text" style="width:260px" name="license3" id="license30"></td>
+         <td colspan="2" style="width:200px"> <input type="text" style="width:260px" name="license30" id="license30"></td>
       </tr>
       
       <tr>

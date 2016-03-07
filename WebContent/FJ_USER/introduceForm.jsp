@@ -41,7 +41,7 @@ function submitcheck() {
 <!-- 자기소개서 입력 크기 잡아주기-->
 <form method="post" action="introduce_Pro.do" onsubmit="submitcheck()">
     <input type="hidden" name="sub_name_send">
-    <input type="hidden" name="contents0">
+    
     
 	<!-- 스타일 시스 먹이기 -->
 	<div class="standard" id="standardID0">

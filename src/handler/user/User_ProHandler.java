@@ -71,7 +71,7 @@ public class User_ProHandler implements Commandhandler {
 		dto.setEmail(email);
 		dto.setEng_name(eng_name);
 		dto.setKor_name(kor_name);
-		dto.setBirth(birth);
+
 		dto.setAddress(address);
 		dto.setSkill(skill);
 		dto.setWant_salary(want_salary);
@@ -81,15 +81,15 @@ public class User_ProHandler implements Commandhandler {
 		
 		String license = "";
 
-		String license1[] = null;
+/*		String license1[] = null;
 		String license2[] = null;
 		String license3[] = null;
 
 		String lic1[] = multi.getParameterValues("license1");
 		String lic2[] = multi.getParameterValues("license2");
-		String lic3[] = multi.getParameterValues("license3");
+		String lic3[] = multi.getParameterValues("license3");*/
 
-/*		int p = Integer.parseInt( multi.getParameter( "license_cnt" ));
+/*		
 
 		System.out.println(p);
 		
@@ -97,19 +97,34 @@ public class User_ProHandler implements Commandhandler {
 		license1 = new String[p];
 		license2 = new String[p];
 		license3 = new String[p];*/
-		
-		
-		for( int i = 0 ; i <= lic1.length; i++ ){
+		//int p = Integer.parseInt( multi.getParameter( "license_cnt" ));
+
+	//	String [] license1 = (String[]) multi.getParameterValues("license1_send");
+/*		
+
+/*		System.out.println(license2);
+		System.out.println(license3);  */
+
+/*		
+		for( int i = 0 ; i <= p; i++ ){
 
 				license1[i] = (lic1[i]);
 				license2[i] = (lic2[i]);
 				license3[i] = (lic3[i]);
 
-		}
+		}*/
+		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt"));
+		
+		System.out.println( "license1 : " + license_cnt);
 
-		for(int i=1; i<=lic1.length; i++) {
-			license += license1[i] + "-" +license2[i] + "-" + license3[i] + "/";
+	
+
+		for(int i=0; i<=license_cnt; i++) {
+
+			license +=  multi.getParameter("license1[+i]") + "-" + multi.getParameter("license2[+i+]") + "-" + multi.getParameter("license3[+i]") + "/";
+		
 		}
+		System.out.println(license);
 		dto.setLicense(license);
 		
 		// tel
