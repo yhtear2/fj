@@ -21,7 +21,7 @@
 	<select id="getList" parameterType="Map" resultType="dto.message.MessageDataBean">
 		select message_num,email,sender,title,content,tag,read_yn,reg_date,r 
 		from ( select message_num,email,sender,title,content,tag,read_yn,reg_date,rownum r  
-		from FJ_MESSAGE where email = #{email, jdbcType=VARCHAR} order by message_num desc) 
+		from FJ_MESSAGE where email = #{email, jdbcType=VARCHAR} order by message_num desc ) 
 		where r &gt;= #{start} and r &lt;= #{end}
 	</select>
 	

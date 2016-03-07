@@ -113,3 +113,4 @@ public class RecruitList implements Commandhandler {
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
+

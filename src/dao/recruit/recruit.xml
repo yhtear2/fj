@@ -9,13 +9,15 @@
 		FROM 	FJ_RECRUIT
 	</select>
 
-	<select id="getRecruitList" resultType="dto.recruit.RecruitDataBean">
-		<![CDATA[
-		SELECT 	*
-		FROM 	FJ_RECRUIT
-		WHERE	ROWNUM >= #{start}
-		AND 	ROWNUM <= #{end}
-		]]> 
+	<select id="getRecruitList" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
+		SELECT 	recruit_id,email,title,content,name,skill,gender,edu,work_type,work_day,work_area,
+				business_part,incharge,tel,start_date,end_date,min_career,max_career,min_age,max_age,
+				min_salary,max_salary,people_count,readcount,reg_date,last_date,r 
+		FROM 	( recruit_id,email,title,content,name,skill,gender,edu,work_type,work_day,work_area,
+				business_part,incharge,tel,start_date,end_date,min_career,max_career,min_age,max_age,
+				min_salary,max_salary,people_count,readcount,reg_date,last_date, rownum r 
+		FROM	FJ_RECRUIT  ORDER BY recruit_id desc ) 
+		WHERE	r &gt;= #{start} and r &lt;= #{end}		
 	</select>
 	
 	<insert id="insertRecruit" parameterType="dto.recruit.RecruitDataBean">

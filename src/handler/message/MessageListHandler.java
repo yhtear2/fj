@@ -30,7 +30,6 @@ public class MessageListHandler implements Commandhandler {
 		// 변수 선언
 		int count = 0;			// 글 개수
 		String email = (String)request.getSession().getAttribute("memId");	// 이메일
-		
 		int pageSize=10;		// 페이지 사이즈
 		int pageBlock = 3;		// 페이지 블락
 	
@@ -85,6 +84,7 @@ public class MessageListHandler implements Commandhandler {
 			ArrayList<MessageDataBean> list = dao.getList(start, end, email);
 			map.put("list", list);
 		}
+		
 		
 		map.put( "pageBlock", pageBlock );
 		map.put( "count", count );

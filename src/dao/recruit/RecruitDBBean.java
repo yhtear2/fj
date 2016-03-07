@@ -15,12 +15,6 @@ public class RecruitDBBean implements RecruitDao {
 	public int getRecruitCount() {
 		return sqlSession.selectOne("Recruit.getRecruitCount");
 	}
-	
-	@Override
-	public List<RecruitDataBean> getRecruitList() {
-		return sqlSession.selectList("Recruit.getRecruitList");
-	}
-
 	@Override
 	public List<RecruitDataBean> getRecruitList(Map<String, Integer> map) {
 		return sqlSession.selectList("Recruit.getRecruitList", map);

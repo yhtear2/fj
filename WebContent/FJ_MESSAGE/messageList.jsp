@@ -21,7 +21,6 @@
 			<th style="width: 60%">내용</th>
 			<th style="width: 20%">받은날짜</th>
 		</tr>
-
 		<!-- 받은 쪽지가 없는경우 출력할 내용 -->
 		<c:if test="${count == 0}">
 			<td style="text-align: center;" colspan="6">받은 쪽지가 없습니다.</td>
