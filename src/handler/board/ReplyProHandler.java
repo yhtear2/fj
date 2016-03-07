@@ -39,7 +39,7 @@ public class ReplyProHandler implements Commandhandler {
 		Timestamp reg_date = new Timestamp( System.currentTimeMillis());			// 작성시간
 		int recom_count = 0;														// 댓글 좋아요
 		int re_step = 3;															// 게시글 구분
-		int ref = 1;                                                                // 그룹화 id 
+	//	int ref = 1;                                                                 // 그룹화 id 
 		     
 
 		
@@ -52,12 +52,12 @@ public class ReplyProHandler implements Commandhandler {
 		dto.setRecontent(recontent);		// 댓글내용
 		dto.setReg_date(reg_date);			// 작성시간
 		dto.setRecom_count(recom_count);	// 좋아요
-		dto.setRe_step(re_step);			// 게시글 구분
-		dto.setRef(ref);                    // 그룹화 id 
+		dto.setRe_step(re_step);			// 게시글 구분 
 		
 		// 바구니를 dao에다가 보내서 DB에 입력하게
 		int result = dao.insertArticle(dto);
-			
+		
+		
 		   
 		// 페이지로 보낼 정보 맵으로 담기
 		map.put("pageNum", pageNum);

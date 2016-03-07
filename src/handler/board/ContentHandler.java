@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.board.BoardDao;
+import dto.board.BoardCommentDataBean;
 import dto.board.BoardDataBean;
 import handler.Commandhandler;
 
@@ -23,7 +24,7 @@ public class ContentHandler implements Commandhandler {
 
 	//* CreateBean의 dao 를 불러오기 위한 Resource 작업  (AutoWired 로 사용해도 된다)  *//
 
-	@Resource(name="boardDao")  // logon 패키지의  CreateBean 자바파일에 있는 객체 dao 
+	@Resource(name="boardDao")   
 	private BoardDao dao; 
 	
 	@RequestMapping("/boardcontent")
@@ -34,7 +35,8 @@ public class ContentHandler implements Commandhandler {
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 		int number = Integer.parseInt( request.getParameter( "number" ) );
 		 
-		BoardDataBean dto = dao.getArticle( board_num ); 
+		BoardDataBean dto = dao.getArticle( board_num );  
+		BoardCommentDataBean cdto = dao.getCommentList(board_num);
 		int addresult = dao.addCount(board_num); 
 		int reresult = dao.reCount(board_num);
 		/*

@@ -1,68 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper 
-	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"  
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
-<mapper namespace="FJ_BOARD"> 
 
-	<select id="getCount" resultType="Integer">  
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">	
+	     
+<sqlMap namespace="FJ_BOARD"> 
+  
+  
+<typeAlias alias="BoardDataBean" type="dto.board.BoardDataBean"/>
+<typeAlias alias="BoardCommentDataBean" type="dto.board.BoardCommentDataBean"/>  
+	
+	<select id="getCount" resultClass="Integer">  
 		select count(*) from fj_board_free  
 	</select>  
-
-	<insert id="insertArticle">
+   
+    <!-- 게시판 정보 삽입  -->
+	<insert id="insertArticle">  
 		insert into fj_board_free( 
-			board_num, email, subject, content, recontent, hstag, ref, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date) 
+			board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date) 
 			values(
-			fj_board_free_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, #{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{recontent, jdbcType=VARCHAR},
-			#{hstag, jdbcType=VARCHAR}, #{ref}, #{re_count}, #{scrap_count}, #{recom_count}, #{bad_count}, #{read_count}, #{re_step}, #{category, jdbcType=VARCHAR}, #{reg_date})  
+			fj_board_free_seq.NEXTVAL, #{mom_board_num}, #{email, jdbcClass=VARCHAR}, #{subject, jdbcClass=VARCHAR}, #{content, jdbcClass=VARCHAR}, #{recontent, jdbcClass=VARCHAR},
+			#{hstag, jdbcClass=VARCHAR}, #{re_count}, #{scrap_count}, #{recom_count}, #{bad_count}, #{read_count}, #{re_step}, #{category, jdbcClass=VARCHAR}, #{reg_date})  
 	</insert>
 	  
-	<update id="updateArticle" parameterType="dto.board.BoardDataBean">
-		update FJ_BOARD_FREE set category=#{category, jdbcType=VARCHAR}, subject=#{subject, jdbcType=VARCHAR}, hstag=#{hstag, jdbcType=VARCHAR}, content=#{content, jdbcType=VARCHAR} where board_num=#{board_num} 
+	<!-- 게시글 수정부분  -->
+	<update id="updateArticle" parameterClass="dto.board.BoardDataBean">
+		update FJ_BOARD_FREE set category=#{category, jdbcClass=VARCHAR}, subject=#{subject, jdbcClass=VARCHAR}, hstag=#{hstag, jdbcClass=VARCHAR}, content=#{content, jdbcClass=VARCHAR} where board_num=#{board_num} 
 	</update>  
 	   
-	<update id="addCount" parameterType="Integer">
+	<!-- 조회 수 증가부분 -->
+	<update id="addCount" parameterClass="Integer">
 		update fj_board_free set read_count=read_count+1 where board_num=#{board_num} 
 	</update>
 	
-	<update id="reCount" parameterType="Integer">  
+	<!-- 댓글 수 증가부분 -->
+	<update id="reCount" parameterClass="Integer">  
 		update fj_board_free set re_count=re_count+1 where board_num=#{board_num} 
 	</update>
 	
-	<select id="getMaxNum" resultType="Integer">
+	<select id="getMaxNum" resultClass="Integer">
 		select max(board_num) from fj_board_free 
 	</select>     
 	
-	<select id="getArticle" resultType="dto.board.BoardDataBean" parameterType="Integer">
+	<select id="getArticle" resultClass="dto.board.BoardDataBean" parameterClass="Integer">
 		select * from fj_board_free where board_num=#{board_num}
 	</select>
 	
 	<!--  &gt 는 크기표시 > 의 greate less than, &lg 는 크기표시 < 의 less than -->
 	<!-- rownum rn 은 정렬상태의 DB검색 결과중, 일정부분을 가져오게 한다.  --> 
 	<!-- order by 컬럼명 asc | desc -->  <!-- asc : 오름차순 / desc : 내림차순 -->
-	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map"> 	 
-		select board_num, email, subject, content, recontent, hstag, ref, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
-			rn from (select board_num, email, subject, content, recontent, hstag, ref, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
-			rn from (select board_num, email, subject, content, recontent, hstag, ref, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
+	<!-- 원본(확인 될 때까지 지우지 말 것) -->
+	<!-- 
+	<select id="getArticles" resultClass="dto.board.BoardDataBean" parameterClass="Map"> 	 
+		select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
+			rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
+			rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
 			order by board_num desc, re_step asc) where rn &gt; = #{start} and rn &lt; = #{end}    
+	</select>  -->
+	
+	<!-- 수정본 --> 
+	<select id="getArticles" resultClass="dto.board.BoardDataBean" parameterClass="Map">
+		select b.board_num, b.mom_board_num, b.email, b.subject, b.content, b.recontent, b.hstag, b.re_count, b.scrap_count, b.bad_count, b.read_count, b.re_step, b.category, b.reg_date,
+		rn from (select a.board_num, a.mom_board_num, a.email, a.subject, a.content, a.recontent, a.hstag, a.re_count, a.scrap_count, a.bad_count, a.read_count, a.re_step, a.category, a.reg_date, rownum 
+		rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)a
+		) b left outer join fj_board_free_comment c on b.board_num = c.board_num where rownum between #{start} and #{end} 
+		group by b.board_num, b.mom_board_num, b.email, b.subject, b.content, b.recontent, b.hstag, b.re_count, b.scrap_count, b.bad_count, b.read_count, b.re_step, b.category, b.reg_date order by b.board_num desc
 	</select>
 	    
-	<update id="updateReply" parameterType="dto.board.BoardDataBean">
+	<!-- 댓글 수정부분   -->    
+	<update id="updateReply" parameterClass="dto.board.BoardDataBean">
 	 	update fj_board_free set re_step=re_step+1 where board_num= #{board_num} and re_step &gt; #{re_step}
 	 </update>   
 
-	 <delete id="deleteArticle" parameterType="Integer">
+	 <!-- 삭제부분  -->
+	 <delete id="deleteArticle" parameterClass="Integer">
 	 	delete from fj_board_free where board_num=#{board_num}   
 	 </delete>
 	
-	<select id="getRecount" parameterType="Integer" resultType="Integer">
+	<!--  
+	<select id="getRecount" parameterClass="Integer" resultClass="Integer">
 		select re_count from Fj_board_free where board_num = #{board_num}
-	</select>
+	</select>   --> 
 	
-</mapper>	
-
-   
-
+	<!-- ▼  댓글 쿼리부분  -->
+	
+	<!-- 댓글 정보 삽입 -->
+	<insert id="commentList" parameterClass="BoardCommentDataBean">
+		insert into fj_board_free_comment(
+		board_num, email, reg_date, recontent, recom_count, re_step)
+		values(
+		fj_board_free_seq.NEXTVAL, #{email, jdbcClass=VARCHAR}, #{reg_date}, #{recontent, jdbcClass=VARCHAR}, #{recom_count}, #{re_step}	
+		) 
+	</insert>
+	
+	<!-- 댓글 리스트 불러오기  -->
+	<select id="getCommentList" parameterClass="Integer" resultClass="BoardCommentDataBean">
+		select board_num, email, reg_date, recontent, recom_count, re_step from fj_board_free_comment where board_num=#{board_num} order by board_num desc, re_step asc
+	</select> 
+	     
+</sqlMap>
+      
 
 
 

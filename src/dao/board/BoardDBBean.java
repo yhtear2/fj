@@ -6,9 +6,10 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapClient;
+import dto.board.BoardCommentDataBean;
 import dto.board.BoardDataBean;
-
    
+      
  
 public class BoardDBBean implements BoardDao {
 private SqlSession sqlSession = SqlMapClient.getSqlSession();
@@ -97,12 +98,24 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		return  sqlSession.delete("FJ_BOARD.deleteArticle", board_num);
 	}
 
-	 
+	public int commentList( BoardCommentDataBean cdto) 
+	{
+		return sqlSession.insert("FJ_BOARD.commentList", cdto);
+	}
+	  
+	public BoardCommentDataBean getCommentList( int board_num)
+	{
+		return sqlSession.selectOne("FJ_BOARD.getCommentList");   
+	}
+
+
+
+
 /*
 	public int checkArticle(int board_num)
 	{
 	
-		BoardDataBean dto = getArticle(board_num);
+		BoardDataBean dto = getArticle(board_num); 
 		int result = 0;  
 		if(
 		{

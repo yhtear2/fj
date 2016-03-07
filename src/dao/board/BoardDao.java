@@ -2,8 +2,9 @@ package dao.board;
  
 
 import java.util.List;
-import java.util.Map; 
+import java.util.Map;
 
+import dto.board.BoardCommentDataBean;
 import dto.board.BoardDataBean;
 
 public interface BoardDao {  
@@ -16,7 +17,9 @@ public interface BoardDao {
 		public int updateArticle(BoardDataBean dto);   
 //		public int checkArticle(int board_num);
 		public int deleteArticle(int board_num);
-		public int reCount(int board_num);      
+		public int reCount(int board_num); 
+		public int commentList(BoardCommentDataBean cdto);
+		public BoardCommentDataBean getCommentList( int board_num);
 		
 		 
 	
