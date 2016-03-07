@@ -72,7 +72,8 @@
 			</c:forEach>
 			</c:if>				
 		</table>
-	
+
+<c:if test="${count > 10}"> 	
 	<!-- 한 페이지 10개의 쪽지만 보여지도록 함 -->
 <br>
     <div class="text-center">
@@ -101,6 +102,7 @@
 			</li>   
 		</ul>  
 	</div>
+	</c:if>
 </div>
 
 

@@ -199,7 +199,7 @@ CREATE TABLE FJ_Message
 CREATE TABLE FJ_Recruit
 (
 	-- recruit_id : 채용게시판 ID 
-	recruit_id varchar2(30) NOT NULL,
+	recruit_id number NOT NULL,
 	-- email : 이메일
 	email varchar2(50),
 	-- title : 제목 
@@ -227,14 +227,6 @@ CREATE TABLE FJ_Recruit
 	incharge varchar2(100),
 	-- tel : 연락처
 	tel varchar2(100),
-	-- min_career : 최소 경력 
-	min_career varchar2(150),
-	-- max_career : 최대 경력 
-	max_career varchar2(150),
-	-- min_age : 최소 나이 
-	min_age varchar2(200),
-	-- max_age : 최대 나이 
-	max_age varchar2(200),
 	-- start_date : 채용 시작일 
 	start_date varchar2(100),
 	-- end_date : 채용 종료일 
@@ -243,8 +235,16 @@ CREATE TABLE FJ_Recruit
 	min_salary number,
 	-- max_salary : 최대 연봉 
 	max_salary number,
-	-- num_people : 채용인원 
-	num_people number,
+	-- min_career : 최소 경력 
+	min_career number,
+	-- max_career : 최대 경력 
+	max_career number,
+	-- min_age : 최소 나이 
+	min_age number,
+	-- max_age : 최대 나이 
+	max_age number,
+	-- people_count : 채용인원 
+	people_count number,
 	-- readcount : 조회수 
 	readcount number,
 	-- reg_date : 작성일자 
@@ -259,7 +259,7 @@ CREATE TABLE FJ_Recruit
 CREATE TABLE FJ_Recruit_Log
 (
 	-- recruit_id : 채용게시판 ID 
-	recruit_id varchar2(30) NOT NULL,
+	recruit_id number NOT NULL,
 	-- email : 이메일
 	email varchar2(50) NOT NULL,
 	-- user_history_id : 이력서 ID
@@ -480,15 +480,15 @@ COMMENT ON COLUMN FJ_Recruit.work_area IS 'work_area : 근무지역
 COMMENT ON COLUMN FJ_Recruit.business_part IS 'business_part : 담당업무 ';
 COMMENT ON COLUMN FJ_Recruit.incharge IS 'incharge : 담당자';
 COMMENT ON COLUMN FJ_Recruit.tel IS 'tel : 연락처';
-COMMENT ON COLUMN FJ_Recruit.min_career IS 'min_career : 최소 경력 ';
-COMMENT ON COLUMN FJ_Recruit.max_career IS 'max_career : 최대 경력 ';
-COMMENT ON COLUMN FJ_Recruit.min_age IS 'min_age : 최소 나이 ';
-COMMENT ON COLUMN FJ_Recruit.max_age IS 'max_age : 최대 나이 ';
 COMMENT ON COLUMN FJ_Recruit.start_date IS 'start_date : 채용 시작일 ';
 COMMENT ON COLUMN FJ_Recruit.end_date IS 'end_date : 채용 종료일 ';
 COMMENT ON COLUMN FJ_Recruit.min_salary IS 'min_salary : 최소 연봉 ';
 COMMENT ON COLUMN FJ_Recruit.max_salary IS 'max_salary : 최대 연봉 ';
-COMMENT ON COLUMN FJ_Recruit.num_people IS 'num_people : 채용인원 ';
+COMMENT ON COLUMN FJ_Recruit.min_career IS 'min_career : 최소 경력 ';
+COMMENT ON COLUMN FJ_Recruit.max_career IS 'max_career : 최대 경력 ';
+COMMENT ON COLUMN FJ_Recruit.min_age IS 'min_age : 최소 나이 ';
+COMMENT ON COLUMN FJ_Recruit.max_age IS 'max_age : 최대 나이 ';
+COMMENT ON COLUMN FJ_Recruit.people_count IS 'people_count : 채용인원 ';
 COMMENT ON COLUMN FJ_Recruit.readcount IS 'readcount : 조회수 ';
 COMMENT ON COLUMN FJ_Recruit.reg_date IS 'reg_date : 작성일자 ';
 COMMENT ON COLUMN FJ_Recruit.last_date IS 'last_date : 수정일자 ';

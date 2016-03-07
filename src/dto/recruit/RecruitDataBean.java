@@ -35,12 +35,6 @@ public class RecruitDataBean {
 	public Timestamp last_date;		// 수정일
 	
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public int getRecruit_id() {
 		return recruit_id;
 	}
@@ -64,6 +58,12 @@ public class RecruitDataBean {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getSkill() {
 		return skill;
@@ -119,18 +119,6 @@ public class RecruitDataBean {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public int getMin_salary() {
-		return min_salary;
-	}
-	public void setMin_salary(int min_salary) {
-		this.min_salary = min_salary;
-	}
-	public int getMax_salary() {
-		return max_salary;
-	}
-	public void setMax_salary(int max_salary) {
-		this.max_salary = max_salary;
-	}
 	public String getStart_date() {
 		return start_date;
 	}
@@ -167,6 +155,18 @@ public class RecruitDataBean {
 	public void setMax_age(int max_age) {
 		this.max_age = max_age;
 	}
+	public int getMin_salary() {
+		return min_salary;
+	}
+	public void setMin_salary(int min_salary) {
+		this.min_salary = min_salary;
+	}
+	public int getMax_salary() {
+		return max_salary;
+	}
+	public void setMax_salary(int max_salary) {
+		this.max_salary = max_salary;
+	}
 	public int getPeople_count() {
 		return people_count;
 	}
@@ -191,7 +191,6 @@ public class RecruitDataBean {
 	public void setLast_date(Timestamp last_date) {
 		this.last_date = last_date;
 	}
-	
 	
 	
 	

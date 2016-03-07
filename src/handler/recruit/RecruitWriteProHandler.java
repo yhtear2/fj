@@ -126,7 +126,6 @@ public class RecruitWriteProHandler implements Commandhandler{
 				result += ",";
 			}
 		}
-		System.out.println("배열 처리 결과 : " + result);
 		return result;
 	}
 }
