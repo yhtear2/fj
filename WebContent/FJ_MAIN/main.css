@@ -26,7 +26,7 @@ body {
 }
 .main_menu{
 	z-index:3;
-	position:absolute;
+	position:fixed;
 	background-color:#0059B3;
 	/*background-color:#3399ff;*/
 	width:200px;
@@ -138,7 +138,7 @@ body {
 /* 선택 상세메뉴 */
 .main_menu2{
 	background:#ffffff;
-	position:absolute;
+	position:fixed;
 	z-index:0;
 	top:0;
 	left:50px;

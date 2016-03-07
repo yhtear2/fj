@@ -1,5 +1,8 @@
 package handler.comp;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,19 +43,15 @@ public class compViewHandler implements Commandhandler{
 		
 		// 넘어온 tel 분리
 		String tels[] = dto.getTel().split("-");
-		
+				
 		// MAP에 넣어서 페이지로 전송~
 		map.put("tel_1", tels[0]);
 		map.put("tel_2", tels[1]);
 		map.put("dto", dto);
 		
-		
 		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compView");
 		
-		for(int i=0; i<map.size(); i++) {
-			System.out.println(map.get(i));
-		}
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 	
