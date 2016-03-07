@@ -27,4 +27,9 @@ public class CompDBBean implements CompDao{
 	public int deleteCdomp(String email) {
 		return sqlSession.delete("Comp.deleteComp", email);
 	}
+
+	@Override
+	public int countComp(String email) {
+		return sqlSession.selectOne("Comp.countComp", email);
+	}
 }

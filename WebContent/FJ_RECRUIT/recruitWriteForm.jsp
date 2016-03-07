@@ -3,6 +3,26 @@
 <!-- include setting.jsp -->
 <%@ include file="setting.jsp"%>
 
+<!-- 로그인을 안했을때  -->
+	<c:if test="${sessionScope.memId == null}">
+		<script type="text/javascript">
+		<!--
+			alert("로그인이 필요합니다");
+		//-->
+		</script>
+	</c:if>
+
+<!-- 기업회원 정보 입력 안했을때 -->
+	<c:if test="${compinfochekc == 0}">
+		<script type="text/javascript">
+		<!--
+			alert("기업회원 정보를 먼저 입력해주세요");
+		//-->
+		</script>
+	</c:if>
+
+<!-- 기업회원 정보 입력 했을때 -->
+<c:if test="${compinfochekc == 1}">
 <!-- 전체 크기 잡기 -->
 <div class="recruit_mainsize">
 <form name="recruitWriteForm" method="post" action="recruitWritePro.do" onsubmit="return recruitwritecheck()">
@@ -199,7 +219,7 @@
 		<!-- 담당자 / 전화번호 -->
 		<div class="recruit_minisize">
 			<label style="margin-right : 15px;"> 담당자 </label>
-			<input type="text" name="incharge" value="${incharge}" class="form-control_hs" style="width:120px;">
+			<input type="text" name="incharge" value="${dto.incharge}" class="form-control_hs" style="width:120px;">
 
 			<label style="margin : 0px 10px 0px 15px;"> 전화번호 </label>
 			<select class="form-control_hs" name="tel_1" style="width: 130px;">
@@ -239,7 +259,7 @@
 	</div>
 </form>
 </div>
-
+</c:if>
 
 
 

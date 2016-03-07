@@ -31,7 +31,7 @@ public class RecruitList implements Commandhandler {
 		// 세션에서 데이터 받아오기
 		String email = (String)request.getSession().getAttribute("memId");				// 이메일
 		String name = (String)request.getSession().getAttribute("name");				// 닉네임
-		String member_flag = (String)request.getSession().getAttribute("member_flag");	// 사용자 구분
+		int member_flag = (Integer)request.getSession().getAttribute("member_flag");	// 사용자 구분
 		
 		// 변수 선언
 		int count = 0;			// 글 개수

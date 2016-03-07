@@ -46,8 +46,11 @@ public class JoinLoginProHandler implements Commandhandler {
 		if( result == 1 ) {
 			member_flag = dao.getMember(email).getMember_flag();
 			name = dao.getMember(email).getName();
+			// 개인 이메일(Id)
 			request.getSession().setAttribute("memId", email);
+			// 1: 개인회원 , 2: 기업회원, 3: 관리자
 			request.getSession().setAttribute("member_flag", member_flag);
+			// 닉네임 입력
 			request.getSession().setAttribute("name", name);
 		}
 		

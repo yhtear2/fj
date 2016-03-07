@@ -46,11 +46,17 @@
 		where email = #{email}
 	</update>
 	
-	<delete id="deleteComp" parameterType="java.lang.String">
+	<delete id="deleteComp" parameterType="String">
 		DELETE
 		FROM 	FJ_COMP
 		WHERE 	EMAIL = #{email}
 	</delete>
+	
+	<select id="countComp" parameterType="String" resultType="Integer">
+		SELECT	COUNT(*)
+		FROM 	FJ_COMP
+		WHERE	EMAIL= #{email}
+	</select>
 </mapper>	
 
 
