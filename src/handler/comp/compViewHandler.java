@@ -26,28 +26,30 @@ public class compViewHandler implements Commandhandler{
 	@RequestMapping("/compView")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		request.setCharacterEncoding("UTF-8");
 		
 		// 맵으로 넘기기 위해서 객체 생성
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 데이터 가져올 페이지 만들기
 		String memId = (request.getSession().getAttribute("memId").toString());	// 저장된 멤버아이디 가져오기
-		String email = memId;
 		
 		// 리턴받을 바구니 생성
 		CompDataBean dto = new CompDataBean();
 		
 		// DB처리
-		dto = compDao.getComp(email);
+		dto = compDao.getComp(memId);
 		
-		// 넘어온 tel 분리
-		String tels[] = dto.getTel().split("-");
-				
-		// MAP에 넣어서 페이지로 전송~
-		map.put("tel_1", tels[0]);
-		map.put("tel_2", tels[1]);
-		map.put("dto", dto);
+		if(dto != null){
+			// 넘어온 tel 분리
+			String tels[] = dto.getTel().split("-");
+			
+			// MAP에 넣어서 페이지로 전송~
+			map.put("dto", dto);
+			map.put("tel_1", tels[0]);
+			map.put("tel_2", tels[1]);
+		} else {
+			map.put("dto", null);
+		}
 		
 		map.put("menu", "comp");
 		map.put("page", "/FJ_COMP/compView");

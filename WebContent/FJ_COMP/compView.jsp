@@ -4,7 +4,12 @@
 <!-- include setting.jsp -->
 <%@ include file="/defaultSetting.jsp"%>
 <%@ include file="setting.jsp"%>
-
+<c:if test="${tel_1 == alert}">
+	<script type="text/javascript">
+		alert("기업정보를 먼저 입력해주세요.");
+		window.location="compInputCheck.do";
+	</script>
+</c:if>
 <!DOCTYPE html>
 <html>
 	<head>
