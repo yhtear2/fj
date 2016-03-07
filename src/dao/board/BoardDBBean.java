@@ -103,9 +103,9 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		return sqlSession.insert("FJ_BOARD.commentList", cdto);
 	}
 	  
-	public BoardCommentDataBean getCommentList( int board_num)
+	public BoardCommentDataBean getCommentList( int board_num) 
 	{
-		return sqlSession.selectOne("FJ_BOARD.getCommentList");   
+		return sqlSession.selectOne("FJ_BOARD.getCommentList", board_num);   
 	}
 
 

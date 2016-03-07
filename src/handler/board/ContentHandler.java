@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.board.BoardDao;
 import dto.board.BoardCommentDataBean;
+//import dto.board.BoardCommentDataBean;
 import dto.board.BoardDataBean;
 import handler.Commandhandler;
 
@@ -36,7 +37,7 @@ public class ContentHandler implements Commandhandler {
 		int number = Integer.parseInt( request.getParameter( "number" ) );
 		 
 		BoardDataBean dto = dao.getArticle( board_num );  
-		BoardCommentDataBean cdto = dao.getCommentList(board_num);
+	//	BoardCommentDataBean cdto = dao.getCommentList(board_num);
 		int addresult = dao.addCount(board_num); 
 		int reresult = dao.reCount(board_num);
 		/*
@@ -46,8 +47,9 @@ public class ContentHandler implements Commandhandler {
 	
 	//	System.out.println(dto.getHstag());
 		    
+		 
 		
-				
+	
 				
 		Map<String, Object> map = new HashMap<String, Object>();
 		

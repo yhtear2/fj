@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"  
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	     
+
+	      
 <mapper namespace="FJ_BOARD"> 
+
  
+
 	<select id="getCount" resultType="Integer">  
 		select count(*) from fj_board_free  
 	</select>  
@@ -60,7 +62,7 @@
 		rn from (select a.board_num, a.mom_board_num, a.email, a.subject, a.content, a.recontent, a.hstag, a.re_count, a.scrap_count, a.bad_count, a.read_count, a.re_step, a.category, a.reg_date, rownum 
 		rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)a
 		) b left outer join fj_board_free_comment c on b.board_num = c.board_num where rownum between #{start} and #{end} 
-		group by b.board_num, b.mom_board_num, b.email, b.subject, b.content, b.recontent, b.hstag, b.re_count, b.scrap_count, b.bad_count, b.read_count, b.re_step, b.category, b.reg_date order by b.board_num desc
+		 
 	</select>
 	    
 	<!-- 댓글 수정부분   -->    
