@@ -25,6 +25,7 @@
 			#{email, jdbcType=VARCHAR},
 			#{title, jdbcType=VARCHAR},
 			#{content, jdbcType=VARCHAR},
+			#{name, jdbcType=VARCHAR}, 
 			#{skill, jdbcType=VARCHAR},
 			#{gender, jdbcType=VARCHAR},
 			#{edu, jdbcType=VARCHAR},

@@ -74,7 +74,7 @@ CREATE TABLE FJ_Career
 	-- comp_name : 회사 이름 
 	comp_name varchar2(10) NOT NULL,
 	-- content : 내용 
-	content varchar2(5000) NOT NULL,
+	content varchar2(4000) NOT NULL,
 	-- position : 직책 
 	position varchar2(10) NOT NULL,
 	-- business : 수주회사 
@@ -203,9 +203,11 @@ CREATE TABLE FJ_Recruit
 	-- email : 이메일
 	email varchar2(50),
 	-- title : 제목 
-	title varchar2(100) NOT NULL,
+	title varchar2(100),
 	-- content : 내용 
-	content varchar2(5000),
+	content varchar2(4000),
+	-- name : 회사이름
+	name varchar2(100),
 	-- skill : 보유기술 
 	skill varchar2(300),
 	-- gender : 성별 
@@ -237,8 +239,6 @@ CREATE TABLE FJ_Recruit
 	start_date varchar2(100),
 	-- end_date : 채용 종료일 
 	end_date varchar2(100),
-	-- name : 회사이름
-	name varchar2(100),
 	-- min_salary : 최소 연봉 
 	min_salary number,
 	-- max_salary : 최대 연봉 
@@ -469,6 +469,7 @@ COMMENT ON COLUMN FJ_Recruit.recruit_id IS 'recruit_id : 채용게시판 ID ';
 COMMENT ON COLUMN FJ_Recruit.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Recruit.title IS 'title : 제목 ';
 COMMENT ON COLUMN FJ_Recruit.content IS 'content : 내용 ';
+COMMENT ON COLUMN FJ_Recruit.name IS 'name : 회사이름';
 COMMENT ON COLUMN FJ_Recruit.skill IS 'skill : 보유기술 ';
 COMMENT ON COLUMN FJ_Recruit.gender IS 'gender : 성별 ';
 COMMENT ON COLUMN FJ_Recruit.edu IS 'edu : 학력';
@@ -485,7 +486,6 @@ COMMENT ON COLUMN FJ_Recruit.min_age IS 'min_age : 최소 나이 ';
 COMMENT ON COLUMN FJ_Recruit.max_age IS 'max_age : 최대 나이 ';
 COMMENT ON COLUMN FJ_Recruit.start_date IS 'start_date : 채용 시작일 ';
 COMMENT ON COLUMN FJ_Recruit.end_date IS 'end_date : 채용 종료일 ';
-COMMENT ON COLUMN FJ_Recruit.name IS 'name : 회사이름';
 COMMENT ON COLUMN FJ_Recruit.min_salary IS 'min_salary : 최소 연봉 ';
 COMMENT ON COLUMN FJ_Recruit.max_salary IS 'max_salary : 최대 연봉 ';
 COMMENT ON COLUMN FJ_Recruit.num_people IS 'num_people : 채용인원 ';
