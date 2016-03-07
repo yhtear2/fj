@@ -16,8 +16,8 @@ import dao.join.JoinDao;
 import dao.message.MessageDBBean;
 import dao.recruit.RecruitDBBean;
 import dao.user.UserDBBean;
-import dto.board.BoardCommentDataBean;
 
+ 
 @Configuration
 public class CreateBean {
 	

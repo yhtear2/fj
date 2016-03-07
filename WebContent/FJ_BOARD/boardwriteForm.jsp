@@ -6,8 +6,8 @@
          
 <!DOCTYPE html>    
 <title>자유게시판 - 글쓰기 페이지</title>
- 
-   
+    
+    
 <body id="main" onload="subjectfocus()"> 
 	<div id="article-create" class="contents" role="main">
  
