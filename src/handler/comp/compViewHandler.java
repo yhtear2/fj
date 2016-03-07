@@ -39,6 +39,7 @@ public class compViewHandler implements Commandhandler{
 		// DB처리
 		dto = compDao.getComp(memId);
 		
+		//기업정보가 있을경우
 		if(dto != null){
 			// 넘어온 tel 분리
 			String tels[] = dto.getTel().split("-");
@@ -48,6 +49,7 @@ public class compViewHandler implements Commandhandler{
 			map.put("tel_1", tels[0]);
 			map.put("tel_2", tels[1]);
 		} else {
+		//기업정보가 없을경우 null전송
 			map.put("dto", null);
 		}
 		
