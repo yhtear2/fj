@@ -20,6 +20,7 @@
 		//-->
 		
 	</script>
+	${license_cnt}
 	${user_history_id}
 	
 	${sessionScope.user_history_id = user_history_id}

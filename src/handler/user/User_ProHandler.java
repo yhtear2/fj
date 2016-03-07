@@ -79,52 +79,16 @@ public class User_ProHandler implements Commandhandler {
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
 		
-		String license = "";
+		String license = null;
 
-/*		String license1[] = null;
-		String license2[] = null;
-		String license3[] = null;
-
-		String lic1[] = multi.getParameterValues("license1");
-		String lic2[] = multi.getParameterValues("license2");
-		String lic3[] = multi.getParameterValues("license3");*/
-
-/*		
-
-		System.out.println(p);
-		
-		
-		license1 = new String[p];
-		license2 = new String[p];
-		license3 = new String[p];*/
-		//int p = Integer.parseInt( multi.getParameter( "license_cnt" ));
-
-	//	String [] license1 = (String[]) multi.getParameterValues("license1_send");
-/*		
-
-/*		System.out.println(license2);
-		System.out.println(license3);  */
-
-/*		
-		for( int i = 0 ; i <= p; i++ ){
-
-				license1[i] = (lic1[i]);
-				license2[i] = (lic2[i]);
-				license3[i] = (lic3[i]);
-
-		}*/
 		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt"));
 		
-		System.out.println( "license1 : " + license_cnt);
 
-	
 
 		for(int i=0; i<=license_cnt; i++) {
-
-			license +=  multi.getParameter("license1[+i]") + "-" + multi.getParameter("license2[+i+]") + "-" + multi.getParameter("license3[+i]") + "/";
+			license +=  multi.getParameter("license1"+i) + "-" + multi.getParameter("license2"+i) + "-" + multi.getParameter("license3"+i)+ "/";
 		
 		}
-		System.out.println(license);
 		dto.setLicense(license);
 		
 		// tel

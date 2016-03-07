@@ -324,6 +324,7 @@
       newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px'></td>";
 	
       $('input[name=license_cnt]').val(license_cnt);
+      
       if( $.cookie('license1') != "" ) {
     	  for(var i=1; i<=license_cnt; i++) {
     		//  $.cookie('license1'+i, $('input[id=license1'+i+']').val());
@@ -525,9 +526,6 @@
 </table>
 
 
-   <input type="hidden" name="license1_send">
-   <input type="hidden" name="license2_send">
-   <input type="hidden" name="license3_send">
 	<input type="hidden" name="license_cnt">
    
    <table id="license_table" class="table table-hover" style="width:800px">
@@ -537,8 +535,8 @@
          <th>발행일처</th>
       </tr>
       <tr>
-         <td style="width:160px"> <input type="text" name="license1" id="license10" style="width:220px"> </td>
-         <td style="width:80px"> <input type="text" name="license2" id="license20" style="width:180px"> </td>
+         <td style="width:160px"> <input type="text" name="license10" id="license10" style="width:220px"> </td>
+         <td style="width:80px"> <input type="text" name="license20" id="license20" style="width:180px"> </td>
       
          <td colspan="2" style="width:200px"> <input type="text" style="width:260px" name="license30" id="license30"></td>
       </tr>
