@@ -43,7 +43,7 @@ public class CompInputProHandler implements Commandhandler {
 		dto.setTel(request.getParameter("tel_1") + "-" + request.getParameter("tel_2"));	// 전화번호
 		dto.setZipcode(request.getParameter("zipcode"));									// 우편번호
 		dto.setAddress(request.getParameter("address"));									// 주소
-		dto.setInfo(request.getParameter("info"));											// 회사 소개
+		dto.setContent(request.getParameter("content"));										// 회사 소개
 		dto.setCapital(request.getParameter("capital"));									// 자본금
 		dto.setComp_type(request.getParameter("comp_type"));								// 기업업종
 		dto.setIncharge(request.getParameter("incharge"));									// 담당자

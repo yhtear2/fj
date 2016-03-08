@@ -84,7 +84,11 @@
 			<input type="text" name="comp_type" class="form-control" style="width: 30%" value="${dto.comp_type}">
 		</div>
 		<div class="form-group-hs">   	
-		   	<textarea rows="20" cols="88%" name="info" placeholder="회사 소개를 입력해주세요">${dto.info}</textarea> 
+			<input type="hidden" name="content" value="${dto.content}">
+		   	<div class="recruit_size">
+					<div id="summernote" ></div>
+			</div>
+			
 		 </div>
 		<br>	
 		<!-- 버튼 부분 -->

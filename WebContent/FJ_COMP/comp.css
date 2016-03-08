@@ -6,12 +6,12 @@
 	align:center;
 	background:#f8f8f8;
 }
-/*
-.form-group-hs{
-	background-color: white;
-	padding: 15px 15px 15px 15px;
-	border: solid 1px #d0d0d0;
+
+.container{
+	width: 700px;
+	height: 100%;
 }
+/*
 .must item{
 	background-color: white;
 	padding: 2px 0px 0px 2px;

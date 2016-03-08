@@ -5,14 +5,31 @@
 	
 <mapper namespace="Comp">
 	<insert id="insertComp" parameterType="dto.comp.CompDataBean">
-		insert into FJ_COMP values(
+		insert into FJ_COMP(
+			email,
+			ceo,
+			comp_part,
+			tel,
+			zipcode,
+			address,
+			content,
+			capital,
+			comp_type,
+			incharge,
+			comp_reg_date,
+			year_sale,
+			emp_count,
+			like_count,
+			reg_date,
+			last_date
+		) values(
 			#{email, jdbcType=VARCHAR}, 
 			#{ceo, jdbcType=VARCHAR}, 
 			#{comp_part, jdbcType=VARCHAR}, 
 			#{tel},
 			#{zipcode}, 
 			#{address, jdbcType=VARCHAR}, 
-			#{info, jdbcType=VARCHAR}, 
+			#{content, jdbcType=VARCHAR}, 
 			#{capital, jdbcType=VARCHAR},
 			#{comp_type, jdbcType=VARCHAR}, 
 			#{incharge, jdbcType=VARCHAR}, 
