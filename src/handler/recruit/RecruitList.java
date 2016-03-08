@@ -92,6 +92,7 @@ public class RecruitList implements Commandhandler {
 			tempMap.put("end", end);
 			List<RecruitDataBean> list = recruitDao.getRecruitList(tempMap);
 			
+			
 			map.put("list", list);
 		}
 		

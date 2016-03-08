@@ -6,6 +6,10 @@ $(document).ready(function() {
 		lang: 'ko-KR' // default: 'en-US'
 	});
 	$('.dropdown-toggle').dropdown();
+	
+	var content = $('input[name=content]').val();
+	$('#summernote').summernote('code', content);
+	
 });
 
 // 스킬선택 창으로 넘어가는거

@@ -66,19 +66,19 @@ public class RecruitWriteProHandler implements Commandhandler{
 		
 		
 		// 경력사항 처리
-		// 신입 : -1		// 경력무관 : 0		// 경력은 그냥 경력
+		// 신입 : -1		// 경력무관 : -2		// 경력은 그냥 경력
 		String career = request.getParameter("career");
 		if( career != null){
 			if (career.equals("신입")){
 				dto.setMax_career(-1);
-				dto.setMin_career(-1);
+				dto.setMin_career(0);
 			}else if( career.equals("경력")){
 				String max_careers[] = request.getParameter("max_career").split("년");
 				String min_careers[] = request.getParameter("min_career").split("년");
 				dto.setMax_career( Integer.parseInt(max_careers[0]) );
 				dto.setMin_career( Integer.parseInt(min_careers[0]) );
 			}else if( career.equals("경력무관")){
-				dto.setMax_career(0);
+				dto.setMax_career(-2);
 				dto.setMin_career(0);
 			}
 		}

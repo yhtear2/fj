@@ -44,21 +44,22 @@
 				<!-- 회사명 부분 -->
 				<td>
 					<h5 class="list-group-item-heading ">
-						(주)회사이름
+						${name}
 					</h5>
 				</td>
 				<!-- 제목 부분 -->
 				<td>
 					<h5 class="list-group-item-heading ">
-						<a href="recruitList.do?recruit_id=${dto.recruit_id}&pageNum=${pageNum}&number=${number+1}">
+						<a href="recruitcontent.do?recruit_id=${dto.recruit_id}&pageNum=${pageNum}">
 							${dto.title}
 						</a>
 					</h5>
 				</td>
 				<!-- 자격요건 -->
 				<td>
-					경력무관 <br>
-					초대졸↑
+					<c:if test="${dto.min_career == -1}">신입</c:if>
+					<c:if test="${dto.min_career == -2}">경력무관</c:if>
+					<c:if test="${dto.min_career != -1}">경력 ${dto.min_career}년↑</c:if>
 				</td>
 				<!-- 마감일 -->
 				<td>

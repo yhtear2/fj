@@ -20,8 +20,8 @@
 		<!-- 담당업무  / 채용시작일 / 채용종료일 -->
 	</div>
 
-	<!-- 상세 내용 적기 -->
+	<!-- 상세 내용 -->
 	<div>
-	<div id="summernote" ></div>
+		${dto.content}
 	</div>
 </div>
