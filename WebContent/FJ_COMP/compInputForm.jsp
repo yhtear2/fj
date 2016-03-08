@@ -21,7 +21,7 @@
 	<!-- 전체 크기 설정 css -->
 	<div class="container" >
 		<!-- 포스트로 데이터 넘기기 위한 폼 -->
-		<form method="post" action="compInputPro.do">
+		<form method="post" action="compInputPro.do" onsubmit="compInputFormcheck()">
 			<label><h2>기업정보 입력(필수)</h2></label><br>
 			<!-- 각 칸마다 크기 -->			
 			<div class="form-group-hs">
@@ -69,9 +69,10 @@
 				<input type="text" name="emp_count" class="form-control" style="float: left; width: 33%; margin: 0px 10px 0px 10px" placeholder="사원수 (숫자 입력)"> 
 				<input type="text" name="comp_type" class="form-control" style="width: 30%" placeholder="업종">
 			</div>
-			<div class="form-group-hs">   	
-			   	<textarea rows="20" cols="88%" name="info" placeholder="회사 소개를 입력해주세요"></textarea> 
-			 </div>
+				<div class="recruit_size">
+					<input type="hidden" name="content" value="">
+					<div id="summernote" ></div>
+				</div>
 			<br>	
 			<!-- 버튼 부분 -->
 			<div class="form-group" >

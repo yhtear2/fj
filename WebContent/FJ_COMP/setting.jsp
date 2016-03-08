@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
+<script src="/fj/FJ_COMP/comp.js"></script>
+
+
 <!-- variable.label -->
 <c:set var="lbl_password" value="비밀번호"/>
 

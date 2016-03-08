@@ -9,7 +9,7 @@ public class CompDataBean {
 	private String tel;					// 전화번호
 	private String zipcode;				// 우편번호
 	private String address;				// 주소
-	private String info;				// 회사 소개
+	private String content;				// 회사 소개
 	private String capital;				// 자본금
 	private String comp_type;			// 기업 업종
 	private String incharge;			// 담당자(이름)
@@ -56,11 +56,11 @@ public class CompDataBean {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getInfo() {
-		return info;
+	public String getContent() {
+		return content;
 	}
-	public void setInfo(String info) {
-		this.info = info;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getCapital() {
 		return capital;
