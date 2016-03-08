@@ -35,8 +35,20 @@
             debug.innerHTML = request.httpRequest.readyState + " : 통신중";   
          }      
    }
-      
+   
+   function lic_submitcheck() {
+	   
+	  		var lo_table = document.getElementById("license_table");
+	   	    var license_cnt = lo_table.rows.length-2;
+	   	   
+	   	   alert(license_cnt);
+	   	   
+	       $('input[name=license_cnt_hidden]').val(license_cnt);
 
+	}
+
+   
+   
    
    function submitcheck() {
       var name = [];
@@ -100,55 +112,7 @@
 
     }
    
-   
-   function lic_submitcheck() {
-	 	  var lo_table = document.getElementById("license_table");
-	   var license_cnt = lo_table.rows.length-2;
-	   	   
-	   for(var j=0; j<=license_cnt; j++) {
-		   
-		   /*  var license1 = [];
-	       var license1s = $('input[name=license1]');
-	       var license2s = $('input[name=license2]');
-	       var license3s = $('input[name=license3]');
-
-	       
-	       for (var i = 0; i < license1s.length; i++) {
-	    	   license1[i] = license1s.eq(i).val() +"/"+ license2s.eq(i).val() +"/"+ license3s.eq(i).val();
- 	    	   license2[i] = license2s.eq(i).val();
-	    	   license3[i] = license3s.eq(i).val();
-		      	alert( $('input[name=license1_send]'+i).val(license1[i]));     
-
-	       }
-	       //$('input[name=license1_send]').val(license1);      
-	        */
-
-	 
-/* 	       
- 	       var license2 = [];
-	       var license2s = $('input[name=license2]'+j);
-	       for (var i = 0; i < license2s.length; i++) {
-	    	   license2[i] = license2s.eq(i).val();
-	       }
-	       $('input[name=license2_send]').val(license2);      
-	       
-	       
-	       var license3 = [];
-	       var license3s = $('input[name=license3]');
-	       for (var i = 0; i < license3s.length; i++) {
-	    	   license3[i] = license3s.eq(i).val();
-	       }
-	       $('input[name=license3_send]').val(license3);   */     
-	     
-	       
-	       
-	   }
-   }
-   
-   
-   
-   
-
+  
    //학력추가
    function addForm(flag) {
       //최대 추가할 폼수 지정
@@ -307,9 +271,7 @@
       var license_cnt = lo_table.rows.length-2;
       newTr = lo_table.insertRow(row_index - 1);
       newTr.idName = "newTr" + row_index;
-		
-      alert(license_cnt);
-      
+		      
       newTd = newTr.insertCell(0);
       newTd.innerHTML = license_cnt;
       newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px'> </td>";
@@ -323,7 +285,6 @@
       newTd.innerHTML = license_cnt;
       newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px'></td>";
 	
-      $('input[name=license_cnt]').val(license_cnt);
       
       if( $.cookie('license1') != "" ) {
     	  for(var i=1; i<=license_cnt; i++) {
@@ -395,8 +356,8 @@
 </script>
 
 <h2>이력서</h2>
-
 <form name="resome" method="post" enctype="multipart/form-data"  onload="license_addform();" action="resome_Pro.do" onsubmit="lic_submitcheck()"> 
+	<input type="hidden" name="license_cnt_hidden">
 
 <h3>이력서제목</h3>
 <table class="table table-hover">
@@ -526,7 +487,6 @@
 </table>
 
 
-	<input type="hidden" name="license_cnt">
    
    <table id="license_table" class="table table-hover" style="width:800px">
       <tr>

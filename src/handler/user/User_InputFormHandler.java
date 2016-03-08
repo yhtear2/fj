@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.user.UserDao;
+import dto.user.UserDataBean;
 import handler.Commandhandler;
 
 @Controller
@@ -25,6 +26,8 @@ public class User_InputFormHandler implements Commandhandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 	
 		Map<String, Object> map = new HashMap<String, Object>();
+		
+
 	
 		map.put("page", "/FJ_USER/resome");
 		

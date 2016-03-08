@@ -66,7 +66,7 @@
         str +="	<th style='width:150px'>근무기간</th>";
         str +="	<td style='width: 250px'>";
         str +=" <input class='form-control' type='date' style='width:150px' name='career_start_date' id='career_start_date'> ~";
-        str +=" <input class='form-control' type='date' style='width:150px' name='career_start_date' id='career_last_date' >";
+        str +=" <input class='form-control' type='date' style='width:150px' name='career_last_date' id='career_last_date' >";
         str +=" <input class='btn btn-default' type='button' onclick='sort()' value='근무개월 계산'/>";
         str +=" <input class='form-control' type='text' style='width:150px' name='career_sort_date' id='career_sort_date'>";
         str +="    				<select class='' style='width: 80px' name='career_kind'>			";	
@@ -258,7 +258,7 @@
 		<th>근무기간</th>
 			<td>
 				<input class="form-control" type="date" style="width:150px" name="career_start_date" id="career_start_date"> ~
-				<input class="form-control" type="date" style="width:150px" name="career_start_date" id="career_last_date" >
+				<input class="form-control" type="date" style="width:150px" name="career_last_date" id="career_last_date" >
 				<input class="btn btn-default" type="button" onclick="sort()" value="근무개월 계산"/>
 				<input class="form-control" type="text" style="width:150px" name="career_sort_date" id="career_sort_date">
 

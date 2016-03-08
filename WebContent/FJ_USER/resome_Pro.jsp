@@ -1,9 +1,11 @@
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
 <%@ include file="/defaultSetting.jsp"%>
+
+
+<%=request.getSession().getAttribute("history_id")%>
+${sessionScope.history_id}	
 
 <c:if test="${result == 0}">
 	<script type="text/javascript">
@@ -20,9 +22,9 @@
 		//-->
 		
 	</script>
-	${license_cnt}
-	${user_history_id}
+
 	
-	${sessionScope.user_history_id = user_history_id}
+	
+	
 		<%-- <c:redirect url="career.do"/> --%>
 	</c:if>

@@ -20,9 +20,26 @@ public class UserDataBean {
 	private Timestamp reg_date;
 	private Timestamp last_date;
 	private String project;
+	private int ref;
+	private int history_id;
 	
 	
 	
+	
+
+	public int getHistory_id() {
+		return history_id;
+	}
+	public void setHistory_id(int history_id) {
+		this.history_id = history_id;
+	}
+	
+	public int getRef() {
+		return ref;
+	}
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
 	public String getResome_title() {
 		return resome_title;
 	}

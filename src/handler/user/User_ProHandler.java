@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,17 +72,17 @@ public class User_ProHandler implements Commandhandler {
 		dto.setEmail(email);
 		dto.setEng_name(eng_name);
 		dto.setKor_name(kor_name);
-
+		dto.setBirth(birth);
 		dto.setAddress(address);
 		dto.setSkill(skill);
 		dto.setWant_salary(want_salary);
 		dto.setProject(project);
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
-		
+		dto.setRef(1);
 		String license = null;
 
-		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt"));
+		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt_hidden"));
 		
 
 
@@ -112,8 +113,18 @@ public class User_ProHandler implements Commandhandler {
 
 		int result = dao.insertArticle( dto );	
 		
+		HttpSession session = request.getSession();
+		session = request.getSession(true);
+		
+		session.setAttribute("history_id",dto.getHistory_id());
+		
+		
+		System.out.println(dto.getHistory_id());
+		
 		map.put("result", result);
+
 		map.put("page", "/FJ_USER/resome_Pro");
+		
 
 		return new ModelAndView("/FJ_MAIN/main", map);
 		

@@ -35,6 +35,9 @@
 
 package handler.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -53,6 +56,11 @@ public class User_CareerForm_Handler implements Commandhandler{
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
-		return new ModelAndView( "/FJ_USER/career" );
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("page", "/FJ_USER/career");
+		
+		return new ModelAndView("/FJ_MAIN/main", map);
+		
 	}
 }
