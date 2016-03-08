@@ -48,6 +48,7 @@ public class ReplyProHandler implements Commandhandler {
 		
 		// 바구니에 담자~
 		// 그룹화 아이디 에다가 읽은 글 넘버 넣고
+		cdto.setBoard_num(board_num);       // 해당글번호 
 		cdto.setEmail(email);				// 댓글 작성자
 		cdto.setRecontent(recontent);		// 댓글내용
 		cdto.setReg_date(reg_date);			// 작성시간
@@ -60,6 +61,7 @@ public class ReplyProHandler implements Commandhandler {
 	
 		Map<String, Object>map = new HashMap<String, Object>();  
 		int result = dao.commentList(cdto);
+		System.out.println(cdto.getRecontent());
 		// 페이지로 보낼 정보 맵으로 담기
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num);

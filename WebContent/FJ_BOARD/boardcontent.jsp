@@ -393,14 +393,16 @@
 						</div>
 							
 								<!-- 댓글 적는 곳 (에디터 적용은 아직 미구현) -->
-									<c:if test="${result != 0}"> 
+									
+									
                                     <fieldset class="form">
                                     <textarea name="recontent" id="recontent" placeholder="댓글 쓰기" class="form-control" rows="15" > 
-									   ${cdto.recontent}                              
+									   ${recontent}                              
                                     </textarea>
                                     
-								   </fieldset>   
-                                   </c:if>
+								   </fieldset> 
+							 
+                              	  
                                       
                        		</div> 
                        			   

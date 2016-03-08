@@ -2,6 +2,7 @@
 package handler.board;
 
 import java.util.HashMap;
+//import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -46,14 +47,51 @@ public class ContentHandler implements Commandhandler {
 		} */
 	
 	//	System.out.println(dto.getHstag());
-		    
+		    		
+		BoardCommentDataBean cdto = new BoardCommentDataBean();
+		System.out.println(board_num);
+		/*
+		if( request.getParameter("board_num") != null)
+		{
+			board_num = Integer.parseInt(request.getParameter("board_num"));
+			number = Integer.parseInt(request.getParameter("number")); 
+			pageNum = request.getParameter("pageNum"); 
+		
 		 
 		
-	
+		}  */  
+		  
+		// 바구니에 담자~
+		// 그룹화 아이디 에다가 읽은 글 넘버 넣고
+		cdto.getBoard_num();       // 해당글번호 
+		cdto.getEmail();				// 댓글 작성자
+		cdto.getRecontent();		// 댓글내용
+		cdto.getReg_date();			// 작성시간
+		cdto.getRecom_count();	// 좋아요
+		cdto.getRe_step();			// 게시글 구분 
+		
+		  
+		
+		System.out.println( cdto==null ? "안들어가는cdto":"cdto");
+		
+		
+		
 				
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		String[] tags = null;
+	//	String recontent = null;
+		
+		/*
+		if( cdto != null)
+		{
+			map.put("cdto", cdto);
+			for(int i=0 ; i<cdto.size() ; i++) {
+				System.out.println(cdto.get(i).getRecontent().toString());
+			}
+		}  */ 
+		
+	
 		
 		if( dto.getHstag() != null ){
 			tags = dto.getHstag().split(",");
@@ -72,7 +110,7 @@ public class ContentHandler implements Commandhandler {
 		}*/
 		
 		 
-		   
+		    
 		
 		map.put("page", "/FJ_BOARD/boardcontent");  
 		map.put("addresult", addresult);

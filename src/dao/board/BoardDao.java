@@ -15,11 +15,12 @@ public interface BoardDao {
 		
 		public int addCount(int board_num);
 		public int updateArticle(BoardDataBean dto);   
-//		public int checkArticle(int board_num);
+//		public int checkArticle(int board_num); 
 		public int deleteArticle(int board_num);
-		public int reCount(int board_num); 
-		public int commentList(BoardCommentDataBean cdto);
-		public BoardCommentDataBean getCommentList( int board_num);
+		public int reCount(int board_num);     
+		public int commentList(BoardCommentDataBean cdto); 
+		public List<BoardCommentDataBean> getCommentList(int board_num );
+		
 		
 		 
 	
