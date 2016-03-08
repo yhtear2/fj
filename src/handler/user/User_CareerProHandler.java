@@ -29,6 +29,7 @@ public class User_CareerProHandler implements Commandhandler {
 		String career_comp_name[] = request.getParameterValues("career_comp_name");
 		String career_start_date[] = request.getParameterValues("career_start_date");
 		String career_last_date[] = request.getParameterValues("career_last_date");
+		String career_sort_date[] = request.getParameterValues("career_sort_date");
 		String career_kind[] = request.getParameterValues("career_kind");
 		String career_department[] = request.getParameterValues("career_department");
 		String career_position1[] = request.getParameterValues("career_position1");
@@ -47,6 +48,7 @@ public class User_CareerProHandler implements Commandhandler {
 
 			dto.setCareer_start_date(career_start_date[i]);
 			dto.setCareer_last_date(career_last_date[i]);
+			dto.setCareer_sort_date(career_sort_date[i]);
 			dto.setCareer_department(career_department[i]);
 
 			
@@ -57,12 +59,12 @@ public class User_CareerProHandler implements Commandhandler {
 			dto.setCareer_salary(Integer.parseInt(career_salary[i]));
 			}
 		
-			if ( request.getParameter("career_sort").equals("신입")) {
+			if ( request.getParameter("career_sort").equals("�떊�엯")) {
 				dto.setCareer_kind("");
 				dto.setCareer_position1("");
 				dto.setCareer_position2("");				
 			} 
-			else if ( ! request.getParameter("career_sort").equals("신입")) {
+			else if ( ! request.getParameter("career_sort").equals("�떊�엯")) {
 				dto.setCareer_kind(career_kind[i]);
 				dto.setCareer_position1(career_position1[i]);
 				dto.setCareer_position2(career_position2[i]);

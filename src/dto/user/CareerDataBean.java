@@ -16,6 +16,7 @@ public class CareerDataBean {
 	private String career_resign;
 	private String career_work;
 	private String career_content;
+	private String career_sort_date;
 	
 	public int getCareer_id() {
 		return career_id;
@@ -49,6 +50,15 @@ public class CareerDataBean {
 	}
 	public String getCareer_last_date() {
 		return career_last_date;
+		
+	}
+	
+	
+	public String getCareer_sort_date() {
+		return career_sort_date;
+	}
+	public void setCareer_sort_date(String career_sort_date) {
+		this.career_sort_date = career_sort_date;
 	}
 	public void setCareer_last_date(String career_last_date) {
 		this.career_last_date = career_last_date;
