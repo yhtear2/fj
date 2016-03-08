@@ -83,4 +83,9 @@
 		</form>
 	</div>
 </c:if>
+<c:if test="${result == 2}">
+	<script type="text/javascript">
+		window.location='compModifyView.do';
+	</script>
+</c:if>
 </body>
