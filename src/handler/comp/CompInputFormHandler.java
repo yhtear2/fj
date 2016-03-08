@@ -35,6 +35,11 @@ public class CompInputFormHandler implements Commandhandler {
 
 		// db에 연결해서 id 비밀번호 확인
 		int result = joinDao.checkMember(memId, passwd);
+		if(result == 1) {
+			if(compDao.getComp(memId) != null) {
+				result = 2;
+			}
+		}
 		
 		// 맵으로 보내자~~
 		map.put("result", result);
