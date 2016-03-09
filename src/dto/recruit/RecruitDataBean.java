@@ -34,7 +34,6 @@ public class RecruitDataBean {
 	public Timestamp reg_date;		// 작성일
 	public Timestamp last_date;		// 수정일
 	
-	
 	public int getRecruit_id() {
 		return recruit_id;
 	}
