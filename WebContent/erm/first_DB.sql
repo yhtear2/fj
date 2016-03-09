@@ -1,6 +1,7 @@
 
 /* Drop Tables */
 
+DROP TABLE FJ_Board_Free_Comment CASCADE CONSTRAINTS;
 DROP TABLE FJ_Board_Free CASCADE CONSTRAINTS;
 DROP TABLE FJ_Career CASCADE CONSTRAINTS;
 DROP TABLE FJ_Comp CASCADE CONSTRAINTS;
@@ -31,20 +32,20 @@ DROP SEQUENCE FJ_User_seq;
 /* Create Sequences */
 
 -- 게시판  시퀀스
-CREATE SEQUENCE FJ_BOARD_FREE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_BOARD_FREE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- (이력서)
 -- 경력  시퀀스
-CREATE SEQUENCE FJ_Career_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_Career_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- (이력서)자기소개서   시퀀스
-CREATE SEQUENCE FJ_Introduce_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_Introduce_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 메시지  시퀀스
-CREATE SEQUENCE FJ_MESSAGE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_MESSAGE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 채용게시판 시퀀스
-CREATE SEQUENCE FJ_Recruit_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_Recruit_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- (이력서) 학력 시퀀스
-CREATE SEQUENCE FJ_School_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_School_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 이력서 시퀀스
-CREATE SEQUENCE FJ_User_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_User_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 
 
 
@@ -78,7 +79,31 @@ CREATE TABLE FJ_Board_Free
 	reg_date date NOT NULL,
 	-- hstag : 해쉬태그
 	hstag varchar2(50) NOT NULL,
+	-- mom_board_num : 부모게시판 ID  
+	mom_board_num number NOT NULL,
+	-- recontent : 댓글내용 
+	recontent varchar2(4000),
+	-- category : 카테고리 
+	category varchar2(50) NOT NULL,
 	PRIMARY KEY (board_num)
+);
+
+
+-- 새 테이블
+CREATE TABLE FJ_Board_Free_Comment
+(
+	-- board_num : 게시판 ID
+	board_num number NOT NULL,
+	-- email : 이메일
+	email varchar2(50),
+	-- reg_date : 작성날짜 
+	reg_date date NOT NULL,
+	-- recontent : 댓글내용 
+	recontent varchar2(4000),
+	-- re_step : 게시글의 구분 
+	re_step number,
+	-- recom_count : 좋아요 수 
+	recom_count number
 );
 
 
@@ -88,19 +113,31 @@ CREATE TABLE FJ_Career
 	-- career_id : 경력관리 ID 
 	career_id varchar2(30) NOT NULL,
 	-- user_history_id : 이력서 ID
-	user_history_id varchar2(30),
-	-- comp_name : 회사 이름 
-	comp_name varchar2(10) NOT NULL,
-	-- content : 내용 
-	content varchar2(4000) NOT NULL,
-	-- position : 직책 
-	position varchar2(10) NOT NULL,
-	-- business : 수주회사 
-	business varchar2(20) NOT NULL,
-	-- reg_date : 작성일자 
-	reg_date date NOT NULL,
-	-- last_date : 수정일자 
-	last_date date NOT NULL,
+	user_history_id number,
+	-- career_comp_name : 회사 이름 
+	career_comp_name varchar2(15),
+	-- career_content : 내용 
+	career_content varchar2(4000),
+	-- career_position1 : 직책 
+	career_position1 varchar2(20),
+	-- career_position2
+	career_position2 varchar2(20),
+	-- career_start_date : 작성일자 
+	career_start_date date,
+	-- career_last_date : 수정일자 
+	career_last_date date,
+	-- career_salary
+	career_salary number,
+	-- career_kind
+	career_kind varchar2(10),
+	-- career_sort
+	career_sort varchar2(15),
+	-- career_resign
+	career_resign varchar2(50),
+	-- career_work
+	career_work varchar2(50),
+	-- career_department
+	career_department varchar2(30),
 	PRIMARY KEY (career_id)
 );
 
@@ -110,36 +147,34 @@ CREATE TABLE FJ_Comp
 (
 	-- email : 이메일
 	email varchar2(50) NOT NULL,
-	-- ceo : 대표자명
-	ceo varchar2(50),
-	-- comp_part : 기업구분
-	comp_part varchar2(20),
-	-- tel : 전화번호
-	tel varchar2(100),
-	-- zipcode : 우편번호
-	zipcode varchar2(20),
-	-- address : 주소
-	address varchar2(300),
-	-- content : 회사 소개
-	content varchar2(4000),
-	-- capital : 자본금
-	capital varchar2(50),
-	-- comp_type : 기업 업종
-	comp_type varchar2(50),
-	-- incharge : 담당자 이름
-	incharge varchar2(100),
-	-- comp_reg_date : 회사 설립일
-	comp_reg_date varchar2(100),
-	-- year_sale : 연 매출
-	year_sale varchar2(100),
-	-- emp_count : 사원 수
-	emp_count number,
-	-- like_count : 좋아요 수
-	like_count number,
-	-- reg_date : 등록일
-	reg_date date,
-	-- last_date : 수정일
-	last_date date,
+	-- address : 주소 
+	address varchar2(100) NOT NULL,
+	-- info : 회사 소개
+	info varchar2(2000) NOT NULL,
+	-- tel : 전화번호 
+	tel varchar2(100) NOT NULL,
+	-- like_count : 좋아요 수 
+	like_count number NOT NULL,
+	-- ceo : 대표자명 
+	ceo varchar2(50) NOT NULL,
+	-- comp_reg_date : 회사 창립일 
+	comp_reg_date varchar2(10) NOT NULL,
+	-- year_sale : 연매출 
+	year_sale varchar2(100) NOT NULL,
+	-- reg_date : 작성일자 
+	reg_date date NOT NULL,
+	-- last_date : 수정일자 
+	last_date date NOT NULL,
+	-- comp_type : 기업업종 
+	comp_type varchar2(50) NOT NULL,
+	-- emp_count : 직원수 
+	emp_count number NOT NULL,
+	-- capital : 자본금 
+	capital varchar2(50) NOT NULL,
+	-- zipcode : 우편번호 
+	zipcode varchar2(20) NOT NULL,
+	-- comp_part : 기업구분 
+	comp_part varchar2(20) NOT NULL,
 	PRIMARY KEY (email)
 );
 
@@ -147,23 +182,23 @@ CREATE TABLE FJ_Comp
 -- FJ_Introduce
 CREATE TABLE FJ_Introduce
 (
-	-- introduce_id : 학력관리 ID 
-	introduce_id varchar2(30) NOT NULL,
+	-- intro_id : 학력관리 ID 
+	intro_id number NOT NULL,
 	-- user_history_id : 이력서 ID
-	user_history_id varchar2(30) NOT NULL,
-	-- title : 제목
-	title varchar2(50) NOT NULL,
-	-- content : 내용
-	content varchar2(4000) NOT NULL,
-	-- start_date : 작성일자
-	start_date date NOT NULL,
+	user_history_id number,
+	-- intro_title : 제목
+	intro_title varchar2(20),
+	-- intro_contents : 내용
+	intro_contents varchar2(1000),
+	-- reg_date : 작성일자
+	reg_date date,
 	-- last_date : 수정일자
-	last_date date NOT NULL,
-	PRIMARY KEY (introduce_id)
+	last_date date,
+	PRIMARY KEY (intro_id)
 );
 
 
--- FJ_JOIN
+-- Fj_member
 CREATE TABLE FJ_JOIN
 (
 	-- email : 이메일
@@ -172,14 +207,14 @@ CREATE TABLE FJ_JOIN
 	passwd varchar2(50) NOT NULL,
 	-- name : 닉네임 or 회사이름
 	name varchar2(100) NOT NULL,
+	-- career_start_date : 작성일자 
+	career_start_date date NOT NULL,
 	-- member_flag : 회원구분 
 	-- 
 	-- 1 : 개인회원 
 	-- 2 : 기업회원
 	-- 3 : 관리자 
 	member_flag number NOT NULL,
-	-- reg_date : 작성일자 
-	reg_date date NOT NULL,
 	PRIMARY KEY (email)
 );
 
@@ -204,17 +239,19 @@ CREATE TABLE FJ_Message
 	-- message_num : 메시지 ID 
 	message_num number NOT NULL,
 	-- email : 이메일
-	email varchar2(50) NOT NULL,
+	email varchar2(50),
 	-- title : 제목
-	title varchar2(200) NOT NULL,
+	title varchar2(200),
 	-- content : 내용 
-	content varchar2(1000) NOT NULL,
-	-- tag : 태그 분류
-	tag varchar2(20) NOT NULL,
-	-- read_yn : 확인 유무
-	read_yn number NOT NULL,
+	content varchar2(1000),
+	-- tag : 메시지 분류
+	tag number,
 	-- reg_date : 보낸날짜 
-	reg_date date NOT NULL,
+	reg_date date,
+	-- read_yn : 읽음 유무 
+	read_yn number,
+	-- sender : 보내는 사람 이메일 
+	sender varchar2(50),
 	PRIMARY KEY (message_num)
 );
 
@@ -228,8 +265,8 @@ CREATE TABLE FJ_Recruit
 	email varchar2(50),
 	-- title : 제목 
 	title varchar2(100),
-	-- content : 내용 
-	content varchar2(4000),
+	-- career_content : 내용 
+	career_content varchar2(4000),
 	-- name : 회사이름
 	name varchar2(100),
 	-- skill : 보유기술 
@@ -287,7 +324,7 @@ CREATE TABLE FJ_Recruit_Log
 	-- email : 이메일
 	email varchar2(50) NOT NULL,
 	-- user_history_id : 이력서 ID
-	user_history_id varchar2(30) NOT NULL,
+	user_history_id number NOT NULL,
 	-- reg_date : 입사 지원일 
 	reg_date date NOT NULL
 );
@@ -297,25 +334,31 @@ CREATE TABLE FJ_Recruit_Log
 CREATE TABLE FJ_School
 (
 	-- school_id : 학력관리 ID 
-	school_id varchar2(30) NOT NULL,
+	school_id number NOT NULL,
 	-- user_history_id : 이력서 ID
-	user_history_id varchar2(30) NOT NULL,
+	user_history_id number,
 	-- school_name : 학교 이름 
-	school_name varchar2(10) NOT NULL,
-	-- major : 전공 
-	major varchar2(20) NOT NULL,
-	-- finish_flag : 졸업 구분 
-	-- 
-	-- 1- 졸업
-	-- 2- 중퇴
-	-- 3- 재학 
-	finish_flag number NOT NULL,
+	school_name varchar2(30),
+	-- school_major : 전공 
+	school_major varchar2(30),
 	-- school_rank : 학교 구분 
-	school_rank number NOT NULL,
-	-- reg_date : 작성일자 
-	reg_date date NOT NULL,
+	school_rank varchar2(20),
+	-- career_start_date : 작성일자 
+	career_start_date date,
 	-- last_date : 수정일자
-	last_date date NOT NULL,
+	last_date date,
+	-- school_name_kind
+	school_name_kind varchar2(30),
+	-- school_college1
+	school_college1 varchar2(30),
+	-- school_college2
+	school_college2 varchar2(30),
+	-- school_start_date
+	school_start_date varchar2(30),
+	-- school_kind
+	school_kind varchar2(30),
+	-- ref
+	ref number,
 	PRIMARY KEY (school_id)
 );
 
@@ -324,39 +367,51 @@ CREATE TABLE FJ_School
 CREATE TABLE FJ_User
 (
 	-- user_history_id : 이력서 ID
-	user_history_id varchar2(30) NOT NULL,
+	user_history_id number NOT NULL,
 	-- email : 이메일
 	email varchar2(50),
 	-- eng_name : 영문이름 
 	eng_name varchar2(20) NOT NULL,
 	-- kor_name : 한글이름 
-	kor_name varchar2(10) NOT NULL,
+	kor_name varchar2(20) NOT NULL,
 	-- tel : 전화번호 
 	tel varchar2(20) NOT NULL,
 	-- birth : 생년월일 
-	birth date NOT NULL,
+	birth varchar2(20) NOT NULL,
 	-- address : 주소 
 	address varchar2(100) NOT NULL,
 	-- army : 병역사항 
-	army varchar2(30) NOT NULL,
+	army varchar2(100) NOT NULL,
 	-- license : 자격증 
-	license varchar2(100) NOT NULL,
-	-- want_salary : 희망 연봉 
-	want_salary number NOT NULL,
+	license varchar2(500) NOT NULL,
 	-- skill : 보유기술 
 	skill varchar2(500) NOT NULL,
-	-- reg_date : 작성일자 
-	reg_date date NOT NULL,
-	-- last_date : 수정일자 
-	last_date date NOT NULL,
 	-- project : 프로젝트 
 	project varchar2(100) NOT NULL,
+	-- resome_title
+	resome_title varchar2(50),
+	-- photo
+	photo varchar2(100),
+	-- want_salary : 희망 연봉 
+	want_salary number NOT NULL,
+	-- ref
+	ref number,
+	-- reg_date : 작성일자 
+	reg_date date NOT NULL,
+	-- career_last_date : 수정일자 
+	career_last_date date NOT NULL,
 	PRIMARY KEY (user_history_id)
 );
 
 
 
 /* Create Foreign Keys */
+
+ALTER TABLE FJ_Board_Free_Comment
+	ADD FOREIGN KEY (board_num)
+	REFERENCES FJ_Board_Free (board_num)
+;
+
 
 ALTER TABLE FJ_Board_Free
 	ADD FOREIGN KEY (email)
@@ -435,49 +490,64 @@ COMMENT ON COLUMN FJ_Board_Free.bad_count IS 'bad_count : 싫어요 수 ';
 COMMENT ON COLUMN FJ_Board_Free.re_step IS 're_step : 게시글의 구분 ';
 COMMENT ON COLUMN FJ_Board_Free.reg_date IS 'reg_date : 작성 날짜 ';
 COMMENT ON COLUMN FJ_Board_Free.hstag IS 'hstag : 해쉬태그';
+COMMENT ON COLUMN FJ_Board_Free.mom_board_num IS 'mom_board_num : 부모게시판 ID  ';
+COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : 댓글내용 ';
+COMMENT ON COLUMN FJ_Board_Free.category IS 'category : 카테고리 ';
+COMMENT ON TABLE FJ_Board_Free_Comment IS '새 테이블';
+COMMENT ON COLUMN FJ_Board_Free_Comment.board_num IS 'board_num : 게시판 ID';
+COMMENT ON COLUMN FJ_Board_Free_Comment.email IS 'email : 이메일';
+COMMENT ON COLUMN FJ_Board_Free_Comment.reg_date IS 'reg_date : 작성날짜 ';
+COMMENT ON COLUMN FJ_Board_Free_Comment.recontent IS 'recontent : 댓글내용 ';
+COMMENT ON COLUMN FJ_Board_Free_Comment.re_step IS 're_step : 게시글의 구분 ';
+COMMENT ON COLUMN FJ_Board_Free_Comment.recom_count IS 'recom_count : 좋아요 수 ';
 COMMENT ON TABLE FJ_Career IS 'FJ_Career';
 COMMENT ON COLUMN FJ_Career.career_id IS 'career_id : 경력관리 ID ';
 COMMENT ON COLUMN FJ_Career.user_history_id IS 'user_history_id : 이력서 ID';
-COMMENT ON COLUMN FJ_Career.comp_name IS 'comp_name : 회사 이름 ';
-COMMENT ON COLUMN FJ_Career.content IS 'content : 내용 ';
-COMMENT ON COLUMN FJ_Career.position IS 'position : 직책 ';
-COMMENT ON COLUMN FJ_Career.business IS 'business : 수주회사 ';
-COMMENT ON COLUMN FJ_Career.reg_date IS 'reg_date : 작성일자 ';
-COMMENT ON COLUMN FJ_Career.last_date IS 'last_date : 수정일자 ';
+COMMENT ON COLUMN FJ_Career.career_comp_name IS 'career_comp_name : 회사 이름 ';
+COMMENT ON COLUMN FJ_Career.career_content IS 'career_content : 내용 ';
+COMMENT ON COLUMN FJ_Career.career_position1 IS 'career_position1 : 직책 ';
+COMMENT ON COLUMN FJ_Career.career_position2 IS 'career_position2';
+COMMENT ON COLUMN FJ_Career.career_start_date IS 'career_start_date : 작성일자 ';
+COMMENT ON COLUMN FJ_Career.career_last_date IS 'career_last_date : 수정일자 ';
+COMMENT ON COLUMN FJ_Career.career_salary IS 'career_salary';
+COMMENT ON COLUMN FJ_Career.career_kind IS 'career_kind';
+COMMENT ON COLUMN FJ_Career.career_sort IS 'career_sort';
+COMMENT ON COLUMN FJ_Career.career_resign IS 'career_resign';
+COMMENT ON COLUMN FJ_Career.career_work IS 'career_work';
+COMMENT ON COLUMN FJ_Career.career_department IS 'career_department';
 COMMENT ON TABLE FJ_Comp IS 'FJ_Comp';
 COMMENT ON COLUMN FJ_Comp.email IS 'email : 이메일';
-COMMENT ON COLUMN FJ_Comp.ceo IS 'ceo : 대표자명';
-COMMENT ON COLUMN FJ_Comp.comp_part IS 'comp_part : 기업구분';
-COMMENT ON COLUMN FJ_Comp.tel IS 'tel : 전화번호';
-COMMENT ON COLUMN FJ_Comp.zipcode IS 'zipcode : 우편번호';
-COMMENT ON COLUMN FJ_Comp.address IS 'address : 주소';
-COMMENT ON COLUMN FJ_Comp.content IS 'content : 회사 소개';
-COMMENT ON COLUMN FJ_Comp.capital IS 'capital : 자본금';
-COMMENT ON COLUMN FJ_Comp.comp_type IS 'comp_type : 기업 업종';
-COMMENT ON COLUMN FJ_Comp.incharge IS 'incharge : 담당자 이름';
-COMMENT ON COLUMN FJ_Comp.comp_reg_date IS 'comp_reg_date : 회사 설립일';
-COMMENT ON COLUMN FJ_Comp.year_sale IS 'year_sale : 연 매출';
-COMMENT ON COLUMN FJ_Comp.emp_count IS 'emp_count : 사원 수';
-COMMENT ON COLUMN FJ_Comp.like_count IS 'like_count : 좋아요 수';
-COMMENT ON COLUMN FJ_Comp.reg_date IS 'reg_date : 등록일';
-COMMENT ON COLUMN FJ_Comp.last_date IS 'last_date : 수정일';
+COMMENT ON COLUMN FJ_Comp.address IS 'address : 주소 ';
+COMMENT ON COLUMN FJ_Comp.info IS 'info : 회사 소개';
+COMMENT ON COLUMN FJ_Comp.tel IS 'tel : 전화번호 ';
+COMMENT ON COLUMN FJ_Comp.like_count IS 'like_count : 좋아요 수 ';
+COMMENT ON COLUMN FJ_Comp.ceo IS 'ceo : 대표자명 ';
+COMMENT ON COLUMN FJ_Comp.comp_reg_date IS 'comp_reg_date : 회사 창립일 ';
+COMMENT ON COLUMN FJ_Comp.year_sale IS 'year_sale : 연매출 ';
+COMMENT ON COLUMN FJ_Comp.reg_date IS 'reg_date : 작성일자 ';
+COMMENT ON COLUMN FJ_Comp.last_date IS 'last_date : 수정일자 ';
+COMMENT ON COLUMN FJ_Comp.comp_type IS 'comp_type : 기업업종 ';
+COMMENT ON COLUMN FJ_Comp.emp_count IS 'emp_count : 직원수 ';
+COMMENT ON COLUMN FJ_Comp.capital IS 'capital : 자본금 ';
+COMMENT ON COLUMN FJ_Comp.zipcode IS 'zipcode : 우편번호 ';
+COMMENT ON COLUMN FJ_Comp.comp_part IS 'comp_part : 기업구분 ';
 COMMENT ON TABLE FJ_Introduce IS 'FJ_Introduce';
-COMMENT ON COLUMN FJ_Introduce.introduce_id IS 'introduce_id : 학력관리 ID ';
+COMMENT ON COLUMN FJ_Introduce.intro_id IS 'intro_id : 학력관리 ID ';
 COMMENT ON COLUMN FJ_Introduce.user_history_id IS 'user_history_id : 이력서 ID';
-COMMENT ON COLUMN FJ_Introduce.title IS 'title : 제목';
-COMMENT ON COLUMN FJ_Introduce.content IS 'content : 내용';
-COMMENT ON COLUMN FJ_Introduce.start_date IS 'start_date : 작성일자';
+COMMENT ON COLUMN FJ_Introduce.intro_title IS 'intro_title : 제목';
+COMMENT ON COLUMN FJ_Introduce.intro_contents IS 'intro_contents : 내용';
+COMMENT ON COLUMN FJ_Introduce.reg_date IS 'reg_date : 작성일자';
 COMMENT ON COLUMN FJ_Introduce.last_date IS 'last_date : 수정일자';
-COMMENT ON TABLE FJ_JOIN IS 'FJ_JOIN';
+COMMENT ON TABLE FJ_JOIN IS 'Fj_member';
 COMMENT ON COLUMN FJ_JOIN.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_JOIN.passwd IS 'passwd : 비밀번호';
 COMMENT ON COLUMN FJ_JOIN.name IS 'name : 닉네임 or 회사이름';
+COMMENT ON COLUMN FJ_JOIN.career_start_date IS 'career_start_date : 작성일자 ';
 COMMENT ON COLUMN FJ_JOIN.member_flag IS 'member_flag : 회원구분 
 
 1 : 개인회원 
 2 : 기업회원
 3 : 관리자 ';
-COMMENT ON COLUMN FJ_JOIN.reg_date IS 'reg_date : 작성일자 ';
 COMMENT ON TABLE FJ_Log IS 'FJ_Log';
 COMMENT ON COLUMN FJ_Log.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Log.page_id IS 'page_id : 페이지 ID ';
@@ -488,14 +558,15 @@ COMMENT ON COLUMN FJ_Message.message_num IS 'message_num : 메시지 ID ';
 COMMENT ON COLUMN FJ_Message.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Message.title IS 'title : 제목';
 COMMENT ON COLUMN FJ_Message.content IS 'content : 내용 ';
-COMMENT ON COLUMN FJ_Message.tag IS 'tag : 태그 분류';
-COMMENT ON COLUMN FJ_Message.read_yn IS 'read_yn : 확인 유무';
+COMMENT ON COLUMN FJ_Message.tag IS 'tag : 메시지 분류';
 COMMENT ON COLUMN FJ_Message.reg_date IS 'reg_date : 보낸날짜 ';
+COMMENT ON COLUMN FJ_Message.read_yn IS 'read_yn : 읽음 유무 ';
+COMMENT ON COLUMN FJ_Message.sender IS 'sender : 보내는 사람 이메일 ';
 COMMENT ON TABLE FJ_Recruit IS 'FJ_Recruit';
 COMMENT ON COLUMN FJ_Recruit.recruit_id IS 'recruit_id : 채용게시판 ID ';
 COMMENT ON COLUMN FJ_Recruit.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Recruit.title IS 'title : 제목 ';
-COMMENT ON COLUMN FJ_Recruit.content IS 'content : 내용 ';
+COMMENT ON COLUMN FJ_Recruit.career_content IS 'career_content : 내용 ';
 COMMENT ON COLUMN FJ_Recruit.name IS 'name : 회사이름';
 COMMENT ON COLUMN FJ_Recruit.skill IS 'skill : 보유기술 ';
 COMMENT ON COLUMN FJ_Recruit.gender IS 'gender : 성별 ';
@@ -528,15 +599,16 @@ COMMENT ON TABLE FJ_School IS 'FJ_School';
 COMMENT ON COLUMN FJ_School.school_id IS 'school_id : 학력관리 ID ';
 COMMENT ON COLUMN FJ_School.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_School.school_name IS 'school_name : 학교 이름 ';
-COMMENT ON COLUMN FJ_School.major IS 'major : 전공 ';
-COMMENT ON COLUMN FJ_School.finish_flag IS 'finish_flag : 졸업 구분 
-
-1- 졸업
-2- 중퇴
-3- 재학 ';
+COMMENT ON COLUMN FJ_School.school_major IS 'school_major : 전공 ';
 COMMENT ON COLUMN FJ_School.school_rank IS 'school_rank : 학교 구분 ';
-COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : 작성일자 ';
+COMMENT ON COLUMN FJ_School.career_start_date IS 'career_start_date : 작성일자 ';
 COMMENT ON COLUMN FJ_School.last_date IS 'last_date : 수정일자';
+COMMENT ON COLUMN FJ_School.school_name_kind IS 'school_name_kind';
+COMMENT ON COLUMN FJ_School.school_college1 IS 'school_college1';
+COMMENT ON COLUMN FJ_School.school_college2 IS 'school_college2';
+COMMENT ON COLUMN FJ_School.school_start_date IS 'school_start_date';
+COMMENT ON COLUMN FJ_School.school_kind IS 'school_kind';
+COMMENT ON COLUMN FJ_School.ref IS 'ref';
 COMMENT ON TABLE FJ_User IS 'FJ_User';
 COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_User.email IS 'email : 이메일';
@@ -547,11 +619,14 @@ COMMENT ON COLUMN FJ_User.birth IS 'birth : 생년월일 ';
 COMMENT ON COLUMN FJ_User.address IS 'address : 주소 ';
 COMMENT ON COLUMN FJ_User.army IS 'army : 병역사항 ';
 COMMENT ON COLUMN FJ_User.license IS 'license : 자격증 ';
-COMMENT ON COLUMN FJ_User.want_salary IS 'want_salary : 희망 연봉 ';
 COMMENT ON COLUMN FJ_User.skill IS 'skill : 보유기술 ';
-COMMENT ON COLUMN FJ_User.reg_date IS 'reg_date : 작성일자 ';
-COMMENT ON COLUMN FJ_User.last_date IS 'last_date : 수정일자 ';
 COMMENT ON COLUMN FJ_User.project IS 'project : 프로젝트 ';
+COMMENT ON COLUMN FJ_User.resome_title IS 'resome_title';
+COMMENT ON COLUMN FJ_User.photo IS 'photo';
+COMMENT ON COLUMN FJ_User.want_salary IS 'want_salary : 희망 연봉 ';
+COMMENT ON COLUMN FJ_User.ref IS 'ref';
+COMMENT ON COLUMN FJ_User.reg_date IS 'reg_date : 작성일자 ';
+COMMENT ON COLUMN FJ_User.career_last_date IS 'career_last_date : 수정일자 ';
 
 
 
