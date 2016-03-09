@@ -7,23 +7,31 @@
 
 	<select id="getUserCount" resultType="java.lang.Integer">
 		SELECT 	COUNT(*)
-		FROM 	FJ_User
+		FROM 	FJ_USER
 	</select>
 
 	<select id="getUserList" parameterType="Map" resultType="dto.user.UserDataBean">
 		SELECT 	user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
-				skill,photo,reg_date,last_date,project,r
+				skill,photo,reg_date,last_date,project
 		FROM 	( select user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
-				skill,photo,reg_date,last_date,project,rownum r 
+				skill,photo,reg_date,last_date,project
 		FROM	FJ_User  ORDER BY last_date desc ) 
-		WHERE	r &gt;= #{start} and r &lt;= #{end}		
+		
 	</select>
 	
 	<select id="getContent" parameterType="Integer" resultType="dto.user.UserDataBean">
 		SELECT 	* 
-		From	FJ_User
-		Where	user_history_id = #{user_history_id}
+			from FJ_User
+			where user_history_id = #{user_history_id}
 	</select>
+	
+	<select id="getContent_school" parameterType="Map" resultType="dto.user.SchoolDataBean">
+		SELECT 	* 
+		From	FJ_School a, FJ_User b
+		Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
+		
+	</select>
+	
 
 	<insert id="insertArticle" parameterType="dto.user.UserDataBean"  keyColumn="user_history_id" keyProperty="history_id" useGeneratedKeys="true">
 	
@@ -52,12 +60,10 @@
 	
 
 	<insert id="insertArticle_sc" parameterType="dto.user.SchoolDataBean">
-		insert into FJ_School ( school_id, user_history_id,school_kind,school_start_date,school_last_date,school_college1,
-		school_college2,school_college_high,school_name,school_name_kind,school_major,school_rank,reg_date,last_date)
-		values (FJ_School_seq.NEXTVAL,#{user_history_id},#{school_kind,jdbcType=VARCHAR},
+		insert into FJ_School values (FJ_School_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{school_kind,jdbcType=VARCHAR},
 		#{school_start_date,jdbcType=VARCHAR},#{school_last_date,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
 		#{school_college2,jdbcType=VARCHAR},#{school_college_high,jdbcType=VARCHAR},#{school_name,jdbcType=VARCHAR},#{school_name_kind,jdbcType=VARCHAR},
-		#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date})
+		#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date}, #{school_ref ,jdbcType=INTEGER})
 	</insert>
 
 	<select id="getUser_history_id" parameterType="Integer" resultType="dto.user.UserDataBean">

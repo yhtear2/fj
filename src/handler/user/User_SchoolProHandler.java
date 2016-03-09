@@ -37,13 +37,18 @@ public class User_SchoolProHandler implements Commandhandler {
 		String school_rank1[] = request.getParameterValues("school_rank1");
 		String school_rank2[] = request.getParameterValues("school_rank2");
 		
-		dto.setSchool_name(request.getParameter("highschool_name"));
-		dto.setSchool_start_date(request.getParameter("highschool_start_date"));
-		dto.setSchool_last_date(request.getParameter("highschool_last_date"));
+		
+		dto.setSchool_name_high(request.getParameter("highschool_name"));
+		dto.setSchool_start_date_high(request.getParameter("highschool_start_date"));
+		dto.setSchool_last_date_high(request.getParameter("highschool_last_date"));
 		dto.setSchool_college_high(request.getParameter("highschool_college"));
-		dto.setSchool_name_kind(request.getParameter("highschool_name_kind"));
+		dto.setHighschool_kind(request.getParameter("highschool_kind"));
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));	
+		
+		dto.setUser_history_id(Integer.parseInt(request.getParameter("user_history_id")));
+		
+		
 		
 		int result = dao.insertArticle_sc( dto );	
 
@@ -51,16 +56,17 @@ public class User_SchoolProHandler implements Commandhandler {
 	
 		for(int i=0; i<school_name.length; i++) {
 		  
-			dto.setSchool_name(school_name[i]);
+			dto.setSchool_name_college(school_name[i]);
 			dto.setSchool_kind(request.getParameter("school_kind"+(i+1)));
 
 			dto.setSchool_major(school_major[i]);
 			dto.setSchool_college1(school_college1[i]);
 			dto.setSchool_college2(school_college2[i]);
-			dto.setSchool_start_date(school_start_date[i]);
-			dto.setSchool_last_date(school_last_date[i]);
-			dto.setSchool_name_kind(null);
+			dto.setSchool_start_date_college(school_start_date[i]);
+			dto.setSchool_last_date_college(school_last_date[i]);
+			dto.setHighschool_kind(null);
 			dto.setSchool_college_high(null);
+			dto.setSchool_ref(1);
 
 			dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 			dto.setLast_date(new Timestamp(System.currentTimeMillis()));

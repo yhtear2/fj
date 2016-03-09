@@ -108,6 +108,7 @@
       
       $('input[name=count]').val(count);
 
+
     }
    
   
@@ -543,10 +544,12 @@
 <h3>학력사항</h3>
 
 <h5>고등학교</h5>
+
 <form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()">
    <input type="hidden" name="count" value="0">
 
-
+	<input type="text" name="user_history_id" value='${history_id}' style="display:none">
+	
    
    
 <table class="table table-hover" style="width:800px">
@@ -566,7 +569,7 @@
    <tr>      
       <th>학교명</th>
       <td> <input class="" type="text" style="width:200px" name="highschool_name" id="highschool_name">
-         <select class="" style="width: 150px" name="highschool_name_kind" id="highschool_name_kind">
+         <select class="" style="width: 150px" name="highschool_kind" id="highschool_kind">
             <option value="문과계열">문과계열</option>
             <option value="이과계열">이과계열</option>      
             <option value="전문(실업)계열">전문(실업)계열</option>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import dto.board.BoardCommentDataBean;
 import dto.recruit.RecruitDataBean;
 import dto.user.CareerDataBean;
 import dto.user.IntroduceDataBean;
@@ -25,6 +26,13 @@ public class UserDBBean implements UserDao {
 	public UserDataBean getContent(int user_history_id) {
 		return sqlSession.selectOne("User.getContent", user_history_id);
 	}	
+
+	
+	public  List<SchoolDataBean> getContent_school(int user_history_id) 
+	{
+		return sqlSession.selectList("User.getContent_school", user_history_id);   
+	} 
+	
 	
 	@Override
 	public List<UserDataBean> getUserList(Map<String, Integer> map) {

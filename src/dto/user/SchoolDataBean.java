@@ -7,25 +7,23 @@ public class SchoolDataBean {
 	private int school_id;
 	private int user_history_id; 
 	private String school_kind;
-	private String school_start_date;
-	private String school_last_date;
+	private String school_start_date_high;
+	private String school_last_date_high;
+	private String school_start_date_college;
+	private String school_last_date_college;
 	private String school_college1;
 	private String school_college2;
 	private String school_college_high;
-	private String school_name;
-	private String school_name_kind;
+	private String school_name_high;
+	private String school_name_college;
+	private String highschool_kind;
 	private String school_major;
 	private String school_rank;
 	private Timestamp reg_date;
 	private Timestamp last_date;
+	private int school_ref;
 	
-		
-	public String getSchool_college_high() {
-		return school_college_high;
-	}
-	public void setSchool_college_high(String school_college_high) {
-		this.school_college_high = school_college_high;
-	}
+	
 	public int getSchool_id() {
 		return school_id;
 	}
@@ -44,17 +42,29 @@ public class SchoolDataBean {
 	public void setSchool_kind(String school_kind) {
 		this.school_kind = school_kind;
 	}
-	public String getSchool_start_date() {
-		return school_start_date;
+	public String getSchool_start_date_high() {
+		return school_start_date_high;
 	}
-	public void setSchool_start_date(String school_start_date) {
-		this.school_start_date = school_start_date;
+	public void setSchool_start_date_high(String school_start_date_high) {
+		this.school_start_date_high = school_start_date_high;
 	}
-	public String getSchool_last_date() {
-		return school_last_date;
+	public String getSchool_last_date_high() {
+		return school_last_date_high;
 	}
-	public void setSchool_last_date(String school_last_date) {
-		this.school_last_date = school_last_date;
+	public void setSchool_last_date_high(String school_last_date_high) {
+		this.school_last_date_high = school_last_date_high;
+	}
+	public String getSchool_start_date_college() {
+		return school_start_date_college;
+	}
+	public void setSchool_start_date_college(String school_start_date_college) {
+		this.school_start_date_college = school_start_date_college;
+	}
+	public String getSchool_last_date_college() {
+		return school_last_date_college;
+	}
+	public void setSchool_last_date_college(String school_last_date_college) {
+		this.school_last_date_college = school_last_date_college;
 	}
 	public String getSchool_college1() {
 		return school_college1;
@@ -68,17 +78,29 @@ public class SchoolDataBean {
 	public void setSchool_college2(String school_college2) {
 		this.school_college2 = school_college2;
 	}
-	public String getSchool_name() {
-		return school_name;
+	public String getSchool_college_high() {
+		return school_college_high;
 	}
-	public void setSchool_name(String school_name) {
-		this.school_name = school_name;
+	public void setSchool_college_high(String school_college_high) {
+		this.school_college_high = school_college_high;
 	}
-	public String getSchool_name_kind() {
-		return school_name_kind;
+	public String getSchool_name_high() {
+		return school_name_high;
 	}
-	public void setSchool_name_kind(String school_name_kind) {
-		this.school_name_kind = school_name_kind;
+	public void setSchool_name_high(String school_name_high) {
+		this.school_name_high = school_name_high;
+	}
+	public String getSchool_name_college() {
+		return school_name_college;
+	}
+	public void setSchool_name_college(String school_name_college) {
+		this.school_name_college = school_name_college;
+	}
+	public String getHighschool_kind() {
+		return highschool_kind;
+	}
+	public void setHighschool_kind(String highschool_kind) {
+		this.highschool_kind = highschool_kind;
 	}
 	public String getSchool_major() {
 		return school_major;
@@ -103,6 +125,17 @@ public class SchoolDataBean {
 	}
 	public void setLast_date(Timestamp last_date) {
 		this.last_date = last_date;
-	}	
+	}
+	public int getSchool_ref() {
+		return school_ref;
+	}
+	public void setSchool_ref(int school_ref) {
+		this.school_ref = school_ref;
+	}
+	
+	
+	
+	
+		
 
 }

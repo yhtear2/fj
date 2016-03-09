@@ -16,7 +16,7 @@
    <tr>
       <th style="width:200px">이름(한글)</th>
 		 <td class="form-control" style="text-align: center; width: 250px"> ${dto.kor_name} </td>
-      <td rowspan="5"><img  class="img-rounded"  id="img_preview" name="img_preview" value="${photo}" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
+      <td rowspan="5"><img  class="img-rounded"  id="img_preview" name="img_preview" src="${photo}" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
    
    </tr>
    <tr>
@@ -34,9 +34,10 @@
       <td>
          <c:if test='${dto.tel != null && dto.tel != "" }'>										
 			<c:set var="e" value='${fnc:split( dto.tel, "-" )}'/>	
-			<input class="input" style="width:100px" name="tel1" maxlength="25" value="${e[0]}"> - 
-			<input class="input" style="width:100px" name="tel2" maxlength="25" value="${e[1]}"> - 
-			<input class="input" style="width:100px" name="tel3" maxlength="25" value="${e[2]}">
+<%-- 			<input class="input" style="width:100px; border:none" name="tel1" maxlength="25" value="${e[0]}"> - 
+			<input class="input" style="width:100px; border:none" name="tel2" maxlength="25" value="${e[1]}"> - 
+			<input class="input" style="width:100px; border:none" name="tel3" maxlength="25" value="${e[2]}"> --%>
+			${e[0]} - ${e[1]} - ${e[2]}
 		</c:if>
 		</td>
    </tr>
@@ -69,21 +70,10 @@
 		</c:if>
 		</td>
 	</tr>
-   <tr>
-      <th> 스킬 </th>
-		 <td class="form-control" style="text-align: center; width: 650px"> ${dto.skill} </td>
-	</tr>	
-   <tr>
-      <th> 자격증 </th>
-		 <td class="form-control" style="text-align: center; width: 650px"> ${dto.license} </td>
-	</tr>		
-</table>
-
-<table class="table table-hover" style="width:800px">
 
    <tr>
       <th style="width:89px">보유기술</th>
-         <td class="form-control" style="text-align: center; width: 650px"> ${dto.skill} </td>
+         <td class="form-control" style="text-align: center;  width: 650px"> ${dto.skill} </td>
 
    </tr>      
    <tr>
@@ -92,35 +82,60 @@
    </tr>
 </table>
 
-
    <table id="license_table" class="table table-hover" style="width:800px">
       <tr>
-         <th>자격증 이름</th>
-         <th>발행일자</th>
-         <th>발행일처</th>
+         <th style="width:230px">자격증 이름</th>
+         <th style="width:230px"> 발행일자</th>
+         <th style="width:230px">발행일처</th>
       </tr>
       <tr>
+			<td style="width:800px"  colspan="2">
       		<c:if test='${dto.license != null && dto.license != "" }'>	
       		<c:forTokens var="e" items='${dto.license}' delims="/">
-      			<c:forTokens var="k" items="${e}" delims="-">
-      				 <td style="width:160px"> <input type="text" name="license10" id="license10" style="width:220px" value="${k}"> </td>		  
-      			</c:forTokens>
+      			<c:forTokens var="k" items='${e}' delims="-">
+      				  <input type="text" name="license10" id="license10"   style="width:180px; border:none;" value="${k}">
+      			</c:forTokens>		
       			
       		</c:forTokens>
-      		
-      		<!-- 
-      			<c:set var="e" value='${fnc:split( dto.license, "/" )}'/>	
-      				<c:forEach var="li_i" begin="0" end="${fn:length('${e[0]}')-1}" varStatus="stat">	
-				        <td style="width:160px"> <input type="text" name="license10" id="license10" style="width:220px" value="${e[0]}"> </td>
-				        <td style="width:80px"> <input type="text" name="license20" id="license20" style="width:180px" value="${e[1]}"> </td>
-		         		<td colspan="2" style="width:200px"> <input type="text" style="width:260px" name="license30" id="license30" value="${e[2]}"></td>
-		         	</c:forEach>
-		      -->
+
         	 </c:if>
+
+       </td>		
       </tr>
-      </table>
+	<tr>
+		<th style="width: 89px">포트폴리오</th>
+		<td><input class="btn btn-default" type="file" name="project" id="project" value="${project}"></td>	
+	</tr>
+</table>
 
-x
+<h3>학력사항</h3>
+<table>
+<c:forEach var="sc_dto" items="${result}">
+
+   <tr>
+      <th style="width:100px">재학기간</th>
+         <td style="width: 520px">
+            <input class="" type="text" style="width:210px" name="highschool_start_date" id="highschool_start_date" value="${sc_dto.school_start_date}"> ~
+            <input class="" type="text" style="width:210px" name="highschool_last_date" id="highschool_last_date" value="${sc_dto.school_last_date}">
+            <select class="" style="width: 80px" name="highschool_college" id="highschool_college">
+               <option value="졸업">졸업</option>
+               <option value="졸업예정">졸업예정</option>      
+            </select>         
+         </td>
+   </tr>
+
+   <tr>      
+      <th>학교명</th>
+      <td> <input class="" type="text" style="width:200px" name="highschool_name" id="highschool_name">
+         <select class="" style="width: 150px" name="highschool_name_kind" id="highschool_name_kind">
+            <option value="문과계열">문과계열</option>
+            <option value="이과계열">이과계열</option>      
+            <option value="전문(실업)계열">전문(실업)계열</option>
+            <option value="예체능계열">예체능계열</option>   
+         </select>   
+      </td>
+   </tr>	
+   </c:forEach>
 
 
 
@@ -131,6 +146,21 @@ x
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
 
 
 
