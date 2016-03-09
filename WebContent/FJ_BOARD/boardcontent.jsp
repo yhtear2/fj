@@ -5,17 +5,17 @@
 <%@ include file = "/defaultSetting.jsp" %>  
 <script src="script.js"></script> 
 
-<!DOCTYPE html>
+<!DOCTYPE html>  
 
 <title>人 코딩 - 자유게시판</title> 
 
 		<div id="article" class="content" role="main"> 
             <div class="nav" role="navigation"> 
                 <a href="boardwriteForm.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 글쓰기 </a>
- 
+ 					
                 <h4> 자유게시판 </h4>
             </div>
- 
+ 			
               <div class="panel panel-default clearfix">
                 <div class="panel-heading clearfix"> 
 			<div class="avatar avatar-medium clearfix pull-left">
@@ -257,6 +257,7 @@
                     	
                     	<!-- 댓글 달았을 때 보이는 곳 (잠정보류) -->
                     	 
+                    	
                         <li class="list-group-item note-item clearfix" id="note-1034847">
                             <form action="/content/update/1034847" method="post" data-id="1034847" class="note-update-form"><input type="hidden" name="_method" value="PUT" id="_method">
                   			<div class="content-body panel-body pull-left">
@@ -290,11 +291,12 @@
 						<!-- 댓글남겨지는 부분 (우선 content 로 해놈..) --> 
 						
 						<fieldset class="form">
-                                        <article id="note-text-1034847" class="list-group-item-text note-text">
-                                           <c:if test="${dto.recontent != null}"> 
-                                           <p>${dto.recontent}</p> 
-                                           </c:if>
+										<c:forEach var="dto" items="${result}">
+										
+                                        <article id="note-text-1034847" class="list-group-item-text note-text" >
+                                        ${dto.recontent}
                                         </article>
+                                        </c:forEach>
                                     </fieldset>
                                 </div>
 							       
@@ -397,7 +399,7 @@
 									
                                     <fieldset class="form">
                                     <textarea name="recontent" id="recontent" placeholder="댓글 쓰기" class="form-control" rows="15" > 
-									   ${recontent}                              
+									 ${recontent}                              
                                     </textarea>
                                     
 								   </fieldset> 
@@ -419,4 +421,5 @@
                    
                 </ul>
             </div>
+       
         </div>

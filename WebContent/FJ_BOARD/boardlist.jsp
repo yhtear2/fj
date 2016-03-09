@@ -110,7 +110,7 @@
                                 <h5 class="list-group-item-heading ">
                                     <a href="boardcontent.do?board_num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}">
                                     	${dto.subject}
-                                    </a>
+                                    </a> 
                                 </h5>
                             </div>
                             

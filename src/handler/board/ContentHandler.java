@@ -2,6 +2,7 @@
 package handler.board;
 
 import java.util.HashMap;
+import java.util.List;
 //import java.util.List;
 import java.util.Map;
 
@@ -32,7 +33,8 @@ public class ContentHandler implements Commandhandler {
 	@RequestMapping("/boardcontent")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-
+		
+		
 		String pageNum = request.getParameter( "pageNum" );
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 		int number = Integer.parseInt( request.getParameter( "number" ) );
@@ -44,12 +46,16 @@ public class ContentHandler implements Commandhandler {
 		/*
 		if( ! request.getRemoteAddr().equals( dto.getIp() ) )	 {
 			dao.addCount( board_num );		
-		} */
+		} */   
 	
-	//	System.out.println(dto.getHstag());
-		    		
-		BoardCommentDataBean cdto = new BoardCommentDataBean();
-		System.out.println(board_num);
+	//	System.out.println(dto.getHstag()); 
+	//	BoardCommentDataBean cdto = dao.getCommentList(map); 
+		
+		
+		
+		
+		   
+		System.out.println(board_num);   
 		/*
 		if( request.getParameter("board_num") != null)
 		{
@@ -63,23 +69,19 @@ public class ContentHandler implements Commandhandler {
 		  
 		// 바구니에 담자~
 		// 그룹화 아이디 에다가 읽은 글 넘버 넣고
-		cdto.getBoard_num();       // 해당글번호 
-		cdto.getEmail();				// 댓글 작성자
-		cdto.getRecontent();		// 댓글내용
-		cdto.getReg_date();			// 작성시간
-		cdto.getRecom_count();	// 좋아요
-		cdto.getRe_step();			// 게시글 구분 
+		
 		
 		  
 		
-		System.out.println( cdto==null ? "안들어가는cdto":"cdto");
+	//	System.out.println( cdto==null ? "안들어가는cdto":"들어가는cdto");
 		
 		
 		
 				
-		Map<String, Object> map = new HashMap<String, Object>();
+		
 		
 		String[] tags = null;
+	//	String recontents = null;
 	//	String recontent = null;
 		
 		/*
@@ -91,13 +93,16 @@ public class ContentHandler implements Commandhandler {
 			}
 		}  */ 
 		
-	
+		
+		Map<String, Object> map = new HashMap<String, Object>(); 
+		
+		List<BoardCommentDataBean> result = dao.getCommentList(board_num);
 		
 		if( dto.getHstag() != null ){
 			tags = dto.getHstag().split(",");
 			map.put("tags", tags);
 		} 
-		
+		  
 		map.put("number", number);
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num); 
@@ -108,10 +113,8 @@ public class ContentHandler implements Commandhandler {
 		/*for( int i=0; i<tags.length; i++){
 			map.put("tag"+i, tags[i]);
 		}*/
-		
-		 
-		    
-		
+		   
+		map.put("result", result);
 		map.put("page", "/FJ_BOARD/boardcontent");  
 		map.put("addresult", addresult);
 		map.put("reresult", reresult);  

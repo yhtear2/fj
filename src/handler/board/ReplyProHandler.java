@@ -3,6 +3,7 @@ package handler.board;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.board.BoardDao;
 import dto.board.BoardCommentDataBean;
+import dto.board.BoardDataBean;
 import handler.Commandhandler;
 
 @Controller
@@ -39,9 +41,9 @@ public class ReplyProHandler implements Commandhandler {
 		Timestamp reg_date = new Timestamp( System.currentTimeMillis());			// 작성시간
 		int recom_count = 0;														// 댓글 좋아요
 		int re_step = 3;															// 게시글 구분
-	//	int ref = 1;                                                                 // 그룹화 id 
+	//	int ref = 1;                                                                // 그룹화 id 
 		     
-		
+		   
 		
 		// 받을 바구니 객체 생성
 		BoardCommentDataBean cdto = new BoardCommentDataBean();
@@ -57,9 +59,7 @@ public class ReplyProHandler implements Commandhandler {
 		
 		// 바구니를 dao에다가 보내서 DB에 입력하게
 		
-		 
-	
-		Map<String, Object>map = new HashMap<String, Object>();  
+		Map<String, Object>map = new HashMap<String, Object>();    
 		int result = dao.commentList(cdto);
 		System.out.println(cdto.getRecontent());
 		// 페이지로 보낼 정보 맵으로 담기

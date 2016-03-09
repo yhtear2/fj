@@ -98,7 +98,7 @@ public class ListHandler implements Commandhandler {
 			map.put("tag", tag); 
 			
 			List<BoardDataBean> list =  boardDao.getArticles(map );
-			request.setAttribute( "list", list );	   		
+			request.setAttribute( "list", list );	      		
 		}		
 		
 		Map<String, Object> map = new HashMap<String, Object>();

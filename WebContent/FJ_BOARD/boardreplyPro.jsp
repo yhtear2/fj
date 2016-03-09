@@ -16,7 +16,7 @@
 	</script>
 </c:if> 
 <c:if test="${result != 0}"> 	
-	<c:redirect url="/fj/boardcontent.do"> 
-		<c:param name="pageNum" value="${pageNum}"/> 
+	<c:redirect url="/fj/boardcontent.do">     
+		<c:param name="pageNum" value="board_num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}"/>     
 	</c:redirect>   
 </c:if> 

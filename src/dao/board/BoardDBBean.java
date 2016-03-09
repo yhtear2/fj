@@ -110,11 +110,17 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	@Override  
 	public  List<BoardCommentDataBean> getCommentList(int board_num) 
 	{
-		return sqlSession.selectOne("FJ_BOARD.getCommentList", board_num);   
+		return sqlSession.selectList("FJ_BOARD.getCommentList", board_num);   
+	} 
+	
+	/*
+	@Override
+	public BoardCommentDataBean getComment(int board_num)
+	{
+		return sqlSession.selectOne("FJ_BOARD.getComment", board_num); 
 	}
-
-
-
+    */
+	
 
 /*
 	public int checkArticle(int board_num)
