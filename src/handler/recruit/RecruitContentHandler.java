@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.comp.CompDao;
 import dao.recruit.RecruitDao;
+import dto.comp.CompDataBean;
 import dto.recruit.RecruitDataBean;
 import handler.Commandhandler;
 
@@ -20,6 +22,9 @@ public class RecruitContentHandler implements Commandhandler {
 
 	@Resource(name="recruitDao")
 	private RecruitDao recruitDao;
+	
+	@Resource(name="compDao")
+	private CompDao compDao;
 	
 	@RequestMapping("/recruitcontent")
 	@Override
@@ -33,9 +38,12 @@ public class RecruitContentHandler implements Commandhandler {
 		int recruit_id = Integer.parseInt(request.getParameter("recruit_id"));
 		String pageNum = request.getParameter("pageNum");
 		
-		// 데이터 가져오자
+		// 채용공고 데이터 가져오자
 		RecruitDataBean dto = new RecruitDataBean();
 		dto = recruitDao.getContent( recruit_id );
+		// 회사기본 입력사항 정보를 가져오자!
+		CompDataBean compdto = new CompDataBean();
+		compdto = compDao.getComp(dto.getEmail());
 		
 		// 이메일 비교해서 카운트 올리기
 		if( !( dto.getEmail().equals(request.getSession().getAttribute("memId")) ) ){
@@ -43,6 +51,7 @@ public class RecruitContentHandler implements Commandhandler {
 		}
 		
 		map.put("dto", dto);
+		map.put("compdto", compdto);
 		map.put("pageNum", pageNum);
 		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitContent");

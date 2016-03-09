@@ -39,3 +39,43 @@ function compInputFormcheck(){
 	// 콘텐츠 내용에 쓴거 넘기기 위해서 이렇게~
 	$('input[name=content]').val( $('#summernote').summernote('code') );
 }
+
+
+/**  우편번호 사용하기 메소드  **/
+function execDaumPostcode() {
+    new daum.Postcode(
+          {
+             oncomplete : function(data) {
+
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                if (data.userSelectedType === 'R') {
+                   fullAddr = data.roadAddress;
+
+                } else {
+                   fullAddr = data.jibunAddress;
+                }
+
+                if (data.userSelectedType === 'R') {
+
+                   if (data.bname !== '') {
+                      extraAddr += data.bname;
+                   }
+
+                   if (data.buildingName !== '') {
+                      extraAddr += (extraAddr !== '' ? ', '
+                            + data.buildingName : data.buildingName);
+                   }
+
+                   fullAddr += (extraAddr !== '' ? ' (' + extraAddr
+                         + ')' : '');
+                }
+
+                $('input[name=zipcode]').val( data.zonecode );
+                $('input[name=address]').val( fullAddr );
+                $('input[name=address]').focus();
+
+             }
+          }).open();
+ }

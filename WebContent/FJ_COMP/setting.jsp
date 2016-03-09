@@ -3,6 +3,7 @@
 
 <script src="/fj/FJ_COMP/comp.js"></script>
 
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <!-- variable.label -->
 <c:set var="lbl_password" value="비밀번호"/>

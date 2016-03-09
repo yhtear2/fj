@@ -66,7 +66,6 @@ $(function(){
 			}
 			// 서버가 종료될때 연결되는 메소드
 			ws.onclose = function(){
-				alert("서버 접속 종료");	
 			}
 		}
 	}

@@ -1,7 +1,9 @@
 package handler.recruit;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.recruit.RecruitDao;
+import dto.message.MessageDataBean;
 import dto.recruit.RecruitDataBean;
 import handler.Commandhandler;
 
@@ -112,6 +115,11 @@ public class RecruitWriteProHandler implements Commandhandler{
 		// 처리된거 페이지로 리턴
 		map.put("result", result);
 
+		/** 실시간 쪽지가 가도록 해보자!! **/
+		List<RecruitDataBean> email = recruitDao.getRecruitEmail(dto);
+		
+		
+		
 		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitWritePro");
 		return new ModelAndView("/FJ_MAIN/main", map);
@@ -128,4 +136,5 @@ public class RecruitWriteProHandler implements Commandhandler{
 		}
 		return result;
 	}
+
 }

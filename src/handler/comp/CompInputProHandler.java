@@ -43,13 +43,13 @@ public class CompInputProHandler implements Commandhandler {
 		dto.setTel(request.getParameter("tel_1") + "-" + request.getParameter("tel_2"));	// 전화번호
 		dto.setZipcode(request.getParameter("zipcode"));									// 우편번호
 		dto.setAddress(request.getParameter("address"));									// 주소
-		dto.setContent(request.getParameter("content"));										// 회사 소개
+		dto.setContent(request.getParameter("content"));									// 회사 소개
 		dto.setCapital(request.getParameter("capital"));									// 자본금
 		dto.setComp_type(request.getParameter("comp_type"));								// 기업업종
 		dto.setIncharge(request.getParameter("incharge"));									// 담당자
 		dto.setComp_reg_date(request.getParameter("comp_reg_date"));						// 회사 창립일
 		dto.setYear_sale(request.getParameter("year_sale"));								// 연매출
-		dto.setEmp_count(Integer.parseInt(request.getParameter("emp_count")));				// 사원수
+		dto.setEmp_count( (request.getParameter("emp_count") == null) ? 0 : Integer.parseInt(request.getParameter("emp_count")) );			// 사원수
 		dto.setLike_count(0);																// 좋아요 카운트
 		dto.setReg_date(new Timestamp( System.currentTimeMillis()));						// 입력 날짜
 		dto.setLast_date(new Timestamp( System.currentTimeMillis()));						// 수정 날짜

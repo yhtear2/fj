@@ -33,6 +33,12 @@ public class RecruitDBBean implements RecruitDao {
 		sqlSession.update("Recruit.addReadContent", recruit_id);
 		
 	}
+	@Override
+	public List<RecruitDataBean> getRecruitEmail(RecruitDataBean dto) {
+		sqlSession.selectList("Recruit.getRecruitEmail", dto);
+		return null;
+	}
+
 
 
 }

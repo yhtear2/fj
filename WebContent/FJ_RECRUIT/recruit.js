@@ -7,8 +7,10 @@ $(document).ready(function() {
 	});
 	$('.dropdown-toggle').dropdown();
 	
+	// 인풋에다가 담기
 	var content = $('input[name=content]').val();
 	$('#summernote').summernote('code', content);
+
 	
 });
 
@@ -60,3 +62,31 @@ function skill_result() {
 }
 
 
+// 날자를 계산해서 리스트에 남은 날자만 뿌리기 위해서..
+function dateCalculation (){
+	var today = new Date();
+	var dateString = $('input[name=end_date]').val();
+	var dateArray = dateString.split("-");  
+	var dateObj = new Date(dateArray[0], Number(dateArray[1])-1, dateArray[2]);  
+	var betweenDay = (today.getTime() - dateObj.getTime())/1000/60/60/24;
+	var bwd = parseInt(betweenDay).toString().substring(1)
+	if( bwd == 0 ){
+		bwd = "D-day";
+	} else if ( bwd < 0){
+		bwd = "채용종료";
+	}
+	
+	$('td[id=date1]').text( "D -" + bwd );
+	
+	
+}
+
+
+//메세지를 보내는 메소드
+function wsSendMassge(){
+	var msg =  $.cookie('msg');
+	if ( msg != null && msg != ""){
+		ws.send( msg );
+		$.cookie('msg', '');
+	}
+}

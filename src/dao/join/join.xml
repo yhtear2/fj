@@ -17,10 +17,16 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="dto.join.JoinDataBean">
-		insert into FJ_JOIN values(
-			#{email},
-			#{passwd},
-			#{name},			
+		insert into FJ_JOIN (
+			email,
+			passwd,
+			name,			
+			member_flag,
+			reg_date
+		) values(
+			#{email, jdbcType=VARCHAR},
+			#{passwd, jdbcType=VARCHAR},
+			#{name, jdbcType=VARCHAR},			
 			#{member_flag},
 			#{reg_date}
 		)

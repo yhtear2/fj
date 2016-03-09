@@ -57,13 +57,18 @@
 				</td>
 				<!-- 자격요건 -->
 				<td>
-					<c:if test="${dto.min_career == -1}">신입</c:if>
-					<c:if test="${dto.min_career == -2}">경력무관</c:if>
-					<c:if test="${dto.min_career != -1}">경력 ${dto.min_career}년↑</c:if>
+					<c:if test="${dto.max_career == -1}">신입</c:if>
+					<c:if test="${dto.max_career == -2}">경력무관</c:if>
+					<c:if test="${dto.max_career != -1}">경력 ${dto.min_career}년↑</c:if>
 				</td>
 				<!-- 마감일 -->
-				<td>
-					${dto.end_date}
+				<td id="date1">
+					<input type="hidden" name="end_date" value="${dto.end_date}">
+						<script type="text/javascript">
+							<!--
+								dateCalculation();
+							//-->
+					</script>
 				</td>
 				<!-- 조회수 -->
 				<td>

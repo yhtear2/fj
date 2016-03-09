@@ -11,4 +11,6 @@ public interface RecruitDao {
 	public int insertRecruit(RecruitDataBean dto);
 	public RecruitDataBean getContent( int recruit_id );
 	public void addReadContent( int recruit_id );
+	public List<RecruitDataBean> getRecruitEmail(RecruitDataBean dto);
 }
+

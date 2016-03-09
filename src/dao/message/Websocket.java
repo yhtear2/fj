@@ -30,7 +30,6 @@ public class Websocket {
     // 클라이언트가 처음 접속하면 연결(세션 생성)
     @OnOpen
     public void start(Session session) {
-    	System.out.println("클라이언트 접속됨 : "+session);
     	// 접속자마다 한개의 세션이 생성되어 데이터 통신수단으로 사용됨
         this.session = session;
         // 세션에서 memId 분리
@@ -60,7 +59,6 @@ public class Websocket {
     @OnClose
     public void end() {
         sessionMap.remove(this.session);
-        System.out.println("웹소켓 접속 종료됨");
     }
 
     // 현재 세션과 연결된 클라이언트로부터 메시지가 도착할 때마다 새로운 쓰레드가 실행되어 incoming()을 호출함
