@@ -48,7 +48,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			{
 				sqlSession.update("FJ_BOARD.updateReply", dto);
 				re_step ++;
-				re_count ++;
+			//	re_count ++;
 			}
 		}
 	

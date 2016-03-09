@@ -38,7 +38,14 @@ public class ContentHandler implements Commandhandler {
 		String pageNum = request.getParameter( "pageNum" );
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 		int number = Integer.parseInt( request.getParameter( "number" ) );
-		 
+		int count = 0;
+		int currentPage = 0;
+		int pageSize = 10;
+		
+		currentPage = Integer.parseInt( pageNum );
+		count = dao.getCount();
+		number = count - ( currentPage - 1 ) * pageSize;
+		
 		BoardDataBean dto = dao.getArticle( board_num );  
 	//	BoardCommentDataBean cdto = dao.getCommentList(board_num);
 		int addresult = dao.addCount(board_num); 
@@ -94,6 +101,12 @@ public class ContentHandler implements Commandhandler {
 		}  */ 
 		
 		
+		request.setAttribute( "count", count );
+		request.setAttribute( "number", number );
+		request.setAttribute( "pageNum", pageNum );
+		request.setAttribute( "currentPage", currentPage );
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>(); 
 		
 		List<BoardCommentDataBean> result = dao.getCommentList(board_num);
@@ -103,6 +116,7 @@ public class ContentHandler implements Commandhandler {
 			map.put("tags", tags);
 		} 
 		  
+		map.put("count", count);
 		map.put("number", number);
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num); 

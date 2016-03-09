@@ -32,7 +32,7 @@
 	</update>
 	
 	<!-- 댓글 수 증가부분 -->
-	<update id="reCount" parameterType="Integer">  
+	<update id="reCount" parameterType="Map">   
 		update fj_board_free set re_count=re_count+1 where board_num=#{board_num} 
 	</update>
 	
@@ -94,12 +94,15 @@
 	   
 	<!-- 댓글 리스트 불러오기  -->
 	<select id="getCommentList" resultType="dto.board.BoardCommentDataBean" parameterType="Map" >
-		select board_num, email, reg_date, recontent, recom_count, re_step from fj_board_free_comment where board_num=#{board_num} order by board_num desc, re_step asc
+		select board_num, email, reg_date, recontent, recom_count, re_step from fj_board_free_comment where board_num=#{board_num} order by board_num asc
 	</select> 
 	     
 	<select id="getComment" resultType="dto.board.BoardCommentDataBean" parameterType="Integer">
 		select * from fj_board_free_comment where board_num=#{board_num} 
-	</select>     
+	</select> 
+	
+	<!-- 검색  -->  
+	  
 </mapper>
       
 

@@ -102,6 +102,7 @@
 		                               		<a href="asd" class="list-group-item-text item-tag label label-gray">
 		                                    ${tag}     
 		                                   	</a>
+		                                   	&nbsp;  
 	                          			</c:forEach> 
                           			</c:if>        
                                 </div>

@@ -93,7 +93,7 @@
 								class="list-group-item-text item-tag label label-gray">
 								 ${tag}
 	                             </a>
-	                             
+	                             &nbsp; 
    							</c:forEach> 
 						</div>
 						
@@ -256,8 +256,9 @@
                   
                     	
                     	<!-- 댓글 달았을 때 보이는 곳 (잠정보류) -->
-                    	 
-                    	
+                    	<!-- 댓글을 리스트 형식으로 출력하기 위해 jstl c태그의 if,forEach 사용  -->
+                    	<c:if test="${count != 0}">
+                    	<c:forEach var="dto" items="${result}">
                         <li class="list-group-item note-item clearfix" id="note-1034847">
                             <form action="/content/update/1034847" method="post" data-id="1034847" class="note-update-form"><input type="hidden" name="_method" value="PUT" id="_method">
                   			<div class="content-body panel-body pull-left">
@@ -282,7 +283,7 @@
 								
 								<!-- 댓글 남긴날짜 -->
 								  
-								<fmt:formatDate value="${reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/> 
+								<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/> 
 								
 							</div>
 						</div>
@@ -291,13 +292,16 @@
 						<!-- 댓글남겨지는 부분 (우선 content 로 해놈..) --> 
 						
 						<fieldset class="form">
-										<c:forEach var="dto" items="${result}">
+										
 										
                                         <article id="note-text-1034847" class="list-group-item-text note-text" >
                                         ${dto.recontent}
                                         </article>
-                                        </c:forEach>
+                                        
+                                       
                                     </fieldset>
+                                    
+                                    
                                 </div>
 							       
 								<!-- 좋아요 버튼부분 -->
@@ -328,6 +332,7 @@
                                  
                                 <div id="content-function-cog-1034847" class="content-function-cog">
                                     <div class="dropdown">
+                                     
                                         <a href="javascript://" data-toggle="dropdown"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="boardreplyView.do?board_num=${dto.board_num}&pageNum=${pageNum}" class="edit"><i class="fa fa-edit fa-fw"></i>${btn_modify}</a></li> 
@@ -350,16 +355,22 @@
                                         <p><a href="javascript://" class="btn btn-default btn-wide note-edit-cancel-btn">취소</a></p>
                                         <p><input type="submit" name="create" class="btn btn-success btn-wide" value="저장" id="create"></p>
                                     </div>
+                                    
                                 </div> 
+                                
                               	</form> 
-                              
+                              </li>
+                              </c:forEach> 
+                              </c:if>
                     <!-- 댓글 작성하는 부분  (경로부분 보류) -->
                     <li class="list-group-item note-form clearfix">
                         
                         	 
                             <form action="/fj/boardreplyPro.do" method="post" class="note-create-form" onsubmit="boardreplyFormCkeck()"> 
-                            		 
-                                	<input type="hidden" name="board_num" value="${dto.board_num}">
+                            		<!--  
+                           			<input type="hidden" name="board_num" value="${board_num}" id="board_num">
+                           			 <input type="hidden" name="pageNum" value="${pageNum}" id="pageNum">  -->
+                                  	<input type="hidden" name="board_num" value="${dto.board_num}">  
                                 	<!--  
                                 	<input type="hidden" name="re_step" value="${dto.re_step}">
 									<input type="hidden" name="re_count" value="${dto.re_count}"> 
