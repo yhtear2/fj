@@ -4,7 +4,6 @@
 <%@ include file="/defaultSetting.jsp"%>
 
 
-<%=request.getSession().getAttribute("history_id")%>
 ${sessionScope.history_id}	
 
 <c:if test="${result == 0}">

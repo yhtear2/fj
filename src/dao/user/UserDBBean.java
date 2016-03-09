@@ -1,7 +1,11 @@
 package dao.user;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
+import dto.recruit.RecruitDataBean;
 import dto.user.CareerDataBean;
 import dto.user.IntroduceDataBean;
 import dto.user.SchoolDataBean;
@@ -10,7 +14,22 @@ import dao.SqlMapClient;
 
 public class UserDBBean implements UserDao {
 	
+	
 	private SqlSession sqlSession = SqlMapClient.getSqlSession();
+	
+	public int getUserCount() {
+		return sqlSession.selectOne("User.getUserCount");
+	}
+	
+	@Override
+	public UserDataBean getContent(int user_history_id) {
+		return sqlSession.selectOne("User.getContent", user_history_id);
+	}	
+	
+	@Override
+	public List<UserDataBean> getUserList(Map<String, Integer> map) {
+		return sqlSession.selectList("User.getUserList", map);
+	}
 	
 	public int insertArticle( UserDataBean dto ) {
 				

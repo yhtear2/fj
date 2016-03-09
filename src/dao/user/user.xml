@@ -5,6 +5,26 @@
 	
 <mapper namespace="User">
 
+	<select id="getUserCount" resultType="java.lang.Integer">
+		SELECT 	COUNT(*)
+		FROM 	FJ_User
+	</select>
+
+	<select id="getUserList" parameterType="Map" resultType="dto.user.UserDataBean">
+		SELECT 	user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
+				skill,photo,reg_date,last_date,project,r
+		FROM 	( select user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
+				skill,photo,reg_date,last_date,project,rownum r 
+		FROM	FJ_User  ORDER BY last_date desc ) 
+		WHERE	r &gt;= #{start} and r &lt;= #{end}		
+	</select>
+	
+	<select id="getContent" parameterType="Integer" resultType="dto.user.UserDataBean">
+		SELECT 	* 
+		From	FJ_User
+		Where	user_history_id = #{user_history_id}
+	</select>
+
 	<insert id="insertArticle" parameterType="dto.user.UserDataBean"  keyColumn="user_history_id" keyProperty="history_id" useGeneratedKeys="true">
 	
 	

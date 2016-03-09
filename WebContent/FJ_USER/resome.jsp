@@ -40,9 +40,7 @@
 	   
 	  		var lo_table = document.getElementById("license_table");
 	   	    var license_cnt = lo_table.rows.length-2;
-	   	   
-	   	   alert(license_cnt);
-	   	   
+	   	   	   	   
 	       $('input[name=license_cnt_hidden]').val(license_cnt);
 
 	}
