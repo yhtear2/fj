@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.recruit.RecruitDao;
 import dto.message.MessageDataBean;
 import dto.recruit.RecruitDataBean;
+import dto.user.UserDataBean;
 import handler.Commandhandler;
 
 @Controller
@@ -116,8 +117,15 @@ public class RecruitWriteProHandler implements Commandhandler{
 		map.put("result", result);
 
 		/** 실시간 쪽지가 가도록 해보자!! **/
-		List<RecruitDataBean> email = recruitDao.getRecruitEmail(dto);
-		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		String skills[] = dto.getSkill().split("/");
+		for (int i=0; i<skills.length; i++){
+			maps.put("skill_"+i, "%"+skills[i]+"%");
+		}
+		maps.put("max_salary", dto.getMax_salary() );
+		maps.put("min_salary", dto.getMin_salary() );
+		List<UserDataBean> email = recruitDao.getRecruitEmail(maps);
+		//System.out.println("리턴받은 리스트의 사이즈 : " +email.size());
 		
 		
 		map.put("menu", "recruit");

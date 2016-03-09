@@ -66,6 +66,13 @@
 		SET readcount + 1 
 		Where	recruit_id = #{recruit_id}
 	</update>
+	
+	<select id="getRecruitEmail" parameterType="Map" resultType="dto.user.UserDataBean">
+		SELECT 	* 
+		From	FJ_USER
+		Where	#{min_salary} &gt;= want_salary or want_salary &lt;= #{max_salary}
+		<!-- And		skill like '%#{skill}%' -->
+	</select>
 </mapper>	
 
 

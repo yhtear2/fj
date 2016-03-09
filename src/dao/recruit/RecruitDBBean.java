@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapClient;
 import dto.recruit.RecruitDataBean;
+import dto.user.UserDataBean;
 
 public class RecruitDBBean implements RecruitDao {
 	private SqlSession sqlSession = SqlMapClient.getSqlSession();
@@ -34,8 +35,8 @@ public class RecruitDBBean implements RecruitDao {
 		
 	}
 	@Override
-	public List<RecruitDataBean> getRecruitEmail(RecruitDataBean dto) {
-		sqlSession.selectList("Recruit.getRecruitEmail", dto);
+	public List<UserDataBean> getRecruitEmail(Map<String, Object> map) {
+		sqlSession.selectList("Recruit.getRecruitEmail", map);
 		return null;
 	}
 
