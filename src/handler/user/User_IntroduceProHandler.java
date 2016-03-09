@@ -1,5 +1,7 @@
 package handler.user;
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,30 +25,36 @@ public class User_IntroduceProHandler implements Commandhandler {
 	@RequestMapping( "/introduce_Pro" )	
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+		Map<String, Object> map = new HashMap<String, Object>();
+		// 넘오는거 한글처리
 		request.setCharacterEncoding( "utf-8" );
 		
+		// 데이터 받기
+		int cnt = Integer.parseInt(request.getParameter("cnt"));
+		//int user_history_id = Integer.parseInt( request.getParameter("user_history_id"));
+		
+		// 바구니 생성
 		IntroduceDataBean dto = new IntroduceDataBean();
 		
-		String intro_title = request.getParameter("sub_name_");
-		String intro_contents = request.getParameter("contents0");
-				
-		System.out.println(intro_contents);
-		//for(int i=0; i<=intro_title.length; i++) {
-						
-			dto.setIntro_title(intro_title);
-
-			dto.setIntro_contents(intro_contents);
-
+		
+		for( int i=0; i<cnt; i++){
+			//dto.setUser_history_id(user_history_id);
+			dto.setIntro_title(request.getParameter("sub_name_"+i));
+			dto.setIntro_contents(request.getParameter("contents"+i));
 			dto.setIntro_reg_date(new Timestamp(System.currentTimeMillis()));
 			dto.setIntro_last_date(new Timestamp(System.currentTimeMillis()));
-
-			int result = dao.insertArticle_introduce( dto );	
-
-			request.setAttribute( "result", result );
+			System.out.println("제목 : " + request.getParameter("sub_name_"+i));
+			System.out.println("내용 : " + request.getParameter("contents"+i));
 			
-	//	}
-		return new ModelAndView( "/FJ_USER/introduce_Pro" );
+			// 여기에서 디비로 바로바로 넣으면 될듯!!
+			
+		}
+	
+
+		
+		map.put("page", "/FJ_USER/introduce_Pro");
+		
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
 

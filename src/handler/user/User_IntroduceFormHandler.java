@@ -1,5 +1,8 @@
 package handler.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +20,12 @@ public class User_IntroduceFormHandler implements Commandhandler{
 	@RequestMapping( "/introduceForm" )
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 
-		return new ModelAndView( "/FJ_USER/introduceForm" );
+		
+		map.put("page", "/FJ_USER/introduceForm");
+		
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
