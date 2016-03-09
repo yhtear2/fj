@@ -372,6 +372,8 @@ CREATE TABLE FJ_User
 	user_history_id number NOT NULL,
 	-- email : 이메일
 	email varchar2(50),
+	-- resome_title
+	resome_title varchar2(50),
 	-- eng_name : 영문이름 
 	eng_name varchar2(20) NOT NULL,
 	-- kor_name : 한글이름 
@@ -384,24 +386,22 @@ CREATE TABLE FJ_User
 	address varchar2(100) NOT NULL,
 	-- army : 병역사항 
 	army varchar2(100) NOT NULL,
+	-- want_salary : 희망 연봉 
+	want_salary number NOT NULL,
 	-- license : 자격증 
 	license varchar2(500) NOT NULL,
 	-- skill : 보유기술 
 	skill varchar2(500) NOT NULL,
-	-- project : 프로젝트 
-	project varchar2(100) NOT NULL,
-	-- resome_title
-	resome_title varchar2(50),
 	-- photo
 	photo varchar2(100),
-	-- want_salary : 희망 연봉 
-	want_salary number NOT NULL,
-	-- user_ref
-	user_ref number,
 	-- reg_date : 작성일자 
 	reg_date date NOT NULL,
-	-- career_last_date : 수정일자 
-	career_last_date date NOT NULL,
+	-- project : 프로젝트 
+	project varchar2(100) NOT NULL,
+	-- user_ref
+	user_ref number,
+	-- last_date
+	last_date date,
 	PRIMARY KEY (user_history_id)
 );
 
@@ -615,21 +615,21 @@ COMMENT ON COLUMN FJ_School.school_ref IS 'school_ref';
 COMMENT ON TABLE FJ_User IS 'FJ_User';
 COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_User.email IS 'email : 이메일';
+COMMENT ON COLUMN FJ_User.resome_title IS 'resome_title';
 COMMENT ON COLUMN FJ_User.eng_name IS 'eng_name : 영문이름 ';
 COMMENT ON COLUMN FJ_User.kor_name IS 'kor_name : 한글이름 ';
 COMMENT ON COLUMN FJ_User.tel IS 'tel : 전화번호 ';
 COMMENT ON COLUMN FJ_User.birth IS 'birth : 생년월일 ';
 COMMENT ON COLUMN FJ_User.address IS 'address : 주소 ';
 COMMENT ON COLUMN FJ_User.army IS 'army : 병역사항 ';
+COMMENT ON COLUMN FJ_User.want_salary IS 'want_salary : 희망 연봉 ';
 COMMENT ON COLUMN FJ_User.license IS 'license : 자격증 ';
 COMMENT ON COLUMN FJ_User.skill IS 'skill : 보유기술 ';
-COMMENT ON COLUMN FJ_User.project IS 'project : 프로젝트 ';
-COMMENT ON COLUMN FJ_User.resome_title IS 'resome_title';
 COMMENT ON COLUMN FJ_User.photo IS 'photo';
-COMMENT ON COLUMN FJ_User.want_salary IS 'want_salary : 희망 연봉 ';
-COMMENT ON COLUMN FJ_User.user_ref IS 'user_ref';
 COMMENT ON COLUMN FJ_User.reg_date IS 'reg_date : 작성일자 ';
-COMMENT ON COLUMN FJ_User.career_last_date IS 'career_last_date : 수정일자 ';
+COMMENT ON COLUMN FJ_User.project IS 'project : 프로젝트 ';
+COMMENT ON COLUMN FJ_User.user_ref IS 'user_ref';
+COMMENT ON COLUMN FJ_User.last_date IS 'last_date';
 
 
 

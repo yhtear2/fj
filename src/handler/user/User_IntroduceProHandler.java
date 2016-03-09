@@ -37,7 +37,7 @@ public class User_IntroduceProHandler implements Commandhandler {
 		IntroduceDataBean dto = new IntroduceDataBean();
 		
 		
-		for( int i=0; i<cnt; i++){
+		for( int i=0; i<cnt+1; i++){
 			//dto.setUser_history_id(user_history_id);
 			dto.setIntro_title(request.getParameter("sub_name_"+i));
 			dto.setIntro_contents(request.getParameter("contents"+i));

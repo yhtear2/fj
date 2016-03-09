@@ -1,5 +1,9 @@
 package dao.join;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -146,6 +150,24 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 		}
         
 		return scontent;
+	}
+
+	@Override
+	public int getMemberCount(int member_flag) {
+		return sqlSession.selectOne("Join.getMemberCount", member_flag);
+		
+	}
+
+	@Override
+	public ArrayList<JoinDataBean> getMemberList(int start, int end, int member_flag) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end); 
+		map.put("member_flag", member_flag);
+		
+		List<JoinDataBean> list = null;
+		list = sqlSession.selectList("Join.getMemberList", map);
+		return  (ArrayList<JoinDataBean>) list;
 	}
 
 }

@@ -39,6 +39,19 @@
 	<delete id="deleteMember" parameterType="String">
 		delete from FJ_JOIN where email=#{email}
 	</delete>
+	
+	<select id="getMemberCount" parameterType="Integer" resultType="Integer">
+		Select 	count(*) 
+		From	FJ_JOIN
+		Where	member_flag = #{member_flag}
+	</select>
+	
+	<select id="getMemberList" parameterType="Map" resultType="dto.join.JoinDataBean">
+		Select	 		 email,passwd,name,member_flag,reg_date,r 
+		From	( select email,passwd,name,member_flag,reg_date,rownum r  
+		From	FJ_JOIN where member_flag = #{member_flag} order by reg_date desc ) 
+		Where	r &gt;= #{start} and r &lt;= #{end}
+	</select>
 </mapper>	
 
 

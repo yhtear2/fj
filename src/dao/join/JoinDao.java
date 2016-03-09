@@ -1,5 +1,7 @@
 package dao.join;
 
+import java.util.ArrayList;
+
 import dto.join.JoinDataBean;
 
 public interface JoinDao {
@@ -11,4 +13,8 @@ public interface JoinDao {
 	public JoinDataBean getMember( String email );
 	public int updateMember( JoinDataBean dto );
 	public String emailconfirm( String email );
+	
+	// 관리자용 겟하는거
+	public int getMemberCount(int member_flag);
+	public ArrayList<JoinDataBean> getMemberList(int start, int end, int member_flag);
 }
