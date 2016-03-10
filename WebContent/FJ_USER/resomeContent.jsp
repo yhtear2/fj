@@ -31,7 +31,7 @@
    </tr>
    <tr>
       <th>전화번호</th>
-      <td>
+      <td class="form-control" style="text-align: center; width: 650px">
          <c:if test='${dto.tel != null && dto.tel != "" }'>										
 			<c:set var="e" value='${fnc:split( dto.tel, "-" )}'/>	
 <%-- 			<input class="input" style="width:100px; border:none" name="tel1" maxlength="25" value="${e[0]}"> - 
@@ -49,24 +49,23 @@
    
    <tr>
       <th> 병역사항 </th>
-      <td>
+      <td class="form-control" style="width:620px; display: inline-block;" >
       	<c:if test='${dto.army != null && dto.army != "" }'>										
 			<c:set var="e" value='${fnc:split( dto.army, "/" )}'/>	
-            <select class="" style="width: 120px" name="army1" id="army1">
+            <select class="form-control" style="width: 120px;display: inline-block;" name="army1" id="army1">
                <option>${e[0]}</option>      
-            </select>
-            <input class="" style="width:100px" name="army2" value="${e[1]}">			
-			<input class="" style="width:100px" name="army3" value="${e[2]}">
-            <select class="" style="width: 120px" name="army4" id="army4">
+            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 복무기간 :  ${e[1]}  ${e[2]}  <br>
+
+            <select class="form-control" style="display: inline-block;width:120px" name="army4" id="army4">
                <option>${e[3]}</option>      
             </select>
-            <select class="" style="width: 120px" name="army5" id="army5">
+            <select class="form-control" style="display: inline-block;width: 120px" name="army5" id="army5">
                <option>${e[4]}</option>      
             </select>
-            <select class="" style="width: 120px" name="army6" id="army6">
+            <select class="form-control" style="display: inline-block;width: 120px" name="army6" id="army6">
                <option>${e[5]}</option>      
             </select>
-            <input class="input" style="width:100px" name="army7" maxlength="25" value="${e[6]}">
+			${e[6]}
 		</c:if>
 		</td>
 	</tr>
@@ -83,19 +82,22 @@
 </table>
 
    <table id="license_table" class="table table-hover" style="width:800px">
-      <tr>
-         <th style="width:230px">자격증 이름</th>
-         <th style="width:230px"> 발행일자</th>
-         <th style="width:230px">발행일처</th>
-      </tr>
-      <tr>
-			<td style="width:800px"  colspan="2">
+      <tr style="display: inline-block; width:800px">
+         <th style="display: inline-block; width:34%">자격증 이름</th>
+         <th style="display: inline-block; width:30%"> 발행일자</th>
+         <th style="display: inline-block; width:30%">발행일처</th>
+	</tr>
+	<tr style="display: inline-block; width:800px">
+			<td style="display: inline-block; width:800px"  colspan="2">
       		<c:if test='${dto.license != null && dto.license != "" }'>	
       		<c:forTokens var="e" items='${dto.license}' delims="/">
       			<c:forTokens var="k" items='${e}' delims="-">
-      				  <input type="text" name="license10" id="license10"   style="width:180px; border:none;" value="${k}">
-      			</c:forTokens>		
+      				  <input class="form-control" type="text" name="license10" id="license10"   style="display: inline-block; width:180px; border:none;" value="${k}">
+      				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       			
+      			</c:forTokens>		
+      				  <br>
       		</c:forTokens>
 
         	 </c:if>
@@ -117,9 +119,7 @@
 
    <tr>
       <th style="width:100px">재학기간</th>
-         <td style="width: 520px">
-            <input class="" type="text" style="width:150px; border:none; " name="highschool_start_date" id="highschool_start_date" value="${sc_dto.school_start_date_high}"> ~
-            <input class="" type="text" style="width:150px; border:none;" name="highschool_last_date" id="highschool_last_date" value="${sc_dto.school_last_date_high}">
+         		 <td class="form-control" style="text-align: center; width: 520px"> ${sc_dto.school_start_date_high} - ${sc_dto.school_last_date_high}
             <select class="" style="width: 80px;" name="highschool_college" id="highschool_college">
                <option>${sc_dto.school_college_high}</option>
             </select>         
