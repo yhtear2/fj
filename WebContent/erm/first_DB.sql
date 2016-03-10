@@ -196,7 +196,7 @@ CREATE TABLE FJ_Introduce
 	intro_contents long,
 	-- intro_reg_date : 작성일자
 	intro_reg_date date,
-	-- intro_last_date : 수정일자
+	-- intro_last_date : 수정일자  
 	intro_last_date date,
 	PRIMARY KEY (intro_id)
 );
@@ -371,8 +371,8 @@ CREATE TABLE FJ_School
 	school_ref number,
 	-- reg_date : 가입일자
 	reg_date date,
-	-- intro_last_date : 수정일자
-	intro_last_date date,
+	-- last_date : 수정일자
+	last_date date,
 	PRIMARY KEY (school_id)
 );
 
@@ -553,7 +553,7 @@ COMMENT ON COLUMN FJ_Introduce.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_Introduce.intro_title IS 'intro_title : 제목';
 COMMENT ON COLUMN FJ_Introduce.intro_contents IS 'intro_contents : 내용';
 COMMENT ON COLUMN FJ_Introduce.intro_reg_date IS 'intro_reg_date : 작성일자';
-COMMENT ON COLUMN FJ_Introduce.intro_last_date IS 'intro_last_date : 수정일자';
+COMMENT ON COLUMN FJ_Introduce.intro_last_date IS 'intro_last_date : 수정일자  ';
 COMMENT ON TABLE FJ_JOIN IS 'Fj_member';
 COMMENT ON COLUMN FJ_JOIN.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_JOIN.passwd IS 'passwd : 비밀번호';
@@ -629,7 +629,7 @@ COMMENT ON COLUMN FJ_School.school_start_date_college IS 'school_start_date_coll
 COMMENT ON COLUMN FJ_School.school_last_date_college IS 'school_last_date_college';
 COMMENT ON COLUMN FJ_School.school_ref IS 'school_ref';
 COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : 가입일자';
-COMMENT ON COLUMN FJ_School.intro_last_date IS 'intro_last_date : 수정일자';
+COMMENT ON COLUMN FJ_School.last_date IS 'last_date : 수정일자';
 COMMENT ON TABLE FJ_User IS 'FJ_User';
 COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_User.email IS 'email : 이메일';
