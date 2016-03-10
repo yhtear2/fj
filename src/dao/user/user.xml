@@ -34,23 +34,51 @@
 	
 
 	<insert id="insertArticle" parameterType="dto.user.UserDataBean"  keyColumn="user_history_id" keyProperty="history_id" useGeneratedKeys="true">
-	
-	
-		insert into FJ_User values( FJ_User_seq.NEXTVAL,#{email, jdbcType=VARCHAR},#{eng_name, jdbcType=VARCHAR}, #{kor_name, jdbcType=VARCHAR},
-		#{tel, jdbcType=VARCHAR}, #{birth, jdbcType=VARCHAR}, #{address, jdbcType=VARCHAR}, #{army, jdbcType=VARCHAR}, #{want_salary ,jdbcType=INTEGER},
-		#{license, jdbcType=VARCHAR}, #{skill, jdbcType=VARCHAR},#{photo, jdbcType=VARCHAR}, #{reg_date}, #{last_date}, #{project, jdbcType=VARCHAR},
-		#{resome_title, jdbcType=VARCHAR}, #{ref ,jdbcType=INTEGER})
+		insert into FJ_User(
+			user_history_id,			email,
+			eng_name,					kor_name,
+			tel,						birth, 
+			address,					army,
+			want_salary,				license,
+			skill,						photo,
+			reg_date,				 	last_date,
+			project,					resome_title,
+			user_ref
+		) values( 
+			FJ_User_seq.NEXTVAL,				#{email, jdbcType=VARCHAR},
+			#{eng_name, jdbcType=VARCHAR}, 		#{kor_name, jdbcType=VARCHAR},
+			#{tel, jdbcType=VARCHAR}, 			#{birth, jdbcType=VARCHAR}, 
+			#{address, jdbcType=VARCHAR}, 		#{army, jdbcType=VARCHAR}, 
+			#{want_salary ,jdbcType=INTEGER},	#{license, jdbcType=VARCHAR}, 
+			#{skill, jdbcType=VARCHAR},			#{photo, jdbcType=VARCHAR}, 
+			#{reg_date}, 						#{last_date}, 
+			#{project, jdbcType=VARCHAR},		#{resome_title, jdbcType=VARCHAR}, 
+			#{user_ref,jdbcType=INTEGER}
+		)
 	</insert>
 	
 
 	<insert id="insertArticle_career" parameterType="dto.user.UserDataBean" >
-
-		insert into FJ_Career values( FJ_Career_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{career_sort, jdbcType=VARCHAR}, #{career_comp_name, jdbcType=VARCHAR},
-		#{career_start_date, jdbcType=VARCHAR}, #{career_last_date, jdbcType=VARCHAR}, #{career_sort_date, jdbcType=VARCHAR}, #{career_kind, jdbcType=VARCHAR}, #{career_department, jdbcType=VARCHAR}, #{career_position1,jdbcType=VARCHAR},
-		#{career_position2, jdbcType=VARCHAR}, #{career_salary, jdbcType=INTEGER},#{career_resign, jdbcType=VARCHAR},#{career_work, jdbcType=VARCHAR},
-		#{career_content, jdbcType=VARCHAR})
+		insert into FJ_Career (
+			CAREER_ID,				user_history_id,
+			career_sort,			career_comp_name,
+			career_start_date, 		career_last_date, 
+			career_sort_date, 		career_kind, 
+			career_department, 		career_position1,
+			career_position2, 		career_salary,
+			career_resign,			career_work,
+			career_content
+		) values( 
+			FJ_Career_seq.NEXTVAL,							#{user_history_id, jdbcType=INTEGER},
+			#{career_sort, jdbcType=VARCHAR},				#{career_comp_name, jdbcType=VARCHAR},
+			#{career_start_date, jdbcType=VARCHAR}, 		#{career_last_date, jdbcType=VARCHAR}, 
+			#{career_sort_date, jdbcType=VARCHAR}, 			#{career_kind, jdbcType=VARCHAR}, 
+			#{career_department, jdbcType=VARCHAR}, 		#{career_position1,jdbcType=VARCHAR},
+			#{career_position2, jdbcType=VARCHAR}, 			#{career_salary, jdbcType=INTEGER},
+			#{career_resign, jdbcType=VARCHAR},				#{career_work, jdbcType=VARCHAR},
+			#{career_content, jdbcType=VARCHAR}
+		)
 	</insert>
-
 
 	<insert id="insertArticle_introduce" parameterType="dto.user.IntroduceDataBean" >
 
@@ -60,11 +88,27 @@
 	
 
 	<insert id="insertArticle_sc" parameterType="dto.user.SchoolDataBean">
-		insert into FJ_School values (FJ_School_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{school_kind,jdbcType=VARCHAR},
-		#{school_start_date_high,jdbcType=VARCHAR},#{school_last_date_high,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
-		#{school_start_date_college,jdbcType=VARCHAR},#{school_last_date_college,jdbcType=VARCHAR},
-		#{school_college2,jdbcType=VARCHAR},#{school_college_high,jdbcType=VARCHAR},#{school_name_high,jdbcType=VARCHAR},#{school_name_college,jdbcType=VARCHAR},
-		#{highschool_kind,jdbcType=VARCHAR},#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date}, #{school_ref ,jdbcType=INTEGER})
+		insert into FJ_School(
+			SCHOOL_ID,					user_history_id,
+			school_kind,				school_start_date_high,
+			school_last_date_high,		school_college1,
+			school_start_date_college,	school_last_date_college,
+			school_college2,			school_college_high,
+			school_name_high,			school_name_college,
+			highschool_kind,			school_major,
+			school_rank,				reg_date,
+			last_date,					school_ref
+		) values (
+			FJ_School_seq.NEXTVAL,							#{user_history_id, jdbcType=INTEGER},
+			#{school_kind,jdbcType=VARCHAR},				#{school_start_date_high,jdbcType=VARCHAR},
+			#{school_last_date_high,jdbcType=VARCHAR},		#{school_college1,jdbcType=VARCHAR},
+			#{school_start_date_college,jdbcType=VARCHAR},	#{school_last_date_college,jdbcType=VARCHAR},
+			#{school_college2,jdbcType=VARCHAR},			#{school_college_high,jdbcType=VARCHAR},
+			#{school_name_high,jdbcType=VARCHAR},			#{school_name_college,jdbcType=VARCHAR},
+			#{highschool_kind,jdbcType=VARCHAR},			#{school_major,jdbcType=VARCHAR},
+			#{school_rank,jdbcType=VARCHAR},				#{reg_date},
+			#{last_date}, 									#{school_ref ,jdbcType=INTEGER}
+		)
 	</insert>
 
 	<select id="getUser_history_id" parameterType="Integer" resultType="dto.user.UserDataBean">

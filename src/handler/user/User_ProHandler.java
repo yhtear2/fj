@@ -79,7 +79,7 @@ public class User_ProHandler implements Commandhandler {
 		dto.setProject(project);
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
-		dto.setRef(1);
+		dto.setUser_ref(1);
 		String license = null;
 
 		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt_hidden"));
@@ -118,11 +118,7 @@ public class User_ProHandler implements Commandhandler {
 		
 		session.setAttribute("history_id",dto.getHistory_id());
 		
-		
-		System.out.println(dto.getHistory_id());
-		
 		map.put("result", result);
-
 		map.put("page", "/FJ_USER/resome_Pro");
 		
 

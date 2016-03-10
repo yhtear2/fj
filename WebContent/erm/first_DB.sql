@@ -112,30 +112,34 @@ CREATE TABLE FJ_Career
 	career_id varchar2(30) NOT NULL,
 	-- user_history_id : 이력서 ID
 	user_history_id number,
+	-- career_sort
+	career_sort varchar2(30),
 	-- career_comp_name : 회사 이름 
-	career_comp_name varchar2(15),
-	-- content : 내용 
-	content varchar2(4000),
+	career_comp_name varchar2(50),
+	-- career_start_date
+	career_start_date varchar2(50),
+	-- career_last_date : 수정일자 
+	career_last_date varchar2(50),
+	-- career_sort_date
+	career_sort_date varchar2(50),
 	-- career_position1 : 직책 
 	career_position1 varchar2(20),
 	-- career_position2
 	career_position2 varchar2(20),
-	-- reg_date : 가입일자
-	reg_date date,
-	-- career_last_date : 수정일자 
-	career_last_date date,
 	-- career_salary
 	career_salary number,
 	-- career_kind
 	career_kind varchar2(10),
-	-- career_sort
-	career_sort varchar2(15),
+	-- CAREER_CONTENT : 내용 
+	CAREER_CONTENT varchar2(4000),
 	-- career_resign
 	career_resign varchar2(50),
 	-- career_work
 	career_work varchar2(50),
 	-- career_department
 	career_department varchar2(30),
+	-- reg_date : 가입일자
+	reg_date date,
 	PRIMARY KEY (career_id)
 );
 
@@ -265,8 +269,8 @@ CREATE TABLE FJ_Recruit
 	email varchar2(50),
 	-- title : 제목 
 	title varchar2(100),
-	-- content : 내용 
-	content varchar2(4000),
+	-- CAREER_CONTENT : 내용 
+	CAREER_CONTENT varchar2(4000),
 	-- name : 회사이름
 	name varchar2(100),
 	-- skill : 보유기술 
@@ -512,18 +516,20 @@ COMMENT ON COLUMN FJ_Board_Free_Comment.recom_count IS 'recom_count : 좋아요 수 
 COMMENT ON TABLE FJ_Career IS 'FJ_Career';
 COMMENT ON COLUMN FJ_Career.career_id IS 'career_id : 경력관리 ID ';
 COMMENT ON COLUMN FJ_Career.user_history_id IS 'user_history_id : 이력서 ID';
+COMMENT ON COLUMN FJ_Career.career_sort IS 'career_sort';
 COMMENT ON COLUMN FJ_Career.career_comp_name IS 'career_comp_name : 회사 이름 ';
-COMMENT ON COLUMN FJ_Career.content IS 'content : 내용 ';
+COMMENT ON COLUMN FJ_Career.career_start_date IS 'career_start_date';
+COMMENT ON COLUMN FJ_Career.career_last_date IS 'career_last_date : 수정일자 ';
+COMMENT ON COLUMN FJ_Career.career_sort_date IS 'career_sort_date';
 COMMENT ON COLUMN FJ_Career.career_position1 IS 'career_position1 : 직책 ';
 COMMENT ON COLUMN FJ_Career.career_position2 IS 'career_position2';
-COMMENT ON COLUMN FJ_Career.reg_date IS 'reg_date : 가입일자';
-COMMENT ON COLUMN FJ_Career.career_last_date IS 'career_last_date : 수정일자 ';
 COMMENT ON COLUMN FJ_Career.career_salary IS 'career_salary';
 COMMENT ON COLUMN FJ_Career.career_kind IS 'career_kind';
-COMMENT ON COLUMN FJ_Career.career_sort IS 'career_sort';
+COMMENT ON COLUMN FJ_Career.CAREER_CONTENT IS 'CAREER_CONTENT : 내용 ';
 COMMENT ON COLUMN FJ_Career.career_resign IS 'career_resign';
 COMMENT ON COLUMN FJ_Career.career_work IS 'career_work';
 COMMENT ON COLUMN FJ_Career.career_department IS 'career_department';
+COMMENT ON COLUMN FJ_Career.reg_date IS 'reg_date : 가입일자';
 COMMENT ON TABLE FJ_Comp IS 'FJ_Comp';
 COMMENT ON COLUMN FJ_Comp.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Comp.address IS 'address : 주소 ';
@@ -576,7 +582,7 @@ COMMENT ON TABLE FJ_Recruit IS 'FJ_Recruit';
 COMMENT ON COLUMN FJ_Recruit.recruit_id IS 'recruit_id : 채용게시판 ID ';
 COMMENT ON COLUMN FJ_Recruit.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Recruit.title IS 'title : 제목 ';
-COMMENT ON COLUMN FJ_Recruit.content IS 'content : 내용 ';
+COMMENT ON COLUMN FJ_Recruit.CAREER_CONTENT IS 'CAREER_CONTENT : 내용 ';
 COMMENT ON COLUMN FJ_Recruit.name IS 'name : 회사이름';
 COMMENT ON COLUMN FJ_Recruit.skill IS 'skill : 보유기술 ';
 COMMENT ON COLUMN FJ_Recruit.gender IS 'gender : 성별 ';

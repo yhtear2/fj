@@ -43,9 +43,8 @@ public class User_CareerProHandler implements Commandhandler {
 		dto.setCareer_sort(request.getParameter("career_sort"));
 
 		for(int i=0; i<career_comp_name.length; i++) {
-		  
 			dto.setCareer_comp_name(career_comp_name[i]);
-
+			dto.setUser_history_id((Integer)request.getSession().getAttribute("history_id"));
 			dto.setCareer_start_date(career_start_date[i]);
 			dto.setCareer_last_date(career_last_date[i]);
 			dto.setCareer_sort_date(career_sort_date[i]);

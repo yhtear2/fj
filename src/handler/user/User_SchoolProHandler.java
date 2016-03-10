@@ -45,15 +45,15 @@ public class User_SchoolProHandler implements Commandhandler {
 		dto.setHighschool_kind(request.getParameter("highschool_kind"));
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));	
-		
-		dto.setUser_history_id(Integer.parseInt(request.getParameter("user_history_id")));
+			
+		dto.setUser_history_id((Integer)request.getSession().getAttribute("history_id"));
 		
 		
 		
 		int result = dao.insertArticle_sc( dto );	
 
 		request.setAttribute( "result", result );
-	
+		if(school_name != null){
 		for(int i=0; i<school_name.length; i++) {
 		  
 			dto.setSchool_name_college(school_name[i]);
@@ -87,6 +87,8 @@ public class User_SchoolProHandler implements Commandhandler {
 			request.setAttribute( "result", result );
 			
 		}
+		}
+		
 		return new ModelAndView( "/FJ_USER/school_Pro" );
 	}
 }
