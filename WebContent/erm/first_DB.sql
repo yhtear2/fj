@@ -61,9 +61,9 @@ CREATE TABLE FJ_Board_Free
 	-- subject : 제목 
 	subject varchar2(100) NOT NULL,
 	-- content : 내용 
-	content varchar2(4000) NOT NULL,
+	content long NOT NULL,
 	-- recontent : 댓글내용 
-	recontent varchar2(4000),
+	recontent long,
 	-- hstag : 해쉬태그
 	hstag varchar2(50),
 	-- category : 카테고리 
@@ -97,7 +97,7 @@ CREATE TABLE FJ_Board_Free_Comment
 	-- reg_date : 작성날짜 
 	reg_date date NOT NULL,
 	-- recontent : 댓글내용 
-	recontent varchar2(4000) NOT NULL,
+	recontent long NOT NULL,
 	-- re_step : 게시글의 구분 
 	re_step number NOT NULL,
 	-- recom_count : 좋아요 수 
@@ -113,31 +113,31 @@ CREATE TABLE FJ_Career
 	-- user_history_id : 이력서 ID
 	user_history_id number,
 	-- career_sort
-	career_sort varchar2(30),
+	career_sort varchar2(200),
 	-- career_comp_name : 회사 이름 
-	career_comp_name varchar2(50),
+	career_comp_name varchar2(200),
 	-- career_start_date
-	career_start_date varchar2(50),
+	career_start_date varchar2(200),
 	-- career_last_date : 수정일자 
-	career_last_date varchar2(50),
+	career_last_date varchar2(200),
 	-- career_sort_date
-	career_sort_date varchar2(50),
+	career_sort_date varchar2(200),
 	-- career_position1 : 직책 
-	career_position1 varchar2(20),
+	career_position1 varchar2(300),
 	-- career_position2
-	career_position2 varchar2(20),
+	career_position2 varchar2(300),
 	-- career_salary
 	career_salary number,
 	-- career_kind
-	career_kind varchar2(10),
+	career_kind varchar2(100),
 	-- CAREER_CONTENT : 내용 
-	CAREER_CONTENT varchar2(4000),
+	CAREER_CONTENT long,
 	-- career_resign
-	career_resign varchar2(50),
+	career_resign varchar2(200),
 	-- career_work
-	career_work varchar2(50),
+	career_work varchar2(200),
 	-- career_department
-	career_department varchar2(30),
+	career_department varchar2(100),
 	-- reg_date : 가입일자
 	reg_date date,
 	PRIMARY KEY (career_id)
@@ -152,7 +152,7 @@ CREATE TABLE FJ_Comp
 	-- address : 주소 
 	address varchar2(200),
 	-- content : 회사 소개
-	content varchar2(4000),
+	content long,
 	-- tel : 전화번호 
 	tel varchar2(200),
 	-- ceo : 대표자명 
@@ -191,13 +191,13 @@ CREATE TABLE FJ_Introduce
 	-- user_history_id : 이력서 ID
 	user_history_id number,
 	-- intro_title : 제목
-	intro_title varchar2(20),
+	intro_title varchar2(500),
 	-- intro_contents : 내용
-	intro_contents varchar2(1000),
-	-- reg_date : 작성일자
-	reg_date date,
-	-- last_date : 수정일자
-	last_date date,
+	intro_contents long,
+	-- intro_reg_date : 작성일자
+	intro_reg_date date,
+	-- intro_last_date : 수정일자
+	intro_last_date date,
 	PRIMARY KEY (intro_id)
 );
 
@@ -247,7 +247,7 @@ CREATE TABLE FJ_Message
 	-- title : 제목
 	title varchar2(200),
 	-- content : 내용 
-	content varchar2(1000),
+	content long,
 	-- tag : 메시지 분류
 	tag number,
 	-- reg_date : 보낸날짜 
@@ -268,9 +268,9 @@ CREATE TABLE FJ_Recruit
 	-- email : 이메일
 	email varchar2(50),
 	-- title : 제목 
-	title varchar2(100),
+	title varchar2(200),
 	-- CAREER_CONTENT : 내용 
-	CAREER_CONTENT varchar2(4000),
+	CAREER_CONTENT long,
 	-- name : 회사이름
 	name varchar2(100),
 	-- skill : 보유기술 
@@ -280,18 +280,18 @@ CREATE TABLE FJ_Recruit
 	-- edu : 학력
 	edu varchar2(200),
 	-- work_type : 고용 형태 
-	work_type varchar2(50),
+	work_type varchar2(100),
 	-- work_day : 근무요일 
 	work_day varchar2(100),
 	-- work_area : 근무지역
 	-- 
-	work_area varchar2(100),
+	work_area varchar2(200),
 	-- business_part : 담당업무 
 	business_part varchar2(200),
 	-- incharge : 담당자
-	incharge varchar2(100),
+	incharge varchar2(200),
 	-- tel : 연락처
-	tel varchar2(100),
+	tel varchar2(200),
 	-- start_date : 채용 시작일 
 	start_date varchar2(100),
 	-- end_date : 채용 종료일 
@@ -342,37 +342,37 @@ CREATE TABLE FJ_School
 	-- user_history_id : 이력서 ID
 	user_history_id number,
 	-- school_name_high : 학교 이름 
-	school_name_high varchar2(30),
+	school_name_high varchar2(100),
 	-- school_kind
-	school_kind varchar2(30),
+	school_kind varchar2(100),
 	-- school_major : 전공 
-	school_major varchar2(30),
+	school_major varchar2(100),
 	-- school_name_college
-	school_name_college varchar2(50),
+	school_name_college varchar2(200),
 	-- school_rank : 학교 구분 
-	school_rank varchar2(20),
+	school_rank varchar2(100),
 	-- highschool_kind
-	highschool_kind varchar2(30),
+	highschool_kind varchar2(100),
 	-- school_college1
-	school_college1 varchar2(30),
+	school_college1 varchar2(100),
 	-- school_college2
-	school_college2 varchar2(30),
+	school_college2 varchar2(100),
 	-- school_college_high
-	school_college_high varchar2(50),
+	school_college_high varchar2(200),
 	-- school_start_date_high
-	school_start_date_high varchar2(30),
+	school_start_date_high varchar2(100),
 	-- school_last_date_high
-	school_last_date_high varchar2(50),
+	school_last_date_high varchar2(200),
 	-- school_start_date_college
-	school_start_date_college varchar2(50),
+	school_start_date_college varchar2(200),
 	-- school_last_date_college
-	school_last_date_college varchar2(50),
+	school_last_date_college varchar2(200),
 	-- school_ref
 	school_ref number,
 	-- reg_date : 가입일자
 	reg_date date,
-	-- last_date : 수정일자
-	last_date date,
+	-- intro_last_date : 수정일자
+	intro_last_date date,
 	PRIMARY KEY (school_id)
 );
 
@@ -385,31 +385,31 @@ CREATE TABLE FJ_User
 	-- email : 이메일
 	email varchar2(50),
 	-- resome_title
-	resome_title varchar2(50),
+	resome_title varchar2(200),
 	-- eng_name : 영문이름 
-	eng_name varchar2(20) NOT NULL,
+	eng_name varchar2(100) NOT NULL,
 	-- kor_name : 한글이름 
-	kor_name varchar2(20) NOT NULL,
+	kor_name varchar2(100) NOT NULL,
 	-- tel : 전화번호 
-	tel varchar2(20) NOT NULL,
+	tel varchar2(100) NOT NULL,
 	-- birth : 생년월일 
-	birth varchar2(20) NOT NULL,
+	birth varchar2(100) NOT NULL,
 	-- address : 주소 
-	address varchar2(100) NOT NULL,
+	address varchar2(200) NOT NULL,
 	-- army : 병역사항 
-	army varchar2(100) NOT NULL,
+	army varchar2(200) NOT NULL,
 	-- want_salary : 희망 연봉 
 	want_salary number NOT NULL,
 	-- license : 자격증 
 	license varchar2(500) NOT NULL,
 	-- skill : 보유기술 
-	skill varchar2(500) NOT NULL,
+	skill varchar2(4000) NOT NULL,
 	-- photo
 	photo varchar2(100),
 	-- reg_date : 작성일자 
 	reg_date date NOT NULL,
 	-- project : 프로젝트 
-	project varchar2(100) NOT NULL,
+	project varchar2(200) NOT NULL,
 	-- user_ref
 	user_ref number,
 	-- last_date
@@ -552,8 +552,8 @@ COMMENT ON COLUMN FJ_Introduce.intro_id IS 'intro_id : 학력관리 ID ';
 COMMENT ON COLUMN FJ_Introduce.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_Introduce.intro_title IS 'intro_title : 제목';
 COMMENT ON COLUMN FJ_Introduce.intro_contents IS 'intro_contents : 내용';
-COMMENT ON COLUMN FJ_Introduce.reg_date IS 'reg_date : 작성일자';
-COMMENT ON COLUMN FJ_Introduce.last_date IS 'last_date : 수정일자';
+COMMENT ON COLUMN FJ_Introduce.intro_reg_date IS 'intro_reg_date : 작성일자';
+COMMENT ON COLUMN FJ_Introduce.intro_last_date IS 'intro_last_date : 수정일자';
 COMMENT ON TABLE FJ_JOIN IS 'Fj_member';
 COMMENT ON COLUMN FJ_JOIN.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_JOIN.passwd IS 'passwd : 비밀번호';
@@ -629,7 +629,7 @@ COMMENT ON COLUMN FJ_School.school_start_date_college IS 'school_start_date_coll
 COMMENT ON COLUMN FJ_School.school_last_date_college IS 'school_last_date_college';
 COMMENT ON COLUMN FJ_School.school_ref IS 'school_ref';
 COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : 가입일자';
-COMMENT ON COLUMN FJ_School.last_date IS 'last_date : 수정일자';
+COMMENT ON COLUMN FJ_School.intro_last_date IS 'intro_last_date : 수정일자';
 COMMENT ON TABLE FJ_User IS 'FJ_User';
 COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_User.email IS 'email : 이메일';

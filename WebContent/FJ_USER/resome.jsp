@@ -615,5 +615,4 @@
        <input  class="btn btn-default"  type="submit" value="학력사항 저장" style="width:200px" id="school_save"></td>
    </tr>
 </table>
-
 </form>
