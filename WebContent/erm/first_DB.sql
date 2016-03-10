@@ -62,6 +62,12 @@ CREATE TABLE FJ_Board_Free
 	subject varchar2(100) NOT NULL,
 	-- content : 내용 
 	content varchar2(4000) NOT NULL,
+	-- recontent : 댓글내용 
+	recontent varchar2(4000),
+	-- hstag : 해쉬태그
+	hstag varchar2(50),
+	-- category : 카테고리 
+	category varchar2(50) NOT NULL,
 	-- re_count : 리플의 수 
 	re_count number NOT NULL,
 	-- scrap_count : 스크랩 수 
@@ -77,14 +83,6 @@ CREATE TABLE FJ_Board_Free
 	re_step number NOT NULL,
 	-- reg_date : 작성 날짜 
 	reg_date date NOT NULL,
-	-- hstag : 해쉬태그
-	hstag varchar2(50) NOT NULL,
-	-- mom_board_num : 부모게시판 ID  
-	mom_board_num number NOT NULL,
-	-- recontent : 댓글내용 
-	recontent varchar2(4000),
-	-- category : 카테고리 
-	category varchar2(50) NOT NULL,
 	PRIMARY KEY (board_num)
 );
 
@@ -95,15 +93,15 @@ CREATE TABLE FJ_Board_Free_Comment
 	-- board_num : 게시판 ID
 	board_num number NOT NULL,
 	-- email : 이메일
-	email varchar2(50),
+	email varchar2(50) NOT NULL,
 	-- reg_date : 작성날짜 
 	reg_date date NOT NULL,
 	-- recontent : 댓글내용 
-	recontent varchar2(4000),
+	recontent varchar2(4000) NOT NULL,
 	-- re_step : 게시글의 구분 
-	re_step number,
+	re_step number NOT NULL,
 	-- recom_count : 좋아요 수 
-	recom_count number
+	recom_count number NOT NULL
 );
 
 
@@ -339,28 +337,38 @@ CREATE TABLE FJ_School
 	school_id number NOT NULL,
 	-- user_history_id : 이력서 ID
 	user_history_id number,
-	-- school_name : 학교 이름 
-	school_name varchar2(30),
+	-- school_name_high : 학교 이름 
+	school_name_high varchar2(30),
+	-- school_kind
+	school_kind varchar2(30),
 	-- school_major : 전공 
 	school_major varchar2(30),
+	-- school_name_college
+	school_name_college varchar2(50),
 	-- school_rank : 학교 구분 
 	school_rank varchar2(20),
-	-- reg_date : 가입일자
-	reg_date date,
-	-- last_date : 수정일자
-	last_date date,
-	-- school_name_kind
-	school_name_kind varchar2(30),
+	-- highschool_kind
+	highschool_kind varchar2(30),
 	-- school_college1
 	school_college1 varchar2(30),
 	-- school_college2
 	school_college2 varchar2(30),
-	-- school_start_date
-	school_start_date varchar2(30),
-	-- school_kind
-	school_kind varchar2(30),
+	-- school_college_high
+	school_college_high varchar2(50),
+	-- school_start_date_high
+	school_start_date_high varchar2(30),
+	-- school_last_date_high
+	school_last_date_high varchar2(50),
+	-- school_start_date_college
+	school_start_date_college varchar2(50),
+	-- school_last_date_college
+	school_last_date_college varchar2(50),
 	-- school_ref
 	school_ref number,
+	-- reg_date : 가입일자
+	reg_date date,
+	-- last_date : 수정일자
+	last_date date,
 	PRIMARY KEY (school_id)
 );
 
@@ -483,6 +491,9 @@ COMMENT ON COLUMN FJ_Board_Free.board_num IS 'board_num : 게시판 ID';
 COMMENT ON COLUMN FJ_Board_Free.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Board_Free.subject IS 'subject : 제목 ';
 COMMENT ON COLUMN FJ_Board_Free.content IS 'content : 내용 ';
+COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : 댓글내용 ';
+COMMENT ON COLUMN FJ_Board_Free.hstag IS 'hstag : 해쉬태그';
+COMMENT ON COLUMN FJ_Board_Free.category IS 'category : 카테고리 ';
 COMMENT ON COLUMN FJ_Board_Free.re_count IS 're_count : 리플의 수 ';
 COMMENT ON COLUMN FJ_Board_Free.scrap_count IS 'scrap_count : 스크랩 수 ';
 COMMENT ON COLUMN FJ_Board_Free.recom_count IS 'recom_count : 좋아요 수 ';
@@ -491,10 +502,6 @@ COMMENT ON COLUMN FJ_Board_Free.read_count IS 'read_count : 읽은 수
 COMMENT ON COLUMN FJ_Board_Free.bad_count IS 'bad_count : 싫어요 수 ';
 COMMENT ON COLUMN FJ_Board_Free.re_step IS 're_step : 게시글의 구분 ';
 COMMENT ON COLUMN FJ_Board_Free.reg_date IS 'reg_date : 작성 날짜 ';
-COMMENT ON COLUMN FJ_Board_Free.hstag IS 'hstag : 해쉬태그';
-COMMENT ON COLUMN FJ_Board_Free.mom_board_num IS 'mom_board_num : 부모게시판 ID  ';
-COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : 댓글내용 ';
-COMMENT ON COLUMN FJ_Board_Free.category IS 'category : 카테고리 ';
 COMMENT ON TABLE FJ_Board_Free_Comment IS '새 테이블';
 COMMENT ON COLUMN FJ_Board_Free_Comment.board_num IS 'board_num : 게시판 ID';
 COMMENT ON COLUMN FJ_Board_Free_Comment.email IS 'email : 이메일';
@@ -601,17 +608,22 @@ COMMENT ON COLUMN FJ_Recruit_Log.reg_date IS 'reg_date : 입사 지원일 ';
 COMMENT ON TABLE FJ_School IS 'FJ_School';
 COMMENT ON COLUMN FJ_School.school_id IS 'school_id : 학력관리 ID ';
 COMMENT ON COLUMN FJ_School.user_history_id IS 'user_history_id : 이력서 ID';
-COMMENT ON COLUMN FJ_School.school_name IS 'school_name : 학교 이름 ';
+COMMENT ON COLUMN FJ_School.school_name_high IS 'school_name_high : 학교 이름 ';
+COMMENT ON COLUMN FJ_School.school_kind IS 'school_kind';
 COMMENT ON COLUMN FJ_School.school_major IS 'school_major : 전공 ';
+COMMENT ON COLUMN FJ_School.school_name_college IS 'school_name_college';
 COMMENT ON COLUMN FJ_School.school_rank IS 'school_rank : 학교 구분 ';
-COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : 가입일자';
-COMMENT ON COLUMN FJ_School.last_date IS 'last_date : 수정일자';
-COMMENT ON COLUMN FJ_School.school_name_kind IS 'school_name_kind';
+COMMENT ON COLUMN FJ_School.highschool_kind IS 'highschool_kind';
 COMMENT ON COLUMN FJ_School.school_college1 IS 'school_college1';
 COMMENT ON COLUMN FJ_School.school_college2 IS 'school_college2';
-COMMENT ON COLUMN FJ_School.school_start_date IS 'school_start_date';
-COMMENT ON COLUMN FJ_School.school_kind IS 'school_kind';
+COMMENT ON COLUMN FJ_School.school_college_high IS 'school_college_high';
+COMMENT ON COLUMN FJ_School.school_start_date_high IS 'school_start_date_high';
+COMMENT ON COLUMN FJ_School.school_last_date_high IS 'school_last_date_high';
+COMMENT ON COLUMN FJ_School.school_start_date_college IS 'school_start_date_college';
+COMMENT ON COLUMN FJ_School.school_last_date_college IS 'school_last_date_college';
 COMMENT ON COLUMN FJ_School.school_ref IS 'school_ref';
+COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : 가입일자';
+COMMENT ON COLUMN FJ_School.last_date IS 'last_date : 수정일자';
 COMMENT ON TABLE FJ_User IS 'FJ_User';
 COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : 이력서 ID';
 COMMENT ON COLUMN FJ_User.email IS 'email : 이메일';
