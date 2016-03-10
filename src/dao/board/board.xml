@@ -14,11 +14,25 @@
    
     <!-- 게시판 정보 삽입  -->
 	<insert id="insertArticle">   
-		insert into fj_board_free( 
-			board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date) 
-			values(
-			fj_board_free_seq.NEXTVAL, #{mom_board_num}, #{email, jdbcType=VARCHAR}, #{subject, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{recontent, jdbcType=VARCHAR},
-			#{hstag, jdbcType=VARCHAR}, #{re_count}, #{scrap_count}, #{recom_count}, #{bad_count}, #{read_count}, #{re_step}, #{category, jdbcType=VARCHAR}, #{reg_date})  
+		Insert into Fj_board_free( 
+			board_num,			mom_board_num,
+			email, 				subject, 
+			content,			recontent, 
+			hstag, 				re_count, 
+			scrap_count, 		recom_count, 
+			bad_count, 			read_count, 
+			re_step, 			category, 
+			reg_date 
+		)values(
+			fj_board_free_seq.NEXTVAL,		#{mom_board_num}, 
+			#{email, jdbcType=VARCHAR},		#{subject, jdbcType=VARCHAR}, 
+			#{content, jdbcType=VARCHAR},	#{recontent, jdbcType=VARCHAR},
+			#{hstag, jdbcType=VARCHAR}, 	#{re_count}, 
+			#{scrap_count}, 				#{recom_count}, 
+			#{bad_count}, 					#{read_count}, 
+			#{re_step}, 					#{category, jdbcType=VARCHAR}, 
+			#{reg_date}
+		)  
 	</insert>
 	  
 	<!-- 게시글 수정부분  -->

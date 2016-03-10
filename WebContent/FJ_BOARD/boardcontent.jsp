@@ -5,6 +5,10 @@
 <%@ include file = "/defaultSetting.jsp" %>  
 <script src="script.js"></script> 
 
+		<!-- map.put( "dto", dto );   				// 글의 정보
+		map.put("result", result);					// 댓글의 정보
+		map.put("joindto", joindto);				// 작성자 정보 -->
+
 <!DOCTYPE html>  
 
 <title>人 코딩 - 자유게시판</title> 
@@ -19,8 +23,7 @@
               <div class="panel panel-default clearfix">
                 <div class="panel-heading clearfix"> 
 			<div class="avatar avatar-medium clearfix pull-left">
-				<a href="유저정보창 경로주기" class="avatar-photo"><img
-					src="//www.gravatar.com/avatar/304e9274754765f6258ce23cd234682b?d=identicon&amp;s=40"></a>
+				${joindto.name}
 					
 				
 				

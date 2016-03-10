@@ -28,7 +28,7 @@ public class ReplyProHandler implements Commandhandler {
 	@RequestMapping("/boardreplyPro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+		Map<String, Object>map = new HashMap<String, Object>();
 		
 		
 		request.setCharacterEncoding("utf-8");
@@ -57,11 +57,14 @@ public class ReplyProHandler implements Commandhandler {
 		cdto.setRecom_count(recom_count);	// 좋아요
 		cdto.setRe_step(re_step);			// 게시글 구분 
 		
-		// 바구니를 dao에다가 보내서 DB에 입력하게
-		
-		Map<String, Object>map = new HashMap<String, Object>();    
+		// 바구니를 dao에다가 보내서 DB에 입력하게		    
 		int result = dao.commentList(cdto);
-		System.out.println(cdto.getRecontent());
+		
+		// 댓글 입력에 성공하면 부모글의 댓글 수 하나 증가
+		if(result == 1){
+			dao.reCount(board_num);
+		}
+
 		// 페이지로 보낼 정보 맵으로 담기
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num);

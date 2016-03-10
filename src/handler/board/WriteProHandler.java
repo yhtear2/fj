@@ -27,7 +27,7 @@ public class WriteProHandler implements Commandhandler {
 	@RequestMapping("/boardwritePro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+		Map<String, Object> map = new HashMap<String, Object>();
 		request.setCharacterEncoding( "utf-8" );
 		   
 		
@@ -41,36 +41,28 @@ public class WriteProHandler implements Commandhandler {
 					hstag += ",";
 				}
 			}
-		}
+		}else hstag="";
 		
-		//BoardDataBean dto = new BoardDataBean();
-		//dto.setSubject( (String) request.getParameter( "subject" ) );
-		//int result = dao.insertArticle( dto );    
-		
+
 		BoardDataBean dto = new BoardDataBean();
-	//	dto.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
-		dto.setScrap_count(Integer.parseInt(request.getParameter("scrap_count")));
-		dto.setRe_count(Integer.parseInt(request.getParameter("re_count")));
-		dto.setRe_step(Integer.parseInt(request.getParameter("re_step")));
-		dto.setRead_count(Integer.parseInt(request.getParameter("read_count"))); 
-		dto.setRecom_count(Integer.parseInt(request.getParameter("recom_count")));
-		dto.setBad_count(Integer.parseInt(request.getParameter("bad_count")));
-		dto.setCategory((String)request.getParameter("category"));     
-		dto.setSubject((String)request.getParameter("subject"));
-		dto.setContent(request.getParameter("content"));      
-		dto.setHstag(hstag);   
-		dto.setEmail((String)request.getParameter("email"));
-		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
+		dto.setEmail((String)request.getSession().getAttribute("memId"));				// 이메일
+		dto.setSubject((String)request.getParameter("subject"));						// 글제목
+		dto.setContent(request.getParameter("content")); 								// 글내용
+		dto.setHstag(hstag); 															// 해쉬태그
+		// 댓글내용
+		// mom_board_num 부모 게시판 id 
+		dto.setRe_count(Integer.parseInt(request.getParameter("re_count")));			// 리플의 수
+		dto.setScrap_count(Integer.parseInt(request.getParameter("scrap_count")));		// 스크랩 수
+		dto.setRecom_count(Integer.parseInt(request.getParameter("recom_count")));		// 좋아요 수
+		dto.setBad_count(Integer.parseInt(request.getParameter("bad_count")));			// 싫어요 수
+		dto.setRead_count(Integer.parseInt(request.getParameter("read_count"))); 		// 읽은 수
+		dto.setRe_step(Integer.parseInt(request.getParameter("re_step")));				// 게시글의 구분
+		dto.setCategory((String)request.getParameter("category"));    					// 카테고리		
+		dto.setReg_date(new Timestamp(System.currentTimeMillis()));						// 작성날짜
 
 		
-		
-		
-	//	request.setAttribute("result", result);
-		
-		 
-		Map<String, Object> map = new HashMap<String, Object>();
-		
 		int result = dao.insertArticle(dto);  
+		
 		map.put("result", result); 
 		
 		map.put("page", "/FJ_BOARD/boardwritePro");

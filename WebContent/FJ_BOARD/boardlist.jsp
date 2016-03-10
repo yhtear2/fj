@@ -97,7 +97,7 @@
                                <!-- 해시태그 영역 --> 
                                   <!-- 태그 안 적으면 안뜨게 해야함  --> 
                                        
-                                  	<c:if test="${dto.hstag != null}">
+                                  	<c:if test='${dto.hstag != null || dto.hstag != ""}'>
 	                               		<c:forEach var="tag" items="${fn:split(dto.hstag,',')}">
 		                               		<a href="asd" class="list-group-item-text item-tag label label-gray">
 		                                    ${tag}     

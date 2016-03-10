@@ -21,10 +21,6 @@ import handler.Commandhandler;
 
 @Controller
 public class ListHandler implements Commandhandler {
-	
-   
-	//* CreateBean의 BoardDao 를 불러오기 위한 Resource 작업   *//
-
 
 	@Resource(name="boardDao")  // dao. 패키지의  CreateBean 자바파일에 있는 객체 dao 
 	private BoardDao boardDao; 
@@ -32,6 +28,7 @@ public class ListHandler implements Commandhandler {
 	@RequestMapping("/boardlist") 
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		int pageSize = 10;     // 페이지 레코드 수 
 		int pageBlock = 3;     // 페이지 번호 수 
@@ -78,32 +75,33 @@ public class ListHandler implements Commandhandler {
 					      
 		if( endPage > pageCount ) endPage = pageCount;			
 	
-		request.setAttribute( "pageBlock", pageBlock );
-		request.setAttribute( "count", count );
-		request.setAttribute( "number", number );
-		request.setAttribute( "pageNum", pageNum );
-		request.setAttribute( "currentPage", currentPage );
-		request.setAttribute( "startPage", startPage );
-		request.setAttribute( "endPage", endPage );
-		request.setAttribute( "pageCount", pageCount );
-		request.setAttribute("tag", tag);
 		 
 		
 		if( count != 0 ) {  
 			// BoardDBBean 의 getArticles 부분에서 int 값이 두개이상이므로 매핑을 건다 
-			Map<String, Integer> map = new HashMap<String, Integer>();
-			map.put( "start", start );  
-			map.put( "end", end );   
-			map.put("count", count);
-			map.put("tag", tag); 
+			Map<String, Integer> map2 = new HashMap<String, Integer>();
+			map2.put( "start", start );  
+			map2.put( "end", end );   
+			map2.put("count", count);
+			map2.put("tag", tag); 
 			
-			List<BoardDataBean> list =  boardDao.getArticles(map );
-			request.setAttribute( "list", list );	      		
+			List<BoardDataBean> list =  boardDao.getArticles(map2);
+			map.put( "list", list );	      		
 		}		
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", "/FJ_BOARD/boardlist");  
+
+		map.put( "pageBlock", pageBlock );
+		map.put( "count", count );
+		map.put( "number", number );
+		map.put( "pageNum", pageNum );
+		map.put( "currentPage", currentPage );
+		map.put( "startPage", startPage );
+		map.put( "endPage", endPage );
+		map.put( "pageCount", pageCount );
+		map.put( "tag", tag );
 		
+		
+		map.put("page", "/FJ_BOARD/boardlist");  
 		return new ModelAndView("/FJ_MAIN/main", map); 
 	}	
 }
