@@ -14,15 +14,10 @@
 <table class="table table-hover" style="margin-left: 20px; width:700px">
 
    <tr>
-      <th style="width:200px">이름(한글)</th>
-		 <td class="form-control" style="text-align: center; width: 250px"> ${dto.kor_name} </td>
+      <th style="width:200px">이름</th>
+		 <td class="form-control" style="text-align: center; width: 250px"> ${dto.kor_name} &nbsp;&nbsp; ${dto.eng_name} </td>
       <td rowspan="5"><img  class="img-rounded"  id="img_preview" name="img_preview" src='${dto.photo}' style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
    
-   </tr>
-   <tr>
-
-      <th>이름(영문)</th>
-		 <td class="form-control" style="text-align: center; width: 650px"> ${dto.eng_name} </td>
    </tr>
 	<tr>
       <th>주소</th>
@@ -120,16 +115,21 @@
       </td>
    </tr>	
    	</c:forEach>
-   	
-   
+
    </table>
    		<table class='table table-hover' id='mytable' style='margin-left: 20px; width: 700px'>
-			<c:forEach var="sc_dto" items="${result}" begin="1" end="4">
+			<c:forEach var="sc_dto" items="${result}" begin="1" end="2">
 				<c:if test='${sc_dto.school_name_high != null && sc_dto.school_name_high != "" }'>		
 				<tr>
 					<th style='width: 100px'>분류</th>
-					<td class="form-control" style="text-align: center; width: 520px"><input type='radio' id='school_kind_ida' name='school_kind' value='${sc_dto.school_kind}' />&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;
-					<input type='radio' id='school_kind_idb' name='school_kind' value='${sc_dto.school_kind}' />&nbsp; 대학원</td>
+					 <td class="form-control" style="text-align: center; width: 520px">
+					<c:if test='${sc_dto.school_kind == "대학생" }'>        
+					대학생				
+					</c:if>
+					<c:if test='${sc_dto.school_kind == "대학원" }'>        
+					대학원생					 	
+					</c:if>
+         </td>
 				</tr>
 				<tr>
 					<th style='width: 100px'>재학기간</th>
@@ -155,11 +155,101 @@
 				<tr>
 					<th>학점</th>
 						<c:set var="e" value='${fnc:split( sc_dto.school_rank, "/" )}'/>	
-						<td class="form-control" style="text-align: center; width: 520px">${e[0]} &nbsp;&nbsp; / &nbsp;&nbsp; ${e[1]}</td>
+						<td class="form-control" style="text-align: center; width: 520px">${e[0]} &nbsp;&nbsp; / &nbsp;&nbsp; ${e[1]} </td>
 				</tr>
+				<tr>
+				<td></td>
+				</tr>
+				
 				</c:if>
 			</c:forEach>
 		</table>
+
+<h3>&nbsp;&nbsp;&nbsp;경력사항</h3>
+<table class="table table-hover" style="margin-left: 20px; width:700px">
+
+	<c:forEach var="car_dto" items="${result_career}">
+	   <tr>
+	      <th style="width:100px">구분</th>
+	         		 <td class="form-control" style="text-align: center; width: 520px">
+						<c:if test='${car_dto.career_sort== "신입" }'>        
+							신입					 	
+						</c:if>
+						<c:if test='${car_dto.career_sort== "경력" }'>        
+							경력					 	
+						</c:if>
+	         		</td>
+	         
+	   </tr>
+	   
+	   <tr>
+			<th style='width: 100px'>회사명</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_comp_name}
+				</td> 
+		</tr>
+
+	   <tr>
+			<th style='width: 100px'>근무기간</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_start_date} &nbsp;&nbsp; / &nbsp;&nbsp;
+					${car_dto.career_last_date} &nbsp;&nbsp; ~ &nbsp;&nbsp;
+					${car_dto.career_sort_date} &nbsp;&nbsp; / &nbsp;&nbsp;
+					${car_dto.career_kind}
+				</td> 
+		</tr>
+		
+	   <tr>
+			<th style='width: 100px'>부서명</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_department} &nbsp;&nbsp; / &nbsp;&nbsp;
+					${car_dto.career_position1} &nbsp;&nbsp; / &nbsp;&nbsp;
+					${car_dto.career_position2} 
+				</td>				
+		</tr>		
+		
+	   <tr>
+			<th style='width: 100px'>급여/연봉</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_salary} &nbsp; 만원
+				</td>				
+		</tr>				
+	   <tr>
+			<th style='width: 100px'>퇴사사유</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_resign}
+				</td>				
+		</tr>		
+	   <tr>
+			<th style='width: 100px'>담당업무</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_work}
+				</td>				
+		</tr>			
+	   <tr>
+			<th style='width: 100px'>수행내용</th>	
+				<td class="form-control" style="text-align: center; width: 520px">
+					${car_dto.career_content}
+				</td>				
+		</tr>					
+	</c:forEach>  
+</table>
+
+
+
+<h3>&nbsp;&nbsp;&nbsp;자기소개서</h3>
+<table class="table table-hover" style="margin-left: 20px; width:700px">
+
+	<c:forEach var="intr_dto" items="${result_introduce}">
+	   <tr>
+	      <th style="width:100px">${intr_dto.intro_title}</th>
+	         		 <td class="form-control" style="text-align: center; width: 520px">
+						${intr_dto.intro_contents}
+	         		</td>      
+	   </tr>
+	</c:forEach>
+</table>
+
 
 
 

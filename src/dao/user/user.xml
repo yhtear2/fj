@@ -32,6 +32,21 @@
 		
 	</select>
 	
+		<select id="getContent_career" parameterType="Map" resultType="dto.user.CareerDataBean">
+			SELECT 	* 
+			From	FJ_Career a, FJ_User b
+			Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
+		
+	</select>
+	
+	
+		<select id="getContent_introduce" parameterType="Map" resultType="dto.user.IntroduceDataBean">
+			SELECT 	* 
+			From	FJ_Introduce a, FJ_User b
+			Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
+		
+	</select>
+	
 
 	<insert id="insertArticle" parameterType="dto.user.UserDataBean"  keyColumn="user_history_id" keyProperty="history_id" useGeneratedKeys="true">
 		insert into FJ_User(

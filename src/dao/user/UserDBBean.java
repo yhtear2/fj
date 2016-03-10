@@ -32,6 +32,16 @@ public class UserDBBean implements UserDao {
 	{
 		return sqlSession.selectList("User.getContent_school", user_history_id);   
 	} 
+
+	public  List<IntroduceDataBean> getContent_introduce(int user_history_id) 
+	{
+		return sqlSession.selectList("User.getContent_introduce", user_history_id);   
+	}
+	
+	public  List<CareerDataBean> getContent_career(int user_history_id) 
+	{
+		return sqlSession.selectList("User.getContent_career", user_history_id);   
+	}
 	
 	
 	@Override

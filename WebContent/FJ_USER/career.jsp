@@ -237,6 +237,7 @@
 <form name="career_Form"  method="post"  onload="career_addForm();" action="career_Pro.do">
 <input type="hidden" name="count">
 
+	<input type="text" name="user_history_id" value='${history_id}' style="display:none">
 
 <table>
 	<tr>

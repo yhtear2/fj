@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.user.UserDao;
 import dto.board.BoardCommentDataBean;
+import dto.user.CareerDataBean;
+import dto.user.IntroduceDataBean;
 import dto.user.SchoolDataBean;
 import dto.user.UserDataBean;
 import handler.Commandhandler;
@@ -42,6 +44,10 @@ public class User_ContentHandler implements Commandhandler {
 		
 		List<SchoolDataBean> result = dao.getContent_school(user_history_id);
 		
+		List<CareerDataBean> result_career = dao.getContent_career(user_history_id);
+		List<IntroduceDataBean> result_introduce = dao.getContent_introduce(user_history_id);
+		
+		
 		if( user_history_id < 9)
 		{
 			dao.getUser_history_id(user_history_id); 
@@ -54,6 +60,9 @@ public class User_ContentHandler implements Commandhandler {
 		
 		map.put("dto", dto);
 		map.put("result", result);
+		map.put("result_career", result_career);
+		map.put("result_introduce", result_introduce);
+
 		map.put("pageNum", pageNum);
 		map.put("page", "/FJ_USER/resomeContent");
 
