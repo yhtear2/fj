@@ -18,6 +18,7 @@ DROP TABLE FJ_JOIN CASCADE CONSTRAINTS;
 
 /* Drop Sequences */
 
+DROP SEQUENCE FJ_BOARD_Comment_seq;
 DROP SEQUENCE FJ_BOARD_FREE_seq;
 DROP SEQUENCE FJ_Career_seq;
 DROP SEQUENCE FJ_Introduce_seq;
@@ -31,6 +32,8 @@ DROP SEQUENCE FJ_User_seq;
 
 /* Create Sequences */
 
+-- 댓글로 시퀀스
+CREATE SEQUENCE FJ_BOARD_Comment_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
 -- 게시판  시퀀스
 CREATE SEQUENCE FJ_BOARD_FREE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
 -- (이력서)
@@ -62,23 +65,26 @@ CREATE TABLE FJ_Board_Free
 	subject varchar2(100) NOT NULL,
 	-- content : 내용 
 	content long NOT NULL,
-	-- recontent : 댓글내용 
-	recontent varchar2(4000),
 	-- hstag : 해쉬태그
 	hstag varchar2(50),
+	-- recontent : 댓글내용 
+	recontent varchar2(4000),
 	-- category : 카테고리 
 	category varchar2(50) NOT NULL,
+	-- name : 글쓴이 이름
+	-- 
+	name varchar2(100),
 	-- re_count : 리플의 수 
 	re_count number NOT NULL,
 	-- scrap_count : 스크랩 수 
 	scrap_count number NOT NULL,
 	-- recom_count : 좋아요 수 
 	recom_count number NOT NULL,
+	-- bad_count : 싫어요 수 
+	bad_count number NOT NULL,
 	-- read_count : 읽은 수 
 	-- (실제 DB에는 number default 0, 으로 할 것임)
 	read_count number,
-	-- bad_count : 싫어요 수 
-	bad_count number NOT NULL,
 	-- re_step : 게시글의 구분 
 	re_step number NOT NULL,
 	-- reg_date : 작성 날짜 
@@ -90,10 +96,14 @@ CREATE TABLE FJ_Board_Free
 -- 새 테이블
 CREATE TABLE FJ_Board_Free_Comment
 (
+	-- comment_board_num : 댓글 id
+	comment_board_num number NOT NULL,
 	-- board_num : 게시판 ID
 	board_num number NOT NULL,
 	-- email : 이메일
 	email varchar2(50) NOT NULL,
+	-- name : 작성자 이름
+	name varchar2(100),
 	-- reg_date : 작성날짜 
 	reg_date date NOT NULL,
 	-- recontent : 댓글내용 
@@ -101,7 +111,8 @@ CREATE TABLE FJ_Board_Free_Comment
 	-- re_step : 게시글의 구분 
 	re_step number NOT NULL,
 	-- recom_count : 좋아요 수 
-	recom_count number NOT NULL
+	recom_count number NOT NULL,
+	PRIMARY KEY (comment_board_num)
 );
 
 
@@ -495,20 +506,24 @@ COMMENT ON COLUMN FJ_Board_Free.board_num IS 'board_num : 게시판 ID';
 COMMENT ON COLUMN FJ_Board_Free.email IS 'email : 이메일';
 COMMENT ON COLUMN FJ_Board_Free.subject IS 'subject : 제목 ';
 COMMENT ON COLUMN FJ_Board_Free.content IS 'content : 내용 ';
-COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : 댓글내용 ';
 COMMENT ON COLUMN FJ_Board_Free.hstag IS 'hstag : 해쉬태그';
+COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : 댓글내용 ';
 COMMENT ON COLUMN FJ_Board_Free.category IS 'category : 카테고리 ';
+COMMENT ON COLUMN FJ_Board_Free.name IS 'name : 글쓴이 이름
+';
 COMMENT ON COLUMN FJ_Board_Free.re_count IS 're_count : 리플의 수 ';
 COMMENT ON COLUMN FJ_Board_Free.scrap_count IS 'scrap_count : 스크랩 수 ';
 COMMENT ON COLUMN FJ_Board_Free.recom_count IS 'recom_count : 좋아요 수 ';
+COMMENT ON COLUMN FJ_Board_Free.bad_count IS 'bad_count : 싫어요 수 ';
 COMMENT ON COLUMN FJ_Board_Free.read_count IS 'read_count : 읽은 수 
 (실제 DB에는 number default 0, 으로 할 것임)';
-COMMENT ON COLUMN FJ_Board_Free.bad_count IS 'bad_count : 싫어요 수 ';
 COMMENT ON COLUMN FJ_Board_Free.re_step IS 're_step : 게시글의 구분 ';
 COMMENT ON COLUMN FJ_Board_Free.reg_date IS 'reg_date : 작성 날짜 ';
 COMMENT ON TABLE FJ_Board_Free_Comment IS '새 테이블';
+COMMENT ON COLUMN FJ_Board_Free_Comment.comment_board_num IS 'comment_board_num : 댓글 id';
 COMMENT ON COLUMN FJ_Board_Free_Comment.board_num IS 'board_num : 게시판 ID';
 COMMENT ON COLUMN FJ_Board_Free_Comment.email IS 'email : 이메일';
+COMMENT ON COLUMN FJ_Board_Free_Comment.name IS 'name : 작성자 이름';
 COMMENT ON COLUMN FJ_Board_Free_Comment.reg_date IS 'reg_date : 작성날짜 ';
 COMMENT ON COLUMN FJ_Board_Free_Comment.recontent IS 'recontent : 댓글내용 ';
 COMMENT ON COLUMN FJ_Board_Free_Comment.re_step IS 're_step : 게시글의 구분 ';

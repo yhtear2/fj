@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.board.BoardDao;
+import dao.join.JoinDao;
 import dto.board.BoardDataBean;
+import dto.join.JoinDataBean;
 import handler.Commandhandler;
 
 
@@ -82,11 +84,9 @@ public class ListHandler implements Commandhandler {
 			Map<String, Integer> map2 = new HashMap<String, Integer>();
 			map2.put( "start", start );  
 			map2.put( "end", end );   
-			map2.put("count", count);
-			map2.put("tag", tag); 
 			
 			List<BoardDataBean> list =  boardDao.getArticles(map2);
-			map.put( "list", list );	      		
+			map.put( "list", list );	 
 		}		
 		
 
@@ -101,6 +101,7 @@ public class ListHandler implements Commandhandler {
 		map.put( "tag", tag );
 		
 		
+		map.put("menu", "board");
 		map.put("page", "/FJ_BOARD/boardlist");  
 		return new ModelAndView("/FJ_MAIN/main", map); 
 	}	

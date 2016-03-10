@@ -21,6 +21,8 @@ public interface BoardDao {
 		public List<BoardCommentDataBean> getCommentList(int board_num);  // select 부분 
 		public int commentList(BoardCommentDataBean cdto);      // insert 부분 
 //		public BoardCommentDataBean getComment(int board_num);
+		public int deleteReply( int board_num );
+		public void reCountMinus(int board_num);
 		
 	
 		

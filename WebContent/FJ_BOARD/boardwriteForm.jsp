@@ -7,7 +7,17 @@
 <!DOCTYPE html>    
 <title>자유게시판 - 글쓰기 페이지</title>
     
-    
+<!-- 로그인을 안했을때  -->
+	<c:if test="${sessionScope.memId == null}">
+		<script type="text/javascript">
+		<!--
+			alert("로그인이 필요합니다");
+			history.back();
+		//-->
+		</script>
+	</c:if>
+	
+<c:if test="${sessionScope.memId != null}">  
 <body id="main" onload="subjectfocus()"> 
 	<div id="article-create" class="contents" role="main">
  
@@ -79,3 +89,4 @@
 		</form>
 	</div>
 </body>
+</c:if>

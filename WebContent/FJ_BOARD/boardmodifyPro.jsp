@@ -10,15 +10,18 @@
 
 <c:if test="${result == 0}">
 	<script type="text/javascript">
-	<!--  
+ 
 	alert(updateerror);
-	//-->
+	
 	</script>
 	<meta http-equiv="refresh" content="0; url=boardlist.do?pageNum=${pageNum}">
 </c:if>
 
 <c:if test="${result != 0}">
-	<c:redirect url="boardlist.do">
-		<c:param name="pageNum" value="${pageNum}"/> 
-	</c:redirect>
+	<script type="text/javascript">	
+	<!-- 
+		var PageNum = ${pageNum};
+		window.location.href = "boardlist.do?pageNum="+PageNum;
+	//-->
+	</script> 
 </c:if>    

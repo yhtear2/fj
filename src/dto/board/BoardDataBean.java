@@ -3,41 +3,28 @@ package dto.board;
 import java.sql.Timestamp;
 
 public class BoardDataBean {
-	  
-	private String email;   // 이메일 
-	private String subject; // 글제목 
-	private String content; // 글내용
-	private String hstag;   // 해쉬태그      
-	private String recontent; // 댓글내용 
-	private int board_num;  // 게시판 id (글번호)
-//	private int mom_board_num; // 부모 게시판 id (부모글 번호)
-	private int re_count;   // 리플의 수   
-	private int scrap_count; // 스크랩 수
-	private int recom_count;    // 좋아요 수 
-	private int bad_count;   // 싫어요 수 
-	private int read_count;  // 읽은 수 
-	private int re_step;    // 게시글의 구분
-	private String category;   // 카테고리
-	private Timestamp reg_date; // 작성날짜 
-	 
-	/*  
-	public int getMom_board_num() {
-		return mom_board_num;
+	
+	private int board_num;  		// 게시판 id (글번호)
+	private String email;  			// 이메일 
+	private String subject;			// 글제목 
+	private String content; 		// 글내용
+	private String hstag;  			// 해쉬태그      
+	private String recontent; 		// 댓글내용 
+	private String category;   		// 카테고리
+	private String name;			// 글쓴이			// 홍석 추가함
+	private int re_count;   		// 리플의 수   
+	private int scrap_count; 		// 스크랩 수
+	private int recom_count;    	// 좋아요 수 
+	private int bad_count;   		// 싫어요 수 
+	private int read_count;  		// 읽은 수 
+	private int re_step;    		// 게시글의 구분
+	private Timestamp reg_date; 	// 작성날짜 
+	
+	public int getBoard_num() {
+		return board_num;
 	}
-	public void setMom_board_num(int mom_board_num) {
-		this.mom_board_num = mom_board_num;
-	} */ 
-	public String getRecontent() { 
-		return recontent;
-	}
-	public void setRecontent(String recontent) {
-		this.recontent = recontent;
-	}
-	public String getCategory() {
-		return category;
-	} 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setBoard_num(int board_num) {
+		this.board_num = board_num;
 	}
 	public String getEmail() {
 		return email;
@@ -58,16 +45,28 @@ public class BoardDataBean {
 		this.content = content;
 	}
 	public String getHstag() {
-		return hstag; 
+		return hstag;
 	}
 	public void setHstag(String hstag) {
 		this.hstag = hstag;
-	} 
-	public int getBoard_num() {
-		return board_num;
 	}
-	public void setBoard_num(int board_num) {
-		this.board_num = board_num;
+	public String getRecontent() {
+		return recontent;
+	}
+	public void setRecontent(String recontent) {
+		this.recontent = recontent;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public int getRe_count() {
 		return re_count;
@@ -105,13 +104,14 @@ public class BoardDataBean {
 	public void setRe_step(int re_step) {
 		this.re_step = re_step;
 	}
-	
 	public Timestamp getReg_date() {
 		return reg_date;
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
+
+	
 	
 	
 }

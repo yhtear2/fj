@@ -96,8 +96,7 @@
                                    	
                                <!-- 해시태그 영역 --> 
                                   <!-- 태그 안 적으면 안뜨게 해야함  --> 
-                                       
-                                  	<c:if test='${dto.hstag != null || dto.hstag != ""}'>
+                                  	<c:if test='${dto.hstag != null}'>
 	                               		<c:forEach var="tag" items="${fn:split(dto.hstag,',')}">
 		                               		<a href="asd" class="list-group-item-text item-tag label label-gray">
 		                                    ${tag}     
@@ -163,25 +162,12 @@
  
                             <div class="list-group-item-author clearfix">
 					 
-					<!-- 작성자 구간 (우선보류) -->
+					<!-- 작성자 구간 -->
 					<div class="avatar avatar-list clearfix ">  
-						<a href="/user/info/31140" class="avatar-photo"><img
-							src="//www.gravatar.com/avatar/14986ac9dab7a96bf26835c86f5b2665?d=identicon&amp;s=30"></a>
 						<div class="avatar-info">
-							<a class="nickname" href="유저정보창 경로주기">
-							
-							</a>
-							<!-- 활동량 (구현x) 
-							<div class="activity">
-								<span class="fa fa-flash"></span> 32 
-							</div>
-							-->
-							
-							<!-- 작성날짜 참고부분 (OKKY) 
-							<div class="date-created timeago" title="2016-02-20 19:09:44.0">7시간
-								전</div>
-							-->
-							
+							<!-- 작성자 이름 -->
+							${dto.name}
+							<br>
 							<!-- 작성날짜 부분 -->
 							<fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/>
 						</div>

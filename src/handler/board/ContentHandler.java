@@ -42,12 +42,6 @@ public class ContentHandler implements Commandhandler {
 		String pageNum = request.getParameter( "pageNum" );
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
 		int number = Integer.parseInt( request.getParameter( "number" ) );
-		int count = 0;
-		int currentPage = 0;
-		int pageSize = 10;
-		
-		currentPage = Integer.parseInt( pageNum );
-		number = count - ( currentPage - 1 ) * pageSize;
 		
 		// 글 정보 받아오기
 		BoardDataBean dto = dao.getArticle( board_num );
@@ -56,10 +50,13 @@ public class ContentHandler implements Commandhandler {
 		
 		// 글 읽은 수 확인
 		String email = (String)request.getSession().getAttribute("memId");
-		if( email.equals(joindto.getEmail())){
-			dao.addCount(board_num);
-			dto.setRead_count(dto.getRead_count() +1);
+		if( email != null ){
+			if( email.equals(joindto.getEmail())){
+				dao.addCount(board_num);
+				dto.setRead_count(dto.getRead_count() +1);
+			}
 		}
+		
 		
 		// 댓글 가져오기
 		List<BoardCommentDataBean> result = dao.getCommentList(board_num);
@@ -71,15 +68,15 @@ public class ContentHandler implements Commandhandler {
 			map.put("tags", tags);
 		} 
 		  
-		map.put( "count", count);
+		map.put( "count", result.size());
 		map.put( "number", number);
 		map.put( "pageNum", pageNum);
 		map.put( "board_num", board_num); 
-		map.put( "currentPage", currentPage );
 		map.put( "dto", dto );   					// 글의 정보
 		map.put("result", result);					// 댓글의 정보
 		map.put("joindto", joindto);				// 작성자 정보
 
+		map.put("menu", "board");
 		map.put("page", "/FJ_BOARD/boardcontent");  
 		return new ModelAndView("/FJ_MAIN/main", map);
 		 

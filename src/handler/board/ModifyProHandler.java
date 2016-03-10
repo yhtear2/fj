@@ -56,15 +56,12 @@ public class ModifyProHandler implements Commandhandler {
 		
 		int result = dao.updateArticle( dto );	
 		
-		/* 
-		request.setAttribute( "pageNum", pageNum );
-		request.setAttribute( "result", result );	*/
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("pageNum", pageNum);
 		map.put("result", result); 
 		
+		map.put("menu", "board");
 		map.put("page", "/FJ_BOARD/boardmodifyPro");   
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}

@@ -28,35 +28,18 @@ public class ModifyViewHandler implements Commandhandler {
 	@RequestMapping("/boardmodifyView")    
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-	
+		Map<String, Object> map = new HashMap<String, Object>();	
+		
 		String pageNum = request.getParameter( "pageNum" );
 		int board_num = Integer.parseInt( request.getParameter( "board_num" ) );
-
-	
-	//	int result = dao.checkArticle( board_num);
-		
-		
-		/*
-		request.setAttribute( "pageNum", pageNum );
-		request.setAttribute( "board_num", board_num );  */
-	//	request.setAttribute( "result", result );
-		/*
-		if( result != 0 ) {
-			BoardDataBean dto = dao.getArticle( board_num );
-			request.setAttribute( "dto", dto );
-		}
-		*/
 		 
 		BoardDataBean dto = dao.getArticle(board_num);
-	//	request.setAttribute("dto", dto);
-		
-		Map<String, Object> map = new HashMap<String, Object>();	
 		
 		map.put("pageNum", pageNum);
 		map.put("board_num", board_num);
 		map.put("dto", dto);
 		
-		
+		map.put("menu", "board");
 		map.put("page", "/FJ_BOARD/boardmodifyView");     
 		return new ModelAndView("/FJ_MAIN/main", map);
 	} 

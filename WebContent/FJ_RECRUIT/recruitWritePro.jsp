@@ -17,9 +17,9 @@
 	<input type="hidden" id="email" value="${email}">
 	<script type="text/javascript">
 	<!--
-	alert("쪽지 전송에 성공 했습니다.");
-	$.cookie('msg', $('input[id=msg]').val() );
-	window.location.href='messageList.do';
+	//alert("쪽지 전송에 성공 했습니다.");
+	//$.cookie('msg', $('input[id=msg]').val() );
+	window.location.href='recruitList.do';
 	//-->
 </script>
 </c:if>

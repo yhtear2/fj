@@ -6,8 +6,6 @@
 	      
 <mapper namespace="FJ_BOARD"> 
 
- 
-
 	<select id="getCount" resultType="Integer">  
 		select count(*) from fj_board_free  
 	</select>  
@@ -15,7 +13,7 @@
     <!-- 게시판 정보 삽입  -->
 	<insert id="insertArticle">   
 		Insert into Fj_board_free( 
-			board_num,			mom_board_num,
+			board_num,			name,
 			email, 				subject, 
 			content,			recontent, 
 			hstag, 				re_count, 
@@ -24,7 +22,7 @@
 			re_step, 			category, 
 			reg_date 
 		)values(
-			fj_board_free_seq.NEXTVAL,		#{mom_board_num}, 
+			fj_board_free_seq.NEXTVAL,		#{name, jdbcType=VARCHAR}, 
 			#{email, jdbcType=VARCHAR},		#{subject, jdbcType=VARCHAR}, 
 			#{content, jdbcType=VARCHAR},	#{recontent, jdbcType=VARCHAR},
 			#{hstag, jdbcType=VARCHAR}, 	#{re_count}, 
@@ -47,7 +45,9 @@
 	
 	<!-- 댓글 수 증가부분 -->
 	<update id="reCount" parameterType="Map">   
-		update fj_board_free set re_count=re_count+1 where board_num=#{board_num} 
+		UPDATE	fj_board_free 
+		SET		re_count = re_count+1 
+		WHERE	board_num=#{board_num} 
 	</update>
 	
 	<select id="getMaxNum" resultType="Integer">
@@ -63,22 +63,12 @@
 	<!-- order by 컬럼명 asc | desc -->  <!-- asc : 오름차순 / desc : 내림차순 -->
 	<!-- 원본(확인 될 때까지 지우지 말 것) -->   
 	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map"> 	 
-		select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
-			rn from (select board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
-			rn from (select board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
-			order by board_num desc, re_step asc) where rn &gt; = #{start} and rn &lt; = #{end}    
+		SELECT 		board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rn 
+		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
+		FROM	 	fj_board_free 
+		ORDER BY	board_num desc, re_step asc)
+		WHERE		rn &gt; = #{start} and rn &lt; = #{end}    
 	</select>  
-	
-	<!-- 조인 했을때 (잠정보류)--> 
-	<!--  
-	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map">
-		select b.board_num, b.mom_board_num, b.email, b.subject, b.content, b.recontent, b.hstag, b.re_count, b.scrap_count, b.bad_count, b.read_count, b.re_step, b.category, b.reg_date,
-		rn from (select a.board_num, a.mom_board_num, a.email, a.subject, a.content, a.recontent, a.hstag, a.re_count, a.scrap_count, a.bad_count, a.read_count, a.re_step, a.category, a.reg_date, rownum 
-		rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)a
-		) b left outer join fj_board_free_comment c on b.board_num = c.board_num where rownum between #{start} and #{end} order by board_num desc, re_step asc 
-		 
-	</select>  -->
-	
 	
 	<!-- 댓글 수정부분   -->    
 	<update id="updateReply" parameterType="dto.board.BoardDataBean">
@@ -99,22 +89,46 @@
 	
 	<!-- 댓글 정보 삽입 --> 
 	<insert id="commentList">
-		insert into fj_board_free_comment(
-		board_num, email, reg_date, recontent, recom_count, re_step)
-		values(
-		#{board_num}, #{email, jdbcType=VARCHAR}, #{reg_date}, #{recontent, jdbcType=VARCHAR}, #{recom_count}, #{re_step}
+		INSERT INTO fj_board_free_comment(
+			comment_board_num,
+			board_num,		email, 
+			recontent, 		name, 
+			recom_count, 	re_step, 
+			reg_date
+		) values(
+			FJ_BOARD_Comment_seq.NEXTVAL,
+			#{board_num}, 						#{email, jdbcType=VARCHAR}, 
+			#{recontent, jdbcType=VARCHAR}, 	#{name, jdbcType=VARCHAR},
+			#{recom_count}, 					#{re_step}, 
+			#{reg_date}
 		) 
 	</insert>   
 	   
 	<!-- 댓글 리스트 불러오기  --> 
 	<select id="getCommentList" resultType="dto.board.BoardCommentDataBean" parameterType="Map" >
-		select board_num, email, reg_date, recontent, recom_count, re_step from fj_board_free_comment where board_num=#{board_num} order by board_num asc
+		SELECT 		* 
+		FROM		fj_board_free_comment
+		WHERE		board_num=#{board_num} 
+		ORDER BY	comment_board_num asc
 	</select> 
 	     
 	<select id="getComment" resultType="dto.board.BoardCommentDataBean" parameterType="Integer">
 		select * from fj_board_free_comment where board_num=#{board_num} 
 	</select> 
 	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="Integer">
+		Delete
+		FROM	fj_board_free_comment
+		WHERE	comment_board_num = #{comment_board_num}   
+	</delete>
+	
+	<update id="reCountMinus" parameterType="Integer">
+		UPDATE	fj_board_free
+		SET		re_count = re_count - 1 
+		WHERE	board_num = #{board_num} 
+	</update>
+
 	<!-- 검색  -->  
 	  
 </mapper>

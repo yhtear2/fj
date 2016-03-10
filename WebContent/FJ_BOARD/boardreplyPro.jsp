@@ -16,7 +16,12 @@
 	</script>
 </c:if> 
 <c:if test="${result != 0}"> 	
-	<c:redirect url="/fj/boardcontent.do">     
-		<c:param name="pageNum" value="board_num=${dto.board_num}&pageNum=${pageNum}&number=${number+1}"/>     
-	</c:redirect>   
+	<script type="text/javascript">	
+	<!-- 
+		var PageNum = ${pageNum};
+		var board_num = ${board_num};
+		var number = ${number};
+		window.location.href = "boardcontent.do?board_num="+board_num+"&pageNum="+PageNum+"&number="+number;
+	//-->
+	</script> 
 </c:if> 

@@ -62,42 +62,27 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	}
 
 	@Override 
-	public int commentList( BoardCommentDataBean cdto) 
-	{
+	public int commentList( BoardCommentDataBean cdto) {
 		return sqlSession.insert("FJ_BOARD.commentList", cdto);
 	}
 	  
 	@Override  
-	public  List<BoardCommentDataBean> getCommentList(int board_num) 
-	{
+	public  List<BoardCommentDataBean> getCommentList(int board_num) {
 		return sqlSession.selectList("FJ_BOARD.getCommentList", board_num);   
-	} 
-	
-	/*
-	@Override
-	public BoardCommentDataBean getComment(int board_num)
-	{
-		return sqlSession.selectOne("FJ_BOARD.getComment", board_num); 
 	}
-    */
-	
 
-/*
-	public int checkArticle(int board_num)
-	{
-	
-		BoardDataBean dto = getArticle(board_num); 
-		int result = 0;  
-		if(
-		{
-			result = 1;
-		}else
-		{
-			result = 0;
-		}
-		return result;
+	@Override
+	public int deleteReply(int comment_board_num) {
+		return sqlSession.delete("FJ_BOARD.deleteReply", comment_board_num);
+		
 	}
-*/
+
+	@Override
+	public void reCountMinus(int board_num) {
+		sqlSession.update("FJ_BOARD.reCountMinus", board_num);
+		
+	} 
+
 
 	
 	

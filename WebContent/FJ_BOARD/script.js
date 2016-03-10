@@ -134,8 +134,11 @@ function deletecontent()
 
 // 댓글 작성시 유효성 검사 하는곳!
 function boardreplyFormCkeck(){
-	alert("알터확인");
-	alert($('textarea[name=recontent]').val());
+	var test = $('textarea[name=recontent]').val();
+	if( test == null || test == ""){
+		alert("내용을 입력해 주세요.");
+		return false;
+	}
 }
 
 

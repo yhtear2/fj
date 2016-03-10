@@ -7,7 +7,6 @@
  
 <!DOCTYPE html> 
 <title>자유게시판 - 글쓰기 페이지</title>
-     
 
 <body id="main" onload="subjectfocus()"> 
 	<div id="article-create" class="contents" role="main">
@@ -19,46 +18,27 @@
 	
 	<div class="panel-heading clearfix">
 		<div class="avatar avatar-medium clearfix pull-left">
-		
-			<!-- 작성자 이미지 부분  -->
-			<a href="유저정보 경로창" class="avatar-photo"><img
-				src="//www.gravatar.com/avatar/ea033f92e21318820a45c9bb5ca83403?d=identicon&amp;s=40"></a>
-				
 			<!-- 작성자 표시부분 -->	
 			<div class="avatar-info">
-				<a class="nickname" href="유저정보 경로창">작성자</a>
-				
-				<!-- 활동량 부분(구현x) -->
-				<!--  
-				<div class="activity">
-					<span class="fa fa-flash"></span> 10
-				</div>
-				-->
-				
+				${dto.name} &ensp;
 				<!-- 작성날짜 부분 -->
 			   <fmt:formatDate value="${dto.reg_date}" type="both" pattern="yyyy-MM-dd HH:mm"/>
 			</div>
 		</div>
 		<div class="content-identity pull-right">
-						
-						<!-- 글 번호 -->
-                        <div class="article-id"> 
-                        ${number} 
-                    	<c:set var="number" value="${number-1}"/>
-                        </div>
-                        
-                        <!-- 조회수 -->
-                        <div><i class="fa fa-eye"></i>
-                        <table>
-                       <tr>
-                         <td>
-                           ${dto.read_count}  
-                         </td>
-                       </tr>   
-                    </table> 
-                         </div>
-                    </div>
-                </div> 
+			<!-- 추천수 -->
+			<i class="item-icon fa fa-thumbs-up"></i> 
+			${dto.recom_count} 
+			&ensp;
+			<!-- 댓글수 -->
+            <i class="fa fa-comment"></i> 
+            ${dto.re_count}
+            &ensp;
+            <!-- 조회수 -->
+			<i class="fa fa-eye"></i>
+			${dto.read_count}
+			&ensp;  
+		</div> 
 	
 	<div class="panel-body"> 
 		<form action="/fj/boardmodifyPro.do" method="post" name="modifyview" onsubmit="return modifycheck()"> 
