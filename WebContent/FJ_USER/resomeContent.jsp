@@ -109,33 +109,81 @@
 </table>
 
 <h3>학력사항</h3>
+<h5>고등학교</h5>
+
 <table>
-<c:forEach var="sc_dto" items="${result}">
+
+<c:forEach var="sc_dto" items="${result}" end="0">
 
    <tr>
       <th style="width:100px">재학기간</th>
          <td style="width: 520px">
-            <input class="" type="text" style="width:210px" name="highschool_start_date" id="highschool_start_date" value="${sc_dto.school_start_date}"> ~
-            <input class="" type="text" style="width:210px" name="highschool_last_date" id="highschool_last_date" value="${sc_dto.school_last_date}">
-            <select class="" style="width: 80px" name="highschool_college" id="highschool_college">
-               <option value="졸업">졸업</option>
-               <option value="졸업예정">졸업예정</option>      
+            <input class="" type="text" style="width:150px; border:none; " name="highschool_start_date" id="highschool_start_date" value="${sc_dto.school_start_date_high}"> ~
+            <input class="" type="text" style="width:150px; border:none;" name="highschool_last_date" id="highschool_last_date" value="${sc_dto.school_last_date_high}">
+            <select class="" style="width: 80px;" name="highschool_college" id="highschool_college">
+               <option>${sc_dto.school_college_high}</option>
             </select>         
          </td>
    </tr>
 
    <tr>      
       <th>학교명</th>
-      <td> <input class="" type="text" style="width:200px" name="highschool_name" id="highschool_name">
-         <select class="" style="width: 150px" name="highschool_name_kind" id="highschool_name_kind">
-            <option value="문과계열">문과계열</option>
-            <option value="이과계열">이과계열</option>      
-            <option value="전문(실업)계열">전문(실업)계열</option>
-            <option value="예체능계열">예체능계열</option>   
+      <td> <input class="" type="text" style="width:200px; border:none;" name="highschool_name" id="highschool_name" value="${sc_dto.school_name_high}">
+         <select class="" style="width: 150px; border:none; " name="highschool_name_kind" id="highschool_name_kind" >
+            <option>${sc_dto.highschool_kind}</option>
+
          </select>   
       </td>
    </tr>	
-   </c:forEach>
+   	</c:forEach>
+   
+   </table>
+   
+   <h5> 대학교 / 대학원 </h5>
+
+		<table class='table table-hover' id='mytable' style='width: 800px'>
+			<c:forEach var="sc_dto" items="${result}" begin="1" end="4">
+				<c:if test='${sc_dto.school_name_high != null && sc_dto.school_name_high != "" }'>		
+												
+						
+				<tr>
+					<th style='width: 100px'>분류</th>
+					<td style='width: 520px'><input type='radio' id='school_kind_ida' name='school_kind' value='${sc_dto.school_kind}' />&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;
+					<input type='radio' id='school_kind_idb' name='school_kind' value='${sc_dto.school_kind}' />&nbsp; 대학원</td>
+				</tr>
+				<tr>
+					<th style='width: 100px'>재학기간</th>
+					<td style='width: 520px'><input class='input' type='text'style='width: 150px; border:none; ' id='school_start_date'name='school_start_date' value='${sc_dto.school_start_date_college}'> ~ 
+					<input class='input'type='text' style='width: 150px; border:none;' id='school_last_date'name='school_last_date' value='${sc_dto.school_last_date_college}'>  &nbsp;&nbsp; 
+					<select class='input'style='width: 120px; border:none;' id='school_college1' name='school_college1'>
+							<option>${sc_dto.school_college1}</option>
+					</select>&nbsp;&nbsp; <select class='input' style='width: 120px; border:none;' id='school_college2' name='school_college2'>
+							<option>${sc_dto.school_college2}</option>	
+					</select></td>
+	
+				</tr>
+	
+				<tr>
+					<th>학교명</th>
+					<td><input class='input' type='text' style='width: 200px'	id='school_name' name='school_name' value='${sc_dto.school_name_college}'></td>
+	
+				</tr>
+				<tr>
+					<th>전공</th>
+					<td><input class='input' type='text' style='width: 200px' id='school_major' name='school_major' value='${sc_dto.school_major}'></td>
+				</tr>
+				<tr>
+					<th>학점</th>
+						<c:set var="e" value='${fnc:split( sc_dto.school_rank, "/" )}'/>	
+					
+						<td><input class='input' type='text' style='width: 60px'id='school_rank1' name='school_rank1' maxlength='3' value='${e[0]}'> / 
+						<input	class='input' type='text' style='width: 60px' id='school_rank2'	name='school_rank2' maxlength='3' value='${e[1]}'></td>
+					  
+				</tr>
+				</c:if>
+			</c:forEach>
+		</table>
+
 
 
 

@@ -25,11 +25,11 @@ var license3 = "";
 
 function skill_result() {
    var skills = document.getElementById('skill').value;
-   //opener.document.resome.skill.value = skills;
+   opener.document.resome.skill.value = skills;
    
    // jquery로 어떻게 넣을수 없을까나...//홍석
    // 나도 이거 써야해서...ㅋㅋㅋ 아.. 안된다..ㅠㅠ
-   $("input[id=skill]", opener.document).val( skills ); //jquery 이용
+   //$("input[id=skill]", opener.document).val( skills ); //jquery 이용
    //$(opener.document).find('input[id=skill]').val( skills ); //find를 이용한 jquery
    //$(opener.document).find($("#skill").val( skills ));
    window.close();

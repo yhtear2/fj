@@ -61,9 +61,10 @@
 
 	<insert id="insertArticle_sc" parameterType="dto.user.SchoolDataBean">
 		insert into FJ_School values (FJ_School_seq.NEXTVAL,#{user_history_id, jdbcType=INTEGER},#{school_kind,jdbcType=VARCHAR},
-		#{school_start_date,jdbcType=VARCHAR},#{school_last_date,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
-		#{school_college2,jdbcType=VARCHAR},#{school_college_high,jdbcType=VARCHAR},#{school_name,jdbcType=VARCHAR},#{school_name_kind,jdbcType=VARCHAR},
-		#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date}, #{school_ref ,jdbcType=INTEGER})
+		#{school_start_date_high,jdbcType=VARCHAR},#{school_last_date_high,jdbcType=VARCHAR},#{school_college1,jdbcType=VARCHAR},
+		#{school_start_date_college,jdbcType=VARCHAR},#{school_last_date_college,jdbcType=VARCHAR},
+		#{school_college2,jdbcType=VARCHAR},#{school_college_high,jdbcType=VARCHAR},#{school_name_high,jdbcType=VARCHAR},#{school_name_college,jdbcType=VARCHAR},
+		#{highschool_kind,jdbcType=VARCHAR},#{school_major,jdbcType=VARCHAR},#{school_rank,jdbcType=VARCHAR},#{reg_date},#{last_date}, #{school_ref ,jdbcType=INTEGER})
 	</insert>
 
 	<select id="getUser_history_id" parameterType="Integer" resultType="dto.user.UserDataBean">
