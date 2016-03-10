@@ -1,32 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ include file="setting.jsp"%>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@ include file="/defaultSetting.jsp"%>
-    <meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  <!-- 익스플로러,크롬,엣지 전부호환 가능 -->
-	<title>人 코딩 - 이력서 게시판 </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="http://okky.kr/assets/favicon-4ddd8035b72404da5a8c298cbaacad86.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" href="http://okky.kr/assets/icon_57x57-5611bd33d9f2b2d84c22219e248455b6.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="http://okky.kr/assets/icon_114x114-b2b627dfde8a040fe54fd257244ba191.png">
-       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-       <meta property="og:image" content="http://okky.kr/assets/okky_logo_fb-cea175ff727ef14a4d8be0e68cff730a.png">
-       
-       <link rel="stylesheet" href="http://okky.kr/assets/application-178a471b205e52821f985abddea1ac34.css">
-
-       <!--[if lt IE 9]>
-           <script src="http://okky.kr/assets/libs/html5-ca664f64318d191265abf57fdf467aec.js" type="text/javascript" ></script>
-       <![endif]--> 
-   
-              
-	<meta name="layout" content="main">
-				 
-    
+<script src="/fj/FJ_USER/resome.js"></script>
+<link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
+<script src="/fj/FJ_USER/request.js"></script>
 
 <div id="list-article" class="content scaffold-list" role="main">
             <div class="nav" role="navigation"> 
-                <a href="/fj/resome.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 이력서 작성 </a>
+                <a href="/fj/resome.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 글쓰기 </a>
                 
                 <h4>이력서 게시판</h4>   
                 <div class="category-filter-wrapper"> 
@@ -46,13 +28,11 @@
                         
                         <!-- 순으로 리스트를 출력하려는데 아직 미구현  -->
                         <ul class="list-sort pull-left">  
-                        <!--  
                             <li><a href="/fj/boardlist.do?sort=id&amp;order=desc" data-sort="id" data-order="desc" class="category-sort-link active">최신순</a></li>
                             <li><a href="/fj/boardlist.do?sort=voteCount&amp;order=desc" data-sort="voteCount" data-order="desc" class="category-sort-link ">추천순</a></li>
                             <li><a href="/fj/boardlist.do?sort=noteCount&amp;order=desc" data-sort="noteCount" data-order="desc" class="category-sort-link ">댓글순</a></li>
                             <li><a href="/fj/boardlist.do?sort=scrapCount&amp;order=desc" data-sort="scrapCount" data-order="desc" class="category-sort-link ">스크랩순</a></li>
                             <li><a href="/fj/boardlist.do?sort=viewCount&amp;order=desc" data-sort="viewCount" data-order="desc" class="category-sort-link ">조회순</a></li>
-                      	-->
                         </ul> 
                         
                         <input type="hidden" name="sort" id="category-sort-input" value="id">   
@@ -67,22 +47,26 @@
                 
 				  
                 <ul class="list-group">
-                <!-- 여기 없다고 지우지 마세여  -->
+                <!-- 글이 존재할 때  -->
+                
 				
+					게시글이 없습니다.
+				
+				 
+               
                 </ul>
               
             </div>
             
           
-	
+</div>
 <!-- resome_list test (수정자 외 건들지 말 것) -->
-<!-- 여기서 부터 이력서 작성시 리스트로 출력되는 곳  -->
-<html>
-
+	<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<title>이력서 수정/삭제</title>
 <link href="/css/ui/reset-fonts.css" media="all" rel="stylesheet"
 	type="text/css">
-	
-<!-- 이력서 리스트 틀  -->
 <style type="text/css">
 a {
 	text-decoration: none
@@ -156,25 +140,21 @@ a {
 }
 </style>
 
-<c:if test="${count != 0}">
-<c:forEach var="dto" items="${list}">
 <div class="my-imagewrap">
 	<div class="my-image">
 		<span class="pic"><img alt=""
 			src="https://pds.saramin.co.kr/person/photo/2016/03/1457575030_14575750291457575022IU.jpg"
 			border="0" onmouseover="showTipLayer()" width="100" height="140"></span>
-		<span class="btn"> <a href="/fj/resomeContent.do"><img
+		<span class="btn"> <a href="/fj/resome.do"><img
 				src="//www.saraminimage.co.kr/person/renewal/btn_image_modify.gif"
 				alt="수정"></a> <a
-			href="/fj/deletePro.do"><img 
+			href="javascript:deletePhoto('person/photo/2016/03/1457575030_14575750291457575022IU.jpg')"><img
 				src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif"
 				alt="삭제"></a>
 		</span>
 
-	  </div>
 	</div>
-	</c:forEach>
-  </c:if>
-</html>
-
 </div>
+</div>
+</head>
+</html>

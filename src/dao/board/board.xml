@@ -64,8 +64,8 @@
 	<!-- 원본(확인 될 때까지 지우지 말 것) -->   
 	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map"> 	 
 		select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date,
-			rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
-			rn from (select board_num, mom_board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
+			rn from (select board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date, rownum 
+			rn from (select board_num, email, subject, content, recontent, hstag, re_count, scrap_count, recom_count, bad_count, read_count, re_step, category, reg_date from fj_board_free order by board_num desc, re_step asc)
 			order by board_num desc, re_step asc) where rn &gt; = #{start} and rn &lt; = #{end}    
 	</select>  
 	
@@ -106,7 +106,7 @@
 		) 
 	</insert>   
 	   
-	<!-- 댓글 리스트 불러오기  -->
+	<!-- 댓글 리스트 불러오기  --> 
 	<select id="getCommentList" resultType="dto.board.BoardCommentDataBean" parameterType="Map" >
 		select board_num, email, reg_date, recontent, recom_count, re_step from fj_board_free_comment where board_num=#{board_num} order by board_num asc
 	</select> 

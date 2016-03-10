@@ -23,7 +23,7 @@ import handler.Commandhandler;
 public class User_ContentHandler implements Commandhandler {
 
 	@Resource(name="userDao")
-	private UserDao dao;
+	private UserDao dao;   
 	
 	@RequestMapping("/resomeContent")
 	@Override
@@ -42,6 +42,13 @@ public class User_ContentHandler implements Commandhandler {
 		
 		List<SchoolDataBean> result = dao.getContent_school(user_history_id);
 		
+		if( user_history_id < 9)
+		{
+			dao.getUser_history_id(user_history_id); 
+		}else
+		{
+			System.out.println("8개수 초과");
+		}
 
 		dto = dao.getContent(user_history_id);
 		
