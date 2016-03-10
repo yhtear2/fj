@@ -34,6 +34,8 @@ h2 {
 	padding-top:35px;
 }
 .table {
+	font-family : 돋움;
+	font-size : 0.8em;
 	margin-left:50px;
 	width:600px;
 }
@@ -79,6 +81,8 @@ th{
 	width:700px;
 	padding-top:100px;
 	padding-bottom:100px;
+	font-family: 돋움;
+	font-size: 0.8em;
 }
 .info>h2 {
 	padding-top:100px;

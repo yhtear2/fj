@@ -62,8 +62,8 @@
 	</select>
 	
 	<update id="addReadContent" parameterType="Integer" >
-		UPDATE FJ_RECRUIT 
-		SET readcount + 1 
+		UPDATE 	FJ_RECRUIT 
+		SET 	readcount = readcount + 1 
 		Where	recruit_id = #{recruit_id}
 	</update>
 	

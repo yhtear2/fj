@@ -17,7 +17,7 @@
  -->
 <link href="/fj/FJ_RECRUIT/recruit.css" type="text/css" rel="stylecheet">
 <!-- 전체 크기 잡기 -->
-<div class="recruit_mainsize">
+<div class="recruit_contentsize">
 	<!-- 여기에는 기업정보에서 가져오는 기본입력 폼 -->
 	<div class="panel panel-default">
 		<!-- 대표자명 / 기업구분 / 담당자 / 전화번호  / 우편번호 / 주소 / 자본금 / 기업업종 / 회사설립일 / 연매출 / 사원수 -->	

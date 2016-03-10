@@ -8,7 +8,7 @@
 		<div>
 			<h2>채용게시판</h2>
 		</div>
-		<div style="">
+		<div>
 			<!-- 검색어 입력펌 -->
 			<input type="search" name="query" class="form-control_hs" placeholder="검색어" style="width:200px;"> 
 			<!-- 검색 버튼 -->
@@ -16,9 +16,11 @@
 			<!-- 상세검색 버튼 -->
 			<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide">
 				<i class="fa fa-plus-square-o"></i> 상세검색 </a>
-			<!-- 글쓰기 버튼 -->
-			<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide">
-				<i class="fa fa-pencil"></i> 글쓰기 </a>
+			<!-- 글쓰기 버튼 / member_flag가 2일 경우에만 글쓰기가 가능하도록 -->
+			<c:if test="${sessionScope.member_flag == 2}">
+				<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide">
+					<i class="fa fa-pencil"></i> 글쓰기 </a>
+			</c:if>
 		</div>
 	</div>
 	<!-- 게시글이 보여지는 화면 -->
@@ -44,7 +46,7 @@
 				<!-- 회사명 부분 -->
 				<td>
 					<h5 class="list-group-item-heading ">
-						${name}
+						${dto.name}
 					</h5>
 				</td>
 				<!-- 제목 부분 -->

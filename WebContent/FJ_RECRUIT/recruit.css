@@ -55,16 +55,21 @@
     border: 1px solid transparent;
     border-radius: 4px;
 }
-table {
-	font-family: 돋움;
-	font-size : 0.9em;
-}
 .recruit_mainsize {
 	width : 750px;
-	padding : 50px;
+	padding : 0px;
+}
+.recruit_contentsize {
+	width : 750px;
+	padding : 0px;
 }
 .comptext {
-	padding-left : 60px;
+	padding-top : 50px;
+	padding-left : 110px;
+}
+.comptext table, .business table {
+	font-family: 돋움;
+	font-size : 0.9em;
 }
 .comptitle {
 	width:100%;
@@ -102,7 +107,7 @@ table {
 	width: 200px;
 }
 .business {
-	padding-left:60px;
+	padding-left:105px;
 	height: 240px;
 }
 .business div{
