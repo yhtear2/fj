@@ -63,7 +63,7 @@ CREATE TABLE FJ_Board_Free
 	-- content : 내용 
 	content long NOT NULL,
 	-- recontent : 댓글내용 
-	recontent long,
+	recontent varchar2(4000),
 	-- hstag : 해쉬태그
 	hstag varchar2(50),
 	-- category : 카테고리 
