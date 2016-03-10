@@ -15,30 +15,30 @@
 	
 	화이팅!!
  -->
-<script type="text/javascript">
-	//탭메뉴 기능 삭제
-</script> 
-
+<link href="/fj/FJ_RECRUIT/recruit.css" type="text/css" rel="stylecheet">
 <!-- 전체 크기 잡기 -->
 <div class="recruit_mainsize">
 	<!-- 여기에는 기업정보에서 가져오는 기본입력 폼 -->
 	<div class="panel panel-default">
 		<!-- 대표자명 / 기업구분 / 담당자 / 전화번호  / 우편번호 / 주소 / 자본금 / 기업업종 / 회사설립일 / 연매출 / 사원수 -->	
 		<div class="comptext panel panel-body">
-			<h4>${dto.name}</h4>
-			<h1>${dto.title}</h2>
+			<div class="comptitle">
+				<span class="comptitle_sub">${dto.name}</span>
+				<h2 class="comptitle_sub">${dto.title}</h2>
+				<span class="comptitle_sub">${compdto.comp_type}</span>
+			</div>
 			<table>
 				<tr>
 					<th>대표자명</th>
-					<td> : ${compdto.ceo}</td>
+					<td>${compdto.ceo}</td>
 					<th>기업구분</th>
-					<td> : ${compdto.comp_part}</td>
+					<td>${compdto.comp_part}</td>
 				</tr>
 				<tr>
 					<th>담당자</th>
-					<td> : ${compdto.incharge}</td>
+					<td>${compdto.incharge}</td>
 					<th>전화번호</th>
-					<td> : ${compdto.tel}</td>
+					<td>${compdto.tel}</td>
 				</tr>
 				<tr>
 					<th rowspan="2">주소</th>
@@ -49,46 +49,44 @@
 				</tr>
 				<tr>
 					<th>자본금</th>
-					<td> : ${compdto.capital}</td>
+					<td>${compdto.capital}</td>
 					<th>기업업종</th>
-					<td> : ${compdto.comp_type}</td>
+					<td>${compdto.comp_type}</td>
 				</tr>
 				<tr>
 					<th>회사설립일</th>
-					<td colspan="3"> : ${compdto.comp_reg_date}</td>
+					<td colspan="3">${compdto.comp_reg_date}</td>
 				</tr>
 				<tr>
 					<th>연매출</th>
-					<td colspan="3"> : ${compdto.year_sale}</td>
+					<td colspan="3">${compdto.year_sale}</td>
 				</tr>
 				<tr>
 					<th>사원수</th>
-					<td colspan="3"> : ${compdto.emp_count}</td>
+					<td colspan="3">${compdto.emp_count}</td>
 				</tr>
 			</table>
 		</div>
 		<!-- 여기는 담당업무, 근무조건 -->
 		<div class="business panel panel-footer">
-			<h2>${dto.title}</h2>
 			<div>
 				<h4>근무조건</h4>
 				<table>
 					<tr>
 						<th>지역</th>
-						<td colspan="2">${dto.work_area}</td>
+						<td>${dto.work_area}</td>
 					</tr>
 					<tr>
 						<th>급여</th>
-						<td>${dto.min_salary} ~ </td>
-						<td>${dto.max_salary}</td>
+						<td>${dto.min_salary} ~ ${dto.max_salary}</td>
 					</tr>
 					<tr>
 						<th>근무형태</th>
-						<td colspan="2">${dto.work_type}</td>
+						<td>${dto.work_type}</td>
 					</tr>
 					<tr>
 						<th>근무요일</th>
-						<td colspan="2">${dto.work_day}</td>
+						<td>${dto.work_day}</td>
 					</tr>
 				</table>
 			</div>
@@ -101,8 +99,7 @@
 					</tr>
 					<tr>
 						<th>경력</th>
-						<td>${dto.min_career} ~ </td>
-						<td>${dto.max_salary}</td> 
+						<td>${dto.min_career} ~ ${dto.max_career}</td>
 					</tr>
 					<tr>
 						<th>학력</th>
@@ -114,8 +111,7 @@
 					</tr>
 					<tr>
 						<th>나이</th>
-						<td>${dto.min_age} ~ </td>
-						<td>${dto.max_age}</td>
+						<td>${dto.min_age} ~ ${dto.max_age}</td>
 					</tr>
 				</table>
 			</div>
@@ -125,8 +121,7 @@
 						<th>담당업무</th>
 						<td>${dto.business_part}</td>
 						<th>채용기간</th>
-						<td>${dto.start_date} ~ </td>
-						<td>${dto.end_date}</td>
+						<td>${dto.start_date} ~ ${dto.end_date}</td>
 					</tr>
 				</table>
 			</div>
@@ -140,51 +135,5 @@
 	<!-- 상세 내용 -->
 	<div class="recruittext panel panel-default">
 		${dto.content}
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		임의 테스트<br>
-		dto.content는 왜 불러와지지 않는가<br>
-		아아아아아아아아아아아아아<br>
-		
-		<input type="button" value="탭1" onclick="tab1()">
-		<input type="button" value="탭1" onclick="tab2()">
-		<input type="button" value="탭1" onclick="tab3()">
-		<input type="button" value="탭1" onclick="tab4()">
-		<div class="tab1">
-			탭1
-		</div>
-		<div class="tab2">
-			탭2
-		</div>
-		<div class="tab3">
-			탭3
-		</div>
-		<div class="tab4">
-			탭4
-		</div>
 	</div>
-	
-	
 </div>

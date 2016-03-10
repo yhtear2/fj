@@ -97,7 +97,7 @@
 		<div class="info">
 			<h2>회사소개</h2>
 			<div class="infotext">
-				${dto.info}
+				${dto.content}
 			</div>
 		</div>
 	</body>
