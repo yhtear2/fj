@@ -55,6 +55,15 @@
     border: 1px solid transparent;
     border-radius: 4px;
 }
+.panel {
+	margin-bottom : 0px;
+	border-radius : 0px 0px 0px 0px;
+	
+}
+.panel-default {
+	width:700px;
+	margin-left:25px;
+}
 .recruit_mainsize {
 	width : 750px;
 	padding : 0px;
@@ -64,8 +73,10 @@
 	padding : 0px;
 }
 .comptext {
-	padding-top : 50px;
-	padding-left : 110px;
+	padding-top : 60px;
+	padding-left : 50px;
+	padding-right : 50px;
+	padding-bottom : 60px;
 }
 .comptext table, .business table {
 	font-family: 돋움;
@@ -73,9 +84,10 @@
 }
 .comptitle {
 	width:100%;
-	height:75px;
-	margin-bottom : 20px;
-	overflow:hidden;
+	height:100px;
+	margin-bottom:50px;
+	padding-left:0px;
+	background-color : gray;
 }
 .comptitle span {
 	display:block;
@@ -100,19 +112,66 @@
 	line-height : 1.5em;
 }
 .comptext th, .business th {
-	width:70px;
+	width:90px;
 }
 .comptext td, .business td {
-	padding-left:70px;
-	width: 200px;
+	padding-left:10px;
+	width: 220px;
 }
 .business {
-	padding-left:105px;
-	height: 240px;
+	width:750px;
+	padding-left:80px;
+	height: 280px;
+	margin-bottom:50px;
 }
 .business div{
-	padding-top: 20px;
 	float:left;
+}
+.middle {
+	margin-top: 50px;
+	margin-bottom : 50px;
+	width:100%;
+	height:200px;
+}
+.middle>div {
+	padding-top:20px;
+	float:left;
+	width:25%;
+	height:100px;
+	text-align:center;
+}
+.middle>div:nth-child(1) {
+	background:#5CA1E6;
+}
+.middle>div:nth-child(2) {
+	background:#79B6F2;
+}
+.middle>div:nth-child(3) {
+	background:#5CA1E6;
+}
+.middle>div:nth-child(4) {
+	background:#79B6F2;
+}
+.middle>div:nth-child(5) {
+	background:#79B6F2;
+}
+.middle>div:nth-child(6) {
+	background:#5CA1E6;
+}
+.middle>div:nth-child(7) {
+	background:#79B6F2;
+}
+.middle>div:nth-child(8) {
+	background:#5CA1E6;
+}
+.span{
+	display:block;
+	color : white;
+	font-size:1.5em;
+	font-style:bold;
+}
+.recruittext {
+	
 }
 
 

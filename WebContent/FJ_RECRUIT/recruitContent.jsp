@@ -19,15 +19,15 @@
 <!-- 전체 크기 잡기 -->
 <div class="recruit_contentsize">
 	<!-- 여기에는 기업정보에서 가져오는 기본입력 폼 -->
+	<div class="comptitle">
+			<span class="comptitle_sub">${dto.name}</span>
+			<h2 class="comptitle_sub">${dto.title}</h2>
+			<span class="comptitle_sub">${compdto.comp_type}</span>
+	</div>
 	<div class="panel panel-default">
 		<!-- 대표자명 / 기업구분 / 담당자 / 전화번호  / 우편번호 / 주소 / 자본금 / 기업업종 / 회사설립일 / 연매출 / 사원수 -->	
-		<div class="comptext panel panel-body">
-			<div class="comptitle">
-				<span class="comptitle_sub">${dto.name}</span>
-				<h2 class="comptitle_sub">${dto.title}</h2>
-				<span class="comptitle_sub">${compdto.comp_type}</span>
-			</div>
-			<table>
+		<div class="comptext panel">
+			<table class="table table-hover">
 				<tr>
 					<th>대표자명</th>
 					<td>${compdto.ceo}</td>
@@ -68,71 +68,106 @@
 			</table>
 		</div>
 		<!-- 여기는 담당업무, 근무조건 -->
-		<div class="business panel panel-footer">
-			<div>
-				<h4>근무조건</h4>
-				<table>
-					<tr>
-						<th>지역</th>
-						<td>${dto.work_area}</td>
-					</tr>
-					<tr>
-						<th>급여</th>
-						<td>${dto.min_salary} ~ ${dto.max_salary}</td>
-					</tr>
-					<tr>
-						<th>근무형태</th>
-						<td>${dto.work_type}</td>
-					</tr>
-					<tr>
-						<th>근무요일</th>
-						<td>${dto.work_day}</td>
-					</tr>
-				</table>
-			</div>
-			<div>
-				<h4>지원자격</h4>
-				<table>
-					<tr>
-						<th>기술</th>
-						<td>${dto.skill}</td>
-					</tr>
-					<tr>
-						<th>경력</th>
-						<td>${dto.min_career} ~ ${dto.max_career}</td>
-					</tr>
-					<tr>
-						<th>학력</th>
-						<td>${dto.edu}</td>
-					</tr>
-					<tr>
-						<th>성별</th>
-						<td>${dto.gender}</td>
-					</tr>
-					<tr>
-						<th>나이</th>
-						<td>${dto.min_age} ~ ${dto.max_age}</td>
-					</tr>
-				</table>
-			</div>
-			<div>
-				<table>
-					<tr>
-						<th>담당업무</th>
-						<td>${dto.business_part}</td>
-						<th>채용기간</th>
-						<td>${dto.start_date} ~ ${dto.end_date}</td>
-					</tr>
-				</table>
-			</div>
+		
 			<!-- 제목 -->
 			<!-- 근무조건 : 지역 / 급여 / 근무형태 / 근무요일 -->
 			<!-- 지원자격 : 기술 / 경력 / 학력 / 성별 / 나이   -->
 			<!-- 담당업무  / 채용시작일 / 채용종료일 -->
 		</div>
 	</div>
-
+	<div class="middle">
+		<div>
+			<span class="span">자본금</span>
+			<span class="span">${compdto.capital}</span>
+		</div>
+		<div>
+			<span class="span">설립일</span>
+			<span class="span">${compdto.comp_reg_date}</span>
+		</div>
+		<div>
+			<span class="span">연매출</span>
+			<span class="span">${compdto.year_sale}</span>
+		</div>
+		<div>
+			<span class="span">사원수</span>
+			<span class="span">${compdto.emp_count}</span>
+		</div>
+		<div>
+			<span class="span">나이</span>
+			<span class="span">${dto.min_age} ~ ${dto.max_age}</span>
+		</div>
+		<div>
+			<span class="span">근무형태</span>
+			<span class="span">${dto.work_type}</span>
+		</div>
+		<div>
+			<span class="span">학력</span>
+			<span class="span">${dto.edu}</span>
+		</div>
+		<div>
+			<span class="span">담당업무</span>
+			<span class="span">${dto.business_part}</span>
+		</div>
+	</div>
 	<!-- 상세 내용 -->
+	<div class="business panel">
+		<div>
+			<h4>근무조건</h4>
+			<table class="table table-hover">
+				<tr>
+					<th>지역</th>
+					<td>${dto.work_area}</td>
+				</tr>
+				<tr>
+					<th>급여</th>
+					<td>${dto.min_salary} ~ ${dto.max_salary}</td>
+				</tr>
+				<tr>
+					<th>근무형태</th>
+					<td>${dto.work_type}</td>
+				</tr>
+				<tr>
+					<th>근무요일</th>
+					<td>${dto.work_day}</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<h4>지원자격</h4>
+			<table class="table table-hover">
+				<tr>
+					<th>기술</th>
+					<td>${dto.skill}</td>
+				</tr>
+				<tr>
+					<th>경력</th>
+					<td>${dto.min_career} ~ ${dto.max_career}</td>
+				</tr>
+				<tr>
+					<th>학력</th>
+					<td>${dto.edu}</td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>${dto.gender}</td>
+				</tr>
+				<tr>
+					<th>나이</th>
+					<td>${dto.min_age} ~ ${dto.max_age}</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table class="table table-hover">
+				<tr>
+					<th>담당업무</th>
+					<td>${dto.business_part}</td>
+					<th>채용기간</th>
+					<td>${dto.start_date} ~ ${dto.end_date}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 	<div class="recruittext panel panel-default">
 		${dto.content}
 	</div>
