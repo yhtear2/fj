@@ -80,8 +80,11 @@
 		</div>
 		<div class="main_menu2">
 			<h3>게시판</h3>
+			<a href="#" onclick="window.location='boardlist.do'">All</a>
 			<a href="#" onclick="window.location='boardlist.do'">공지사항</a>
-			<a href="#" onclick="window.location='boardlist.do'">자유게시판</a>
+			<a href="#" onclick="window.location='boardlist.do'">사는얘기</a>
+			<a href="#" onclick="window.location='boardlist.do'">포럼</a>
+			<a href="#" onclick="window.location='boardlist.do'">스터디</a>
 		</div>
 		<div class="main_menu2">
 			<h3>채용공고</h3>

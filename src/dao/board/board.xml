@@ -79,11 +79,7 @@
 	 <delete id="deleteArticle" parameterType="Integer">
 	 	delete from fj_board_free where board_num=#{board_num}   
 	 </delete>
-	
-	<!--  
-	<select id="getRecount" parameterType="Integer" resultType="Integer">
-		select re_count from Fj_board_free where board_num = #{board_num}
-	</select>   --> 
+
 	      
 	<!-- ▼  댓글 쿼리부분  -->
 	
@@ -113,7 +109,9 @@
 	</select> 
 	     
 	<select id="getComment" resultType="dto.board.BoardCommentDataBean" parameterType="Integer">
-		select * from fj_board_free_comment where board_num=#{board_num} 
+		SELECT 	* 
+		FROM 	fj_board_free_comment 
+		WHERE	board_num=#{board_num} 
 	</select> 
 	
 	<!-- 댓글 삭제 -->
