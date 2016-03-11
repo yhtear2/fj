@@ -11,16 +11,11 @@
 	<link rel="shortcut icon" href="http://okky.kr/assets/favicon-4ddd8035b72404da5a8c298cbaacad86.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="http://okky.kr/assets/icon_57x57-5611bd33d9f2b2d84c22219e248455b6.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="http://okky.kr/assets/icon_114x114-b2b627dfde8a040fe54fd257244ba191.png">
-       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-       <meta property="og:image" content="http://okky.kr/assets/okky_logo_fb-cea175ff727ef14a4d8be0e68cff730a.png">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta property="og:image" content="http://okky.kr/assets/okky_logo_fb-cea175ff727ef14a4d8be0e68cff730a.png">
        
        <link rel="stylesheet" href="http://okky.kr/assets/application-178a471b205e52821f985abddea1ac34.css">
-
-       <!--[if lt IE 9]>
-           <script src="http://okky.kr/assets/libs/html5-ca664f64318d191265abf57fdf467aec.js" type="text/javascript" ></script>
-       <![endif]--> 
-   
-              
+             
 	<meta name="layout" content="main">
 				 
 </head>
@@ -48,7 +43,6 @@
                         <!-- 순으로 리스트를 출력하려는데 아직 미구현  -->
                         <ul class="list-sort pull-left">  
                             <li><a href="searchboardlist.do?sort=board_num" data-sort="id" data-order="desc" class="category-sort-link active">최신순</a></li>
-                            <li><a href="searchboardlist.do?sort=recom_count" data-sort="voteCount" data-order="desc" class="category-sort-link ">추천순</a></li>
                             <li><a href="searchboardlist.do?sort=re_count" data-sort="noteCount" data-order="desc" class="category-sort-link ">댓글순</a></li>
                             <li><a href="searchboardlist.do?sort=read_count" data-sort="viewCount" data-order="desc" class="category-sort-link ">조회순</a></li>
                         </ul> 
@@ -110,7 +104,7 @@
                                     <div class="list-group-item-summary clearfix">
                                     	
                                         <ul>
-                                        	<!-- li 순서 : 댓글 - 추천 - 조회  -->  
+                                        	<!-- li 순서 : 댓글 - 조회  -->  
                                         	
                                         	
                                             <li class="" >
@@ -124,17 +118,7 @@
                                       		
                                       		</table>
                       		              	</li>
-                      		              	
-                      		              	
-                                            <li class="item-icon-disabled"><i class="item-icon fa fa-thumbs-up"></i>
-                                            <table>
-                                            	<tr>
-                                            		<td>
-                                            			${dto.recom_count}
-                                            		</td>
-                                            	</tr>
-                                            </table>
-                                            </li>
+
                                             <li class=""><i class="item-icon fa fa-eye"></i>
                                             <table>
                                             	<tr>

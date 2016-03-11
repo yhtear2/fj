@@ -87,41 +87,6 @@
 				<article class="content-text">${dto.content}</article>
 			</div>
 
-
-			<div class="content-function pull-right text-center">
-				<div class="content-function-group">
-					<!-- 추천기능 부분 -->
-					<a href="javascript://" class="note-vote-btn" role="button"
-						data-type="vote" data-eval="false" data-id=""><i
-						id="note-vote" class="fa fa-thumbs-up note-vote"
-						data-toggle="tooltip" data-placement="left" title=""
-						data-original-title="좋아요"></i></a>
-
-					<!-- 추천수 보기 -->
-					<div id="content-vote-count-1034845" class="content-count">
-						<table>
-							<tr>
-								<td>${dto.recom_count}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-
-				<!-- 스크랩 보기 -->
-				<div class="content-function-group article-scrap-wrapper">
-					<a href="javascript://" id="article-scrap-btn" data-type="scrap"><i
-						class="fa fa-bookmark " data-toggle="tooltip"
-						data-placement="left" title="" data-original-title="스크랩"></i></a>
-					<div id="article-scrap-count" class="content-count">
-						<table>
-							<tr>
-								<td>${dto.scrap_count}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-
 			<!-- 페이스북 공유버튼 -->
 			<div class="content-function-cog share-btn-wrapper">
 				<div class="dropdown">

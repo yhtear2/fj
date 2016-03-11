@@ -49,8 +49,6 @@
                         <ul class="list-sort pull-left">
                         	<c:if test='${sort == "board_num"}'> <li><a href="searchboardlist.do?sort=board_num" class="category-sort-link active">최신순</a></li> </c:if>
                         	<c:if test='${sort != "board_num"}'> <li><a href="searchboardlist.do?sort=board_num" class="category-sort-link">최신순</a></li> </c:if>
-                            <c:if test='${sort == "recom_count"}'> <li><a href="searchboardlist.do?sort=recom_count" class="category-sort-link active">추천순</a></li> </c:if>
-                            <c:if test='${sort != "recom_count"}'> <li><a href="searchboardlist.do?sort=recom_count" class="category-sort-link ">추천순</a></li> </c:if>
                             <c:if test='${sort == "re_count"}'> <li><a href="searchboardlist.do?sort=re_count" class="category-sort-link active">댓글순</a></li> </c:if>
                             <c:if test='${sort != "re_count"}'> <li><a href="searchboardlist.do?sort=re_count" class="category-sort-link ">댓글순</a></li> </c:if>
                             <c:if test='${sort == "read_count"}'> <li><a href="searchboardlist.do?sort=read_count" class="category-sort-link active">조회순</a></li> </c:if>
@@ -128,17 +126,7 @@
                                       		
                                       		</table>
                       		              	</li>
-                      		              	
-                      		              	
-                                            <li class="item-icon-disabled"><i class="item-icon fa fa-thumbs-up"></i>
-                                            <table>
-                                            	<tr>
-                                            		<td>
-                                            			${dto.recom_count}
-                                            		</td>
-                                            	</tr>
-                                            </table>
-                                            </li>
+
                                             <li class=""><i class="item-icon fa fa-eye"></i>
                                             <table>
                                             	<tr>
