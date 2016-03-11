@@ -32,22 +32,22 @@ DROP SEQUENCE FJ_User_seq;
 
 /* Create Sequences */
 
--- ´ñ±Û·Î ½ÃÄö½º
+-- ï¿½ï¿½Û·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_BOARD_Comment_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- °Ô½ÃÆÇ  ½ÃÄö½º
+-- ï¿½Ô½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_BOARD_FREE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- (ÀÌ·Â¼­)
--- °æ·Â  ½ÃÄö½º
+-- (ï¿½Ì·Â¼ï¿½)
+-- ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_Career_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- (ÀÌ·Â¼­)ÀÚ±â¼Ò°³¼­   ½ÃÄö½º
+-- (ï¿½Ì·Â¼ï¿½)ï¿½Ú±ï¿½Ò°ï¿½ï¿½ï¿½   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_Introduce_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- ¸Þ½ÃÁö  ½ÃÄö½º
+-- ï¿½Þ½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_MESSAGE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- Ã¤¿ë°Ô½ÃÆÇ ½ÃÄö½º
+-- Ã¤ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_Recruit_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- (ÀÌ·Â¼­) ÇÐ·Â ½ÃÄö½º
+-- (ï¿½Ì·Â¼ï¿½) ï¿½Ð·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_School_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
--- ÀÌ·Â¼­ ½ÃÄö½º
+-- ï¿½Ì·Â¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 CREATE SEQUENCE FJ_User_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
 
 
@@ -57,60 +57,60 @@ CREATE SEQUENCE FJ_User_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH
 -- FJ_Board_Free
 CREATE TABLE FJ_Board_Free
 (
-	-- board_num : °Ô½ÃÆÇ ID
+	-- board_num : ï¿½Ô½ï¿½ï¿½ï¿½ ID
 	board_num number NOT NULL,
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50) NOT NULL,
-	-- subject : Á¦¸ñ 
+	-- subject : ï¿½ï¿½ï¿½ï¿½ 
 	subject varchar2(100) NOT NULL,
-	-- content : ³»¿ë 
+	-- content : ï¿½ï¿½ï¿½ï¿½ 
 	content long NOT NULL,
-	-- hstag : ÇØ½¬ÅÂ±×
+	-- hstag : ï¿½Ø½ï¿½ï¿½Â±ï¿½
 	hstag varchar2(50),
-	-- recontent : ´ñ±Û³»¿ë 
+	-- recontent : ï¿½ï¿½Û³ï¿½ï¿½ï¿½ 
 	recontent varchar2(4000),
-	-- category : Ä«Å×°í¸® 
+	-- category : Ä«ï¿½×°ï¿½ 
 	category varchar2(50) NOT NULL,
-	-- name : ±Û¾´ÀÌ ÀÌ¸§
+	-- name : ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	-- 
 	name varchar2(100),
-	-- re_count : ¸®ÇÃÀÇ ¼ö 
+	-- re_count : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
 	re_count number NOT NULL,
-	-- scrap_count : ½ºÅ©·¦ ¼ö 
+	-- scrap_count : ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ 
 	scrap_count number NOT NULL,
-	-- recom_count : ÁÁ¾Æ¿ä ¼ö 
+	-- recom_count : ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ 
 	recom_count number NOT NULL,
-	-- bad_count : ½È¾î¿ä ¼ö 
+	-- bad_count : ï¿½È¾ï¿½ï¿½ ï¿½ï¿½ 
 	bad_count number NOT NULL,
-	-- read_count : ÀÐÀº ¼ö 
-	-- (½ÇÁ¦ DB¿¡´Â number default 0, À¸·Î ÇÒ °ÍÀÓ)
+	-- read_count : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
+	-- (ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ number default 0, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	read_count number,
-	-- re_step : °Ô½Ã±ÛÀÇ ±¸ºÐ 
+	-- re_step : ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	re_step number NOT NULL,
-	-- reg_date : ÀÛ¼º ³¯Â¥ 
+	-- reg_date : ï¿½Û¼ï¿½ ï¿½ï¿½Â¥ 
 	reg_date date NOT NULL,
 	PRIMARY KEY (board_num)
 );
 
 
--- »õ Å×ÀÌºí
+-- ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 CREATE TABLE FJ_Board_Free_Comment
 (
-	-- comment_board_num : ´ñ±Û id
+	-- comment_board_num : ï¿½ï¿½ï¿½ id
 	comment_board_num number NOT NULL,
-	-- board_num : °Ô½ÃÆÇ ID
+	-- board_num : ï¿½Ô½ï¿½ï¿½ï¿½ ID
 	board_num number NOT NULL,
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50) NOT NULL,
-	-- name : ÀÛ¼ºÀÚ ÀÌ¸§
+	-- name : ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	name varchar2(100),
-	-- reg_date : ÀÛ¼º³¯Â¥ 
+	-- reg_date : ï¿½Û¼ï¿½ï¿½ï¿½Â¥ 
 	reg_date date NOT NULL,
-	-- recontent : ´ñ±Û³»¿ë 
+	-- recontent : ï¿½ï¿½Û³ï¿½ï¿½ï¿½ 
 	recontent long NOT NULL,
-	-- re_step : °Ô½Ã±ÛÀÇ ±¸ºÐ 
+	-- re_step : ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	re_step number NOT NULL,
-	-- recom_count : ÁÁ¾Æ¿ä ¼ö 
+	-- recom_count : ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ 
 	recom_count number NOT NULL,
 	PRIMARY KEY (comment_board_num)
 );
@@ -119,21 +119,21 @@ CREATE TABLE FJ_Board_Free_Comment
 -- FJ_Career
 CREATE TABLE FJ_Career
 (
-	-- career_id : °æ·Â°ü¸® ID 
+	-- career_id : ï¿½ï¿½Â°ï¿½ï¿½ï¿½ ID 
 	career_id varchar2(30) NOT NULL,
-	-- user_history_id : ÀÌ·Â¼­ ID
+	-- user_history_id : ï¿½Ì·Â¼ï¿½ ID
 	user_history_id number,
 	-- career_sort
 	career_sort varchar2(200),
-	-- career_comp_name : È¸»ç ÀÌ¸§ 
+	-- career_comp_name : È¸ï¿½ï¿½ ï¿½Ì¸ï¿½ 
 	career_comp_name varchar2(200),
 	-- career_start_date
 	career_start_date varchar2(200),
-	-- career_last_date : ¼öÁ¤ÀÏÀÚ 
+	-- career_last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	career_last_date varchar2(200),
 	-- career_sort_date
 	career_sort_date varchar2(200),
-	-- career_position1 : Á÷Ã¥ 
+	-- career_position1 : ï¿½ï¿½Ã¥ 
 	career_position1 varchar2(300),
 	-- career_position2
 	career_position2 varchar2(300),
@@ -141,7 +141,7 @@ CREATE TABLE FJ_Career
 	career_salary number,
 	-- career_kind
 	career_kind varchar2(100),
-	-- CAREER_CONTENT : ³»¿ë 
+	-- CAREER_CONTENT : ï¿½ï¿½ï¿½ï¿½ 
 	CAREER_CONTENT long,
 	-- career_resign
 	career_resign varchar2(200),
@@ -149,7 +149,7 @@ CREATE TABLE FJ_Career
 	career_work varchar2(200),
 	-- career_department
 	career_department varchar2(100),
-	-- reg_date : °¡ÀÔÀÏÀÚ
+	-- reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	reg_date date,
 	PRIMARY KEY (career_id)
 );
@@ -158,37 +158,37 @@ CREATE TABLE FJ_Career
 -- FJ_Comp
 CREATE TABLE FJ_Comp
 (
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50) NOT NULL,
-	-- address : ÁÖ¼Ò 
+	-- address : ï¿½Ö¼ï¿½ 
 	address varchar2(200),
-	-- content : È¸»ç ¼Ò°³
+	-- content : È¸ï¿½ï¿½ ï¿½Ò°ï¿½
 	content long,
-	-- tel : ÀüÈ­¹øÈ£ 
+	-- tel : ï¿½ï¿½È­ï¿½ï¿½È£ 
 	tel varchar2(200),
-	-- ceo : ´ëÇ¥ÀÚ¸í 
+	-- ceo : ï¿½ï¿½Ç¥ï¿½Ú¸ï¿½ 
 	ceo varchar2(100),
-	-- incharge : ´ã´çÀÚ ÀÌ¸§
+	-- incharge : ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	incharge varchar2(100),
-	-- comp_reg_date : È¸»ç Ã¢¸³ÀÏ 
+	-- comp_reg_date : È¸ï¿½ï¿½ Ã¢ï¿½ï¿½ï¿½ï¿½ 
 	comp_reg_date varchar2(100),
-	-- year_sale : ¿¬¸ÅÃâ 
+	-- year_sale : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	year_sale varchar2(200),
-	-- comp_type : ±â¾÷¾÷Á¾ 
+	-- comp_type : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	comp_type varchar2(50),
-	-- capital : ÀÚº»±Ý 
+	-- capital : ï¿½Úºï¿½ï¿½ï¿½ 
 	capital varchar2(50),
-	-- zipcode : ¿ìÆí¹øÈ£ 
+	-- zipcode : ï¿½ï¿½ï¿½ï¿½ï¿½È£ 
 	zipcode varchar2(20),
-	-- comp_part : ±â¾÷±¸ºÐ 
+	-- comp_part : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	comp_part varchar2(20),
-	-- like_count : ÁÁ¾Æ¿ä ¼ö 
+	-- like_count : ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ 
 	like_count number,
-	-- emp_count : Á÷¿ø¼ö 
+	-- emp_count : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	emp_count number,
-	-- reg_date : ÀÛ¼ºÀÏÀÚ 
+	-- reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	reg_date date,
-	-- last_date : ¼öÁ¤ÀÏÀÚ 
+	-- last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	last_date date,
 	PRIMARY KEY (email)
 );
@@ -197,17 +197,17 @@ CREATE TABLE FJ_Comp
 -- FJ_Introduce
 CREATE TABLE FJ_Introduce
 (
-	-- intro_id : ÇÐ·Â°ü¸® ID 
+	-- intro_id : ï¿½Ð·Â°ï¿½ï¿½ï¿½ ID 
 	intro_id number NOT NULL,
-	-- user_history_id : ÀÌ·Â¼­ ID
+	-- user_history_id : ï¿½Ì·Â¼ï¿½ ID
 	user_history_id number,
-	-- intro_title : Á¦¸ñ
+	-- intro_title : ï¿½ï¿½ï¿½ï¿½
 	intro_title varchar2(500),
-	-- intro_contents : ³»¿ë
+	-- intro_contents : ï¿½ï¿½ï¿½ï¿½
 	intro_contents long,
-	-- intro_reg_date : ÀÛ¼ºÀÏÀÚ
+	-- intro_reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	intro_reg_date date,
-	-- intro_last_date : ¼öÁ¤ÀÏÀÚ  
+	-- intro_last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 	intro_last_date date,
 	PRIMARY KEY (intro_id)
 );
@@ -216,19 +216,19 @@ CREATE TABLE FJ_Introduce
 -- Fj_member
 CREATE TABLE FJ_JOIN
 (
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50) NOT NULL,
-	-- passwd : ºñ¹Ð¹øÈ£
+	-- passwd : ï¿½ï¿½Ð¹ï¿½È£
 	passwd varchar2(50) NOT NULL,
-	-- name : ´Ð³×ÀÓ or È¸»çÀÌ¸§
+	-- name : ï¿½Ð³ï¿½ï¿½ï¿½ or È¸ï¿½ï¿½ï¿½Ì¸ï¿½
 	name varchar2(100) NOT NULL,
-	-- member_flag : È¸¿ø±¸ºÐ 
+	-- member_flag : È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	-- 
-	-- 1 : °³ÀÎÈ¸¿ø 
-	-- 2 : ±â¾÷È¸¿ø
-	-- 3 : °ü¸®ÀÚ 
+	-- 1 : ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ 
+	-- 2 : ï¿½ï¿½ï¿½È¸ï¿½ï¿½
+	-- 3 : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	member_flag number NOT NULL,
-	-- reg_date : °¡ÀÔÀÏÀÚ
+	-- reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	reg_date date NOT NULL,
 	PRIMARY KEY (email)
 );
@@ -237,13 +237,13 @@ CREATE TABLE FJ_JOIN
 -- FJ_Log
 CREATE TABLE FJ_Log
 (
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50) NOT NULL,
-	-- page_id : ÆäÀÌÁö ID 
+	-- page_id : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID 
 	page_id varchar2(30) NOT NULL,
-	-- reg_date : ÀÛ¼ºÀÏÀÚ 
+	-- reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	reg_date date NOT NULL,
-	-- last_date : ¼öÁ¤ÀÏÀÚ 
+	-- last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	last_date date NOT NULL
 );
 
@@ -251,21 +251,21 @@ CREATE TABLE FJ_Log
 -- FJ_Message
 CREATE TABLE FJ_Message
 (
-	-- message_num : ¸Þ½ÃÁö ID 
+	-- message_num : ï¿½Þ½ï¿½ï¿½ï¿½ ID 
 	message_num number NOT NULL,
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50),
-	-- title : Á¦¸ñ
+	-- title : ï¿½ï¿½ï¿½ï¿½
 	title varchar2(200),
-	-- content : ³»¿ë 
+	-- content : ï¿½ï¿½ï¿½ï¿½ 
 	content long,
-	-- tag : ¸Þ½ÃÁö ºÐ·ù
+	-- tag : ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Ð·ï¿½
 	tag number,
-	-- reg_date : º¸³½³¯Â¥ 
+	-- reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥ 
 	reg_date date,
-	-- read_yn : ÀÐÀ½ À¯¹« 
+	-- read_yn : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	read_yn number,
-	-- sender : º¸³»´Â »ç¶÷ ÀÌ¸ÞÀÏ 
+	-- sender : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ 
 	sender varchar2(50),
 	PRIMARY KEY (message_num)
 );
@@ -274,73 +274,73 @@ CREATE TABLE FJ_Message
 -- FJ_Recruit
 CREATE TABLE FJ_Recruit
 (
-	-- recruit_id : Ã¤¿ë°Ô½ÃÆÇ ID 
+	-- recruit_id : Ã¤ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ID 
 	recruit_id number NOT NULL,
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50),
-	-- title : Á¦¸ñ 
+	-- title : ï¿½ï¿½ï¿½ï¿½ 
 	title varchar2(200),
-	-- CAREER_CONTENT : ³»¿ë 
-	CAREER_CONTENT long,
-	-- name : È¸»çÀÌ¸§
+	-- content : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	content long,
+	-- name : È¸ï¿½ï¿½ï¿½Ì¸ï¿½
 	name varchar2(100),
-	-- skill : º¸À¯±â¼ú 
+	-- skill : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	skill varchar2(300),
-	-- gender : ¼ºº° 
+	-- gender : ï¿½ï¿½ï¿½ï¿½ 
 	gender varchar2(20),
-	-- edu : ÇÐ·Â
+	-- edu : ï¿½Ð·ï¿½
 	edu varchar2(200),
-	-- work_type : °í¿ë ÇüÅÂ 
+	-- work_type : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	work_type varchar2(100),
-	-- work_day : ±Ù¹«¿äÀÏ 
+	-- work_day : ï¿½Ù¹ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	work_day varchar2(100),
-	-- work_area : ±Ù¹«Áö¿ª
+	-- work_area : ï¿½Ù¹ï¿½ï¿½ï¿½ï¿½ï¿½
 	-- 
 	work_area varchar2(200),
-	-- business_part : ´ã´ç¾÷¹« 
+	-- business_part : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	business_part varchar2(200),
-	-- incharge : ´ã´çÀÚ
+	-- incharge : ï¿½ï¿½ï¿½ï¿½ï¿½
 	incharge varchar2(200),
-	-- tel : ¿¬¶ôÃ³
+	-- tel : ï¿½ï¿½ï¿½ï¿½Ã³
 	tel varchar2(200),
-	-- start_date : Ã¤¿ë ½ÃÀÛÀÏ 
+	-- start_date : Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	start_date varchar2(100),
-	-- end_date : Ã¤¿ë Á¾·áÀÏ 
+	-- end_date : Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	end_date varchar2(100),
-	-- min_salary : ÃÖ¼Ò ¿¬ºÀ 
+	-- min_salary : ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	min_salary number,
-	-- max_salary : ÃÖ´ë ¿¬ºÀ 
+	-- max_salary : ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	max_salary number,
-	-- min_career : ÃÖ¼Ò °æ·Â 
+	-- min_career : ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ 
 	min_career number,
-	-- max_career : ÃÖ´ë °æ·Â 
+	-- max_career : ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ 
 	max_career number,
-	-- min_age : ÃÖ¼Ò ³ªÀÌ 
+	-- min_age : ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	min_age number,
-	-- max_age : ÃÖ´ë ³ªÀÌ 
+	-- max_age : ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	max_age number,
-	-- people_count : Ã¤¿ëÀÎ¿ø 
+	-- people_count : Ã¤ï¿½ï¿½ï¿½Î¿ï¿½ 
 	people_count number,
-	-- readcount : Á¶È¸¼ö 
+	-- readcount : ï¿½ï¿½È¸ï¿½ï¿½ 
 	readcount number,
-	-- reg_date : ÀÛ¼ºÀÏÀÚ 
+	-- reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	reg_date date,
-	-- last_date : ¼öÁ¤ÀÏÀÚ 
+	-- last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	last_date date,
 	PRIMARY KEY (recruit_id)
 );
 
 
--- »õ Å×ÀÌºí
+-- ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 CREATE TABLE FJ_Recruit_Log
 (
-	-- recruit_id : Ã¤¿ë°Ô½ÃÆÇ ID 
+	-- recruit_id : Ã¤ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ID 
 	recruit_id number NOT NULL,
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50) NOT NULL,
-	-- user_history_id : ÀÌ·Â¼­ ID
+	-- user_history_id : ï¿½Ì·Â¼ï¿½ ID
 	user_history_id number NOT NULL,
-	-- reg_date : ÀÔ»ç Áö¿øÀÏ 
+	-- reg_date : ï¿½Ô»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	reg_date date NOT NULL
 );
 
@@ -348,19 +348,19 @@ CREATE TABLE FJ_Recruit_Log
 -- FJ_School
 CREATE TABLE FJ_School
 (
-	-- school_id : ÇÐ·Â°ü¸® ID 
+	-- school_id : ï¿½Ð·Â°ï¿½ï¿½ï¿½ ID 
 	school_id number NOT NULL,
-	-- user_history_id : ÀÌ·Â¼­ ID
+	-- user_history_id : ï¿½Ì·Â¼ï¿½ ID
 	user_history_id number,
-	-- school_name_high : ÇÐ±³ ÀÌ¸§ 
+	-- school_name_high : ï¿½Ð±ï¿½ ï¿½Ì¸ï¿½ 
 	school_name_high varchar2(100),
 	-- school_kind
 	school_kind varchar2(100),
-	-- school_major : Àü°ø 
+	-- school_major : ï¿½ï¿½ï¿½ï¿½ 
 	school_major varchar2(100),
 	-- school_name_college
 	school_name_college varchar2(200),
-	-- school_rank : ÇÐ±³ ±¸ºÐ 
+	-- school_rank : ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	school_rank varchar2(100),
 	-- highschool_kind
 	highschool_kind varchar2(100),
@@ -380,9 +380,9 @@ CREATE TABLE FJ_School
 	school_last_date_college varchar2(200),
 	-- school_ref
 	school_ref number,
-	-- reg_date : °¡ÀÔÀÏÀÚ
+	-- reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	reg_date date,
-	-- last_date : ¼öÁ¤ÀÏÀÚ
+	-- last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	last_date date,
 	PRIMARY KEY (school_id)
 );
@@ -391,35 +391,35 @@ CREATE TABLE FJ_School
 -- FJ_User
 CREATE TABLE FJ_User
 (
-	-- user_history_id : ÀÌ·Â¼­ ID
+	-- user_history_id : ï¿½Ì·Â¼ï¿½ ID
 	user_history_id number NOT NULL,
-	-- email : ÀÌ¸ÞÀÏ
+	-- email : ï¿½Ì¸ï¿½ï¿½ï¿½
 	email varchar2(50),
 	-- resome_title
 	resome_title varchar2(200),
-	-- eng_name : ¿µ¹®ÀÌ¸§ 
+	-- eng_name : ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ 
 	eng_name varchar2(100) NOT NULL,
-	-- kor_name : ÇÑ±ÛÀÌ¸§ 
+	-- kor_name : ï¿½Ñ±ï¿½ï¿½Ì¸ï¿½ 
 	kor_name varchar2(100) NOT NULL,
-	-- tel : ÀüÈ­¹øÈ£ 
+	-- tel : ï¿½ï¿½È­ï¿½ï¿½È£ 
 	tel varchar2(100) NOT NULL,
-	-- birth : »ý³â¿ùÀÏ 
+	-- birth : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	birth varchar2(100) NOT NULL,
-	-- address : ÁÖ¼Ò 
+	-- address : ï¿½Ö¼ï¿½ 
 	address varchar2(200) NOT NULL,
-	-- army : º´¿ª»çÇ× 
+	-- army : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	army varchar2(200) NOT NULL,
-	-- want_salary : Èñ¸Á ¿¬ºÀ 
+	-- want_salary : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	want_salary number NOT NULL,
-	-- license : ÀÚ°ÝÁõ 
+	-- license : ï¿½Ú°ï¿½ï¿½ï¿½ 
 	license varchar2(500) NOT NULL,
-	-- skill : º¸À¯±â¼ú 
+	-- skill : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	skill varchar2(4000) NOT NULL,
 	-- photo
 	photo varchar2(100),
-	-- reg_date : ÀÛ¼ºÀÏÀÚ 
+	-- reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	reg_date date NOT NULL,
-	-- project : ÇÁ·ÎÁ§Æ® 
+	-- project : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® 
 	project varchar2(200) NOT NULL,
 	-- user_ref
 	user_ref number,
@@ -502,138 +502,138 @@ ALTER TABLE FJ_School
 /* Comments */
 
 COMMENT ON TABLE FJ_Board_Free IS 'FJ_Board_Free';
-COMMENT ON COLUMN FJ_Board_Free.board_num IS 'board_num : °Ô½ÃÆÇ ID';
-COMMENT ON COLUMN FJ_Board_Free.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Board_Free.subject IS 'subject : Á¦¸ñ ';
-COMMENT ON COLUMN FJ_Board_Free.content IS 'content : ³»¿ë ';
-COMMENT ON COLUMN FJ_Board_Free.hstag IS 'hstag : ÇØ½¬ÅÂ±×';
-COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : ´ñ±Û³»¿ë ';
-COMMENT ON COLUMN FJ_Board_Free.category IS 'category : Ä«Å×°í¸® ';
-COMMENT ON COLUMN FJ_Board_Free.name IS 'name : ±Û¾´ÀÌ ÀÌ¸§
+COMMENT ON COLUMN FJ_Board_Free.board_num IS 'board_num : ï¿½Ô½ï¿½ï¿½ï¿½ ID';
+COMMENT ON COLUMN FJ_Board_Free.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Board_Free.subject IS 'subject : ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.content IS 'content : ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.hstag IS 'hstag : ï¿½Ø½ï¿½ï¿½Â±ï¿½';
+COMMENT ON COLUMN FJ_Board_Free.recontent IS 'recontent : ï¿½ï¿½Û³ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.category IS 'category : Ä«ï¿½×°ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.name IS 'name : ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 ';
-COMMENT ON COLUMN FJ_Board_Free.re_count IS 're_count : ¸®ÇÃÀÇ ¼ö ';
-COMMENT ON COLUMN FJ_Board_Free.scrap_count IS 'scrap_count : ½ºÅ©·¦ ¼ö ';
-COMMENT ON COLUMN FJ_Board_Free.recom_count IS 'recom_count : ÁÁ¾Æ¿ä ¼ö ';
-COMMENT ON COLUMN FJ_Board_Free.bad_count IS 'bad_count : ½È¾î¿ä ¼ö ';
-COMMENT ON COLUMN FJ_Board_Free.read_count IS 'read_count : ÀÐÀº ¼ö 
-(½ÇÁ¦ DB¿¡´Â number default 0, À¸·Î ÇÒ °ÍÀÓ)';
-COMMENT ON COLUMN FJ_Board_Free.re_step IS 're_step : °Ô½Ã±ÛÀÇ ±¸ºÐ ';
-COMMENT ON COLUMN FJ_Board_Free.reg_date IS 'reg_date : ÀÛ¼º ³¯Â¥ ';
-COMMENT ON TABLE FJ_Board_Free_Comment IS '»õ Å×ÀÌºí';
-COMMENT ON COLUMN FJ_Board_Free_Comment.comment_board_num IS 'comment_board_num : ´ñ±Û id';
-COMMENT ON COLUMN FJ_Board_Free_Comment.board_num IS 'board_num : °Ô½ÃÆÇ ID';
-COMMENT ON COLUMN FJ_Board_Free_Comment.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Board_Free_Comment.name IS 'name : ÀÛ¼ºÀÚ ÀÌ¸§';
-COMMENT ON COLUMN FJ_Board_Free_Comment.reg_date IS 'reg_date : ÀÛ¼º³¯Â¥ ';
-COMMENT ON COLUMN FJ_Board_Free_Comment.recontent IS 'recontent : ´ñ±Û³»¿ë ';
-COMMENT ON COLUMN FJ_Board_Free_Comment.re_step IS 're_step : °Ô½Ã±ÛÀÇ ±¸ºÐ ';
-COMMENT ON COLUMN FJ_Board_Free_Comment.recom_count IS 'recom_count : ÁÁ¾Æ¿ä ¼ö ';
+COMMENT ON COLUMN FJ_Board_Free.re_count IS 're_count : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.scrap_count IS 'scrap_count : ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.recom_count IS 'recom_count : ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.bad_count IS 'bad_count : ï¿½È¾ï¿½ï¿½ ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.read_count IS 'read_count : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
+(ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ number default 0, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)';
+COMMENT ON COLUMN FJ_Board_Free.re_step IS 're_step : ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free.reg_date IS 'reg_date : ï¿½Û¼ï¿½ ï¿½ï¿½Â¥ ';
+COMMENT ON TABLE FJ_Board_Free_Comment IS 'ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½';
+COMMENT ON COLUMN FJ_Board_Free_Comment.comment_board_num IS 'comment_board_num : ï¿½ï¿½ï¿½ id';
+COMMENT ON COLUMN FJ_Board_Free_Comment.board_num IS 'board_num : ï¿½Ô½ï¿½ï¿½ï¿½ ID';
+COMMENT ON COLUMN FJ_Board_Free_Comment.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Board_Free_Comment.name IS 'name : ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½';
+COMMENT ON COLUMN FJ_Board_Free_Comment.reg_date IS 'reg_date : ï¿½Û¼ï¿½ï¿½ï¿½Â¥ ';
+COMMENT ON COLUMN FJ_Board_Free_Comment.recontent IS 'recontent : ï¿½ï¿½Û³ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free_Comment.re_step IS 're_step : ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Board_Free_Comment.recom_count IS 'recom_count : ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ ';
 COMMENT ON TABLE FJ_Career IS 'FJ_Career';
-COMMENT ON COLUMN FJ_Career.career_id IS 'career_id : °æ·Â°ü¸® ID ';
-COMMENT ON COLUMN FJ_Career.user_history_id IS 'user_history_id : ÀÌ·Â¼­ ID';
+COMMENT ON COLUMN FJ_Career.career_id IS 'career_id : ï¿½ï¿½Â°ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_Career.user_history_id IS 'user_history_id : ï¿½Ì·Â¼ï¿½ ID';
 COMMENT ON COLUMN FJ_Career.career_sort IS 'career_sort';
-COMMENT ON COLUMN FJ_Career.career_comp_name IS 'career_comp_name : È¸»ç ÀÌ¸§ ';
+COMMENT ON COLUMN FJ_Career.career_comp_name IS 'career_comp_name : È¸ï¿½ï¿½ ï¿½Ì¸ï¿½ ';
 COMMENT ON COLUMN FJ_Career.career_start_date IS 'career_start_date';
-COMMENT ON COLUMN FJ_Career.career_last_date IS 'career_last_date : ¼öÁ¤ÀÏÀÚ ';
+COMMENT ON COLUMN FJ_Career.career_last_date IS 'career_last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON COLUMN FJ_Career.career_sort_date IS 'career_sort_date';
-COMMENT ON COLUMN FJ_Career.career_position1 IS 'career_position1 : Á÷Ã¥ ';
+COMMENT ON COLUMN FJ_Career.career_position1 IS 'career_position1 : ï¿½ï¿½Ã¥ ';
 COMMENT ON COLUMN FJ_Career.career_position2 IS 'career_position2';
 COMMENT ON COLUMN FJ_Career.career_salary IS 'career_salary';
 COMMENT ON COLUMN FJ_Career.career_kind IS 'career_kind';
-COMMENT ON COLUMN FJ_Career.CAREER_CONTENT IS 'CAREER_CONTENT : ³»¿ë ';
+COMMENT ON COLUMN FJ_Career.CAREER_CONTENT IS 'CAREER_CONTENT : ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON COLUMN FJ_Career.career_resign IS 'career_resign';
 COMMENT ON COLUMN FJ_Career.career_work IS 'career_work';
 COMMENT ON COLUMN FJ_Career.career_department IS 'career_department';
-COMMENT ON COLUMN FJ_Career.reg_date IS 'reg_date : °¡ÀÔÀÏÀÚ';
+COMMENT ON COLUMN FJ_Career.reg_date IS 'reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 COMMENT ON TABLE FJ_Comp IS 'FJ_Comp';
-COMMENT ON COLUMN FJ_Comp.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Comp.address IS 'address : ÁÖ¼Ò ';
-COMMENT ON COLUMN FJ_Comp.content IS 'content : È¸»ç ¼Ò°³';
-COMMENT ON COLUMN FJ_Comp.tel IS 'tel : ÀüÈ­¹øÈ£ ';
-COMMENT ON COLUMN FJ_Comp.ceo IS 'ceo : ´ëÇ¥ÀÚ¸í ';
-COMMENT ON COLUMN FJ_Comp.incharge IS 'incharge : ´ã´çÀÚ ÀÌ¸§';
-COMMENT ON COLUMN FJ_Comp.comp_reg_date IS 'comp_reg_date : È¸»ç Ã¢¸³ÀÏ ';
-COMMENT ON COLUMN FJ_Comp.year_sale IS 'year_sale : ¿¬¸ÅÃâ ';
-COMMENT ON COLUMN FJ_Comp.comp_type IS 'comp_type : ±â¾÷¾÷Á¾ ';
-COMMENT ON COLUMN FJ_Comp.capital IS 'capital : ÀÚº»±Ý ';
-COMMENT ON COLUMN FJ_Comp.zipcode IS 'zipcode : ¿ìÆí¹øÈ£ ';
-COMMENT ON COLUMN FJ_Comp.comp_part IS 'comp_part : ±â¾÷±¸ºÐ ';
-COMMENT ON COLUMN FJ_Comp.like_count IS 'like_count : ÁÁ¾Æ¿ä ¼ö ';
-COMMENT ON COLUMN FJ_Comp.emp_count IS 'emp_count : Á÷¿ø¼ö ';
-COMMENT ON COLUMN FJ_Comp.reg_date IS 'reg_date : ÀÛ¼ºÀÏÀÚ ';
-COMMENT ON COLUMN FJ_Comp.last_date IS 'last_date : ¼öÁ¤ÀÏÀÚ ';
+COMMENT ON COLUMN FJ_Comp.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Comp.address IS 'address : ï¿½Ö¼ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.content IS 'content : È¸ï¿½ï¿½ ï¿½Ò°ï¿½';
+COMMENT ON COLUMN FJ_Comp.tel IS 'tel : ï¿½ï¿½È­ï¿½ï¿½È£ ';
+COMMENT ON COLUMN FJ_Comp.ceo IS 'ceo : ï¿½ï¿½Ç¥ï¿½Ú¸ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.incharge IS 'incharge : ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½';
+COMMENT ON COLUMN FJ_Comp.comp_reg_date IS 'comp_reg_date : È¸ï¿½ï¿½ Ã¢ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.year_sale IS 'year_sale : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.comp_type IS 'comp_type : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.capital IS 'capital : ï¿½Úºï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.zipcode IS 'zipcode : ï¿½ï¿½ï¿½ï¿½ï¿½È£ ';
+COMMENT ON COLUMN FJ_Comp.comp_part IS 'comp_part : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.like_count IS 'like_count : ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.emp_count IS 'emp_count : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.reg_date IS 'reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Comp.last_date IS 'last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON TABLE FJ_Introduce IS 'FJ_Introduce';
-COMMENT ON COLUMN FJ_Introduce.intro_id IS 'intro_id : ÇÐ·Â°ü¸® ID ';
-COMMENT ON COLUMN FJ_Introduce.user_history_id IS 'user_history_id : ÀÌ·Â¼­ ID';
-COMMENT ON COLUMN FJ_Introduce.intro_title IS 'intro_title : Á¦¸ñ';
-COMMENT ON COLUMN FJ_Introduce.intro_contents IS 'intro_contents : ³»¿ë';
-COMMENT ON COLUMN FJ_Introduce.intro_reg_date IS 'intro_reg_date : ÀÛ¼ºÀÏÀÚ';
-COMMENT ON COLUMN FJ_Introduce.intro_last_date IS 'intro_last_date : ¼öÁ¤ÀÏÀÚ  ';
+COMMENT ON COLUMN FJ_Introduce.intro_id IS 'intro_id : ï¿½Ð·Â°ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_Introduce.user_history_id IS 'user_history_id : ï¿½Ì·Â¼ï¿½ ID';
+COMMENT ON COLUMN FJ_Introduce.intro_title IS 'intro_title : ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Introduce.intro_contents IS 'intro_contents : ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Introduce.intro_reg_date IS 'intro_reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Introduce.intro_last_date IS 'intro_last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ';
 COMMENT ON TABLE FJ_JOIN IS 'Fj_member';
-COMMENT ON COLUMN FJ_JOIN.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_JOIN.passwd IS 'passwd : ºñ¹Ð¹øÈ£';
-COMMENT ON COLUMN FJ_JOIN.name IS 'name : ´Ð³×ÀÓ or È¸»çÀÌ¸§';
-COMMENT ON COLUMN FJ_JOIN.member_flag IS 'member_flag : È¸¿ø±¸ºÐ 
+COMMENT ON COLUMN FJ_JOIN.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_JOIN.passwd IS 'passwd : ï¿½ï¿½Ð¹ï¿½È£';
+COMMENT ON COLUMN FJ_JOIN.name IS 'name : ï¿½Ð³ï¿½ï¿½ï¿½ or È¸ï¿½ï¿½ï¿½Ì¸ï¿½';
+COMMENT ON COLUMN FJ_JOIN.member_flag IS 'member_flag : È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
-1 : °³ÀÎÈ¸¿ø 
-2 : ±â¾÷È¸¿ø
-3 : °ü¸®ÀÚ ';
-COMMENT ON COLUMN FJ_JOIN.reg_date IS 'reg_date : °¡ÀÔÀÏÀÚ';
+1 : ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ 
+2 : ï¿½ï¿½ï¿½È¸ï¿½ï¿½
+3 : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_JOIN.reg_date IS 'reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 COMMENT ON TABLE FJ_Log IS 'FJ_Log';
-COMMENT ON COLUMN FJ_Log.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Log.page_id IS 'page_id : ÆäÀÌÁö ID ';
-COMMENT ON COLUMN FJ_Log.reg_date IS 'reg_date : ÀÛ¼ºÀÏÀÚ ';
-COMMENT ON COLUMN FJ_Log.last_date IS 'last_date : ¼öÁ¤ÀÏÀÚ ';
+COMMENT ON COLUMN FJ_Log.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Log.page_id IS 'page_id : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_Log.reg_date IS 'reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Log.last_date IS 'last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON TABLE FJ_Message IS 'FJ_Message';
-COMMENT ON COLUMN FJ_Message.message_num IS 'message_num : ¸Þ½ÃÁö ID ';
-COMMENT ON COLUMN FJ_Message.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Message.title IS 'title : Á¦¸ñ';
-COMMENT ON COLUMN FJ_Message.content IS 'content : ³»¿ë ';
-COMMENT ON COLUMN FJ_Message.tag IS 'tag : ¸Þ½ÃÁö ºÐ·ù';
-COMMENT ON COLUMN FJ_Message.reg_date IS 'reg_date : º¸³½³¯Â¥ ';
-COMMENT ON COLUMN FJ_Message.read_yn IS 'read_yn : ÀÐÀ½ À¯¹« ';
-COMMENT ON COLUMN FJ_Message.sender IS 'sender : º¸³»´Â »ç¶÷ ÀÌ¸ÞÀÏ ';
+COMMENT ON COLUMN FJ_Message.message_num IS 'message_num : ï¿½Þ½ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_Message.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Message.title IS 'title : ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Message.content IS 'content : ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Message.tag IS 'tag : ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Ð·ï¿½';
+COMMENT ON COLUMN FJ_Message.reg_date IS 'reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥ ';
+COMMENT ON COLUMN FJ_Message.read_yn IS 'read_yn : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Message.sender IS 'sender : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ';
 COMMENT ON TABLE FJ_Recruit IS 'FJ_Recruit';
-COMMENT ON COLUMN FJ_Recruit.recruit_id IS 'recruit_id : Ã¤¿ë°Ô½ÃÆÇ ID ';
-COMMENT ON COLUMN FJ_Recruit.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Recruit.title IS 'title : Á¦¸ñ ';
-COMMENT ON COLUMN FJ_Recruit.CAREER_CONTENT IS 'CAREER_CONTENT : ³»¿ë ';
-COMMENT ON COLUMN FJ_Recruit.name IS 'name : È¸»çÀÌ¸§';
-COMMENT ON COLUMN FJ_Recruit.skill IS 'skill : º¸À¯±â¼ú ';
-COMMENT ON COLUMN FJ_Recruit.gender IS 'gender : ¼ºº° ';
-COMMENT ON COLUMN FJ_Recruit.edu IS 'edu : ÇÐ·Â';
-COMMENT ON COLUMN FJ_Recruit.work_type IS 'work_type : °í¿ë ÇüÅÂ ';
-COMMENT ON COLUMN FJ_Recruit.work_day IS 'work_day : ±Ù¹«¿äÀÏ ';
-COMMENT ON COLUMN FJ_Recruit.work_area IS 'work_area : ±Ù¹«Áö¿ª
+COMMENT ON COLUMN FJ_Recruit.recruit_id IS 'recruit_id : Ã¤ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_Recruit.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Recruit.title IS 'title : ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.content IS 'content : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Recruit.name IS 'name : È¸ï¿½ï¿½ï¿½Ì¸ï¿½';
+COMMENT ON COLUMN FJ_Recruit.skill IS 'skill : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.gender IS 'gender : ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.edu IS 'edu : ï¿½Ð·ï¿½';
+COMMENT ON COLUMN FJ_Recruit.work_type IS 'work_type : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.work_day IS 'work_day : ï¿½Ù¹ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.work_area IS 'work_area : ï¿½Ù¹ï¿½ï¿½ï¿½ï¿½ï¿½
 ';
-COMMENT ON COLUMN FJ_Recruit.business_part IS 'business_part : ´ã´ç¾÷¹« ';
-COMMENT ON COLUMN FJ_Recruit.incharge IS 'incharge : ´ã´çÀÚ';
-COMMENT ON COLUMN FJ_Recruit.tel IS 'tel : ¿¬¶ôÃ³';
-COMMENT ON COLUMN FJ_Recruit.start_date IS 'start_date : Ã¤¿ë ½ÃÀÛÀÏ ';
-COMMENT ON COLUMN FJ_Recruit.end_date IS 'end_date : Ã¤¿ë Á¾·áÀÏ ';
-COMMENT ON COLUMN FJ_Recruit.min_salary IS 'min_salary : ÃÖ¼Ò ¿¬ºÀ ';
-COMMENT ON COLUMN FJ_Recruit.max_salary IS 'max_salary : ÃÖ´ë ¿¬ºÀ ';
-COMMENT ON COLUMN FJ_Recruit.min_career IS 'min_career : ÃÖ¼Ò °æ·Â ';
-COMMENT ON COLUMN FJ_Recruit.max_career IS 'max_career : ÃÖ´ë °æ·Â ';
-COMMENT ON COLUMN FJ_Recruit.min_age IS 'min_age : ÃÖ¼Ò ³ªÀÌ ';
-COMMENT ON COLUMN FJ_Recruit.max_age IS 'max_age : ÃÖ´ë ³ªÀÌ ';
-COMMENT ON COLUMN FJ_Recruit.people_count IS 'people_count : Ã¤¿ëÀÎ¿ø ';
-COMMENT ON COLUMN FJ_Recruit.readcount IS 'readcount : Á¶È¸¼ö ';
-COMMENT ON COLUMN FJ_Recruit.reg_date IS 'reg_date : ÀÛ¼ºÀÏÀÚ ';
-COMMENT ON COLUMN FJ_Recruit.last_date IS 'last_date : ¼öÁ¤ÀÏÀÚ ';
-COMMENT ON TABLE FJ_Recruit_Log IS '»õ Å×ÀÌºí';
-COMMENT ON COLUMN FJ_Recruit_Log.recruit_id IS 'recruit_id : Ã¤¿ë°Ô½ÃÆÇ ID ';
-COMMENT ON COLUMN FJ_Recruit_Log.email IS 'email : ÀÌ¸ÞÀÏ';
-COMMENT ON COLUMN FJ_Recruit_Log.user_history_id IS 'user_history_id : ÀÌ·Â¼­ ID';
-COMMENT ON COLUMN FJ_Recruit_Log.reg_date IS 'reg_date : ÀÔ»ç Áö¿øÀÏ ';
+COMMENT ON COLUMN FJ_Recruit.business_part IS 'business_part : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.incharge IS 'incharge : ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Recruit.tel IS 'tel : ï¿½ï¿½ï¿½ï¿½Ã³';
+COMMENT ON COLUMN FJ_Recruit.start_date IS 'start_date : Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.end_date IS 'end_date : Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.min_salary IS 'min_salary : ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.max_salary IS 'max_salary : ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.min_career IS 'min_career : ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.max_career IS 'max_career : ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.min_age IS 'min_age : ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.max_age IS 'max_age : ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.people_count IS 'people_count : Ã¤ï¿½ï¿½ï¿½Î¿ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.readcount IS 'readcount : ï¿½ï¿½È¸ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.reg_date IS 'reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_Recruit.last_date IS 'last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON TABLE FJ_Recruit_Log IS 'ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½';
+COMMENT ON COLUMN FJ_Recruit_Log.recruit_id IS 'recruit_id : Ã¤ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_Recruit_Log.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_Recruit_Log.user_history_id IS 'user_history_id : ï¿½Ì·Â¼ï¿½ ID';
+COMMENT ON COLUMN FJ_Recruit_Log.reg_date IS 'reg_date : ï¿½Ô»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON TABLE FJ_School IS 'FJ_School';
-COMMENT ON COLUMN FJ_School.school_id IS 'school_id : ÇÐ·Â°ü¸® ID ';
-COMMENT ON COLUMN FJ_School.user_history_id IS 'user_history_id : ÀÌ·Â¼­ ID';
-COMMENT ON COLUMN FJ_School.school_name_high IS 'school_name_high : ÇÐ±³ ÀÌ¸§ ';
+COMMENT ON COLUMN FJ_School.school_id IS 'school_id : ï¿½Ð·Â°ï¿½ï¿½ï¿½ ID ';
+COMMENT ON COLUMN FJ_School.user_history_id IS 'user_history_id : ï¿½Ì·Â¼ï¿½ ID';
+COMMENT ON COLUMN FJ_School.school_name_high IS 'school_name_high : ï¿½Ð±ï¿½ ï¿½Ì¸ï¿½ ';
 COMMENT ON COLUMN FJ_School.school_kind IS 'school_kind';
-COMMENT ON COLUMN FJ_School.school_major IS 'school_major : Àü°ø ';
+COMMENT ON COLUMN FJ_School.school_major IS 'school_major : ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON COLUMN FJ_School.school_name_college IS 'school_name_college';
-COMMENT ON COLUMN FJ_School.school_rank IS 'school_rank : ÇÐ±³ ±¸ºÐ ';
+COMMENT ON COLUMN FJ_School.school_rank IS 'school_rank : ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON COLUMN FJ_School.highschool_kind IS 'highschool_kind';
 COMMENT ON COLUMN FJ_School.school_college1 IS 'school_college1';
 COMMENT ON COLUMN FJ_School.school_college2 IS 'school_college2';
@@ -643,24 +643,24 @@ COMMENT ON COLUMN FJ_School.school_last_date_high IS 'school_last_date_high';
 COMMENT ON COLUMN FJ_School.school_start_date_college IS 'school_start_date_college';
 COMMENT ON COLUMN FJ_School.school_last_date_college IS 'school_last_date_college';
 COMMENT ON COLUMN FJ_School.school_ref IS 'school_ref';
-COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : °¡ÀÔÀÏÀÚ';
-COMMENT ON COLUMN FJ_School.last_date IS 'last_date : ¼öÁ¤ÀÏÀÚ';
+COMMENT ON COLUMN FJ_School.reg_date IS 'reg_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
+COMMENT ON COLUMN FJ_School.last_date IS 'last_date : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 COMMENT ON TABLE FJ_User IS 'FJ_User';
-COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : ÀÌ·Â¼­ ID';
-COMMENT ON COLUMN FJ_User.email IS 'email : ÀÌ¸ÞÀÏ';
+COMMENT ON COLUMN FJ_User.user_history_id IS 'user_history_id : ï¿½Ì·Â¼ï¿½ ID';
+COMMENT ON COLUMN FJ_User.email IS 'email : ï¿½Ì¸ï¿½ï¿½ï¿½';
 COMMENT ON COLUMN FJ_User.resome_title IS 'resome_title';
-COMMENT ON COLUMN FJ_User.eng_name IS 'eng_name : ¿µ¹®ÀÌ¸§ ';
-COMMENT ON COLUMN FJ_User.kor_name IS 'kor_name : ÇÑ±ÛÀÌ¸§ ';
-COMMENT ON COLUMN FJ_User.tel IS 'tel : ÀüÈ­¹øÈ£ ';
-COMMENT ON COLUMN FJ_User.birth IS 'birth : »ý³â¿ùÀÏ ';
-COMMENT ON COLUMN FJ_User.address IS 'address : ÁÖ¼Ò ';
-COMMENT ON COLUMN FJ_User.army IS 'army : º´¿ª»çÇ× ';
-COMMENT ON COLUMN FJ_User.want_salary IS 'want_salary : Èñ¸Á ¿¬ºÀ ';
-COMMENT ON COLUMN FJ_User.license IS 'license : ÀÚ°ÝÁõ ';
-COMMENT ON COLUMN FJ_User.skill IS 'skill : º¸À¯±â¼ú ';
+COMMENT ON COLUMN FJ_User.eng_name IS 'eng_name : ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ';
+COMMENT ON COLUMN FJ_User.kor_name IS 'kor_name : ï¿½Ñ±ï¿½ï¿½Ì¸ï¿½ ';
+COMMENT ON COLUMN FJ_User.tel IS 'tel : ï¿½ï¿½È­ï¿½ï¿½È£ ';
+COMMENT ON COLUMN FJ_User.birth IS 'birth : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_User.address IS 'address : ï¿½Ö¼ï¿½ ';
+COMMENT ON COLUMN FJ_User.army IS 'army : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_User.want_salary IS 'want_salary : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_User.license IS 'license : ï¿½Ú°ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_User.skill IS 'skill : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ';
 COMMENT ON COLUMN FJ_User.photo IS 'photo';
-COMMENT ON COLUMN FJ_User.reg_date IS 'reg_date : ÀÛ¼ºÀÏÀÚ ';
-COMMENT ON COLUMN FJ_User.project IS 'project : ÇÁ·ÎÁ§Æ® ';
+COMMENT ON COLUMN FJ_User.reg_date IS 'reg_date : ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ ';
+COMMENT ON COLUMN FJ_User.project IS 'project : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ';
 COMMENT ON COLUMN FJ_User.user_ref IS 'user_ref';
 COMMENT ON COLUMN FJ_User.last_date IS 'last_date';
 

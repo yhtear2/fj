@@ -169,4 +169,16 @@
 	<div class="recruittext panel panel-default">
 		${dto.content}
 	</div>
+	
+	<!-- 버튼을 만들꺼에요~ -->
+	<!-- 자기가 쓴글에만 보여야 하니깐 일단 이렇게 보류 -->
+	<c:if test="${sessionScope.memId == dto.email}"></c:if>
+	<br><br>
+	<div>
+		<form action="recruitModifyView.do" method="post" >
+		<input type="hidden" name="recruit_id" value="${dto.recruit_id}">
+		<a href="recruitList.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 	  
+		<input type="submit" value="정보 수정" class="create btn btn-success btn-wide pull-right" >
+		</form> 
+	</div>
 </div>
