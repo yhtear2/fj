@@ -33,9 +33,9 @@ public class User_ProHandler implements Commandhandler {
 		
 		request.setCharacterEncoding( "utf-8" );
 		
-		String saveDir = request.getServletContext().getRealPath("/") + "images";
+		String saveDir = request.getServletContext().getRealPath("/") + "FJ_USER\\images";
 		MultipartRequest multi = new MultipartRequest(request,saveDir,1024*1024*15,"UTF-8",new DefaultFileRenamePolicy());
-		String imageFileName = multi.getFilesystemName("input_file");
+		String imageFileName = multi.getFilesystemName("imginput");
 		String projectFile = multi.getFilesystemName("project");
 		
 		String resome_title = multi.getParameter("resome_title");
@@ -105,7 +105,8 @@ public class User_ProHandler implements Commandhandler {
 				
 		dto.setArmy(army);
 		
-		String resome_image = "library/images/gallery/" + imageFileName;
+		String resome_image = "FJ_USER/images/" + imageFileName;
+		System.out.println(resome_image);
 		dto.setPhoto(resome_image);
 	
 		String resome_project = "library/portfolio/" + projectFile;

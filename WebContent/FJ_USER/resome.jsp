@@ -351,6 +351,10 @@
             "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
 
    }
+   
+   
+   
+   
 
 </script>
 
@@ -373,7 +377,7 @@
    <tr>
       <th style="width:200px">이름(한글)</th>
       <td><input class="" type="text" style="width: 250px" name="kor_name" id="kor_name"></td>   
-      <td rowspan="5"><img  class="img-rounded"  id="img_preview" name="img_preview" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
+      <td rowspan="5"><img id="img_view" name="img_view" style="margin-left: auto; margin-right: auto; display: block; width:150px; height:190px;"/>
       </td>   
    </tr>
    <tr>
@@ -465,7 +469,7 @@
          <td>   
             &nbsp;&nbsp;&nbsp;
 
-            <input class="btn btn-default" type="file" id="input_file" name="input_file" value="사진선택" /></td>
+            <input class="btn btn-default" type="file" id="imginput" name="imginput" value="사진선택" /></td>
    </tr>
 
 </table>
