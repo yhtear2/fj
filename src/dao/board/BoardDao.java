@@ -23,6 +23,13 @@ public interface BoardDao {
 //		public BoardCommentDataBean getComment(int board_num);
 		public int deleteReply( int board_num );
 		public void reCountMinus(int board_num);
+		public List<BoardDataBean> getCategorySearchArticles( Map<String, Object> map );
+		public List<BoardDataBean> getTagSearchArticles( Map<String, Object> map );
+		public List<BoardDataBean> getSearchSearchArticles( Map<String, Object> map );
+		public List<BoardDataBean> getBoard_numSearchArticles( Map<String, Object> map );
+		public List<BoardDataBean> getRecom_countSearchArticles( Map<String, Object> map );
+		public List<BoardDataBean> getRe_countSearchArticles( Map<String, Object> map );
+		public List<BoardDataBean> getRead_countSearchArticles( Map<String, Object> map );
 		
 	
 		

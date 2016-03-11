@@ -43,11 +43,12 @@
 				<div class="form-group  has-feedback">
 						<select id="category" name="category" class="form-control" > 
 							<option value="${category}" >게시판을 선택해 주세요.</option> 
-							<option value="채용게시판">채용게시판</option> 
-							<option value="건의사항">건의사항</option>
-							<option value="정보나눔">정보나눔</option> 
-							<option value="스터디모집">스터디모집</option>
-							<option value="나만의 홍보">나만의 홍보</option>
+							<c:if test="${sessionScope.member_flag == 3}">
+								<option value="공지사항">공지사항</option> 
+							</c:if>
+							<option value="사는얘기">사는얘기</option> 
+							<option value="정보나눔">정보나눔</option>
+							<option value="스터디">스터디</option> 
 						</select>
 				</div>  
 			</fieldset>  

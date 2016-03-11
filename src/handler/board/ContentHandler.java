@@ -51,7 +51,7 @@ public class ContentHandler implements Commandhandler {
 		// 글 읽은 수 확인
 		String email = (String)request.getSession().getAttribute("memId");
 		if( email != null ){
-			if( email.equals(joindto.getEmail())){
+			if( ! (email.equals(joindto.getEmail()))){
 				dao.addCount(board_num);
 				dto.setRead_count(dto.getRead_count() +1);
 			}

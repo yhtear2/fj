@@ -81,7 +81,43 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	public void reCountMinus(int board_num) {
 		sqlSession.update("FJ_BOARD.reCountMinus", board_num);
 		
+	}
+
+	@Override
+	public List<BoardDataBean> getCategorySearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getCategorySearchArticles", map);
 	} 
+	
+	@Override
+	public List<BoardDataBean> getTagSearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getTagSearchArticles", map);
+	} 
+	
+	@Override
+	public List<BoardDataBean> getSearchSearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getSearchSearchArticles", map);
+	} 
+	
+	@Override
+	public List<BoardDataBean> getBoard_numSearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getBoard_numSearchArticles", map);
+	} 
+	
+	@Override
+	public List<BoardDataBean> getRecom_countSearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getRecom_countSearchArticles", map);
+	} 
+	
+	@Override
+	public List<BoardDataBean> getRe_countSearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getRe_countSearchArticles", map);
+	} 
+	
+	@Override
+	public List<BoardDataBean> getRead_countSearchArticles(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getRead_countSearchArticles", map);
+	} 
+	
 
 
 	

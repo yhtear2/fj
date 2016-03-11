@@ -46,11 +46,15 @@
                         <!-- ▲ 여기까지 검색어 활성창 div  -->
                         
                         <!-- 순으로 리스트를 출력하려는데 아직 미구현  -->
-                        <ul class="list-sort pull-left">  
-                            <li><a href="searchboardlist.do?sort=board_num" data-sort="id" data-order="desc" class="category-sort-link active">최신순</a></li>
-                            <li><a href="searchboardlist.do?sort=recom_count" data-sort="voteCount" data-order="desc" class="category-sort-link ">추천순</a></li>
-                            <li><a href="searchboardlist.do?sort=re_count" data-sort="noteCount" data-order="desc" class="category-sort-link ">댓글순</a></li>
-                            <li><a href="searchboardlist.do?sort=read_count" data-sort="viewCount" data-order="desc" class="category-sort-link ">조회순</a></li>
+                        <ul class="list-sort pull-left">
+                        	<c:if test='${sort == "board_num"}'> <li><a href="searchboardlist.do?sort=board_num" class="category-sort-link active">최신순</a></li> </c:if>
+                        	<c:if test='${sort != "board_num"}'> <li><a href="searchboardlist.do?sort=board_num" class="category-sort-link">최신순</a></li> </c:if>
+                            <c:if test='${sort == "recom_count"}'> <li><a href="searchboardlist.do?sort=recom_count" class="category-sort-link active">추천순</a></li> </c:if>
+                            <c:if test='${sort != "recom_count"}'> <li><a href="searchboardlist.do?sort=recom_count" class="category-sort-link ">추천순</a></li> </c:if>
+                            <c:if test='${sort == "re_count"}'> <li><a href="searchboardlist.do?sort=re_count" class="category-sort-link active">댓글순</a></li> </c:if>
+                            <c:if test='${sort != "re_count"}'> <li><a href="searchboardlist.do?sort=re_count" class="category-sort-link ">댓글순</a></li> </c:if>
+                            <c:if test='${sort == "read_count"}'> <li><a href="searchboardlist.do?sort=read_count" class="category-sort-link active">조회순</a></li> </c:if>
+                            <c:if test='${sort != "read_count"}'> <li><a href="searchboardlist.do?sort=read_count" class="category-sort-link ">조회순</a></li> </c:if>
                         </ul> 
                         
                         <input type="hidden" name="sort" id="category-sort-input" value="id">   
