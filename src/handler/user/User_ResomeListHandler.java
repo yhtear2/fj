@@ -49,6 +49,8 @@ public class User_ResomeListHandler implements Commandhandler{
 		int startPage = 0;		// 시작 페이지
 		int endPage = 0;		// 끝 페이지
 	
+		int user_history_id = 0; // 유저 기록번 
+		
 		// DB접속해서 카운터 받아오기
 		count = dao.getUserCount();
 		
@@ -59,7 +61,7 @@ public class User_ResomeListHandler implements Commandhandler{
 		} 
 		
 		
-
+		
 		// 페이지 번호 계산
 		//-- 짜투리가 생기면 페이지 하나 더 만들고 없으면 만들지 말아라
 		pageCount = count / pageSize + ( count%pageSize >0 ? 1 : 0 );
@@ -81,8 +83,10 @@ public class User_ResomeListHandler implements Commandhandler{
 		endPage = startPage + pageBlock -1;
 					// 11+ 10 - 1					20
 		if( endPage > pageCount ) endPage = pageCount;
-				
 			
+		
+		
+		   
 		// DB 데이터 가져오기
 		if(count != 0){
 			Map<String, Integer> tempMap = new HashMap<String, Integer>();

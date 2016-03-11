@@ -14,33 +14,42 @@
        <meta property="og:image" content="http://okky.kr/assets/okky_logo_fb-cea175ff727ef14a4d8be0e68cff730a.png">
        
        <link rel="stylesheet" href="http://okky.kr/assets/application-178a471b205e52821f985abddea1ac34.css">
-
+ 
+ 	      
+ 	   
+ 	   
        <!--[if lt IE 9]>
            <script src="http://okky.kr/assets/libs/html5-ca664f64318d191265abf57fdf467aec.js" type="text/javascript" ></script>
        <![endif]--> 
    
               
 	<meta name="layout" content="main">
-				 
-    
+			   
 
 <div id="list-article" class="content scaffold-list" role="main">
+			  
+			<!-- 지울 예정 -->
             <div class="nav" role="navigation"> 
-                <a href="/fj/resome.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 이력서 작성 </a>
+                <a href="/fj/resome.do" class="create btn btn-success btn-wide pull-right" >
+                <i class="fa fa-pencil"></i> 
+                	이력서 작성 </a>
                 
                 <h4>이력서 게시판</h4>   
-                <div class="category-filter-wrapper"> 
-                <!-- 아래 action은 검색 action  --> 
-                    <form action="" method="get" name="category-filter-form" id="category-filter-form">  
+                <div class="category-filter-wrapper">   
+                <!-- 아래 action은 검색 action  -->
+                
+                	<!-- 지울 예정 -->
+                     <form action="" method="get" name="category-filter-form" id="category-filter-form">  
                         <div class="category-filter-query pull-right">
                             <div class="input-group input-group-sm">
                                 <input type="search" name="query" class="form-control" placeholder="검색어" value=""> 
-                                <span class="input-group-btn">
+                                <span class="input-group-btn">   
                                 <!-- 검색버튼 -->
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                	
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button> 
                                     
-                                </span>     
-                            </div>
+                                </span>  
+                            </div> 
                         </div>
                         <!-- ▲ 여기까지 검색어 활성창 div  -->
                         
@@ -153,62 +162,51 @@ a {
 	overflow: hidden;
 	border-bottom: 1px solid #878787;
 	font-style: normal
-}
-</style>
-
+}         
+</style>    
+<!-- count 가 0이면 이 if문은 생략되고 다음으로 넘어감  -->
 <c:if test="${count != 0}">
-<c:forEach var="dto" items="${list}">
-<div class="my-imagewrap">
-	<div class="my-image">
-		<span class="pic"><img alt=""
-			src="https://pds.saramin.co.kr/person/photo/2016/03/1457575030_14575750291457575022IU.jpg"
-			border="0" onmouseover="showTipLayer()" width="100" height="140"></span>
-		<span class="btn"> <a href="/fj/resomeContent.do"><img
-				src="//www.saraminimage.co.kr/person/renewal/btn_image_modify.gif"
-				alt="수정"></a> <a
-			href="/fj/deletePro.do"><img 
-				src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif"
-				alt="삭제"></a>
-		</span>
-
-	  </div>
-	</div>
+	<c:forEach var="dto" items="${list}" varStatus="status">
+		<div class="my-imagewrap">
+			<div class="my-image">
+				<span class="pic">
+					<!--  
+					<a href="/fj/resome.do">  -->
+						<img alt="" src="https://www.saramin.co.kr/zf_user/persons/picture?idx=5001590|4878d2c293208d3fca43f311609905c7c40f4a8554d8c688f42d3ad98fa6578b" 
+						border="0" width="100" height="140">
+					</a>
+				</span>
+				<span class="btn"> 
+					<a href="/fj/resomeContent.do">
+						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_modify.gif"alt="${page_usermodify}">
+					</a>
+					<a href="/fj/deletePro.do">
+						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif" alt="${page_userdelete}">
+					</a>
+				</span>
+			</div>
+		</div>
+		 
 	</c:forEach>
-  </c:if>
+</c:if>
+<!-- count가 8보다 작을 경우 이력서 작성박스 생성 -->
+<c:if test="${count<8}">
+	<div class="my-imagewrap" style="border:1px solid grey;">
+		<div class="container">
+			<div class="row" style="margin-left: 40px; margin-top: 70px;">
+				<!-- Standard button -->
+       		 	<button type="button" class="btn3d btn btn-default btn-lg" onclick="window.location='resome.do'"> 
+       		 	<span class="glyphicon glyphicon-download-alt"></span></button>
+        	 </div>
+        </div>
+	</div>
+</c:if>	
 </html>
 
 </div>
 
-<!--  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>jQuery 테스트 페이지</title>
-<style type="text/css">
- div#displayArea{
-  width : 200px;
-  height : 200px;
-  border : 5px double #6699FF;
-  }
-</style>
-<script src ="../js/jquery-1.11.0.min.js"></script>
-<script>
- $(document).ready(function(){
-  $("button").click(function(){
-   $("#displayArea").html("<img src='ansi_main2s.png' border='0' /> ");
-  });
- });
- 
- 
-</script>
-</head>
-<body>
- <div id="displayArea">test</div>
- <button>표시</button>
-</body>
-</html>
--->
+
+
+
 
 

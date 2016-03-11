@@ -9,3 +9,11 @@
 
 
 	<c:set var="project" value = "/fj/FJ_USER/"/>
+	
+	
+<%@ include file = "/defaultSetting.jsp" %> 
+
+<c:set var="page_userwrite" value="이력서 작성"/> 
+<c:set var="page_userdelete" value="삭제"/>
+<c:set var="page_usermodify" value="수정"/> 
+
