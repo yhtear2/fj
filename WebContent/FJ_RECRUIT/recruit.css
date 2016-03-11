@@ -12,10 +12,10 @@
     border: 1px solid #ccc;
 }
 /* 페이지 전체 크기  */
-.recruit_mainsize{
+.recruit_contentsize{
 	width : 750px;
 	height : 100%;
-	margin : 30px;
+	margin-left : 30px;
 	background-color: white;
 }
 /* 큰 단위의 크기 (근무조건, 지원자격, 담당자, 입력폼) */
@@ -73,6 +73,8 @@
 	padding : 0px;
 }
 .comptext {
+	background : rgb(249,253,255);
+	border : solid 1px #d6ecff;
 	padding-top : 60px;
 	padding-left : 50px;
 	padding-right : 50px;
@@ -86,7 +88,7 @@
 	width:100%;
 	height:100px;
 	margin-bottom:50px;
-	padding-left:0px;
+	padding-left:30px;
 	background-color : gray;
 }
 .comptitle span {
@@ -100,18 +102,23 @@
 }
 .comptitle span:nth-child(2) {
 	height:45px;
-	vertical-align: bottom;
+	padding-bottom:3px;
 }
-.comptitle h2 {
+.comptitle h3 {
 	float:left;
 	padding : 0;
 	margin : 0;
 	height:45px;
 }
+.comptext table {
+	border-top:1px;
+	border-bottom:1px;
+}
 .comptext tr, .business tr {
 	line-height : 1.5em;
 }
 .comptext th, .business th {
+	background : #d6ecff;
 	width:90px;
 }
 .comptext td, .business td {
@@ -171,7 +178,7 @@
 	font-style:bold;
 }
 .recruittext {
-	
+	background : rgb(249,253,255);
 }
 
 

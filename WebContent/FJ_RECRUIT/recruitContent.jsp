@@ -21,7 +21,7 @@
 	<!-- 여기에는 기업정보에서 가져오는 기본입력 폼 -->
 	<div class="comptitle">
 			<span class="comptitle_sub">${dto.name}</span>
-			<h2 class="comptitle_sub">${dto.title}</h2>
+			<h3 class="comptitle_sub">${dto.title}</h3>
 			<span class="comptitle_sub">${compdto.comp_type}</span>
 	</div>
 	<div class="panel panel-default">
@@ -68,12 +68,10 @@
 			</table>
 		</div>
 		<!-- 여기는 담당업무, 근무조건 -->
-		
 			<!-- 제목 -->
 			<!-- 근무조건 : 지역 / 급여 / 근무형태 / 근무요일 -->
 			<!-- 지원자격 : 기술 / 경력 / 학력 / 성별 / 나이   -->
 			<!-- 담당업무  / 채용시작일 / 채용종료일 -->
-		</div>
 	</div>
 	<div class="middle">
 		<div>

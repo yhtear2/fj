@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/fj/FJ_COMP/comp.css">    
 
 <!-- 전체 크기 설정 css -->
+<div id="background">
 <div class="container" >
 	<!-- 포스트로 데이터 넘기기 위한 폼 -->
 	<form method="post" action="compModifyPro.do" onload="comp_part_check(${dto.comp_part})">
@@ -99,4 +100,5 @@
 	      	</div>
 	    </div>
 	</form>
+</div>
 </div>

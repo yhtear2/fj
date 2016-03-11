@@ -1,15 +1,19 @@
 @CHARSET "UTF-8";
 
+body{
+	background:#f8f8f8;
+}
+
 #comp{
 	width: 700px;
 	height: 100%;
 	align:center;
-	background:#f8f8f8;
 }
 
 .container{
 	width: 700px;
 	height: 100%;
+	font-family: 돋움;
 }
 /*
 .must item{
