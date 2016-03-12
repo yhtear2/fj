@@ -19,7 +19,7 @@
 <!-- 전체 크기 잡기 -->
 <div class="recruit_contentsize">
 	<!-- 여기에는 기업정보에서 가져오는 기본입력 폼 -->
-	<div class="comptitle">
+	<div class="comptitle"> 
 			<span class="comptitle_sub">${dto.name}</span>
 			<h3 class="comptitle_sub">${dto.title}</h3>
 			<span class="comptitle_sub">${compdto.comp_type}</span>
@@ -39,10 +39,10 @@
 					<td>${compdto.incharge}</td>
 					<th>전화번호</th>
 					<td>${compdto.tel}</td>
-				</tr>
-				<tr>
+				</tr>   
+				<tr> 
 					<th rowspan="2">주소</th>
-					<td colspan="3">우편번호 : ${compdto.zipcode}</th>
+					<td colspan="3">우편번호 : ${compdto.zipcode}</td>
 				</tr>
 				<tr>
 					<td colspan="3">${compdto.address}</td>
@@ -107,7 +107,7 @@
 			<span class="span">${dto.business_part}</span>
 		</div>
 	</div>
-	<!-- 상세 내용 -->
+	<!-- 상세 내용 --> 
 	<div class="business panel">
 		<div>
 			<h4>근무조건</h4>
@@ -183,11 +183,3 @@
 	</div>
 </div>
 
-<!--  
-font-style : '돋움';
-font-size : 10px;
-color : white;
-background-color : #0059b3;
-
-line : #cccccc
--->
