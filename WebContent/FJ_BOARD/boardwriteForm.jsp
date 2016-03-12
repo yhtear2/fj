@@ -64,12 +64,12 @@
 					<ul id="myTags">   
 					</ul>    
 				</div>
-			</div>     
+			</div>      
       
 
 			<!-- 내용을 입력하는 부분 --> 
 			  
-			<div id="summernote" >
+			<div id="summernote" > 
 			</div>           
 			 
 			
@@ -77,9 +77,12 @@
 			<!-- 글쓰기 등록 및 취소부분 --> 
 			<div class="nav" role="navigation">
 				<fieldset class="buttons">
-				<a href="boardlist.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 
+				<a href="boardlist.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')"
+					style="color:blue; background-color:white; border:#0059b3 10px solid blue; font-size: 15px; 
+					font-style:'돋움';" >취소</a> 
 				  
-					<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" value="${btn_write}" > 
+					<input   type="submit" name="create" class="create btn btn-success btn-wide pull-right" value="${btn_write}" 
+							style="border:#0059b3; font-style:'돋움'; font-size: 10px; color:white; background-color:blue;"> 
 					
 					<!--  
 					<input type="submit" id="save" class="btn btn-primary" onclick="save()" type="button" value="${btn_write}">

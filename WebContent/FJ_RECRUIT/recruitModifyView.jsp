@@ -247,6 +247,12 @@
 </form>
 </div>
 
+<!--  
+font-style : '돋움';
+font-size : 10px;
+color : white   000000;
+background-color : #0059b3;
+-->
 
 
 

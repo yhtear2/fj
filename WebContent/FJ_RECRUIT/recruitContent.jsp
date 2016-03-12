@@ -164,7 +164,7 @@
 					<td>${dto.start_date} ~ ${dto.end_date}</td>
 				</tr>
 			</table>
-		</div>
+		</div> 
 	</div>
 	<div class="recruittext panel panel-default">
 		${dto.content}
@@ -182,3 +182,12 @@
 		</form> 
 	</div>
 </div>
+
+<!--  
+font-style : '돋움';
+font-size : 10px;
+color : white;
+background-color : #0059b3;
+
+line : #cccccc
+-->

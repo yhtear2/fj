@@ -33,3 +33,9 @@
 	 	<button class="btn btn-default" onclick="window.location='messageList.do?pageNum=${pageNum}'">뒤로</button>
  	</div>
 </div>
+
+<!--  
+font-style : '돋움';
+font-size : 10px;
+background-color : #0059b3;
+-->

@@ -16,8 +16,11 @@
 <div id="article" class="content" role="main">
 	<div class="nav" role="navigation">
 		<a href="boardwriteForm.do"
-			class="create btn btn-success btn-wide pull-right"><i
-			class="fa fa-pencil"></i> 글쓰기 </a>
+			class="create btn btn-success btn-wide pull-right" 
+			style="font-style:'돋움'; font-size:10px; color:white; background-color:#0059b3;"><i
+			class="fa fa-pencil"  
+			
+			></i> 글쓰기 </a>
 
 		<h4>자유게시판</h4>
 	</div>
@@ -68,7 +71,8 @@
 
 					<!-- 카테고리 영역 -->
 					<a href="카테고리 클릭시 해당 카테고리 페이지로 이동하는 경로"
-						class="list-group-item-text item-tag label label-info"> <i
+						class="list-group-item-text item-tag label label-info" 
+						style="background:#74b9ff";> <i
 						class="fa fa-comments"></i> ${dto.category}
 					</a> &nbsp;
 					<c:forEach var="tag" items="${tags}">
@@ -192,7 +196,7 @@
 					<input type="hidden" name="number" value="${number}">
 					<div class="content-body panel-body pull-left">
 						<div style="margin-left: 5px;">
-							${sessionScope.name}
+							${sessionScope.name} 
 						</div>
 
 						<!-- 댓글 적는 곳 (에디터 적용은 아직 미구현) -->
@@ -203,8 +207,10 @@
 
 					<!-- 댓글 등록 및 취소구간 -->
 					<div class="content-function-cog note-submit-buttons clearfix">
-						<p>	<input type="reset" class="btn btn-default btn-wide" value="${btn_cancel}">	</p>
-						<input type="submit" name="create"	class="create btn btn-success btn-wide wide" value="${btn_reply}">
+						<p>	<input type="reset" class="btn btn-default btn-wide" value="${btn_cancel}"
+						     style="font-style:'돋움'; font-size:10px; color:#0059b3; background-color:#ffffff">	</p>
+						<input type="submit" name="create"	class="create btn btn-success btn-wide wide" value="${btn_reply}"
+						     style="font-style:'돋움'; font-size:10px; color:#000000; background-color:#0059b3">
 					</div>
 				</form>
 				</c:if>

@@ -66,9 +66,13 @@
 		</form>      
 	</c:if>
 </body>
-  
 
-
+<!--  
+font-style : '돋움';
+font-size : 10px;
+color : white;
+background-color : #0059b3;
+-->
 
 
 

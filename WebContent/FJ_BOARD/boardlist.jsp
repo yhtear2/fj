@@ -19,6 +19,13 @@
 	<meta name="layout" content="main">
 				 
 </head>
+<!-- 
+ca- background-color : #74b9ff;
+wr- font-style:'돋움';
+    color : white; 
+    background-color : #0059b3;
+ -->
+
 
 <div id="list-article" class="content scaffold-list" role="main">
             <div class="nav" role="navigation"> 

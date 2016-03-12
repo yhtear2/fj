@@ -119,6 +119,16 @@
 </c:if>		
 
 
+<!--  
+font-style : '돋움';
+font-size : 10px;
+background-color : #565656;
+
+color : #b3b3b3;
+line : #d5d5d5;
+text : 260px;
+-->
+
 
 
 

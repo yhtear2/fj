@@ -39,3 +39,9 @@
 </form>
 <!-- <div style="border-style: solid; position: absolute; height:370px; width: 410px; top: 65px; left:10px"></div> -->
 
+<!--  
+font-style : '돋움';
+font-size : 10px;
+color : #ffffff;
+background-color : #0059b3;
+-->
