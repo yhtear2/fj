@@ -83,7 +83,9 @@
                             <div class="list-title-wrapper clearfix">
                                 <div class="list-tag clearfix">
                                <!-- 카테고리 영역 -->
-                                   	<a href="searchboardlist.do?category=${dto.category}" class="list-group-item-text item-tag label label-info">
+                                   	<a href="searchboardlist.do?category=${dto.category}" class="list-group-item-text item-tag label label-info"
+                                   	style="background-color:#74b9ff"; 
+                                   	>
                                     <i class="fa fa-comments"></i> 
                                    	${dto.category}
                                     </a>

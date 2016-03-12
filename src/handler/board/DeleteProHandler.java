@@ -40,7 +40,7 @@ public class DeleteProHandler implements Commandhandler {
 	
 		if( dto.getRe_count() < 1 ) {    //  re_step 3 을 댓글로 지정하였고, 댓글이 없을 경우를 if 문으로 돌려서 체크 
 			int result = dao.deleteArticle( board_num ); 
-			map.put( "result", result );
+			map.put( "result", result ); 
 		}
 		
 		map.put("pageNum", pageNum);

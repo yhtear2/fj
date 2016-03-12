@@ -56,6 +56,7 @@ public class ListHandler implements Commandhandler {
 		}
 		
 		currentPage = Integer.parseInt( pageNum );
+		/*
 		pageCount = count / pageSize + ( count%pageSize > 0 ? 1 : 0 );
 		if( currentPage > pageCount ) 
 		{
@@ -76,9 +77,29 @@ public class ListHandler implements Commandhandler {
 					// 	11 + 10 - 1					20
 					      
 		if( endPage > pageCount ) endPage = pageCount;			
-	
-		 
+		*/
 		
+		pageCount = count / pageSize + ( count%pageSize >0 ? 1 : 0 );
+		currentPage = Integer.parseInt(pageNum);
+		// 마지막 페이지 지웠을때 생기는 문제 예외처리
+		if( pageCount < currentPage){
+			currentPage = pageCount;
+			pageNum = String.valueOf( pageCount );
+		}
+		
+		start = ( currentPage - 1) * pageSize + 1;
+		end = start + pageSize -1;
+		
+		// 번호 계산
+		number = count-( currentPage -1 ) * pageSize ;
+		startPage = (currentPage / pageBlock) * pageBlock +1;
+					// (  11		/ 10 ) * 10+1 	11	
+		if( currentPage % pageBlock == 0) startPage -= pageBlock;
+		endPage = startPage + pageBlock -1;
+					// 11+ 10 - 1					20
+		if( endPage > pageCount ) endPage = pageCount; 
+		 
+		 
 		if( count != 0 ) {  
 			// BoardDBBean 의 getArticles 부분에서 int 값이 두개이상이므로 매핑을 건다 
 			Map<String, Integer> map2 = new HashMap<String, Integer>();

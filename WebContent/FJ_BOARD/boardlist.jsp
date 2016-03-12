@@ -191,15 +191,16 @@ wr- font-style:'돋움';
 			</li>
 			-->
 			<!-- pageBlock 손봐야함  -->
+			<!--  
 			<li>
 				<c:if test="${count > 0}">
 				<c:if test="${startPage > pageBlock}">
-				</c:if>
+				</c:if> 
 				</c:if> 
 				<a 
 				href="boardlist.do" 
 				class="prev disabled">◀◀</a>
-				<a 
+				<a  
 				href="boardlist.do?pageNum=${startPage-pageBlock}"
 				class="prev disabled">◀</a>
 			</li>	 
@@ -209,8 +210,8 @@ wr- font-style:'돋움';
 				<a>${i}</a>
 				</c:if>
 				<c:if test="${i != currentPage}">
-				<a href="boardlist.do?pageNum=${i}">${i}</a>
-				</c:if>   
+				<a href="boardlist.do?pageNum=${i}">${i}</a> 
+				</c:if>    
 				</c:forEach> 
 			<c:if test="${endPage < pageCount}">
 				<a href="boardlist.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
@@ -218,6 +219,31 @@ wr- font-style:'돋움';
 			</c:if>
 			  
 			</li>   
+		    -->
+		    
+		    	<li> 
+				<c:if test="${count > 0}">
+				<c:if test="${startPage > pageBlock}">
+				</c:if>
+				</c:if> 
+				<a href="boardlist.do" class="prev disabled">◀◀</a>
+				<a href="boardlist.do?pageNum=${startPage-pageBlock}" class="prev disabled">◀</a>
+				</li>	 
+			<li>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:if test="${i == currentPage}"> 
+				<a>${i}</a>
+				</c:if>
+				<c:if test="${i != currentPage}">
+				<a href="boardlist.do?pageNum=${i}">${i}</a>
+				</c:if>   
+				</c:forEach> 
+				<c:if test="${endPage < pageCount}">
+					<a href="boardlist.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
+					<a href="boardlist.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
+				</c:if>
+			</li>   
+		    
 		    
 		
 		</ul>  
