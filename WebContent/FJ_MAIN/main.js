@@ -18,6 +18,7 @@ $(function(){
 				$('.main_submanu').stop().animate({'padding-left':'15px'});
 				$('#logo').stop().animate({'width':'30px'});
 				$('.logout').stop().animate({'left':'22px'});
+				$('.messageicon').stop().animate({'left':'22px'});
 			} else { 
 				$('.main_menu').stop().animate({'width':'200px'}, function() {
 					$('.main_menu2').css({'z-index':'0'});
@@ -35,6 +36,7 @@ $(function(){
 		$('.main_menu').css({'width':'50px'});
 		$('#logo').stop().css({'width':'30px'});
 		$('.logout').css({'left':'22px'});
+		$('.messageicon').css({'left':'22px'});
 		$('.main_submanu').css({'padding-left':'15px'});
 		$(".main_menu2").css({'z-index':'0'});
 		$(".main_menu2").eq(this_page).css({'z-index':'2'});

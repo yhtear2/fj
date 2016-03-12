@@ -39,7 +39,8 @@
 				<c:if test="${sessionScope.memId != null}">
 				<div class="main_logon">
 					<span>${name}</span>
-					<span class="glyphicon glyphicon-log-out logout" onclick="window.location='joinLogout.do'"/>
+					<span class="glyphicon glyphicon-log-out logout" onclick="window.location='joinLogout.do'"></span>
+					<span class="glyphicon glyphicon-send messageicon" onclick="window.location='messageList.do'"></span>
 				</div>
 				</c:if>
 			</div>

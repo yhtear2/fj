@@ -80,11 +80,17 @@ body {
 	padding-left:50px;
 	position:absolute;
 }
-.main_logon>span:nth-child(2){
-	font-size: 1.5em;
+.main_logon>span:nth-child(2) {
+	font-size: 1.3em;
 	position:absolute;
-	top:13px;
-	left:137px;
+	top:4px;
+	left:140px;
+}
+.main_logon>span:nth-child(3) {
+	font-size: 1.3em;
+	position:absolute;
+	top:25px;
+	left:140px;
 }
 /*메인페이지*/
 .main_page{
