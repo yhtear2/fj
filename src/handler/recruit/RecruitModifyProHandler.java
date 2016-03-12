@@ -1,7 +1,6 @@
 package handler.recruit;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,36 +8,33 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.recruit.RecruitDao;
-import dto.message.MessageDataBean;
 import dto.recruit.RecruitDataBean;
 import dto.user.UserDataBean;
 import handler.Commandhandler;
 
 @Controller
-public class RecruitWriteProHandler implements Commandhandler{
-
+public class RecruitModifyProHandler implements Commandhandler {
+	
 	@Resource(name="recruitDao")
 	private RecruitDao recruitDao;
 
-	@RequestMapping("/recruitWritePro")
+	@RequestMapping("/recruitModifyPro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		request.setCharacterEncoding("utf-8");
 		
 		// 바구니 생성
 		RecruitDataBean dto = new RecruitDataBean();
 		
 		// 그냥 넘어오는거 넣기
-		dto.setEmail((String)request.getSession().getAttribute("memId"));	// 세션에 있는 이메일
+		dto.setRecruit_id(Integer.parseInt(request.getParameter("recruit_id")));				// 글 고유번호
 		dto.setTitle(request.getParameter("title"));						// 제목
 		dto.setContent(request.getParameter("content"));					// 내용
 		dto.setName((String)request.getSession().getAttribute("name"));		// 세션에 있는 이름
@@ -52,8 +48,6 @@ public class RecruitWriteProHandler implements Commandhandler{
 		dto.setStart_date(request.getParameter("start_date"));				// 채용 시작일
 		dto.setEnd_date(request.getParameter("end_date"));					// 채용 종료일
 		dto.setPeople_count(Integer.parseInt(request.getParameter("people_count")));	// 채용인원
-		dto.setReadcount(0);												// 조회수
-		dto.setReg_date(new Timestamp( System.currentTimeMillis()));		// 작성일
 		dto.setLast_date(new Timestamp( System.currentTimeMillis()));		// 수정일
 
 		
@@ -111,38 +105,26 @@ public class RecruitWriteProHandler implements Commandhandler{
 		////////////////// 입력 끝 //////////////////////////////
 		
 		// 이제  DB에 넣자
-		int result = recruitDao.insertRecruit(dto);
+		int result = recruitDao.modifyRecruit(dto);
 		
 		// 처리된거 페이지로 리턴
 		map.put("result", result);
 
-		/** 실시간 쪽지가 가도록 해보자!! **/
-		Map<String, Object> maps = new HashMap<String, Object>();
-		String skills[] = dto.getSkill().split("/");
-		for (int i=0; i<skills.length; i++){
-			maps.put("skill_"+i, "%"+skills[i]+"%");
-		}
-		maps.put("max_salary", dto.getMax_salary() );
-		maps.put("min_salary", dto.getMin_salary() );
-		List<UserDataBean> email = recruitDao.getRecruitEmail(maps);
-		//System.out.println("리턴받은 리스트의 사이즈 : " +email.size());
-		
-		
-		map.put("menu", "recruit");
-		map.put("page", "/FJ_RECRUIT/recruitWritePro");
+	
+		map.put("page", "/FJ_RECRUIT/recruitModifyPro");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
-
+	
 	// 배열에다가 ","를 입력하기 위한 메소드
-	public String arrayCheck(String[] ar ){
-		String result = "";
-		for(int i=0; i<ar.length; i++){
-			result += ar[i];
-			if(i < ar.length-1){
-				result += ",";
+		public String arrayCheck(String[] ar ){
+			String result = "";
+			for(int i=0; i<ar.length; i++){
+				result += ar[i];
+				if(i < ar.length-1){
+					result += ",";
+				}
 			}
+			return result;
 		}
-		return result;
-	}
 
 }

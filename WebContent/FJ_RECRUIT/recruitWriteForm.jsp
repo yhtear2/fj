@@ -72,7 +72,6 @@
 				  	<option>3200만원 이상</option>
 				  	<option>3600만원 이상</option>
 				  	<option>4000만원 이상</option>
-				  	<option>4000만원 이상</option>
 				  	<option>5000만원 이상</option>
 				  	<option>6000만원 이상</option>
 				  	<option>7000만원 이상</option>
@@ -88,7 +87,6 @@
 				  	<option>2800만원 이하</option>
 				  	<option>3200만원 이하</option>
 				  	<option>3600만원 이하</option>
-				  	<option>4000만원 이하</option>
 				  	<option>4000만원 이하</option>
 				  	<option>5000만원 이하</option>
 				  	<option>6000만원 이하</option>

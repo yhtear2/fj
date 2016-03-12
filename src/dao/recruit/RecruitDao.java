@@ -13,5 +13,6 @@ public interface RecruitDao {
 	public RecruitDataBean getContent( int recruit_id );
 	public void addReadContent( int recruit_id );
 	public List<UserDataBean> getRecruitEmail(Map<String, Object> maps);
+	public int modifyRecruit(RecruitDataBean dto);
 }
 

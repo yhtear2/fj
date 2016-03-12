@@ -7,7 +7,7 @@
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
-		alert("글 작성에 실패했습니다. \n 잠시 후 다시 시도해 주세요");
+		alert("글 수정에 실패했습니다. \n 잠시 후 다시 시도해 주세요");
 		//-->
 	</script>
 </c:if>

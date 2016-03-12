@@ -33,8 +33,13 @@ public class RecruitModifyViewHandler implements Commandhandler {
 		RecruitDataBean dto = new RecruitDataBean();
 		dto = recruitDao.getContent( recruit_id );
 		
+		String tel[] = dto.getTel().split("-");
+		map.put("tel_1", tel[0] );
+		map.put("tel_2", tel[1] );
+		
 		// 넘겨받은 데이터를 페이지로 토쓰!!
 		map.put("dto", dto);
+		
 		
 		
 		map.put("page", "/FJ_RECRUIT/recruitModifyView");

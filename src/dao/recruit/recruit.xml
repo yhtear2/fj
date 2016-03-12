@@ -73,6 +73,25 @@
 		Where	#{min_salary} &gt;= want_salary or want_salary &lt;= #{max_salary}
 		<!-- And		skill like '%#{skill}%' -->
 	</select>
+	
+	<update id="modifyRecruit" parameterType="dto.recruit.RecruitDataBean">
+		UPDATE 	FJ_RECRUIT
+		SET		title 	=	#{title, jdbcType=VARCHAR}, 	content		=	#{content, jdbcType=VARCHAR},
+				skill 	= 	#{skill, jdbcType=VARCHAR},		gender  	=	#{gender, jdbcType=VARCHAR},
+				edu	 	=	#{edu, jdbcType=VARCHAR},		work_type	= 	#{work_type, jdbcType=VARCHAR},
+				work_day=	#{work_day, jdbcType=VARCHAR},	work_area 	= 	#{work_area, jdbcType=VARCHAR},
+				
+				business_part	=	#{business_part, jdbcType=VARCHAR},
+				incharge		=	#{incharge, jdbcType=VARCHAR},
+				
+				tel			=	#{tel, jdbcType=VARCHAR},		start_date		=	#{start_date, jdbcType=VARCHAR},
+				end_date	=	#{end_date, jdbcType=VARCHAR},	min_salary		=	#{min_salary},
+				max_salary 	= 	#{max_salary},					min_career		=	#{min_career},					
+				max_career	=	#{max_career},					min_age			=	#{min_age},
+				max_age		=	#{max_age},						people_count	=	#{people_count},
+				last_date	=	#{last_date}
+		WHERE	recruit_id = #{recruit_id}
+	</update>
 </mapper>	
 
 

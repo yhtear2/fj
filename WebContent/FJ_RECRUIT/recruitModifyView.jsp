@@ -5,7 +5,8 @@
 
 <!-- 전체 크기 잡기 -->
 <div class="recruit_mainsize">
-<form name="recruitModifyForm" method="post" action="recruitWritePro.do" onsubmit="return recruitwritecheck()">
+<form name="recruitModifyForm" method="post" action="recruitModifyPro.do" onsubmit="return recruitwritecheck()">
+	<input type="hidden" name="recruit_id" value="${dto.recruit_id}">
 	<label><h2>채용공고</h2></label>
 	<!-- 제목 -->
 	<div class="recruit_size">
@@ -91,14 +92,15 @@
 		
 		<div class="recruit_minisize">  
 			<label style="margin-right : 30px;">근무요일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~일" onClick="checkCheckbox1(this.form,this,1)">월~일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~토" onClick="checkCheckbox1(this.form,this,1)">월~토</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~금" onClick="checkCheckbox1(this.form,this,1)">월~금</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="토,일" onClick="checkCheckbox1(this.form,this,1)">토,일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주6일" onClick="checkCheckbox1(this.form,this,1)">주6일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주5일" onClick="checkCheckbox1(this.form,this,1)">주5일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주4일" onClick="checkCheckbox1(this.form,this,1)">주4일</label>
-			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주3일" onClick="checkCheckbox1(this.form,this,1)">주3일</label>
+			<input type="hidden" name="work_days" value="${dto.work_day}">
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~일" id="day0" onClick="checkCheckbox1(this.form,this,1)">월~일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~토" id="day1" onClick="checkCheckbox1(this.form,this,1)">월~토</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="월~금" id="day2" onClick="checkCheckbox1(this.form,this,1)">월~금</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="토,일" id="day3" onClick="checkCheckbox1(this.form,this,1)">토,일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주6일" id="day4" onClick="checkCheckbox1(this.form,this,1)">주6일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주5일" id="day5" onClick="checkCheckbox1(this.form,this,1)">주5일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주4일" id="day6" onClick="checkCheckbox1(this.form,this,1)">주4일</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="work_day" value="주3일" id="day7" onClick="checkCheckbox1(this.form,this,1)">주3일</label>
 		</div>
 	</div>
 	
@@ -107,6 +109,7 @@
 		<label><h4>지원자격</h4></label>
 		<div class="recruit_minisize">
 			<label style="margin-right: 20px;">학   력</label>
+			<input type="hidden" name="edus" value="${dto.edu}">
 			<select class="form-control_hs" name="edu" style="width : 200px;">
 				<option>학력무관</option>
 				<option>고등학교 졸업</option>
@@ -115,13 +118,14 @@
 				<option>석사졸업</option>
 				<option>박사졸업</option>
 			</select>
-			
+			<input type="hidden" name="genders" value="${dto.gender}">
 			<label style="margin : 0px 30px 0px 100px;">성   별</label>
-			<label class="checkbox-inline"> <input type="checkbox" id="gender" name="gender" value="남자" onClick="checkCheckbox1(this.form,this,1)">남자</label>
+			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="남자" onClick="checkCheckbox1(this.form,this,1)">남자</label>
 			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="여자" onClick="checkCheckbox1(this.form,this,1)">여자</label>
 			<label class="checkbox-inline"> <input type="checkbox" name="gender" value="무관" onClick="checkCheckbox1(this.form,this,1)">무관</label>
 		</div>
 		<div class="recruit_minisize">
+			<input type="hidden" name="min_ages" value="${dto.min_age}">
 			<label style="margin-right: 20px;">연   령</label>
 			<select class="form-control_hs" name="min_age" style="width : 200px;">
 				<c:set var="a" value="${2015}"/>
@@ -131,6 +135,7 @@
 				</c:forEach>
 			</select>
 			<label style="width: 50; text-align: center;"> ~ </label>
+			<input type="hidden" name="max_ages" value="${dto.max_age}">
 			<select class="form-control_hs" name="max_age" style="width : 200px;">
 				<c:set var="b" value="${2016}"/>
 				<c:forEach  begin="0" end="50" step="1"> 
@@ -142,6 +147,8 @@
 		</div>
 		
 		<div class="recruit_minisize">
+			<input type="hidden" name="min_careers" value="${dto.min_career}">
+			<input type="hidden" name="max_careers" value="${dto.max_career}">
 			<label style="margin-right: 20px;">경     력</label>
 			<label class="checkbox-inline"> <input type="checkbox" name="career" value="신입" onClick="checkCheckbox1(this.form,this,1)">신입</label>
 			<label class="checkbox-inline"> <input type="checkbox" name="career" value="경력" onClick="checkCheckbox1(this.form,this,1)">경력</label>
@@ -173,22 +180,22 @@
 		<!-- 담당자  / 채용시작일 / 채용종료일 -->
 		<div class="recruit_minisize">
 			<label style="margin-right: 10px;">담당업무</label>
-			<input type="text" name="business_part" class="form-control_hs" style="width:200px;" placeholder="담당업무를 입력하세요">
+			<input type="text" name="business_part" class="form-control_hs" style="width:200px;" placeholder="담당업무를 입력하세요" value="${dto.business_part}">
 				
 			<!-- 기술(skill) -->
 			<label style="margin : 0px 3px 0px 15px;">필요기술</label>
-			<input type="text" name="skill" id="skill" class="form-control_hs" 
+			<input type="text" name="skill" id="skill" class="form-control_hs" value="${dto.skill}"
 				style="width:300px;" placeholder="클릭해주세요"  onclick="conf_skill()">
 		</div>
 		<div class="recruit_minisize">
 			<!-- 채용인원(people_count) -->
 			<label style="margin-right: 10px;">채용인원</label>
-			<input type="text" name="people_count" class="form-control_hs" style="width:60px;">
+			<input type="text" name="people_count" class="form-control_hs" style="width:60px;" value="${dto.people_count}">
 			<label>명</label>
 			<label style="margin : 0px 3px 0px 15px;">채용일정</label>
-			<input type="date" name="start_date" class="form-control_hs" style="width:200px;">
+			<input type="date" name="start_date" class="form-control_hs" style="width:200px;" value="${dto.start_date}">
 			<label style="width:20px; text-align: center;"> ~ </label>
-			<input type="date" name="end_date" class="form-control_hs" style="width:200px;">
+			<input type="date" name="end_date" class="form-control_hs" style="width:200px;" value="${dto.end_date}">
 		</div>
 		
 	</div>
@@ -228,7 +235,7 @@
 	<div class="recruit_size">
 		<div id="summernote" ></div>
 	</div>
-	<input type="hidden" name="content" value="">
+	<input type="hidden" name="content" value="${dto.content}">
 	
 	<!-- 버튼 구현부 -->
 	<div class="nav" role="navigation">
