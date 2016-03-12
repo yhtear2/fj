@@ -37,6 +37,7 @@ public class RecruitContentHandler implements Commandhandler {
 		// 데이터 받아오기
 		int recruit_id = Integer.parseInt(request.getParameter("recruit_id"));
 		String pageNum = request.getParameter("pageNum");
+
 		
 		// 채용공고 데이터 가져오자
 		RecruitDataBean dto = new RecruitDataBean();
@@ -44,12 +45,18 @@ public class RecruitContentHandler implements Commandhandler {
 		// 회사기본 입력사항 정보를 가져오자!
 		CompDataBean compdto = new CompDataBean();
 		compdto = compDao.getComp(dto.getEmail());
+		int count = 0;
+		count = recruitDao.getContent_re();
+
+
+		
 		
 		// 이메일 비교해서 카운트 올리기
 		if( !( dto.getEmail().equals(request.getSession().getAttribute("memId")) ) ){
 			recruitDao.addReadContent( recruit_id );
 		}
 		
+		map.put("count",count);
 		map.put("dto", dto);
 		map.put("compdto", compdto);
 		map.put("pageNum", pageNum);

@@ -61,6 +61,25 @@
 		Where	recruit_id = #{recruit_id}
 	</select>
 	
+	<select id="getContent_re" resultType="java.lang.Integer">
+		SELECT 	COUNT(*) 
+		From	FJ_Recruit_Log
+	</select>
+
+		<insert id="insertRecruit_re" parameterType="dto.recruit.Recruit_LogDataBean">
+		insert into 
+		FJ_Recruit_Log(
+			recruit_id,
+			email,user_history_id,
+			reg_date
+		) values(
+			#{recruit_id, jdbcType=INTEGER},
+			#{email, jdbcType=VARCHAR},#{user_history_id, jdbcType=INTEGER},
+			#{reg_date}
+		)
+		</insert>	
+	
+	
 	<update id="addReadContent" parameterType="Integer" >
 		UPDATE 	FJ_RECRUIT 
 		SET 	readcount = readcount + 1 

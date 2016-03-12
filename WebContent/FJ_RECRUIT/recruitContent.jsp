@@ -2,6 +2,15 @@
 
 <!-- include setting.jsp -->
 <%@ include file="setting.jsp"%>
+<script type="text/javascript">
+function resome_sub() {
+	
+		   var url = "recruit_resomeList.do";
+		   open(url, "confrimWindow",
+		         "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
+}
+
+</script>
 
 <!-- 
 	*** 핸들러에서 넘어오는 데이터 ***
@@ -24,6 +33,32 @@
 			<h3 class="comptitle_sub">${dto.title}</h3>
 			<span class="comptitle_sub">${compdto.comp_type}</span>
 	</div>
+	
+	<form name="recruitContent">
+	<table>
+	
+	<tr>
+		<th></th>
+		
+		<td>   
+			<c:if test='${member_flag== 1}'>
+		      	<input class="btn btn-default"  type="button" value="지원하기" style="width:100px" onclick="resome_sub()">
+				<input type="hidden" name="str" id="str">
+			</c:if>
+			<c:if test='${member_flag!= 1}'>
+				<br>
+			</c:if>
+	
+		</td>
+	</tr>
+	<tr>
+	<td>현재 지원 인원은 ${count} 명입니다.</td>
+	
+	</tr>
+	</table>	
+	</form>
+	
+	
 	<div class="panel panel-default">
 		<!-- 대표자명 / 기업구분 / 담당자 / 전화번호  / 우편번호 / 주소 / 자본금 / 기업업종 / 회사설립일 / 연매출 / 사원수 -->	
 		<div class="comptext panel">
