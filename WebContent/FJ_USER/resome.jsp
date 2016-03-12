@@ -395,14 +395,14 @@
    </tr>
    <tr>
       <th>전화번호</th>
-         <td><input class="" type="text" style="width: 60px" name="tel1" id="tel1" maxlength="3"> - 
-             <input class="" type="text" style="width: 65px" name="tel2" id="tel2" maxlength="4"> -
-            <input class="" type="text" style="width: 70px" name="tel3" id="tel3" maxlength="4"></td>
+         <td><input class="" type="number" style="width: 60px" name="tel1" id="tel1" value="010"> - 
+             <input class="" type="number" style="width: 65px" name="tel2" id="tel2" max="9999"> -
+            <input class="" type="number" style="width: 70px" name="tel3" id="tel3" max="9999"></td>
    </tr>
 
    <tr>
       <th>생년월일</th>
-         <td><input class="" type="text" name="birth" id="birth" maxlength="12" style="width:200px"></td>
+         <td><input class="" type="date" name="birth" id="birth"  style="width:200px"></td>
    </tr>
    
    <tr>
@@ -414,8 +414,8 @@
                <option value="미필">미필</option>
                <option value="면제">면제</option>
             </select>
-            <input class="" type="text" style="width:135px" name="army2" id="army2"> ~
-            <input class="" type="text" style="width:135px" name="army3" id="army3">
+            <input class="" type="date" style="width:135px" name="army2" id="army2"> ~
+            <input class="" type="date" style="width:135px" name="army3" id="army3">
             
             <select class="" style="width: 120px" name="army4" id="army4">
                <option value="군별선택">군별선택</option>

@@ -24,12 +24,6 @@ var license2 = "";
 var license3 = "";
 
 
-
-
-
-
-
-
 function skill_result() {
    var skills = document.getElementById('skill').value;
    opener.document.resome.skill.value = skills;

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="setting.jsp"%>
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
-<script src="${project}resome.js"></script>
+<script src="/fj/FJ_USER/resome.js"></script>
 <script type="text/javascript">
 function Result()
 {
@@ -51,5 +51,5 @@ document.getElementById("skill").value = str;
 <input type="checkbox" id="mariadb" name="chk_Type" value="mariadb" onclick="Result();">MariaDB <br><br><br>
 
 <input type="text" name="skill" id="skill" style="width:340px">
-<input  class="inputbutton"  type="button" value="추가" onclick="skill_result()">
+<input  class="btn btn-default"  type="button" value="추가" onclick="skill_result()">
 
