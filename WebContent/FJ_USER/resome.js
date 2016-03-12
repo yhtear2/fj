@@ -27,37 +27,8 @@ var license3 = "";
 function skill_result() {
    var skills = document.getElementById('skill').value;
    opener.document.resome.skill.value = skills;
-   
-   // jquery로 어떻게 넣을수 없을까나...//홍석
-   // 나도 이거 써야해서...ㅋㅋㅋ 아.. 안된다..ㅠㅠ
-   //$("input[id=skill]", opener.document).val( skills ); //jquery 이용
-   //$(opener.document).find('input[id=skill]').val( skills ); //find를 이용한 jquery
-   //$(opener.document).find($("#skill").val( skills ));
-   window.close();
-   
 }
 
-
-
-/*$(function(){
-	
-	
-    var count = $.cookie('count');
-
-	var addedFor = document.getElementById("career_addFormdiv");
-
-	for(var j=1; j<=count; j++) {
-		career_addForm();
-	}
-
-})
-
-
-function addReturn(){
-
-
-}
-*/
 
 $(function(){
     //최초 쿠키에 login_id라는 쿠키값이 존재하면
@@ -293,45 +264,6 @@ $(function(){
     
 })
 
-
-function sub_name_modify(count){   
-   // id가 sub_name 이라는 div 사라지게함
-   var sub_name = 'div[id=sub_name'+ count +']';
-   $(sub_name).css("display", "none");
-   // id가 sub_change 이라는 div 나타나게 함
-   var sub_change = 'div[id=sub_change'+ count +']';
-   $(sub_change).css("display", "block");
-   // sub_name_ div에있는 텍스트 값 인풋폼에 등록
-   var sub_change_name = 'input[name=sub_change_name'+ count +']';
-   var sub_name_ = 'div[id=sub_name_'+ count +']'
-   $( sub_change_name ).val( $( sub_name_ ).text() );   
-}
-
-// 확인 버튼을 누르면 실행되는 메소드
-function sub_name_ok(count){
-   var sub_name = 'div[id=sub_name'+ count +']';
-   var sub_change = 'div[id=sub_change'+ count +']';
-   var sub_change_name = 'input[name=sub_change_name'+ count +']';
-   var sub_name_ = 'div[id=sub_name_'+ count +']'
-   // div를 받아옴
-   // innerHTML을 이용해 인풋폼에 있는 내용으로 변경
-   $(sub_name_).text( $(sub_change_name ).val() );
-   // 인풋폼 초기화
-   $(sub_change_name).val("");
-   // 위에설명 참고
-   $(sub_name).css("display", "block");
-   $(sub_change).css("display", "none");
-}   
-// 취소 버튼을 누르면 실행되는 메소드
-function sub_name_cancel(count){
-   var sub_name = 'div[id=sub_name'+ count +']';
-   var sub_change = 'div[id=sub_change'+ count +']';
-   //위에 설명 참고
-   $(sub_name).css("display", "block");
-   $(sub_change).css("display", "none");
-}
-
-
 $(function() {
     $("#imginput").on('change', function(){
         readURL(this);
@@ -352,71 +284,350 @@ function readURL(input) {
 
 
 
-/**
- *    자기소개서 추가 삭제하기
- */
-// 자기소개서 페이지 추가 메소드
-function add_introduce(){
-    var subject = ['자기소개서', '가족소개', '성장과정', '학창시절', '교외활동', '전공선택 이유와 적성', '성격의 장단점', '생활신조', '지원동기', '입사 후 포부', '자기소개서', '가족소개', '성장과정', '학창시절', '교외활동', '전공선택 이유와 적성', '성격의 장단점', '생활신조', '지원동기', '입사 후 포부'];
-    var standardID = 'div[id=standardID'+ cnt +']'
-    if( cnt < 10 ){
-       cnt++;
-       var html =   '<div class="form-control" id="standardID'+ cnt +'">'
-             +   '<div id="sub_name'+ cnt +'"  class="form-control" style="display:;">'
-             +   '<div id="sub_name_'+ cnt +'" class="form-control" >'+ subject[cnt]+'</div>'
-             +   '<div class="subject"><input class="btn btn-default" type="button" value="변경" name="modify" onclick="sub_name_modify('+cnt+')"></div>'
-             +   '</div>'
-             +   '<div id="sub_change'+ cnt +'" class="form-control" style="display:none;">'
-             +   '<input class="form-control" type="text" name="sub_change_name'+ cnt +'" style="background: #f2f7ff; border: 2px;" autofocus="autofocus" > '
-             +   '<input class="btn btn-default" type="button" value="확인" onclick="sub_name_ok('+cnt+')">'
-             +   '<input class="btn btn-default" type="button" value="취소" onclick="sub_name_cancel('+cnt+')">'
-             +   '</div>'
-             +   '<div> <textarea class="form-control" name="contents'+cnt+'" rows="17" cols="100%"></textarea> </div>'
-             +   '<div>' 
-             +   '<input class="btn btn-default" type="button" value="추가" onclick="add_introduce()">'
-             +   '<input class="btn btn-default" type="button" value="삭제" onclick="del_introduce('+cnt+')">'
-             +   '</div>'
-             +   '</div>';
-       $(standardID).after(html);
-    } else {
-       alert('작성 가능한 자소서항목은 최대 10개입니다.');
-    }  
+/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
+/** resome.jsp에 있던 내용 **/
+
+var count = 1;
+var cnt = 1;
+var request = null;
+
+window.onload = function() {
+   listComment();
+}
+function listComment() {
+   request = new Request( listResult,"resome.jsp" );
+   request.sendRequest();   
+}
+function listResult() {
+   var debug = document.getElementById( "debug" );
+   if( request.httpRequest.readyState == 4 ) {
+      if( request.httpRequest.status == 200 ) {
+            
+            debug.innerHTML = "";
+   
+            
+         } else {
+            debug.innerHTML = request.httpRequest.status + " : 에러발생";   
+         }         
+      } else {
+         debug.innerHTML = request.httpRequest.readyState + " : 통신중";   
+      }      
 }
 
-// 자기소개 페이지 삭제 메소드
-function del_introduce(count){
-   if ( cnt > 0 ) {
-      var delDiv = 'div[id=standardID'+ count +']'
+function lic_submitcheck() {
+	   
+	  		var lo_table = document.getElementById("license_table");
+	   	    var license_cnt = lo_table.rows.length-2;
+	   	   	   	   
+	       $('input[name=license_cnt_hidden]').val(license_cnt);
+
+	}
+
+
+
+
+function submitcheck() {
+   var name = [];
+   var names = $('input[name=school_name]');
+   for (var i = 0; i < names.length; i++) {
+      name[i] = names.eq(i).val();
+   }
+   $('input[name=school_name_send]').val(name);
+   
+    var start = [];
+   var starts = $('input[name=school_start_date]');
+   for (var i = 0; i < starts.length; i++) {
+      start[i] = starts.eq(i).val();
+   }
+   $('input[name=school_start_send]').val(start);
+   
+    var last = [];
+   var lasts = $('input[name=school_last_date]');
+   for (var i = 0; i < lasts.length; i++) {
+      last[i] = lasts.eq(i).val();
+   }
+   $('input[name=school_last_send]').val(last);
+   
+    var college1 = [];
+   var college1s = $('input[name=school_college1]');
+   for (var i = 0; i < college1s.length; i++) {
+      college1[i] = college1s.eq(i).val();
+   }
+   $('input[name=school_college1_send]').val(college1);
+   
+    var college2 = [];
+   var college2s = $('input[name=school_college2]');
+   for (var i = 0; i < college2s.length; i++) {
+      college2[i] = college2s.eq(i).val();
+   }
+   $('input[name=school_college2_send]').val(college2);
+   
+    var major = [];
+   var majors = $('input[name=school_major]');
+   for (var i = 0; i < majors.length; i++) {
+      major[i] = majors.eq(i).val();
+   }
+   $('input[name=school_major_send]').val(major);
+   
+   
+    var rank1 = [];
+   var rank1s = $('input[name=school_rank1]');
+   for (var i = 0; i < rank1s.length; i++) {
+      rank1[i] = rank1s.eq(i).val();
+   }
+   $('input[name=school_rank1_send]').val(rank1);
+   
+    var rank2 = [];
+   var rank2s = $('input[name=school_rank2]');
+   for (var i = 0; i < rank2s.length; i++) {
+      rank2[i] = rank2s.eq(i).val();
+   }
+   $('input[name=school_rank2_send]').val(rank2);      
+   
+   $('input[name=count]').val(count);
+
+
+ }
+
+
+//학력추가
+function addForm(flag) {
+   //최대 추가할 폼수 지정
+   var MAX_ADDFROM = 3;
+   
+   //학력 구간 추가공간 지정(div객체)
+   var addedFormDiv = document.getElementById("addedFormDiv");
+   
+   //학력 최대값 설정
+   if (addedFormDiv.childNodes.length >= MAX_ADDFROM) {
+      alert("더 이상 추가할 수 없습니다.");
+      return;
+   }
+   
+   /*   추가될 학력 구간 시작   */ 
+   var str = "";
+
+   str += count;
+   str += "<h5> 대학교 / 대학원 </h5>";    
+
+   str += "<table class='table table-hover'  id='mytable' style='width:800px'>";
+   str += "<tr>";
+   str += "<th style='width:100px'>분류</th>";
+   str += "<td style='width: 520px'>";
+   str += "<input type='radio' id='school_kind_ida"+count+"' name='school_kind"+count+"'value='대학교'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
+   str += "<input type='radio' id='school_kind_idb"+count+"' name='school_kind"+count+"'value='대학원'/>&nbsp; 대학원";
+
+   str += "</td>";
+   str += "</tr>";
+   str += "<tr>";
+   str += "<th style='width:100px'>재학기간</th>";
+   str += "<td style='width: 520px'>";
+   str += "<input class='input' type='text' style='width:150px' id='school_start_date"+count+"' name='school_start_date'>  ~  ";
+   str += "<input class='input' type='text' style='width:150px' id='school_last_date"+count+"' name='school_last_date'> &nbsp;&nbsp;";
+   str += "<select class='input' style='width: 120px' id='school_college1"+count+"' name='school_college1'> ";
+   str += "<option value='입학'>입학</option>";
+   str += "<option value='편입'>편입</option>";
+   str += "</select>&nbsp;&nbsp;";
+   str += "<select class='input' style='width: 120px' id='school_college2"+count+"' name='school_college2'>";
+   str += "<option value='졸업예정'>졸업예정</option>";
+   str += "<option value='졸업'>졸업</option>";
+   str += "<option value='재학중'>재학중</option>";
+   str += "<option value='휴학중'>휴학중</option>";
+   str += "<option value='수료'>수료</option>";
+   str += "<option value='중퇴'>중퇴</option>";
+   str += "<option value='자퇴'>자퇴</option>";
+   str += "</select>";
+   str += "</td>";
+
+   str += "</tr>";
+
+   str += "<tr>";
+   str += "<th>학교명</th>";
+   str += "<td> <input class='input' type='text' style='width:200px' id='school_name"+count+"' name='school_name'>";
+   str += "</td>";
+
+   str += "</tr>";
+   str += "<tr>      ";
+   str += "<th>전공</th>";
+   str += "<td> <input class='input' type='text' style='width:200px' id='school_major"+count+"' name='school_major'>";
+   str += "</td>";
+
+   str += "</tr>";
+   str += "<tr>";
+   str += "<th>학점</th>";
+   str += "<td> <input class='input' type='text' style='width:60px' id='school_rank1"+count+"' name='school_rank1' maxlength='3'> / ";
+   str += "<input class='input' type='text' style='width:60px' id='school_rank2"+count+"' name='school_rank2' maxlength='3'>";
+   str += "</td>";
+   str += "</tr>";
+   str += "</table>";
+   str += "<tr>";
+
+   str += "   <td>";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   str += "       <input  class='btn btn-default'  type='button' value='추가' onclick='addForm()'>";
+   str += "       <input  class='btn btn-default'  type='button' value='삭제' onclick='delForm()'>";
+   str += "   </td>";
+   str += "  </tr>";
+
+   /*   추가될 학력 구간 종료   */
+   
+   var addedDiv = document.createElement("div");
+   addedDiv.id = "added_" + count;
+   addedDiv.innerHTML = str;
+   addedFormDiv.appendChild(addedDiv);
+
+   count++;
+   document.school_Form.count.value = count;
+   if(flag == "highAdd") addReturn();
+
+   $("input[name=school_kind1]:checked").val();
+   if($("#school_kind_ida1").attr("checked")=="checked")
+ 	  radio_checked=$("#school_kind_ida1").val();
+ 	  
+   
+   
+   
+   if( $.cookie('school_name') != "" ) {
+ 	  for(var i=1; i<=count; i++) {
+   		$("#school_name"+i).val( $.cookie('school_name'+i) );
+ 		$("#school_start_date"+i).val( $.cookie('school_start_date'+i) );
+ 		$("#school_last_date"+i).val($.cookie('school_last_date'+i));
+ 	//	$("#school_kind_ida"+i).attr("checked", 'checked');
+ 	//	$("#school_kind_idb"+i).attr("checked", 'checked');
+
+ 
+		//	$("#school_kind_ida1").attr("checked", 'checked');
+		//	$("#school_kind_ida2").attr("checked", 'checked');
+		
+			$("#school_kind_idb1").attr("checked", 'checked');
+			$("#school_kind_idb2").attr("checked", 'checked');
+ 	//	$('#school_kind_ida'+i).prop('checked',!$('#school_kind_ida'+i).prop('checked'));
+ 	//	alert($.cookie('school_kind'+i));
+ 		
+ 	//	$('#school_kind_idb'+i).prop('checked',!$('#school_kind_idb'+i).prop('checked'));
+
+ 		$("#school_college1"+i).val($.cookie('school_college1'+i));
+ 		$("#school_college2"+i).val($.cookie('school_college2'+i));
+ 		$("#school_major"+i).val($.cookie('school_major'+i));
+ 		$("#school_rank1"+i).val($.cookie('school_rank1'+i));
+ 		$("#school_rank2"+i).val($.cookie('school_rank2'+i));    		  
+ 		  
+ 	  }
+   }
+
+}
+
+
+
+function delForm() {
+   var addedFormDiv = document.getElementById("addedFormDiv");
+   if (count > 1) {
+      var addedDiv = document.getElementById("added_" + (--count));
+
       if (confirm("삭제하시겠습니까?")) {
-         $(delDiv).remove();
-         cnt--;
-         alert(cnt+"");
+         addedFormDiv.removeChild(addedDiv);
       }
    } else {
-      alert('한 개 이상의 자소서가 필요합니다.');
+      document.school_Form.reset();
    }
 }
 
+function license_addform() {
 
-$("#tooltip").tooltipsy({
-    css: {
-        'padding': '10px',
-        'max-width': '200px',
-        'color': '#303030',
-        'background-color': '#ffffff',
-        'border': '2px solid #4893BA',
-        '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-        '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-        'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-        'text-shadow': 'none'
-    }
-});
+   var lo_table = document.getElementById("license_table");
+   var row_index = lo_table.rows.length;
+   var license_cnt = lo_table.rows.length-2;
+   newTr = lo_table.insertRow(row_index - 1);
+   newTr.idName = "newTr" + row_index;
+		      
+   newTd = newTr.insertCell(0);
+   newTd.innerHTML = license_cnt;
+   newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px' class='form-control-hs' > </td>";
+
+   newTd = newTr.insertCell(1);
+   newTd.innerHTML = license_cnt;
+   newTd.align = "center";
+   newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2"+license_cnt+"' id='license2"+license_cnt+"' style='width:180px' class='form-control-hs' > </td>";
+
+   newTd = newTr.insertCell(2);
+   newTd.innerHTML = license_cnt;
+   newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px' class='form-control-hs' ></td>";
+	
+   
+   if( $.cookie('license1') != "" ) {
+ 	  for(var i=1; i<=license_cnt; i++) {
+ 		//  $.cookie('license1'+i, $('input[id=license1'+i+']').val());
+   		$("#license1"+i).val( $.cookie('license1'+i) );
+ 		$("#license2"+i).val( $.cookie('license2'+i) );
+ 		$("#license3"+i).val($.cookie('license3'+i));
+ 
+ 	  }
+   }
+ 		
+}
+
+function license_delForm() {
+
+     var lo_table = document.getElementById("license_table");
+   var row_index = lo_table.rows.length - 2; // 테이블(TR) row 개수
+
+   if (row_index > 1)
+      lo_table.deleteRow(row_index); 
+} 
 
 
-/*
+function execDaumPostcode() {
+   new daum.Postcode(
+         {
+            oncomplete : function(data) {
 
-http://jquerytools.github.io/demos/tooltip/form.html
+               var fullAddr = ''; // 최종 주소 변수
+               var extraAddr = ''; // 조합형 주소 변수
 
-http://annotations.tistory.com/66
+               if (data.userSelectedType === 'R') {
+                  fullAddr = data.roadAddress;
 
- */
+               } else {
+                  fullAddr = data.jibunAddress;
+               }
+
+               if (data.userSelectedType === 'R') {
+
+                  if (data.bname !== '') {
+                     extraAddr += data.bname;
+                  }
+
+                  if (data.buildingName !== '') {
+                     extraAddr += (extraAddr !== '' ? ', '
+                           + data.buildingName : data.buildingName);
+                  }
+
+                  fullAddr += (extraAddr !== '' ? ' (' + extraAddr
+                        + ')' : '');
+               }
+
+               document.getElementById('postcode').value = data.zonecode;
+               document.getElementById('address1').value = fullAddr;
+
+               document.getElementById('address2').focus();
+            }
+         }).open();
+}
+
+function conf_skill() {
+   var url = "confirm_skill.do";
+   open(url, "confrimWindow",
+         "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
+
+}
+
+/* ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ */

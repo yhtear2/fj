@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="setting.jsp"%>
+<%@ include file="/defaultSetting.jsp"%>
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/resome.js"></script>
 <script type="text/javascript">
+
 function Result()
 {
 var chk_Value = "";
@@ -31,6 +32,8 @@ document.getElementById("skill").value = str;
 }
 </script>
 
+<!-- 전체적인 사이즈 잡기 -->
+<div style="margin: 10px 0px 0px 30px;">
 없는 기술은 마지막에 / 입력 후  직접 입력하시기 바랍니다.<br><br><br>
 
 <input type="checkbox" id="java" name="chk_Type" value="java" onclick="Result();">JAVA
@@ -50,6 +53,6 @@ document.getElementById("skill").value = str;
 <input type="checkbox" id="mysql" name="chk_Type" value="mysql" onclick="Result();">MySql
 <input type="checkbox" id="mariadb" name="chk_Type" value="mariadb" onclick="Result();">MariaDB <br><br><br>
 
-<input type="text" name="skill" id="skill" style="width:340px">
+<input type="text" name="skill" id="skill" style="width:300px">
 <input  class="btn btn-default"  type="button" value="추가" onclick="skill_result()">
-
+</div>
