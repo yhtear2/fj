@@ -15,9 +15,7 @@
 <c:if test="${result == 1}">
 	<script type="text/javascript">
 		<!--
-			alert( "가입에 성공하였습니다." );
-		//-->
-	</script>	
-<%-- 	<c:redirect url="career.do"/>
- --%>	
+		window.location.href = "resome_list.do";
+		//-->		
+	</script>		
 </c:if>

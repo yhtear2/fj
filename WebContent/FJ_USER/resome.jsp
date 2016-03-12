@@ -25,7 +25,7 @@
 	</div>
 	
 	<!-- 이력서 기본정보 입력 부분 -->
-	<div>
+
 	<h4>기본정보</h4>
 	<table class="table">
    		<tr>
@@ -152,131 +152,107 @@
    		</tr>
 	</table>
    
-   	<table id="license_table" class="table table-hover" style="width:800px">
+   	<table id="license_table" class="table">
     	<tr>
          	<th>자격증 이름</th>
          	<th>발행일자</th>
          	<th>발행처</th>
       	</tr>
-      	<tr>
+      	<tr id="license_table_tr0">
          	<td style="width:160px"> <input type="text" class="form-control-hs" name="license10" id="license10" style="width:220px"> </td>
          	<td style="width:80px"> <input type="date" class="form-control-hs" name="license20" id="license20" style="width:180px"> </td>
          	<td colspan="2" style="width:200px"> <input type="text" class="form-control-hs"style="width:260px" name="license30" id="license30"></td>
       	</tr>   
       	<tr>
-         	<td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              
-         	<input class="btn btn-default"  type="button" value="추가" style="width:60px" onclick="license_addform()">
-         	<input class="btn btn-default" type="button" value="삭제" style="width:60px" onclick="license_delForm()">   </td>       
+         	<td colspan="3" align="right">            
+         		<input class="btn btn-default"  type="button" value="추가" style="width:60px" onclick="license_addform()">
+         		<input class="btn btn-default" type="button" value="삭제" style="width:60px" onclick="license_delForm()">
+         		&nbsp;&nbsp;   
+         	</td>       
 		</tr>
      </table>
-
-             <div id="addlicense">
-             </div> <br>
-       
-      <table class="table table-hover" style="width:800px">
-      <tr>
-         <th style="width:89px">포트폴리오</th>
-            <td><input class="btn btn-default" type="file" name="project" id="project"></td>
       
-      </tr>
-      <tr>
-      <th></th>
-      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;   
-      <input  class="btn btn-default"  type="submit" value="개인정보 저장하기" style="width:200px" id="user_button"></td>
-      
-   </table>   
-    	<!-- 기본정보 끝!! -->
-	</div>  
-</form>
-
+     <table class="table">
+     	<tr>
+         	<th style="width:150px;">포트폴리오</th>
+            <td>
+            	<input class="btn btn-default" type="file" name="project" id="project">
+            </td>
+      	</tr>
+      	<tr>
+			<td colspan="2" align="right">   
+     			<input  class="btn btn-default"  type="submit" value="임시저장" style="width:200px" id="user_button">
+     		  	&nbsp;&nbsp;
+     		</td>
+      	</tr>
+     </table>
+<!-- 기본정보 끝!! -->
 <br>
-	<!--  학력사항 시작 -->
-<h3>학력사항</h3>
+<!--  학력사항 시작 -->
+	<h4>학력사항</h4>
 
-<h5>고등학교</h5>
+	<!-- <h5>고등학교</h5> -->
 
-<form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()">
-   <input type="hidden" name="count" value="0">
-
+<!-- <form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()"> -->
+	<input type="hidden" name="count" value="0">
 	<input type="text" name="user_history_id" value='${history_id}' style="display:none">
-	
-   
-   
-<table class="table table-hover" style="width:800px">
-   <tr>
-      <th style="width:100px">재학기간</th>
-         <td style="width: 520px">
-            <input class="" type="text" style="width:210px" name="highschool_start_date" id="highschool_start_date"> ~
-            <input class="" type="text" style="width:210px" name="highschool_last_date" id="highschool_last_date">
-            
-            <select class="" style="width: 80px" name="highschool_college" id="highschool_college">
-               <option value="졸업">졸업</option>
-               <option value="졸업예정">졸업예정</option>      
-            </select>         
-         </td>
-   </tr>
-   
-   <tr>      
-      <th>학교명</th>
-      <td> <input class="" type="text" style="width:200px" name="highschool_name" id="highschool_name">
-         <select class="" style="width: 150px" name="highschool_kind" id="highschool_kind">
-            <option value="문과계열">문과계열</option>
-            <option value="이과계열">이과계열</option>      
-            <option value="전문(실업)계열">전문(실업)계열</option>
-            <option value="예체능계열">예체능계열</option>   
-         </select>   
-      </td>
-   </tr>
-               <tr>
-                  <th style="width:100px">학력추가 </th>
-                     <td>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
-                       <input class="btn btn-default"  type="button" value="추가" onclick="addForm('highAdd')">
-                       <input class="btn btn-default"  type="button" value="삭제" onclick="delForm()">
-                    </td>
-              </tr>
-   
-      </table> 
-      
-       <div id="addedFormDiv"></div> <br>
-      
-<br>
 
-<br>
-<table class="table table-hover" style="width:800px">
-   <tr>
-   <th></th>
-      <td colspan="2"> 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-       <input  class="btn btn-default"  type="submit" value="학력사항 저장" style="width:200px" id="school_save"></td>
-   </tr>
-</table>
+	<table class="table">
+		<tr>
+			<td colspan="4" style="border-top: none;"><h5>고등학교</h5></td>
+		</tr>
+    	<tr>
+      		<th style="width:80px;">재학기간</th>
+			<td colspan="4">
+    			<input class="form-control-hs" type="date" style="width:180px" name="highschool_start_date" id="highschool_start_date">
+    			 &nbsp;~&nbsp; 
+            	<input class="form-control-hs" type="date" style="width:180px" name="highschool_last_date" id="highschool_last_date">
+            	&nbsp;&nbsp;
+            	<select class='form-control-hs' style='width: 80px;padding-top: 1px;' id='school_college1' name='school_college0'>
+   					<option value='입학'>입학</option>
+   					<option value='편입'>편입</option>
+   				</select>
+   				&nbsp;
+            	<select class="form-control-hs" style="width: 120px;padding-top: 1px; " name="highschool_college" id="highschool_college">
+               		<option value="졸업">졸업</option>
+               		<option value="졸업예정">졸업예정</option>
+               	</select>   
+            </td>
+    	</tr>
+    	<tr>
+    		<th>학교명</th>
+            <td style="width:250px;text-align: center;"> 
+            	<input class="form-control-hs" style="padding-top: 1px;text-align: center; type="text" name="highschool_name" id="highschool_name">   
+      		</td>
+      		<td style="width:200px;">
+      			<select class="form-control-hs" style="padding-top: 1px;text-align: center;" name="highschool_kind" id="highschool_kind">
+		            <option value="문과계열">문과계열</option>
+		            <option value="이과계열">이과계열</option>      
+		            <option value="전문(실업)계열">전문(실업)계열</option>
+		            <option value="예체능계열">예체능계열</option>   
+         		</select>
+      		</td>
+      		<th style="width:80px; margin-left: 20px;text-align: right;">학점</th>
+      		<td>
+      			<p style="text-align: center;">-</p>
+      		</td>
+    	</tr>
+    	<tr>
+			<td colspan="5" align="right">                
+				<input class="btn btn-default"  type="button" value="학력 추가" onclick="addForm('highAdd')">
+				<input class="btn btn-default"  type="button" value="삭제" onclick="delForm()">
+				&nbsp; &nbsp; 
+			</td>
+		</tr>
+	</table>
+       <div id="addedFormDiv"></div> <br>
+	<table class="table">
+   		<tr>
+      		<td align="right">   
+      			<input class="btn btn-default"  type="submit" value="저장하고 다음단계로" style="width:200px" id="school_save">
+      			&nbsp; &nbsp; 
+      		</td>
+   		</tr>
+	</table>
 </form>
 </div>

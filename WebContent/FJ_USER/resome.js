@@ -256,9 +256,6 @@ $(function(){
         $.cookie('highschool_college', $("#highschool_college").val());
         $.cookie('highschool_name', $("#highschool_name").val());
         $.cookie('highschool_name_kind',$("#highschool_name_kind").val());
-        
-        
-        alert("학력정보가 저장되었습니다.!");
          
     })
     
@@ -404,81 +401,70 @@ function addForm(flag) {
       return;
    }
    
+
    /*   추가될 학력 구간 시작   */ 
    var str = "";
 
-   str += count;
-   str += "<h5> 대학교 / 대학원 </h5>";    
-
-   str += "<table class='table table-hover'  id='mytable' style='width:800px'>";
+   
+   str += "<table class='table table-hover'  id='mytable' style='width:750px'>";
    str += "<tr>";
-   str += "<th style='width:100px'>분류</th>";
-   str += "<td style='width: 520px'>";
-   str += "<input type='radio' id='school_kind_ida"+count+"' name='school_kind"+count+"'value='대학교'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
-   str += "<input type='radio' id='school_kind_idb"+count+"' name='school_kind"+count+"'value='대학원'/>&nbsp; 대학원";
-
-   str += "</td>";
+   str += "	<td colspan='5' style='border-top: none;'><h5>대학교 / 대학원</h5></td>";
    str += "</tr>";
    str += "<tr>";
-   str += "<th style='width:100px'>재학기간</th>";
-   str += "<td style='width: 520px'>";
-   str += "<input class='input' type='text' style='width:150px' id='school_start_date"+count+"' name='school_start_date'>  ~  ";
-   str += "<input class='input' type='text' style='width:150px' id='school_last_date"+count+"' name='school_last_date'> &nbsp;&nbsp;";
-   str += "<select class='input' style='width: 120px' id='school_college1"+count+"' name='school_college1'> ";
-   str += "<option value='입학'>입학</option>";
-   str += "<option value='편입'>편입</option>";
-   str += "</select>&nbsp;&nbsp;";
-   str += "<select class='input' style='width: 120px' id='school_college2"+count+"' name='school_college2'>";
-   str += "<option value='졸업예정'>졸업예정</option>";
-   str += "<option value='졸업'>졸업</option>";
-   str += "<option value='재학중'>재학중</option>";
-   str += "<option value='휴학중'>휴학중</option>";
-   str += "<option value='수료'>수료</option>";
-   str += "<option value='중퇴'>중퇴</option>";
-   str += "<option value='자퇴'>자퇴</option>";
-   str += "</select>";
-   str += "</td>";
-
+   str += "	<th style='width:100px'>분류</th>";
+   str += "	<td colspan='5'>";
+   str += "	<input type='radio' id='school_kind_ida"+count+"' name='school_kind"+count+"'value='대학교'/>&nbsp; 대학교 &nbsp;&nbsp; &nbsp;&nbsp;";
+   str += "	<input type='radio' id='school_kind_idb"+count+"' name='school_kind"+count+"'value='대학원'/>&nbsp; 대학원";
    str += "</tr>";
 
    str += "<tr>";
-   str += "<th>학교명</th>";
-   str += "<td> <input class='input' type='text' style='width:200px' id='school_name"+count+"' name='school_name'>";
-   str += "</td>";
-
+   str += "	<th style='width:80px;'>재학기간</th>";
+   str += "	<td colspan='5'>";
+   str += "	<input class='form-control-hs' type='date' style='width:180px' id='school_start_date"+count+"' name='school_start_date'>";
+   str += "	&nbsp;~&nbsp;" ;
+   str += "	<input class='form-control-hs' type='date' style='width:180px' id='school_last_date"+count+"' name='school_last_date'>";
+   str += "	&nbsp;&nbsp;";
+   str += "	<select class='form-control-hs' style='width: 80px;padding-top: 1px;' id='school_college1"+count+"' name='school_college1'>";
+   str += "		<option value='입학'>입학</option>";
+   str += "		<option value='편입'>편입</option>";
+   str += "	</select>&nbsp;";
+   str += "	<select class='form-control-hs' style='width: 120px;padding-top: 1px;' id='school_college2"+count+"' name='school_college2'>";
+   str += "		<option value='졸업예정'>졸업예정</option>";
+   str += "		<option value='졸업'>졸업</option>";
+   str += "		<option value='재학중'>재학중</option>";
+   str += "		<option value='휴학중'>휴학중</option>";
+   str += "		<option value='수료'>수료</option>";
+   str += "		<option value='중퇴'>중퇴</option>";
+   str += "		<option value='자퇴'>자퇴</option>";
+   str += " 	</select>";   
+   str += "	</td>";
    str += "</tr>";
-   str += "<tr>      ";
-   str += "<th>전공</th>";
-   str += "<td> <input class='input' type='text' style='width:200px' id='school_major"+count+"' name='school_major'>";
-   str += "</td>";
 
+   str += "	<th>학교명</th>";
+   str += "	<td style='width:200px;text-align: center;'>"; 
+   str += "		<input class='form-control-hs' style='padding-top: 1px;text-align: center;' type='text' id='school_name"+count+"' name='school_name'>";   
+   str += "	</td>";
+   str += "	<th style='width:50px; margin-left: 20px;'>전공</th>";
+   str += "	<td style='width:180px;'>";
+   str += "		<input class='form-control-hs' type='text' id='school_major"+count+"' name='school_major'>";
+   str += "	</td>";
+   str += "	<th style='width:50px; margin-left: 20px;text-align: right;'>학점</th>";
+   str += "	<td>";
+   str += "		<input class='form-control-hs' type='text' style='width:60px' id='school_rank1"+count+"' name='school_rank1' maxlength='3'> / ";
+   str += "		<input class='form-control-hs' type='text' style='width:60px' id='school_rank2"+count+"' name='school_rank2' maxlength='3'>";
+   str += "	</td>"	;
    str += "</tr>";
-   str += "<tr>";
-   str += "<th>학점</th>";
-   str += "<td> <input class='input' type='text' style='width:60px' id='school_rank1"+count+"' name='school_rank1' maxlength='3'> / ";
-   str += "<input class='input' type='text' style='width:60px' id='school_rank2"+count+"' name='school_rank2' maxlength='3'>";
-   str += "</td>";
+	   
+   str += "<tr>";	
+   str += "   <td colspan='6' align='right'>";
+   str += "       <input  class='btn btn-default'  type='button' value='학력 추가' onclick='addForm()'>";
+   str += "       <input  class='btn btn-default'  type='button' value='삭제' onclick='delForm()'>";
+   str += "			&nbsp;&nbsp;";
+   str += "   </td>";
    str += "</tr>";
    str += "</table>";
-   str += "<tr>";
 
-   str += "   <td>";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-   str += "       <input  class='btn btn-default'  type='button' value='추가' onclick='addForm()'>";
-   str += "       <input  class='btn btn-default'  type='button' value='삭제' onclick='delForm()'>";
-   str += "   </td>";
-   str += "  </tr>";
-
-   /*   추가될 학력 구간 종료   */
+/*   추가될 학력 구간 종료   */
    
    var addedDiv = document.createElement("div");
    addedDiv.id = "added_" + count;
@@ -486,7 +472,7 @@ function addForm(flag) {
    addedFormDiv.appendChild(addedDiv);
 
    count++;
-   document.school_Form.count.value = count;
+   document.resome.count.value = count;
    if(flag == "highAdd") addReturn();
 
    $("input[name=school_kind1]:checked").val();
@@ -537,16 +523,28 @@ function delForm() {
          addedFormDiv.removeChild(addedDiv);
       }
    } else {
-      document.school_Form.reset();
+      document.resome.reset();
    }
 }
 
+var license_cnt = 0;
 function license_addform() {
-
-   var lo_table = document.getElementById("license_table");
-   var row_index = lo_table.rows.length;
-   var license_cnt = lo_table.rows.length-2;
-   newTr = lo_table.insertRow(row_index - 1);
+   /*var lo_table = document.getElementById("license_table");
+   var row_index = lo_table.rows.length;*/
+   var lo = document.getElementById("license_table_tr"+license_cnt);
+   if( license_cnt < 9){
+	   license_cnt = license_cnt + 1;
+	   var html = 	"<tr id='license_table_tr"+license_cnt+"'>"
+		   		+	"<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px' class='form-control-hs' > </td>"
+		   		+	"<td style='width:80px'> <input type='date' name='license2"+license_cnt+"' id='license2"+license_cnt+"' style='width:180px' class='form-control-hs' > </td>"
+		   		+	"<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px' class='form-control-hs' ></td>"
+		   		+	"</tr>";
+	   $(lo).after(html);
+   } else {
+	   alert("자격증은 10개까지 등록할 수 있습니다.")
+   }
+   
+   /*newTr = lo_table.insertRow(row_index - 1);
    newTr.idName = "newTr" + row_index;
 		      
    newTd = newTr.insertCell(0);
@@ -561,8 +559,8 @@ function license_addform() {
    newTd = newTr.insertCell(2);
    newTd.innerHTML = license_cnt;
    newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px' class='form-control-hs' ></td>";
-	
-   
+	*/
+/*   
    if( $.cookie('license1') != "" ) {
  	  for(var i=1; i<=license_cnt; i++) {
  		//  $.cookie('license1'+i, $('input[id=license1'+i+']').val());
@@ -571,15 +569,15 @@ function license_addform() {
  		$("#license3"+i).val($.cookie('license3'+i));
  
  	  }
-   }
+   }*/
  		
 }
 
 function license_delForm() {
 
-     var lo_table = document.getElementById("license_table");
+   var lo_table = document.getElementById("license_table");
    var row_index = lo_table.rows.length - 2; // 테이블(TR) row 개수
-
+   license_cnt = license_cnt -1;
    if (row_index > 1)
       lo_table.deleteRow(row_index); 
 } 

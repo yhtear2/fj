@@ -9,7 +9,7 @@ ${sessionScope.history_id}
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
-			alert( "가입하지못했습니다." );
+			alert( "입력에 실패 했습니다. \n 잠시 후 다시 시도해 주세요." );
 		//-->
 	</script>	
 </c:if>
@@ -17,13 +17,9 @@ ${sessionScope.history_id}
 <c:if test="${result == 1}">
 	<script type="text/javascript">
 		<!--
-			alert( "가입에 성공하였습니다." );
-		//-->
-		
+		var History_id = ${History_id}
+		window.location.href = "career.do?History_id="+History_id;
+		//-->		
 	</script>
 
-	
-	
-	
-		<%-- <c:redirect url="career.do"/> --%>
 	</c:if>
