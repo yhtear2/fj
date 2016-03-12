@@ -15,9 +15,8 @@
 <c:if test="${result == 1}">
 	<script type="text/javascript">
 		<!--
-			alert( "가입에 성공하였습니다." );
-		//-->
+		var History_id = ${History_id}
+		window.location.href = "introduceForm.do?History_id="+History_id;
+		//-->		
 	</script>	
-	<c:redirect url="introduceForm.do"/>
-	
 </c:if>

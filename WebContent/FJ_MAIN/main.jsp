@@ -67,7 +67,7 @@
 			<c:if test="${sessionScope.member_flag == 1}">
 				<h3>MyPage</h3>
 				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
-				<a href="#" onclick="window.location='main.do'">이력서 관리</a>
+				<a href="#" onclick="window.location='resome_list.do'">이력서 관리</a>
 				<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
 				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
 			</c:if>
