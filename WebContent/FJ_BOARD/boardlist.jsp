@@ -29,7 +29,8 @@ wr- font-style:'돋움';
 
 <div id="list-article" class="content scaffold-list" role="main">
             <div class="nav" role="navigation"> 
-                <a href="/fj/boardwriteForm.do" class="create btn btn-success btn-wide pull-right"><i class="fa fa-pencil"></i> 글쓰기 </a>
+                <a href="/fj/boardwriteForm.do" class="create btn btn-success btn-wide pull-right"
+                style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"><i class="fa fa-pencil"></i> 글쓰기 </a>
                 
                 <h4>자유게시판</h4>   
                 <div class="category-filter-wrapper"> 
@@ -80,7 +81,8 @@ wr- font-style:'돋움';
                             <div class="list-title-wrapper clearfix">
                                 <div class="list-tag clearfix">
                                <!-- 카테고리 영역 -->
-                                   	<a href="searchboardlist.do?category=${dto.category}" class="list-group-item-text item-tag label label-info">
+                                   	<a href="searchboardlist.do?category=${dto.category}" class="list-group-item-text item-tag label label-info"
+                                   	style="background-color:#74b9ff";>
                                     <i class="fa fa-comments"></i> 
                                    	${dto.category}
                                     </a>

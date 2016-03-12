@@ -27,21 +27,21 @@
 		    <input type="text" class="form-control-message" name="title" placeholder="제목을 입력해 주세요" autofocus>
 		</div>
 		<div class="form-group" style="width: 300px;">
-		    <textarea name="content" rows="10" cols="100%" placeholder="내용을 입력해 주세요" style="width: 300px;"></textarea>
+		    <textarea name="content" rows="10" cols="100%" placeholder="내용을 입력해 주세요" style="width: 300px; border:1px solid #cccccc;"></textarea>
 		</div>
 		<div class="form-group">
 	    	<div class="col-sm-offset-2 col-sm-10">
-	      		<button class="btn btn-default" type="submit">보내기</button>
-	      		<button class="btn btn-default">취소</button>
+	      		<button class="btn btn-default" type="submit"
+	      		style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+				border: 1px solid #0059b3;"
+	      		>보내기</button>
+	      		<button class="btn btn-default"
+	      		style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+				border: 1px solid #0059b3;"
+	      		>취소</button>
 	    	</div>
 	 	</div>
 	</div>
 </form>
 <!-- <div style="border-style: solid; position: absolute; height:370px; width: 410px; top: 65px; left:10px"></div> -->
 
-<!--  
-font-style : '돋움';
-font-size : 10px;
-color : #ffffff;
-background-color : #0059b3;
--->

@@ -57,10 +57,15 @@
                        		</div> 
                        			   
                        			
-                       			<!-- 댓글 등록 및 취소구간 -->  
+                       			<!-- 댓글 등록 및 취소구간 -->   
                                 <div class="content-function-cog note-submit-buttons clearfix">
-                                    <p><a href="boardlist.do" id="note-create-cancel-btn" onclick="return confirm('정말로 취소하시겠습니까?')" class="btn btn-default btn-wide" style="">${btn_cancel}</a></p>
-                                    <input type="submit" name="create" class="create btn btn-success btn-wide wide" value="${btn_reply}"> 
+                                    <p><a href="boardlist.do" id="note-create-cancel-btn" onclick="return confirm('정말로 취소하시겠습니까?')" class="btn btn-default btn-wide" 
+                                    style="color:#0059b3; background-color:#f8f8f8; border:#0059b3 10px solid blue; font-size: 15px; 
+									font-style:'돋움';" 
+                                    >${btn_cancel}</a></p>
+                                    <input type="submit" name="create" class="create btn btn-success btn-wide wide" value="${btn_reply}"
+                                    style="font-style:'돋움'; font-size:15px; color:white; background-color:#0059b3; border:1px solid #0059b3;" 
+                                    > 
                      
                                 </div>
                             </form> 

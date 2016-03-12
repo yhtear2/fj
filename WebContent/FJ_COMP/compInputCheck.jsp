@@ -6,7 +6,7 @@
 
 <!-- body -->
 <body>
-	<form method="post" name="form" action="compInputForm.do">
+	<form method="post" name="form" action="compInputForm.do"> 
 		<label for="passwd"> ${lbl_password} </label>
 		<input type="password" name="passwd" id="passwd">
 		<input type="submit" name="submit" value="submit">

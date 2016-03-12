@@ -20,7 +20,7 @@
 		//-->
 		</script>
 	</c:if>
-
+ 
 <!-- 기업회원 정보 입력 했을때 -->
 <c:if test="${compinfochekc == 1}">
 <!-- 전체 크기 잡기 -->
@@ -251,8 +251,12 @@
 	<!-- 버튼 구현부 -->
 	<div class="nav" role="navigation">
 		<fieldset class="buttons">
-		<a href="recruitList.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 	  
-			<input type="submit" class="create btn btn-success btn-wide pull-right" value="전송" > 
+		<a href="recruitList.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')"
+			style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#ffffff"
+		>취소</a> 	  
+			<input type="submit" class="create btn btn-success btn-wide pull-right" value="전송" 
+			style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+			> 
 		</fieldset>
 	</div>
 </form>

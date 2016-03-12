@@ -21,16 +21,22 @@
 	
 	<label for="inputPassword" class="col-sm-2 control-label">제목</label>
 	<div class="col-sm-10" style="width: 300px; margin: 5px 0px 5px 0px;">
-		${dto.title}
+		${dto.title} 
 	</div>
 	
-	<div class="col-sm-10" style="border: solid 1px black; height: 60%">
+	<div class="col-sm-10" style="border: solid 1px #cccccc; height: 60%">
 		${dto.content}
 	</div>
-	
+	 
 	<div class="col-sm-offset-2 col-sm-10">
-	 	<button class="btn btn-default" onclick="messageSendDelete(${dto.read_yn}, ${dto.message_num})">삭제</button>
-	 	<button class="btn btn-default" onclick="window.location='messageList.do?pageNum=${pageNum}'">뒤로</button>
+	 	<button class="btn btn-default" onclick="messageSendDelete(${dto.read_yn}, ${dto.message_num})"
+	 	style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+		border: 1px solid #0059b3;"
+	 	>삭제</button>
+	 	<button class="btn btn-default" onclick="window.location='messageList.do?pageNum=${pageNum}'"
+	 	style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+		border: 1px solid #0059b3;" 
+	 	>뒤로</button>
  	</div>
 </div>
 

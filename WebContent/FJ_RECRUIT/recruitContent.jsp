@@ -165,7 +165,7 @@
 				</tr>
 			</table>
 		</div> 
-	</div>
+	</div> 
 	<div class="recruittext panel panel-default">
 		${dto.content}
 	</div>

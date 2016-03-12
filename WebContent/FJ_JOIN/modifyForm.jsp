@@ -19,13 +19,19 @@
 				<td>
 					<input class="form-control" type="password" name="passwd"
 						maxlength="20">
-				</td>
+				</td> 
 			</tr>
 			<tr class="active">
 				<th colspan="2">
-					<input class="btn btn-default" type="submit" value="${btn_modify}">
+					<input class="btn btn-default" type="submit" value="${btn_modify}"
+					style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+					border: 1px solid #0059b3;"
+					>
 					<input class="btn btn-default" type="button" value="${btn_modify_cancel}"
-						onclick="window.location='joinMain.do'">
+						onclick="window.location='joinMain.do'"
+					style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+					border: 1px solid #ff5d5d;"
+					>
 				</th>
 			</tr>
 		</table>

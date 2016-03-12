@@ -236,12 +236,17 @@
 		<div id="summernote" ></div>
 	</div>
 	<input type="hidden" name="content" value="${dto.content}">
-	
+	 
 	<!-- 버튼 구현부 -->
 	<div class="nav" role="navigation">
 		<fieldset class="buttons">
-		<a href="recruitList.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 	  
-			<input type="submit" class="create btn btn-success btn-wide pull-right" value="전송" > 
+		<a href="recruitList.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')"
+			style="color:#0059b3; background-color:#f8f8f8; border:#0059b3 10px solid blue; font-size: 15px; 
+			font-style:'돋움';"
+		>취소</a> 	  
+			<input type="submit" class="create btn btn-success btn-wide pull-right" value="전송" 
+			style="font-style:'돋움'; font-size:15px; color:white; background-color:#0059b3; border:1px solid #0059b3;"
+			> 
 		</fieldset>
 	</div>
 </form>

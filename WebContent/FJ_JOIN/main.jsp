@@ -33,15 +33,21 @@
                <th> ${str_passwd} </th>
                <td>
                   <input class="form-control" type="password" name="passwd" maxlength="20">
-               </td>
+               </td> 
             </tr>
             <tr>
                <td class="table-button active" colspan="2">
                	  <input class="autologin" type="checkbox" name="autologin" value="0">자동로그인&nbsp;&nbsp;
-                  <input class="btn btn-default" type="submit" value="${btn_login}">
-                  <input class="btn btn-default" type="reset" value="${btn_cancel}">
+                  <input class="btn btn-default" type="submit" value="${btn_login}"
+                  style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3;"
+                  >
+                  <input class="btn btn-default" type="reset" value="${btn_cancel}"
+                  style="font-style:'돋움'; font-size:13px; border:#0059b3 solid 1px; color:#0059b3;" 
+                  >
                   <input class="btn btn-default" type="button" value="${btn_input_member}"
-                     onclick="window.location='joinInputForm.do'">
+                     onclick="window.location='joinInputForm.do'"
+                  style="font-style:'돋움'; font-size:13px; border:#0059b3 solid 1px; color:#0059b3;"   
+                  > 
                </td>
             </tr>
          </table>
@@ -53,13 +59,15 @@
 		  	<table class="table table-bordered">
 		      <tr>
 		         <td align="center">
-		            <span>${sessionScope.name}</span>${msg_login}
+		            <span style="color:#0059b3; font-size:20px;">${sessionScope.name}</span>${msg_login}
 		         </td>
 		      </tr>
-		      <tr class="active">
+		      <tr class="active"> 
 		         <th>
-		            <input class="btn btn-default" type="button" value="${btn_modify_member}" onclick="window.location='joinModifyForm.do'">
-		            <input class="btn btn-default" type="button" value="${btn_delete_member}" onclick="window.location='joinDeleteForm.do'">
+		            <input class="btn btn-default" type="button" value="${btn_modify_member}" onclick="window.location='joinModifyForm.do'"
+		            style="font-style:'굵게'; font-size:13px; color:white; background-color:#0059b3;">
+		            <input class="btn btn-default" type="button" value="${btn_delete_member}" onclick="window.location='joinDeleteForm.do'"
+		            style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8; border: 1px solid #ff5d5d;">
 		         </th>
 		      </tr>    
 		   </table>
@@ -67,12 +75,6 @@
 	</c:if>
 </body>
 
-<!--  
-font-style : '돋움';
-font-size : 10px;
-color : white;
-background-color : #0059b3;
--->
 
 
 

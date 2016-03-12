@@ -77,8 +77,14 @@
 			<!-- 버튼 부분 -->
 			<div class="form-group" >
 				<div class="col-lg-10 col-lg-offset-2" align="right">
-					<button type="submit" class="btn btn-primary">입력</button>
-		      		<button type="reset" class="btn btn-default">취소</button>
+					<button type="submit" class="btn btn-primary" 
+					style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+					border: 1px solid #0059b3;"
+					>입력</button>
+		      		<button type="reset" class="btn btn-default"
+		      		style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+					border: 1px solid #ff5d5d;"
+		      		>취소</button>
 		      	</div>
 		    </div>
 		</form>

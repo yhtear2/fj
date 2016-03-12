@@ -95,8 +95,13 @@
 		<!-- 버튼 부분 -->
 		<div class="form-group" >
 			<div class="col-lg-10 col-lg-offset-2" align="right">
-				<button type="submit" class="btn btn-primary">수정</button>
-	      		<button type="reset" class="btn btn-default">취소</button>
+				<button type="submit" class="btn btn-primary"
+				style="font-style:'돋움'; font-size:15px; color:white; background-color:#0059b3; border:1px solid #0059b3;"
+				>수정</button>
+	      		<button type="reset" class="btn btn-default"
+	      		style="color:#0059b3; background-color:#f8f8f8; border:#0059b3 10px solid blue; font-size: 15px; 
+				font-style:'돋움';"
+	      		>취소</button>
 	      	</div>
 	    </div>
 	</form>

@@ -339,21 +339,31 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           
-           <input  class="btn btn-default"  type="button" value="추가" onclick="career_addForm()">
-           <input  class="btn btn-default"  type="button" value="삭제" onclick="career_deleForm()">
+           <input  class="btn btn-default"  type="button" value="추가" onclick="career_addForm()"
+            style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+           >
+           <input  class="btn btn-default"  type="button" value="삭제" onclick="career_deleForm()"
+        	style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+			border: 1px solid #ff5d5d;"
+           >
            </td>
 		</table>
 		  
 
 	<div id="career_addFormdiv"></div> <br>
 
-
+ 
 
 <table>
 	<tr>
 		<th colspan="2"> </th>
-		<td> <input  class="btn btn-default" type="button" value="이력서 수정" onclick="window.location='resome.do'">
-		&nbsp;&nbsp; <input  class="btn btn-default" type="submit" value="경력사항 저장"></td>
+		<td> <input  class="btn btn-default" type="button" value="이력서 수정" onclick="window.location='resome.do'"
+		style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#ffffff"
+		>
+		&nbsp;&nbsp; 
+		<input  class="btn btn-default" type="submit" value="경력사항 저장"
+		style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+		></td>
 	</tr>
 </table>
 </form>

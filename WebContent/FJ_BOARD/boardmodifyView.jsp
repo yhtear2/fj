@@ -98,14 +98,19 @@
 			</div>           
 			 
 			   
-		  
+		   
 			<!-- 글쓰기 등록 및 취소부분 --> 
 			<div class="nav" role="navigation">
 				<fieldset class="buttons">
-				<a href="boardlist.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">${btn_cancel}</a> 
+				<a href="boardlist.do" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')"
+					style="color:#0059b3; background-color:#f8f8f8; border:#0059b3 10px solid blue; font-size: 15px; 
+					font-style:'돋움';" 
+				>${btn_cancel}</a> 
 				  
 				  	
-					<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" value="${btn_modifies}"> 
+					<input type="submit" name="create" class="create btn btn-success btn-wide pull-right" value="${btn_modifies}"
+					style="font-style:'돋움'; font-size:15px; color:white; background-color:#0059b3; border:1px solid #0059b3;"
+					> 
 					
 					<!--  
 					<input type="submit" id="save" class="btn btn-primary" onclick="save()" type="button" value="${btn_modifies}">

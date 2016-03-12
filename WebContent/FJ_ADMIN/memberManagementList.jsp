@@ -15,7 +15,7 @@
 		map.put( "endPage", endPage );
 		map.put( "pageCount", pageCount );
 		map.put( "pageNum", pageNum );
-		
+		 
 		map.put("list", list);			// 회원 정보를 가지고 있는 리스트
 		map.put( "count", count );		// 회원의 수
 	넘어옴
@@ -60,8 +60,14 @@
 				<td>${dto.name}</td>
 				<td>${dto.reg_date}</td>
 				<td>
-					<input type="button" value="수정">
-					<input type="button" value="삭제">
+					<input type="button" value="수정" 
+					style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+					border: 1px solid #0059b3;"
+					>
+					<input type="button" value="삭제"
+					style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+					border: 1px solid #ff5d5d;" 
+					>
 				</td>
 			</tr>
 			</c:forEach>

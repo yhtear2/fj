@@ -5,7 +5,7 @@
 <div class="recruit_mainsize" role="main">
 	<!-- 상위 메뉴에 보여질 화면 -->
 	<div class="nav" role="navigation"> 
-		<div>
+		<div> 
 			<h2>채용게시판</h2>
 		</div>
 		<div>
@@ -14,7 +14,9 @@
 			<!-- 검색 버튼 -->
 			<button type="submit" class="btn_hs"><i class="fa fa-search" style="width:35px; height : 18px;"></i></button>
 			<!-- 상세검색 버튼 -->
-			<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide">
+			<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide" 
+			style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+			>
 				<i class="fa fa-plus-square-o"></i> 상세검색 </a>
 			<!-- 글쓰기 버튼 / member_flag가 2일 경우에만 글쓰기가 가능하도록 -->
 			<c:if test="${sessionScope.member_flag == 2}">

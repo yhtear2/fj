@@ -17,7 +17,9 @@
 	<div class="nav" role="navigation">
 		<a href="boardwriteForm.do"
 			class="create btn btn-success btn-wide pull-right" 
-			style="font-style:'돋움'; font-size:10px; color:white; background-color:#0059b3;"><i
+			style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3;
+			border: 1px solid #0059b3;
+			"><i
 			class="fa fa-pencil"  
 			
 			></i> 글쓰기 </a>
@@ -72,7 +74,7 @@
 					<!-- 카테고리 영역 -->
 					<a href="카테고리 클릭시 해당 카테고리 페이지로 이동하는 경로"
 						class="list-group-item-text item-tag label label-info" 
-						style="background:#74b9ff";> <i
+						style="background-color:#74b9ff";> <i
 						class="fa fa-comments"></i> ${dto.category}
 					</a> &nbsp;
 					<c:forEach var="tag" items="${tags}">
@@ -208,9 +210,9 @@
 					<!-- 댓글 등록 및 취소구간 -->
 					<div class="content-function-cog note-submit-buttons clearfix">
 						<p>	<input type="reset" class="btn btn-default btn-wide" value="${btn_cancel}"
-						     style="font-style:'돋움'; font-size:10px; color:#0059b3; background-color:#ffffff">	</p>
+						     style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#ffffff">	</p>
 						<input type="submit" name="create"	class="create btn btn-success btn-wide wide" value="${btn_reply}"
-						     style="font-style:'돋움'; font-size:10px; color:#000000; background-color:#0059b3">
+						     style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;">
 					</div>
 				</form>
 				</c:if>

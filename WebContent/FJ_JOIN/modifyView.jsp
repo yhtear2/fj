@@ -61,26 +61,28 @@
 			name="modifyform" onsubmit="return modifycheck()">
 			<h2> ${page_modify} </h2>				
 			<table class="table table-bordered">
-				<tr class="active">
-					<th colspan="2"> ${msg_modify} </th>						
+				<tr class="active" style="color:#d5d5d5">
+					<th colspan="2" style="color:#0059b3"> ${msg_modify} </th>						
 				</tr>
-				<tr>
-					<th class="view-th"> ${str_email} </th>
-					<td> ${dto.email} </td>
+				<tr >
+					<th class="view-th" > ${str_email} </th>
+					<td style="color:#ff5d5d"> ${dto.email} </td>
 				</tr>
 				<tr>
 					<th rowspan="2"> ${str_passwd} </th>
 					<td>
 						<input class="form-control" type="password" name="passwd" maxlength="20" 
-							onkeyup="checkpasswd( modifyform.passwd.value )">
-						<label id="passwdresult">비밀번호를 입력해주세요.</label>
+							onkeyup="checkpasswd( modifyform.passwd.value )"
+							style="color:#b3b3b3"
+							>
+						<label id="passwdresult" style="color:#b3b3b3">비밀번호를 입력해주세요.</label>
 					</td>						
 				</tr>
 				<tr>
 					<td>
 						<input class="form-control" type="password" name="repasswd" maxlength="20" 
 							onkeyup="recheckpasswd( modifyform.passwd.value, modifyform.repasswd.value )">
-						<label id="repasswdresult">비밀번호를 한번 더 입력해주세요.</label>
+						<label id="repasswdresult" style="color:#b3b3b3">비밀번호를 한번 더 입력해주세요.</label>
 					</td>
 				</tr>
 				<tr>
@@ -97,18 +99,27 @@
 						<fmt:formatDate value="${dto.reg_date}" type="both"
 							pattern="yyyy_MM-dd HH:mm"/>						
 					</td>
-				</tr>
+				</tr>   
 				<tr class="active">
 					<th colspan="2">
-						<input class="btn btn-default" type="submit" value="${btn_modify}">
-						<input class="btn btn-default" type="reset" value="${btn_cancel}">
+						<input class="btn btn-default" type="submit" value="${btn_modify}"
+						style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+						border: 1px solid #0059b3;"
+						>
+						<input class="btn btn-default" type="reset" value="${btn_cancel}"
+						style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+						border: 1px solid #ff5d5d;"
+						>
 						<input class="btn btn-default" type="button" value="${btn_modify_cancel}"
-							onclick="window.location='joinMain.do'">
+							onclick="window.location='joinMain.do'"
+						style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+						border: 1px solid #ff5d5d;"	
+					    >
 					</th>
 				</tr>
 			</table>
 		</form>		
-	</body>
+	</body> 
 </c:if>
 <c:if test="${resultCheck != 1}">				
 	<script type="text/javascript">
@@ -119,15 +130,7 @@
 </c:if>		
 
 
-<!--  
-font-style : '돋움';
-font-size : 10px;
-background-color : #565656;
 
-color : #b3b3b3;
-line : #d5d5d5;
-text : 260px;
--->
 
 
 
