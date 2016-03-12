@@ -86,7 +86,7 @@ public class ListHandler implements Commandhandler {
 			currentPage = pageCount;
 			pageNum = String.valueOf( pageCount );
 		}
-		
+		 
 		start = ( currentPage - 1) * pageSize + 1;
 		end = start + pageSize -1;
 		
