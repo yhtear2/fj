@@ -47,6 +47,8 @@
 			<!-- 선택 메뉴 -->
 			<div class="main_sub">
 				<div class="main_submanu">
+					<div><img src="${images}/main_up_01.png"></div> <span>쪽지함</span></div>
+				<div class="main_submanu">
 					<div><img src="${images}/main_up_01.png"></div> <span>MyPage</span></div>
 				<div class="main_submanu">
 					<div><img src="${images}/main_up_02.png"></div> <span>게시판</span></div>
@@ -59,6 +61,10 @@
 		</div>
 		<!-- main_menu2는 사이드바의 상세메뉴 - 평소에는 z-index:0으로 숨겨져있다 -->
 		<div class="main_menu2">
+			<h3>쪽지함</h3>
+			<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+		</div>
+		<div class="main_menu2">
 			<!-- 개인회원, 기업회원, 관리자가 서로 다른 메뉴가 나오게 변경 -->
 			<c:if test="${sessionScope.memId == null}">
 				<h3>로그인</h3>
@@ -69,7 +75,6 @@
 				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
 				<a href="#" onclick="window.location='resome_list.do'">이력서 관리</a>
 				<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
-				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
 			</c:if>
 			<c:if test="${sessionScope.member_flag == 2}">
 				<h3>MyPage</h3>
@@ -103,7 +108,7 @@
 			<a href="#">Q&A</a>
 		</div>
 		<div class="main_menu2">
-			<a href="#" onclick="window.location='compInputCheck.do'">기업정보입력</a>
+			<a href="#" onclick="window.open('https://github.com/yhtear2/fj.git')">GitHub</a>
 		</div>
 		<div class="main_page">
 			<div>
