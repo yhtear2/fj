@@ -262,8 +262,7 @@
 		</tr>	
 	</table>
  
- 	<table class="table" id="career_table">
- 						<!-- style="display: none;" -->
+ 	<table class="table" id="career_table" style="display: none;">
  		<tr>
  			<th style="width:200px;">근무기간</th>
  			<th style="width:450px;" colspan="4">상세경력</th>

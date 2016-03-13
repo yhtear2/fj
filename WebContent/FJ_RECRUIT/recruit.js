@@ -55,10 +55,9 @@ function recruitwritecheck(){
 
 // 스킬을 선택하면 부모창으로 넣어주는 메소드
 function skill_result() {
-	alert("djfkdj");
 	var skills = document.getElementById('skill').value;
 	opener.document.recruitWriteForm.skill.value = skills;
-	this.window.close();
+	window.close();
 	   
 }
 

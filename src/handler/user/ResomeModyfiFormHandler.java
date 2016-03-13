@@ -1,5 +1,8 @@
 package handler.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,8 +18,18 @@ public class ResomeModyfiFormHandler implements Commandhandler {
 	@RequestMapping("/resomeModyfiForm")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+/*		map.put("dto", dto);
+		map.put("result", result);
+		map.put("result_career", result_career);
+		map.put("result_introduce", result_introduce);
 
-		return null;
+		map.put("pageNum", pageNum);*/
+		map.put("page", "/FJ_USER/resomeModyfiForm");
+
+		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 
 }
