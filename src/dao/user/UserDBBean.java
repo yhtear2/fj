@@ -45,7 +45,7 @@ public class UserDBBean implements UserDao {
 	
 	
 	@Override
-	public List<UserDataBean> getUserList(Map<String, Integer> map) {
+	public List<UserDataBean> getUserList(Map<String, Object> map) {
 		return sqlSession.selectList("User.getUserList", map);
 	}
 	
@@ -76,4 +76,5 @@ public class UserDBBean implements UserDao {
 	public UserDataBean getUser_history_id(int user_history_id) {
 		return sqlSession.selectOne("User.getUser_history_id", user_history_id);
 	}
+
 }

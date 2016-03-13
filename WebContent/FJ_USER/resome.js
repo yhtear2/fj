@@ -395,7 +395,6 @@ function addForm(flag) {
    
    //학력 구간 추가공간 지정(div객체)
    var school_addedFormDiv = document.getElementById("school_addedFormDiv");
-   
    //학력 최대값 설정
    if (school_addedFormDiv.childNodes.length >= MAX_ADDFROM) {
       alert("더 이상 추가할 수 없습니다.");
@@ -837,23 +836,85 @@ function leadingZeros(n, digits) {
 }
 
 
-        function sort() {
+function sort() {
 
-            var career_start_date = $("#career_start_date").val().split("-");
-            var career_last_date = $("#career_last_date").val().split("-");
-			var c = null;
-            var a1=new Date(career_start_date[0],career_start_date[1],career_start_date[2]).getTime();
-            var a2=new Date(career_last_date[0],career_last_date[1],career_last_date[2]).getTime();
-            var b=(a2-a1)/(1000*60*60*24);
-            if (b>31) {
-            c =  Math.ceil((b)/30) + "개월";
-            
-            } else {
-            	c = "0개월 "+ b + "일";
-            }
-            
-            $('#career_sort_date').val(c);
-            
-            
-        }
+    var career_start_date = $("#career_start_date").val().split("-");
+    var career_last_date = $("#career_last_date").val().split("-");
+	var c = null;
+    var a1=new Date(career_start_date[0],career_start_date[1],career_start_date[2]).getTime();
+    var a2=new Date(career_last_date[0],career_last_date[1],career_last_date[2]).getTime();
+    var b=(a2-a1)/(1000*60*60*24);
+    if (b>31) {
+    c =  Math.ceil((b)/30) + "개월";
+    
+    } else {
+    	c = "0개월 "+ b + "일";
+    }
+    
+    $('#career_sort_date').val(c);
+    
+}
+
+
+/** ▼▼▼▼▼▼		여기는 수정 화면에 필요한 메소드들	▼▼▼▼▼▼**/
+// 수정화면 들어오자마자 실행되는 메소드
+$(document).ready(function() {
+	
+	// ▼▼▼▼ 병역사항 ▼▼▼▼ 
+	var army = $('input[name=army]').val().split('/');
+	var army1 = ['해당없음', '군필', '미필', '면제'];
+	for(var i=0; i<army1.length; i++){
+		var a = $('select[name=army1]').find('option').eq(i);
+		if( army[0] == army1[i]){
+			$(a).prop('selected', true);
+		}
+	}
+	
+	var army4 = ['군별선택', '육군', '해군', '공군', '해병', '의경', '전경', '공익'];
+	for(var i=0; i<army4.length; i++){
+		var a = $('select[name=army4]').find('option').eq(i);
+		if( army[3] == army4[i]){
+			$(a).prop('selected', true);
+		}
+	}
+	
+	$('input[name=army2]').val(army[1]);
+	$('input[name=army3]').val(army[2]);
+
+	var army5 = ['계급선택', '이병', '일병', '상병', '병장', '하사', '중사', '상사', '원사', '준위',
+	             '소위', '중위', '대위', '소령', '중령', '대령', '준장', '소장', '중장', '대장'];
+	for(var i=0; i<army5.length; i++){
+		var a = $('select[name=army5]').find('option').eq(i);
+		if( army[4] == army5[i]){
+			$(a).prop('selected', true);
+		}
+	}
+
+	var army6 = ['전역사유', '만기제대', '의가사제대', '의병제대', '소집해제', '불명예제대', '상이제대', '기타'];
+	for(var i=0; i<army6.length; i++){
+		var a = $('select[name=army6]').find('option').eq(i);
+		if( army[5] == army6[i]){
+			$(a).prop('selected', true);
+		}
+	}
+	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+	
+	// ▼▼▼▼ 자격증 ▼▼▼▼ 
+	var licenses = $('input[name=license]').val().split('/');
+	alert(licenses.length);
+	for( var i=0; i<licenses.length; i++){
+
+
+/*		var licenses_in = licenses[i].split('-');
+		for( var j=0; j<licenses_in.length; j++){
+			$('input[name=license1'+j).val(licenses_in[j]);
+			$('input[name=license2'+j).val(licenses_in[j]);
+			$('input[name=license3'+j).val(licenses_in[j]);
+		}*/
+	}
+	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+	
+	
+});
 

@@ -34,7 +34,7 @@ public class Recruit_ResomeListHandler implements Commandhandler{
 		
 
 		
-		Map<String, Integer> tempMap = new HashMap<String, Integer>();
+		Map<String, Object> tempMap = new HashMap<String, Object>();
 
 		List<UserDataBean> list = dao.getUserList(tempMap);
 

@@ -34,6 +34,7 @@ public class User_ProHandler implements Commandhandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		request.setCharacterEncoding( "utf-8" );
+		
 		// 여기는 기본정보 입력!
 		String saveDir = request.getServletContext().getRealPath("/") + "FJ_USER\\images";
 		MultipartRequest multi = new MultipartRequest(request,saveDir,1024*1024*15,"UTF-8",new DefaultFileRenamePolicy());
@@ -41,14 +42,18 @@ public class User_ProHandler implements Commandhandler {
 		String projectFile = multi.getFilesystemName("project");
 		
 		String resome_title = multi.getParameter("resome_title");
-		String email = multi.getParameter("email");
+		String email = (String) request.getSession().getAttribute("memId");
 		String eng_name = multi.getParameter("eng_name");
 		String kor_name = multi.getParameter("kor_name");
 		String birth = multi.getParameter("birth");
 
 
 		String skill = multi.getParameter("skill");
-		int want_salary = Integer.parseInt(multi.getParameter("want_salary"));
+		int want_salary=0;
+		String salary = multi.getParameter("want_salary");
+		if( !(salary == null || salary.equals(""))){
+			want_salary = Integer.parseInt(salary);
+		}
 		String project = multi.getParameter("project");
 		String army = null;
 		String army1 =  multi.getParameter("army1");
@@ -62,11 +67,12 @@ public class User_ProHandler implements Commandhandler {
 		
 		army = army1 + "/" + army2 + "/" + army3 + "/" + army4 + "/" + army5 + "/" + army6 + "/" + army7;
 		
-		String address = null;
+		String postcode = multi.getParameter("postcode");
+		System.out.println("postcode : " + postcode);
 		String address1 = multi.getParameter("address1");
+		System.out.println("address1 : " + address1);
 		String address2 = multi.getParameter("address2");
-		
-		address = address1 + " " + address2;
+		String address = postcode + "/" + address1 + "/" + address2;
 		
 		UserDataBean dto = new UserDataBean();
 
@@ -82,13 +88,13 @@ public class User_ProHandler implements Commandhandler {
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
 		dto.setUser_ref(1);
-		String license = null;
+		String license = "";
 
 		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt_hidden"));
 		
 
 
-		for(int i=0; i<=license_cnt; i++) {
+		for(int i=0; i<=license_cnt-1 ; i++) {
 			license +=  multi.getParameter("license1"+i) + "-" + multi.getParameter("license2"+i) + "-" + multi.getParameter("license3"+i)+ "/";
 		
 		}

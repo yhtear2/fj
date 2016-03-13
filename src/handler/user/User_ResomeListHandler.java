@@ -89,9 +89,10 @@ public class User_ResomeListHandler implements Commandhandler{
 		   
 		// DB 데이터 가져오기
 		if(count != 0){
-			Map<String, Integer> tempMap = new HashMap<String, Integer>();
+			Map<String, Object> tempMap = new HashMap<String, Object>();
 			tempMap.put("start", start);
 			tempMap.put("end", end);
+			tempMap.put("email", email);
 			List<UserDataBean> list = dao.getUserList(tempMap);
 			
 			
