@@ -78,6 +78,11 @@
 				<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
 				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
 			</c:if>
+			<c:if test="${sessionScope.member_flag == 3}">
+				<h3>Admin</h3>
+				<a href="#" onclick="window.location='memberManagementList.do'">회원관리</a>
+				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			</c:if>
 		</div>
 		<div class="main_menu2">
 			<h3>게시판</h3>

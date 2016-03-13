@@ -60,6 +60,14 @@
 				<td>${dto.name}</td>
 				<td>${dto.reg_date}</td>
 				<td>
+					<input type="button" value="수정" onclick="window.location='memberManagementModify.do?email=${dto.email}'"
+					style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
+					border: 1px solid #0059b3;"
+					>
+					<input type="button" value="삭제" onclick="window.location='memberManagementDeletePro.do?email=${dto.email}'"
+					style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+					border: 1px solid #ff5d5d;" 
+					>
 					<input type="button" value="수정" 
 					style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
 					border: 1px solid #0059b3;"
