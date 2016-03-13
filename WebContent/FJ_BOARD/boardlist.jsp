@@ -227,7 +227,12 @@ wr- font-style:'돋움';
 				</c:if>
 				</c:if> 
 				<a href="boardlist.do" class="prev disabled">◀◀</a>
-				<a href="boardlist.do?pageNum=${startPage-pageBlock}" class="prev disabled">◀</a>
+				<c:if test="${ pageNum == 1}">
+				<a href="boardlist.do?pageNum=${pageNum}" class="prev disabled">◀</a>
+				</c:if>
+				<c:if test="${pageNum != 1}">
+				<a href="boardlist.do?pageNum=${pageNum-1}" class="prev disabled">◀</a>
+				</c:if>
 				</li>	 
 			<li>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -239,7 +244,8 @@ wr- font-style:'돋움';
 				</c:if>   
 				</c:forEach> 
 				<c:if test="${endPage < pageCount}">
-					<a href="boardlist.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
+					
+					<a href="boardlist.do?pageNum=${pageNum+1}" class="prev disabled">▶</a>
 					<a href="boardlist.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
 				</c:if>
 			</li>   
