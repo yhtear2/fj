@@ -222,7 +222,7 @@
     	<tr>
     		<th>학교명</th>
             <td style="width:250px;text-align: center;"> 
-            	<input class="form-control-hs" style="padding-top: 1px;text-align: center; type="text" name="highschool_name" id="highschool_name">   
+            	<input class="form-control-hs" style="padding-top: 1px;text-align: center;" type="text" name="highschool_name" id="highschool_name">   
       		</td>
       		<td style="width:200px;">
       			<select class="form-control-hs" style="padding-top: 1px;text-align: center;" name="highschool_kind" id="highschool_kind">
@@ -245,7 +245,123 @@
 			</td>
 		</tr>
 	</table>
-       <div id="addedFormDiv"></div> <br>
+       <div id="school_addedFormDiv"></div> <br>
+       
+       <!-- 경력사항 입력 부분 -->
+<h4>경력사항</h4>
+    <input type="hidden" name="career_count">
+	<table>
+		<tr>
+			<th> 신입 / 경력 </th>
+			<td> 
+				&nbsp;&nbsp;&nbsp;&nbsp;신입 : 
+				<input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()" checked="checked"> 
+				&nbsp;&nbsp;&nbsp;	경력 : 
+				<input type="radio" name="career_sort" id="career_sort" value="경력" onclick="chk()">
+			</td>		
+		</tr>	
+	</table>
+ 
+ 	<table class="table" id="career_table">
+ 						<!-- style="display: none;" -->
+ 		<tr>
+ 			<th style="width:200px;">근무기간</th>
+ 			<th style="width:450px;" colspan="4">상세경력</th>
+ 		</tr>
+ 		<tr>
+ 			<td rowspan="4">
+ 				<select class="form-control-hs" style="width: 100px" name="career_kind" onChange="change(this)">				
+					<option value="퇴사">퇴사</option>
+					<option value="재직중">재직중</option>		
+				</select>	
+				<br><br>
+				<input class="form-control-hs" type="date" style="width:180px" name="career_start_date" id="career_start_date">
+				<br>
+				&nbsp; ~ &nbsp;
+				<input class="form-control-hs" type="date" style="width:180px" name="career_last_date" id="career_last_date" >
+				<br><br>
+				<input class="btn btn-default" type="button" onclick="sort()" value="근무개월 계산"/>
+				<input class="form-control-hs" type="text" style="width:100px" name="career_sort_date" id="career_sort_date">
+ 			</td>
+ 			<th style="width:100px">회사명</th>
+			<td colspan="3"><input class="form-control-hs" type="text" name="career_comp_name"></td>
+ 		</tr>
+ 		<tr>
+ 			<th>부서명 </th>
+			<td colspan="3">
+				<input class="form-control-hs" type="text" style="width: 120px" name="career_department">
+				&nbsp;
+				<select class="form-control-hs" style="width: 110px" name="career_position1">				
+					<option value="직급선택">직급선택</option>
+					<option value="사원(연구원)">사원(연구원)</option>
+					<option value="주임/계장(연구원)">주임/계장(연구원)</option>		
+					<option value="대리(주임연구원)">대리(주임연구원)</option>
+					<option value="과장(선임연구원)">과장(선임연구원)</option>
+					<option value="차장(수석연구원)">차장(수석연구원)</option>
+					<option value="부장(연구소장)">부장(연구소장)</option>
+					<option value="임원">임원</option>
+				</select>
+				&nbsp;
+				<select class="form-control-hs" style="width: 110px" name="career_position2">				
+					<option value="직책선택">직책선택</option>
+					<option value="팀원">팀원</option>
+					<option value="팀장">팀장</option>		
+					<option value="매니저">매니저</option>
+					<option value="파트장">파트장</option>
+					<option value="실장">실장</option>
+					<option value="지점장">지점장</option>
+					<option value="지사장">지사장</option>
+					<option value="원장">원장</option>
+					<option value="국장">국장</option>
+					<option value="본부장">본부장</option>
+					<option value="센터장">센터장</option>
+					<option value="공장장">공장장</option>
+					<option value="그룹장">그룹장</option>
+				</select>			
+			</td>
+ 		</tr>
+ 		<tr>
+ 			<th>담당업무(언어)</th>
+			<td style="width: 80px">
+				<input class="form-control-hs" type="text" style="width: 150px" name="career_work">
+			</td>
+			<th style="width:100px;margin-left: 10px;" align="right">급여/연봉</th>
+			<td colspan="2">
+				<input class="form-control-hs" type="number" style="width: 70px;text-align: center;" name="career_salary" placeholder="숫자">
+				만원
+			</td>
+ 		</tr>
+ 		<tr>
+			<th>퇴사사유 </th>
+			<td colspan="4">
+				<input class="form-control-hs" type="text" name="career_resign">
+			</td>
+		</tr>
+		<tr>
+			<th style="text-align: center;" colspan="6">경력 기술서</th>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<textarea name="career_content" rows="7" cols="90"></textarea>
+			</td>
+		</tr>	
+		<tr>	
+			<td align="right" colspan="6">    
+           		<input  class="btn btn-default"  type="button" value="경력추가" onclick="career_addForm()"
+            	style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+           		>
+           		<input  class="btn btn-default"  type="button" value="삭제" onclick="career_deleForm()"
+        		style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;
+				border: 1px solid #ff5d5d;"
+           		>
+
+           </td>
+		</tr>
+	</table>	  
+
+	<div id="career_addFormdiv"></div> <br>      
+       
+           
 	<table class="table">
    		<tr>
       		<td align="right">   

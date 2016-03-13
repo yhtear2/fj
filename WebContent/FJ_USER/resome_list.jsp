@@ -177,7 +177,7 @@ a {
 					
 				</span>
 				<span class="btn"> 
-					<a href="/fj/resomeContent.do">
+					<a href="/fj/resomeContent.do?user_history_id=${dto.user_history_id}">
 						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_modify.gif"alt="${page_usermodify}">
 					</a>
 					<a href="/fj/deletePro.do">

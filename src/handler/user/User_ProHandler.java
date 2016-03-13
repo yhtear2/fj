@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import dto.user.CareerDataBean;
 import dto.user.SchoolDataBean;
 import dto.user.UserDataBean;
 import handler.Commandhandler;
@@ -154,7 +155,7 @@ public class User_ProHandler implements Commandhandler {
 		for(int i=0; i<school_name.length; i++) {
 		  
 			school_dto.setSchool_name_college(school_name[i]);
-			school_dto.setSchool_kind(request.getParameter("school_kind"+(i+1)));
+			school_dto.setSchool_kind(multi.getParameter("school_kind"+(i+1)));
 
 			school_dto.setSchool_major(school_major[i]);
 			school_dto.setSchool_college1(school_college1[i]);
@@ -183,6 +184,65 @@ public class User_ProHandler implements Commandhandler {
 
 			
 			}
+		}
+		
+		
+		// 여기는 경력사항 입력!
+		
+		CareerDataBean Career_dto = new CareerDataBean();
+		
+		String career_comp_name[] = multi.getParameterValues("career_comp_name");
+		String career_start_date[] = multi.getParameterValues("career_start_date");
+		String career_last_date[] = multi.getParameterValues("career_last_date");
+		String career_sort_date[] = multi.getParameterValues("career_sort_date");
+		String career_kind[] = multi.getParameterValues("career_kind");
+		String career_department[] = multi.getParameterValues("career_department");
+		String career_position1[] = multi.getParameterValues("career_position1");
+		String career_position2[] = multi.getParameterValues("career_position2");
+		String career_salary[] = multi.getParameterValues("career_salary");
+
+		String career_resign[] = multi.getParameterValues("career_resign");	
+		String career_work[] = multi.getParameterValues("career_work");		
+		String career_content[] = multi.getParameterValues("career_content");		
+
+		Career_dto.setCareer_sort(multi.getParameter("career_sort"));
+		
+		Career_dto.setUser_history_id(dto.getHistory_id());
+
+
+		for(int i=0; i<career_comp_name.length; i++) {
+			Career_dto.setCareer_comp_name(career_comp_name[i]);
+			Career_dto.setUser_history_id(dto.getHistory_id());
+			Career_dto.setCareer_start_date(career_start_date[i]);
+			Career_dto.setCareer_last_date(career_last_date[i]);
+			Career_dto.setCareer_sort_date(career_sort_date[i]);
+			Career_dto.setCareer_department(career_department[i]);
+
+			
+			if ( multi.getParameter("career_salary").equals("") && multi.getParameter("career_salary").equals(null)) {
+				Career_dto.setCareer_salary(Integer.parseInt("0"));
+			} 
+			else if ( ! multi.getParameter("career_salary").equals("") && ! multi.getParameter("career_salary").equals(null)) {
+			Career_dto.setCareer_salary(Integer.parseInt(career_salary[i]));
+			}
+		
+			if ( multi.getParameter("career_sort").equals("�떊�엯")) {
+				Career_dto.setCareer_kind("");
+				Career_dto.setCareer_position1("");
+				Career_dto.setCareer_position2("");				
+			} 
+			else if ( ! multi.getParameter("career_sort").equals("�떊�엯")) {
+				Career_dto.setCareer_kind(career_kind[i]);
+				Career_dto.setCareer_position1(career_position1[i]);
+				Career_dto.setCareer_position2(career_position2[i]);
+			}			
+			
+			Career_dto.setCareer_resign(career_resign[i]);
+			Career_dto.setCareer_work(career_work[i]);
+			Career_dto.setCareer_content(career_content[i]);
+
+
+			result = dao.insertArticle_career( Career_dto );	
 		}
 		
 		map.put("History_id", dto.getHistory_id());

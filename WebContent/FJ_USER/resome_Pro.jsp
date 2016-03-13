@@ -18,7 +18,7 @@ ${sessionScope.history_id}
 	<script type="text/javascript">
 		<!--
 		var History_id = ${History_id}
-		window.location.href = "career.do?History_id="+History_id;
+		window.location.href = "introduceForm.do?History_id="+History_id;
 		//-->		
 	</script>
 
