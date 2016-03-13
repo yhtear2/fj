@@ -33,22 +33,22 @@ DROP SEQUENCE FJ_User_seq;
 /* Create Sequences */
 
 -- 댓글로 시퀀스
-CREATE SEQUENCE FJ_BOARD_Comment_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_BOARD_Comment_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 게시판  시퀀스
-CREATE SEQUENCE FJ_BOARD_FREE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_BOARD_FREE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- (이력서)
 -- 경력  시퀀스
-CREATE SEQUENCE FJ_Career_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_Career_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- (이력서)자기소개서   시퀀스
-CREATE SEQUENCE FJ_Introduce_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_Introduce_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 메시지  시퀀스
-CREATE SEQUENCE FJ_MESSAGE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_MESSAGE_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 채용게시판 시퀀스
-CREATE SEQUENCE FJ_Recruit_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_Recruit_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- (이력서) 학력 시퀀스
-CREATE SEQUENCE FJ_School_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_School_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 -- 이력서 시퀀스
-CREATE SEQUENCE FJ_User_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1 NOCYCLE NOCACHE;
+CREATE SEQUENCE FJ_User_seq INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 START WITH 1;
 
 
 
@@ -398,29 +398,29 @@ CREATE TABLE FJ_User
 	-- resome_title
 	resome_title varchar2(200),
 	-- eng_name : 영문이름 
-	eng_name varchar2(100) NOT NULL,
+	eng_name varchar2(100),
 	-- kor_name : 한글이름 
-	kor_name varchar2(100) NOT NULL,
+	kor_name varchar2(100),
 	-- tel : 전화번호 
-	tel varchar2(100) NOT NULL,
+	tel varchar2(100),
 	-- birth : 생년월일 
-	birth varchar2(100) NOT NULL,
+	birth varchar2(100),
 	-- address : 주소 
-	address varchar2(200) NOT NULL,
+	address varchar2(200),
 	-- army : 병역사항 
-	army varchar2(200) NOT NULL,
+	army varchar2(200),
 	-- want_salary : 희망 연봉 
-	want_salary number NOT NULL,
+	want_salary number,
 	-- license : 자격증 
-	license varchar2(500) NOT NULL,
+	license varchar2(500),
 	-- skill : 보유기술 
-	skill varchar2(4000) NOT NULL,
+	skill varchar2(4000),
 	-- photo
 	photo varchar2(100),
 	-- reg_date : 작성일자 
-	reg_date date NOT NULL,
+	reg_date date,
 	-- project : 프로젝트 
-	project varchar2(200) NOT NULL,
+	project varchar2(200),
 	-- user_ref
 	user_ref number,
 	-- last_date
