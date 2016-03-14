@@ -84,6 +84,13 @@
 		)
 		</insert>	
 	
+	<delete id="deleteArticle" parameterType="Integer">
+	
+	 	delete from fj_recruit_log where user_history_id =#{user_history_id}   
+	 	
+	</delete>
+	
+	
 	
 	<update id="addReadContent" parameterType="Integer" >
 		UPDATE 	FJ_RECRUIT 
