@@ -689,7 +689,6 @@ $(document).ready(function() {
 	var career_sort = $('input[name=career_sort]').val();
 	if (career_sort =="신입") {
 		career_table.style.display = 'none';
-		addedFor.style.display = 'none';
 	 }
 	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 	
