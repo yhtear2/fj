@@ -36,6 +36,7 @@ public class User_ContentHandler implements Commandhandler {
 		request.setCharacterEncoding("utf-8");
 		
 		int user_history_id = Integer.parseInt(request.getParameter("user_history_id"));
+		
 		String pageNum = request.getParameter("pageNum");
 		
 		
@@ -47,6 +48,9 @@ public class User_ContentHandler implements Commandhandler {
 		List<CareerDataBean> result_career = dao.getContent_career(user_history_id);
 		List<IntroduceDataBean> result_introduce = dao.getContent_introduce(user_history_id);
 		
+		
+		
+
 		
 		if( user_history_id < 9)
 		{
@@ -67,6 +71,11 @@ public class User_ContentHandler implements Commandhandler {
 		map.put("page", "/FJ_USER/resomeContent");
 
 		return new ModelAndView("/FJ_MAIN/main", map);
+	}
+
+	private int IntegerParseInt(String parameter) {
+		
+		return 0;
 	}
 
 }

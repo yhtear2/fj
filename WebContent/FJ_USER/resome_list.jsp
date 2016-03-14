@@ -173,8 +173,8 @@ a {
 					<!--  
 					<a href="/fj/resome.do">  -->
 						<img alt="" src="https://www.saramin.co.kr/zf_user/persons/picture?idx=5001590|4878d2c293208d3fca43f311609905c7c40f4a8554d8c688f42d3ad98fa6578b" 
-						border="0" width="100" height="140">
-					
+						border="0" width="100" height="140" onclick="window.location='resomeContent.do?user_history_id=${dto.user_history_id}'">
+		
 				</span>
 				<span class="btn"> 
 					<a href="/fj/resomeModyfiForm.do?user_history_id=${dto.user_history_id}">

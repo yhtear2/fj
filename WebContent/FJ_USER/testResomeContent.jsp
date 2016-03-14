@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="/defaultSetting.jsp"%>
 <!-- 폼 세팅구간 (지우지 마세요) -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="robots" content="noindex,nofollow">
@@ -35,9 +35,10 @@
         <div class="sec-btn-left h-subtext" style="padding-top:2px;">
         	<span id="mandb_service_text" style="display:none;font-size:8pt;"></span>
         </div>
+        <!--  
         <div class="sec-btn-right h-subtext" style="font-family:굴림,sans-serif;padding-top:2px;text-align:right">
                         최근수정일 : 2016년 03월 17일 (목)               
-        </div>
+        </div> -->
     </div>
 </div>            <!-- //header (top icon & description) -->
             
@@ -46,17 +47,17 @@
 <div id="resume_title_view">
     <a name="title_view_anchor"></a>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tbody><tr><td class="res-title-view-new " valign="middle"> 이력서 제목 불러오기 </td></tr>
+        <tbody><tr><td class="res-title-view-new " valign="middle"> ${dto.resome_title} </td></tr>
     </tbody></table>
     
 </div>
 <!-- //이력서 제목 -->
 
-<!-- 지원분야/희망연봉 -->
+<!-- 보유기술/희망연봉 -->
 <div id="resume_apply_dept_view">
     <div class="item-header">
             </div>
-    <table class="tbl-view" border="0" cellspacing="0" summary="지원분야/희망연봉" width="100%">
+    <table class="tbl-view" border="0" cellspacing="0" summary="보유기술/희망연봉" width="100%">
         <colgroup>
         <col width="118">
         <col width="320">
@@ -64,10 +65,10 @@
         <col>
         </colgroup>
         <tbody><tr>
-            <th>지원분야</th>
-            <td><label> 지원분야 dto 부르기 </label></td>
-            <th>희망연봉</th>
-            <td> 연봉 dto 부르기 </td>
+            <th>보유기술</th>
+            <td><label> ${dto.skill} </label></td>
+            <th>희망연봉</th> 
+            <td> ${dto.want_salary} </td>
         </tr>
     </tbody></table>
 </div>
@@ -90,40 +91,51 @@
                 <tbody><tr>
                     <td rowspan="5" valign="middle" class="res-photo" style="text-align:center">
                     <!-- 사진 불러오는 곳  -->
-                    <img src="https://www.saraminimage.co.kr/recruit/talent/resume_no_photo.gif" border="0">
+                    <img src='${dto.photo}' border="0">
                    </td>
                     <th>이름</th>
                     <td>
-                    	이름 dto 부르기 
-                     <span class="res-cut">  </span> 이름영문 dto 부르기 
+                    	${dto.kor_name} 
+                     <span class="res-cut">  </span> ${dto.eng_name} 
                                                  
                     </td>
-                    <th>나이/성별</th>
-                    <td>나이 dto 부르기<span class="res-cut">&nbsp;|&nbsp;</span> 성별 dto 부르기  </td>
+                    <th>생년월일</th>
+                    <td>${dto.birth}<span class="res-cut"></span> </td>
                 </tr>
                                 <tr>
                     <th>주소</th>
                     <td colspan="3">
-                     			주소 dto 부르기 
+                     	${dto.address} 
                     </td>
                 </tr>
                 <tr>
                     <th>전화번호</th>
                     <td colspan="3">
-                    	전화번호 dto 부르기 
+                    	<c:if test='${dto.tel != null && dto.tel != "" }'>										
+							<c:set var="e" value='${fnc:split( dto.tel, "-" )}'/>	
+<%-- 						<input class="input" style="width:100px; border:none" name="tel1" maxlength="25" value="${e[0]}"> - 
+							<input class="input" style="width:100px; border:none" name="tel2" maxlength="25" value="${e[1]}"> - 
+							<input class="input" style="width:100px; border:none" name="tel3" maxlength="25" value="${e[2]}"> --%>
+							${e[0]} - ${e[1]} - ${e[2]}
+						</c:if> 
                      </td>
                  </tr><tr>
-                    <th>휴대폰</th>
+                    <th>병역사항</th>
                     <td colspan="3">
                         <span id="cell_area">
-                         	휴대폰 번호 dto 부르기 
+                         	<c:if test='${dto.army != null && dto.army != "" }'>										
+								<c:set var="e" value='${fnc:split( dto.army, "/" )}'/>	
+								${e[0]}   
+           						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp; 복무기간 :  ${e[1]} &nbsp;&nbsp; - &nbsp;&nbsp; ${e[2]}  <br>
+									${e[3]}&nbsp;&nbsp; /&nbsp;&nbsp; ${e[4]}&nbsp;&nbsp; /&nbsp;&nbsp;${e[5]}&nbsp;&nbsp; /&nbsp;&nbsp; ${e[6]}
+							</c:if> 
                        </span>
                     </td>
                 </tr>
                                 <tr>
                     <th>이메일</th>
                     <td colspan="3">
-                     	이메일 dto 부르기 
+                     	${dto.email} 
                     </td>
                                     </tr>
             </tbody></table>
@@ -137,7 +149,9 @@
         <h3>
             <span class="item-title">학력사항</span> 
             <span class="res-cut"> | </span> 
+            <!--  
             <span class="title-person">최종학력 - <b>대학교(2,3년) 졸업예정</b></span>
+            -->
         </h3>
             </div>
     <div class="item-contents">
@@ -153,38 +167,66 @@
                 </colgroup>
                 <tbody><tr>
                     <th height="35">재학기간</th>
-                    <th>구분</th>
+                    <!--  
+                    <th>구분</th>  -->
                     <th>학교명</th>
                     <th>전공</th>
                     <th>학점</th>
                 </tr>
-                                                                                <tr>
-                        <td> 재학기간 dto 부르기 </td>
+                                                                               <tr>
+                        <td> ${sc_dto.school_start_date_high} - ${sc_dto.school_last_date_high} &nbsp;&nbsp;&nbsp;&nbsp;
+         		 ${sc_dto.school_college_high} 
+         				</td>
+         		 		<!--  
                         <td class="center-td">
                         		구분 dto 부르기 (졸업/편입 등)
-                        </td>
+                        </td> -->
+                        
+                        <!-- 학교명 -->
                         <td>
-                            	학교명 dto 부르기 
+                        ${sc_dto.school_name_high} &nbsp;&nbsp;&nbsp;/ &nbsp;&nbsp;&nbsp; ${sc_dto.highschool_kind}
                        </td>
+                       
+                      	 <!-- 전공 -->
                         <td style="">
-                        		전공 dto 부르기 
+                        ${sc_dto.school_major}
                          </td>
-                        <td class="center-td">-</td>
+                        <td class="center-td">
+                       		-
+                        </td>
                     </tr>
-                                                                                        <tr>
-                        <td> 재학기간 dto 부르기 </td>
+                        <tr>
+                        <!-- 대학교 재학기간 -->                                                             <tr>
+                        <td>  
+                        ${sc_dto.school_start_date_college} &nbsp;&nbsp; / &nbsp;&nbsp;
+						${sc_dto.school_last_date_college} &nbsp;&nbsp; ~ &nbsp;&nbsp;
+						${sc_dto.school_college1} &nbsp;&nbsp; / &nbsp;&nbsp;
+						${sc_dto.school_college2}
+                         </td>
+                         
+                         <!-- 
                         <td class="center-td">
                         		구분 dto 부르기 
-                        </td>
+                        </td> -->
+                        
+                        <!-- 대학교명 -->
                         <td>
-                        		학교명 dto 부르기 
+                        		${sc_dto.school_name_college} 
                         </td>
-                        <td style="">
-                        		전공 dto 부르기 
+                        
+                        <!-- 전공 -->
+                        <td style="">   
+                        	    ${sc_dto.school_major} 
                         </td>
-                        <td class="center-td"> 학점 dto </td>
+                        
+                        <!-- 학점 --> 
+                        <td class="center-td">
+              			 <c:set var="e" value='${fnc:split( sc_dto.school_rank, "/" )}'/>
+              			 ${e[0]} &nbsp;&nbsp; / &nbsp;&nbsp; ${e[1]} 
+                       </td>
                     </tr>
-                                                                        </tbody></table>
+              </tbody>
+            </table>
                         <!-- //고등학교, 대학교 -->
         </div>
         <!-- 직업전문학교/학원 -->
@@ -194,7 +236,7 @@
     <a name="license_view_anchor"></a>
     <div class="item-header res-item">
         <h3><span class="item-title">자격증/면허증</span></h3>
-            </div>
+            </div> 
     <div class="item-contents">
         <table class="tbl-view" border="0" cellspacing="0" summary="자격증/면허증" width="100%">
             <colgroup>
@@ -205,20 +247,41 @@
             </colgroup>
             <tbody><tr>
                 <th height="35">자격증/면허증</th>
-                <th>발행처/발행기관</th>
-                <th>합격구분</th>
                 <th>취득일</th>
+                <th>발행처</th>
+                <!--  
+                <th></th> -->
             </tr>
-                        <tr>
+                <tr>
+                <!--  -->
                 <td class="center-td">자격증 dto </td>
-                <td class="center-td">발행기관 dto</td>
-                <td class="center-td">합불 dto </td>
-                <td class="center-td">취득일 dto </td>
+                <td class="center-td">취득일 dto </td> 
+                <td class="center-td">발행기관 dto</td> 
+                <!--  
+                <td class="center-td">합불 dto </td> -->
+                
+                <c:if test='${dto.license != null && dto.license != "" }'>	
+      			<c:forTokens var="e" items='${dto.license}' delims="/">
+      				<c:forTokens var="k" items='${e}' delims="-">
+      				  <input class="form-control" type="text" style="display: inline-block; width:160px; border:none;" value="${k}">
+      				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      				  &nbsp;&nbsp;&nbsp;
+      			
+      				</c:forTokens>		
+      				  <br>
+      			</c:forTokens>
+
+        	 </c:if>
             </tr>
                     </tbody></table>
     </div> 
-</div><div id="oa_ability_view" class="divide-view-item">
+</div>
+<div id="oa_ability_view" class="divide-view-item">
     <a name="oa_ability_view_anchor"></a>
+    <h3><span class="item-title">포트폴리오</span></h3>
+    <td class="center-td">
+    <input class="btn btn-default" type="file" name="project" id="project" value="${dto.project}">
+    </td>
     <!-- 능력 폼  -->
            <!-- 
     <div class="item-header res-item">
@@ -232,7 +295,7 @@
             <col width="161">
             <col width="161">
             <col>
-            </colgroup>
+            </colgroup> 
             <tbody><tr>
                 <th height="35">문서작성<br><span class="h-subtext">(한글/MS-Word)</span></th>
                 <th>스프레드시트<br><span class="h-subtext">(Excel)</span></th>
@@ -282,25 +345,35 @@
             </div>
                         </div>
 </div> -->
+
 <div id="standard_introduction_view" class="divide-view-item" style="page-break-before: always;">
     <div class="item-header res-item">
         <h3><span class="item-title">자기소개서</span></h3>
     </div>
     <div class="item-contents">
                     <table class="tbl-view" border="0" cellspacing="0" summary="자기소개서" width="100%">
-                                                                <tbody><tr>
+                                                                <tbody>
+                <tr>
                     <th height="35"><b>자기소개</b></th>
                 </tr>
                 <tr>
                     <td class="career break-word" valign="top" height="100%">
-                        <span id="introduce_contents">
-    				이곳이 자기소개서 적는곳 
+                <span id="introduce_contents">
+    				<c:forEach var="intr_dto" items="${result_introduce}">
+	   					<tr>
+	      					<th style="width:100px">${intr_dto.intro_title}</th>
+	         		 			<td class="form-control" style="text-align: center; width: 520px">
+								${intr_dto.intro_contents}
+	         					</td>      
+	   					</tr>
+					</c:forEach>
                </span>
-                                            </td>
-                </tr>
+                   </td>
+               </tr>
                                                               
-
-                                            </tbody></table>
+ 
+            	</tbody>
+            </table>
             </div>
 	</div> 
             <!-- //저장된 순서대로 항목별 렌더 -->
@@ -309,7 +382,7 @@
             <div id="resume_footer">
                 <div class="sign">
                     위의 모든 내용은 사실과 다름없음을 확인합니다.<br> 
-                    작성일 :<b> 작성 날짜 dto 부르기 </b>
+                    작성일 :<b> ${dto.reg_date} </b> 
                      / 작성자 : <b> 작성자 dto 부르기 </b></div>
             </div>        
             <!-- //footer -->
