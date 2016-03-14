@@ -16,7 +16,9 @@ $(function(){
 					$('.menu_status').val(1);
 				});
 				$('.main_submanu').stop().animate({'padding-left':'15px'});
-				$('#logo').stop().animate({'width':'30px'});
+				//$('#logo').stop().animate({'width':'30px'}).fadeOut();
+				$('#logo').css({'display':'none'});
+				$('#logo_small').stop().fadeIn();
 				$('.logout').stop().animate({'left':'22px'});
 				$('.messageicon').stop().animate({'left':'22px'});
 			} else { 
@@ -30,9 +32,10 @@ $(function(){
 	} else {
 	// 이미 서브메뉴에 들어가 있을때 보여지는 화면
 		var this_page = 0;
-		if($('.m').val() == 'member') this_page = 0;
-		if($('.m').val() == 'board') this_page = 1;
-		if($('.m').val() == 'recruit') this_page = 2;
+		if($('.m').val() == 'message') this_page = 0;
+		if($('.m').val() == 'member') this_page = 1;
+		if($('.m').val() == 'board') this_page = 2;
+		if($('.m').val() == 'recruit') this_page = 3;
 		$('.main_menu').css({'width':'50px'});
 		$('#logo').stop().css({'width':'30px'});
 		$('.logout').css({'left':'22px'});

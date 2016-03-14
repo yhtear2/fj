@@ -23,7 +23,8 @@
 			<input type="hidden" id="memId" value="${sessionScope.memId}">
 			<input type="hidden" id="cookieId" value="">
 			<div class="main_logo" onclick="window.location='main.do'">
-				<img id="logo" src="${images}/main_logo.png"> 
+				<img id="logo" src="${images}/main_logo.png">
+				<img id="logo_small" src="${images}/sub_logo.png">
 			</div>
 			<div class="main_sign">
 				<!-- 로그인 X일 때 -->

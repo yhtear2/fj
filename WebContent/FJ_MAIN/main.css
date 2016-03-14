@@ -8,7 +8,8 @@ html{
 }
 
 body {
-	font-family : 'Nanum Gothic',monospace;
+	/*font-family : 'Nanum Gothic',monospace;*/
+	font-family : 돋움;
 	font-style : light; 
 	background: #f8f8f8;
 	
@@ -23,6 +24,12 @@ body {
 	width:200px;
 	height:156px;
 	padding: 30px 15px;
+}
+#logo_small {
+	position : absolute;
+	top : 42px;
+	left : 2px;
+	display : none;
 }
 .main_menu{
 	z-index:3;
@@ -39,7 +46,7 @@ body {
 /*로그인,가입*/
 .main_sign{
 	width: 200px;
-	height: 50px;
+	height: 60px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border-top : solid 1px #004D99;
@@ -49,23 +56,21 @@ body {
 .main_login{
 	float: left;
 	width: 100px;
-	height: 50px;
-	margin-top: 2px;
+	height: 60px;
 	color: white;
 	text-align: center;
 	font-weight: 500;
-	padding-top: 12px;
+	padding-top: 18px;
 	border-right : solid 1px #004D99;
 }
 .main_singup{
 	float: left;
 	width: 100px;
-	height: 50px;
-	margin-top: 2px;
+	height: 60px;
 	color: white;
 	text-align: center;
 	font-weight: 500;
-	padding-top: 12px;
+	padding-top: 18px;
 }
 /*로그온 상태*/
 .main_logon {
@@ -76,20 +81,20 @@ body {
 	display:block;
 }
 .main_logon>span:FIRST-CHILD{
-	margin-top:12px;
+	margin-top:16px;
 	padding-left:50px;
 	position:absolute;
 }
 .main_logon>span:nth-child(2) {
-	font-size: 1.3em;
+	font-size: 1.5em;
 	position:absolute;
 	top:4px;
 	left:140px;
 }
 .main_logon>span:nth-child(3) {
-	font-size: 1.3em;
+	font-size: 1.5em;
 	position:absolute;
-	top:25px;
+	top:32px;
 	left:140px;
 }
 /*메인페이지*/
@@ -142,6 +147,7 @@ body {
 .main_submanu:last-child{
 	position:absolute;
 	bottom:10px;
+	border-bottom:0px;
 }
 /* 선택 상세메뉴 */
 .main_menu2{
