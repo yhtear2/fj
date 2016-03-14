@@ -20,22 +20,15 @@ public class UserDataBean {
 	private Timestamp reg_date;
 	private Timestamp last_date;
 	private String project;
-	private int user_ref;
-	private int history_id;
-		
+	private int total_career;
 
-	public int getUser_ref() {
-		return user_ref;
+	public int getTotal_career() {
+		return total_career;
 	}
-	public void setUser_ref(int user_ref) {
-		this.user_ref = user_ref;
+	public void setTotal_career(int total_career) {
+		this.total_career = total_career;
 	}
-	public int getHistory_id() {
-		return history_id;
-	}
-	public void setHistory_id(int history_id) {
-		this.history_id = history_id;
-	}
+
 
 	public String getResome_title() {
 		return resome_title;

@@ -22,8 +22,9 @@ public class User_IntroduceFormHandler implements Commandhandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-
-		
+		int User_history_id = Integer.parseInt(request.getParameter("User_history_id"));
+		System.out.println(User_history_id);
+		map.put("User_history_id", User_history_id);
 		map.put("page", "/FJ_USER/introduceForm");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);

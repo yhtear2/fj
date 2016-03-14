@@ -7,7 +7,7 @@
 <c:if test="${result == 0}">
 	<script type="text/javascript">
 		<!--
-			alert( "이력서 입력에 실패했습니다.\n잠시 후 다시 시도해주세요." );
+			alert( "수정에 실패했습니다.\n잠시 후 다시 시도해 주세요." );
 		//-->
 	</script>	
 </c:if>

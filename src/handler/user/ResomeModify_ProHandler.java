@@ -1,4 +1,5 @@
 package handler.user;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,32 +18,33 @@ import org.springframework.web.servlet.ModelAndView;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import dao.user.UserDao;
 import dto.user.CareerDataBean;
+import dto.user.IntroduceDataBean;
 import dto.user.SchoolDataBean;
 import dto.user.UserDataBean;
 import handler.Commandhandler;
-import dao.user.UserDao;
 
 @Controller
-public class User_ProHandler implements Commandhandler {
+public class ResomeModify_ProHandler implements Commandhandler {
 	
 	@Resource( name="userDao" )
 	private UserDao dao;
-	
-	@RequestMapping( "/resome_Pro" )	
+
+	@RequestMapping("/resomeModify_Pro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		request.setCharacterEncoding( "utf-8" );
 		
 		// 여기는 기본정보 입력!
+		
+		
 		String saveDir = request.getServletContext().getRealPath("/") + "FJ_USER\\images";
 		MultipartRequest multi = new MultipartRequest(request,saveDir,1024*1024*15,"UTF-8",new DefaultFileRenamePolicy());
 		String imageFileName = multi.getFilesystemName("imginput");
 		String projectFile = multi.getFilesystemName("project");
-		
+		int user_history_id = Integer.parseInt(multi.getParameter("user_history_id"));
 		String resome_title = multi.getParameter("resome_title");
 		String email = (String) request.getSession().getAttribute("memId");
 		String eng_name = multi.getParameter("eng_name");
@@ -88,6 +90,7 @@ public class User_ProHandler implements Commandhandler {
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		dto.setLast_date(new Timestamp(System.currentTimeMillis()));		
 		dto.setTotal_career(0);
+		dto.setUser_history_id(user_history_id);
 		String license = "";
 
 		int license_cnt = Integer.parseInt(multi.getParameter("license_cnt_hidden"));
@@ -120,10 +123,7 @@ public class User_ProHandler implements Commandhandler {
 		String resome_project = "library/portfolio/" + projectFile;
 		dto.setProject(resome_project);
 
-		int result = dao.insertArticle( dto );	
-		
-		int User_history_id = dao.getUserhistoryid() - 1;
-		
+		int result = dao.updateUserData( dto );	
 		
 		// 여기는 학력정보 입력
 		SchoolDataBean school_dto = new SchoolDataBean();
@@ -146,19 +146,19 @@ public class User_ProHandler implements Commandhandler {
 		school_dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		school_dto.setLast_date(new Timestamp(System.currentTimeMillis()));	
 			
-		school_dto.setUser_history_id( User_history_id );
+		school_dto.setSchool_id( Integer.parseInt(multi.getParameter("school_id1")) -1 );
 		
 		
 		
-		result = dao.insertArticle_sc( school_dto );	
+		result = dao.updateSchoolData( school_dto );	
 
 
 		if(school_name != null){
-		for(int i=0; i<school_name.length; i++) {
+		for(int i=1; i<school_name.length; i++) {
 		  
+			school_dto.setSchool_id( Integer.parseInt(multi.getParameter("school_id"+i)) );
 			school_dto.setSchool_name_college(school_name[i]);
 			school_dto.setSchool_kind(multi.getParameter("school_kind"+(i+1)));
-
 			school_dto.setSchool_major(school_major[i]);
 			school_dto.setSchool_college1(school_college1[i]);
 			school_dto.setSchool_college2(school_college2[i]);
@@ -182,7 +182,7 @@ public class User_ProHandler implements Commandhandler {
 			
 			}
 			
-			result = dao.insertArticle_sc( school_dto );	
+			result = dao.updateSchoolData( school_dto );	
 
 			
 			}
@@ -208,17 +208,15 @@ public class User_ProHandler implements Commandhandler {
 
 		Career_dto.setCareer_sort(multi.getParameter("career_sort"));
 		
-		Career_dto.setUser_history_id( User_history_id );
-		
 		long diffDays = 0;
 		for(int i=0; i<career_comp_name.length; i++) {
 			Career_dto.setCareer_comp_name(career_comp_name[i]);
-			Career_dto.setUser_history_id( User_history_id );
+			Career_dto.setCareer_id( Integer.parseInt(multi.getParameter("career_ids"+i)) );
 			Career_dto.setCareer_start_date(career_start_date[i]);
 			Career_dto.setCareer_last_date(career_last_date[i]);
 			Career_dto.setCareer_department(career_department[i]);
 
-			if( ! (career_start_date[i] == null || career_start_date[i].equals(""))){
+			if(career_start_date[i] != null){
 		       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		       Date beginDate = formatter.parse(career_start_date[i]);
 		       Date endDate = formatter.parse(career_last_date[i]);
@@ -251,29 +249,39 @@ public class User_ProHandler implements Commandhandler {
 			Career_dto.setCareer_content(career_content[i]);
 
 
-			result = dao.insertArticle_career( Career_dto );	
+			result = dao.updateCareerData( Career_dto );	
 		}
-		
-		int TOTAL_CAREER = ((int)(diffDays/365));
+		int career_sort_date = ((int)(diffDays/365));
 		
 		Map<String, Object> map2 = new HashMap<String, Object>();
-		map2.put("TOTAL_CAREER", TOTAL_CAREER);
-		map2.put("user_history_id", User_history_id );
+
+		map2.put("career_sort_date", career_sort_date);
+		map2.put("user_history_id", user_history_id );
 		result = dao.updateTotalCareer(map2);	// 총 경력 이력서에 넣기
+				
+		// 자기소개서 처리부분
+		// 데이터 받기
+		int cnt = Integer.parseInt(multi.getParameter("cnt"));
 		
-		System.out.println("user_history_id 확인 : " + User_history_id + " to : 유저프로");
-		
-		map.put("User_history_id", User_history_id);
-		map.put("result", result);
-		map.put("page", "/FJ_USER/resome_Pro");
+		// 바구니 생성
+		IntroduceDataBean Introduce_dto = new IntroduceDataBean();
+
+		for( int i=0; i<cnt+1; i++){
+			Introduce_dto.setIntro_id(Integer.parseInt(multi.getParameter("intro_id"+i)));
+			Introduce_dto.setIntro_title(multi.getParameter("sub_name_"+i));
+			Introduce_dto.setIntro_contents(multi.getParameter("contents"+i));
+			Introduce_dto.setIntro_reg_date(new Timestamp(System.currentTimeMillis()));
+			Introduce_dto.setIntro_last_date(new Timestamp(System.currentTimeMillis()));
+			
+			// 디비 처리
+			result = dao.updateIntroduceData(Introduce_dto);
+			map.put("result", result);
+		}
+
+
+		map.put("page", "/FJ_USER/resomeModify_Pro");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);
-		
 	}
+
 }
-
-
-
-
-
-

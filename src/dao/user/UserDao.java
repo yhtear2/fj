@@ -20,8 +20,15 @@ public interface UserDao {
 	List<SchoolDataBean> getContent_school(int user_history_id);
 	List<CareerDataBean> getContent_career(int user_history_id);
 	List<IntroduceDataBean> getContent_introduce(int user_history_id);
-
 	public UserDataBean getUser_history_id(int user_history_id);
+	//홍석 추가
+	public int getUserhistoryid();
+	public int updateTotalCareer( Map<String, Object> map);
+	public int updateUserData( UserDataBean dto );
+	public int updateSchoolData( SchoolDataBean dto);
+	public int updateCareerData( CareerDataBean dto);
+	public int updateIntroduceData( IntroduceDataBean dto);
+	
 
 
 }

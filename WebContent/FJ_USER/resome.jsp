@@ -42,7 +42,7 @@
    		<tr>
    			<th style="padding-bottom: 1px">주소</th>
    			<td style="padding-bottom: 1px">
-   				<input class="form-control-hs" type="text" id="postcode" name="postcode" style="width: 80px; text-align: center;">
+   				<input class="form-control-hs" type="text" id="postcode" name="postcode" style="width: 80px; text-align: center;" readonly="readonly">
    			</td>
    			<td colspan="2" style="padding-bottom: 1px">
    				<input class="btn btn-default" type="button" style="width: 150px;height: 25px;padding: 2px 10px;" value="우편번호 찾기" onclick="execDaumPostcode()">
@@ -53,7 +53,7 @@
    		<tr>
    			<td style="border-top: none;padding: 1px 8px 1px 8px;"></td>
    			<td colspan="3" style="width: 200px;border-top: none;padding: 1px 8px 1px 8px;">
-   				<input class="form-control-hs" type="text" name="address1" id="address1" >
+   				<input class="form-control-hs" type="text" name="address1" id="address1" readonly="readonly" >
    			</td>
    		</tr>
    		<tr>

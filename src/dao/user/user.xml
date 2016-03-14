@@ -16,6 +16,7 @@
 		FROM 	( select user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
 				skill,photo,reg_date,last_date,project
 		FROM	FJ_User  ORDER BY last_date desc ) 
+		WHERE	email = #{email}
 	</select>
 	
 	<select id="getContent" parameterType="Integer" resultType="dto.user.UserDataBean">
@@ -39,13 +40,11 @@
 	</select>
 	
 	
-		<select id="getContent_introduce" parameterType="Map" resultType="dto.user.IntroduceDataBean">
+	<select id="getContent_introduce" parameterType="Map" resultType="dto.user.IntroduceDataBean">
 			SELECT 	* 
 			From	FJ_Introduce a, FJ_User b
 			Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
-		
 	</select>
-	
 
 	<insert id="insertArticle" parameterType="dto.user.UserDataBean"  keyColumn="user_history_id" keyProperty="history_id" useGeneratedKeys="true">
 		insert into FJ_User(
@@ -57,7 +56,7 @@
 			skill,						photo,
 			reg_date,				 	last_date,
 			project,					resome_title,
-			user_ref
+			total_career
 		) values( 
 			FJ_User_seq.NEXTVAL,				#{email, jdbcType=VARCHAR},
 			#{eng_name, jdbcType=VARCHAR}, 		#{kor_name, jdbcType=VARCHAR},
@@ -67,7 +66,7 @@
 			#{skill, jdbcType=VARCHAR},			#{photo, jdbcType=VARCHAR}, 
 			#{reg_date}, 						#{last_date}, 
 			#{project, jdbcType=VARCHAR},		#{resome_title, jdbcType=VARCHAR}, 
-			#{user_ref,jdbcType=INTEGER}
+			#{total_career,jdbcType=INTEGER}
 		)
 	</insert>
 	
@@ -137,29 +136,80 @@
 	
 	
 	<!-- 홍석이 만듬 -->
-	<select id="getUserData" parameterType="Integer" resultType="dto.user.UserDataBean">
-		SELECT	*
-		FROM	FJ_user
-		WHERE	user_history_id = #{user_history_id}
+	<select id="getUserhistoryid" resultType="Integer">
+		SELECT 	last_number 
+		FROM 	USER_SEQUENCES 
+		WHERE 	SEQUENCE_NAME = UPPER('FJ_User_seq')
 	</select>
 	
-	<select id="getSchoolData" parameterType="Integer" resultType="dto.user.SchoolDataBean">
-		SELECT	*
-		FROM	FJ_School
-		WHERE	user_history_id = #{user_history_id}
-	</select>
+	<update id="updateTotalCareer" parameterType="Map">
+		UPDATE 	Fj_user
+		SET		TOTAL_CAREER 		= 	#{TOTAL_CAREER}
+		WHERE	user_history_id 	= 	#{user_history_id}
+	</update>
 	
-	<select id="getCareerData" parameterType="Integer" resultType="dto.user.CareerDataBean">
-		SELECT	*
-		FROM	FJ_Career
-		WHERE	user_history_id = #{user_history_id}
-	</select>
+	<update id="updateUserData" parameterType="dto.user.UserDataBean">
+		UPDATE	FJ_user
+		SET		resome_title		=	#{resome_title,jdbcType=VARCHAR},
+				eng_name			=	#{eng_name,jdbcType=VARCHAR},
+				kor_name			=	#{kor_name,jdbcType=VARCHAR},
+				tel					=	#{tel},
+				birth				=	#{birth,jdbcType=VARCHAR},
+				address				=	#{address,jdbcType=VARCHAR},
+				army				=	#{army,jdbcType=VARCHAR},
+				want_salary			=	#{want_salary},
+				license				=	#{license,jdbcType=VARCHAR},
+				skill				=	#{skill,jdbcType=VARCHAR},
+				photo				=	#{photo,jdbcType=VARCHAR},
+				last_date			=	#{last_date},
+				project				=	#{project,jdbcType=VARCHAR}
+		WHERE	user_history_id		=	#{user_history_id}
+	</update>
+
+	<update id="updateSchoolData" parameterType="dto.user.SchoolDataBean">
+		UPDATE	FJ_School
+		SET		school_kind					=	#{school_kind,jdbcType=VARCHAR},
+				school_start_date_high		=	#{school_start_date_high,jdbcType=VARCHAR},
+				school_last_date_high		=	#{school_last_date_high,jdbcType=VARCHAR},
+				school_start_date_college	=	#{school_start_date_college,jdbcType=VARCHAR},
+				school_last_date_college	=	#{school_last_date_college,jdbcType=VARCHAR},
+				school_college1				=	#{school_college1,jdbcType=VARCHAR},
+				school_college2				=	#{school_college2,jdbcType=VARCHAR},
+				school_college_high			=	#{school_college_high,jdbcType=VARCHAR},
+				school_name_high			=	#{school_name_high,jdbcType=VARCHAR},
+				school_name_college			=	#{school_name_college,jdbcType=VARCHAR},
+				highschool_kind				=	#{highschool_kind,jdbcType=VARCHAR},
+				school_major				=	#{school_major,jdbcType=VARCHAR},
+				school_rank					=	#{school_rank,jdbcType=VARCHAR},
+				last_date					=	#{last_date}
+		WHERE	school_id					=	#{school_id}
+	</update>
+
+	<update id="updateCareerData" parameterType="dto.user.CareerDataBean">
+		UPDATE	FJ_Career
+		SET		career_sort			=	#{career_sort, jdbcType=VARCHAR},
+				career_comp_name	=	#{career_comp_name, jdbcType=VARCHAR},
+				career_start_date	=	#{career_start_date, jdbcType=VARCHAR},
+				career_last_date	=	#{career_last_date, jdbcType=VARCHAR},
+				career_kind			=	#{career_kind, jdbcType=VARCHAR},
+				career_department	=	#{career_department, jdbcType=VARCHAR},
+				career_position1	=	#{career_position1, jdbcType=VARCHAR},
+				career_position2	=	#{career_position2, jdbcType=VARCHAR},
+				career_salary		=	#{career_salary},
+				career_resign		=	#{career_resign, jdbcType=VARCHAR},
+				career_work			=	#{career_work, jdbcType=VARCHAR},
+				career_content		=	#{career_content, jdbcType=VARCHAR},
+				career_sort_date	=	#{career_sort_date}
+		WHERE	career_id			=	#{career_id}
+	</update>
 	
-	<select id="getIntroduceData" parameterType="Integer" resultType="dto.user.IntroduceDataBean">
-		SELECT	*
-		FROM	FJ_Introduce
-		WHERE	user_history_id = #{user_history_id}
-	</select>
+	<update id="updateIntroduceData" parameterType="dto.user.IntroduceDataBean">
+		UPDATE	FJ_Introduce
+		SET		intro_title		=	#{intro_title, jdbcType=VARCHAR},
+				intro_contents	=	#{intro_contents, jdbcType=VARCHAR},
+				intro_last_date	=	#{intro_last_date}
+		WHERE	intro_id		=	#{intro_id}
+	</update>
 	
 </mapper>	
 
