@@ -8,9 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import dao.SqlMapClient;
 import dto.recruit.RecruitDataBean;
 import dto.recruit.Recruit_LogDataBean;
+import dto.user.CareerDataBean;
 import dto.user.UserDataBean;
 
 public class RecruitDBBean implements RecruitDao {
+	
 	private SqlSession sqlSession = SqlMapClient.getSqlSession();
 
 	@Override
@@ -35,11 +37,20 @@ public class RecruitDBBean implements RecruitDao {
 	public RecruitDataBean getContent(int recruit_id) {
 		return sqlSession.selectOne("Recruit.getContent", recruit_id);
 	}
+
+
+	@Override
+	public List<Recruit_LogDataBean> get_history_id(Map<String, Integer> map) {
+		return sqlSession.selectList("Recruit.get_history_id", map);
+	}
+	
+	
 	
 	@Override	
 	public int getContent_re() {
 		return sqlSession.selectOne("Recruit.getContent_re");
 	}
+	
 	
 	@Override
 	public void addReadContent(int recruit_id) {

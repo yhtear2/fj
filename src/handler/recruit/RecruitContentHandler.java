@@ -33,26 +33,32 @@ public class RecruitContentHandler implements Commandhandler {
 		
 		// 일단 한글처리
 		request.setCharacterEncoding("utf-8");
+	
+		int count = 0;
+		
+		count = recruitDao.getContent_re();
+		
+		System.out.println(count);
+		
 		
 		// 데이터 받아오기
 		int recruit_id = Integer.parseInt(request.getParameter("recruit_id"));
 		String pageNum = request.getParameter("pageNum");
 
+		request.getSession().setAttribute("recruit_id", recruit_id);
+		//System.out.println(recruit_id);
 		
 		// 채용공고 데이터 가져오자
 		RecruitDataBean dto = new RecruitDataBean();
 		dto = recruitDao.getContent( recruit_id );
+		
 		// 회사기본 입력사항 정보를 가져오자!
 		CompDataBean compdto = new CompDataBean();
 		compdto = compDao.getComp(dto.getEmail());
-		int count = 0;
-		count = recruitDao.getContent_re();
-
-
 		
 		
 		// 이메일 비교해서 카운트 올리기
-		if( !( dto.getEmail().equals(request.getSession().getAttribute("memId")) ) ){
+		if( !( dto.getEmail().equals(request.getSession().getAttribute("memId")) ) ){ 
 			recruitDao.addReadContent( recruit_id );
 		}
 		

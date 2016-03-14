@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.recruit.RecruitDao;
 import dao.user.UserDao;
+import dto.recruit.Recruit_LogDataBean;
+import dto.user.CareerDataBean;
 import dto.user.UserDataBean;
 import handler.Commandhandler;
 
@@ -22,6 +25,9 @@ public class Recruit_ResomeListHandler implements Commandhandler{
 	
 	@Resource(name="userDao")
 	private UserDao dao;
+	
+	@Resource(name="recruitDao")
+	private RecruitDao recruitDao;
 
 	@RequestMapping( "/recruit_resomeList" )
 	@Override
@@ -35,15 +41,20 @@ public class Recruit_ResomeListHandler implements Commandhandler{
 
 		
 		Map<String, Object> tempMap = new HashMap<String, Object>();
+		Map<String, Integer> temp = new HashMap<String, Integer>();
 
 		List<UserDataBean> list = dao.getUserList(tempMap);
+		
+		List<Recruit_LogDataBean> get_history = recruitDao.get_history_id(temp);
+
 
 		map.put("list", list);
+		map.put("get_history", get_history);
 		map.put("email", email);
 		map.put("name", name);
 
-
 		return new ModelAndView("FJ_RECRUIT/recruit_resomeList", map);
+
 
 	}
 }

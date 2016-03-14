@@ -61,7 +61,12 @@
 		Where	recruit_id = #{recruit_id}
 	</select>
 	
-	<select id="getContent_re" resultType="java.lang.Integer">
+		<select id="get_history_id" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
+		SELECT 	recruit_id,email,user_history_id,reg_date
+			FROM FJ_Recruit_Log
+	</select>
+	
+	<select id="getContent_re" resultType="int">
 		SELECT 	COUNT(*) 
 		From	FJ_Recruit_Log
 	</select>

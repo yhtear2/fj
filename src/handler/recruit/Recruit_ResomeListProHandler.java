@@ -32,13 +32,18 @@ public class Recruit_ResomeListProHandler implements Commandhandler{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		
-		String a = request.getParameter("resometitle");
-		int aa= 1;
+		int user_history_id = Integer.parseInt(request.getParameter("user_history_id"));
+		int recruit_id = Integer.parseInt(request.getParameter("recruit_id"));
+		String email = request.getParameter("email");
+
+		
 		Recruit_LogDataBean dto = new Recruit_LogDataBean();
 		
-		dto.setEmail(a);	
-		dto.setRecruit_id(1);
-		dto.setUser_history_id(aa);
+		
+		
+		dto.setEmail(email);	
+		dto.setRecruit_id(recruit_id);
+		dto.setUser_history_id(user_history_id);
 
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 
