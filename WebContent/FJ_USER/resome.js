@@ -30,238 +30,6 @@ function skill_result() {
    window.close();
 }
 
-
-$(function(){
-    //최초 쿠키에 login_id라는 쿠키값이 존재하면
-    var resome_title = $.cookie('resome_title');
-    var kor_name = $.cookie('kor_name');
-    var eng_name = $.cookie('eng_name');
-    var postcode = $.cookie('postcode');
-    var address1 = $.cookie('address1');
-    var address2 = $.cookie('address2');
-    var tel1 = $.cookie('tel1');
-    var tel2 = $.cookie('tel2');
-    var tel3 = $.cookie('tel3');
-    var birth = $.cookie('birth');
-    var army1 = $.cookie('army1');
-    var army2 = $.cookie('army2');
-    var army3 = $.cookie('army3');
-    var army4 = $.cookie('army4');
-    var army5 = $.cookie('army5');
-    var army6 = $.cookie('army6');
-    var army7 = $.cookie('army7');       
-    var skill = $.cookie('skill');
-    var want_salary = $.cookie('want_salary');
-
-    var project = $.cookie('project');
-    var input_file = $.cookie('input_file');
-    
-    var formCnt = $.cookie('formCnt');
-    var license_cnt = $.cookie('license_cnt');
-    
-    var addedForm = document.getElementById("school_addedFormDiv");
-    var license_addform = document.getElementById("license_addform");
-
-
-
-
-
-    var highschool_start_date = $.cookie('highschool_start_date');
-    var highschool_last_date = $.cookie('highschool_last_date');
-    var highschool_college = $.cookie('highschool_college');
-    var highschool_name = $.cookie('highschool_name');
-    var highschool_name_kind = $.cookie('highschool_name_kind');
-    
-    //alert("here : " +$.cookie('school_kind1'));
-   
-
-
-
-	   
-	    if(highschool_start_date != undefined) {
-	        $("#highschool_start_date").val(highschool_start_date);
-	    }
-	    if(highschool_last_date != undefined) {
-	        $("#highschool_last_date").val(highschool_last_date);
-	    }      
-	    if(highschool_college != undefined) {
-	        $("#highschool_college").val(highschool_college);
-	    }        
-	    if(highschool_name != undefined) {
-	        $("#highschool_name").val(highschool_name);
-	    }      
-	    if(highschool_name_kind != undefined) {
-	        $("#highschool_name_kind").val(highschool_name_kind);
-	    }
-
-	    
-	    if(resome_title != undefined) {
-	        $("#resome_title").val(resome_title);   //아이디에 쿠키값을 담는다.
-	    }
-	    if(kor_name != undefined) {
-	        $("#kor_name").val(kor_name);
-	    }
-	    if(eng_name != undefined) {
-	        $("#eng_name").val(eng_name);
-	    }       
-	    if(postcode != undefined) {
-	        $("#postcode").val(postcode);
-	    }
-	    if(address1 != undefined) {
-	        $("#address1").val(address1);
-	    }          
-	    if(address2 != undefined) {
-	        $("#address2").val(address2);
-	    }
-	    if(tel1 != undefined) {
-	        $("#tel1").val(tel1);
-	    }
-	    if(tel2 != undefined) {
-	        $("#tel2").val(tel2);
-	    }
-	    if(tel3 != undefined) {
-	        $("#tel3").val(tel3);
-	    }       
-	    if(birth != undefined) {
-	        $("#birth").val(birth);
-	    }
-	    if(army1 != undefined) {
-	        $("#army1").val(army1);
-	    }          
-	    if(army2 != undefined) {
-	        $("#army2").val(army2);
-	    }
-	    if(army3 != undefined) {
-	        $("#army3").val(army3);
-	    }
-	    if(army4 != undefined) {
-	        $("#army4").val(army4);
-	    }
-	    if(army5 != undefined) {
-	        $("#army5").val(army5);
-	    }       
-	    if(army6 != undefined) {
-	        $("#army6").val(army6);
-	    }
-	    if(army7 != undefined) {
-	        $("#army7").val(army7);
-	    }     
-	    if(skill != undefined) {
-	        $("#skill").val(skill);
-	    }
-	    if(want_salary != undefined) {
-	        $("#want_salary").val(want_salary);
-	    }          
-	    if(project != undefined) {
-	        $("#project").val(project);
-	    }
-	    if(input_file != undefined) {
-	        $("#input_file").val(input_file);
-	    }            
-    
-
-    for(var i = 1; i <= formCnt; i++) {
-        addForm();
-     }
-    
-    for(var i = 1; i<=license_cnt; i++) {
-    	license_addform();
-    }
-    
-    
-    //로그인 버튼 클릭시
-    $("#user_button").click(function(){
-    	
-	   //    $.cookie('license_cnt', license_addform.childNodes.length);
-
-        //아이디 미입력시
-/*        if( $("#resome_title").val() == null && $("#resome_title").val() == "" ) {
-            alert("이력서 제목을 입력하세요.");
-            return;
-        }  if( $("#kor_name").val() == null && $("#kor_name").val() == "" ) {
-            alert("한국이름을 입력하세요.");
-            return;
-        }  if( $("#eng_name").val() == null && $("#eng_name").val() == "" ) {
-            alert("영어이름을 입력하세요.");
-            return;
-        }  if( $("#postcode").val() == null && $("#postcode").val() == "" ) {
-            alert("주소가 입력되지 않았습니다. 다시확인해주세요");
-            return;
-        }  if( $("#address1").val() == null && $("#address1").val() == "" ) {
-            alert("주소가 입력되지 않았습니다. 다시확인해주세요");
-            return;
-        }  if( $("#address2").val() == null && $("#address2").val() == "" ) {
-            alert("주소가 입력되지 않았습니다. 다시확인해주세요");
-            return;
-        } else {
-        	*/
-            $.cookie('resome_title', $("#resome_title").val()); 
-            $.cookie('kor_name', $("#kor_name").val()); 
-            $.cookie('eng_name', $("#eng_name").val());
-            $.cookie('postcode', $("#postcode").val());                
-            $.cookie('address1', $("#address1").val());
-            $.cookie('address2', $("#address2").val());                   
-            $.cookie('tel1', $("#tel1").val());
-            $.cookie('tel2', $("#tel2").val());                
-            $.cookie('tel3', $("#tel3").val());
-            $.cookie('birth', $("#birth").val());    
-            $.cookie('army1', $("#army1").val());                
-            $.cookie('army2', $("#army2").val());
-            $.cookie('army3', $("#army3").val());                   
-            $.cookie('army4', $("#army4").val());
-            $.cookie('army5', $("#army5").val());                
-            $.cookie('army6', $("#army6").val());
-            $.cookie('army7', $("#army7").val());                   
-            $.cookie('skill', $("#skill").val());                   
-            $.cookie('want_salary', $("#want_salary").val());
-
-            $.cookie('input_file',$("#input_file").val());
-            $.cookie('project', $("#project").val());
-            
-            
-       		for(var j=1; j<=license_cnt; j++) {
-       			
-       			$.cookie('license1'+j, $("#license1"+j).val());                   
-       			$.cookie('license2'+j, $("#license2"+j).val());                   
-       			$.cookie('license3'+j, $("#license3"+j).val());                   
-
-       		}
-
-            alert("개인정보가 저장되었습니다.!!");
-        
-    })
-    
-    $("#school_save").click(function(){
-
-       $.cookie('formCnt', addedForm.childNodes.length);
-       		
-       
-	 //       $.cookie('school_kind1', $("#school_kind_ida1").val());
-   	  //      $.cookie('school_kind1', $("#school_kind_ida2").val());
-   	        
-   	        
-       		for(var j=1; j<=addedForm.childNodes.length; j++) {
-       			
-       			$.cookie('school_name'+j, $("#school_name"+j).val());                   
-		        $.cookie('school_start_date'+j, $("#school_start_date"+j).val());                
-		        $.cookie('school_last_date'+j, $("#school_last_date"+j).val());
-		        $.cookie('school_college1'+j, $("#school_college1"+j).val());                   
-		        $.cookie('school_college2'+j, $("#school_college2"+j).val());                   
-		        $.cookie('school_major'+j, $("#school_major"+j).val());
-		        $.cookie('school_rank1'+j, $("#school_rank1"+j).val());
-		        $.cookie('school_rank2'+j,$("#school_rank2"+j).val());	
-       		}
-
-        $.cookie('highschool_start_date', $("#highschool_start_date").val());
-        $.cookie('highschool_last_date', $("#highschool_last_date").val());                
-        $.cookie('highschool_college', $("#highschool_college").val());
-        $.cookie('highschool_name', $("#highschool_name").val());
-        $.cookie('highschool_name_kind',$("#highschool_name_kind").val());
-         
-    })
-    
-})
-
 $(function() {
     $("#imginput").on('change', function(){
         readURL(this);
@@ -401,12 +169,11 @@ function addForm(flag) {
       return;
    }
    
-
+   
    /*   추가될 학력 구간 시작   */ 
    var str = "";
-
    
-   str += "<table class='table table-hover'  id='mytable' style='width:750px'>";
+   str += "<table class='table'  id='mytable' style='width:750px'>";
    str += "<tr>";
    str += "	<td colspan='5' style='border-top: none;'><h5>대학교 / 대학원</h5></td>";
    str += "</tr>";
@@ -473,42 +240,12 @@ function addForm(flag) {
 
    count++;
    document.resome.count.value = count;
-   if(flag == "highAdd") addReturn();
+/*   if(flag == "highAdd") addReturn();*/
 
    $("input[name=school_kind1]:checked").val();
    if($("#school_kind_ida1").attr("checked")=="checked")
  	  radio_checked=$("#school_kind_ida1").val();
  	  
-   
-   
-   
-   if( $.cookie('school_name') != "" ) {
- 	  for(var i=1; i<=count; i++) {
-   		$("#school_name"+i).val( $.cookie('school_name'+i) );
- 		$("#school_start_date"+i).val( $.cookie('school_start_date'+i) );
- 		$("#school_last_date"+i).val($.cookie('school_last_date'+i));
- 	//	$("#school_kind_ida"+i).attr("checked", 'checked');
- 	//	$("#school_kind_idb"+i).attr("checked", 'checked');
-
- 
-		//	$("#school_kind_ida1").attr("checked", 'checked');
-		//	$("#school_kind_ida2").attr("checked", 'checked');
-		
-			$("#school_kind_idb1").attr("checked", 'checked');
-			$("#school_kind_idb2").attr("checked", 'checked');
- 	//	$('#school_kind_ida'+i).prop('checked',!$('#school_kind_ida'+i).prop('checked'));
- 	//	alert($.cookie('school_kind'+i));
- 		
- 	//	$('#school_kind_idb'+i).prop('checked',!$('#school_kind_idb'+i).prop('checked'));
-
- 		$("#school_college1"+i).val($.cookie('school_college1'+i));
- 		$("#school_college2"+i).val($.cookie('school_college2'+i));
- 		$("#school_major"+i).val($.cookie('school_major'+i));
- 		$("#school_rank1"+i).val($.cookie('school_rank1'+i));
- 		$("#school_rank2"+i).val($.cookie('school_rank2'+i));    		  
- 		  
- 	  }
-   }
 
 }
 
@@ -544,32 +281,6 @@ function license_addform() {
 	   alert("자격증은 10개까지 등록할 수 있습니다.")
    }
    
-   /*newTr = lo_table.insertRow(row_index - 1);
-   newTr.idName = "newTr" + row_index;
-		      
-   newTd = newTr.insertCell(0);
-   newTd.innerHTML = license_cnt;
-   newTd.innerHTML = "<td style='width:160px'> <input type='text' name='license1"+license_cnt+"' id='license1"+license_cnt+"' style='width:220px' class='form-control-hs' > </td>";
-
-   newTd = newTr.insertCell(1);
-   newTd.innerHTML = license_cnt;
-   newTd.align = "center";
-   newTd.innerHTML = "<td style='width:80px'> <input type='text' name='license2"+license_cnt+"' id='license2"+license_cnt+"' style='width:180px' class='form-control-hs' > </td>";
-
-   newTd = newTr.insertCell(2);
-   newTd.innerHTML = license_cnt;
-   newTd.innerHTML = "<td colspan='2' style='width:200px'> <input class='input' type='text' name='license3"+license_cnt+"' id='license3"+license_cnt+"' style='width:260px' class='form-control-hs' ></td>";
-	*/
-/*   
-   if( $.cookie('license1') != "" ) {
- 	  for(var i=1; i<=license_cnt; i++) {
- 		//  $.cookie('license1'+i, $('input[id=license1'+i+']').val());
-   		$("#license1"+i).val( $.cookie('license1'+i) );
- 		$("#license2"+i).val( $.cookie('license2'+i) );
- 		$("#license3"+i).val($.cookie('license3'+i));
- 
- 	  }
-   }*/
  		
 }
 
@@ -897,23 +608,80 @@ $(document).ready(function() {
 			$(a).prop('selected', true);
 		}
 	}
-	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+	// ▲▲▲▲▲자바스크립트 list▲▲▲▲▲▲▲▲▲▲
 	
 	// ▼▼▼▼ 자격증 ▼▼▼▼ 
 	var licenses = $('input[name=license]').val().split('/');
-	alert(licenses.length);
-	for( var i=0; i<licenses.length; i++){
-
-
-/*		var licenses_in = licenses[i].split('-');
+	for( var i=0; i<licenses.length-1; i++){
+		var licenses_in = licenses[i].split('#');
 		for( var j=0; j<licenses_in.length; j++){
-			$('input[name=license1'+j).val(licenses_in[j]);
-			$('input[name=license2'+j).val(licenses_in[j]);
-			$('input[name=license3'+j).val(licenses_in[j]);
-		}*/
+			$('input[name=license1'+i).val(licenses_in[j]);
+			$('input[name=license2'+i).val(licenses_in[j]);
+			$('input[name=license3'+i).val(licenses_in[j]);
+		}
+		if( i<licenses.length-2 ){
+			license_addform();
+		}
 	}
 	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
+	// ▼▼▼▼ 학력 ▼▼▼▼
+	// 입력된 학력의 곗수
+	var school_size = $('input[name=school_size]').val();
+	
+	
+	for( var i=1; i<school_size; i++){
+		// 곗수에 맞게 폼 추가
+		addForm('highAdd');
+	
+		// 각 항목별로 입력받아서 바로 넣자
+		/*var school_name_colleges = $('input[name=school_name_colleges'+i+']').val();*/
+		school_kind = $('input[name=school_kinds'+i+']').val();
+		// 대학/대학원 분류
+		var	school_kinds = ['대학교', '대학원']; 
+		for( var j=0; j<school_kinds.length; j++){
+			if( $('input[name=school_kinds'+i+']').val() == school_kinds[j]){
+				$('input[value='+school_kinds[j]+']').prop('checked', true);
+			}
+		}
+		
+		// 입학날자
+		$('input[id=school_start_date'+i+']').val( $('input[name=school_start_date_colleges'+i+']').val() );
+		
+		// 졸업날자
+		$('input[id=school_last_date'+i+']').val( $('input[name=school_last_date_college'+i+']').val() );
+		
+		// 입학/편입 구분
+		var college1 = ['입학', '편입'];
+		for( var j=0; j<college1.length; j++){
+			if( $('input[name=school_colleges1'+i+']').val() == college1[j] ){
+				$('select[id=school_college1'+i+']').find('option').eq(j).prop('selected', true);
+			}
+		}
+		
+		// 졸업 구분
+		var college2 = ['졸업예정', '졸업', '재학중', '휴학중', '수료', '중퇴', '자퇴'];
+		for( var j=0; j<college2.length; j++){
+			if( $('input[name=school_colleges2'+i+']').val() == college2[j] ){
+				$('select[id=school_college2'+i+']').find('option').eq(j).prop('selected', true);
+			}
+		}
+		
+		// 대학이름
+		$('input[id=school_name'+i+']').val( $('input[name=school_name_colleges'+i+']').val() );
+		
+		// 전공
+		$('input[id=school_major'+i+']').val( $('input[name=school_majors'+i+']').val() );
+		
+		// 학점
+		var ranks = $('input[name=school_rank'+i+']').val().split("/");
+		$('input[id=school_rank1'+i+']').val( ranks[0] );
+		$('input[id=school_rank2'+i+']').val( ranks[1] );
+		
+	}
+	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲	
+	
+	// ▼▼▼▼ 경력 ▼▼▼▼
 	
 	
 });

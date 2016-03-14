@@ -95,7 +95,7 @@ public class User_ProHandler implements Commandhandler {
 
 
 		for(int i=0; i<=license_cnt-1 ; i++) {
-			license +=  multi.getParameter("license1"+i) + "-" + multi.getParameter("license2"+i) + "-" + multi.getParameter("license3"+i)+ "/";
+			license +=  multi.getParameter("license1"+i) + "#" + multi.getParameter("license2"+i) + "#" + multi.getParameter("license3"+i)+ "/";
 		
 		}
 		dto.setLicense(license);

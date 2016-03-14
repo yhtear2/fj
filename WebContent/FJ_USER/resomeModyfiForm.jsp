@@ -67,13 +67,13 @@
    		<tr>
    			<td style="border-top: none;padding: 1px 8px 1px 8px;"></td>
    			<td colspan="3" style="width: 200px;border-top: none;padding: 1px 8px 1px 8px;">
-   				<input class="form-control-hs" type="text" name="address1" id="address1"  disabled="disabled" value="${address[1]}}">
+   				<input class="form-control-hs" type="text" name="address1" id="address1"  disabled="disabled" value="${address[1]}">
    			</td>
    		</tr>
    		<tr>
    			<td  style="border-top: none;padding: 1px 8px 1px 8px;"></td>
    			<td  colspan="3" style="width: 200px;border-top: none;padding-top: 1px;">
-   				<input class="form-control-hs" type="text" name="address2" id="address2" value="${address[2]}}">
+   				<input class="form-control-hs" type="text" name="address2" id="address2" value="${address[2]}">
    			</td>
    		</tr>
    		</c:if>
@@ -205,15 +205,37 @@
      </table>
 <!-- 기본정보 끝!! -->
 <br>
-<!--  학력사항 시작 -->
+<!--  학력사항 시작  dto_school -->
 	<h4>학력사항</h4>
 
 	<!-- <h5>고등학교</h5> -->
 
 <!-- <form name="school_Form"  method="post" onload="addForm();" action="school_Pro.do" onsubmit="submitcheck()"> -->
 	<input type="hidden" name="count" value="0">
-	<input type="text" name="user_history_id" value='${history_id}' style="display:none">
-
+	<input type="hidden" name="user_history_id" value='${user_history_id}'>
+	<input type="hidden" name="school_size" value="${school_size}">
+	<c:forEach var="i" begin="${1}" end="${school_size}">
+		<input type='hidden' name='school_kinds${i}' value='${dto_school[i].school_kind}'>
+		<input type='hidden' name='school_start_date_colleges${i}' value='${dto_school[i].school_start_date_college}'>
+		<input type='hidden' name='school_last_date_college${i}' value='${dto_school[i].school_last_date_college}'>
+		<input type='hidden' name='school_colleges1${i}' value='${dto_school[i].school_college1}'>
+		<input type='hidden' name='school_colleges2${i}' value='${dto_school[i].school_college2}'>
+		<input type='hidden' name='school_name_colleges${i}' value='${dto_school[i].school_name_college}'>
+		<input type='hidden' name='school_majors${i}' value='${dto_school[i].school_major}'>
+		<input type='hidden' name='school_rank${i}' value='${dto_school[i].school_rank}'>
+	</c:forEach>
+	
+	<!-- 
+	private String school_kind;					// 대학/대학원 분류
+	private String school_start_date_college;	// 입학날자
+	private String school_last_date_college;	// 졸업날자
+	private String school_college1;				// (입학)
+	private String school_college2;				// (졸업)
+	private String school_name_college;			// 대학 이름	
+	private String school_major;				// 전공
+	private String school_rank;					// 학점 (23/23) 이런식으로 들어가 있음
+	 -->
+	
 	<table class="table">
 		<tr>
 			<td colspan="4" style="border-top: none;"><h5>고등학교</h5></td>
@@ -221,38 +243,47 @@
     	<tr>
       		<th style="width:80px;">재학기간</th>
 			<td colspan="4">
-    			<input class="form-control-hs" type="date" style="width:180px" name="highschool_start_date" id="highschool_start_date">
+    			<input class="form-control-hs" type="date" style="width:180px" name="highschool_start_date" id="highschool_start_date" value="${school_dto0.school_start_date_high}">
     			 &nbsp;~&nbsp; 
-            	<input class="form-control-hs" type="date" style="width:180px" name="highschool_last_date" id="highschool_last_date">
+            	<input class="form-control-hs" type="date" style="width:180px" name="highschool_last_date" id="highschool_last_date" value="${school_dto0.school_last_date_high}">
             	&nbsp;&nbsp;
             	<select class='form-control-hs' style='width: 80px;padding-top: 1px;' id='school_college1' name='school_college0'>
-   					<option value='입학'>입학</option>
-   					<option value='편입'>편입</option>
+   					<c:if test="${school_dto0.school_college1 == '입학'}"> <option value='입학' selected="selected">입학</option> </c:if>
+   					<c:if test="${school_dto0.school_college1 != '입학'}"> <option value='입학'>입학</option> </c:if>
+   					<c:if test="${school_dto0.school_college1 == '편입'}"> <option value='편입' selected="selected">편입</option> </c:if>
+   					<c:if test="${school_dto0.school_college1 != '편입'}"> <option value='편입'>편입</option> </c:if>
    				</select>
    				&nbsp;
             	<select class="form-control-hs" style="width: 120px;padding-top: 1px; " name="highschool_college" id="highschool_college">
-               		<option value="졸업">졸업</option>
-               		<option value="졸업예정">졸업예정</option>
+               		<c:if test="${school_dto0.school_college_high == '졸업'}"> <option value="졸업" selected="selected">졸업</option> </c:if>
+               		<c:if test="${school_dto0.school_college_high != '졸업'}"> <option value="졸업">졸업</option> </c:if>
+               		<c:if test="${school_dto0.school_college_high == '졸업예정'}"> <option value="졸업예정" selected="selected">졸업예정</option> </c:if>
+               		<c:if test="${school_dto0.school_college_high != '졸업예정'}"> <option value="졸업예정">졸업예정</option> </c:if>
                	</select>   
             </td>
     	</tr>
     	<tr>
     		<th>학교명</th>
             <td style="width:250px;text-align: center;"> 
-            	<input class="form-control-hs" style="padding-top: 1px;text-align: center;" type="text" name="highschool_name" id="highschool_name">   
+            	<input class="form-control-hs" style="padding-top: 1px;text-align: center;" type="text" name="highschool_name" id="highschool_name" value="${school_dto0.school_name_high}">   
       		</td>
       		<td style="width:200px;">
       			<select class="form-control-hs" style="padding-top: 1px;text-align: center;" name="highschool_kind" id="highschool_kind">
-		            <option value="문과계열">문과계열</option>
-		            <option value="이과계열">이과계열</option>      
-		            <option value="전문(실업)계열">전문(실업)계열</option>
-		            <option value="예체능계열">예체능계열</option>   
+		           <c:if test="${school_dto0.highschool_kind == '문과계열'}"> <option value="문과계열" selected="selected">문과계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind != '문과계열'}"> <option value="문과계열">문과계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind == '이과계열'}"> <option value="이과계열" selected="selected">이과계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind != '이과계열'}"> <option value="이과계열">이과계열</option> </c:if>      
+		           <c:if test="${school_dto0.highschool_kind == '전문(실업)계열'}"> <option value="전문(실업)계열" selected="selected">전문(실업)계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind != '전문(실업)계열'}"> <option value="전문(실업)계열">전문(실업)계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind == '예체능계열'}"> <option value="예체능계열" sel1ected="selected">예체능계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind != '예체능계열'}"> <option value="예체능계열">예체능계열</option> </c:if>   
          		</select>
       		</td>
       		<th style="width:80px; margin-left: 20px;text-align: right;">학점</th>
       		<td>
       			<p style="text-align: center;">-</p>
       		</td>
+      		
     	</tr>
     	<tr>
 			<td colspan="5" align="right">                

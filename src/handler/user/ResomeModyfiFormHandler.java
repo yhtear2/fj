@@ -39,6 +39,17 @@ public class ResomeModyfiFormHandler implements Commandhandler {
 		List<CareerDataBean> dto_career = dao.getContent_career(user_history_id);
 		List<IntroduceDataBean> dto_introduce = dao.getContent_introduce(user_history_id);
 		
+		 
+		// 학력 입력을 위한 거...(사실 이중에 하나만 씀..)
+		for( int i=0; i<dto_school.size(); i++){
+			SchoolDataBean name = dto_school.get(i);
+			map.put("school_dto"+i, name);
+		}
+		map.put("school_size", dto_school.size());
+		
+		// 
+		
+		map.put("user_history_id", user_history_id);
 		map.put("dto_user", dto_user);
 		map.put("dto_school", dto_school);
 		map.put("dto_career", dto_career);
