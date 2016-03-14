@@ -77,4 +77,34 @@ public class UserDBBean implements UserDao {
 		return sqlSession.selectOne("User.getUser_history_id", user_history_id);
 	}
 
+	@Override
+	public int updateTotalCareer(Map<String, Object> map) {
+		return sqlSession.update("User.updateTotalCareer", map);
+	}
+
+	@Override
+	public int getUserhistoryid() {
+		return sqlSession.selectOne("User.getUserhistoryid");
+	}
+
+	@Override
+	public int updateUserData(UserDataBean dto) {
+		return sqlSession.update("User.updateUserData", dto);
+	}
+
+	@Override
+	public int updateSchoolData(SchoolDataBean dto) {
+		return sqlSession.update("User.updateSchoolData", dto);
+	}
+
+	@Override
+	public int updateCareerData(CareerDataBean dto) {
+		return sqlSession.update("User.updateCareerData", dto);
+	}
+
+	@Override
+	public int updateIntroduceData(IntroduceDataBean dto) {
+		return sqlSession.update("User.updateIntroduceData", dto);
+	}
+
 }

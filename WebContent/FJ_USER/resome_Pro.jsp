@@ -15,10 +15,11 @@ ${sessionScope.history_id}
 </c:if>
 
 <c:if test="${result == 1}">
+	<input type="hidden" name="User_history_id" value="${User_history_id}">
 	<script type="text/javascript">
 		<!--
-		var History_id = ${History_id}
-		window.location.href = "introduceForm.do?History_id="+History_id;
+		var User_history_id = $('input[name=User_history_id]').val();
+		window.location.href = "introduceForm.do?User_history_id="+User_history_id;
 		//-->		
 	</script>
 

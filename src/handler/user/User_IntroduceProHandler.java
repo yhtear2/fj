@@ -31,13 +31,14 @@ public class User_IntroduceProHandler implements Commandhandler {
 		
 		// 데이터 받기
 		int cnt = Integer.parseInt(request.getParameter("cnt"));
-		
+		int User_history_id = Integer.parseInt(request.getParameter("User_history_id") );
+		System.out.println("cnt : " + cnt);
+		System.out.println("User_history_id : " + User_history_id);
 		// 바구니 생성
 		IntroduceDataBean dto = new IntroduceDataBean();
 		
-		System.out.println((Integer)request.getSession().getAttribute("history_id"));
 		for( int i=0; i<cnt+1; i++){
-			dto.setUser_history_id( (Integer)request.getSession().getAttribute("history_id") );
+			dto.setUser_history_id( User_history_id );
 			dto.setIntro_title(request.getParameter("sub_name_"+i));
 			dto.setIntro_contents(request.getParameter("contents"+i));
 			dto.setIntro_reg_date(new Timestamp(System.currentTimeMillis()));

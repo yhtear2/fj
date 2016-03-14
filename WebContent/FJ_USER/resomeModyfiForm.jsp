@@ -8,19 +8,11 @@
 <script src="/fj/FJ_USER/introduce.js"></script>
 <link href="/fj/FJ_USER/introduce.css" rel="stylesheet" type="text/css">
 
-<!-- 
-		
-		map.put("dto_user", dto_user);				// 기본정보
-		map.put("dto_school", dto_school);			// 학력
-		map.put("dto_career", dto_career);			// 경력
-		map.put("dto_introduce", dto_introduce);	// 자기소개
-		
- -->
 
 <!-- 전체적인 크기 잡기 -->
 <div style="width:750;margin:50px;">
 <h2>이력서</h2>
-<form name="resome" method="post" enctype="multipart/form-data"  onload="license_addform();" action="resome_Pro.do" onsubmit="lic_submitcheck()"> 
+<form name="resome" method="post" enctype="multipart/form-data"  onload="license_addform();" action="resomeModify_Pro.do" onsubmit="lic_submitcheck()"> 
 	<input type="hidden" name="license_cnt_hidden">
 	
 	<!-- 이력서 제목 입력부분 -->
@@ -217,6 +209,7 @@
 	<input type="hidden" name="user_history_id" value='${user_history_id}'>
 	<input type="hidden" name="school_size" value="${school_size}">
 	<c:forEach var="i" begin="${1}" end="${school_size}">
+		<input type='hidden' name='school_id${i}' value='${dto_school[i].school_id}'>
 		<input type='hidden' name='school_kinds${i}' value='${dto_school[i].school_kind}'>
 		<input type='hidden' name='school_start_date_colleges${i}' value='${dto_school[i].school_start_date_college}'>
 		<input type='hidden' name='school_last_date_college${i}' value='${dto_school[i].school_last_date_college}'>
@@ -326,7 +319,7 @@
  	<table class="table" id="career_table" style="display: block;">
  	<c:if test="${career_size-2 == 0}">
  	 <c:forEach var="i" begin="${0}" end="${career_size -1}">
-		<%-- <input type='hidden' name='school_kinds${i}' value='${dto_school[i].school_kind}'> --%>
+		<input type='hidden' name='career_ids${i}' value='${dto_career[i].career_id}'>
  		<tr>
  			<th style="width:200px;">근무기간</th>
  			<th style="width:450px;" colspan="4">상세경력</th>
