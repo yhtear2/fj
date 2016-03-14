@@ -82,12 +82,18 @@ function listResult() {
 
 function lic_submitcheck() {
 	   
-	  		var lo_table = document.getElementById("license_table");
-	   	    var license_cnt = lo_table.rows.length-2;
-	   	   	   	   
-	       $('input[name=license_cnt_hidden]').val(license_cnt);
-
+	var lo_table = document.getElementById("license_table");
+    var license_cnt = lo_table.rows.length-2;
+   	   	   
+    $('input[name=license_cnt_hidden]').val(license_cnt);
+	       
+    //자기소개에 사용됨
+   	$('input[name=cnt]').val(cnt);
+	for(var i=0; i<cnt+1; i++){
+		$('input[name=sub_name_'+ i +']').val( $('div[id=sub_name_'+ i +']').text());
 	}
+
+}
 
 
 
@@ -680,6 +686,11 @@ $(document).ready(function() {
 	
 	// ▼▼▼▼ 경력 ▼▼▼▼
 	document.resome.career_count.value = $('input[name=career_size]').val();
+	var career_sort = $('input[name=career_sort]').val();
+	if (career_sort =="신입") {
+		career_table.style.display = 'none';
+		addedFor.style.display = 'none';
+	 }
 	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 	
 	// ▼▼▼▼ 자기소개서 ▼▼▼▼

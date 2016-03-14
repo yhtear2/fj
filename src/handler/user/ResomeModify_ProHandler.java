@@ -145,11 +145,9 @@ public class ResomeModify_ProHandler implements Commandhandler {
 		school_dto.setHighschool_kind(multi.getParameter("highschool_kind"));
 		school_dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 		school_dto.setLast_date(new Timestamp(System.currentTimeMillis()));	
-			
-		school_dto.setSchool_id( Integer.parseInt(multi.getParameter("school_id1")) -1 );
-		
-		
-		
+
+		school_dto.setSchool_id( Integer.parseInt(multi.getParameter("school_id0")) );
+
 		result = dao.updateSchoolData( school_dto );	
 
 
@@ -209,56 +207,60 @@ public class ResomeModify_ProHandler implements Commandhandler {
 		Career_dto.setCareer_sort(multi.getParameter("career_sort"));
 		
 		long diffDays = 0;
-		for(int i=0; i<career_comp_name.length; i++) {
-			Career_dto.setCareer_comp_name(career_comp_name[i]);
-			Career_dto.setCareer_id( Integer.parseInt(multi.getParameter("career_ids"+i)) );
-			Career_dto.setCareer_start_date(career_start_date[i]);
-			Career_dto.setCareer_last_date(career_last_date[i]);
-			Career_dto.setCareer_department(career_department[i]);
-
-			if(career_start_date[i] != null){
-		       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		       Date beginDate = formatter.parse(career_start_date[i]);
-		       Date endDate = formatter.parse(career_last_date[i]);
-		         
-		        // 시간차이를 시간,분,초를 곱한 값으로 나누면 하루 단위가 나옴
-		        long diff = endDate.getTime() - beginDate.getTime();
-		        diffDays = diffDays + diff / (24 * 60 * 60 * 1000);
-			}
-			
-			if ( multi.getParameter("career_salary").equals("") && multi.getParameter("career_salary").equals(null)) {
-				Career_dto.setCareer_salary(Integer.parseInt("0"));
-			} 
-			else if ( ! multi.getParameter("career_salary").equals("") && ! multi.getParameter("career_salary").equals(null)) {
-			Career_dto.setCareer_salary(Integer.parseInt(career_salary[i]));
-			}
-		
-			if ( multi.getParameter("career_sort").equals("신입")) {
-				Career_dto.setCareer_kind("");
-				Career_dto.setCareer_position1("");
-				Career_dto.setCareer_position2("");				
-			} 
-			else if ( multi.getParameter("career_sort").equals("경력")) {
-				Career_dto.setCareer_kind(career_kind[i]);
-				Career_dto.setCareer_position1(career_position1[i]);
-				Career_dto.setCareer_position2(career_position2[i]);
-			}			
-			
-			Career_dto.setCareer_resign(career_resign[i]);
-			Career_dto.setCareer_work(career_work[i]);
-			Career_dto.setCareer_content(career_content[i]);
-
-
-			result = dao.updateCareerData( Career_dto );	
-		}
-		int career_sort_date = ((int)(diffDays/365));
-		
-		Map<String, Object> map2 = new HashMap<String, Object>();
-
-		map2.put("career_sort_date", career_sort_date);
-		map2.put("user_history_id", user_history_id );
-		result = dao.updateTotalCareer(map2);	// 총 경력 이력서에 넣기
+		if( ! ( career_comp_name == null || career_comp_name.equals(""))){
+			for(int i=0; i<career_comp_name.length; i++) {
+				Career_dto.setCareer_comp_name(career_comp_name[i]);
+				Career_dto.setCareer_id( Integer.parseInt(multi.getParameter("career_ids"+i)) );
+				Career_dto.setCareer_start_date(career_start_date[i]);
+				Career_dto.setCareer_last_date(career_last_date[i]);
+				Career_dto.setCareer_department(career_department[i]);
+	
+				if(career_start_date[i] != null){
+			       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			       Date beginDate = formatter.parse(career_start_date[i]);
+			       Date endDate = formatter.parse(career_last_date[i]);
+			         
+			        // 시간차이를 시간,분,초를 곱한 값으로 나누면 하루 단위가 나옴
+			        long diff = endDate.getTime() - beginDate.getTime();
+			        diffDays = diffDays + diff / (24 * 60 * 60 * 1000);
+				}
 				
+				if ( multi.getParameter("career_salary").equals("") && multi.getParameter("career_salary").equals(null)) {
+					Career_dto.setCareer_salary(Integer.parseInt("0"));
+				} 
+				else if ( ! multi.getParameter("career_salary").equals("") && ! multi.getParameter("career_salary").equals(null)) {
+				Career_dto.setCareer_salary(Integer.parseInt(career_salary[i]));
+				}
+			
+				if ( multi.getParameter("career_sort").equals("신입")) {
+					Career_dto.setCareer_kind("");
+					Career_dto.setCareer_position1("");
+					Career_dto.setCareer_position2("");				
+				} 
+				else if ( multi.getParameter("career_sort").equals("경력")) {
+					Career_dto.setCareer_kind(career_kind[i]);
+					Career_dto.setCareer_position1(career_position1[i]);
+					Career_dto.setCareer_position2(career_position2[i]);
+				}			
+				
+				Career_dto.setCareer_resign(career_resign[i]);
+				Career_dto.setCareer_work(career_work[i]);
+				Career_dto.setCareer_content(career_content[i]);
+	
+	
+				result = dao.updateCareerData( Career_dto );	
+			}
+			
+			int TOTAL_CAREER = ((int)(diffDays/365));
+			
+			Map<String, Object> map2 = new HashMap<String, Object>();
+
+			map2.put("TOTAL_CAREER", TOTAL_CAREER);
+			map2.put("user_history_id", user_history_id );
+			result = dao.updateTotalCareer(map2);	// 총 경력 이력서에 넣기
+					
+		}
+
 		// 자기소개서 처리부분
 		// 데이터 받기
 		int cnt = Integer.parseInt(multi.getParameter("cnt"));

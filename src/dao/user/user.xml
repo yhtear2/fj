@@ -25,25 +25,24 @@
 			where user_history_id = #{user_history_id}
 	</select>
 	
-	<select id="getContent_school" parameterType="Map" resultType="dto.user.SchoolDataBean">
+	<select id="getContent_school" parameterType="Integer" resultType="dto.user.SchoolDataBean">
 		SELECT 	* 
-		From	FJ_School a, FJ_User b
-		Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
+		From	FJ_School
+		Where	user_history_id = #{user_history_id}
 		
 	</select>
 	
-		<select id="getContent_career" parameterType="Map" resultType="dto.user.CareerDataBean">
+	<select id="getContent_career" parameterType="Integer" resultType="dto.user.CareerDataBean">
 			SELECT 	* 
-			From	FJ_Career a, FJ_User b
-			Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
+			From	FJ_Career
+			Where	user_history_id = #{user_history_id}
 		
 	</select>
 	
-	
-	<select id="getContent_introduce" parameterType="Map" resultType="dto.user.IntroduceDataBean">
+	<select id="getContent_introduce" parameterType="Integer" resultType="dto.user.IntroduceDataBean">
 			SELECT 	* 
-			From	FJ_Introduce a, FJ_User b
-			Where	a.user_history_id = b.user_history_id and a.user_history_id = #{user_history_id}
+			From	FJ_Introduce
+			Where	user_history_id = #{user_history_id}
 	</select>
 
 	<insert id="insertArticle" parameterType="dto.user.UserDataBean"  keyColumn="user_history_id" keyProperty="history_id" useGeneratedKeys="true">

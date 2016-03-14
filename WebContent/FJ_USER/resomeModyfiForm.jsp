@@ -50,7 +50,7 @@
    			<td style="padding-bottom: 1px">
    			
 			
-   				<input class="form-control-hs" type="text" id="postcode" name="postcode" disabled="disabled" style="width: 80px; text-align: center;" value="${address[0]}">
+   				<input class="form-control-hs" type="text" id="postcode" name="postcode" readonly="readonly" style="width: 80px; text-align: center;" value="${address[0]}">
    			</td>
    			<td colspan="2" style="padding-bottom: 1px">
    				<input class="btn btn-default" type="button" style="width: 150px;height: 25px;padding: 2px 10px;" value="우편번호 찾기" onclick="execDaumPostcode()">
@@ -61,7 +61,7 @@
    		<tr>
    			<td style="border-top: none;padding: 1px 8px 1px 8px;"></td>
    			<td colspan="3" style="width: 200px;border-top: none;padding: 1px 8px 1px 8px;">
-   				<input class="form-control-hs" type="text" name="address1" id="address1"  disabled="disabled" value="${address[1]}">
+   				<input class="form-control-hs" type="text" name="address1" id="address1"  readonly="readonly" value="${address[1]}">
    			</td>
    		</tr>
    		<tr>
@@ -190,12 +190,6 @@
             	<input class="btn btn-default" type="file" name="project" id="project">
             </td>
       	</tr>
-      	<tr>
-			<td colspan="2" align="right">   
-     			<input  class="btn btn-default"  type="submit" value="임시저장" style="width:200px" id="user_button">
-     		  	&nbsp;&nbsp;
-     		</td>
-      	</tr>
      </table>
 <!-- 기본정보 끝!! -->
 <br>
@@ -209,6 +203,7 @@
 	<input type="hidden" name="user_history_id" value='${user_history_id}'>
 	<input type="hidden" name="school_size" value="${school_size}">
 	<c:forEach var="i" begin="${1}" end="${school_size}">
+		<input type='hidden' name='school_id0' value='${dto_school[0].school_id}'>
 		<input type='hidden' name='school_id${i}' value='${dto_school[i].school_id}'>
 		<input type='hidden' name='school_kinds${i}' value='${dto_school[i].school_kind}'>
 		<input type='hidden' name='school_start_date_colleges${i}' value='${dto_school[i].school_start_date_college}'>
@@ -294,7 +289,7 @@
 <h4>경력사항</h4>
     <input type="hidden" name="career_count">
     <input type="hidden" name="career_size" value="${career_size}">
-
+	<input type="hidden" name="career_sort" value="${dto_career[0].career_sort}">
 	<table>
 		<tr>
 			<th> 신입 / 경력 </th>
@@ -315,10 +310,10 @@
 			</td>		
 		</tr>	
 	</table>
-	
  	<table class="table" id="career_table" style="display: block;">
- 	<c:if test="${career_size-2 == 0}">
+ 	<c:if test="${career_size-1 == 0}">
  	 <c:forEach var="i" begin="${0}" end="${career_size -1}">
+ 	 	
 		<input type='hidden' name='career_ids${i}' value='${dto_career[i].career_id}'>
  		<tr>
  			<th style="width:200px;">근무기간</th>
@@ -327,14 +322,10 @@
  		<tr>
  			<td rowspan="4">
  				<select class="form-control-hs" style="width: 100px" name="career_kind" onChange="change(this)">				
-					<c:if test="${dto_career[i].career_kind =='퇴사' }">
-						<option value="퇴사" selected="selected">퇴사</option>
-						<option value="재직중">재직중</option>		
-					</c:if>
-					<c:if test="${dto_career[i].career_kind =='재직중' }">
-						<option value="퇴사">퇴사</option>
-						<option value="재직중" selected="selected">재직중</option>		
-					</c:if>
+						<c:if test="${dto_career[i].career_kind =='퇴사' }"><option value="퇴사" selected="selected">퇴사</option> </c:if> 
+						<c:if test="${dto_career[i].career_kind !='퇴사' }"><option value="퇴사">퇴사</option> </c:if>
+						<c:if test="${dto_career[i].career_kind =='재직중' }"><option value="재직중" selected="selected">재직중</option></c:if>
+						<c:if test="${dto_career[i].career_kind !='재직중' }"><option value="재직중">재직중</option></c:if>
 				</select>
 				<br><br>
 				<input class="form-control-hs" type="date" style="width:180px" name="career_start_date" 
