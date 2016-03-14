@@ -32,7 +32,6 @@
 			</div>
 			<div class="form-group-hs">
 				<div style="float: left;">
-				<!-- 입력 막는거 일단 빼 놓음 readonly="readonly" -->
 				<input type="text" name="zipcode" class="form-control" style="width: 300px;float: left;"  placeholder="우편번호 / 회사주소" readonly="readonly">
 			    <input type="button" class="btn btn-default" style="float: right; margin: 0px 0px 10px 200px" onclick="execDaumPostcode()" value="우편번호 검색"> <br>
 			    </div>

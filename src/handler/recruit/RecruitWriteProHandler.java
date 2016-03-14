@@ -69,21 +69,27 @@ public class RecruitWriteProHandler implements Commandhandler{
 		}
 		
 		
+		//이건 쪽지때문에 선언한 변수 2개
+		int max_career = 0;
+		int min_career = 0;
+		
 		// 경력사항 처리
 		// 신입 : -1		// 경력무관 : -2		// 경력은 그냥 경력
 		String career = request.getParameter("career");
 		if( career != null){
 			if (career.equals("신입")){
 				dto.setMax_career(-1);
-				dto.setMin_career(0);
+				dto.setMin_career(-1);
 			}else if( career.equals("경력")){
 				String max_careers[] = request.getParameter("max_career").split("년");
 				String min_careers[] = request.getParameter("min_career").split("년");
-				dto.setMax_career( Integer.parseInt(max_careers[0]) );
-				dto.setMin_career( Integer.parseInt(min_careers[0]) );
+				max_career = Integer.parseInt(max_careers[0]);
+				min_career = Integer.parseInt(min_careers[0]);
+				dto.setMax_career( max_career );
+				dto.setMin_career( min_career );
 			}else if( career.equals("경력무관")){
 				dto.setMax_career(-2);
-				dto.setMin_career(0);
+				dto.setMin_career(-2);
 			}
 		}
 		
@@ -119,14 +125,43 @@ public class RecruitWriteProHandler implements Commandhandler{
 		/** 실시간 쪽지가 가도록 해보자!! **/
 		Map<String, Object> maps = new HashMap<String, Object>();
 		String skills[] = dto.getSkill().split("/");
-		for (int i=0; i<skills.length; i++){
-			maps.put("skill_"+i, "%"+skills[i]+"%");
+		if(skills.length < 5){
+			for (int i=0; i<skills.length; i++){
+				maps.put("skill_"+i, "%"+skills[i]+"%");
+			}
+			for (int i=skills.length; i<6; i++){
+				maps.put("skill_"+i, "%%");
+			}
+		} else{
+			for (int i=0; i<skills.length; i++){
+				maps.put("skill_"+i, "%"+skills[i]+"%");
+			}
 		}
+		
 		maps.put("max_salary", dto.getMax_salary() );
 		maps.put("min_salary", dto.getMin_salary() );
-		List<UserDataBean> email = recruitDao.getRecruitEmail(maps);
-		//System.out.println("리턴받은 리스트의 사이즈 : " +email.size());
+		System.out.println("dto.getMax_salary() : " + dto.getMax_salary());
+		System.out.println("dto.getMin_salary() : " + dto.getMin_salary());
 		
+		maps.put("max_caree", max_career );
+		maps.put("min_caree", min_career );
+		List<UserDataBean> list = recruitDao.getRecruitEmail(maps);
+		String emails = "";
+		if( list != null){
+			for(int i=0; i<list.size(); i++){
+				emails += list.get(i).getEmail() + ",";
+			}
+		}
+		
+		System.out.println("email : " + emails);
+
+		int getRecruitId = recruitDao.getRecruitId() -1;
+		// 쪽지의 구성
+		// 보내는사람 이메일 # 보내는 사람 이름(회사이름) # 쪽지에 들어갈 제목(글제목) # 게시글 아이디 
+		String messageContent = dto.getEmail()+"#"+dto.getName()+"#"+dto.getTitle()+"#"+getRecruitId;
+		
+		map.put("emails", emails);			// 실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
+		map.put("messageContent", messageContent);	// 쪽지 내용
 		
 		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitWritePro");

@@ -179,12 +179,6 @@
             	<input class="btn btn-default" type="file" name="project" id="project">
             </td>
       	</tr>
-      	<tr>
-			<td colspan="2" align="right">   
-     			<input  class="btn btn-default"  type="submit" value="임시저장" style="width:200px" id="user_button">
-     		  	&nbsp;&nbsp;
-     		</td>
-      	</tr>
      </table>
 <!-- 기본정보 끝!! -->
 <br>

@@ -21,6 +21,8 @@ public interface RecruitDao {
 	public List<UserDataBean> getRecruitEmail(Map<String, Object> maps);
 	public int modifyRecruit(RecruitDataBean dto);
 	public int getContent_re();
+	
+	public int getRecruitId();
 
 	
 }

@@ -65,14 +65,19 @@ public class RecruitDBBean implements RecruitDao {
 	}
 	@Override
 	public List<UserDataBean> getRecruitEmail(Map<String, Object> map) {
-		sqlSession.selectList("Recruit.getRecruitEmail", map);
-		return null;
+		return sqlSession.selectList("Recruit.getRecruitEmail", map);
+		
 	}
 	
 	@Override
 	public int modifyRecruit(RecruitDataBean dto) {
 		return sqlSession.update("Recruit.modifyRecruit", dto);
 		
+	}
+
+	@Override
+	public int getRecruitId() {
+		return sqlSession.selectOne("Recruit.getRecruitId");
 	}
 
 

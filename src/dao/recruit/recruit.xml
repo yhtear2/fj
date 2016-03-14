@@ -101,10 +101,12 @@
 	<select id="getRecruitEmail" parameterType="Map" resultType="dto.user.UserDataBean">
 		SELECT 	* 
 		From	FJ_USER
-		Where	#{min_salary} &gt;= want_salary or want_salary &lt;= #{max_salary}
-		<!-- And		skill like '%#{skill}%' -->
+		Where	want_salary &gt;= #{min_salary} and want_salary &lt;= #{max_salary}
+		And		TOTAL_CAREER &gt;= ${min_caree} and TOTAL_CAREER  &lt;= #{max_caree}
+		And		skill like #{skill_1}	And	skill like #{skill_2}	And	skill like #{skill_3}
+		And		skill like #{skill_4}	And	skill like #{skill_5}
 	</select>
-	
+
 	<update id="modifyRecruit" parameterType="dto.recruit.RecruitDataBean">
 		UPDATE 	FJ_RECRUIT
 		SET		title 	=	#{title, jdbcType=VARCHAR}, 	content		=	#{content, jdbcType=VARCHAR},
@@ -123,6 +125,12 @@
 				last_date	=	#{last_date}
 		WHERE	recruit_id = #{recruit_id}
 	</update>
+	
+	<select id="getRecruitId" resultType="Integer">
+		SELECT 	last_number 
+		FROM 	USER_SEQUENCES 
+		WHERE 	SEQUENCE_NAME = UPPER('FJ_RECRUIT_seq')
+	</select>
 </mapper>	
 
 
