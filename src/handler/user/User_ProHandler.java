@@ -68,9 +68,7 @@ public class User_ProHandler implements Commandhandler {
 		army = army1 + "/" + army2 + "/" + army3 + "/" + army4 + "/" + army5 + "/" + army6 + "/" + army7;
 		
 		String postcode = multi.getParameter("postcode");
-		System.out.println("postcode : " + postcode);
 		String address1 = multi.getParameter("address1");
-		System.out.println("address1 : " + address1);
 		String address2 = multi.getParameter("address2");
 		String address = postcode + "/" + address1 + "/" + address2;
 		
@@ -200,7 +198,7 @@ public class User_ProHandler implements Commandhandler {
 		String career_comp_name[] = multi.getParameterValues("career_comp_name");
 		String career_start_date[] = multi.getParameterValues("career_start_date");
 		String career_last_date[] = multi.getParameterValues("career_last_date");
-		String career_sort_date[] = multi.getParameterValues("career_sort_date");
+		//String career_sort_date[] = multi.getParameterValues("career_sort_date");		//근무 개월 계산
 		String career_kind[] = multi.getParameterValues("career_kind");
 		String career_department[] = multi.getParameterValues("career_department");
 		String career_position1[] = multi.getParameterValues("career_position1");
@@ -221,7 +219,7 @@ public class User_ProHandler implements Commandhandler {
 			Career_dto.setUser_history_id(dto.getHistory_id());
 			Career_dto.setCareer_start_date(career_start_date[i]);
 			Career_dto.setCareer_last_date(career_last_date[i]);
-			Career_dto.setCareer_sort_date(career_sort_date[i]);
+			//Career_dto.setCareer_sort_date(career_sort_date[i]);
 			Career_dto.setCareer_department(career_department[i]);
 
 			
@@ -232,12 +230,12 @@ public class User_ProHandler implements Commandhandler {
 			Career_dto.setCareer_salary(Integer.parseInt(career_salary[i]));
 			}
 		
-			if ( multi.getParameter("career_sort").equals("�떊�엯")) {
+			if ( multi.getParameter("career_sort").equals("신입")) {
 				Career_dto.setCareer_kind("");
 				Career_dto.setCareer_position1("");
 				Career_dto.setCareer_position2("");				
 			} 
-			else if ( ! multi.getParameter("career_sort").equals("�떊�엯")) {
+			else if ( multi.getParameter("career_sort").equals("경력")) {
 				Career_dto.setCareer_kind(career_kind[i]);
 				Career_dto.setCareer_position1(career_position1[i]);
 				Career_dto.setCareer_position2(career_position2[i]);

@@ -65,9 +65,9 @@
    		<tr>
    			<th>전화번호</th>
    			<td colspan="3">
-	      		<input class="form-control-hs" type="number" style="width: 80px; height: 30px; text-align: center; padding: 2px;" name="tel1" id="tel1" value="010"> - 
-	       		<input class="form-control-hs" type="number" style="width: 85px; height: 30px; text-align: center; padding: 2px;" name="tel2" id="tel2" max="9999"> -
-	      		<input class="form-control-hs" type="number" style="width: 90px; height: 30px; text-align: center; padding: 2px;" name="tel3" id="tel3" max="9999">
+	      		<input class="form-control-hs" type="text" style="width: 80px; height: 30px; text-align: center; padding: 2px;" name="tel1" id="tel1" value="010"> - 
+	       		<input class="form-control-hs" type="text" style="width: 85px; height: 30px; text-align: center; padding: 2px;" name="tel2" id="tel2" max="9999"> -
+	      		<input class="form-control-hs" type="text" style="width: 90px; height: 30px; text-align: center; padding: 2px;" name="tel3" id="tel3" max="9999">
       		</td>
 
    		</tr>
@@ -278,9 +278,6 @@
 				<br>
 				&nbsp; ~ &nbsp;
 				<input class="form-control-hs" type="date" style="width:180px" name="career_last_date" id="career_last_date" >
-				<br><br>
-				<input class="btn btn-default" type="button" onclick="sort()" value="근무개월 계산"/>
-				<input class="form-control-hs" type="text" style="width:100px" name="career_sort_date" id="career_sort_date">
  			</td>
  			<th style="width:100px">회사명</th>
 			<td colspan="3"><input class="form-control-hs" type="text" name="career_comp_name"></td>

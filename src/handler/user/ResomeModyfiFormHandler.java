@@ -50,6 +50,9 @@ public class ResomeModyfiFormHandler implements Commandhandler {
 		// 경력사이즈 넘기자
 		map.put("career_size", dto_career.size() );
 		
+		// 자기소개서 사이즈 넘기자
+		map.put("introduce_size", dto_introduce.size() );
+		
 		map.put("user_history_id", user_history_id);
 		map.put("dto_user", dto_user);
 		map.put("dto_school", dto_school);

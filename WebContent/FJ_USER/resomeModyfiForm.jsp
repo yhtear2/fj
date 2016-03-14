@@ -5,6 +5,8 @@
 <link href="/fj/FJ_USER/style.css" rel="stylesheet" type="text/css">
 <script src="/fj/FJ_USER/resome.js"></script>
 <script src="/fj/FJ_USER/request.js"></script>
+<script src="/fj/FJ_USER/introduce.js"></script>
+<link href="/fj/FJ_USER/introduce.css" rel="stylesheet" type="text/css">
 
 <!-- 
 		
@@ -82,9 +84,9 @@
    			<td colspan="3">
    			<c:if test='${dto_user.tel != null && dto_user.tel != "" }'>
    				<c:set var="tel" value='${fnc:split( dto_user.tel, "-" )}'/>										
-	      		<input class="form-control-hs" type="number" style="width: 80px; height: 30px; text-align: center; padding: 2px;" name="tel1" id="tel1" value="${tel[0]}"> - 
-	       		<input class="form-control-hs" type="number" style="width: 85px; height: 30px; text-align: center; padding: 2px;" name="tel2" id="tel2" max="9999" value="${tel[1]}"> -
-	      		<input class="form-control-hs" type="number" style="width: 90px; height: 30px; text-align: center; padding: 2px;" name="tel3" id="tel3" max="9999" value="${tel[2]}">
+	      		<input class="form-control-hs" type="text" style="width: 80px; height: 30px; text-align: center; padding: 2px;" name="tel1" id="tel1" value="${tel[0]}"> - 
+	       		<input class="form-control-hs" type="text" style="width: 85px; height: 30px; text-align: center; padding: 2px;" name="tel2" id="tel2" max="9999" value="${tel[1]}"> -
+	      		<input class="form-control-hs" type="text" style="width: 90px; height: 30px; text-align: center; padding: 2px;" name="tel3" id="tel3" max="9999" value="${tel[2]}">
 	      		</c:if>
       		</td>	
 			
@@ -275,7 +277,7 @@
 		           <c:if test="${school_dto0.highschool_kind != '이과계열'}"> <option value="이과계열">이과계열</option> </c:if>      
 		           <c:if test="${school_dto0.highschool_kind == '전문(실업)계열'}"> <option value="전문(실업)계열" selected="selected">전문(실업)계열</option> </c:if>
 		           <c:if test="${school_dto0.highschool_kind != '전문(실업)계열'}"> <option value="전문(실업)계열">전문(실업)계열</option> </c:if>
-		           <c:if test="${school_dto0.highschool_kind == '예체능계열'}"> <option value="예체능계열" sel1ected="selected">예체능계열</option> </c:if>
+		           <c:if test="${school_dto0.highschool_kind == '예체능계열'}"> <option value="예체능계열" selected="selected">예체능계열</option> </c:if>
 		           <c:if test="${school_dto0.highschool_kind != '예체능계열'}"> <option value="예체능계열">예체능계열</option> </c:if>   
          		</select>
       		</td>
@@ -451,11 +453,62 @@
 
 	<div id="career_addFormdiv"></div> <br>      
        
-           
+	<br>
+	<h4> 자기 소개서 </h4>
+	<input type="hidden" name="introduce_size" value="${introduce_size}">
+	
+	<!-- 여기가 폼 하나시작 -->
+	<div id="standardID0">
+	<input type="hidden" name="sub_name_0">
+	<c:forEach var="i" begin="${0}" end="${school_size}">
+		<input type='hidden' name='intro_id${i}' value='${dto_introduce[i].intro_id}'>
+		<input type='hidden' name='intro_titles${i}' value='${dto_introduce[i].intro_title}'>
+		<input type='hidden' name='intro_contents${i}' value='${dto_introduce[i].intro_contents}'>
+	</c:forEach>
+<!--
+	private int intro_id;				// 자기 id
+	private String intro_title;			// 제목
+	private String intro_contents;		// 내용
+-->
+			<!-- 처음 보여지는 디폴트 값 -->
+			<div id="sub_name0"  class="subject">
+				<div id="sub_name_0" class="subject">자기소개</div>
+				<div class="subject"><input type="button" class="btn btn-default" value="변경" name="modify" onclick="sub_name_modify('0')"
+					style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+				></div>
+			</div>	
+			<!-- 변경을 누르면 나타나는 입력 폼 -->
+			<div id="sub_change0" class="subject" style="display:none;">
+				<input type="text" name="sub_change_name0" autofocus="autofocus" 
+						style="background: #f2f7ff; border: 2px;" >
+				<input type="button" value="확인" class="btn btn-default" onclick="sub_name_ok('0')"
+					style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
+				>
+				<input type="button" value="취소" class="btn btn-default" onclick="sub_name_cancel('0')"
+					style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;border: 1px solid #ff5d5d;"	> 
+			</div>
+		<div style="margin-bottom: 10px;"></div>
+		<!-- 내용 입력하는 곳 -->
+		<div style="margin-top: 10px;"> 
+			<textarea name="contents0" rows="13" cols="104"></textarea> 
+		</div>
+		<div align="right"> 
+			<input type="button" class="btn btn-default" value="추가" onclick="add_introduce()"
+				style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;border: 1px solid #0059b3;"	>
+			<input type="button" class="btn btn-default" value="삭제" onclick="del_introduce('0')"
+				style="font-style:'돋움'; font-size:13px; color:#ff5d5d; background-color:#f8f8f8;border: 1px solid #ff5d5d;"
+			> 
+			&nbsp; &nbsp; 
+		</div>
+	</div>
+
+
 	<table class="table">
    		<tr>
-      		<td align="right">   
-      			<input class="btn btn-default"  type="submit" value="저장하고 다음단계로" style="width:200px" id="school_save">
+      		<td align="right" style="border: 0px;">   
+      			<input type="submit" class="btn btn-default" style="width:200px; font-style:'돋움'; font-size:13px; 
+      				color:white; background-color:#0059b3; border: 1px solid #0059b3;" value="수정사항 저장">
+				<input type="hidden" name="cnt"> 
       			&nbsp; &nbsp; 
       		</td>
    		</tr>

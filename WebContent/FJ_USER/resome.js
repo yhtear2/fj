@@ -680,9 +680,19 @@ $(document).ready(function() {
 	
 	// ▼▼▼▼ 경력 ▼▼▼▼
 	document.resome.career_count.value = $('input[name=career_size]').val();
-
 	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 	
+	// ▼▼▼▼ 자기소개서 ▼▼▼▼
+	var introduce_size = $('input[name=introduce_size]').val();
+	for( var i=0; i<introduce_size; i++){		
+		$('div[id=sub_name_'+i+']').text( $('input[name=intro_titles'+i+']').val() );
+		$('textarea[name=contents'+i+']').val( $('input[name=intro_contents'+i+']').val() );
+		
+		if( i < introduce_size -1 ){
+			add_introduce();
+		}
+	}
 	
+	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 });
 
