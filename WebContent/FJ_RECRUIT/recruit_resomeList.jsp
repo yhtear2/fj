@@ -6,8 +6,11 @@
 
 
 function delete_cacel() {
-
 	
+	 var fm = document.getElementById('recruit_resomelistdel');
+
+	fm.submit();
+
 }
 
 function res() {
@@ -16,10 +19,23 @@ function res() {
 		
 
  	var cookie_email = document.getElementById('email').value;
- 	var dto_email =document.getElementById('re_email').value;
-
  	
-    	if(dto_email = cookie_email) {
+ 	var dto_email =null;
+ 	 	
+ 	if(document.getElementsByName('re_email').value = "undefined") {
+ 		
+ 		dto_email = "없는값임";
+ 		
+ 	} else if(document.getElementsByName('re_email').value != "undefined") {
+ 	
+ 		dto_email = document.getElementById('re_email').value;
+ 	
+ 	}
+
+ 	alert(cookie_email);
+ 	alert(dto_email);
+ 	
+    	if(document.getElementById('re_email').value = document.getElementById('email').value) {
     		
     		alert("이미 지원하셨습니다. 지원 취소후 다시 지원해주시기 바랍니다.");
     		
@@ -83,18 +99,26 @@ function res() {
 
 </c:forEach>
  </table>
+ </form>
  
+<form name="recruit_resomelistdel"  id="recruit_resomelistdel" method="post" action="recruit_resomeListDel_Pro.do">
+
  <table class="table table-hover" style="margin-left: 20px; width:400px">
   <c:forEach var="rec_dto" items="${get_history}" varStatus="status">
+  
  	<tr>
  		<th>		 
  		</th>
  	 		 <td>
- 	 		  <input  class="create btn btn-success btn-wide pull-right"  type="button" value="지원취소하기" onclick="">
  	 		 
- 	 		 <input  class="create btn btn-success btn-wide pull-right"  type="button" value="창 닫기" onclick="close_window()"></td>
+ 	 		 
  	</tr>
  	</c:forEach>
+ 	<tr>
+ 	 	 		<td>  	 		  <input  class="create btn btn-success btn-wide pull-right"  value="지원취소하기" onclick="delete_cacel()"> 	 		 <input  class="create btn btn-success btn-wide pull-right"  type="button" value="창 닫기" onclick="close_window()">
+ 	 	 		</td>
+
+ 	</tr>
  	
  </table>
 </form>

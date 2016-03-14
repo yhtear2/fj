@@ -33,6 +33,12 @@ public class RecruitDBBean implements RecruitDao {
 	public int insertRecruit_re(Recruit_LogDataBean dto) {
 		return sqlSession.insert("Recruit.insertRecruit_re", dto);
 	}
+	
+	@Override 
+	public int deleteArticle( int user_history_id ) {		
+		return  sqlSession.delete("Recruit.deleteArticle", user_history_id);
+	}
+	
 	@Override
 	public RecruitDataBean getContent(int recruit_id) {
 		return sqlSession.selectOne("Recruit.getContent", recruit_id);
