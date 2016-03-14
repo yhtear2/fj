@@ -47,65 +47,68 @@ function checkCheckbox1(frm,obj,num) {
 // recruitWriteForm에서 섬잇을 누르면 실행되는 메소드
 function recruitwritecheck(){
 	// 일단 예외처리는 안할래....귀.찮....;;
-	/*
-	var chtitle = document.recruitWriteForm.title.value;
-	var chwork_area = document.getElementsByName("work_area");
-	var charea_true = ""; 
-	for(var i=0; i<chwork_area.length ; i++){
-		if(chwork_area[i].checked == true){  
-			chwork_true += chwork_area[i].value;   
-		}
+	if($('input[name=title]').val()=="") {
+		alert("제목을 입력해주세요"); 
+		return false;
 	}
-	
-	var chmin_salary = document.recruitWriteForm.min_salary.value;
-	var chmax_salary = document.recruitWriteForm.max_salary.value;
-	var chwork_type = document.getElementsByName("work_type");
-	var chtype_true = "";
-	for(var i=0; i<chwork_type.length ; i++){
-		if(chwork_type[i].checked == true){  
-			chtype_true += chwork_type[i].value;   
-		}
+	if($('input[name=work_area]:checked').val() == null) {
+		alert("근무지역을 선택해주세요"); 
+		return false;
 	}
-	var chwork_day = document.recruitWriteForm.work_day.value;
-	var chedu = document.recruitWriteForm.edu.value;
-	var chgender = document.recruitWriteForm.gender.value;
-	var chmin_age = document.recruitWriteForm.min_age.value;
-	var chmax_age = document.recruitWriteForm.max_age.value;
-	var chage = document.recruitWriteForm.age.value;
-	var chcareer = document.recruitWriteForm.career.value;
-	var chmin_career = document.recruitWriteForm.min_career.value;
-	var chmax_career = document.recruitWriteForm.max_career.value;
-	var chbusiness_part = document.recruitWriteForm.business_part.value;
-	var chskill = document.recruitWriteForm.skill.value;
-	var chpeople_count = document.recruitWriteForm.people_count.value;
-	var chstart_date = document.recruitWriteForm.start_date.value;
-	var chend_date = document.recruitWriteForm.end_date.value;
-	var chcontent = $('input[name=content]').val( $('#summernote').summernote('code') );
-	
-	if( chtitle == "" ) {
-		alert("제목을 입력해주세요");
+	if($('select[name=min_salary]').val() > $('select[name=max_salary]').val()) {
+		alert("최소연봉이 최대연봉보다 높습니다");
 		return false;
-	} else if( charea_true == "") {
-		alert("근무지역을 선택해주세요");
+	}
+	if($('input[name=work_type]:checked').val() == null) {
+		alert("근무형태를 선택해주세요"); 
 		return false;
-	} else if( chmin_salary.substr(0,3) > chmax_salary.substr(0,3) ) {
-		alert("연봉이 잘 못 선택되었습니다");
+	}
+	if($('input[name=work_day]:checked').val() == null) {
+		alert("근무요일을 선택해주세요"); 
 		return false;
-	} else if( chtype_true == "") {
-		alert("근무형태를 선택해주세요");
+	}
+	if($('input[name=gender]:checked').val() == null) {
+		alert("성별을 선택해주세요"); 
 		return false;
-	} else if( chwork_day == "") {
-		alert("근무요일을 선택해주세요");
+	}
+	if($('input[name=career]:checked').val() == null) {
+		alert("경력 유무를 선택해주세요");
 		return false;
-	} else if( chedu == "") {
-		alert("학력을 선택해주세요");
+	}
+	if($('input[name=business_part]').val() == "") {
+		alert("담당업무를 입력해주세요");
 		return false;
-	} else if( chgender == "") {
-		alert("성별을 선택해주세요");
+	}
+	if($('input[name=skill]').val() == "") {
+		alert("필요 기술을 선택해주세요");
 		return false;
-	}*/
+	}
+	if($('input[name=people_count]').val() == "") {
+		alert("채용인원을 입력해주세요");
+		return false;
+	}
+	if($('input[name=start_date]').val() == "") {
+		alert("채용 시작일을 선택해주세요");
+		return false;
+	}
+	if($('input[name=end_date]').val() == "") {
+		alert("채용 마감일을 선택해주세요");
+		return false;
+	}
+	if($('input[name=incharge]').val() == "") {
+		alert("담당자를 입력해주세요");
+		return false;
+	}
+	if($('input[name=tel]').val() == "") {
+		alert("연락처를 입력해주세요");
+		return false;
+	}
 	// 콘텐츠 내용에 쓴거 넘기기 위해서 이렇게~
 	$('input[name=content]').val( $('#summernote').summernote('code') );
+	if($('input[name=content]').val() == "") {
+		alert("컨텐츠를 입력해주세요");
+		return false;
+	}
 }
 
 
