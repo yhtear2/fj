@@ -413,9 +413,6 @@ function career_addForm() {
     str +="			<br>";
     str +="			&nbsp; ~ &nbsp;";
     str +="			<input class='form-control-hs' type='date' style='width:180px' name='career_last_date' id='career_last_date' >";
-    str +="			<br><br>";
-    str +="			<input class='btn btn-default' type='button' onclick='sort()' value='근무개월 계산'>";
-    str +="			<input class='form-control-hs' type='text' style='width:100px' name='career_sort_date' id='career_sort_date'>";
     str +="		</td>";
     str +="		<th style='width:100px'>회사명</th>";
     str +="		<td colspan='3'><input class='form-control-hs' type='text' name='career_comp_name'></td>";
@@ -682,6 +679,9 @@ $(document).ready(function() {
 	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲	
 	
 	// ▼▼▼▼ 경력 ▼▼▼▼
+	document.resome.career_count.value = $('input[name=career_size]').val();
+
+	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 	
 	
 });

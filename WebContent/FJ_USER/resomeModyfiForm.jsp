@@ -298,19 +298,33 @@
        <!-- 경력사항 입력 부분 -->
 <h4>경력사항</h4>
     <input type="hidden" name="career_count">
+    <input type="hidden" name="career_size" value="${career_size}">
+
 	<table>
 		<tr>
 			<th> 신입 / 경력 </th>
 			<td> 
+			<c:if test="${career_size-1 == 0}">
 				&nbsp;&nbsp;&nbsp;&nbsp;신입 : 
-				<input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()" checked="checked"> 
+				<input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()" checked="checked">
 				&nbsp;&nbsp;&nbsp;	경력 : 
 				<input type="radio" name="career_sort" id="career_sort" value="경력" onclick="chk()">
+			</c:if>
+			<c:if test="${career_size-1 != 0}">
+				&nbsp;&nbsp;&nbsp;&nbsp;신입 : 
+				<input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()">
+				&nbsp;&nbsp;&nbsp;	경력 : 
+				<input type="radio" name="career_sort" id="career_sort" value="경력" onclick="chk()" checked="checked">
+			</c:if>
+				
 			</td>		
 		</tr>	
 	</table>
- 
- 	<table class="table" id="career_table" style="display: none;">
+	
+ 	<table class="table" id="career_table" style="display: block;">
+ 	<c:if test="${career_size-2 == 0}">
+ 	 <c:forEach var="i" begin="${0}" end="${career_size -1}">
+		<%-- <input type='hidden' name='school_kinds${i}' value='${dto_school[i].school_kind}'> --%>
  		<tr>
  			<th style="width:200px;">근무기간</th>
  			<th style="width:450px;" colspan="4">상세경력</th>
@@ -318,70 +332,97 @@
  		<tr>
  			<td rowspan="4">
  				<select class="form-control-hs" style="width: 100px" name="career_kind" onChange="change(this)">				
-					<option value="퇴사">퇴사</option>
-					<option value="재직중">재직중</option>		
-				</select>	
+					<c:if test="${dto_career[i].career_kind =='퇴사' }">
+						<option value="퇴사" selected="selected">퇴사</option>
+						<option value="재직중">재직중</option>		
+					</c:if>
+					<c:if test="${dto_career[i].career_kind =='재직중' }">
+						<option value="퇴사">퇴사</option>
+						<option value="재직중" selected="selected">재직중</option>		
+					</c:if>
+				</select>
 				<br><br>
-				<input class="form-control-hs" type="date" style="width:180px" name="career_start_date" id="career_start_date">
+				<input class="form-control-hs" type="date" style="width:180px" name="career_start_date" 
+					id="career_start_date" value="${dto_career[i].career_start_date}">
 				<br>
 				&nbsp; ~ &nbsp;
-				<input class="form-control-hs" type="date" style="width:180px" name="career_last_date" id="career_last_date" >
-				<br><br>
-				<input class="btn btn-default" type="button" onclick="sort()" value="근무개월 계산"/>
-				<input class="form-control-hs" type="text" style="width:100px" name="career_sort_date" id="career_sort_date">
+				<input class="form-control-hs" type="date" style="width:180px" name="career_last_date" 
+					id="career_last_date"  value="${dto_career[i].career_last_date}">
  			</td>
  			<th style="width:100px">회사명</th>
-			<td colspan="3"><input class="form-control-hs" type="text" name="career_comp_name"></td>
+			<td colspan="3"><input class="form-control-hs" type="text" name="career_comp_name" value="${dto_career[i].career_comp_name}"></td>
  		</tr>
  		<tr>
  			<th>부서명 </th>
 			<td colspan="3">
-				<input class="form-control-hs" type="text" style="width: 120px" name="career_department">
+				<input class="form-control-hs" type="text" style="width: 120px" name="career_department" value="${dto_career[i].career_department}">
 				&nbsp;
 				<select class="form-control-hs" style="width: 110px" name="career_position1">				
-					<option value="직급선택">직급선택</option>
-					<option value="사원(연구원)">사원(연구원)</option>
-					<option value="주임/계장(연구원)">주임/계장(연구원)</option>		
-					<option value="대리(주임연구원)">대리(주임연구원)</option>
-					<option value="과장(선임연구원)">과장(선임연구원)</option>
-					<option value="차장(수석연구원)">차장(수석연구원)</option>
-					<option value="부장(연구소장)">부장(연구소장)</option>
-					<option value="임원">임원</option>
+					<c:if test="${dto_career[i].career_position1 == '직급선택' }"> <option value="직급선택" selected="selected">직급선택</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '직급선택' }"> <option value="직급선택">직급선택</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '사원(연구원)' }"> <option value="사원(연구원)" selected="selected">사원(연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '사원(연구원)' }"> <option value="사원(연구원)">사원(연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '주임/계장(연구원)' }"> <option value="주임/계장(연구원)" selected="selected">주임/계장(연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '주임/계장(연구원)' }"> <option value="주임/계장(연구원)">주임/계장(연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '대리(주임연구원)' }"> <option value="대리(주임연구원)" selected="selected">대리(주임연구원)</option> </c:if>		
+					<c:if test="${dto_career[i].career_position1 != '대리(주임연구원)' }"> <option value="대리(주임연구원)">대리(주임연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '과장(선임연구원)' }"> <option value="과장(선임연구원)" selected="selected">과장(선임연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '과장(선임연구원)' }"> <option value="과장(선임연구원)">과장(선임연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '차장(수석연구원)' }"> <option value="차장(수석연구원)" selected="selected">차장(수석연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '차장(수석연구원)' }"> <option value="차장(수석연구원)">차장(수석연구원)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '부장(연구소장)' }"> <option value="부장(연구소장)" selected="selected">부장(연구소장)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '부장(연구소장)' }"> <option value="부장(연구소장)">부장(연구소장)</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 == '임원' }"> <option value="임원" selected="selected">임원</option> </c:if>
+					<c:if test="${dto_career[i].career_position1 != '임원' }"> <option value="임원">임원</option> </c:if>
 				</select>
 				&nbsp;
 				<select class="form-control-hs" style="width: 110px" name="career_position2">				
-					<option value="직책선택">직책선택</option>
-					<option value="팀원">팀원</option>
-					<option value="팀장">팀장</option>		
-					<option value="매니저">매니저</option>
-					<option value="파트장">파트장</option>
-					<option value="실장">실장</option>
-					<option value="지점장">지점장</option>
-					<option value="지사장">지사장</option>
-					<option value="원장">원장</option>
-					<option value="국장">국장</option>
-					<option value="본부장">본부장</option>
-					<option value="센터장">센터장</option>
-					<option value="공장장">공장장</option>
-					<option value="그룹장">그룹장</option>
+					<c:if test="${dto_career[i].career_position2 == '직책선택' }"> <option value="직책선택" selected="selected">직책선택</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '직책선택' }"> <option value="직책선택">직책선택</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '팀원' }"><option value="팀원" selected="selected">팀원</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '팀원' }"><option value="팀원">팀원</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '팀장' }"><option value="팀장" selected="selected">팀장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '팀장' }"><option value="팀장">팀장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '매니저' }"><option value="매니저" selected="selected">매니저</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '매니저' }"><option value="매니저">매니저</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '파트장' }"><option value="파트장" selected="selected">파트장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '파트장' }"><option value="파트장">파트장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '실장' }"><option value="실장" selected="selected">실장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '실장' }"><option value="실장">실장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '지점장' }"><option value="지점장" selected="selected">지점장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '지점장' }"><option value="지점장">지점장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '지사장' }"><option value="지사장" selected="selected">지사장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '지사장' }"><option value="지사장">지사장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '원장' }"><option value="원장" selected="selected">원장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '원장' }"><option value="원장">원장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '국장' }"><option value="국장" selected="selected">국장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '국장' }"><option value="국장">국장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '본부장' }"><option value="본부장" selected="selected">본부장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '본부장' }"><option value="본부장">본부장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '센터장' }"><option value="센터장" selected="selected">센터장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '센터장' }"><option value="센터장">센터장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '공장장' }"><option value="공장장" selected="selected">공장장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '공장장' }"><option value="공장장">공장장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 == '그룹장' }"><option value="그룹장" selected="selected">그룹장</option> </c:if>
+					<c:if test="${dto_career[i].career_position2 != '그룹장' }"><option value="그룹장">그룹장</option> </c:if>
 				</select>			
 			</td>
  		</tr>
  		<tr>
  			<th>담당업무(언어)</th>
 			<td style="width: 80px">
-				<input class="form-control-hs" type="text" style="width: 150px" name="career_work">
+				<input class="form-control-hs" type="text" style="width: 150px" name="career_work" value="${dto_career[i].career_work}">
 			</td>
 			<th style="width:100px;margin-left: 10px;" align="right">급여/연봉</th>
 			<td colspan="2">
-				<input class="form-control-hs" type="number" style="width: 70px;text-align: center;" name="career_salary" placeholder="숫자">
+				<input class="form-control-hs" type="number" style="width: 70px;text-align: center;" name="career_salary" placeholder="숫자" value="${dto_career[i].career_salary}">
 				만원
 			</td>
  		</tr>
  		<tr>
 			<th>퇴사사유 </th>
 			<td colspan="4">
-				<input class="form-control-hs" type="text" name="career_resign">
+				<input class="form-control-hs" type="text" name="career_resign" value="${dto_career[i].career_resign}">
 			</td>
 		</tr>
 		<tr>
@@ -389,7 +430,7 @@
 		</tr>
 		<tr>
 			<td colspan="6">
-				<textarea name="career_content" rows="7" cols="90"></textarea>
+				<textarea name="career_content" rows="7" cols="90">${dto_career[i].career_content}</textarea>
 			</td>
 		</tr>	
 		<tr>	
@@ -404,6 +445,8 @@
 
            </td>
 		</tr>
+	</c:forEach>
+	</c:if>
 	</table>	  
 
 	<div id="career_addFormdiv"></div> <br>      

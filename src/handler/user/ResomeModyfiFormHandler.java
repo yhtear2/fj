@@ -45,9 +45,10 @@ public class ResomeModyfiFormHandler implements Commandhandler {
 			SchoolDataBean name = dto_school.get(i);
 			map.put("school_dto"+i, name);
 		}
-		map.put("school_size", dto_school.size());
+		map.put("school_size", dto_school.size() );
 		
-		// 
+		// 경력사이즈 넘기자
+		map.put("career_size", dto_career.size() );
 		
 		map.put("user_history_id", user_history_id);
 		map.put("dto_user", dto_user);
