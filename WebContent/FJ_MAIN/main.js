@@ -5,8 +5,9 @@ $(function(){
 	// 처음 메인화면에서 클릭 했을때 보여지는 화면
 	if( $('.m').val() == "main" ) {
 		// 클릭하면 이벤트 발생
+		var idx = "";
 		$('.main_submanu').on('click',function() {
-			var idx = $('.main_submanu').index($(this));
+			idx = $('.main_submanu').index($(this));
 			if(	$('.menu_status').val() == 0) {
 				$('.main_menu').stop().animate({'width':'50px'}, function(){
 					$('.main_menu').stop().animate({'width':'50px'});
@@ -14,11 +15,14 @@ $(function(){
 					$('.main_submanu').css({'text-align':'left'});
 					$('.main_menu2').eq(idx).css({'z-index':'2'});
 					$('.menu_status').val(1);
-				});
+				})
 				$('.main_submanu').stop().animate({'padding-left':'15px'});
 				//$('#logo').stop().animate({'width':'30px'}).fadeOut();
 				$('#logo').css({'display':'none'});
 				$('#logo_small').stop().fadeIn();
+				$('.main_login').css({'display':'none'});
+				$('.main_singup').css({'display':'none'});
+				$('.main_signsub').stop().fadeIn();
 				$('.logout').stop().animate({'left':'22px'});
 				$('.messageicon').stop().animate({'left':'22px'});
 			} else { 
@@ -29,6 +33,9 @@ $(function(){
 				}).animate({'width':'50px'});
 			}
 		});
+		/*.on('click',function(){
+			window.location.href='messageList.do';
+		});*/
 	} else {
 	// 이미 서브메뉴에 들어가 있을때 보여지는 화면
 		var this_page = 0;
@@ -37,6 +44,11 @@ $(function(){
 		if($('.m').val() == 'board') this_page = 2;
 		if($('.m').val() == 'recruit') this_page = 3;
 		$('.main_menu').css({'width':'50px'});
+		$('#logo').css({'display':'none'});
+		$('#logo_small').css({'display':'inline'});
+		$('.main_login').css({'display':'none'});
+		$('.main_singup').css({'display':'none'});
+		$('.main_signsub').css({'display':'inline'})
 		$('#logo').stop().css({'width':'30px'});
 		$('.logout').css({'left':'22px'});
 		$('.messageicon').css({'left':'22px'});

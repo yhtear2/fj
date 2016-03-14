@@ -30,10 +30,14 @@
 				<!-- 로그인 X일 때 -->
 				<c:if test="${sessionScope.memId == null}">
 				<div class="main_login" onclick="window.location='joinMain.do'">
-					<img src="${images}/main_logou_up.png" class="images_main"> Login
+					<img src="${images}/main_logou_up.png" class="images_main"> <span>Login</span>
 				</div>
 				<div class="main_singup" onclick="window.location='joinInputForm.do'">
-					<img src="${images}/main_sign_up.png" class="images_main"> SingUp
+					<img src="${images}/main_sign_up.png" class="images_main"> <span>SingUp</span>
+				</div>
+				<div class="main_signsub">
+					<a href="joinMain.do"><img src="${images}/main_logou_up.png" class="images_main"></a>
+					<a href="joinInputForm.do"><img src="${images}/main_sign_up.png" class="images_main"></a>
 				</div>
 				</c:if>
 				<!-- 로그인 O일 때 -->
@@ -62,8 +66,14 @@
 		</div>
 		<!-- main_menu2는 사이드바의 상세메뉴 - 평소에는 z-index:0으로 숨겨져있다 -->
 		<div class="main_menu2">
-			<h3>쪽지함</h3>
-			<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			<c:if test="${sessionScope.memId == null}">
+				<h3>로그인</h3>
+				<a href="#" onclick="window.location='joinMain.do'">로그인 해주세요</a>
+			</c:if>
+			<c:if test="${sessionScope.memId != null}">
+				<h3>쪽지함</h3>
+				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			</c:if>
 		</div>
 		<div class="main_menu2">
 			<!-- 개인회원, 기업회원, 관리자가 서로 다른 메뉴가 나오게 변경 -->
@@ -71,23 +81,25 @@
 				<h3>로그인</h3>
 				<a href="#" onclick="window.location='joinMain.do'">로그인 해주세요</a>
 			</c:if>
-			<c:if test="${sessionScope.member_flag == 1}">
-				<h3>MyPage</h3>
-				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
-				<a href="#" onclick="window.location='resome_list.do'">이력서 관리</a>
-				<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
-			</c:if>
-			<c:if test="${sessionScope.member_flag == 2}">
-				<h3>MyPage</h3>
-				<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
-				<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
-				<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
-				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
-			</c:if>
-			<c:if test="${sessionScope.member_flag == 3}">
-				<h3>Admin</h3>
-				<a href="#" onclick="window.location='memberManagementList.do'">회원관리</a>
-				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+			<c:if test="${sessionScope.memId != null}">
+				<c:if test="${sessionScope.member_flag == 1}">
+					<h3>MyPage</h3>
+					<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
+					<a href="#" onclick="window.location='resome_list.do'">이력서 관리</a>
+					<a href="#" onclick="window.location='main.do'">입사지원 현황</a>
+				</c:if>
+				<c:if test="${sessionScope.member_flag == 2}">
+					<h3>MyPage</h3>
+					<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
+					<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
+					<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
+					<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+				</c:if>
+				<c:if test="${sessionScope.member_flag == 3}">
+					<h3>Admin</h3>
+					<a href="#" onclick="window.location='memberManagementList.do'">회원관리</a>
+					<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+				</c:if>
 			</c:if>
 		</div>
 		<div class="main_menu2">
@@ -97,8 +109,6 @@
 			<a href="#" onclick="window.location='searchboardlist.do?category=사는얘기'">사는얘기</a>
 			<a href="#" onclick="window.location='searchboardlist.do?category=정보나눔'">정보나눔</a>
 			<a href="#" onclick="window.location='searchboardlist.do?category=스터디'">스터디</a>
-			
-			
 		</div>
 		<div class="main_menu2">
 			<h3>채용공고</h3>
