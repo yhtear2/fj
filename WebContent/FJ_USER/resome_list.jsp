@@ -30,27 +30,31 @@
 			  
 			<!-- 지울 예정 -->
             <div class="nav" role="navigation"> 
+            	<!--  
                 <a href="/fj/resome.do" class="create btn btn-success btn-wide pull-right" >
                 <i class="fa fa-pencil"></i> 
-                	이력서 작성 </a>
-                
-                <h4>이력서 게시판</h4>   
+                	이력서 작성 </a>  -->
+                <br> 
+                <br>
+               
+                <h4 style="text-indent: 15px">이력서 게시판</h4>   
                 <div class="category-filter-wrapper">   
                 <!-- 아래 action은 검색 action  -->
                 
                 	<!-- 지울 예정 -->
+                	<!--  
                      <form action="" method="get" name="category-filter-form" id="category-filter-form">  
                         <div class="category-filter-query pull-right">
                             <div class="input-group input-group-sm">
                                 <input type="search" name="query" class="form-control" placeholder="검색어" value=""> 
-                                <span class="input-group-btn">   
+                                <span class="input-group-btn">   --> 
                                 <!-- 검색버튼 -->
-                                	
+                                	<!--  
                                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button> 
                                     
                                 </span>  
                             </div> 
-                        </div>
+                        </div> -->
                         <!-- ▲ 여기까지 검색어 활성창 div  -->
                         
                         <!-- 순으로 리스트를 출력하려는데 아직 미구현  -->
@@ -63,11 +67,11 @@
                             <li><a href="/fj/boardlist.do?sort=viewCount&amp;order=desc" data-sort="viewCount" data-order="desc" class="category-sort-link ">조회순</a></li>
                       	-->
                         </ul> 
-                        
+                        <!--  
                         <input type="hidden" name="sort" id="category-sort-input" value="id">   
                         <input type="hidden" name="order" id="category-order-input" value="desc">
-                    </form>
-                </div>   
+                    </form> -->
+                </div>    
 			 </div>
 			 
             <div class="panel panel-default">
@@ -83,7 +87,7 @@
             </div>
             
           
-	
+	    
 <!-- resome_list test (수정자 외 건들지 말 것) -->
 <!-- 여기서 부터 이력서 작성시 리스트로 출력되는 곳  -->
 <html>

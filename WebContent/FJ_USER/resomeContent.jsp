@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/defaultSetting.jsp"%>
-
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- 폼 세팅구간 (지우지 마세요) -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,10 +13,10 @@
 <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/pngHack.mini.js"></script>
 
 <!-- div 시작점  -->
-<div class="resume">
+<div class="resume" style="margin:50px" >
             <!-- header (top icon & description) -->
             <div id="resume_header">
-    <div class="item-header">
+    <div class="item-header">   
     <!--  
         <div class="sec-btn-left">
                         <span id="scrap_btn" style="display:none">
@@ -70,7 +70,7 @@
             <th>보유기술</th>
             <td><label> ${dto.skill} </label></td>
             <th>희망연봉</th> 
-            <td> ${dto.want_salary} </td>
+            <td> ${dto.want_salary}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(단위 : 만원)</td>
         </tr>
     </tbody></table>
 </div>
@@ -98,7 +98,7 @@
                     <th>이름</th>
                     <td>
                     	${dto.kor_name} 
-                     <span class="res-cut">  </span> ${dto.eng_name} 
+                     <span class="res-cut">  </span> &nbsp;(${dto.eng_name})
                                                  
                     </td>
                     <th>생년월일</th>
@@ -107,7 +107,9 @@
                                 <tr>
                     <th>주소</th>
                     <td colspan="3">
-                     	${dto.address} 
+                    <c:forEach var="address" items="${fn:split(dto.address,'/')}">
+                     	${address} 
+                     </c:forEach>
                     </td>
                 </tr>
                 <tr>
@@ -128,8 +130,10 @@
                          	<c:if test='${dto.army != null && dto.army != "" }'>										
 								<c:set var="e" value='${fnc:split( dto.army, "/" )}'/>	
 								${e[0]}   
-           						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp; 복무기간 :  ${e[1]} &nbsp;&nbsp; - &nbsp;&nbsp; ${e[2]}  <br>
-									${e[3]}&nbsp;&nbsp; /&nbsp;&nbsp; ${e[4]}&nbsp;&nbsp; /&nbsp;&nbsp;${e[5]}&nbsp;&nbsp; /&nbsp;&nbsp; ${e[6]}
+           						 &nbsp;&nbsp;/&nbsp;&nbsp; 복무기간 :  ${e[1]} &nbsp;&nbsp; - &nbsp;&nbsp; ${e[2]}  <br>
+									${e[3]}&nbsp;&nbsp; /&nbsp;&nbsp; ${e[4]}&nbsp;&nbsp; /&nbsp;&nbsp;${e[5]}&nbsp;&nbsp; 
+									/&nbsp;&nbsp; ${e[6]}
+								
 							</c:if> 
                        </span>
                     </td>
@@ -174,11 +178,17 @@
                     <th>학교명</th>
                     <th>전공</th>
                     <th>학점</th>
-                </tr>
-                                                                               <tr>
-                        <td> ${sc_dto.school_start_date_high} - ${sc_dto.school_last_date_high} &nbsp;&nbsp;&nbsp;&nbsp;
-         		 ${sc_dto.school_college_high} 
-         				</td>
+                </tr>   
+                       <tr>
+                        
+                        <td> ${sc_dto.school_start_date_high} - 
+                       
+                        ${sc_dto.school_last_date_high} &nbsp;&nbsp;&nbsp;&nbsp;
+                       
+                        	 ${sc_dto.school_college_high}
+         				 	 
+         				</td> 
+         				 
          		 		<!--  
                         <td class="center-td">
                         		구분 dto 부르기 (졸업/편입 등)
@@ -186,12 +196,17 @@
                         
                         <!-- 학교명 -->
                         <td>
-                        ${sc_dto.school_name_high} &nbsp;&nbsp;&nbsp;/ &nbsp;&nbsp;&nbsp; ${sc_dto.highschool_kind}
+                        
+                        ${sc_dto.school_name_high} &nbsp;&nbsp;&nbsp;/ &nbsp;&nbsp;&nbsp; 
+                        ${sc_dto.highschool_kind}
+                     	
                        </td>
                        
                       	 <!-- 전공 -->
                         <td style="">
+                        
                         ${sc_dto.school_major}
+                       
                          </td>
                         <td class="center-td">
                        		-
@@ -210,15 +225,19 @@
                         <td class="center-td">
                         		구분 dto 부르기 
                         </td> -->
-                        
+                           
                         <!-- 대학교명 -->
                         <td>
+                       
                         		${sc_dto.school_name_college} 
-                        </td>
+                      
+                        </td>   
                         
                         <!-- 전공 -->
                         <td style="">   
+                        
                         	    ${sc_dto.school_major} 
+                       	
                         </td>
                         
                         <!-- 학점 --> 
@@ -258,15 +277,18 @@
                 <!--  -->
               
                 <!--  
-                <td class="center-td">합불 dto </td> -->
+                <td class="center-td">합불 dto </td> -->   
                 
                 <c:if test='${dto.license != null && dto.license != "" }'>	
       			<c:forTokens var="e" items='${dto.license}' delims="/">
       				<c:forTokens var="k" items='${e}' delims="-">
+      				
       				 <td class="center-td" style="text-align:center" > 
+      				 
       				  ${k}
       				 
       					</td>
+      					
       				</c:forTokens>		
       				  <br>
       			</c:forTokens>
