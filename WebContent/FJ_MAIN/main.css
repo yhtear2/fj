@@ -8,8 +8,7 @@ html{
 }
 
 body {
-	/*font-family : 'Nanum Gothic',monospace;*/
-	font-family : 돋움;
+	font-family : 'Nanum Gothic',monospace;
 	font-style : light; 
 	background: #f8f8f8;
 	
@@ -147,9 +146,13 @@ body {
 	text-align:center;
 	background-color:#0059B3;
 }
-.main_submanu>div>img {
+.subimg {
 	margin-left : -3px;
 	margin-top : 4px;
+}
+.subimg_first {
+	margin-left : -6px;
+	margin-top : 0px;
 }
 .main_submanu>span {
 	display:block;
