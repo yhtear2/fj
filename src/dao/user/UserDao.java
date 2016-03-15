@@ -16,6 +16,11 @@ public interface UserDao {
 	public int insertArticle_career( CareerDataBean dto);
 	public int insertArticle_introduce( IntroduceDataBean dto);
 	public List<UserDataBean> getUserList(Map<String, Object> map);
+	public int deleteArticle_user( int user_history_id );
+	public int deleteArticle_school( int user_history_id );
+	public int deleteArticle_career( int user_history_id );
+	public int deleteArticle_introduce( int user_history_id );
+
 	public UserDataBean getContent( int user_history_id );
 	List<SchoolDataBean> getContent_school(int user_history_id);
 	List<CareerDataBean> getContent_career(int user_history_id);

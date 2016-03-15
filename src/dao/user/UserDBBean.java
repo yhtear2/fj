@@ -55,6 +55,27 @@ public class UserDBBean implements UserDao {
 		
 	}
 	
+	@Override 
+	public int deleteArticle_user( int user_history_id ) {		
+		return  sqlSession.delete("FJ_USER.deleteArticle_user", user_history_id);
+	}
+
+	@Override 
+	public int deleteArticle_school( int user_history_id ) {		
+		return  sqlSession.delete("FJ_USER.deleteArticle_school", user_history_id);
+	}
+	
+	@Override 
+	public int deleteArticle_career( int user_history_id ) {		
+		return  sqlSession.delete("FJ_USER.deleteArticle_career", user_history_id);
+	}	
+	
+	@Override 
+	public int deleteArticle_introduce( int user_history_id ) {		
+		return  sqlSession.delete("FJ_USER.deleteArticle_introduce", user_history_id);
+	}
+	
+	
 	public int insertArticle_sc( SchoolDataBean dto ) {
 		
 		return sqlSession.insert( "User.insertArticle_sc", dto );

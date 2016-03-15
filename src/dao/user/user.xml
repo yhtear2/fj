@@ -133,6 +133,23 @@
 		select * from FJ_User where user_history_id = #{user_history_id}
 	</select>
 	
+		 <!-- 삭제부분  -->
+	 <delete id="deleteArticle_user" parameterType="Integer">
+	 	delete from fj_user where user_history_id=#{user_history_id}   
+	 </delete>
+	 	
+	 <delete id="deleteArticle_school" parameterType="Integer">
+	 	delete from fj_school where user_history_id=#{user_history_id}   
+	 </delete>
+	 	
+	 <delete id="deleteArticle_career" parameterType="Integer">
+	 	delete from fj_career where user_history_id=#{user_history_id}   
+	 </delete>
+	 	
+	 <delete id="deleteArticle_introduce" parameterType="Integer">
+	 	delete from fj_introduce where user_history_id=#{user_history_id}   
+	 </delete>
+	 	
 	
 	<!-- 홍석이 만듬 -->
 	<select id="getUserhistoryid" resultType="Integer">
