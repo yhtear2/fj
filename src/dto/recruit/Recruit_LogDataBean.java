@@ -6,6 +6,7 @@ public class Recruit_LogDataBean {
 	
 	private int Recruit_id;
 	private String Email;
+	private String Resome_title;
 	private int User_history_id;
 	private Timestamp reg_date;
 	
@@ -20,6 +21,13 @@ public class Recruit_LogDataBean {
 	}
 	public void setEmail(String email) {
 		Email = email;
+	}
+	
+	public String getResome_title() {
+		return Resome_title;
+	}
+	public void setResome_title(String resome_title) {
+		Resome_title = resome_title;
 	}
 	public int getUser_history_id() {
 		return User_history_id;

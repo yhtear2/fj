@@ -9,7 +9,7 @@
 <!-- 전체적인 크기 잡기 -->
 <div style="width:750;margin:50px;">
 <h2>이력서</h2>
-<form name="resome" method="post" enctype="multipart/form-data"  onload="license_addform();" action="resome_Pro.do" onsubmit="lic_submitcheck()"> 
+<form name="resome" method="post" enctype="multipart/form-data"  onload="license_addform();" action="resome_Pro.do" onsubmit="return lic_submitcheck()"> 
 	<input type="hidden" name="license_cnt_hidden">
 	
 	<!-- 이력서 제목 입력부분 -->

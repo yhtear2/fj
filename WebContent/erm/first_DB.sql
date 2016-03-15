@@ -338,6 +338,8 @@ CREATE TABLE FJ_Recruit_Log
 	recruit_id number NOT NULL,
 	-- email : 이메일
 	email varchar2(50) NOT NULL,
+	-- resome_title : 이력서제목
+	resome_title varchar2(100) NOT NULL,
 	-- user_history_id : 이력서 ID
 	user_history_id number NOT NULL,
 	-- reg_date : 입사 지원일 
