@@ -57,7 +57,30 @@ function resome_sub() {
 	</tr>
 	</table>	
 	</form>
+
+	<form name="recruitContent">
+	<table>
 	
+	<tr>
+		<th></th>
+		
+		<td>   
+			<c:if test='${member_flag== 2}'>
+		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:100px" onclick="resome_sub()">
+				<input type="hidden" name="str" id="str">
+			</c:if>
+			<c:if test='${member_flag!= 2}'>
+				<br>
+			</c:if>
+	
+		</td>
+	</tr>
+	<tr>
+	<td>현재 지원 인원은 ${count} 명입니다.</td>
+	
+	</tr>
+	</table>	
+	</form>	
 	
 	<div class="panel panel-default">
 		<!-- 대표자명 / 기업구분 / 담당자 / 전화번호  / 우편번호 / 주소 / 자본금 / 기업업종 / 회사설립일 / 연매출 / 사원수 -->	

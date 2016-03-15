@@ -39,11 +39,9 @@ public class Recruit_ResomeListProHandler implements Commandhandler{
 		Recruit_LogDataBean dto = new Recruit_LogDataBean();
 		
 		
-		
 		dto.setEmail(email);	
 		dto.setRecruit_id(recruit_id);
 		dto.setUser_history_id(user_history_id);
-
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));
 
 		int result = recruitDao.insertRecruit_re(dto);

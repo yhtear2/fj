@@ -18,11 +18,14 @@ function res() {
 	 var fm = document.getElementById('recruit_resomelist');
 		
 
- 	var cookie_email = document.getElementById('email').value;
+/*  	var cookie_email = document.getElementById('email').value;
  	
  	var dto_email =null;
+ 	
+ 	alert(cookie_email);
+ 	alert(dto_email);
  	 	
- 	if(document.getElementsByName('re_email').value = "undefined") {
+ 	if(document.getElementsByName('re_email').value == "undefined") {
  		
  		dto_email = "없는값임";
  		
@@ -32,20 +35,19 @@ function res() {
  	
  	}
 
- 	alert(cookie_email);
- 	alert(dto_email);
+
  	
-    	if(document.getElementById('re_email').value = document.getElementById('email').value) {
+    	if(document.getElementById('re_email').value == document.getElementById('email').value) {
     		
     		alert("이미 지원하셨습니다. 지원 취소후 다시 지원해주시기 바랍니다.");
     		
     		return false;
     		
-    	} else { 
+    	} else {  */
     		
     		fm.submit();
     		
-    	}
+    	//}
 
 }
     	
@@ -87,10 +89,10 @@ function res() {
     <tr>
       <th style="width:100px;display: inline-block;">이력서제목</th>
 		 <td class="form-control" style="text-align: center;  display: inline-block;"> 
-																		 		 		<input type="hidden" name="resometitle" id="resometitle"value='${dto.resome_title}'>
-																		 		 		<input type="hidden" name="user_history_id" id="user_history_id"value='${dto.user_history_id}'>
-																		 		 		 <input type="hidden" name="recruit_id" id="recruit_id" value='${recruit_id}'>	
-																		 		 		  <input type="hidden" name="email" id="email" value='${email}'>		
+									<input type="hidden" name="resometitle" id="resometitle"value='${dto.resome_title}'>
+									<input type="hidden" name="user_history_id" id="user_history_id"value='${dto.user_history_id}'>
+									<input type="hidden" name="recruit_id" id="recruit_id" value='${recruit_id}'>	
+									<input type="hidden" name="email" id="email" value='${email}'>		
  				${dto.resome_title}
 		 	<input  class="create btn btn-success btn-wide pull-right"    id="res1" value="지원하기" onclick="res()">	 
 		  </td>	     
@@ -115,7 +117,8 @@ function res() {
  	</tr>
  	</c:forEach>
  	<tr>
- 	 	 		<td>  	 		  <input  class="create btn btn-success btn-wide pull-right"  value="지원취소하기" onclick="delete_cacel()"> 	 		 <input  class="create btn btn-success btn-wide pull-right"  type="button" value="창 닫기" onclick="close_window()">
+ 	 	 		<td>  	<input  class="create btn btn-success btn-wide pull-right"  value="지원취소하기" onclick="delete_cacel()"> 
+ 	 	 			 	<input  class="create btn btn-success btn-wide pull-right"  type="button" value="창 닫기" onclick="close_window()">
  	 	 		</td>
 
  	</tr>
