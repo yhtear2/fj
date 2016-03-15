@@ -16,65 +16,20 @@ function delete_cacel() {
 function res() {
 	var fm = document.getElementById('recruit_resomelist');
 	var historySize = $('input[name=historySize]').val();
-	alert(historySize);
 	for(var i=0; i<historySize; i++){
 		var re_mail = $('input[name=re_email'+i+']').val();
-		alert(re_mail);
 		var email 	= $('input[name=email]').val();
-		alert(email);
 		if( re_mail == email ){
 			alert("이미 지원하셨습니다. 지원 취소후 다시 지원해주시기 바랍니다.");
     		return false;
 		}
 		
 	}
-/*  	var cookie_email = document.getElementById('email').value;
- 	
- 	var dto_email =null;
- 	
- 	alert(cookie_email);
- 	alert(dto_email);
- 	 	
- 	if(document.getElementsByName('re_email').value == "undefined") {
- 		
- 		dto_email = "없는값임";
- 		
- 	} else if(document.getElementsByName('re_email').value != "undefined") {
- 	
- 		dto_email = document.getElementById('re_email').value;
- 	
- 	}
 
-
- 	
-    	if(document.getElementById('re_email').value == document.getElementById('email').value) {
+   fm.submit();
     		
-    		alert("이미 지원하셨습니다. 지원 취소후 다시 지원해주시기 바랍니다.");
-    		
-    		return false;
-    		
-    	} else {  */
-    		
-    		fm.submit();
-    		
-    	//}
-
 }
-    	
-    	/* 	 var support;
 
-	 support=confirm("선택하신 이력서로 지원하시겠습니까?");
-	 
-
-	 if(support) {
-
-			 alert("지원을 완료하였습니다.");		 
-			 
-			window.close();
-	 }
-	 else {
-		 alert("지원을 취소하였습니다.");
-	 } */
  
 
  function close_window() {

@@ -40,7 +40,6 @@ public class RecruitContentHandler implements Commandhandler {
 		
 		System.out.println(count);
 		
-		
 		// 데이터 받아오기
 		int recruit_id = Integer.parseInt(request.getParameter("recruit_id"));
 		String pageNum = request.getParameter("pageNum");

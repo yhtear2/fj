@@ -10,6 +10,13 @@ function resome_sub() {
 		         "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
 }
 
+function situation_form() {
+	
+	   var url = "recruit_situation.do";
+	   open(url, "confrimWindow",
+	         "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
+}
+
 </script>
 
 <!-- 
@@ -66,18 +73,20 @@ function resome_sub() {
 		
 		<td>   
 			<c:if test='${member_flag== 2}'>
-		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:100px" onclick="resome_sub()">
+			<c:if test='${dto.email == memId}'>
+			
+		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:150px" onclick="situation_form()">
 				<input type="hidden" name="str" id="str">
 			</c:if>
+			</c:if>
 			<c:if test='${member_flag!= 2}'>
+			<c:if test='${dto.email != memId}'>
+			
 				<br>
+			</c:if>
 			</c:if>
 	
 		</td>
-	</tr>
-	<tr>
-	<td>현재 지원 인원은 ${count} 명입니다.</td>
-	
 	</tr>
 	</table>	
 	</form>	
