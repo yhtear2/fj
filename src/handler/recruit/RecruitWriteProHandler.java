@@ -97,15 +97,13 @@ public class RecruitWriteProHandler implements Commandhandler{
 		// 무관 -1		// 다른 입력은 한글 삭제 숫자만 입력
 		String age = request.getParameter("age");
 		if(age != null){
-			if( age.equals("무관")){
-				dto.setMax_age(-1);
-				dto.setMin_age(-1);
-			} else{
-				String max_ages[] = request.getParameter("max_age").split("년");
-				String min_ages[] = request.getParameter("min_age").split("년");
-				dto.setMax_age(Integer.parseInt(max_ages[0]));
-				dto.setMin_age(Integer.parseInt(min_ages[0]));
-			}
+			dto.setMax_age(-1);
+			dto.setMin_age(-1);
+		} else {
+			String max_ages[] = request.getParameter("max_age").split("년");
+			String min_ages[] = request.getParameter("min_age").split("년");
+			dto.setMax_age(Integer.parseInt(max_ages[0]));
+			dto.setMin_age(Integer.parseInt(min_ages[0]));
 		}
 		
 		// 연봉처리

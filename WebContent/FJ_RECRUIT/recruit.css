@@ -90,6 +90,7 @@
     margin-top: 50px;
     padding-left: 30px;
     border : solid 1px #ddd;
+    overflow:hidden;
     /*background-color: #d6ecff*/
 }
 
@@ -103,12 +104,12 @@
 	float:none;
 }
 .comptitle_sub {
-	padding-top:23px;
+	padding-top:16px;
     height: 39px;
 }
 .comptitle h3 {
 	float:left;
-	font-size:3.0em;
+	font-size:2.0em;
 	padding : 0;
 	margin : 0;
 	height:45px;
@@ -128,10 +129,20 @@
 	padding-left:10px;
 	width: 220px;
 }
+.business_title {
+	width:100%;
+	overflow:hidden;
+	margin-top:50px;
+}
+.business_title div {
+	width:50%;
+	float:left;
+}
+
 .business {
 	width:750px;
-	margin-top:50px;
 	margin-bottom:50px;
+	border-top: 0px;
 	overflow:hidden;
 }
 .tablediv{
@@ -192,6 +203,10 @@
     color: white;
     font-size: 1em;
     font-style: normal;
+}
+.recruittitle {
+	width:100%;
+	overflow:hidden;
 }
 .recruittext {
 	overflow:hidden;

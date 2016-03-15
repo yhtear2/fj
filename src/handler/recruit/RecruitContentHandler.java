@@ -50,6 +50,19 @@ public class RecruitContentHandler implements Commandhandler {
 		// 채용공고 데이터 가져오자
 		RecruitDataBean dto = new RecruitDataBean();
 		dto = recruitDao.getContent( recruit_id );
+		if( dto.getMin_career() == -1 ) {
+			map.put("career", "신입");
+		} else if( dto.getMin_career() == -2 ) {
+			map.put("career", "경력무관");
+		} else {
+			map.put("career", dto.getMin_career()+"년~"+dto.getMax_career()+"년");
+		}
+		
+		if( dto.getMin_age() == -1) {
+			map.put("age", "무관");
+		} else {
+			map.put("age", dto.getMax_age()+"이후 ~ " + dto.getMin_age()+"이전 출생자");
+		}
 		
 		// 회사기본 입력사항 정보를 가져오자!
 		CompDataBean compdto = new CompDataBean();
