@@ -13,12 +13,12 @@
 </c:if>
 
 <c:if test="${result != 0}">
-	<input type="hidden" id="msg" value="${msg}">
-	<input type="hidden" id="email" value="${email}">
+	<input type="hidden" id="messageContent" value="${messageContent}">
+	<input type="hidden" id="emails" value="${emails}">
 	<script type="text/javascript">
 	<!--
-	//alert("쪽지 전송에 성공 했습니다.");
-	//$.cookie('msg', $('input[id=msg]').val() );
+	$.cookie('msg', $('input[id=messageContent]').val() );
+	$.cookie('emails', $('input[id=emails]').val());
 	window.location.href='recruitList.do';
 	//-->
 </script>

@@ -140,8 +140,6 @@ public class RecruitWriteProHandler implements Commandhandler{
 		
 		maps.put("max_salary", dto.getMax_salary() );
 		maps.put("min_salary", dto.getMin_salary() );
-		System.out.println("dto.getMax_salary() : " + dto.getMax_salary());
-		System.out.println("dto.getMin_salary() : " + dto.getMin_salary());
 		
 		maps.put("max_caree", max_career );
 		maps.put("min_caree", min_career );
@@ -149,18 +147,15 @@ public class RecruitWriteProHandler implements Commandhandler{
 		String emails = "";
 		if( list != null){
 			for(int i=0; i<list.size(); i++){
-				String temp = list.get(i).getEmail();
-				for(int j=0; i<list.size(); j++){
-					if( temp != list.get(j).getEmail()){
-						emails += temp;
-					}
+				emails += list.get(i).getEmail();
+				if( i < list.size()-1){
+					emails += ",";
 				}
 			}
 		}
-		
-		System.out.println("email : " + emails);
 
 		int getRecruitId = recruitDao.getRecruitId() -1;
+		
 		// 쪽지의 구성
 		// 보내는사람 이메일 # 보내는 사람 이름(회사이름) # 쪽지에 들어갈 제목(글제목) # 게시글 아이디 
 		String messageContent = dto.getEmail()+"#"+dto.getName()+"#"+dto.getTitle()+"#"+getRecruitId;

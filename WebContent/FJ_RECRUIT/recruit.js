@@ -130,7 +130,7 @@ function dateCalculation (){
 	var betweenDay = (today.getTime() - dateObj.getTime())/1000/60/60/24;
 	var bwd = parseInt(betweenDay).toString().substring(1)
 	if( bwd == 0 ){
-		bwd = "D-day";
+		bwd = "day";
 	} else if ( bwd < 0){
 		bwd = "채용종료";
 	}

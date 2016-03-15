@@ -63,7 +63,9 @@
 				<td>
 					<c:if test="${dto.max_career == -1}">신입</c:if>
 					<c:if test="${dto.max_career == -2}">경력무관</c:if>
-					<c:if test="${dto.max_career != -1}">경력 ${dto.min_career}년↑</c:if>
+					<c:if test="${dto.max_career != -1}">
+						<c:if test="${dto.max_career != -2}">경력 ${dto.min_career}년↑</c:if>
+					</c:if>
 				</td>
 				<!-- 마감일 -->
 				<td id="date1">

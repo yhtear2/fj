@@ -68,7 +68,7 @@
 		Where	b.email = c.email and a.recruit_id = b.recruit_id
 	</select>
 	
-		<select id="get_history_id" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
+	<select id="get_history_id" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
 		SELECT 	recruit_id,email,user_history_id,reg_date
 			FROM FJ_Recruit_Log
 	</select>
@@ -82,11 +82,11 @@
 		insert into 
 		FJ_Recruit_Log(
 			recruit_id,
-			email,user_history_id,
+			email,resome_title,user_history_id,
 			reg_date
 		) values(
 			#{recruit_id, jdbcType=INTEGER},
-			#{email, jdbcType=VARCHAR},#{user_history_id, jdbcType=INTEGER},
+			#{email, jdbcType=VARCHAR},#{resome_title, jdbcType=VARCHAR},#{user_history_id, jdbcType=INTEGER},
 			#{reg_date}
 		)
 		</insert>	
@@ -106,12 +106,13 @@
 	</update>
 	
 	<select id="getRecruitEmail" parameterType="Map" resultType="dto.user.UserDataBean">
-		SELECT 	* 
+		SELECT 	email 
 		From	FJ_USER
 		Where	want_salary &gt;= #{min_salary} and want_salary &lt;= #{max_salary}
 		And		TOTAL_CAREER &gt;= ${min_caree} and TOTAL_CAREER  &lt;= #{max_caree}
 		And		skill like #{skill_1}	And	skill like #{skill_2}	And	skill like #{skill_3}
 		And		skill like #{skill_4}	And	skill like #{skill_5}
+		Group	By	email
 	</select>
 
 	<update id="modifyRecruit" parameterType="dto.recruit.RecruitDataBean">
