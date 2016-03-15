@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+/* 전체 크기 */
+.mainSize{
+	width:850px;
+	margin: 50px 0px 0px 20px;
+	background-color: lime;
+}
+.inner-container{
+	position: relative;
+	float: left;
+	margin-right: 20px;
+}
+
+
+/* 각 제목 이미지 */
+.img-title{
+	margin-left: 10px;
+}
+
+
+/* 신규 채용정보 안에 회사이름 스팬 */
+.newRcruit-comp{
+	font-weight: bold;
+	font-size: 0.9em;
+	color: blue;
+	margin-left: 12px;
+}
+/* 신규채용 안에 제목 스팬 */
+.newRcruit-title{
+	font-size: 0.8em;
+	color: #484848;
+}
+/* 신규채용 리스트의 크기와 색갈 */
+.reruit-List-container{
+	width:423px;
+	background-color: white;	
+	margin-lift : 10px;
+	border: 1.5px solid #c3c3c3;
+	border-top: none;
+}
+
+
+/* 공지사항 리스트 잡기 */
+.notice-List-container{
+	width: 380px;
+	background-color: white;
+	border: 1.5px solid #c3c3c3;
+}
+/* 공지사항 제목 스팬 */
+.notice-title{
+	margin-left: 10px;
+	font-size : 0.8em;
+	color : #2a6496;
+}
+/* 공지사항 글쓴이 스팬 */
+.notice-name{
+	font-size : 0.7em;
+	color: #484848;	
+	text-align: right;
+}
+/* 공지사항 안에 날자 표시 */
+.notice-date{
+	font-size : 0.55em;
+	color: #787878;
+}
+
+
+a {
+    color: #484848;
+    text-decoration: none;
+}

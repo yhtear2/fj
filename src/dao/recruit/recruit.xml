@@ -16,7 +16,7 @@
 		FROM 	( select recruit_id,email,title,content,name,skill,gender,edu,work_type,work_day,work_area,
 				business_part,incharge,tel,start_date,end_date,min_career,max_career,min_age,max_age,
 				min_salary,max_salary,people_count,readcount,reg_date,last_date, rownum r 
-		FROM	FJ_RECRUIT  ORDER BY last_date desc ) 
+		FROM	FJ_RECRUIT  ORDER BY RECRUIT_ID desc ) 
 		WHERE	r &gt;= #{start} and r &lt;= #{end}		
 	</select>
 
