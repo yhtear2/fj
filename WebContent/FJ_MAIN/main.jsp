@@ -51,8 +51,14 @@
 			</div>
 			<!-- 선택 메뉴 -->
 			<div class="main_sub">
-				<div class="main_submanu">
-					<div onclick="window.location='messageList.do'"><img src="${images}/main_up_05.png" class="subimg_first"></div> <span>쪽지함</span></div>
+				<c:if test="${sessionScope.memId == null}">
+				<div class="main_submanu" onclick="window.location='joinMain.do'">
+					<div><img src="${images}/main_up_05.png" class="subimg_first"></div> <span>쪽지함</span></div>
+				</c:if>
+				<c:if test="${sessionScope.memId != null}">
+				<div class="main_submanu" onclick="window.location='messageList.do'">
+					<div><img src="${images}/main_up_05.png" class="subimg_first"></div> <span>쪽지함</span></div>
+				</c:if>
 				<div class="main_submanu">
 					<div><img src="${images}/main_up_01.png" class="subimg"></div> <span>MyPage</span></div>
 				<div class="main_submanu">
