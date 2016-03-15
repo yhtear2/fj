@@ -34,8 +34,9 @@ public class User_DeleteProHandler implements Commandhandler {
 		String pageNum = request.getParameter( "pageNum" );
 		int user_history_id = Integer.parseInt(request.getParameter("user_history_id"));			
 		
-		System.out.println(user_history_id);
+		System.out.println("유저히스토리 아이디는 ?" + user_history_id);
 		
+			//각 테이블마다 Delete문
 			int result_school = dao.deleteArticle_school( user_history_id ); 
 			int result_career = dao.deleteArticle_career( user_history_id ); 
 			int result_introduce = dao.deleteArticle_introduce( user_history_id ); 

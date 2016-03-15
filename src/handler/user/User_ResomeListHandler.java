@@ -30,7 +30,8 @@ public class User_ResomeListHandler implements Commandhandler{
 		
 		String email = (String)request.getSession().getAttribute("memId");				// 이메일
 		String name = (String)request.getSession().getAttribute("name");				// 닉네임
-					     
+		
+		System.out.println(email);
 		
 		// 변수 선언
 		int count = 0;			// 글 개수

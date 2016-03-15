@@ -15,7 +15,16 @@
        
        <link rel="stylesheet" href="http://okky.kr/assets/application-178a471b205e52821f985abddea1ac34.css">
  
- 	      
+<script type="text/javascript">
+function delete_resome() {
+	if (confirm("정말 삭제하시겠습니까??") == true) { 
+		location.resome_Delete_Pro; 
+		return false;
+	} else {  
+	  return false;
+	}
+}
+</script> 	      
  	   
  	   
        <!--[if lt IE 9]>
@@ -185,8 +194,10 @@ a {
 						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_modify.gif"alt="${page_usermodify}">
 					</a>
 					
-						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif" alt="${page_userdelete}" 
-						onclick="window.location='resomeDelete_Pro.do?user_history_id=${dto.user_history_id}'">
+					<a href="/fj/resomeDelete_Pro.do?user_history_id=${dto.user_history_id}" onclick="delete_resome();">
+						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif" alt="${page_userdelete}">
+					</a>
+
 
 				</span>
 			</div>
