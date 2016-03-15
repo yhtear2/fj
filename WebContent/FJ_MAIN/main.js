@@ -76,7 +76,7 @@ $(function(){
 			return;
 		} else{
 			// 연결한 웹소켓의 주소 및 아이디
-			ws = new WebSocket('ws://192.168.30.125:8080/fj/websocket/chat?memId='+memId);
+			ws = new WebSocket('ws://192.168.219.155:8080/fj/websocket/chat?memId='+memId);
 			// 서버에 연결하는 메소드
 			ws.onopen = function(){
 			}
@@ -95,7 +95,14 @@ $(function(){
 function wsSendMassge(){
 	var emails =  $.cookie('emails');
 	if ( emails != null && emails != ""){
-		ws.send( msg );
-		$.cookie('msg', '');
+		var msg = $.cookie('msg');
+		var email = emails.split(','); 	//실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
+		
+		// 쪽지 구성 :  받는사람이메일 # 보내는사람 이메일 _ 보내는 사람 이름(회사이름) _ 쪽지에 들어갈 제목(글제목) _ 게시글 아이디
+		for (var i=0; i<email.length; i++){
+			ws.send( email[i]+"#"+msg );
+		}
+		
+		$.cookie('emails', '');
 	}
 }

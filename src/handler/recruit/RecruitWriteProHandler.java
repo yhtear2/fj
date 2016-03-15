@@ -157,8 +157,8 @@ public class RecruitWriteProHandler implements Commandhandler{
 		int getRecruitId = recruitDao.getRecruitId() -1;
 		
 		// 쪽지의 구성
-		// 보내는사람 이메일 # 보내는 사람 이름(회사이름) # 쪽지에 들어갈 제목(글제목) # 게시글 아이디 
-		String messageContent = dto.getEmail()+"#"+dto.getName()+"#"+dto.getTitle()+"#"+getRecruitId;
+		// 보내는사람 이메일 _ 보내는 사람 이름(회사이름) _ 쪽지에 들어갈 제목(글제목) _ 게시글 아이디 
+		String messageContent = dto.getEmail()+"_"+dto.getName()+"_"+dto.getTitle()+"_"+getRecruitId;
 		
 		map.put("emails", emails);			// 실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
 		map.put("messageContent", messageContent);	// 쪽지 내용
