@@ -89,10 +89,11 @@ $(function(){
 			}
 		}
 	}
+	
 });
 
-// 메세지를 보내는 메소드
-function wsSendMassge(){
+
+function wsSendMassge( emails, msg ){
 	var emails =  $.cookie('emails');
 	if ( emails != null && emails != ""){
 		var msg = $.cookie('msg');

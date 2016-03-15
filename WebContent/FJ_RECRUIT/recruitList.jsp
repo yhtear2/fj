@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="setting.jsp"%>
 
+<script type="text/javascript">
+<!--
+	if ( $.cookie('resetPage') == '1'){
+	location.reload();
+	$.cookie('resetPage', '0');
+}
+//-->
+</script>
+
 <!-- 전체 사이즈 조정 -->
 <div class="recruit_mainsize" role="main">
 	<!-- 상위 메뉴에 보여질 화면 -->

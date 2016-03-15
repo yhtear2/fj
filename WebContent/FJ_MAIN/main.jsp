@@ -8,13 +8,6 @@
 		<!-- 메인 css 및 자바스크립트 삽입 -->
 		<link href="${main}/main.css" rel="stylesheet" type="text/css">
 		<script src="${main}/main.js"></script>
-		<script type="text/javascript">
-			/*	
-			$(function(){
-				$("#cookieId").val($.cookie("memId"));
-			});
-			*/
-		</script>
 	</head>
 	<body onload="wsSendMassge()">
 		<div class="main_menu">

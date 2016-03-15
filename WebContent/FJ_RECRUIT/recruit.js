@@ -10,7 +10,6 @@ $(document).ready(function() {
 	// 인풋에다가 담기
 	var content = $('input[name=content]').val();
 	$('#summernote').summernote('code', content);
-
 	
 });
 
@@ -139,18 +138,6 @@ function dateCalculation (){
 	
 	
 }
-
-
-//메세지를 보내는 메소드
-function wsSendMassge(){
-	var msg =  $.cookie('msg');
-	if ( msg != null && msg != ""){
-		ws.send( msg );
-		$.cookie('msg', '');
-	}
-}
-
-
 
 /** ▼▼▼▼▼▼		여기는 수정 화면에 필요한 메소드들	▼▼▼▼▼▼**/
 // 수정화면 들어오자마자 실행되는 메소드
