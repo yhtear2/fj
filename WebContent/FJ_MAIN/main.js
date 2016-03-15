@@ -76,7 +76,7 @@ $(function(){
 			return;
 		} else{
 			// 연결한 웹소켓의 주소 및 아이디
-			ws = new WebSocket('ws://192.168.219.155:8080/fj/websocket/chat?memId='+memId);
+			ws = new WebSocket('ws://192.168.30.125:8080/fj/websocket/chat?memId='+memId);
 			// 서버에 연결하는 메소드
 			ws.onopen = function(){
 			}
