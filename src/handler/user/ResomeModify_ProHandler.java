@@ -215,7 +215,7 @@ public class ResomeModify_ProHandler implements Commandhandler {
 				Career_dto.setCareer_last_date(career_last_date[i]);
 				Career_dto.setCareer_department(career_department[i]);
 	
-				if(career_start_date[i] != null){
+				if( !( career_start_date[i] == null && career_start_date[i].equals(""))){
 			       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			       Date beginDate = formatter.parse(career_start_date[i]);
 			       Date endDate = formatter.parse(career_last_date[i]);
@@ -264,11 +264,11 @@ public class ResomeModify_ProHandler implements Commandhandler {
 		// 자기소개서 처리부분
 		// 데이터 받기
 		int cnt = Integer.parseInt(multi.getParameter("cnt"));
-		
+		System.out.println("cnt : " + cnt);
 		// 바구니 생성
 		IntroduceDataBean Introduce_dto = new IntroduceDataBean();
-
-		for( int i=0; i<cnt+1; i++){
+		
+		for( int i=0; i<cnt; i++){
 			Introduce_dto.setIntro_id(Integer.parseInt(multi.getParameter("intro_id"+i)));
 			Introduce_dto.setIntro_title(multi.getParameter("sub_name_"+i));
 			Introduce_dto.setIntro_contents(multi.getParameter("contents"+i));

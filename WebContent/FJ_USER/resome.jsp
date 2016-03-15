@@ -66,8 +66,8 @@
    			<th>전화번호</th>
    			<td colspan="3">
 	      		<input class="form-control-hs" type="text" style="width: 80px; height: 30px; text-align: center; padding: 2px;" name="tel1" id="tel1" value="010"> - 
-	       		<input class="form-control-hs" type="text" style="width: 85px; height: 30px; text-align: center; padding: 2px;" name="tel2" id="tel2" max="9999"> -
-	      		<input class="form-control-hs" type="text" style="width: 90px; height: 30px; text-align: center; padding: 2px;" name="tel3" id="tel3" max="9999">
+	       		<input class="form-control-hs" type="text" style="width: 85px; height: 30px; text-align: center; padding: 2px;" name="tel2" id="tel2" maxlength="4"> -
+	      		<input class="form-control-hs" type="text" style="width: 90px; height: 30px; text-align: center; padding: 2px;" name="tel3" id="tel3" maxlength="4">
       		</td>
 
    		</tr>

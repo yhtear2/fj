@@ -119,7 +119,9 @@ public class User_ProHandler implements Commandhandler {
 	
 		String resome_project = "library/portfolio/" + projectFile;
 		dto.setProject(resome_project);
-
+		
+		System.out.println("dto.getEmail() : " + dto.getEmail());
+		
 		int result = dao.insertArticle( dto );	
 		
 		int User_history_id = dao.getUserhistoryid() - 1;

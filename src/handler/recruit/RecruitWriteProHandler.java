@@ -149,7 +149,12 @@ public class RecruitWriteProHandler implements Commandhandler{
 		String emails = "";
 		if( list != null){
 			for(int i=0; i<list.size(); i++){
-				emails += list.get(i).getEmail() + ",";
+				String temp = list.get(i).getEmail();
+				for(int j=0; i<list.size(); j++){
+					if( temp != list.get(j).getEmail()){
+						emails += temp;
+					}
+				}
 			}
 		}
 		
