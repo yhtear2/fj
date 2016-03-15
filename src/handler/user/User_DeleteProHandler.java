@@ -36,15 +36,15 @@ public class User_DeleteProHandler implements Commandhandler {
 		
 		System.out.println(user_history_id);
 		
-			int result_user = dao.deleteArticle_user( user_history_id ); 
 			int result_school = dao.deleteArticle_school( user_history_id ); 
 			int result_career = dao.deleteArticle_career( user_history_id ); 
 			int result_introduce = dao.deleteArticle_introduce( user_history_id ); 
+			int result_user = dao.deleteArticle_user( user_history_id ); 
 
-			map.put( "result_user", result_user ); 
 			map.put( "result_school", result_school ); 
 			map.put( "result_career", result_career ); 
 			map.put( "result_introduce", result_introduce ); 
+			map.put( "result_user", result_user ); 
 
 			map.put("pageNum", pageNum);
 		 

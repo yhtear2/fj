@@ -135,7 +135,7 @@
 	
 		 <!-- 삭제부분  -->
 	 <delete id="deleteArticle_user" parameterType="Integer">
-	 	delete from fj_user where user_history_id=#{user_history_id}   
+	 	delete from fj_user Where	user_history_id = #{user_history_id}
 	 </delete>
 	 	
 	 <delete id="deleteArticle_school" parameterType="Integer">

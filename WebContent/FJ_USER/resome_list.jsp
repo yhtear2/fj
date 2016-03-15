@@ -172,7 +172,7 @@ a {
 <c:if test="${count != 0}">
 	<c:forEach var="dto" items="${list}" varStatus="status">
 		<div class="my-imagewrap">
-			<div class="my-image">
+			<div class="my-image">s
 				<span class="pic">
 					<!--  
 					<a href="/fj/resome.do">  -->
@@ -184,7 +184,6 @@ a {
 					<a href="/fj/resomeModyfiForm.do?user_history_id=${dto.user_history_id}">
 						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_modify.gif"alt="${page_usermodify}">
 					</a>
-					<%-- <a href="/fj/resomeDelete_Pro.do"> <input type="hidden" name="user_history_id" value="${dto.user_history_id}"> --%>
 					
 						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif" alt="${page_userdelete}" 
 						onclick="window.location='resomeDelete_Pro.do?user_history_id=${dto.user_history_id}'">
