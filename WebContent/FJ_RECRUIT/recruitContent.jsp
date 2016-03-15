@@ -28,10 +28,10 @@ function resome_sub() {
 <!-- 전체 크기 잡기 -->
 <div class="recruit_contentsize">
 	<!-- 여기에는 기업정보에서 가져오는 기본입력 폼 -->
-	<div class="comptitle"> 
-			<span class="comptitle_sub">${dto.name}</span>
-			<h3 class="comptitle_sub">${dto.title}</h3>
-			<span class="comptitle_sub">${compdto.comp_type}</span>
+	<div class="comptitle">
+		<span>${dto.name}</span>
+		<h3 class="comptitle_sub">${dto.title}</h3>
+		<span class="comptitle_sub">${compdto.comp_type}</span>
 	</div>
 	
 	<form name="recruitContent">
@@ -65,42 +65,56 @@ function resome_sub() {
 			<table class="table table-hover">
 				<tr>
 					<th>대표자명</th>
-					<td>${compdto.ceo}</td>
+					<td colspan="2">${compdto.ceo}</td>
 					<th>기업구분</th>
-					<td>${compdto.comp_part}</td>
+					<td colspan="2">${compdto.comp_part}</td>
 				</tr>
 				<tr>
 					<th>담당자</th>
-					<td>${compdto.incharge}</td>
-					<th>전화번호</th>
-					<td>${compdto.tel}</td>
+					<td colspan="2">${compdto.incharge}</td>
+					<th>기업업종</th>
+					<td colspan="2">${compdto.comp_type}</td>
 				</tr>   
 				<tr> 
 					<th rowspan="2">주소</th>
-					<td colspan="3">우편번호 : ${compdto.zipcode}</td>
+					<td colspan="2">우편번호 : ${compdto.zipcode}</td>
+					<th>전화번호</th>
+					<td colspan="2">${compdto.tel}</td>
 				</tr>
 				<tr>
-					<td colspan="3">${compdto.address}</td>
+					<td colspan="5">${compdto.address}</td>
 				</tr>
 				<tr>
 					<th>자본금</th>
-					<td>${compdto.capital}</td>
-					<th>기업업종</th>
-					<td>${compdto.comp_type}</td>
-				</tr>
-				<tr>
+					<td colspan="1">${compdto.capital}</td>
 					<th>회사설립일</th>
-					<td colspan="3">${compdto.comp_reg_date}</td>
+					<td colspan="2">${compdto.comp_reg_date}</td>
 				</tr>
 				<tr>
 					<th>연매출</th>
-					<td colspan="3">${compdto.year_sale}</td>
-				</tr>
-				<tr>
+					<td colspan="1">${compdto.year_sale}</td>
 					<th>사원수</th>
-					<td colspan="3">${compdto.emp_count}</td>
+					<td colspan="2">${compdto.emp_count}</td>
 				</tr>
 			</table>
+		</div>
+		<div class="middle">
+			<div>
+				<span class="span">자본금</span>
+				<span class="span">${compdto.capital}</span>
+			</div>
+			<div>
+				<span class="span">설립일</span>
+				<span class="span">${compdto.comp_reg_date}</span>
+			</div>
+			<div>
+				<span class="span">연매출</span>
+				<span class="span">${compdto.year_sale}</span>
+			</div>
+			<div>
+				<span class="span">사원수</span>
+				<span class="span">${compdto.emp_count}</span>
+			</div>
 		</div>
 		<!-- 여기는 담당업무, 근무조건 -->
 			<!-- 제목 -->
@@ -108,43 +122,10 @@ function resome_sub() {
 			<!-- 지원자격 : 기술 / 경력 / 학력 / 성별 / 나이   -->
 			<!-- 담당업무  / 채용시작일 / 채용종료일 -->
 	</div>
-	<div class="middle">
-		<div>
-			<span class="span">자본금</span>
-			<span class="span">${compdto.capital}</span>
-		</div>
-		<div>
-			<span class="span">설립일</span>
-			<span class="span">${compdto.comp_reg_date}</span>
-		</div>
-		<div>
-			<span class="span">연매출</span>
-			<span class="span">${compdto.year_sale}</span>
-		</div>
-		<div>
-			<span class="span">사원수</span>
-			<span class="span">${compdto.emp_count}</span>
-		</div>
-		<div>
-			<span class="span">나이</span>
-			<span class="span">${dto.min_age} ~ ${dto.max_age}</span>
-		</div>
-		<div>
-			<span class="span">근무형태</span>
-			<span class="span">${dto.work_type}</span>
-		</div>
-		<div>
-			<span class="span">학력</span>
-			<span class="span">${dto.edu}</span>
-		</div>
-		<div>
-			<span class="span">담당업무</span>
-			<span class="span">${dto.business_part}</span>
-		</div>
-	</div>
+	
 	<!-- 상세 내용 --> 
-	<div class="business panel">
-		<div>
+	<div class="business panel panel-default">
+		<div class="tablediv">
 			<h4>근무조건</h4>
 			<table class="table table-hover">
 				<tr>
@@ -165,7 +146,7 @@ function resome_sub() {
 				</tr>
 			</table>
 		</div>
-		<div>
+		<div class="tablediv">
 			<h4>지원자격</h4>
 			<table class="table table-hover">
 				<tr>
@@ -190,7 +171,7 @@ function resome_sub() {
 				</tr>
 			</table>
 		</div>
-		<div>
+		<div class="tablediv">
 			<table class="table table-hover">
 				<tr>
 					<th>담당업무</th>
@@ -199,7 +180,25 @@ function resome_sub() {
 					<td>${dto.start_date} ~ ${dto.end_date}</td>
 				</tr>
 			</table>
-		</div> 
+		</div>
+		<div class="middle">
+			<div>
+				<span class="span">나이</span>
+				<span class="span">${dto.min_age} ~ ${dto.max_age}</span>
+			</div>
+			<div>
+				<span class="span">근무형태</span>
+				<span class="span">${dto.work_type}</span>
+			</div>
+			<div>
+				<span class="span">학력</span>
+				<span class="span">${dto.edu}</span>
+			</div>
+			<div>
+				<span class="span">담당업무</span>
+				<span class="span">${dto.business_part}</span>
+			</div>
+		</div>
 	</div> 
 	<div class="recruittext panel panel-default">
 		${dto.content}
