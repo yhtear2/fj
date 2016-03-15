@@ -144,6 +144,10 @@ function resome_sub() {
 					<th>근무요일</th>
 					<td>${dto.work_day}</td>
 				</tr>
+				<tr>
+					<th>담당업무</th>
+					<td>${dto.business_part}</td>
+				</tr>
 			</table>
 		</div>
 		<div class="tablediv">
@@ -174,9 +178,7 @@ function resome_sub() {
 		<div class="tablediv">
 			<table class="table table-hover">
 				<tr>
-					<th>담당업무</th>
-					<td>${dto.business_part}</td>
-					<th>채용기간</th>
+					<th class="lastth">채용기간</th>
 					<td>${dto.start_date} ~ ${dto.end_date}</td>
 				</tr>
 			</table>
@@ -200,7 +202,7 @@ function resome_sub() {
 			</div>
 		</div>
 	</div> 
-	<div class="recruittext panel panel-default">
+	<div class="recruittext">
 		${dto.content}
 	</div>
 	

@@ -144,8 +144,8 @@
 .tablediv table {
 	margin:0;
 }
-.tablediv th:last-child {
-	width:
+.lastth {
+	width:91px;
 }
 
 .middle {
@@ -197,7 +197,8 @@
 	overflow:hidden;
 	width:100%;
 	min-height:300px;
-	background : rgb(249,253,255);
+	padding : 10px;
+	border : solid 1px #ddd;
 }
 
 
