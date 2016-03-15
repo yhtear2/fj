@@ -52,15 +52,13 @@
 			<!-- 선택 메뉴 -->
 			<div class="main_sub">
 				<div class="main_submanu">
-					<div><img src="${images}/main_up_05.png" class="subimg_first"></div> <span>쪽지함</span></div>
+					<div onclick="window.location='messageList.do'"><img src="${images}/main_up_05.png" class="subimg_first"></div> <span>쪽지함</span></div>
 				<div class="main_submanu">
 					<div><img src="${images}/main_up_01.png" class="subimg"></div> <span>MyPage</span></div>
 				<div class="main_submanu">
-					<div><img src="${images}/main_up_02.png" class="subimg"></div> <span>게시판</span></div>
+					<div><img src="${images}/main_up_04.png" class="subimg"></div> <span>게시판</span></div>
 				<div class="main_submanu">                          
 					<div><img src="${images}/main_up_03.png" class="subimg"></div> <span>채용공고</span></div>
-				<div class="main_submanu">                          
-					<div><img src="${images}/main_up_04.png" class="subimg"></div> <span>QA</span></div>
 				<div class="main_submanu"><i class="fa fa-github"></i>Git</div>
 			</div>
 		</div>
@@ -72,7 +70,9 @@
 			</c:if>
 			<c:if test="${sessionScope.memId != null}">
 				<h3>쪽지함</h3>
-				<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
+				<a href="#" onclick="window.location='messageForm.do'">새쪽지</a>
+				<a href="#" onclick="window.location='messageList.do'">받은쪽지함</a>
+				<a href="#" onclick="window.location='messageListSend.do'">보낸쪽지함</a>
 			</c:if>
 		</div>
 		<div class="main_menu2">
@@ -115,17 +115,12 @@
 			<a href="#" onclick="window.location='recruitList.do'">채용공고</a>
 		</div>
 		<div class="main_menu2">
-			<h3>Q&A</h3>
-			<a href="#">Q&A</a>
-		</div>
-		<div class="main_menu2">
 			<a href="#" onclick="window.open('https://github.com/yhtear2/fj.git')">GitHub</a>
 		</div>
 		<div class="main_page">
 			<div>
 				<jsp:include page='${page}.jsp'/>
 			</div>
-			<div style="font-size: small; margin-top: 50px;">Copyright © 1998-2016 KH Information Educational Institute All Right Reserved</div>
 		</div>
 				
 	</body>
