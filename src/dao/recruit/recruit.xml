@@ -68,7 +68,7 @@
 		Where	b.email = c.email and a.recruit_id = b.recruit_id
 	</select>
 	
-		<select id="get_history_id" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
+	<select id="get_history_id" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
 		SELECT 	recruit_id,email,user_history_id,reg_date
 			FROM FJ_Recruit_Log
 	</select>
@@ -82,11 +82,11 @@
 		insert into 
 		FJ_Recruit_Log(
 			recruit_id,
-			email,user_history_id,
+			email,resome_title,user_history_id,
 			reg_date
 		) values(
 			#{recruit_id, jdbcType=INTEGER},
-			#{email, jdbcType=VARCHAR},#{user_history_id, jdbcType=INTEGER},
+			#{email, jdbcType=VARCHAR},#{resome_title, jdbcType=VARCHAR},#{user_history_id, jdbcType=INTEGER},
 			#{reg_date}
 		)
 		</insert>	
