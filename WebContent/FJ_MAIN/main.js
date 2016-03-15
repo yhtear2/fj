@@ -93,8 +93,8 @@ $(function(){
 
 // 메세지를 보내는 메소드
 function wsSendMassge(){
-	var msg =  $.cookie('msg');
-	if ( msg != null && msg != ""){
+	var emails =  $.cookie('emails');
+	if ( emails != null && emails != ""){
 		ws.send( msg );
 		$.cookie('msg', '');
 	}
