@@ -10,12 +10,6 @@ function resome_sub() {
 		         "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
 }
 
-function situation_form() {
-	
-	   var url = "recruit_situation.do";
-	   open(url, "confrimWindow",
-	         "menubar=no, statusbar=no, scrollbar=no, toolbar=no, width=450, height=300");
-}
 
 </script>
 
@@ -75,7 +69,7 @@ function situation_form() {
 			<c:if test='${member_flag== 2}'>
 			<c:if test='${dto.email == memId}'>
 			
-		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:150px" onclick="situation_form()">
+		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:150px" onclick="window.location='recruit_situation.do'">
 				<input type="hidden" name="str" id="str">
 			</c:if>
 			</c:if>

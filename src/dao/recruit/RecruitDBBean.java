@@ -25,6 +25,7 @@ public class RecruitDBBean implements RecruitDao {
 		return sqlSession.selectList("Recruit.getRecruitList", map);
 	}
 
+	
 	@Override
 	public int insertRecruit(RecruitDataBean dto) {
 		return sqlSession.insert("Recruit.insertRecruit", dto);
@@ -50,7 +51,10 @@ public class RecruitDBBean implements RecruitDao {
 		return sqlSession.selectList("Recruit.get_history_id", map);
 	}
 	
-	
+	@Override
+	public List<Recruit_LogDataBean> recruit_situation(Map<String, Integer> map) {
+		return sqlSession.selectList("Recruit.recruit_situation", map);
+	}
 	
 	@Override	
 	public int getContent_re() {

@@ -11,6 +11,8 @@ public interface RecruitDao {
 	public int getRecruitCount();
 	public List<RecruitDataBean> getRecruitList(Map<String, Integer> map);
 	public List<Recruit_LogDataBean> get_history_id(Map<String, Integer> map);
+	public List<Recruit_LogDataBean> recruit_situation(Map<String, Integer> map);
+
 	public int deleteArticle(int user_history_id);
 
 	public int insertRecruit(RecruitDataBean dto);
