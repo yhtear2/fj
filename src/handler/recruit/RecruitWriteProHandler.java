@@ -160,10 +160,10 @@ public class RecruitWriteProHandler implements Commandhandler{
 				
 				// 쪽지 DB에 발송
 				String Message_Title = list.get(i).getEmail() + "님에게 꼭 맞는 채용정보를 보내드립니다.";
-				String Message_Content = dto.getName()+"의 새로 올라온 채용공고\n"
-										+"제목 : " + "<a href='recruitcontent.do?recruit_id="+getRecruitId+"'>"+dto.getTitle() +"</a>"
-										+"연봉 : " + dto.getMin_salary()+"만원"+" ~ "+dto.getMax_salary()+"만원\n"
-										+"\n"
+				String Message_Content ="<h3>" + dto.getName()+"의 새로 올라온 채용공고</h3><br>"
+										+"제목 : " + "<a href='recruitcontent.do?recruit_id="+getRecruitId+"'>"+dto.getTitle() +"</a><br>"
+										+"연봉 : " + dto.getMin_salary()+"만원"+" ~ "+dto.getMax_salary()+"만원<Br>"
+										+"<br>"
 										+"자세한 내용은 채용공고를 참고해주세요.";
 				
 				MessageDataBean Mdto = new MessageDataBean();

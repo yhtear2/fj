@@ -5,9 +5,16 @@
 	
 <mapper namespace="Message">
 	<insert id="sendMessage"  parameterType="dto.message.MessageDataBean">
-		insert into FJ_MESSAGE values( 
-		FJ_MESSAGE_seq.NEXTVAL, #{email, jdbcType=VARCHAR}, #{sender, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR},
-		#{content, jdbcType=VARCHAR}, #{tag}, #{read_yn}, #{reg_date})
+		INSERT INTO FJ_MESSAGE (
+			message_num, 	email, 
+			sender, 		title,
+			content, 		tag, 
+			read_yn, 		reg_date
+		) values( 
+			FJ_MESSAGE_seq.NEXTVAL,				#{email, jdbcType=VARCHAR}, 
+			#{sender, jdbcType=VARCHAR}, 		#{title, jdbcType=VARCHAR},
+			#{content, jdbcType=VARCHAR}, 		#{tag}, 
+			#{read_yn},							#{reg_date})
 	</insert>
 	
 	<select id="getCount" parameterType="String" resultType="Integer">

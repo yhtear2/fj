@@ -13,10 +13,11 @@
 </c:if>
 
 <c:if test="${result != 0}">
-	<input type="hidden" id="messageContent" value="${messageContent}">
+	<input type="hidden" id="msg" value="${msg}">
+	<input type="hidden" id="emails" value="${emails}">
 	<script type="text/javascript">
 	<!--
- 	$.cookie('msg', $('input[id=messageContent]').val() );
+ 	$.cookie('msg', $('input[id=msg]').val() );
 	$.cookie('emails', $('input[id=emails]').val());
 	$.cookie('resetPage', '1');
 	window.location.href='recruitList.do';
