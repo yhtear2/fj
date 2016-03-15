@@ -16,6 +16,7 @@
 		FROM 	( select user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
 				skill,photo,reg_date,last_date,project
 		FROM	FJ_User  ORDER BY last_date desc ) 
+		WHERE	email = #{email}
 	</select>
 	
 	<select id="getContent" parameterType="Integer" resultType="dto.user.UserDataBean">
