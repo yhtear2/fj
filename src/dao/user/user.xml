@@ -12,9 +12,9 @@
 
 	<select id="getUserList" parameterType="Map" resultType="dto.user.UserDataBean">
 		SELECT 	user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
-				skill,photo,reg_date,last_date,project
+				skill,photo,reg_date,last_date,project,total_career
 		FROM 	( select user_history_id,email,resome_title,kor_name,eng_name,tel,birth,address,army,want_salary,license,
-				skill,photo,reg_date,last_date,project
+				skill,photo,reg_date,last_date,project,total_career
 		FROM	FJ_User  ORDER BY last_date desc ) 
 		WHERE	email = #{email}
 	</select>

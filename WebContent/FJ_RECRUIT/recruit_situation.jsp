@@ -21,7 +21,9 @@
 			<td>
 				
 				<h5 class="list-group-item-heading ">
+				<a href="resomeContent.do?user_history_id=${dto.user_history_id}"> 
 					${dto.resome_title}
+				</a>
 				</h5>
 
 			</td>

@@ -38,11 +38,10 @@ public class Recruit_ResomeListHandler implements Commandhandler{
 		String email = (String)request.getSession().getAttribute("memId");				// 이메일
 		String name = (String)request.getSession().getAttribute("name");				// 닉네임
 		
-
 		
 		Map<String, Object> tempMap = new HashMap<String, Object>();
 		Map<String, Integer> temp = new HashMap<String, Integer>();
-
+		tempMap.put("email", email);
 		List<UserDataBean> list = dao.getUserList(tempMap);
 		
 		List<Recruit_LogDataBean> get_history = recruitDao.get_history_id(temp);

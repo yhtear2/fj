@@ -4,15 +4,6 @@
     
 <script type="text/javascript">
 
-
-function delete_cacel() {
-	
-	 var fm = document.getElementById('recruit_resomelistdel');
-
-	fm.submit();
-
-}
-
 function res() {
 	var fm = document.getElementById('recruit_resomelist');
 	var historySize = $('input[name=historySize]').val();
@@ -20,16 +11,12 @@ function res() {
 		var re_mail = $('input[name=re_email'+i+']').val();
 		var email 	= $('input[name=email]').val();
 		if( re_mail == email ){
-			alert("이미 지원하셨습니다. 지원 취소후 다시 지원해주시기 바랍니다.");
+			alert("이미 지원하셨습니다.");
     		return false;
 		}
-		
 	}
-
-   fm.submit();
-    		
+   fm.submit(); 		
 }
-
  
 
  function close_window() {
@@ -46,12 +33,6 @@ function res() {
  	<input type="hidden" name="historySize" value="${get_history.size()}">
  	<input type="hidden" name="re_email${i}" value="${get_history[i].email}">
  	<input type="hidden" name="re_id${i}" value="${get_history[i].user_history_id}">
- <tr>
- 	<th></th>
- 	<td>
- 		${rec_dto.email}		
-	</td>
- </tr>
 </c:forEach>
 
 <c:forEach var="dto" items="${list}" varStatus="status">
@@ -71,41 +52,11 @@ function res() {
 </c:forEach>
  </table>
  </form>
- 
-<form name="recruit_resomelistdel"  id="recruit_resomelistdel" method="post" action="recruit_resomeListDel_Pro.do">
-
- <table class="table table-hover" style="margin-left: 20px; width:400px">
-  <c:forEach var="rec_dto" items="${get_history}" varStatus="status">
- 	<tr>
- 		<th>		 
- 		</th>	 
- 	</tr>
- 	</c:forEach>
+  <table class="table table-hover" style="margin-left: 20px; width:400px">
  	<tr>
 		<td>
-			<input  class="create btn btn-success btn-wide pull-right"  value="지원취소하기" onclick="delete_cacel()"> 
  	 	 	<input  class="create btn btn-success btn-wide pull-right"  type="button" value="창 닫기" onclick="close_window()">
  	 	 </td>
  	</tr>
  </table>
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
