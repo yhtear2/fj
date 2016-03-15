@@ -113,7 +113,7 @@ function resome_sub() {
 					<th>담당자</th>
 					<td>${compdto.incharge}</td>
 					<th>전화번호</th>
-					<td>${compdto.tel}</td>
+					<td>${tel}</td>
 				</tr>
 			</table>
 		</div>

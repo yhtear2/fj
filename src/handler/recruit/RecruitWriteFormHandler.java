@@ -33,8 +33,16 @@ public class RecruitWriteFormHandler implements Commandhandler {
 		int compinfochekc =compDao.countComp(email);
 		if( compinfochekc == 1){
 			CompDataBean dto = compDao.getComp(email);
+			
+
+			// 기업 TEL이 직접입력일시 오류가 나서
 			String tels[] = dto.getTel().split("-");
-			map.put("tel_1", tels[0]);
+			if (tels[0].equals("직접입력")){
+				map.put("tel_1", "0");
+			}else{
+				map.put("tel_1", tels[0]);
+			}
+			
 			map.put("tel_2", tels[1]);
 			map.put("dto", dto);
 			

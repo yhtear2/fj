@@ -38,8 +38,14 @@ public class CompModifyViewHandler implements Commandhandler {
 		// 넘어온 tel 분리
 		String tels[] = dto.getTel().split("-");
 		
+		// tels[0]이 직접입력일때 오류가 나서..
+		if(tels[0].equals("직접입력")){
+			map.put("tel_1", "0");
+		} else{
+			map.put("tel_1", tels[0]);	
+		}
+		
 		// MAP에 넣어서 페이지로 전송~
-		map.put("tel_1", tels[0]);
 		map.put("tel_2", tels[1]);
 		map.put("dto", dto);
 		

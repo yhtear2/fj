@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.message.MessageDao;
 import dao.recruit.RecruitDao;
 import dto.message.MessageDataBean;
 import dto.recruit.RecruitDataBean;
@@ -26,6 +27,9 @@ public class RecruitWriteProHandler implements Commandhandler{
 
 	@Resource(name="recruitDao")
 	private RecruitDao recruitDao;
+	
+	@Resource(name="messageDao")
+	private MessageDao messageDao;
 
 	@RequestMapping("/recruitWritePro")
 	@Override
@@ -121,6 +125,7 @@ public class RecruitWriteProHandler implements Commandhandler{
 		map.put("result", result);
 
 		/** 실시간 쪽지가 가도록 해보자!! **/
+		
 		Map<String, Object> maps = new HashMap<String, Object>();
 		String skills[] = dto.getSkill().split("/");
 		if(skills.length < 5){
@@ -149,17 +154,37 @@ public class RecruitWriteProHandler implements Commandhandler{
 				if( i < list.size()-1){
 					emails += ",";
 				}
+				
+				// 현재 글 번호 불러오기
+				int getRecruitId = recruitDao.getRecruitId() -1;
+				
+				// 쪽지 DB에 발송
+				String Message_Title = list.get(i).getEmail() + "님에게 꼭 맞는 채용정보를 보내드립니다.";
+				String Message_Content = dto.getName()+"의 새로 올라온 채용공고\n"
+										+"제목 : " + "<a href='recruitcontent.do?recruit_id="+getRecruitId+"'>"+dto.getTitle() +"</a>"
+										+"연봉 : " + dto.getMin_salary()+"만원"+" ~ "+dto.getMax_salary()+"만원\n"
+										+"\n"
+										+"자세한 내용은 채용공고를 참고해주세요.";
+				
+				MessageDataBean Mdto = new MessageDataBean();
+				Mdto.setSender( dto.getEmail() );			// 보내는사람
+				Mdto.setEmail( list.get(i).getEmail() );	// 받는사람
+				Mdto.setTitle( Message_Title );				// 제목
+				Mdto.setContent( Message_Content );			// 내용
+				Mdto.setTag(1);								// 메시지 분류 (1:채용공고  // 2:공지사항 // 3:일반쪽지)
+				Mdto.setRead_yn(0);							// 읽음 유무
+				Mdto.setReg_date(new Timestamp( System.currentTimeMillis()));			// 보낸날자
+
+				// 디비 처리하러 고고고~!
+				messageDao.sendMessage(Mdto);
+				
 			}
 		}
 
-		int getRecruitId = recruitDao.getRecruitId() -1;
 		
-		// 쪽지의 구성
-		// 보내는사람 이메일 _ 보내는 사람 이름(회사이름) _ 쪽지에 들어갈 제목(글제목) _ 게시글 아이디 
-		String messageContent = dto.getEmail()+"_"+dto.getName()+"_"+dto.getTitle()+"_"+getRecruitId;
 		
-		map.put("emails", emails);			// 실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
-		map.put("messageContent", messageContent);	// 쪽지 내용
+		map.put("emails", emails);	// 실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
+		map.put("msg", "1");		// 메시지 분류 (1:채용공고  // 2:공지사항 // 3:일반쪽지)
 		
 		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitWritePro");

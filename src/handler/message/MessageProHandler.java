@@ -48,10 +48,7 @@ public class MessageProHandler implements Commandhandler {
 		
 		// 실시간 쪽지를 위한 데이터 한번에 묶기
 		// 받는사람#보내는사람#제목#내용
-		String msg 	= dto.getEmail() + "#"
-					+ dto.getSender() + "#"
-					+ dto.getTitle() + "#"
-					+ dto.getContent() + "#";
+		String msg 	= dto.getEmail() + "#3";
 		// 실시간 쪽지 데이터 넘기기
 		map.put("msg", msg);
 				

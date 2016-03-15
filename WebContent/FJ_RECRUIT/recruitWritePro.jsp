@@ -14,7 +14,6 @@
 
 <c:if test="${result != 0}">
 	<input type="hidden" id="messageContent" value="${messageContent}">
-	<input type="hidden" id="emails" value="${emails}">
 	<script type="text/javascript">
 	<!--
  	$.cookie('msg', $('input[id=messageContent]').val() );

@@ -56,8 +56,8 @@
 	    <div class="form-group-hs">
 	    	<input type="text" name="incharge" class="form-control" style="margin-bottom: 10px" value="${dto.incharge}">
 	    	<select class="form-control" name="tel_1" style="width: 25%; float: left;"  >
-	    		<c:if test="${tel_1 == '직접입력'}"> <option selected="selected">직접입력</option> </c:if>
-	    		<c:if test="${tel_1 != '직접입력'}"> <option>직접입력</option> </c:if>
+	    		<c:if test="${tel_1 == '0'}"> <option selected="selected">직접입력</option> </c:if>
+	    		<c:if test="${tel_1 != '0'}"> <option>직접입력</option> </c:if>
 				<c:if test="${tel_1 == 010}"> <option selected="selected">010</option> </c:if>
 				<c:if test="${tel_1 != 010}"> <option>010</option> </c:if>
 				<c:if test="${tel_1 == 011}"> <option selected="selected">011</option> </c:if>

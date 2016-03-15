@@ -74,6 +74,16 @@ public class RecruitContentHandler implements Commandhandler {
 			recruitDao.addReadContent( recruit_id );
 		}
 		
+		// 기업 TEL이 직접입력일시 오류가 나서
+		String tels[] = compdto.getTel().split("-");
+		if (tels[0].equals("직접입력")){
+			map.put("tel_1", "");
+			map.put("tel", tels[1]);
+		}else{
+			String tel = tels[0]+"-"+tels[1];
+			map.put("tel", tel);
+		}
+		
 		map.put("count",count);
 		map.put("dto", dto);
 		map.put("compdto", compdto);

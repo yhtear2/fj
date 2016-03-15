@@ -221,8 +221,8 @@
 
 			<label style="margin : 0px 10px 0px 15px;"> 전화번호 </label>
 			<select class="form-control_hs" name="tel_1" style="width: 130px;">
-	    		<c:if test="${tel_1 == '직접입력'}"> <option selected="selected">직접입력</option> </c:if>
-	    		<c:if test="${tel_1 != '직접입력'}"> <option>직접입력</option> </c:if>
+	    		<c:if test="${tel_1 == '0'}"> <option selected="selected">직접입력</option> </c:if>
+	    		<c:if test="${tel_1 != '0'}"> <option>직접입력</option> </c:if>
 				<c:if test="${tel_1 == 010}"> <option selected="selected">010</option> </c:if>
 				<c:if test="${tel_1 != 010}"> <option>010</option> </c:if>
 				<c:if test="${tel_1 == 011}"> <option selected="selected">011</option> </c:if>

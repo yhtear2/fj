@@ -93,17 +93,22 @@ $(function(){
 });
 
 
+// 실시간 쪽지를 보내는 메소드
 function wsSendMassge( emails, msg ){
-	var emails =  $.cookie('emails');
-	if ( emails != null && emails != ""){
-		var msg = $.cookie('msg');
-		var email = emails.split(','); 	//실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
-		
-		// 쪽지 구성 :  받는사람이메일 # 보내는사람 이메일 _ 보내는 사람 이름(회사이름) _ 쪽지에 들어갈 제목(글제목) _ 게시글 아이디
-		for (var i=0; i<email.length; i++){
-			ws.send( email[i]+"#"+msg );
+	var msg = $.cookie('msg');
+	if ( msg != null && msg != ""){
+		var email =  $.cookie('emails').split(',');	//실시간 쪽지 받을 사람들의 이메일	","이걸로 구분
+		if( email !== null && email != "" ){
+			// 쪽지 구성 :  받는사람이메일 # 구분	// 1:채용공고, 2:공지사항, 3:일반쪽지;
+			for (var i=0; i<email.length; i++){
+				ws.send( email[i]+"#"+msg );
+			}
+			$.cookie('emails', '');
+			$.cookie('msg', '');
+		} else{
+			ws.send( msg );
+			$.cookie('msg', '');
 		}
-		
-		$.cookie('emails', '');
+
 	}
 }
