@@ -4,6 +4,8 @@
     
 	<div class="panel panel-default">
 		<!-- 테이블 제목 부분 -->
+		<h3>채용공고 게시글</h3>
+	<br>		
 		<table class="table table-hover">
 		<tr>
 			<th style="width: 260px">제목</th>
@@ -17,7 +19,9 @@
 		<tr>
 			<td>			
 				<h5 class="list-group-item-heading ">
+				<a href="recruit_situation.do?recruit_id=${dto.recruit_id}"> 
 					${dto.title}
+				</a>
 				</h5>
 			</td>
 			
