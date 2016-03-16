@@ -32,7 +32,7 @@ public class ListHandler implements Commandhandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		int pageSize = 3;     // 페이지 레코드 수 
+		int pageSize = 10;     // 페이지 레코드 수 
 		int pageBlock = 3;     // 페이지 번호 수 
 	
 		int count = 0;

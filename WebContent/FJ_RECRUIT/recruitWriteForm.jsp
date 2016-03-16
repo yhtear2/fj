@@ -8,6 +8,7 @@
 		<script type="text/javascript">
 		<!--
 			alert("로그인이 필요합니다");
+			window.location.href='joinMain.do';
 		//-->
 		</script>
 	</c:if>
@@ -17,6 +18,7 @@
 		<script type="text/javascript">
 		<!--
 			alert("기업회원 정보를 먼저 입력해주세요");
+			window.location.href='compInputCheck.do';
 		//-->
 		</script>
 	</c:if>

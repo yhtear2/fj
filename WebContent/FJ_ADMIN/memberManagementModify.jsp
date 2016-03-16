@@ -48,9 +48,8 @@
 			</tr>
 			<tr class="active">
 				<th colspan="2">
-					<input class="btn btn-default" type="submit" value="${btn_modify}">
-					<input class="btn btn-default" type="reset" value="${btn_cancel}">
-					<input class="btn btn-default" type="button" value="${btn_modify_cancel}"
+					<input class="btn btn-default" type="submit" value="수정">
+					<input class="btn btn-default" type="button" value="취소"
 						onclick="window.location='memberManagementList.do'">
 				</th>
 			</tr>

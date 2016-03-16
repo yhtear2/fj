@@ -28,7 +28,7 @@ str += chk_Value.substring(0, chk_Value.length-1) + "\n";
 document.getElementById("skill").value = str;
 }
 </script>
-
+<div style="margin: 10px 0px 0px 30px;">
 없는 기술은 마지막에 / 입력 후  직접 입력하시기 바랍니다.<br><br><br>
 
 <input type="checkbox" id="java" name="chk_Type" value="java" onclick="Result();">JAVA
@@ -50,4 +50,4 @@ document.getElementById("skill").value = str;
 
 <input type="text" name="skill" id="skill" style="width:340px">
 <input  class="inputbutton"  type="button" value="추가" onclick="skill_result()">
-
+</div>

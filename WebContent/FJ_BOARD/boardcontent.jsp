@@ -130,6 +130,33 @@
 						</form>
 					</div>
 				</c:if>
+				
+				<c:if test="${3 == sessionScope.member_flag}">
+					<div class="dropdown">
+						<form action="boarddeletePro.do" method="post"
+							name="article-delete-form" id="article-delete-form">
+							<input type="hidden" name="board_num" value="${board_num}"
+								id="board_num"> <input type="hidden" name="pageNum"
+								value="${pageNum}" id="pageNum">
+							<div class="dropdown">
+								<a href="javascript://" data-toggle="dropdown"
+									aria-expanded="false"><i class="fa fa-cog"
+									data-toggle="tooltip" data-placement="left" title=""
+									data-original-title="게시물 설정"></i></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a
+										href="boardmodifyView.do?board_num=${dto.board_num}&pageNum=${pageNum}"
+										class="edit"><i class="fa fa-edit fa-fw"></i>${btn_modify}</a></li>
+
+									<li><a
+										href="boarddeletePro.do?board_num=${dto.board_num}&pageNum=${pageNum}"
+										onclick="deletecontent();" type="button"><i
+											class="fa fa-trash-o fa-fw"></i>${btn_delete}</a></li>
+								</ul>
+							</div>
+						</form>
+					</div>
+				</c:if>
 
 			</div>
 		</div>

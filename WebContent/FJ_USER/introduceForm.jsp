@@ -37,15 +37,19 @@
 			<input type="button" class="btn btn-default" value="삭제" onclick="del_introduce('0')"> 
 		</td>
 		</tr>
-		<tr> <td  height="20px"></td> </tr>
-		<tr>
-		<td align="right">
-			<input type="submit" class="btn btn-default" style="width:200px; font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;" value="저장">
-		</td>
-		</tr>
 		</table>
 			
 		</div>
+	</div>
+	<div>
+		<table style="width:100%;">
+			<tr> <td  height="20px"></td> </tr>
+			<tr>
+				<td align="right">
+					<input type="submit" class="btn btn-default" style="width:200px; font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;" value="저장">
+				</td>
+			</tr>
+		</table>
 	</div>
 	<input type="hidden" name="cnt"> 
 	<input type="hidden" name="User_history_id" value="${User_history_id}">

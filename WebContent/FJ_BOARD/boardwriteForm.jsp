@@ -21,7 +21,7 @@
 <body id="main" onload="subjectfocus()"> 
 	<div id="article-create" class="contents" role="main">
  
-		<div class="content-header">  
+		<div class="content-header" style="margin-left: 20px;">  
 			<h3>글쓰기</h3>  
 		</div> 
 	</div> 
@@ -75,8 +75,10 @@
 			<!-- 태그를 입력하는 부분 -->
        
 			<div id="wrapper">   
-				<div id="content"> 
+				<div id="content">
+					<span style="font-size: 0.9em;">태그를 입력해 주세요</span> 
 					<ul id="myTags">   
+					
 					</ul>    
 				</div>
 			</div>      

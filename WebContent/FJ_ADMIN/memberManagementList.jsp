@@ -39,7 +39,7 @@
 <!-- 관리자면 리스트를 보여줄께요~ -->
 <c:if test="${member_flag == 3}">
 <!-- 전체적인 사이즈 잡기 -->
-<div>
+<div style="margin:50px 0px 0px 20px;">
 	<h2 style="text-align: center;">개인회원 리스트</h2>
 	<table class="table table-hover">
 		<tr>

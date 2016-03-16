@@ -12,7 +12,7 @@
 	<link rel="apple-touch-icon" href="http://okky.kr/assets/icon_57x57-5611bd33d9f2b2d84c22219e248455b6.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="http://okky.kr/assets/icon_114x114-b2b627dfde8a040fe54fd257244ba191.png">
        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-       <meta property="og:image" content="http://okky.kr/assets/okky_logo_fb-cea175ff727ef14a4d8be0e68cff730a.png">
+       
        
        <link rel="stylesheet" href="http://okky.kr/assets/application-178a471b205e52821f985abddea1ac34.css">
 
@@ -25,7 +25,7 @@
 				 
 </head>
 
-<div id="list-article" class="content scaffold-list" role="main">
+<div id="list-article" class="content scaffold-list" role="main" style="margin:50px 0px 0px 30px">
             <div class="nav" role="navigation"> 
                 <a href="/fj/boardwriteForm.do" class="create btn btn-success btn-wide pull-right" 
                 style="font-style:'돋움'; font-size:15px; color:white; background-color:#0059b3; border:1px solid #0059b3;"
@@ -84,8 +84,7 @@
                                 <div class="list-tag clearfix">
                                <!-- 카테고리 영역 -->
                                    	<a href="searchboardlist.do?category=${dto.category}" class="list-group-item-text item-tag label label-info"
-                                   	style="background-color:#74b9ff"; 
-                                   	>
+                                   	style="background-color:#74b9ff"                      	>
                                     <i class="fa fa-comments"></i> 
                                    	${dto.category}
                                     </a>
@@ -230,7 +229,7 @@
                 </ul>
               
             </div>
-            
+        </div>    
           
 	
 	
