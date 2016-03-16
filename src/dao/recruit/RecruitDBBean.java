@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapClient;
+import dto.comp.CompDataBean;
 import dto.recruit.RecruitDataBean;
 import dto.recruit.Recruit_LogDataBean;
 import dto.user.CareerDataBean;
@@ -56,6 +57,12 @@ public class RecruitDBBean implements RecruitDao {
 	public List<Recruit_LogDataBean> recruit_situation(Map<String, Integer> map) {
 		return sqlSession.selectList("Recruit.recruit_situation", map);
 	}
+
+	
+	@Override
+	public List<RecruitDataBean> getComp_Resome(Map<String, Integer> map) {
+		return sqlSession.selectList("Recruit.getComp_Resome", map);
+	}	
 	
 	@Override	
 	public int getContent_re() {

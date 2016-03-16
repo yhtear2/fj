@@ -17,18 +17,15 @@ import handler.Commandhandler;
 
 	@Controller
 	public class Recruit_Situatioin_Handler implements Commandhandler{
-		
-		@Resource(name="recruitDao")
-		private RecruitDao recruitDao;
 
+		 @Resource(name="recruitDao")
+		 private RecruitDao recruitDao;
+		
 		@RequestMapping( "/recruit_situation" )
 		@Override
 		public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
-			
-		//	String email = (String)request.getSession().getAttribute("memId");				// 이메일
-		//	String name = (String)request.getSession().getAttribute("name");				// 닉네임
 			
 			Map<String, Integer> temp = new HashMap<String, Integer>();
 

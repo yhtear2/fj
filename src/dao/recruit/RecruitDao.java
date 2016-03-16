@@ -3,6 +3,7 @@ package dao.recruit;
 import java.util.List;
 import java.util.Map;
 
+import dto.comp.CompDataBean;
 import dto.recruit.RecruitDataBean;
 import dto.recruit.Recruit_LogDataBean;
 import dto.user.UserDataBean;
@@ -24,6 +25,8 @@ public interface RecruitDao {
 	public int modifyRecruit(RecruitDataBean dto);
 	public int getContent_re();
 	
+	public List<RecruitDataBean> getComp_Resome(Map<String, Integer> map);
+
 	public int getRecruitId();
 
 	

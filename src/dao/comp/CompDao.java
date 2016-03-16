@@ -12,6 +12,5 @@ public interface CompDao {
 	public int insertComp(CompDataBean dto);
 	public int updateComp(CompDataBean dto);
 	public int deleteCdomp(String email);
-	public List<CompDataBean> getComp_Resome(Map<String, Integer> map);
 
 }

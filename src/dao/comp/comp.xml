@@ -45,13 +45,6 @@
 	<select id="selectComp" parameterType="String" resultType="dto.comp.CompDataBean">
 		select * from FJ_COMP where email = #{email}
 	</select>
-	
-		
-		<select id="getComp_Resome" parameterType="Map" resultType="dto.comp.CompDataBean">
-			SELECT 	b.NAME,b.TITLE,b.MAX_CAREER,b.MIN_CAREER,b.END_DATE
-			From	FJ_Comp a, FJ_RECRUIT b
-			Where	a.email = b.email
-		</select>
 
 	<update id="updateComp" parameterType="dto.comp.CompDataBean">
 		update FJ_COMP set 	ceo 			= #{ceo, jdbcType=VARCHAR},

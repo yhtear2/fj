@@ -68,6 +68,12 @@
 		Where	b.email = c.email and a.recruit_id = b.recruit_id
 	</select>
 	
+	<select id="getComp_Resome" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
+			SELECT 	a.NAME,a.TITLE,a.MAX_CAREER,a.MIN_CAREER,a.END_DATE
+			From	FJ_RECRUIT a,FJ_Comp b
+			Where	a.email = b.email
+	</select>
+	
 	<select id="get_history_id" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
 		SELECT 	recruit_id,email,user_history_id,reg_date
 			FROM FJ_Recruit_Log

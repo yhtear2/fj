@@ -21,11 +21,7 @@ public class CompDBBean implements CompDao{
 	public int insertComp(CompDataBean dto) {
 		return sqlSession.insert("Comp.insertComp", dto);
 	}
-	
-	@Override
-	public List<CompDataBean> getComp_Resome(Map<String, Integer> map) {
-		return sqlSession.selectList("Comp.getComp_Resome", map);
-	}
+
 
 	@Override
 	public int updateComp(CompDataBean dto) {
