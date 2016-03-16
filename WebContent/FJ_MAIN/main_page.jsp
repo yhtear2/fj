@@ -29,7 +29,7 @@
 					<tr height="5px" align="center"> <td> </td> </tr>
 					<tr height="10px;">
 						<td>
-							<span class="newRcruit-comp">${dto.name}fasdfasd</span> 
+							<span class="newRcruit-comp">${dto.name}</span> 
 							<span class="newRcruit-title">
 								<a href="recruitcontent.do?recruit_id=${dto.recruit_id}">${dto.title}</a>
 							</span>
@@ -63,15 +63,17 @@
 			<!-- 리스트로 뿌려줄 내용 -->
 			<div class="notice-List-container">
 				<table style="width:100%">
+				<c:forEach var="dto" items="${noticeList}">
+					<input type="hidden" name="date${dto}">
 					<tr>
 						<td style="width: 3px" bgcolor="#3399ff" rowspan="6">&nbsp;</td>
 					</tr>
 					<tr height="35px;">
 						<td>
-							<span class="notice-title">개발은 암기과목이 아닙니다.</span> 
+							<span class="notice-title">${dto.subject}</span> 
 						</td>
 						<td align="right">
-							<span class="notice-name">관리자</span>
+							<span class="notice-name">${dto.name}</span>
 							&nbsp;
 							<span class="notice-date">6일전</span>
 							&nbsp;&nbsp;
@@ -79,7 +81,7 @@
 					</tr>
 					<!-- 이거 중간에 선 그리는거야 -->
 					<tr> <td style="border-top: 1.5px solid #c3c3c3; width:100%" colspan="2"> </td> </tr>
-					
+				</c:forEach>
 				</table>
 			</div>
 		</div>
@@ -99,6 +101,7 @@
 			<!-- 리스트로 뿌려줄 내용 -->
 			<div class="notice-List-container">
 				<table style="width:100%">
+				<c:forEach var="dto" items="${communityList}">
 					<tr>
 						<td style="width: 3px;" bgcolor="#3399ff" rowspan="6"></td>
 					</tr>
@@ -115,6 +118,7 @@
 					</tr>
 					<!-- 이거 중간에 선 그리는거야 -->
 					<tr> <td style="border-top: 1.5px solid #c3c3c3; width:100%" colspan="2"> </td> </tr>
+				</c:forEach>
 				</table>
 			</div>
 		</div>
