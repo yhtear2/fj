@@ -29,7 +29,10 @@ public class WriteProHandler implements Commandhandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		Map<String, Object> map = new HashMap<String, Object>();
 		request.setCharacterEncoding( "utf-8" );
-		   
+		
+		String notice = request.getParameter("notice");		
+
+		System.out.println(notice);
 		
 		String tags[] = request.getParameterValues("tags");   
 		String hstag = "";
@@ -56,9 +59,15 @@ public class WriteProHandler implements Commandhandler {
 		dto.setRecom_count(Integer.parseInt(request.getParameter("recom_count")));		// 좋아요 수
 		dto.setBad_count(Integer.parseInt(request.getParameter("bad_count")));			// 싫어요 수
 		dto.setRead_count(Integer.parseInt(request.getParameter("read_count"))); 		// 읽은 수
+
 		// 1: 공지사항		2: 일반글		3: 댓글
-		// 여기선 일반글 이므로 2 삽입
-		dto.setRe_step(2);																// 게시글의 구분
+		// 여기선 일반글 이므로 2 삽입		
+		if (notice.equals("bf")) {
+			dto.setRe_step(2);
+		} if(notice.equals("fb")) {
+			dto.setRe_step(1);															// 게시글의 구분
+		}
+
 		dto.setCategory((String)request.getParameter("category"));    					// 카테고리		
 		dto.setReg_date(new Timestamp(System.currentTimeMillis()));						// 작성날짜
 

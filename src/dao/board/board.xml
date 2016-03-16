@@ -67,10 +67,8 @@
 	<select id="getArticles" resultType="dto.board.BoardDataBean" parameterType="Map"> 	 
 		SELECT 		board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rn 
 		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
-		FROM	 	(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date 
 		FROM        fj_board_free 
-		ORDER BY    board_num desc, re_step asc) 
-		ORDER BY	board_num desc, re_step asc)
+		ORDER BY    re_step asc, board_num desc) 
 		WHERE		rn &gt; = #{start} and rn &lt; = #{end}    
 	</select>  
 	

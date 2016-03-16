@@ -69,7 +69,21 @@
 			 <!--  <input type="hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
 			<fieldset class="form">  
-				<div class="form-group  has-feedback">
+				<div class="form-group  has-feedback" align="right">
+					<c:if test="${sessionScope.member_flag == 3}">
+						공지로 지정&nbsp;&nbsp;<input type="checkbox" value="fb" name="notice" name="notice">
+						<c:if test="${notice == true }">
+							<input type="hidden" name="notice" value="fb"> 
+						</c:if>
+						<c:if test="${notice != true }">
+							<input type="hidden" name="notice" value="bf"> 
+						</c:if>
+					</c:if>
+					
+					<c:if test="${sessionScope.member_flag == 2 || sessionScope.member_flag == 1}">
+						<input type="hidden" name="notice" value="bf"> 
+					</c:if><br>	
+						
 						<select id="category" name="category" class="form-control"> 
 							<option id="categoryselect" value="${dto.category}" >${dto.category}</option> 
 							<c:if test="${dto.category == '1'}"> <option value="채용게시판" selected="selected">채용게시판</option> </c:if>  

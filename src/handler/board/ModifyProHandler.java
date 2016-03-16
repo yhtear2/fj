@@ -29,7 +29,11 @@ public class ModifyProHandler implements Commandhandler {
 	@RequestMapping("/boardmodifyPro")
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		
+		request.setCharacterEncoding( "utf-8" );
+
 	
+		String notice = request.getParameter("notice");
 		
 		request.setCharacterEncoding( "utf-8" );	
 	
@@ -53,6 +57,14 @@ public class ModifyProHandler implements Commandhandler {
 		dto.setContent( request.getParameter( "content" ) );
 	
 		String pageNum = request.getParameter( "pageNum" );
+		
+		// 1: 공지사항		2: 일반글		3: 댓글
+		// 여기선 일반글 이므로 2 삽입		
+		if (notice.equals("bf")) {
+			dto.setRe_step(2);
+		} if(notice.equals("fb")) {
+			dto.setRe_step(1);															// 게시글의 구분
+		}
 		
 		int result = dao.updateArticle( dto );	
 		

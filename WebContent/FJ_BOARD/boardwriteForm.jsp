@@ -37,12 +37,24 @@
 		<input type="hidden" name="scrap_count" value="0"> 
 		<input type="hidden" name="content" value="${content}">        
 		 
-			 <!--  <input type="hidden" name="content" value=""> --> 
+			 <!--  <input type="
+			 hidden" name="content" value=""> --> 
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
 			<fieldset class="form">
-				<div class="form-group  has-feedback">
+				<div class="form-group  has-feedback" align="right">
 					<c:if test="${sessionScope.member_flag == 3}">
-						공지로 지정&nbsp;&nbsp;<input type="checkbox" value="fb" style="text-align:right;">
+						공지로 지정&nbsp;&nbsp;<input type="checkbox" value="fb" name="notice" name="notice">
+						<c:if test="${notice == true }">
+							<input type="hidden" name="notice" value="fb"> 
+						</c:if>
+						<c:if test="${notice != true }">
+							<input type="hidden" name="notice" value="bf"> 
+						</c:if>
+					</c:if>
+					
+					<br>
+					<c:if test="${sessionScope.member_flag == 2 || sessionScope.member_flag == 1}">
+						<input type="hidden" name="notice" value="bf"> 
 					</c:if><br>
 						<select id="category" name="category" class="form-control" > 
 							<option value="${category}" >게시판을 선택해 주세요.</option> 
