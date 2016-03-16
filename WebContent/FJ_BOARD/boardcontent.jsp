@@ -13,7 +13,7 @@
 
 <title>人 코딩 - 자유게시판</title>
 
-<div id="article" class="content" role="main">
+<div id="article" class="content" role="main" style="margin:50px">
 	<div class="nav" role="navigation">
 		<a href="boardwriteForm.do"
 			class="create btn btn-success btn-wide pull-right" 

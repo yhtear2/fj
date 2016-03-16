@@ -113,7 +113,8 @@ public class User_ResomeListHandler implements Commandhandler{
 		
 		map.put("email", email);
 		map.put("name", name);
-
+		
+		map.put("menu", "resome");
 		map.put("page", "/FJ_USER/resome_list");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);

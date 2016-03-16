@@ -66,9 +66,9 @@ public class User_ContentHandler implements Commandhandler {
 		map.put("result", result);
 		map.put("result_career", result_career);
 		map.put("result_introduce", result_introduce);
-
 		map.put("pageNum", pageNum);
 		map.put("page", "/FJ_USER/resomeContent");
+		map.put("menu", "resome");
 
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}

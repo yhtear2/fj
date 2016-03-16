@@ -7,16 +7,28 @@
  
 <!DOCTYPE html> 
 <title>자유게시판 - 글쓰기 페이지</title>
-
+<style type="text/css">
+	.setbgc {
+		background-color: #f8f8f8;
+		margin : 50px;
+	}
+	.setbg {
+		width:100%;
+		heigth:100%;
+		background-color: #f8f8f8;
+	}
+</style>
 <body id="main" onload="subjectfocus()"> 
+	<div class="setbgc">
 	<div id="article-create" class="contents" role="main">
  
-		<div class="content-header">  
+		<div class="content-header" ">  
 			<h3> 글수정 </h3>  
 		</div>
 	</div>      
 	
 	<div class="panel-heading clearfix">
+	<div class="setbg">
 		<div class="avatar avatar-medium clearfix pull-left">
 			<!-- 작성자 표시부분 -->	
 			<div class="avatar-info">
@@ -39,7 +51,8 @@
 			${dto.read_count}
 			&ensp;  
 		</div> 
-	
+	</div>
+	</div>
 	<div class="panel-body"> 
 		<form action="/fj/boardmodifyPro.do" method="post" name="modifyview" onsubmit="return modifycheck()"> 
 		<input type="hidden" name="board_num" value="${dto.board_num}">
@@ -94,7 +107,7 @@
   
 			<!-- 내용을 입력하는 부분 --> 
 			  
-			<div id="summernote" >
+			<div id="summernote" style="background-color:#0059b3">
 			</div>           
 			 
 			   
@@ -119,6 +132,7 @@
 				</fieldset>
 			</div>
 		</form>
+	</div>
 	</div>
 </body>
 

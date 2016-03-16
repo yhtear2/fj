@@ -12,7 +12,7 @@
 
 
 <!-- 폼의 크기 및 위치 지정 -->
-<div style="height:700px; width: 600px; margin: 10px; padding: 10px; background-color: white;" class="form-group">
+<div style="height:700px; width: 600px; margin: 10px; margin-left:50px; padding: 10px; background-color: white;" class="form-group">
 	
 	<label class="col-sm-2 control-label">보낸사람</label>
 	<div class="col-sm-10">

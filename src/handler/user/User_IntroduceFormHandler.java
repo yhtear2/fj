@@ -27,6 +27,7 @@ public class User_IntroduceFormHandler implements Commandhandler{
 		map.put("User_history_id", User_history_id);
 		map.put("page", "/FJ_USER/introduceForm");
 		
+		map.put("menu", "resome");
 		return new ModelAndView("/FJ_MAIN/main", map);
 	}
 }
