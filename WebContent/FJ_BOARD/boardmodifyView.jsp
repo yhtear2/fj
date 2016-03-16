@@ -71,7 +71,9 @@
 			<fieldset class="form">  
 				<div class="form-group  has-feedback" align="right">
 					<c:if test="${sessionScope.member_flag == 3}">
-						공지로 지정&nbsp;&nbsp;<input type="checkbox" value="fb" name="notice" name="notice">
+						<c:if test="${dto.re_step == 1 }">
+						공지로 지정&nbsp;&nbsp;<input type="checkbox" value="fb" name="notice" name="notice" checked="checked">
+						</c:if>
 						<c:if test="${notice == true }">
 							<input type="hidden" name="notice" value="fb"> 
 						</c:if>

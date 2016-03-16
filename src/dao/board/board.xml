@@ -35,7 +35,7 @@
 	  
 	<!-- 게시글 수정부분  -->
 	<update id="updateArticle" parameterType="dto.board.BoardDataBean">
-		update FJ_BOARD_FREE set category=#{category, jdbcType=VARCHAR}, subject=#{subject, jdbcType=VARCHAR}, hstag=#{hstag, jdbcType=VARCHAR}, content=#{content, jdbcType=VARCHAR} where board_num=#{board_num} 
+		update FJ_BOARD_FREE set category=#{category, jdbcType=VARCHAR}, subject=#{subject, jdbcType=VARCHAR}, hstag=#{hstag, jdbcType=VARCHAR}, content=#{content, jdbcType=VARCHAR}, re_step=#{re_step,jdbcType=INTEGER} where board_num=#{board_num} 
 	</update>  
 	   
 	<!-- 조회 수 증가부분 -->
