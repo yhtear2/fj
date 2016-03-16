@@ -22,11 +22,11 @@
 			<input type="search" name="query" class="form-control_hs" placeholder="검색어" style="width:200px;"> 
 			<!-- 검색 버튼 -->
 			<button type="submit" class="btn_hs"><i class="fa fa-search" style="width:35px; height : 18px;"></i></button>
-			<!-- 상세검색 버튼 -->
+			<!-- 상세검색 버튼
 			<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide" 
 			style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3; border: 1px solid #0059b3;"
 			>
-				<i class="fa fa-plus-square-o"></i> 상세검색 </a>
+				<i class="fa fa-plus-square-o"></i> 상세검색 </a> -->
 			<!-- 글쓰기 버튼 / member_flag가 2일 경우에만 글쓰기가 가능하도록 -->
 			<c:if test="${sessionScope.member_flag == 2}">
 				<a href="/fj/recruitWriteForm.do" class="create btn btn-success_hs btn-wide">
