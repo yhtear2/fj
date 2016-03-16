@@ -6,7 +6,6 @@ DROP TABLE FJ_Board_Free CASCADE CONSTRAINTS;
 DROP TABLE FJ_Career CASCADE CONSTRAINTS;
 DROP TABLE FJ_Comp CASCADE CONSTRAINTS;
 DROP TABLE FJ_Introduce CASCADE CONSTRAINTS;
-DROP TABLE FJ_Log CASCADE CONSTRAINTS;
 DROP TABLE FJ_Message CASCADE CONSTRAINTS;
 DROP TABLE FJ_Recruit_Log CASCADE CONSTRAINTS;
 DROP TABLE FJ_Recruit CASCADE CONSTRAINTS;
@@ -60,35 +59,35 @@ CREATE TABLE FJ_Board_Free
 	-- board_num : 게시판 ID
 	board_num number NOT NULL,
 	-- email : 이메일
-	email varchar2(50) NOT NULL,
+	email varchar2(50),
 	-- subject : 제목 
-	subject varchar2(100) NOT NULL,
+	subject varchar2(100),
 	-- content : 내용 
-	content long NOT NULL,
+	content long,
 	-- hstag : 해쉬태그
-	hstag varchar2(50),
+	hstag varchar2(1000),
 	-- recontent : 댓글내용 
 	recontent varchar2(4000),
 	-- category : 카테고리 
-	category varchar2(50) NOT NULL,
+	category varchar2(50),
 	-- name : 글쓴이 이름
 	-- 
 	name varchar2(100),
 	-- re_count : 리플의 수 
-	re_count number NOT NULL,
+	re_count number,
 	-- scrap_count : 스크랩 수 
-	scrap_count number NOT NULL,
+	scrap_count number,
 	-- recom_count : 좋아요 수 
-	recom_count number NOT NULL,
+	recom_count number,
 	-- bad_count : 싫어요 수 
-	bad_count number NOT NULL,
+	bad_count number,
 	-- read_count : 읽은 수 
 	-- (실제 DB에는 number default 0, 으로 할 것임)
 	read_count number,
 	-- re_step : 게시글의 구분 
-	re_step number NOT NULL,
+	re_step number,
 	-- reg_date : 작성 날짜 
-	reg_date date NOT NULL,
+	reg_date date,
 	PRIMARY KEY (board_num)
 );
 
@@ -99,19 +98,19 @@ CREATE TABLE FJ_Board_Free_Comment
 	-- comment_board_num : 댓글 id
 	comment_board_num number NOT NULL,
 	-- board_num : 게시판 ID
-	board_num number NOT NULL,
+	board_num number,
 	-- email : 이메일
-	email varchar2(50) NOT NULL,
+	email varchar2(50),
 	-- name : 작성자 이름
 	name varchar2(100),
 	-- reg_date : 작성날짜 
-	reg_date date NOT NULL,
+	reg_date date,
 	-- recontent : 댓글내용 
-	recontent long NOT NULL,
+	recontent long,
 	-- re_step : 게시글의 구분 
-	re_step number NOT NULL,
+	re_step number,
 	-- recom_count : 좋아요 수 
-	recom_count number NOT NULL,
+	recom_count number,
 	PRIMARY KEY (comment_board_num)
 );
 
@@ -234,20 +233,6 @@ CREATE TABLE FJ_JOIN
 );
 
 
--- FJ_Log
-CREATE TABLE FJ_Log
-(
-	-- email : 이메일
-	email varchar2(50) NOT NULL,
-	-- page_id : 페이지 ID 
-	page_id varchar2(30) NOT NULL,
-	-- reg_date : 작성일자 
-	reg_date date NOT NULL,
-	-- last_date : 수정일자 
-	last_date date NOT NULL
-);
-
-
 -- FJ_Message
 CREATE TABLE FJ_Message
 (
@@ -338,8 +323,6 @@ CREATE TABLE FJ_Recruit_Log
 	recruit_id number NOT NULL,
 	-- email : 이메일
 	email varchar2(50) NOT NULL,
-	-- resome_title : 이력서제목
-	resome_title varchar2(100) NOT NULL,
 	-- user_history_id : 이력서 ID
 	user_history_id number NOT NULL,
 	-- reg_date : 입사 지원일 
@@ -447,12 +430,6 @@ ALTER TABLE FJ_Board_Free
 
 
 ALTER TABLE FJ_Comp
-	ADD FOREIGN KEY (email)
-	REFERENCES FJ_JOIN (email)
-;
-
-
-ALTER TABLE FJ_Log
 	ADD FOREIGN KEY (email)
 	REFERENCES FJ_JOIN (email)
 ;
@@ -581,11 +558,6 @@ COMMENT ON COLUMN FJ_JOIN.member_flag IS 'member_flag : 회원구분
 2 : 기업회원
 3 : 관리자 ';
 COMMENT ON COLUMN FJ_JOIN.reg_date IS 'reg_date : 가입일자';
-COMMENT ON TABLE FJ_Log IS 'FJ_Log';
-COMMENT ON COLUMN FJ_Log.email IS 'email : 이메일';
-COMMENT ON COLUMN FJ_Log.page_id IS 'page_id : 페이지 ID ';
-COMMENT ON COLUMN FJ_Log.reg_date IS 'reg_date : 작성일자 ';
-COMMENT ON COLUMN FJ_Log.last_date IS 'last_date : 수정일자 ';
 COMMENT ON TABLE FJ_Message IS 'FJ_Message';
 COMMENT ON COLUMN FJ_Message.message_num IS 'message_num : 메시지 ID ';
 COMMENT ON COLUMN FJ_Message.email IS 'email : 이메일';
