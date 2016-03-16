@@ -104,8 +104,8 @@
 				<c:if test="${startPage > pageBlock}">
 				</c:if>
 				</c:if> 
-				<a href="messageList.do" class="prev disabled">◀◀</a>
-				<a href="messageList.do?pageNum=${startPage-pageBlock}" class="prev disabled">◀</a>
+				<a href="recruitList.do" class="prev disabled">◀◀</a>
+				<a href="recruitList.do?pageNum=${startPage-pageBlock}" class="prev disabled">◀</a>
 			</li>	 
 			<li>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -113,12 +113,12 @@
 				<a>${i}</a>
 				</c:if>
 				<c:if test="${i != currentPage}">
-				<a href="messageList.do?pageNum=${i}">${i}</a>
+				<a href="recruitList.do?pageNum=${i}">${i}</a>
 				</c:if>   
 				</c:forEach> 
 				<c:if test="${endPage < pageCount}">
-					<a href="messageList.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
-					<a href="messageList.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
+					<a href="recruitList.do?pageNum=${startPage+pageBlock}" class="prev disabled">▶</a>
+					<a href="recruitList.do?pageNum=${pageCount}" class="prev disabled">▶▶</a>
 				</c:if>
 			</li>   
 		</ul>  
