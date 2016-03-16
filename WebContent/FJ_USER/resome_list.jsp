@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%> 
 <%@ include file="setting.jsp"%>
 <%@ include file="/defaultSetting.jsp"%>
     <meta charset="utf-8">
@@ -186,8 +186,8 @@ a {
 			<div class="my-image">s
 				<span class="pic">
 					<!--  
-					<a href="/fj/resome.do">  -->
-						<img alt="" src="https://www.saramin.co.kr/zf_user/persons/picture?idx=5001590|4878d2c293208d3fca43f311609905c7c40f4a8554d8c688f42d3ad98fa6578b" 
+					<a href="/fj/resome.do">  -->      
+						<img alt="" src='${dto.photo}'
 						border="0" width="100" height="140" onclick="window.location='resomeContent.do?user_history_id=${dto.user_history_id}'">
 		
 				</span>
