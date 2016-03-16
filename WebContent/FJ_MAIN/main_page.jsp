@@ -68,23 +68,18 @@
 			<c:set var="i" value="${0}"/>
 			<div class="notice-List-container">
 				<table style="width:100%">
-					<tr>
-						<td style="width: 3px" bgcolor="#3399ff" rowspan="6"></td>
-					</tr>
-					
 					<c:forEach var="dto" items="${noticeList}">
 						<input type="hidden" name="date1${i}"  id="date" value="${dto.reg_date}">
-						
 					<tr height="35px;">
-							<td>
-								<a href="boardcontent.do?board_num=${dto.board_num}"><span class="notice-title">${dto.subject}</span></a> 
-							</td>
-							<td align="right">
-								<span class="notice-name">${dto.name}</span>
-								&nbsp;
-								<span class="notice-date"><span id="date1${i}"></span></span>
-								&nbsp;&nbsp;
-							</td>
+						<td>
+							<a href="boardcontent.do?board_num=${dto.board_num}"><span class="notice-title">${dto.subject}</span></a> 
+						</td>
+						<td align="right">
+							<span class="notice-name">${dto.name}</span>
+							&nbsp;
+							<span class="notice-date"><span id="date1${i}"></span></span>
+							&nbsp;&nbsp;
+						</td>
 					</tr>
 						<!-- 이거 중간에 선 그리는거야 -->
 					<tr> <td style="border-top: 1.5px solid #c3c3c3; width:100%" colspan="3"> </td> </tr>	
@@ -115,9 +110,6 @@
 				<table style="width:100%">
 				<c:forEach var="dto" items="${communityList}">
 				<input type="hidden" name="date1${ii}"  id="date" value="${dto.reg_date}">
-					<tr>
-						<td style="width: 3px;" bgcolor="#3399ff" rowspan="6"></td>
-					</tr>
 					<tr height="35px;">
 						<td>
 							<a href="boardcontent.do?board_num=${dto.board_num}"><span class="notice-title">${dto.subject}</span></a> 
