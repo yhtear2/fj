@@ -55,7 +55,7 @@
 					<option>018</option>
 					<option>019</option>
 		        </select>
-		        <input type="text" name="tel_2" class="form-control" style="width: 75%" placeholder="전화번호 '-' 없이 입력">
+		        <input type="text" name="tel_2" class="form-control" style="width: 75%" placeholder="'-'함께 넣어주세요">
 			</div>
 			<br><br>		
 			<label><h2>기업정보 입력(선택)</h2></label><br>
