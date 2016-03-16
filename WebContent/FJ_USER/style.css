@@ -61,112 +61,77 @@
 }
 
 
-/*
-
-h1,h2,h3,h4,h5,h6 {
-	margin: 20px;
-	letter-spacing: 2px;
-	color: rgb(220,20,60);	
-}
+/* 병완이가 한 이력서 리스트 부분 여기로 옴김 */
 
 a {
-	color: rgb(220,20,60);
-	text-decoration: none;
-	
+	text-decoration: none
 }
- 
-a:hover {
-	color: rgb(173,255,47);
+#list-article {
+	margin-left:50px;
 }
-
-body {
-	
-	font-family: Tahoma, Geneva, sans-serif;
-
-}
-
-table {
-	background-color: rgb(112,128,144);
-	border-color: rgb(256,256,256);
-	border-style: solid;
-	border-radius: 5px;
-	border-width: 2px;
-	border-collapse:collapse;
-	color: rgb(240,255,255);
-	width: 700px;
-	
+.my-imagewrap {
+	float: left;
+	width: 164px;
+	height: 263px;
+	_height: 299px;
+	padding-top: 36px;
+	text-align: center;
+	line-height: 0;
+	font-size: 0;
+	background: #f4f6fa
 }
 
-table input {
-	margin: 3px;
-
+.my-imagewrap .pic {
+	display: inline-block;
+	width: 124px;
+	height: 153px;
+	_height: 164px;
+	padding-top: 11px;
+	text-align: center;
+	background: url('//www.saraminimage.co.kr/person/renewal/bg_pf_img.gif')
+		no-repeat;
 }
 
-.input {
-	width: 250px;
-	height: 25px;
-	
-}
-
-.inputbutton {
-	background-color: rgb(45,129,147);
-	border-style: solid;
-	border-width: 0px;
-	border-radius: 6px;
-	width: 80px;
-	height: 25px;
-	font-family: "Arial Black", Gadget, sans-serif;
-	color: rgb(173,255,47);
-	
-}
-.inputbutton:hover {
-	background-color: rgb(220,20,60);
-
-}
-
-th {
-	
-	border-style: dashed;
-	border-width: 1px;
-	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 11px;
-	color: rgb(173,255,47);
-	letter-spacing: 3px;
-	
-
-}
-
-td {
-	background-color: rgb(112,128,144);
-	width: 350px;
-	border-style: dashed;
-	font-family: Tahoma, Geneva, sans-serif;
+.my-imagewrap .btn {
+	display: block;
+	height: 37px;
+	_height: 47px;
+	padding-top: 9px;
+	letter-spacing: 1px;
 	font-size: 12px;
-	margin: 5px;
-
+	_font-size: 16px;
+	line-height: 160%;
 }
 
-span {
-
+.my-imagewrap .sbtn {
+	display: block;
+	font-size: 11px;
+	color: #878787;
+	line-height: 15px; /*line-height:110%;_line-height:120%;*/
 }
 
-center {
-
+.my-imagewrap .sbtn a {
+	display: inline-block;
+	font-size: 11px;
+	color: #878787;
+	font-family: 돋움, dotum, sans-serif;
+	letter-spacing: -1px;
+	background:
+		url('//www.saraminimage.co.kr/person/renewal/bg_slink_dot.gif')
+		no-repeat right 2px;
 }
 
-.button {
-	background-color: rgb(105,105,105);
-	color: rgb(173,255,47);
-	width: 150px;
-
+.my-imagewrap .sbtn a:hover {
+	color: #878787;
+	text-decoration: none;
 }
 
-.button:hover {
-	background-color: rgb(33,33,33);
-
-}
-
-.button:active {
-	background-color: rgb(33,33,33);
-	color: rgb(255,0,255);
-} */
+.my-imagewrap .sbtn a em {
+	display: inline-block;
+	cursor: pointer;
+	padding-right: 8px;
+	height: 13px;
+	overflow: hidden;
+	border-bottom: 1px solid #878787;
+	font-style: normal
+}   

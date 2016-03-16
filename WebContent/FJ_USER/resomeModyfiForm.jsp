@@ -182,7 +182,8 @@
          	</td>       
 		</tr>
      </table>
-      
+<!--
+	추가, 삭제, 다운 등등 구현이 어려워 일단 주석! -홍석-       
      <table class="table">
      	<tr>
          	<th style="width:150px;">포트폴리오</th>
@@ -190,7 +191,7 @@
             	<input class="btn btn-default" type="file" name="project" id="project">
             </td>
       	</tr>
-     </table>
+     </table> -->
 <!-- 기본정보 끝!! -->
 <br>
 <!--  학력사항 시작  dto_school -->
@@ -492,7 +493,7 @@
       		<td align="right" style="border: 0px;">   
       			<input type="submit" class="btn btn-default" style="width:200px; font-style:'돋움'; font-size:13px; 
       				color:white; background-color:#0059b3; border: 1px solid #0059b3;" value="수정사항 저장">
-				<input type="hidden" name="cnt"> 
+				<input type="hidden" name="cnt" value="0"> 
       			&nbsp; &nbsp; 
       		</td>
    		</tr>

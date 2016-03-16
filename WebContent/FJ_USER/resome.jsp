@@ -171,7 +171,8 @@
          	</td>       
 		</tr>
      </table>
-      
+<!--       
+	수정이나 다운받는 부분 구현할 시간이 없으니 일단 주석! -홍석-
      <table class="table">
      	<tr>
          	<th style="width:150px;">포트폴리오</th>
@@ -179,7 +180,7 @@
             	<input class="btn btn-default" type="file" name="project" id="project">
             </td>
       	</tr>
-     </table>
+     </table> -->
 <!-- 기본정보 끝!! -->
 <br>
 <!--  학력사항 시작 -->

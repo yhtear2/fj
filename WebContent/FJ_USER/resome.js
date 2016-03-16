@@ -87,7 +87,6 @@ function lic_submitcheck() {
     var numcheck = /[^0-9]/gi;
     
     $('input[name=license_cnt_hidden]').val(license_cnt);
-	
     
     //구현된 유효성 검사 - 제목, 한글이름, 영문이름, 보유기술, 연봉(숫자만 입력까지), 신입or경력
     if($('input[name=resome_title]').val() == "") {
@@ -101,19 +100,7 @@ function lic_submitcheck() {
     if($('input[name=eng_name]').val() == "") {
     	alert("영문이름을 입력해주세요");
     	return false;
-    }/*
-    if($('input[name=postcode]').val() == "" && $('input[name=address1]').val() == "" ) {
-    	alert("주소를 입력해주세요");
-    	return false;
     }
-    if($('input[name=tel2]').val() == "" && $('input[name=tel3]').val() == "") {
-    	alert("전화번호를 입력해주세요");
-    	return false;
-    }
-    if(numcheck.test($('input[name=tel2]').val()) || numcheck.test($('input[name=tel3]').val())) {
-    	alert("전화번호는 숫자만 입력해주세요");
-    	return false;
-    }*/
     if($('input[name=skill]').val() == "") {
     	alert("보유기술을 선택해주세요");
     	return false;
@@ -125,51 +112,7 @@ function lic_submitcheck() {
     if(numcheck.test($('input[name=want_salary]').val())) {
     	alert("희망연봉은 숫자만 입력해주세요");
     	return false;
-    }/*
-    if($('input[name=highschool_start_date').val() == "" || $('input[name=highschool_start_date').val() == "" ) {
-    	alert("재학기간을 입력해주세요");
-    	return false;
     }
-    if($('input[name=highschool_name]').val() == "") {
-    	alert("고등학교명을 입력해주세요");
-    	return false;
-    }
-    if( count > 1) {
-    	if( $('input[name=school_kind1]:checked').val() == null ) {
-    		alert("학교분류를 선택해주세요");
-    		return false;
-    	}
-    	if( $('input[name=school_start_date]').val() == "" || $('input[name=school_last_date]').val() == "" ) {
-        	alert("재학기간을 입력해주세요");
-        	return false;
-        }
-    	if( $('input[name=school_start_date]').val() == "" ) {
-        	alert("재학기간을 입력해주세요");
-        	return false;
-        }
-    	school_name
-    	if( $('input[name=school_name]').val() == "" ) {
-        	alert("학교명을 입력해주세요");
-        	return false;
-        }
-    	if( $('input[name=school_major]').val() == "" ) {
-        	alert("전공을 입력해주세요");
-        	return false;
-        }
-    	if( $('input[name=school_rank1]').val() == "" ) {
-        	alert("학점을 입력해주세요");
-        	return false;
-        }
-    	if( $('input[name=school_rank2]').val() == "" ) {
-        	alert("학점을 입력해주세요");
-        	return false;
-        }
-    	if( $('input[name=school_rank1]').val() > $('input[name=school_rank2]').val() ) {
-        	alert("학점이 잘못 입력되었습니다");
-        	return false;
-        }
-    	return false;
-    }*/
     if(  $('#career_sort:checked').val() == "경력" ) {
     	if( $('input[name=career_start_date]').val() == "" ) {
     		alert("근무기간을 입력해주세요");
@@ -218,9 +161,9 @@ function lic_submitcheck() {
     }
     
     
-    
     //자기소개에 사용됨
-   	$('input[name=cnt]').val(cnt);
+    alert(cnt);
+   	$('input[name=cnt]').val( cnt );
 	for(var i=0; i<cnt+1; i++){
 		$('input[name=sub_name_'+ i +']').val( $('div[id=sub_name_'+ i +']').text());
 	}
