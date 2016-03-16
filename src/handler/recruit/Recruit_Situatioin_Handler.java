@@ -28,7 +28,8 @@ import handler.Commandhandler;
 			Map<String, Object> map = new HashMap<String, Object>();
 			
 			Map<String, Integer> temp = new HashMap<String, Integer>();
-
+			int recruit_id = Integer.parseInt(request.getParameter("recruit_id"));
+			temp.put("recruit_id", recruit_id);
 			List<Recruit_LogDataBean> recruit_situation = recruitDao.recruit_situation(temp);
 						     
 			map.put("recruit_situation", recruit_situation);

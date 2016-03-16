@@ -5,14 +5,13 @@
 
 
 #join {
-	font-family: 'Nanum Gothic',monospace;
 	background: #f8f8f8;
 }
 
 #join form {
 	margin-left: 100px;
-	margin-top: 100px;
-	width: 600px;   
+	margin-top: 50px;
+	width: 700px;   
 	height: 600px;
 }
 .table {

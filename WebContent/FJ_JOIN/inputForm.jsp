@@ -115,7 +115,7 @@
 				<th colspan="2"> ${msg_input} </th>
 			</tr>
 			<tr>
-				<th> * ${str_email} </th>
+				<th style="width:120px;"> * ${str_email} </th>
 				<td>
 					<input class="form-control" type="text" id="email" name="email" maxlength="30" 
 						onkeyup="confirmmail( inputform.email.value )">

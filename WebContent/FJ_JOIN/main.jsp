@@ -37,7 +37,7 @@
             </tr>
             <tr>
                <td class="table-button active" colspan="2">
-               	  <input class="autologin" type="checkbox" name="autologin" value="0">자동로그인&nbsp;&nbsp;
+               	  
                   <input class="btn btn-default" type="submit" value="${btn_login}"
                   style="font-style:'돋움'; font-size:13px; color:white; background-color:#0059b3;"
                   >

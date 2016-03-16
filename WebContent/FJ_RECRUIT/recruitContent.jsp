@@ -69,7 +69,7 @@ function resome_sub() {
 			<c:if test='${member_flag== 2}'>
 			<c:if test='${dto.email == memId}'>
 			
-		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:150px" onclick="window.location='recruit_situation.do'">
+		      	<input class="btn btn-default"  type="button" value="입사지원현황 보기" style="width:150px" onclick="window.location='recruit_situation.do?recruit_id=${dto.recruit_id}'">
 				<input type="hidden" name="str" id="str">
 			</c:if>
 			</c:if>

@@ -62,10 +62,10 @@
 	</select>
 
 	
-	<select id="recruit_situation" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
+	<select id="recruit_situation" parameterType="Map" resultType="dto.recruit.Recruit_LogDataBean">
 		SELECT 	* 
-		From	FJ_RECRUIT_LOG b,FJ_User c,FJ_RECRUIT a
-		Where	b.email = c.email and a.recruit_id = b.recruit_id
+		From	FJ_RECRUIT_LOG
+		Where	recruit_id = #{recruit_id}
 	</select>
 	
 	<select id="getComp_Resome" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
