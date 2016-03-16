@@ -25,6 +25,12 @@ $(function(){
 				$('.main_signsub').stop().fadeIn();
 				$('.logout').stop().animate({'left':'22px'});
 				$('.messageicon').stop().animate({'left':'22px'});
+				setInterval(function() {
+					$('.main_submanu').eq(0).css({'background-color':'white'});
+					setInterval(function() {
+						$('.main_submanu').eq(0).css({'background-color':'#0059B3'});
+					}, 100)
+				},1000);
 			} else { 
 				$('.main_menu').stop().animate({'width':'200px'}, function() {
 					$('.main_menu2').css({'z-index':'0'});
@@ -84,6 +90,11 @@ $(function(){
 			// 메세지를 수신하면 연결되는 메소드
 			ws.onmessage = function( evt ){
 				alert( evt.data );
+				function blink() {
+					$('.main_submanu').eq(0).css({'background-color':'white'}).delay(80).css({'background-color':'#0059B3'});
+				}
+				setInterval(blink, 800);
+				
 			}
 			// 서버가 종료될때 연결되는 메소드
 			ws.onclose = function(){
