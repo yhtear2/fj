@@ -60,7 +60,7 @@
 		From	FJ_RECRUIT
 		Where	recruit_id = #{recruit_id}
 	</select>
-	
+
 	
 	<select id="recruit_situation" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
 		SELECT 	* 

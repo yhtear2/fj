@@ -92,6 +92,7 @@
 					<a href="#" onclick="window.location='joinMain.do'">회원정보 수정</a>
 					<a href="#" onclick="window.location='compInputCheck.do'">기업정보 입력</a>
 					<a href="#" onclick="window.location='compView.do'">기업정보 보기</a>
+					<a href="#" onclick="window.location='comp_Resome.do'">지원현황 보기</a>			
 					<a href="#" onclick="window.location='messageList.do'">쪽지함</a>
 				</c:if>
 				<c:if test="${sessionScope.member_flag == 3}">

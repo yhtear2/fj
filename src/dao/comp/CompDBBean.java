@@ -1,9 +1,13 @@
 package dao.comp;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapClient;
 import dto.comp.CompDataBean;
+import dto.recruit.Recruit_LogDataBean;
 
 public class CompDBBean implements CompDao{
 	private SqlSession sqlSession = SqlMapClient.getSqlSession();
@@ -18,6 +22,11 @@ public class CompDBBean implements CompDao{
 		return sqlSession.insert("Comp.insertComp", dto);
 	}
 	
+	@Override
+	public List<CompDataBean> getComp_Resome(Map<String, Integer> map) {
+		return sqlSession.selectList("Comp.getComp_Resome", map);
+	}
+
 	@Override
 	public int updateComp(CompDataBean dto) {
 		return sqlSession.update("Comp.updateComp", dto);

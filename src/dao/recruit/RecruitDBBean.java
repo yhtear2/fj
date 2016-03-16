@@ -50,6 +50,7 @@ public class RecruitDBBean implements RecruitDao {
 	public List<Recruit_LogDataBean> get_history_id(Map<String, Integer> map) {
 		return sqlSession.selectList("Recruit.get_history_id", map);
 	}
+
 	
 	@Override
 	public List<Recruit_LogDataBean> recruit_situation(Map<String, Integer> map) {
