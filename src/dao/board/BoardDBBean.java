@@ -116,6 +116,11 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	@Override
 	public List<BoardDataBean> getRead_countSearchArticles(Map<String, Object> map) {
 		return sqlSession.selectList("FJ_BOARD.getRead_countSearchArticles", map);
+	}
+
+	@Override
+	public List<BoardDataBean> getBestCommunityList(Map<String, Object> map) {
+		return sqlSession.selectList("FJ_BOARD.getBestCommunityList", map);
 	} 
 	
 

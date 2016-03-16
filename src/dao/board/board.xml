@@ -191,6 +191,13 @@
 		WHERE		rn &gt; = #{start} and rn &lt; = #{end}  
 	</select>
 	
+	<select id="getBestCommunityList" parameterType="map" resultType="dto.board.BoardDataBean">
+		SELECT 		board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rn 
+		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
+		FROM	 	fj_board_free 
+		ORDER BY	board_num desc)
+		WHERE		rn &gt; = #{start} and rn &lt; = #{end} and read_count  &gt; = #{read_count}
+	</select>
 </mapper>
       
 
