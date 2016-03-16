@@ -1,12 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+<h3>회원 목록</h3>
+ 
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>이름</th>
+                <th>전화번호</th>
+            </tr>
+        </thead>
+         
+        <tbody>
+            <tr>
+                <td>patriot2</td>
+                <td>유관순</td>
+                <td style="mso-number-format:"\@";">0431234567</td>
+            </tr>
+            <tr>
+                <td>pitcher</td>
+                <td>류현진</td>
+                <td style="mso-number-format:"\@";">01034567890</td>
+            </tr>
+            <tr>
+                <td>historian</td>
+                <td>신채호</td>
+                <td>001886123456</td>
+            </tr>
+        </tbody>
+    </table>
