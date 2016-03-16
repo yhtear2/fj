@@ -42,6 +42,7 @@ $(function(){
 		if($('.m').val() == 'message') this_page = 0;
 		if($('.m').val() == 'member') this_page = 1;
 		if($('.m').val() == 'comp') this_page = 1;
+		if($('.m').val() == 'resome') this_page = 1;
 		if($('.m').val() == 'board') this_page = 2;
 		if($('.m').val() == 'recruit') this_page = 3;
 		$('.main_menu').css({'width':'50px'});

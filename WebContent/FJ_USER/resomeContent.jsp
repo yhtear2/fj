@@ -11,7 +11,6 @@
 <link href="//www.saraminimage.co.kr/css/resume-20141031.css" rel="stylesheet" type="text/css" media="screen, print">
 <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/prototype-1.6.0.3.js"></script>
 <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/pngHack.mini.js"></script>
-
 <!-- div 시작점  -->
 <div class="resume" style="margin:50px" >
             <!-- header (top icon & description) -->

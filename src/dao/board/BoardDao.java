@@ -30,9 +30,7 @@ public interface BoardDao {
 		public List<BoardDataBean> getRecom_countSearchArticles( Map<String, Object> map );
 		public List<BoardDataBean> getRe_countSearchArticles( Map<String, Object> map );
 		public List<BoardDataBean> getRead_countSearchArticles( Map<String, Object> map );
-		
-	
-		
+		public List<BoardDataBean> getBestCommunityList( Map<String, Object> map );
 		
 		
 		 
