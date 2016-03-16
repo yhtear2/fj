@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/defaultSetting.jsp" %>
 <link href="/fj/FJ_MAIN/main_page.css" rel="stylesheet" type="text/css">
-
+<script src="/fj/FJ_MAIN/main_page.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- 전체 크기 잡아주기 -->    
 <div class="mainSize" >
@@ -61,33 +61,39 @@
 			</div>
 			
 			<!-- 리스트로 뿌려줄 내용 -->
+			<c:set var="i" value="${0}"/>
 			<div class="notice-List-container">
 				<table style="width:100%">
-				<c:forEach var="dto" items="${noticeList}">
-					<input type="hidden" name="date${dto}">
 					<tr>
-						<td style="width: 3px" bgcolor="#3399ff" rowspan="6">&nbsp;</td>
+						<td style="width: 3px" bgcolor="#3399ff" rowspan="6"></td>
 					</tr>
+					
+					<c:forEach var="dto" items="${noticeList}">
+						<input type="hidden" name="date1${i}"  id="date" value="${dto.reg_date}">
+						
 					<tr height="35px;">
-						<td>
-							<span class="notice-title">${dto.subject}</span> 
-						</td>
-						<td align="right">
-							<span class="notice-name">${dto.name}</span>
-							&nbsp;
-							<span class="notice-date">6일전</span>
-							&nbsp;&nbsp;
-						</td>
+							<td>
+								<span class="notice-title">${dto.subject}</span> 
+							</td>
+							<td align="right">
+								<span class="notice-name">${dto.name}</span>
+								&nbsp;
+								<span class="notice-date"><span id="date1${i}"></span></span>
+								&nbsp;&nbsp;
+							</td>
 					</tr>
-					<!-- 이거 중간에 선 그리는거야 -->
-					<tr> <td style="border-top: 1.5px solid #c3c3c3; width:100%" colspan="2"> </td> </tr>
+						<!-- 이거 중간에 선 그리는거야 -->
+					<tr> <td style="border-top: 1.5px solid #c3c3c3; width:100%" colspan="3"> </td> </tr>	
+					<c:set var="i" value="${i+1}"/>
 				</c:forEach>
+				
 				</table>
 			</div>
 		</div>
 		
 		
 		<!-- 아래 게시판 인기글 -->
+		<c:set var="ii" value="${0}"/>
 		<div style="margin-top: 70px;">
 			<!-- 인기글 타이틀 -->
 			<div style="margin : 0px 0px 5px 10px;">
@@ -102,22 +108,24 @@
 			<div class="notice-List-container">
 				<table style="width:100%">
 				<c:forEach var="dto" items="${communityList}">
+				<input type="hidden" name="date1${ii}"  id="date" value="${dto.reg_date}">
 					<tr>
 						<td style="width: 3px;" bgcolor="#3399ff" rowspan="6"></td>
 					</tr>
 					<tr height="35px;">
 						<td>
-							<span class="notice-title">개발은 암기과목이 아닙니다.</span> 
+							<span class="notice-title">${dto.subject}</span> 
 						</td>
 						<td align="right">
-							<span class="notice-name">관리자</span>
+							<span class="notice-name">${dto.name}</span>
 							&nbsp;
-							<span class="notice-date">6일전</span>
+							<span class="notice-date"><span id="date2${ii}"></span></span>
 							&nbsp;&nbsp;
 						</td>
 					</tr>
 					<!-- 이거 중간에 선 그리는거야 -->
 					<tr> <td style="border-top: 1.5px solid #c3c3c3; width:100%" colspan="2"> </td> </tr>
+					<c:set var="ii" value="${ii+1}"/>
 				</c:forEach>
 				</table>
 			</div>
