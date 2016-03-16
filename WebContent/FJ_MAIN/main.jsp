@@ -38,7 +38,7 @@
 				<div class="main_logon">
 					<span>${name}</span>
 					<span class="glyphicon glyphicon-log-out logout" onclick="window.location='joinLogout.do'"></span>
-					<span class="glyphicon glyphicon-send messageicon" onclick="window.location='messageList.do'"></span>
+					<span class="glyphicon glyphicon-info-sign messageicon" onclick="window.location='joinModifyForm.do'"></span>
 				</div>
 				</c:if>
 			</div>
@@ -58,7 +58,7 @@
 					<div><img src="${images}/main_up_04.png" class="subimg"></div> <span>게시판</span></div>
 				<div class="main_submanu">                          
 					<div><img src="${images}/main_up_03.png" class="subimg"></div> <span>채용공고</span></div>
-				<div class="main_submanu"><i class="fa fa-github"></i>Git</div>
+				<div class="main_submanu" onclick="window.location='https://github.com/yhtear2/fj.git'"><i class="fa fa-github"></i>Git</div>
 			</div>
 		</div>
 		<!-- main_menu2는 사이드바의 상세메뉴 - 평소에는 z-index:0으로 숨겨져있다 -->

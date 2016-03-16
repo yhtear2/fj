@@ -15,7 +15,7 @@ $(function(){
 					$('.main_submanu').css({'text-align':'left'});
 					$('.main_menu2').eq(idx).css({'z-index':'2'});
 					$('.menu_status').val(1);
-				})
+				});
 				$('.main_submanu').stop().animate({'padding-left':'15px'});
 				//$('#logo').stop().animate({'width':'30px'}).fadeOut();
 				$('#logo').css({'display':'none'});
@@ -31,6 +31,8 @@ $(function(){
 						$('.main_submanu').eq(0).css({'background-color':'#0059B3'});
 					}, 100)
 				},1000);
+			} else if($('.menu_status').val() == 0 && idx == 4){
+				window.location=window.location='https://github.com/yhtear2/fj.git';
 			} else { 
 				$('.main_menu').stop().animate({'width':'200px'}, function() {
 					$('.main_menu2').css({'z-index':'0'});
@@ -65,14 +67,18 @@ $(function(){
 		$(".main_menu2").eq(this_page).css({'z-index':'2'});
 		$('.main_submanu').on('click',function() {
 			var idx = $('.main_submanu').index($(this));
+			if( idx == 4) {
+				window.location='https://github.com/yhtear2/fj.git';
+			}
 			$('.main_menu').stop().animate({'width':'200px'},
 				function() {
 					$('.main_menu2').css({'z-index':'0'});
 					$('.main_menu2').eq(idx).css({"z-index":"2"});
 				}
 			).animate({'width':'50px'});
-			});
-		}
+		});
+	}
+	
 	
 	
 	// 웹소켓 구현부
