@@ -6,7 +6,7 @@
 <script src="${project}message.js"></script>
 
 <!-- 제목 스타일 div -->
-<div style="text-align: center; width: 410px;">
+<div style="text-align: center; width: 410px; margin-left:50px">
 <h2>쪽지 보내기</h2>
 </div>
 
@@ -16,7 +16,7 @@
 	<input type="hidden" name="pageNum" value="${pageNum}">
 	
 	<!-- 폼의 크기 및 위치 지정 -->
-	<div style="height:700px; width: 600px; margin: 10px; padding: 10px;">
+	<div style="height:700px; width: 600px; margin: 10px; margin-left:50px; padding: 10px;">
 		<!-- 클래스 먹이기 --> 
 		<div class="form-group" style="width: 300px;">
 		    <label style="margin-right:5px;">받는사람</label>

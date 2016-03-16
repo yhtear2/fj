@@ -109,7 +109,9 @@ function delete_resome() {
 a {
 	text-decoration: none
 }
-
+#list-article {
+	margin-left:50px;
+}
 .my-imagewrap {
 	float: left;
 	width: 164px;

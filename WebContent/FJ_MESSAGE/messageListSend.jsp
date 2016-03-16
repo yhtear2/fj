@@ -4,7 +4,7 @@
 <%@ include file="setting.jsp"%>
 
 <!-- 전체 크기 및 백그라운드 색갈 주기 -->
-<div style="width: 800px; background-color: white; margin: 20px;"
+<div style="width: 800px; background-color: white; margin: 20px; margin-left:50px"
 	class="table-responsive">
 	<button class="btn btn-default" onclick="window.location='messageForm.do'"
 	style="font-style:'돋움'; font-size:13px; color:#0059b3; background-color:#f8f8f8;
