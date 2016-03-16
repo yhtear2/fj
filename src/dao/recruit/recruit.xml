@@ -19,7 +19,7 @@
 		FROM	FJ_RECRUIT  ORDER BY RECRUIT_ID desc ) 
 		WHERE	r &gt;= #{start} and r &lt;= #{end}		
 	</select>
-
+ 
 	<insert id="insertRecruit" parameterType="dto.recruit.RecruitDataBean">
 		insert into 
 		FJ_RECRUIT(

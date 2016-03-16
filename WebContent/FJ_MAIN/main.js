@@ -1,6 +1,7 @@
 /**
  * 메뉴가 움직이는 제이쿼리
  */
+
 $(function(){
 	// 처음 메인화면에서 클릭 했을때 보여지는 화면
 	if( $('.m').val() == "main" ) {
@@ -87,24 +88,21 @@ $(function(){
 			return;
 		} else{
 			// 연결한 웹소켓의 주소 및 아이디
-			ws = new WebSocket('ws://192.168.30.125:8080/fj/websocket/chat?memId='+memId);
+			ws = new WebSocket('ws://localhost:8080/fj/websocket/chat?memId='+memId);
 			// 서버에 연결하는 메소드
 			ws.onopen = function(){
 			}
 			// 메세지를 수신하면 연결되는 메소드
 			ws.onmessage = function( evt ){
-				alert( evt.data );
-				function blink() {
-					$('.main_submanu').eq(0).css({'background-color':'white'}).delay(80).css({'background-color':'#0059B3'});
-				}
-				setInterval(blink, 800);
-				
+				/*alert( evt.data );*/
+				realTimeMSG();	
 			}
 			// 서버가 종료될때 연결되는 메소드
 			ws.onclose = function(){
 			}
 		}
 	}
+
 	
 });
 
@@ -127,4 +125,19 @@ function wsSendMassge( emails, msg ){
 		}
 
 	}
+}
+
+// 쪽지가 오면 실행되는 메소드
+var timerId = 0;
+function realTimeMSG(){	
+	timerId = setInterval(function() { 
+		$('.main_submanu').eq(0).fadeOut('slow').fadeIn('slow');
+	},1500);
+	
+}
+
+function realTimeStop(stop){
+	stop = function() {    // 인라인 함수
+		clearInterval(timerId);    // timerId 값을 인자로 입력하여 해당 setInterval 을 종료시킵니다.
+		}
 }

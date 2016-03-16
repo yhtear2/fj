@@ -101,3 +101,4 @@
 	</div>  
 	</c:if>
 </div>
+<div onload="realTimeStop(this)"></div>

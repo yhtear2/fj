@@ -53,6 +53,7 @@ public class RecruitWriteFormHandler implements Commandhandler {
 		map.put("pageNum", pageNum);*/
 		
 		map.put("compinfochekc", compinfochekc);
+		map.put("menu", "recruit");
 		map.put("page", "/FJ_RECRUIT/recruitWriteForm");
 		return new ModelAndView("/FJ_MAIN/main", map);
 
