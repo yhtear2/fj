@@ -31,7 +31,7 @@
 				신입
 				</c:if>
 				<c:if test="${dto.max_career == -2}">
-				신입
+				경력무관
 				</c:if>				
 				<c:if test="${dto.max_career != -2 && dto.max_career != -1 }">
 				${dto.min_career} 년 ~ ${dto.max_career} 년
