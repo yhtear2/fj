@@ -28,7 +28,7 @@ public class User_InputFormHandler implements Commandhandler{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 
-	
+		map.put("menu", "resome");
 		map.put("page", "/FJ_USER/resome");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);

@@ -59,6 +59,7 @@ public class ResomeModyfiFormHandler implements Commandhandler {
 		map.put("dto_career", dto_career);
 		map.put("dto_introduce", dto_introduce);
 		
+		map.put("menu", "resome");
 		map.put("page", "/FJ_USER/resomeModyfiForm");
 
 		return new ModelAndView("/FJ_MAIN/main", map);

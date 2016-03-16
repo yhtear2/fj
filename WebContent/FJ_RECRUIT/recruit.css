@@ -12,10 +12,13 @@
     border: 1px solid #ccc;
 }
 /* 페이지 전체 크기  */
+.recruit_mainsize {
+	margin-left:50px;
+}
 .recruit_contentsize{
 	width : 750px;
 	height : 100%;
-	margin-left : 30px;
+	margin-left : 50px;
 	background-color: white;
 }
 /* 큰 단위의 크기 (근무조건, 지원자격, 담당자, 입력폼) */
@@ -55,6 +58,7 @@
     border: 1px solid transparent;
     border-radius: 4px;
 }
+
 .panel {
 	margin-bottom : 0px;
 	border-radius : 0px 0px 0px 0px;

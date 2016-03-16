@@ -58,6 +58,7 @@ public class User_CareerForm_Handler implements Commandhandler{
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		map.put("menu", "resome");
 		map.put("page", "/FJ_USER/career");
 		
 		return new ModelAndView("/FJ_MAIN/main", map);
