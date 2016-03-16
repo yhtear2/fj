@@ -28,24 +28,22 @@ public class JoinLoginProHandler implements Commandhandler {
 		String email = request.getParameter( "email" );
 		String passwd = request.getParameter( "passwd" );
 		//자동로그인 변수 (1이면 자동로그인 쿠키생성)
-		//String autologin = request.getParameter( "autologin" );
+		String autologin = request.getParameter( "autologin" );
 		
 		//로그인 실행
 		int result = dao.checkMember( email, passwd );
 		
+		// 정보 받아오기
+		int member_flag = dao.getMember(email).getMember_flag();
+		String name = dao.getMember(email).getName();
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result", result);
-		//map.put("autologin", autologin);
 		map.put("page", "/FJ_JOIN/loginPro");
 		
-		int member_flag = 0;
-		String name = null;
 		//로그인 성공의 경우 세션에 member_flag와 닉네임을 저장
 		if( result == 1 ) {
-			member_flag = dao.getMember(email).getMember_flag();
-			name = dao.getMember(email).getName();
 			// 개인 이메일(Id)
 			request.getSession().setAttribute("memId", email);
 			// 1: 개인회원 , 2: 기업회원, 3: 관리자

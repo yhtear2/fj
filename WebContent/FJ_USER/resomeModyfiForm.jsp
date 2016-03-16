@@ -144,7 +144,7 @@
                <option value="상이제대">상이제대</option>   
                <option value="기타">기타</option>   
             </select>
-            <input class="form-control-hs" type="text" style="width:300px; margin-left: 20px; text-align: center;" name="army7" id="army7" maxlength="3" placeholder="미필,면제,기타사유 ">
+            <input class="form-control-hs" type="text" style="width:300px; margin-left: 20px; text-align: center;" name="army7" id="army7" placeholder="미필,면제,기타사유 ">
          </td>
    		</tr>
    		

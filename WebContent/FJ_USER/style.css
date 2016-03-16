@@ -135,3 +135,26 @@ a {
 	border-bottom: 1px solid #878787;
 	font-style: normal
 }   
+
+
+
+/* 홍석이 고친 css */
+.my-imagewrap-hs {
+	float: left;
+	width: 20px;
+	height: 263px;
+	_height: 299px;
+	padding-top: 36px;
+	text-align: center;
+	line-height: 0;
+	font-size: 0;
+	background: #ffffff
+}
+
+.btn-hs {
+    height: 30px;
+    padding-top: 5px;
+    letter-spacing: 1px;
+    font-size: 10px;
+    line-height: 160%;
+}

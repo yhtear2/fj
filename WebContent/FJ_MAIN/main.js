@@ -79,8 +79,6 @@ $(function(){
 		});
 	}
 	
-	
-	
 	// 웹소켓 구현부
 	var memId = $('input[id=memId]').val();
 	if( memId != null && memId != ""){

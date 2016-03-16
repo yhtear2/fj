@@ -13,8 +13,9 @@ function delete_resome() {
 	  return false;
 	}
 }
-</script> 	      
-
+</script>
+<!-- 전체 크기 먹이기 --> 	      
+<div style="width:750px; margin: 30px 0px 0px 0px; background-color: white;">
 <div id="list-article" class="content scaffold-list" role="main">
 			  
 			<!-- 지울 예정 -->
@@ -68,6 +69,7 @@ function delete_resome() {
 		</div> 
 	</c:forEach>
 </c:if>
+<div class="my-imagewrap-hs"></div>
 <!-- count가 8보다 작을 경우 이력서 작성박스 생성 -->
 <div class="my-imagewrap" style="border:1px solid grey;">
 	<div class="container">
@@ -79,7 +81,7 @@ function delete_resome() {
 		</div>
 	</div>
 </div>
-
+</div>
 
 
 

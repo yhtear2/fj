@@ -162,7 +162,6 @@ function lic_submitcheck() {
     
     
     //자기소개에 사용됨
-    alert(cnt);
    	$('input[name=cnt]').val( cnt );
 	for(var i=0; i<cnt+1; i++){
 		$('input[name=sub_name_'+ i +']').val( $('div[id=sub_name_'+ i +']').text());
