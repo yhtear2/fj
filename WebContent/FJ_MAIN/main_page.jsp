@@ -13,8 +13,10 @@
 		<div style="margin : 0px 0px 5px 10px;">
 			<img src="${images}/newRcruit_1.png" class="img-title">
 			<img src="${images}/newRcruit_2.png" class="img-title">
-			<img src="${images}/newRcruit_3.png" class="img-title">
-			<img src="${images}/newRcruit_4.png" class="img-title">	
+			<a href="recruitList.do">
+				<img src="${images}/newRcruit_3.png" class="img-title">
+				<img src="${images}/newRcruit_4.png" class="img-title">
+			</a>	
 		</div>
 		<div>
 			<img src="${images}/newRcruit_5.png">
@@ -55,9 +57,11 @@
 			<div style="margin : 0px 0px 5px 10px;">
 				<img src="${images}/notice_1.png" class="img-title">
 				<img src="${images}/notice_2.png" class="img-title">
-				<img src="${images}/newRcruit_2.png" class="img-title">
-				<img src="${images}/newRcruit_3.png" class="img-title">
-				<img src="${images}/newRcruit_4.png" class="img-title">	
+				<a href='searchboardlist.do?category=공지사항'>
+					<img src="${images}/newRcruit_2.png" class="img-title">
+					<img src="${images}/newRcruit_3.png" class="img-title">
+					<img src="${images}/newRcruit_4.png" class="img-title">
+				</a>	
 			</div>
 			
 			<!-- 리스트로 뿌려줄 내용 -->
@@ -73,7 +77,7 @@
 						
 					<tr height="35px;">
 							<td>
-								<span class="notice-title">${dto.subject}</span> 
+								<a href="boardcontent.do?board_num=${dto.board_num}"><span class="notice-title">${dto.subject}</span></a> 
 							</td>
 							<td align="right">
 								<span class="notice-name">${dto.name}</span>
@@ -99,9 +103,11 @@
 			<div style="margin : 0px 0px 5px 10px;">
 				<img src="${images}/community_1.png" class="img-title">
 				<img src="${images}/community_2.png" class="img-title">
-				<img src="${images}/newRcruit_2.png" class="img-title">
-				<img src="${images}/newRcruit_3.png" class="img-title">
-				<img src="${images}/newRcruit_4.png" class="img-title">	
+				<a href="boardlist.do">
+					<img src="${images}/newRcruit_2.png" class="img-title">
+					<img src="${images}/newRcruit_3.png" class="img-title">
+					<img src="${images}/newRcruit_4.png" class="img-title">
+				</a>	
 			</div>
 			
 			<!-- 리스트로 뿌려줄 내용 -->
@@ -114,7 +120,7 @@
 					</tr>
 					<tr height="35px;">
 						<td>
-							<span class="notice-title">${dto.subject}</span> 
+							<a href="boardcontent.do?board_num=${dto.board_num}"><span class="notice-title">${dto.subject}</span></a> 
 						</td>
 						<td align="right">
 							<span class="notice-name">${dto.name}</span>
