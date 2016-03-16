@@ -8,6 +8,7 @@
 		SELECT 	COUNT(*)
 		FROM 	FJ_RECRUIT
 	</select>
+	
 
 	<select id="getRecruitList" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
 		SELECT 	recruit_id,email,title,content,name,skill,gender,edu,work_type,work_day,work_area,
@@ -19,7 +20,7 @@
 		FROM	FJ_RECRUIT  ORDER BY RECRUIT_ID desc ) 
 		WHERE	r &gt;= #{start} and r &lt;= #{end}		
 	</select>
- 
+
 	<insert id="insertRecruit" parameterType="dto.recruit.RecruitDataBean">
 		insert into 
 		FJ_RECRUIT(
@@ -69,7 +70,7 @@
 	</select>
 	
 	<select id="getComp_Resome" parameterType="Map" resultType="dto.recruit.RecruitDataBean">
-			SELECT 	a.NAME,a.TITLE,a.MAX_CAREER,a.MIN_CAREER,a.END_DATE
+			SELECT 	a.recruit_id,a.NAME,a.TITLE,a.MAX_CAREER,a.MIN_CAREER,a.END_DATE
 			From	FJ_RECRUIT a,FJ_Comp b
 			Where	a.email = b.email
 	</select>
