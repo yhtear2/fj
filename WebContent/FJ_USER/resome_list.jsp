@@ -199,7 +199,10 @@ a {
 					<a href="/fj/resomeDelete_Pro.do?user_history_id=${dto.user_history_id}" onclick="delete_resome();">
 						<img src="//www.saraminimage.co.kr/person/renewal/btn_image_del.gif" alt="${page_userdelete}">
 					</a>
-
+						<br> 
+					<c:forEach var="last_date" items="${fnc:split(dto.last_date,'.')}" >
+					${last_date}
+					</c:forEach> 
 
 				</span>
 			</div>
