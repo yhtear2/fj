@@ -17,7 +17,6 @@
 		<label><h2>기업정보 입력(필수)</h2></label><br>
 		<!-- 각 칸마다 크기 -->			
 		<div class="form-group-hs">
-			여기에 회사명(이름) 이 나오게...
 		</div>
 		<div class="form-group-hs">
 			<input type="text" name="ceo" class="form-control" value="${dto.ceo}">
@@ -25,7 +24,7 @@
 		<div class="form-group-hs">
 			<div style="float: left;">
 			<!-- 입력 막는거 일단 빼 놓음 readonly="readonly" -->
-			<input type="text" name="zipcode" class="form-control" style="width: 300px;float: left;" value="${dto.zipcode}">
+			<input type="text" name="zipcode" class="form-control" style="width: 300px;float: left;" value="${dto.zipcode}" readonly="readonly">
 		    <button class="btn btn-default" style="float: right; margin: 0px 0px 10px 200px">우편번호 검색</button> <br>
 		    </div>
 			<input type="text" name="address" class="form-control" value="${dto.address}">

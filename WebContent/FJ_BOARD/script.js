@@ -156,11 +156,11 @@ $(document).ready(function() {
 	$('#summernote').summernote({
 		height : 400,  // 에디터 글쓰기 높이
 		lang: 'ko-KR' // default: 'en-US'
+			
 	});
-	
+
 	$('.dropdown-toggle').dropdown();
 	
-
 	var content = $('input[name=content').val();
 	$('#summernote').summernote('code', content);
 	
