@@ -41,10 +41,13 @@
 			<!-- 게시판의 종류를 선택하는 부분(메인 태그) -->
 			<fieldset class="form">
 				<div class="form-group  has-feedback">
+					<c:if test="${sessionScope.member_flag == 3}">
+						공지로 지정&nbsp;&nbsp;<input type="checkbox" value="fb" style="text-align:right;">
+					</c:if><br>
 						<select id="category" name="category" class="form-control" > 
 							<option value="${category}" >게시판을 선택해 주세요.</option> 
 							<c:if test="${sessionScope.member_flag == 3}">
-								<option value="공지사항">공지사항</option> 
+								<option value="공지사항">공지사항</option>
 							</c:if>
 							<option value="사는얘기">사는얘기</option> 
 							<option value="정보나눔">정보나눔</option>
@@ -65,15 +68,12 @@
 					</ul>    
 				</div>
 			</div>      
-      
 
 			<!-- 내용을 입력하는 부분 --> 
 			  
 			<div id="summernote" > 
 			</div>            
-			 
-			
-		   
+
 			<!-- 글쓰기 등록 및 취소부분 --> 
 			<div class="nav" role="navigation">
 				<fieldset class="buttons">
