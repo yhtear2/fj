@@ -88,7 +88,7 @@ function resome_sub() {
 	<div class="panel panel-default">
 		<!-- 대표자명 / 기업구분 / 담당자 / 전화번호  / 우편번호 / 주소 / 자본금 / 기업업종 / 회사설립일 / 연매출 / 사원수 -->	
 		<div class="comptext panel">
-			<table class="table table-hover">
+			<table class="table">
 				<tr>
 					<th>대표자명</th>
 					<td colspan="2">${compdto.ceo}</td>
@@ -109,7 +109,7 @@ function resome_sub() {
 				</tr>   
 				<tr>
 					<th>사원수</th>
-					<td>${compdto.emp_count}</td>
+					<td>${compdto.emp_count}명</td>
 					<th>담당자</th>
 					<td>${compdto.incharge}</td>
 					<th>전화번호</th>
@@ -132,7 +132,7 @@ function resome_sub() {
 			</div>
 			<div>
 				<span class="span">사원수</span>
-				<span class="span">${compdto.emp_count}</span>
+				<span class="span">${compdto.emp_count}명</span>
 			</div>
 		</div>
 		<!-- 여기는 담당업무, 근무조건 -->
@@ -151,7 +151,7 @@ function resome_sub() {
 	</div>
 	<div class="business panel panel-default">
 		<div class="tablediv">
-			<table class="business_table table table-hover">
+			<table class="business_table table">
 				<tr>
 					<th>지역</th>
 					<td>${dto.work_area}</td>
@@ -175,7 +175,7 @@ function resome_sub() {
 			</table>
 		</div>
 		<div class="tablediv">
-			<table class="business_table table table-hover">
+			<table class="business_table table">
 				<tr>
 					<th>기술</th>
 					<td>${dto.skill}</td>
@@ -199,7 +199,7 @@ function resome_sub() {
 			</table>
 		</div>
 		<div class="tablediv">
-			<table class="table table-hover">
+			<table class="table">
 				<tr>
 					<th class="lastth">채용기간</th>
 					<td>${dto.start_date} ~ ${dto.end_date}</td>
@@ -209,7 +209,12 @@ function resome_sub() {
 		<div class="middle">
 			<div>
 				<span class="span">나이</span>
-				<span class="span">${dto.min_age} ~ ${dto.max_age}</span>
+				<c:if test="${dto.min_age==-1}">
+					<span class="span">나이무관</span>
+				</c:if>
+				<c:if test="${dto.min_age!=-1}">
+					<span class="span">${dto.min_age} ~ ${dto.max_age}</span>
+				</c:if>
 			</div>
 			<div>
 				<span class="span">근무형태</span>
