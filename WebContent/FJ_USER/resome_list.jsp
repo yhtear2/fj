@@ -47,7 +47,7 @@ function delete_resome() {
 				<span class="pic">
 					<!--  
 					<a href="/fj/resome.do">  -->      
-						<img rc='${dto.photo}'
+						<img src='${dto.photo}'
 						border="0" width="100" height="140" onclick="window.location='resomeContent.do?user_history_id=${dto.user_history_id}'">
 		
 				</span>
