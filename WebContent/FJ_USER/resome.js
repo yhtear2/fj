@@ -691,11 +691,9 @@ $(document).ready(function() {
 	var licenses = $('input[name=license]').val().split('/');
 	for( var i=0; i<licenses.length-1; i++){
 		var licenses_in = licenses[i].split('#');
-		for( var j=0; j<licenses_in.length; j++){
-			$('input[name=license1'+i+']').val(licenses_in[j]);
-			$('input[name=license2'+i+']').val(licenses_in[j]);
-			$('input[name=license3'+i+']').val(licenses_in[j]);
-		}
+			$('input[name=license1'+i+']').val(licenses_in[0]);
+			$('input[name=license2'+i+']').val(licenses_in[1]);
+			$('input[name=license3'+i+']').val(licenses_in[2]);
 		if( i<licenses.length-2 ){
 			license_addform();
 		}

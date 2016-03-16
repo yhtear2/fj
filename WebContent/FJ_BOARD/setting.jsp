@@ -44,7 +44,9 @@
 
 <meta name="layout" content="main">
 
-<style type="text/css"></style>   
+<style type="text/css">
+.note-editor .note-dropzone { opacity: 0 !important; }
+</style>   
 
     
 

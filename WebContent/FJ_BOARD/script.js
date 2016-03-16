@@ -155,12 +155,9 @@ function boardreplyFormCkeck(){
 $(document).ready(function() {
 	$('#summernote').summernote({
 		height : 400,  // 에디터 글쓰기 높이
-		width : 800,
-		minHeight: null, // 에디터 글쓰기 최소높이 제한 (마우스 클릭 후 이동시 제한알아낼 수 있음)
-		maxHeight: null, // 에디터 글쓰기 최대높이 제한 (마우스 클릭 후 이동시 제한알아낼 수 있음)
-		focus: true,  // 포커스 有 
 		lang: 'ko-KR' // default: 'en-US'
 	});
+	
 	$('.dropdown-toggle').dropdown();
 	
 

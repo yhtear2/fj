@@ -37,6 +37,7 @@
 	      	<th style="width:100px;">이름(영문)</th>
 	      	<td style="width:200px;"><input class="form-control-hs" type="text" name="eng_name" id="eng_name" value="${dto_user.eng_name}"></td>   
 	      	<td rowspan="5">
+	      		<input type="hidden" name="user-photo" value="${dto_user.photo}">
 		      	<img src='${dto_user.photo}' id="img_view" name="img_view" style="margin-left: auto; margin-right: auto; display: block; width:120px; height:150px;"/>
 		      
 	      		<!-- 파일 업로드 버튼 -->

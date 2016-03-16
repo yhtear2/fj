@@ -115,10 +115,12 @@ public class ResomeModify_ProHandler implements Commandhandler {
 		dto.setTel( tel );
 				
 		dto.setArmy(army);
-		
-		String resome_image = "FJ_USER/images/" + imageFileName;
-		System.out.println(resome_image);
-		dto.setPhoto(resome_image);
+		if( imageFileName != null ){
+			String resome_image = "FJ_USER/images/" + imageFileName;
+			dto.setPhoto(resome_image);
+		}else{
+			dto.setPhoto( multi.getParameter("user-photo") );
+		}
 	
 		String resome_project = "library/portfolio/" + projectFile;
 		dto.setProject(resome_project);
