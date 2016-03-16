@@ -6,12 +6,37 @@
 <!-- 폼 세팅구간 (지우지 마세요) -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="robots" content="noindex,nofollow">
-<link href="//www.saraminimage.co.kr/css_new/sub_global.css" rel="stylesheet" type="text/css">
-<link href="//www.saraminimage.co.kr/css/ui/reset-fonts.css" rel="stylesheet" type="text/css" media="screen, print">
-<link href="//www.saraminimage.co.kr/css/resume-20141031.css" rel="stylesheet" type="text/css" media="screen, print">
-<script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/prototype-1.6.0.3.js"></script>
-<script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/pngHack.mini.js"></script>
 
+
+<link href="//www.saraminimage.co.kr/css/resume-20141031.css" rel="stylesheet" type="text/css" media="screen, print">
+
+<style type="text/css">
+	
+	.res-title-view-new-hs {
+	    background-color: #f1f7ff;
+	    color: #455a77;
+	    font-size: 14px;
+	    font-weight: bold;
+	    height: 38px;
+	    letter-spacing: -1px;
+	    text-align: center;
+	    border: solid 1px #b3c8d7;
+    }
+    .tbl-view th {
+	    padding: 4px 0 0;
+	    border: 1px solid #b7cbd9;
+	    background: #f2f7ff;
+	    color: #4f637d;
+	    font-weight: bold;
+	    /* text-align: center; */
+	    letter-spacing: -1px;
+	}
+	#resume {
+	    color: #666666;
+	    font-family: "gulim";
+	    font-size: 9pt;
+	}
+</style>
 <!-- div 시작점  -->
 <div class="resume" style="margin:50px" >
             <!-- header (top icon & description) -->
@@ -49,7 +74,7 @@
 <div id="resume_title_view">
     <a name="title_view_anchor"></a>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tbody><tr><td class="res-title-view-new " valign="middle"> ${dto.resome_title} </td></tr>
+        <tbody><tr><td class="res-title-view-new-hs" valign="middle"> ${dto.resome_title} </td></tr>
     </tbody></table>
     
 </div>
