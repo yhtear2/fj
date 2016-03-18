@@ -120,7 +120,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			mailSession = Session.getInstance(props,
 	        	new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("credsuk@gmail.com", "tkznfk11");
+						return new PasswordAuthentication(		"",				 "");
 															// 메일게정			비밀번호
 				}
 			});
