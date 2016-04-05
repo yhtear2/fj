@@ -110,9 +110,9 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 	        // props.put("mail.smtp.user", from);
 	        props.put("mail.smtp.auth", "true");
 	        
-	        String body = "관리자다"+"<br>";
-			body += "고맙다"+"<br>";
-			body += "아래 인증번호 입력해라"+"<br>";
+	        String body = "관리자입니다"+"<br>";
+			body += "회원가입에 진심으로 감사 드립니다."+"<br>";
+			body += "아래 인증번호를 입력해주세요"+"<br>";
 			body += "인증번호  : <h2>"+content+"</h2><br>";
 				
 		
@@ -120,7 +120,7 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			mailSession = Session.getInstance(props,
 	        	new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(		"",				 "");
+						return new PasswordAuthentication("crssendmail", "crssendmail1");
 															// 메일게정			비밀번호
 				}
 			});
