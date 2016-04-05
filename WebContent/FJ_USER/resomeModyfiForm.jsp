@@ -196,6 +196,8 @@
      </table> -->
 <!-- 기본정보 끝!! -->
 <br>
+
+
 <!--  학력사항 시작  dto_school -->
 	<h4>학력사항</h4>
 
@@ -295,21 +297,12 @@
 	<input type="hidden" name="career_sort" value="${dto_career[0].career_sort}">
 	<table>
 		<tr>
-			<th> 신입 / 경력 </th>
+			<th> 신입 / 경력</th>
 			<td> 
-			<c:if test="${career_size-1 == 0}">
 				&nbsp;&nbsp;&nbsp;&nbsp;신입 : 
-				<input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()" checked="checked">
+				<input type="radio" name="career_sort" id="career_sort1" value="신입" onclick="chk()">
 				&nbsp;&nbsp;&nbsp;	경력 : 
-				<input type="radio" name="career_sort" id="career_sort" value="경력" onclick="chk()">
-			</c:if>
-			<c:if test="${career_size-1 != 0}">
-				&nbsp;&nbsp;&nbsp;&nbsp;신입 : 
-				<input type="radio" name="career_sort" id="career_sort" value="신입" onclick="chk()">
-				&nbsp;&nbsp;&nbsp;	경력 : 
-				<input type="radio" name="career_sort" id="career_sort" value="경력" onclick="chk()" checked="checked">
-			</c:if>
-				
+				<input type="radio" name="career_sort" id="career_sort2" value="경력" onclick="chk()">
 			</td>		
 		</tr>	
 	</table>

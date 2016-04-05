@@ -192,7 +192,7 @@ public class ResomeModify_ProHandler implements Commandhandler {
 		
 		
 		// 여기는 경력사항 입력!
-		
+		dao.deleteArticle_career(User_history_id);
 		CareerDataBean Career_dto = new CareerDataBean();
 		
 		String career_comp_name[] = multi.getParameterValues("career_comp_name");
@@ -252,7 +252,6 @@ public class ResomeModify_ProHandler implements Commandhandler {
 			Career_dto.setCareer_work(career_work[i]);
 			Career_dto.setCareer_content(career_content[i]);
 
-			dao.deleteArticle_career(User_history_id);
 			result = dao.insertArticle_career( Career_dto );	
 		}
 		
@@ -269,6 +268,7 @@ public class ResomeModify_ProHandler implements Commandhandler {
 
 		// 바구니 생성
 		IntroduceDataBean Idto = new IntroduceDataBean();
+		dao.deleteArticle_introduce(User_history_id);
 		
 		for( int i=0; i<cnt+1; i++){
 			Idto.setUser_history_id( User_history_id );
@@ -278,7 +278,6 @@ public class ResomeModify_ProHandler implements Commandhandler {
 			Idto.setIntro_last_date(new Timestamp(System.currentTimeMillis()));
 			
 			// 디비 처리
-			dao.deleteArticle_introduce(User_history_id);
 			result = dao.insertArticle_introduce(Idto);
 			map.put("result", result);
 		}

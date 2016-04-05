@@ -761,7 +761,11 @@ $(document).ready(function() {
 	var career_sort = $('input[name=career_sort]').val();
 	if (career_sort =="신입") {
 		career_table.style.display = 'none';
-	 }
+		$('input[id=career_sort1]').prop('checked', true);
+	 } 
+	if (career_sort =="경력") {
+		$('input[id=career_sort2]').prop('checked', true);
+	}
 	// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 	
 	// ▼▼▼▼ 자기소개서 ▼▼▼▼

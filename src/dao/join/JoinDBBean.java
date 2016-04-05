@@ -124,7 +124,6 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 															// 메일게정			비밀번호
 				}
 			});
-			System.out.println("메일계정 가져왔다");
 	          
 			Message msg = new MimeMessage(mailSession);
 			msg.setFrom(new InternetAddress(from, MimeUtility.encodeText(fromName,"UTF-8","B")));//보내는 사람 설정
@@ -137,7 +136,6 @@ private SqlSession sqlSession = SqlMapClient.getSqlSession();
 			msg.setContent(body,"text/html;charset=euc-kr"); // 내용 설정 (HTML 형식)
 			
 			Transport.send(msg); // 메일 보내기
-			System.out.println("보내는구나");
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		} catch ( Exception e){

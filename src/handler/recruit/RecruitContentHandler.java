@@ -77,10 +77,10 @@ public class RecruitContentHandler implements Commandhandler {
 		// 기업 TEL이 직접입력일시 오류가 나서
 		String tels[] = compdto.getTel().split("-");
 		if (tels[0].equals("직접입력")){
-			String tel = tels[1]+"-"+tels[2]+"-"+tels[3];
+			String tel = tels[1]+"-"+tels[2];
 			map.put("tel", tel);
 		}else{
-			String tel = tels[0]+"-"+tels[1]+"-"+tels[2];
+			String tel = tels[0]+"-"+tels[1];
 			map.put("tel", tel);
 		}
 		

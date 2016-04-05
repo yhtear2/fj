@@ -68,8 +68,9 @@
 		SELECT 		board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rn 
 		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
 		FROM        fj_board_free 
-		ORDER BY    re_step asc, board_num desc) 
-		WHERE		rn &gt; = #{start} and rn &lt; = #{end}    
+		ORDER BY    board_num desc) 
+		WHERE		rn &gt; = #{start} and rn &lt; = #{end}
+		ORDER BY    re_step asc    
 	</select>  
 	
 	<!-- 댓글 수정부분   -->    
@@ -135,8 +136,9 @@
 		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
 		FROM	 	fj_board_free 
 		WHERE		category like #{category, jdbcType=VARCHAR}
-		ORDER BY	board_num desc, re_step asc)
+		ORDER BY	board_num desc)
 		WHERE		rn &gt; = #{start} and rn &lt; = #{end}  
+		ORDER BY    re_step asc
 	</select>
 	
 	<select id="getTagSearchArticles" parameterType="map" resultType="dto.board.BoardDataBean">
@@ -144,8 +146,9 @@
 		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
 		FROM	 	fj_board_free 
 		WHERE		hstag like #{tag, jdbcType=VARCHAR}
-		ORDER BY	board_num desc, re_step asc)
+		ORDER BY	board_num desc)
 		WHERE		rn &gt; = #{start} and rn &lt; = #{end}  
+		ORDER BY    re_step asc
 	</select>
 	
 	<select id="getSearchSearchArticles" parameterType="map" resultType="dto.board.BoardDataBean">
@@ -153,8 +156,9 @@
 		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
 		FROM	 	fj_board_free 
 		WHERE		subject like #{search, jdbcType=VARCHAR}
-		ORDER BY	board_num desc, re_step asc)
+		ORDER BY	board_num desc)
 		WHERE		rn &gt; = #{start} and rn &lt; = #{end}  
+		ORDER BY    re_step asc
 	</select>
 	
 	<select id="getBoard_numSearchArticles" parameterType="map" resultType="dto.board.BoardDataBean">
@@ -163,6 +167,7 @@
 		FROM	 	fj_board_free 
 		ORDER BY	board_num desc)
 		WHERE		rn &gt; = #{start} and rn &lt; = #{end}  
+		ORDER BY    re_step asc
 	</select>
 	
 	<select id="getRecom_countSearchArticles" parameterType="map" resultType="dto.board.BoardDataBean">
@@ -193,8 +198,9 @@
 		SELECT 		board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rn 
 		FROM		(select board_num, email, subject, content, hstag, recontent, category, name, re_count, scrap_count, recom_count, bad_count, read_count, re_step,  reg_date, rownum rn 
 		FROM	 	fj_board_free 
+		WHERE		READ_COUNT  >= 10
 		ORDER BY	board_num desc)
-		WHERE		rn &gt; = #{start} and rn &lt; = #{end} and read_count  &gt; = #{read_count}
+		WHERE		rn &gt; = #{start} and rn &lt; = #{end}
 	</select>
 </mapper>
       
